@@ -1,0 +1,46 @@
+/*amd /page/P00347.xml 5442 8f8e2450223119860882179b4d39b0eb5bb9416485cb252fd9953b2fb6dced3d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A1'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A2'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B2'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  let strTargetId = this.getUserData("userData1");
+  let cmpTarget;
+  if (strTargetId) {
+    cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+  } else {
+    cmpTarget = txa_log;
+  }
+  //textarea value를 빈문자열로 할당.
+  cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [첫 번째 컬럼의 ID로 헤더 값 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // GridView 'grd_exam1'의 헤더 ID가 'h_col_a'인 헤더 컬럼의 Value를 반환받습니다. 
+  let result = grd_exam1.getHeaderValue("h_col_a");
+
+  // 로그 출력
+  let strLog = '# 스크립트 실행\ngrd_exam1.getHeaderValue("h_col_a");\n';
+  $c.frame.printExampleLog($p, strLog + 'result) ' + result, txa_log_1, false);
+  console.log(strLog);
+  console.log(result);
+};
+
+/**
+ * 버튼 [두 번째 컬럼의 Index로 헤더 값 반환받기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+  // GridView 'grd_exam1'의 헤더 Index가 1인 헤더 컬럼의 Value를 반환받습니다. 
+  let result = grd_exam1.getHeaderValue(grd_exam1.getHeaderID(1));
+
+  // 로그 출력
+  let strLog = '# 스크립트 실행\ngrd_exam1.getHeaderValue(grd_exam1.getHeaderID(1));\n';
+  $c.frame.printExampleLog($p, strLog + 'result) ' + result, txa_log_1, false);
+  console.log(strLog);
+  console.log(result);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 \'getHeaderValue\' 메소드를 사용하여 헤더 값을 반환받는 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',label:'버튼을 클릭하면 \'로그 확인\' 영역과 브라우저 개발자도구의 콘솔에 로그가 출력됩니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'첫 번째 컬럼의 ID로 헤더 값 반환받기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false',id:'btn_exam2_1',style:'',type:'button','ev:onclick':'scwin.btn_exam2_1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'두 번째 컬럼의 Index로 헤더 값 반환받기'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox',style:'max-width:240px;'},E:[{T:1,N:'w2:gridView',A:{initFixedHeightByRowNum:'2',tooltipDisplay:'true',dataList:'data:dlt_exam',readOnly:'true',style:'height:60px;',autoFit:'allColumn',visibleRowNum:'2',id:'grd_exam1',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'170'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1'},E:[{T:1,N:'w2:row',A:{id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'h_col_a',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'h_col_b',value:'B',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1'},E:[{T:1,N:'w2:row',A:{id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_a',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_b',displayMode:'label'}}]}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_bold',label:'로그 확인'}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',title:'로그 삭제',type:'button',userData1:'txa_log_1'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log_1',spellcheck:'false',style:'width: 100%;height: 110px;'}}]}]}]}]}]}]}]})

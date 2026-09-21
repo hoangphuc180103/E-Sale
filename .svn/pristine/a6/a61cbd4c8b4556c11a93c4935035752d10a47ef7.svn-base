@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.trigger1_onclick = function(e) {
+    var text = editor1.getHTML();
+    alert(text);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="HTML 태그와 텍스트 모두 반환" style="color: blue;margin-bottom: 10px;" tabIndex="h1"
+    		tagname="h1">
+    	</w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. 줄 바꿈 및 (밑줄, 굴게 표시 등의) 서식을 적용한 텍스트를 Editor에 입력. &lt;br/&gt;2. getHTML() 버튼을 클릭. &lt;br/&gt;3. 텍스트에 적용한 서식에 해당하는 HTML 태그와 텍스트가 모두 반환되는 것을 확인.'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[editor1.getHTML();]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox4" label="/// 샘플 코드&lt;br/&gt;&lt;br/&gt;var text = editor1.getHTML();&lt;br/&gt;alert(text);" escape="false">
+    	</w2:textbox>
+    	<w2:editor style="height: 300px;" id="editor1"></w2:editor>
+    </xf:group></body>
+</html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="openPopup_scopeInherit_$p">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            			<w2:column id="col5" name="name5" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+                <w2:dataList baseNode="list" repeatNode="map" id="dataList2" saveRemovedData="true">
+                    <w2:columnInfo>
+                        <w2:column id="col1" name="name1" dataType="text"></w2:column>
+                        <w2:column id="col2" name="name2" dataType="text"></w2:column>
+                        <w2:column id="col3" name="name3" dataType="text"></w2:column>
+                        <w2:column id="col4" name="name4" dataType="text"></w2:column>
+                        <w2:column id="col5" name="name5" dataType="text"></w2:column>
+                    </w2:columnInfo>
+                </w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function () {
+    const tmpSrc = scwin.getfolderPath() + "/wframe.xml";
+
+    var scopeInheritValue = radio1.getValue();
+    var options = {
+        id: "popup"
+        , type: "wframePopup"
+        , popupName : "scopeInherit = " + scopeInheritValue
+        , width: "600px"
+        , height: "400px"
+        , modal: true
+        , scopeInherit: scopeInheritValue
+    };
+    $p.openPopup(tmpSrc, options);
+};
+
+scwin.trigger2_onclick = function (e) {
+
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox2" label="부모의 Scope 상속" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox4"
+    		label='(예제를 단독으로 실행.)&lt;br/&gt;1. scopeInherit 옵션 값을 선택. (none, api, all 혹은 component)&lt;br/&gt;2. 하단의 openPopup() 버튼을 클릭. &lt;br/&gt;3. 팝업이 생성되고, 생성된 팝업은 WFrame이 중첩 구성된 화면을 표시하는 것을 확인. &lt;br/&gt;4. WFrame 내부의 각 버튼을 클릭.&lt;br/&gt;5. 각 버튼이 scopeInherit 속성 값에 따라 동작하는지 확인. &lt;br/&gt; &amp;nbsp; &amp;nbsp; "none" : (1) X, (2) 최상단 접근, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; "api" : (1) &amp;nbsp;X, (2) 부모 접근, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; "all" : (1) O, (2) 부모 접근, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; "component" : (1) O, (2) 최상단 접근, (3) O'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;"
+    		id="textbox5" label='scopeInherit 속성 값 선택' escape="false">
+    	</w2:textbox>
+    	<xf:select1 ref="" appearance="full" style="margin-bottom: 10px;margin-bottom: 20px;border: solid 2px lightpink;padding: 10px;"
+    		id="radio1" rows="1" cols="" selectedIndex="-1">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[none]]></xf:label>
+    				<xf:value><![CDATA[none]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[api]]></xf:label>
+    				<xf:value><![CDATA[api]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[all]]></xf:label>
+    				<xf:value><![CDATA[all]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[component]]></xf:label>
+    				<xf:value><![CDATA[component]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:select1>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox6" label='옵션 설정&lt;br/&gt;$p.openPopup(options) - options.scopeInherit="nont" / "api" "all" "component"' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button" class="">
+    		<xf:label>
+    			<![CDATA[openPopup()]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox
+    		style="text-align: left;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: blue;margin-bottom: 10px;"
+    		id="textbox1" label='Top (id="textbox1")'>
+    	</w2:textbox>
+    </xf:group></body>
+</html>

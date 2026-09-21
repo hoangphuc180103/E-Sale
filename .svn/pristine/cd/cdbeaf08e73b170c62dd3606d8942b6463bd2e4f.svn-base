@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="팝업" meta_screenName="P00130 팝업 페이지 01">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220930" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+/**
+ * 페이지 로드 완료 시 호출
+ */
+scwin.onpageload = function () {
+    scwin.initPage();
+};
+
+/**
+ * 페이지 초기화
+ */
+scwin.initPage = function () {
+    var jsnPopParam;
+    var strInputValue;
+
+    //부모창에서 전달한 데이터 객체명 "p_param"으로 파라미터 반환
+    jsnPopParam = $p.getParameter("p_param");
+
+    //InputCalendar의 사용자 입력값 추출
+    strInputValue = jsnPopParam.inputData;
+
+    //span "tbx_msg"에 입력값 출력
+    tbx_msg.setValue(strInputValue);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="pop_contents" id="" style="padding: 10px;">
+			<xf:group id="" style="font-size: 1.1em;min-height: 1em;font-weight: bold;margin-bottom: 10px;">
+				<w2:span id="tbx_msg" label=" " style="color:tomato;font-weight:bold;"></w2:span>
+				<w2:span id="" label="은 유효한 날짜가 아닙니다." style=""></w2:span>
+			</xf:group>
+			<w2:textbox id="" label="(팝업 - P00130P01.xml)" style="color: DarkCyan;font-weight: bold;font-size: 1.1em;"></w2:textbox>
+		</xf:group>
+	</body>
+</html>

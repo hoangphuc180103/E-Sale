@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+                <w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+                    <w2:columnInfo>
+                        <w2:column id="col1" name="name1" dataType="text"></w2:column>
+                        <w2:column id="col2" name="name2" dataType="text"></w2:column>
+                        <w2:column id="col3" name="name3" dataType="text"></w2:column>
+                        <w2:column id="col4" name="name4" dataType="text"></w2:column>
+                        <w2:column id="col5" name="name5" dataType="text"></w2:column>
+                    </w2:columnInfo>
+                </w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+    
+    scwin.onpageload = function() {
+        
+        var data = [];
+        for (var i = 0; i < 20; i++) {
+            for (var j = 0; j < 5; j++){
+                data.push(i);
+            }
+        }
+        dataList1.setData(data);
+    };
+    
+    scwin.onpageunload = function() {
+        
+    };
+
+    
+    
+    
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Ctrl 및 Shift 키를 통한 다중 선택 허용" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='Ctrl 및 Shift 키를 사용하여 여러 개의 셀들을 선택할 수 있는 것을 확인.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;ctrlShiftKey="true"' escape="false">
+    	</w2:textbox><w2:gridView scrollByColumnAdaptive="false" dataDragSelectAutoScroll="true" rowNumVisible="true" useShiftKey="true" scrollByColumn="false" dataDragSelectAutoScrollDPI="5" dataDragSelectAutoScrollDelay="50" defaultCellHeight="20" dataDragSelectAutoScrollPeriod="70" rowStatusVisible="" dataList="data:dataList1" dataDragSelect="true" ctrlShiftKey="true" columnMove="true" style="border: solid 1px gray;" id="gridView1" autoFit="allColumn" visibleRowNum="10" fastScroll="false" dataDragSelectAutoScrollLevel="1300" useCtrlKey="true" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header2">
+    			<w2:row style="" id="row3">
+    				<w2:column width="70" inputType="text" style="height:20px" id="column45" value="name1" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column44" value="name2" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column43" value="name3" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column42" value="name4" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column41" value="name5" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody2">
+    			<w2:row style="" id="row4">
+    				<w2:column width="70" inputType="text" style="height:20px" id="col1" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col5" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView></xf:group></body>
+</html>

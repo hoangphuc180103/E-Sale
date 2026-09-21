@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>Spinner</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_bb0c2ce113bac20b" class="chapter_title">Spinner</h1>
+		<h1 id="r_84a35a611cd600e5" class="element heading1"
+			data-element-id="84a35a611cd600e5">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_0303f91f57cd368f" class="element normal"
+			data-element-id="0303f91f57cd368f">Spinner 컴포넌트는 사용자가 화살표 버튼 또는
+			직접 입력을 통해 숫자나 날짜, 시간 등의 값을 간편하게 조절할 수 있도록 도와주는 UI 요소입니다. 입력 필드와 증감
+			버튼을 결합한 형태로, 다양한 유형의 값 증가 단위를 설정할 수 있어 효율적인 데이터 입력을 지원합니다. 웹스퀘어 AI의
+			Spinner는 단순한 숫자 입력뿐만 아니라 날짜(Date) 및 시간(Time) 입력까지 확장 가능하며, 사용자는 입력 필드
+			옆에 상하 화살표를 제공하여 값을 증가시키거나 감소시킬 수 있으며, 직접 값을 입력할 수도 있습니다. Spinner는
+			사용자가 키보드로 직접 입력하는 방식보다 오류 발생 가능성을 줄여주며, 특히 모바일 환경에서 손가락으로 쉽게 조작할 수 있어
+			사용자 경험을 향상시킵니다.</p>
+		<dl id="r_c58da6a4a261b67a" class="element definition_list"
+			data-element-id="c58da6a4a261b67a">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb38HNjcVUgLO85g_5DLX6qA">Spinner
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2n_A6zCWf-yvRGE4oUxNHC&amp;si=XmCn_zAJhFvvLnac">Spinner
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_ef152b92847f4cbc" class="element heading1"
+			data-element-id="ef152b92847f4cbc">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_4870750c4e367cab" class="element normal"
+			data-element-id="4870750c4e367cab">Spinner 컴포넌트는 다음과 같은 상황에서 유용하게
+			사용될 수 있습니다.</p>
+		<dl id="r_46bac8ae276ba589" class="element definition_list renumbered"
+			data-element-id="46bac8ae276ba589">
+			<dt>
+				<strong>수량 입력</strong>
+			</dt>
+			<dd>
+				<p>제품 수량, 인원 수 등 정수 값을 입력할 때 사용자가 쉽게 값을 조정할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>날짜 선택</strong>
+			</dt>
+			<dd>
+				<p>연, 월, 일 단위로 날짜를 선택할 때 사용자가 직관적으로 날짜를 조절할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>시간 설정</strong>
+			</dt>
+			<dd>
+				<p>시, 분, 초 단위로 시간을 설정할 때 사용자가 쉽게 시간을 조정할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>범위가 정해진 값 선택</strong>
+			</dt>
+			<dd>
+				<p>최소값과 최대값 사이에서 특정 값을 선택해야 할 때 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>단계적 값 조정</strong>
+			</dt>
+			<dd>
+				<p>특정 증감 단위로 값을 조정해야 할 때 사용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>직관적인 값 조절</strong>
+			</dt>
+			<dd>
+				<p>상하 화살표를 통해 값을 직관적으로 조절할 수 있어 사용자 편의성을 높입니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_682a471061c760d7" class="element heading1"
+			data-element-id="682a471061c760d7">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_9940fc4a058804ef" class="element unordered_list"
+			data-element-id="9940fc4a058804ef">
+			<li><p>
+					데이터 타입 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00152.xml">WRE</a>)
+				</p></li>
+			<li><p>증감 단위 설정</p>
+				<ul>
+					<li><p>
+							날짜 증가 단위 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00153.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Spinner/dateIncrementType_dataType_date_Spinner.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/JSEHOpyEmP4">YouTube</a>)
+						</p></li>
+					<li><p>
+							시간 증가 단위 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00154.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Spinner/dateIncrementType_dataType_time_Spinner.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/pk816oMqbBg">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					초기 값 지정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00155.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Spinner/initValue_Spinner.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/4R8vFFkceDc">YouTube</a>)
+				</p></li>
+			<li><p>
+					자동 포커스 이동 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Spinner/autoFocus_nextTabID_dataType_dateIncrementType_Spinner.xml">샘플</a>,
+					<a class="link" href="https://youtube.com/embed/VDVxknvJ8KA">YouTube</a>)
+				</p></li>
+			<li><p>
+					잘못 입력한 날짜에 대한 경고 출력 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00156.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Spinner/useAlert_Spinner.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/dwEVjSMhvvg">YouTube</a>)
+				</p></li>
+			<li><p>
+					HTML의 &lt;title&gt; 태그 지원 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Spinner/title_Spinner.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/eTRv-LKnm4M">YouTube</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

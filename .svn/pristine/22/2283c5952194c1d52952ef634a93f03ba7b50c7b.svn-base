@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>InputCalendar</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_90e132eb1fb50af7" class="chapter_title">InputCalendar</h1>
+		<h1 id="r_ec67a479d0de07e6" class="element heading1"
+			data-element-id="ec67a479d0de07e6">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_1e8acbd2a6fb67c5" class="element normal"
+			data-element-id="1e8acbd2a6fb67c5">InputCalendar 컴포넌트는 사용자가 직접
+			날짜를 입력하거나, 달력 인터페이스를 통해 날짜를 선택할 수 있는 UI를 제공합니다. InputCalendar는 기본
+			Calendar 컴포넌트의 모든 기능을 포함하면서도, 사용자가 직접 날짜를 입력할 수 있는 추가적인 편의성을 제공합니다.
+			다양한 속성과 함수를 통해 날짜 형식, 입력 검증, 특정 날짜 제한 등의 기능을 설정할 수 있어, 다양한 비즈니스 요구
+			사항에 맞게 커스터마이징이 가능합니다. InputCalendar는 단순한 날짜 선택부터 연도/월 선택, 시간 포함 날짜 선택
+			등 다양한 형태의 날짜 관련 입력을 처리할 수 있어 광범위한 웹 애플리케이션에서 활용될 수 있습니다.</p>
+		<dl id="r_4efea6207667f51a" class="element definition_list"
+			data-element-id="4efea6207667f51a">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3NrIbEDGchbQCftN8QYptf">InputCalendar
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2ZPgbquW-o3GXN5IlD755t">InputCalendar
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_af8f88baead281bc" class="element heading1"
+			data-element-id="af8f88baead281bc">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_bb5270d20e074851" class="element normal"
+			data-element-id="bb5270d20e074851">InputCalendar 컴포넌트는 다음과 같은 다양한
+			용도로 활용될 수 있습니다.</p>
+		<dl id="r_6977158c368598d9" class="element definition_list"
+			data-element-id="6977158c368598d9">
+			<dt>날짜 선택</dt>
+			<dd>
+				<p>사용자가 직접 날짜를 입력하거나 달력에서 선택할 수 있습니다.</p>
+				<p>특정 기간의 날짜 선택을 제한하거나 특정 날짜만 선택 가능하게 허용할 수 있습니다.</p>
+			</dd>
+			<dt>날짜 유효성 검증</dt>
+			<dd>
+				<p>날짜 입력 시 형식 유효성 검증을 수행할 수 있습니다.</p>
+			</dd>
+			<dt>날짜 선택 편의성 제공</dt>
+			<dd>
+				<p>날짜 입력 필드에 ‘오늘’, ‘초기화’, ‘취소’ 등의 편의 버튼을 제공할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_8ef0fdb48d63fc9c" class="element heading1"
+			data-element-id="8ef0fdb48d63fc9c">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_9dd9c67cb15c360b" class="element unordered_list"
+			data-element-id="9dd9c67cb15c360b">
+			<li><p>달력 디자인</p>
+				<ul>
+					<li><p>
+							달력 스킨 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00449.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							달력의 시작 요일 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00379.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							달력의 표시 기준을 입력 필드의 왼쪽 또는 오른쪽으로 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00377.xml">WRE</a>)
+						</p></li>
+					<li><p>달력의 요일 및 주 표시 옵션</p>
+						<ul>
+							<li><p>
+									달력 요일을 텍스트/이미지로 표시 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00134.xml">WRE</a>,
+									<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/displayDayType_InputCalendar.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/OT_ps7WMpz4">YouTube</a>)
+								</p></li>
+							<li><p>
+									달력의 주(Week) 수 설정 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/visibleWeekNum_InputCalendar.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/5OYRmiYI8Cw">YouTube</a>)
+								</p></li>
+						</ul></li>
+				</ul></li>
+			<li><p>달력 렌더링</p>
+				<ul>
+					<li><p>
+							사용자가 선택할 수 있는 영역을 'button'과 'select' 태그로 구성하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00376.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							달력의 하단 영역을 'div' 또는 'table' 태그로 구성하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00374.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							입력 필드와 달력 아이콘 영역을 'div' 또는 'table' 태그로 구성 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00375.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>날짜 형식</p>
+				<ul>
+					<li><p>
+							달력 상의 날짜 표시 형식 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00373.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							날짜 입출력 형식 (정적) 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00135.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/ioFormat_displayFormat_calendarDisplayFormat_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Z_SgdHf7Nw8">YouTube</a>)
+						</p></li>
+					<li><p>
+							날짜 입출력 형식 (동적) 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/setIoFormat_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/p-hZGP4YOak">YouTube</a>)
+						</p></li>
+					<li><p>
+							displayFormat이 적용된 값 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00467.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>날짜 설정</p>
+				<ul>
+					<li><p>
+							오늘 날짜 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00137.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							달력을 열 때 표시되는 날짜 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00202.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/defaultDate_getDefaultDate_setDefaultDate_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/xSTHrWtyIDk">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 날짜 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/setValue_ioFormat_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/lKcxqmtWcis">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>날짜 비활성화</p>
+				<ul>
+					<li><p>
+							특정일 기준 앞/뒤 날짜들을 비활성화 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00132.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/disableBeforeDate_disableAfterDate_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/dPBccNsVIGg">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 날짜 비활성화 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00133.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/disableDate_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Jl3g8DH0qN0">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>달력의 날짜 표시</p>
+				<ul>
+					<li><p>
+							달력의 연도 및 월 표시 방법 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00136.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/pickerType_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/PUwerF67bzs">YouTube</a>)
+						</p></li>
+					<li><p>
+							달력의 연도 및 월 표시 순서 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/pickerType_dynamicHeaderOrder_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/mdRM__Fl_zA">YouTube</a>)
+						</p></li>
+					<li><p>
+							일(Day) 단위 선택 유지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00201.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/dayMoveFixed_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/1cXBGcYVSzA">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>달력의 버튼 표시</p>
+				<ul>
+					<li><p>
+							날짜 선택 취소 버튼 표시하기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/cancelButtonShow_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/MrfVKex3yE4">YouTube</a>)
+						</p></li>
+					<li><p>
+							"오늘" 버튼 표시하기/숨기기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00220.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/showToday_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/PBOW9xKzEpM">YouTube</a>)
+						</p></li>
+					<li><p>
+							날짜 초기화 버튼 표시하기/숨기기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/resetButtonShow_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/I7r84Vfxu2U">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>날짜 유효성 검증 및 선택 제한</p>
+				<ul>
+					<li><p>
+							입력 검증 및 오류 메시지 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/validate_displaymessage_invalidMessageFunc_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/EnBiNklDR9U">YouTube</a>)
+						</p></li>
+					<li><p>
+							날짜 유효성 검증을 위한 사용자 정의 함수 사용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00130.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputCalendar/dateValidSetCustom_setValueCancel_InputCalendar/dateValidSetCustom_setValueCancel_InputCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/SeI-m3AHLpM">YouTube</a>)
+						</p></li>
+					<li><p>
+							유효하지 않은 값이 입력된 경우 직전 값으로 되돌리기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00129.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							데이터 객체(DataMap, DataList) 연결 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00381.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							툴팁 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00378.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							날짜 값의 포맷을 지정해 문자열로 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00451.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

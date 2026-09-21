@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="addTab_scopeInherit_TabControl">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+
+scwin.onpageload = function () {
+    
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    var scopeInheritValue = radio1.getValue();
+    scwin.count++;
+    var tmpSrc = scwin.getfolderPath() + "/wframe.xml";
+    tabControl1.addTab(scwin.count,
+        {
+            label: "WFrame Tab" + " - " + scopeInheritValue,
+            title: "WFrame_Tab",
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc,
+            "frameMode": "wframe"
+            , scopeInherit: scopeInheritValue
+        }
+    );
+     tabControl1.setSelectedTabIndex(scwin.count);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox2" label="親のScope継承" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox4"
+    		label='（例単独で実行。）&lt;br/&gt;1. scopeInherit オプション値選択。 （none, api, all または component）&lt;br/&gt;2. 下の addTab() ボタンクリック。 &lt;br/&gt;3. WFrameを含むタブ作成され、, 生成されたタブは WFrameこの入れ子設定画面表示するもの確認。&lt;br/&gt;4. WFrame 内部各ボタンクリック。&lt;br/&gt;5. 各ボタン scopeInherit プロパティ値にフォロー動作するか確認。 &lt;br/&gt; &amp;nbsp; &amp;nbsp; "none" : （1） X、（2）最上段アクセス、（3）O&lt;br/&gt; &amp;nbsp; &amp;nbsp; "api" : （1） X、（2）親アクセス、（3）O&lt;br/&gt; &amp;nbsp; &amp;nbsp; "all" : （1）O、（2）親アクセス、（3）O&lt;br/&gt; &amp;nbsp; &amp;nbsp; "component" : （1）O、（2）最上段アクセス、（3）O'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;"
+    		id="textbox5" label='scopeInherit プロパティ値の選択' escape="false">
+    	</w2:textbox>
+    	<xf:select1 id="radio1" selectedIndex="-1" appearance="full" style="margin-bottom: 20px;border: solid 2px lightpink;padding: 10px;"
+    		cols="" rows="1" ref="">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[none]]></xf:label>
+    				<xf:value><![CDATA[none]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[api]]></xf:label>
+    				<xf:value><![CDATA[api]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[all]]></xf:label>
+    				<xf:value><![CDATA[all]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[component]]></xf:label>
+    				<xf:value><![CDATA[component]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:select1>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox6" label='オプションの設定&lt;br/&gt;addTab(id, tabOptions, contentOptions) - contentOptions.scopeInherit="nont" / "api" "all" "component"' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px"
+    		id="trigger1" type="button" class="">
+    		<xf:label><![CDATA[addTab()]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox
+    		style="text-align: left;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: blue;margin-bottom: 10px;"
+    		id="textbox1" label='Top (id="textbox1")'>
+    	</w2:textbox>
+    	<w2:tabControl alwaysDraw="true" style="height: 400px;border: gray solid 1px;" id="tabControl1" selectedIndex="2">
+    		<w2:tabs disabled="false" style="width:133px;height:30px;" id="tabs2"></w2:tabs>
+    		<w2:content alwaysDraw="false" style="height:170px" id="content2"></w2:content>
+    	</w2:tabControl>
+    </xf:group></body>
+</html>

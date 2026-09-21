@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column id="col1" name="Hobby" dataType="text"></w2:column>
+        				<w2:column id="col2" name="Region" dataType="text"></w2:column>
+        				<w2:column id="col3" name="Frequency" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[Book]]></col1>
+        					<col2><![CDATA[Seoul]]></col2>
+        					<col3><![CDATA[1]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[PC Game]]></col1>
+        					<col2><![CDATA[Jeonju]]></col2>
+        					<col3><![CDATA[2]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[Movie]]></col1>
+        					<col2><![CDATA[Incheon]]></col2>
+        					<col3><![CDATA[4]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[Movie]]></col1>
+        					<col2><![CDATA[Jeju]]></col2>
+        					<col3><![CDATA[7]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[PC Game]]></col1>
+        					<col2><![CDATA[Daegu]]></col2>
+        					<col3><![CDATA[5]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[Movie]]></col1>
+        					<col2><![CDATA[Seoul]]></col2>
+        					<col3><![CDATA[3]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[Book]]></col1>
+        					<col2><![CDATA[Jeonju]]></col2>
+        					<col3><![CDATA[8]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[PC Game]]></col1>
+        					<col2><![CDATA[Incheon]]></col2>
+        					<col3><![CDATA[1]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[Movie]]></col1>
+        					<col2><![CDATA[Jeju]]></col2>
+        					<col3><![CDATA[3]]></col3>
+        				</w2:row>
+        				<w2:row>
+
+
+
+        					<col1><![CDATA[Movie]]></col1>
+        					<col2><![CDATA[Daegu]]></col2>
+        					<col3><![CDATA[2]]></col3>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList2">
+        			<w2:columnInfo>
+        				<w2:column id="col1" name="Hobby" dataType="text"></w2:column>
+        				<w2:column id="col2" name="Region" dataType="text"></w2:column>
+        				<w2:column id="col3" name="Frequency" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+        					<col2><![CDATA[Seoul]]></col2>
+        					<col3><![CDATA[1]]></col3>
+        					<col1><![CDATA[Book]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Jeonju]]></col2>
+        					<col3><![CDATA[2]]></col3>
+        					<col1><![CDATA[PC Game]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Incheon]]></col2>
+        					<col3><![CDATA[4]]></col3>
+        					<col1><![CDATA[Movie]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Jeju]]></col2>
+        					<col3><![CDATA[7]]></col3>
+        					<col1><![CDATA[Movie]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Daegu]]></col2>
+        					<col3><![CDATA[5]]></col3>
+        					<col1><![CDATA[PC Game]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Seoul]]></col2>
+        					<col3><![CDATA[3]]></col3>
+        					<col1><![CDATA[Movie]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Jeonju]]></col2>
+        					<col3><![CDATA[8]]></col3>
+        					<col1><![CDATA[Book]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Incheon]]></col2>
+        					<col3><![CDATA[1]]></col3>
+        					<col1><![CDATA[PC Game]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Jeju]]></col2>
+        					<col3><![CDATA[3]]></col3>
+        					<col1><![CDATA[Movie]]></col1>
+        				</w2:row>
+        				<w2:row>
+        					<col2><![CDATA[Daegu]]></col2>
+        					<col3><![CDATA[2]]></col3>
+        					<col1><![CDATA[Movie]]></col1>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target='data:json,dataList1' action="data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="필터 상자에 검색 기능 제공" escape="false">
+    	</w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='(첫 번째 GridView)&lt;br/&gt;1-1. Region 헤더에 있는 필터 버튼을 클릭. &lt;br/&gt;1-2. 검색어 입력 상자가 표시되고, 문자를 입력하여 필터를 검색할 수 있는 것을 확인. (useFilterSearch="true")&lt;br/&gt;&lt;br/&gt;(두 번째 GridView) &lt;br/&gt;2-1. Region 헤더에 있는 필터 버튼을 클릭. &lt;br/&gt;2-2. 검색어 입력 상자가 표시되지 않는 것을 확인. (useFilterSearch="false")&lt;br/&gt;' escape="false">
+    	</w2:textbox>
+    		<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;useFilterSearch="true"' escape="false">
+    		</w2:textbox>
+    		<w2:gridView useFilterSearch="true" scrollByColumnAdaptive="false" rowNumVisible="true" visibleRowNumFix="true"
+    			dataList="data:dataList1" style="border: solid gray 1px;margin-bottom: 10px;" scrollByColumn="false" id="gridView1"
+    			autoFit="allColumn" visibleRowNum="10" useFilterList="true" defaultCellHeight="20">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="70" inputType="text" style="" id="column3" value="Hobby" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column2" value="Region" displayMode="label" useFilter="true"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column1" value="Frequency" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox5" label='속성 설정&lt;br/&gt;useFilterSearch="false"' escape="false">
+    	</w2:textbox>
+    		<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" visibleRowNumFix="true" dataList="data:dataList2"
+    			scrollByColumn="false" style="border: solid gray 1px;" autoFit="allColumn" id="gridView2" useFilterList="true" visibleRowNum="10"
+    			defaultCellHeight="20">
+    			<w2:caption style="" id="caption3" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header3">
+    				<w2:row style="" id="row5">
+    					<w2:column width="70" inputType="text" style="" id="column57" value="Hobby" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column56" value="Region" displayMode="label" useFilter="true"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column55" value="Frequency" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody3">
+    				<w2:row style="" id="row6">
+    					<w2:column width="70" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView></xf:group>
+    </body>
+</html>

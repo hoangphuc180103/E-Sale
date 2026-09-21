@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.btn_disabledT1_onclick = function (e) {
+    grp1.setDisabled("true");
+};
+
+scwin.btn_disabledF1_onclick = function (e) {
+    grp1.setDisabled("false");
+};
+
+scwin.btn_disabledT2_onclick = function (e) {
+    grp2.setDisabled("true");
+};
+
+scwin.btn_disabledF2_onclick = function (e) {
+    grp2.setDisabled("false");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+
+
+    		<xf:group id="" style="margin-bottom: 30px;padding: 5px;border: 1px solid black;">
+    			<xf:group style="" id="" class="titbox">
+    				<w2:textbox tagname="h4" style="" id="" label="group - keepDisabled 미사용" class="" escape="false"></w2:textbox>
+    			</xf:group>
+    			<xf:group style="" id="" class="btnbox">
+    				<xf:group style="" id="" class="rt">
+    					<w2:textbox style="" id="" label="" class="bar_btndiv"></w2:textbox>
+    					<xf:trigger ev:onclick="scwin.btn_disabledT1_onclick" style="" id="btn_disabledT1" type="button"
+    						class="btn_exam_exec btn_txt_of">
+    						<xf:label><![CDATA[setDisabled-true]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger ev:onclick="scwin.btn_disabledF1_onclick" style="" id="btn_disabledF1" type="button" class="btn_exam_exec btn_txt_of">
+    						<xf:label><![CDATA[setDisabled-false]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="" id="grp1" style="padding: 5px;border: 1px dotted black">
+    				<xf:input id="" style="width: 125px;height: 21px;margin-right: 10px;"></xf:input>
+    				<xf:input id="" style="width: 125px;height: 21px;margin-right: 10px;" disabled="true"></xf:input>
+    				<xf:input id="" style="width: 125px;height: 21px;margin-right: 10px;"></xf:input>
+    				<xf:input id="" style="width: 125px;height: 21px;margin-right: 10px;" disabled="true"></xf:input>
+    			</xf:group>
+    		</xf:group>
+
+    		<xf:group id="" style="padding: 5px;border: 1px solid black;">
+    			<xf:group style="" id="" class="titbox">
+    				<w2:textbox tagname="h4" style="" id="" label='group - keepDisabled 사용 (keepDisabled="true" 적용)' class="" escape="false"></w2:textbox>
+    			</xf:group>
+    			<xf:group style="" id="" class="btnbox">
+    				<xf:group style="" id="" class="rt">
+    					<w2:textbox style="" id="" label="" class="bar_btndiv"></w2:textbox>
+    					<xf:trigger ev:onclick="scwin.btn_disabledT2_onclick" style="" id="btn_disabledT2" type="button"
+    						class="btn_exam_exec btn_txt_of">
+    						<xf:label><![CDATA[setDisabled-true]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger ev:onclick="scwin.btn_disabledF2_onclick" style="" id="btn_disabledF2" type="button" class="btn_exam_exec btn_txt_of">
+    						<xf:label><![CDATA[setDisabled-false]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="" id="grp2" style="padding: 5px;border: 1px dotted black;" keepDisabled="true">
+    				<xf:input id="" style="width: 125px;height: 21px;margin-right: 10px;"></xf:input>
+    				<xf:input disabled="true" id="" style="width: 125px;height: 21px;margin-right: 10px;"></xf:input>
+    				<xf:input id="" style="width: 125px;height: 21px;margin-right: 10px;"></xf:input>
+    				<xf:input disabled="true" id="" style="width: 125px;height: 21px;margin-right: 10px;"></xf:input>
+    			</xf:group>
+    		</xf:group></xf:group>
+    	
+    </body>
+</html>

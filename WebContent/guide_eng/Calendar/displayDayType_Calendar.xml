@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Display Calendar Days of the Week as Text or Image&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(For the first calendar)&lt;br/&gt;Drag the mouse to confirm that the “SunMonTueWedThuFriSat” day names are selected as text. (displayDayType=“text”)&lt;br/&gt;&lt;br/&gt;(For the second calendar)&lt;br/&gt;Drag the mouse to confirm that the day names are displayed as images and are not selected as text. (displayDayType=“image”)' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox4" label='displayDayType="text"' escape="false">
+    	</w2:textbox>
+    	<w2:calendar displayDayType="text" footerDiv="false" style="width: 100px;height: 100px;margin: 10px;" id="calendar1"
+    		monthNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" yearSuffix="Y">
+    	</w2:calendar>
+    	<w2:textbox escape="false" id="textbox5" label='displayDayType="image"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<w2:calendar displayDayType="image" footerDiv="false" id="calendar2"
+    		monthNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" style="width: 100px;height: 100px;margin: 10px;"
+    		yearSuffix="Y">
+    	</w2:calendar>
+    </xf:group></body>
+</html>

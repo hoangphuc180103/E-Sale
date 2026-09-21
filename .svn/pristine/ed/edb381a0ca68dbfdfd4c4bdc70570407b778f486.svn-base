@@ -1,0 +1,85 @@
+/*amd /guide_eng/_p/PopUp/openPopup_modal_p/popUp.xml 4299 145b3d09d769346a99830c50f3b612c241dd33cc36d7753881eb9884f8c784d9 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {
+  requires("uiplugin.popup");
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+  var options = {
+    id: scwin.count,
+    type: "browserPopup",
+    width: "400px",
+    height: "200px",
+    top: "100px",
+    left: "200px",
+    popupName: "Modal Popup - browser",
+    modal: "true",
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger2_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+  var options = {
+    id: scwin.count,
+    type: "browserPopup",
+    width: "400px",
+    height: "200px",
+    top: "100px",
+    left: "200px",
+    popupName: "Modaless - browser",
+    modal: "false",
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger3_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+  var options = {
+    id: scwin.count,
+    type: "pageFramePopup",
+    width: "400px",
+    height: "200px",
+    top: "100px",
+    left: "200px",
+    popupName: "Modal Popup - pageFrame",
+    modal: "true",
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger4_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+  var options = {
+    id: scwin.count,
+    type: "pageFramePopup",
+    width: "400px",
+    height: "200px",
+    top: "100px",
+    left: "200px",
+    popupName: "Modaless Popup - pageFrame",
+    modal: "false",
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 30px;'},E:[{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'modal : "true", type : "browserPopup"'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'modal : "false", type : "browserPopup"'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'modal : "true", type : "pageFramePopup"'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger4_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'modal : "false", type : "pageFramePopup"'}]}]}]}]}]}]})

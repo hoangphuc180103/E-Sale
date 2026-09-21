@@ -1,0 +1,43 @@
+/*amd /page/P00044.xml 6941 03fe454b1d47b167fa0870c3dfcd222efa317a54e6f5f62aeb9d6acfb3f0ae89 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'no',name:'번호',dataType:'text'}},{T:1,N:'w2:column',A:{id:'sumVal0',name:'sum값',dataType:'text'}},{T:1,N:'w2:column',A:{id:'sumVal1',name:'sum값(올림)',dataType:'text'}},{T:1,N:'w2:column',A:{id:'sumVal2',name:'sum값(버림)',dataType:'text'}},{T:1,N:'w2:column',A:{id:'sumVal3',name:'sum값(반올림)',dataType:'text'}},{T:1,N:'w2:column',A:{id:'sumVal4',name:'sum값(소수점 반올림)',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var jsonData = [{
+    "no": "1",
+    "sumVal0": "2.357",
+    "sumVal1": "2.357",
+    "sumVal2": "2.357",
+    "sumVal3": "2.357",
+    "sumVal4": "2.357"
+  }, {
+    "no": "2",
+    "sumVal0": "1.53",
+    "sumVal1": "1.53",
+    "sumVal2": "1.53",
+    "sumVal3": "1.53",
+    "sumVal4": "1.53"
+  }, {
+    "no": "3",
+    "sumVal0": "3.0271",
+    "sumVal1": "3.0271",
+    "sumVal2": "3.0271",
+    "sumVal3": "3.0271",
+    "sumVal4": "3.0271"
+  }, {
+    "no": "4",
+    "sumVal0": "2.0254",
+    "sumVal1": "2.0254",
+    "sumVal2": "2.0254",
+    "sumVal3": "2.0254",
+    "sumVal4": "2.0254"
+  }, {
+    "no": "5",
+    "sumVal0": "7.237",
+    "sumVal1": "7.237",
+    "sumVal2": "7.237",
+    "sumVal3": "7.237",
+    "sumVal4": "7.237"
+  }];
+
+  //데이터 할당
+  dataList1.setJSON(jsonData);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView에서 제공하는 메소드와 Math 객체의 메소드를 사용하여, Footer영역에 컬럼의 합계를 올림, 반올림, 내림하여 출력한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{visibleRowNumFix:'5',dataList:'data:dataList1',style:'height: 240px;',id:'',visibleRowNum:'5',defaultCellHeight:'37',class:'gvw ',fixedColumn:'1',autoFit:'none'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{rowSpan:'2',width:'50',inputType:'text',style:'',id:'column3',value:'번호',displayMode:'label',fixColumnWidth:'true'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',style:'',id:'column26',value:'sum값',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',style:'',id:'column1',value:'sum값(올림)',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',style:'',id:'column13',value:'sum값(버림)',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',style:'',id:'column10',value:'sum값(반올림)',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'210',inputType:'text',style:'',id:'column2',value:'sum값(소수점 2자리 반올림)',displayMode:'label'}}]},{T:1,N:'w2:row',A:{style:'',id:'row4'},E:[{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column27',value:'id : sumVal0',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column18',value:'id : sumVal1',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column17',value:'id : sumVal2',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column16',value:'id : sumVal3',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'210',inputType:'text',id:'column19',value:'id : sumVal4',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'50',inputType:'text',style:'',id:'no',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'170',inputType:'text',style:'',id:'sumVal0',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'170',inputType:'text',style:'',id:'sumVal1',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'170',inputType:'text',style:'',id:'sumVal2',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'170',inputType:'text',style:'',id:'sumVal3',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'210',inputType:'text',style:'',id:'sumVal4',displayMode:'label'}}]}]},{T:1,N:'w2:footer',A:{style:'',id:'footer1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{width:'50',inputType:'text',id:'column9',value:'결과',displayMode:'label'}},{T:1,N:'w2:column',A:{expression:'sum(\'sumVal0\')',textAlign:'right',dataType:'number',width:'170',inputType:'expression',id:'column30',displayMode:'label'}},{T:1,N:'w2:column',A:{expression:'Math.ceil(sum(\'sumVal1\'))',textAlign:'right',dataType:'number',width:'170',inputType:'expression',id:'column7',displayMode:'label'}},{T:1,N:'w2:column',A:{expression:'Math.floor(sum(\'sumVal2\'))',textAlign:'right',dataType:'number',width:'170',inputType:'expression',id:'column15',displayMode:'label'}},{T:1,N:'w2:column',A:{expression:'Math.round(sum(\'sumVal3\'))',textAlign:'right',dataType:'number',width:'170',inputType:'expression',id:'column12',displayMode:'label'}},{T:1,N:'w2:column',A:{expression:'sum(\'sumVal4\').toFixed(2)',textAlign:'right',dataType:'number',width:'210',inputType:'expression',id:'column8',displayMode:'label'}}]},{T:1,N:'w2:row',A:{style:'',id:'row5'},E:[{T:1,N:'w2:column',A:{width:'50',inputType:'text',id:'column25',value:'표현식',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column29',value:'sum(\'sumVal0\')',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column23',value:'Math.ceil(sum(\'sumVal1\'))',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column22',value:'Math.floor(sum(\'sumVal2\'))',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'170',inputType:'text',id:'column21',value:'Math.round(sum(\'sumVal3\'))',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'210',inputType:'text',id:'column24',value:'sum(\'sumVal4\').toFixed(2)',displayMode:'label'}}]}]}]}]}]}]}]}]})

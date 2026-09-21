@@ -1,0 +1,20 @@
+/*amd /guide_jpn/WFrame/scopeInherit_WFrame/scopeInherit_WFrame.xml 2969 b3ff77daf30a13f7376ded05266f69032df78aaef3b7de3aba24b6ee491c2702 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  const tmpSrc = scwin.getfolderPath() + "/main.xml";
+  wframe1.setSrc(tmpSrc);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'margin-bottom: 10px;color: blue;',id:'textbox3',label:'親のScope継承',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox4',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox5',label:'（例単独で実行。）<br/>1. WFrameこの入れ子設定画面表示されるもの確認。 <br/>2. 一番下の WFrameに含まれる各ボタンクリック。 <br/>3. 各ボタン scopeInherit="all" プロパティ設定にフォロー動作するか確認。 <br/><br/>scopeInherit プロパティ値にフォローアクションは次同じ。<br/> &nbsp; "none" : (1) X、(2) 最上段アクセス、(3) O<br/> &nbsp; "api" : (1) &nbsp;X、(2) 親アクセス、(3) O<br/> &nbsp; "all" : (1) O、(2) 親アクセス、(3) O<br/> &nbsp; "component" : (1) O、(2) 最上段アクセス、(3) O',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;',id:'textbox6',label:'プロパティの設定<br/>scopeInherit="all"',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'text-align: left;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: blue;margin-bottom: 10px;',id:'textbox1',label:'Top (id="textbox1")'}},{T:1,N:'w2:wframe',A:{scopeInherit:'all',style:'padding: 10px;border: gray solid 1px;background-color: lightgreen;',id:'wframe1'}}]}]}]}]})

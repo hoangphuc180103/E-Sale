@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>Pivot</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_5bac71e70f86683b" class="chapter_title">Pivot</h1>
+		<h1 id="r_7cbfcf71ff161678" class="element heading1"
+			data-element-id="7cbfcf71ff161678">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_a2cbdeaea043eb54" class="element normal"
+			data-element-id="a2cbdeaea043eb54">Pivot 컴포넌트는 기존 GridView에서
+			제한적으로 제공되던 피벗 기능을 전문적으로 지원하는 구성 요소입니다. Excel의 피벗 테이블과 유사한 기능을 제공하여
+			다차원 데이터 분석은 물론, 드릴다운, 축 변환, 무한한 가로 스크롤링 등 다양한 기능을 직관적으로 사용할 수 있도록
+			설계되었습니다. 또한, 통계 함수(합계, 평균, 개수, 최소, 최대)를 비롯해 사용자 정의 함수에 의한 커스터마이징이
+			가능하며, 다양한 데이터 바인딩 및 포매팅 옵션을 통해 복잡한 데이터 분석 요구를 만족합니다. IE10 이상의 브라우저에서
+			안정적으로 동작함으로써 다양한 환경에서 활용할 수 있습니다.</p>
+		<dl id="r_f7b53c986c52e847" class="element definition_list"
+			data-element-id="f7b53c986c52e847">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb0J32Z13mRPC4xqhA4Yo8tg">Pivot
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_c4e0d8644dc72398" class="element heading1"
+			data-element-id="c4e0d8644dc72398">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_72ca94b82f0902d4" class="element normal"
+			data-element-id="72ca94b82f0902d4">Pivot 컴포넌트는 주로 다음과 같은 용도로
+			사용됩니다.</p>
+		<dl id="r_abbf910e200d9d0d" class="element definition_list"
+			data-element-id="abbf910e200d9d0d">
+			<dt>데이터 분석 및 보고서 작성</dt>
+			<dd>
+				<p>대량의 데이터를 요약하고 특정 기준에 따라 집계하여 비즈니스 보고서나 분석 자료를 생성할 때 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>다차원 데이터 시각화</strong>
+			</dt>
+			<dd>
+				<p>다차원 데이터를 시각적으로 분석하여 의사결정에 필요한 정보를 제공하며, 여러 필드를 기준으로 데이터를 교차
+					분석하여 인사이트를 도출하고 시각적으로 표현할 때 효과적입니다.</p>
+			</dd>
+			<dt>
+				<strong>사용자 정의 가능한 데이터 뷰</strong>
+			</dt>
+			<dd>
+				<p>사용자가 직접 컬럼을 재배치하거나 필터링하여 자신에게 맞는 데이터 뷰를 생성하고 저장할 수 있도록 지원합니다.</p>
+			</dd>
+			<dt>비즈니스 인텔리전스</dt>
+			<dd>
+				<p>드릴다운 기능과 축 변환을 통해 사용자가 원하는 데이터를 자유롭게 재구성할 수 있어, 복잡한 데이터 집합을
+					분석하는 데 효과적입니다.</p>
+			</dd>
+			<dt>파일 입출력</dt>
+			<dd>
+				<p>Excel 및 CSV 파일을 통한 데이터 내보내기와 업로드 기능을 제공하여, 다른 시스템과의 데이터 연동 및
+					리포팅 업무에 활용 가능합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_0718d7dc1c1ff75e" class="element heading1"
+			data-element-id="0718d7dc1c1ff75e">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_efa3a7e6ebde8cc9" class="element unordered_list"
+			data-element-id="efa3a7e6ebde8cc9">
+			<li><p>
+					헤더 컬럼 병합 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/headerYMerge_Pivot.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/cyOfyb2seAE">YouTube</a>)
+				</p></li>
+			<li><p>
+					컬럼 이동 금지 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00141.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/noColumnMove_Pivot.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/jOGforAhQk4">YouTube</a>)
+				</p></li>
+			<li><p>합계</p>
+				<ul>
+					<li><p>
+							총 합계 표시하기/숨기기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/showGrandTotal_Pivot.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/hsqXcU-qWNY">YouTube</a>)
+						</p></li>
+					<li><p>
+							총 합계 표시 위치 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/showGrandTotal_grandTotalDisplayType_Pivot.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/_Y7BYZg4fUg">YouTube</a>)
+						</p></li>
+					<li><p>
+							행 합계 및 컬럼 합계를 표시할 라벨 값을 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/allTotalName_grandTotalName_Pivot.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							필드 합계를 표시할 라벨 값을 커스텀 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/grandTotalValsNameFormatter_Pivot.xml">샘플</a><em>)</em>
+						</p></li>
+				</ul></li>
+			<li><p>Excel 파일 연동</p>
+				<ul>
+					<li><p>
+							Pivot → Excel 다운로드 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/pivotExcelDownload_Pivot.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/2vzPY0QLCok">YouTube</a>)
+						</p></li>
+					<li><p>
+							(컬럼 너비 자동 조절한 상태로) Pivot → Excel 다운로드 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00142.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/pivotExcelDownload_options_autoSizeColumn_Pivot.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/oQNBP6TfFAU">YouTube</a>)
+						</p></li>
+					<li><p>
+							(헤더 컬럼 병합하여) Pivot → Excel 다운로드 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00139.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/headerYMerge_pivotExcelDownload_Pivot.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/z8XAjzKVfDw">YouTube</a>)
+						</p></li>
+					<li><p>
+							Excel → Pivot 업로드 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/pivotExcelUpload_Pivot/pivotExcelUpload_Pivot.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Vxrj5-Wmzjk">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

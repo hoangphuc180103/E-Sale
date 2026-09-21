@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="메인 프레임 - Mobile" meta_type="메인" meta_author="InswaveSystems">
+    	<w2:type>COMPONENT</w2:type>
+    	<w2:buildDate />
+    	<w2:MSA />
+    	<xf:model>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dlt_cssFileList" saveRemovedData="true">
+    				<w2:columnInfo>
+    					<w2:column id="label" name="name1" dataType="text"></w2:column>
+    					<w2:column id="path" name="name2" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    				<w2:data use="true">
+    					<w2:row>
+        					<path><![CDATA[style]]></path>
+        					<label><![CDATA[내부 internalStyle]]></label>
+        				</w2:row>
+        				<w2:row>
+        					<path><![CDATA[/css/example.css]]></path>
+        					<label><![CDATA[[예제별 예시] /css/example.css]]></label>
+        				</w2:row>
+        				<w2:row>
+        					<path><![CDATA[/cm/css/base.css]]></path>
+        					<label><![CDATA[[공통]/cm/css/base.css]]></label>
+        				</w2:row>
+        				<w2:row>
+        					<path><![CDATA[/cm/css/contents.css]]></path>
+        					<label><![CDATA[[공통]/cm/css/contents.css]]></label>
+        				</w2:row>
+        				<w2:row>
+        					<path><![CDATA[/frame/css/wre.css]]></path>
+        					<label><![CDATA[[공통]/frame/css/wre.css]]></label>
+        				</w2:row>
+    				</w2:data>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection />
+    	</xf:model>
+    	<w2:layoutInfo />
+    	<w2:publicInfo method="" />
+    	<script lazy="false" type="text/javascript"><![CDATA[scwin.gVar = {
+    "WRE_MAIN_TYPE": "M",  //화면 타입 
+    "jsnParam": null,
+    "jsnLeftMenuLink": {},
+    "jsnContParam": null,
+    "layoutComponentID": "wfm_mainContent"
+};
+
+scwin.onpageload = async function () {
+    $p.js($c.frame.getSrc("/frame/highlight/highlight.min.js"), () => { });
+
+    await scwin.menu.init();
+    //샘플 fullpath 을 위한 json 생성 
+    await scwin.compent_path.init();
+
+    //querystring param 분석
+    scwin.parseParam();
+
+    //좌측 메뉴 구성
+    await wfm_leftContainer.setSrc($c.frame.getSrc("frame/page/leftContainer.xml"));
+
+    // inquires("externalJS/editor4.17.1/ckeditor.js").then(function (argDone) {
+    //     // CKEDITOR.disableAutoInline=false;
+    //     // CKEDITOR.config.autoUpdateElement = false;
+    //     // CKEDITOR.scayt_autoStartupSince = false;
+
+    //     scwin.setInitPage();
+    // }, function (arsError) {
+    //     console.log("[ERROR]externalJS/editor4.17.1/ckeditor.js", argError);
+    // });
+    
+    scwin.setInitPage();
+};
+
+scwin.setInitPage = function () {
+    if (scwin.dispPageByParam() === false) {
+        scwin.dispDashboard();
+    }
+};
+
+/**
+ * querystring의 param 분석
+ */
+scwin.parseParam = function () {
+    var strAllParam;
+    var arrParam;
+    var jsnParam;
+
+    strAllParam = (location.search).replace("?", "");
+    arrParam = strAllParam.split("&");
+
+    jsnParam = {};
+
+    arrParam.forEach((argItem, argIndex) => {
+        let arrItem = (argItem || "").trim().split("=");;
+        jsnParam[arrItem[0]] = arrItem[1];
+    });
+
+    //전역 변수에 할당.
+    scwin.gVar.jsnParam = JSON.parse(JSON.stringify(jsnParam));
+};
+
+scwin.dispPageByParam = function () {
+    var strPage;
+    var jsnMenu;
+    strPage = scwin.gVar.jsnParam.p;
+    if (!strPage) { return false; }
+
+    jsnMenu = scwin.menu.getMenuByPage(strPage);
+
+    if (jsnMenu && jsnMenu.ID) {
+        scwin.dispPage(jsnMenu);
+        return true;
+    }
+    return false;
+};
+
+//컴포넌트 가이드(WRE) 에서 온 샘플 표현   
+scwin.pageDoc =  async function(compName, path){ 
+    grp_main_wrap.removeClass("show_menu"); 
+
+    var obj = { 
+        "dataObject": {
+            "type" : "json",
+            "name" : "tabParam",  
+            "data" : {
+            "compName" : compName,
+            "path" : path 
+        }
+         }
+     };
+     
+    await  wfm_mainContent.setSrc($c.frame.getSrc("/frame/page/page_doc.xml"), obj ); 
+};
+
+scwin.dispPage3 = function (compName, type, argPath, argSelectedTab) { 
+	
+    var jsnMenuData;
+    var strMenuID;
+    var strMenuTitle;
+    var isValid = false; 
+
+    var argMenuID; 
+    grp_main_wrap.removeClass("show_menu");
+
+
+    let pageUrl = "";
+      
+        if(type =="WRE"){
+
+			if (/\.xhtml$/i.test(argPath)) { 
+					
+				var parts = argPath.split("/");
+				var _path = parts[parts.length - 1];  
+				pageUrl =  _path.split(".")[0];      
+				argMenuID = scwin.menu.getMenuByPage(pageUrl);  
+			} else { 
+				pageUrl = argPath.split("?p=")[1];
+				argMenuID = scwin.menu.getMenuByPage(pageUrl); 
+			} 
+        } else {
+
+            pageUrl = argPath.split("w2xPath=")[1];
+            
+            argMenuID = scwin.compent_path.getMenuInfo(pageUrl);
+        }
+         
+    switch (typeof argMenuID) {
+        case "string":
+            jsnMenuData = scwin.menu.getMenuByID(argMenuID);
+            isValid = true;
+            break;
+        case "object":
+            if ($.isPlainObject(argMenuID) && argMenuID.ID) {
+                jsnMenuData = argMenuID;
+                isValid = true;
+            }
+            break;
+        default:
+            break;
+    }
+  
+    if (!isValid) {
+        console.error("메뉴를 찾을 수 없습니다. >> " + argMenuID);
+        return false;
+    }
+
+    strMenuID = jsnMenuData["ID"];
+    strMenuTitle = jsnMenuData["TITLE"];
+
+    wfm_mainContent.setUserData("exam_menuID", strMenuID);
+
+    let strPageContainer;
+
+    if (jsnMenuData["DISPLAY_MODE"] == "NONE") {
+        strPageContainer = $c.frame.getSrc(jsnMenuData["PATH"]);
+    } else {
+        strPageContainer = $c.frame.getSrc("/frame/page/pageContainer_mobile.xml");
+    }
+
+ console.log("jsnMenu  xml strPageContainer >> ", strPageContainer);
+    wfm_mainContent.setSrc(strPageContainer);
+
+    scwin.gVar.jsnContParam = { "menuData": jsnMenuData };
+
+    //강조 class 적용
+    let strSelectedMenuID;
+    let strkey = "ex_selectedMenuID";
+
+    //기 선택된 요소 class 제거
+    strSelectedMenuID = wfm_mainContent.getUserData(strkey);
+
+    if (strSelectedMenuID) {
+        scwin.setEmpClass_leftMenu(strSelectedMenuID, false);
+    }
+
+    //선택된 요소 class 추가 >>> 확장 처리까지.
+    scwin.setEmpClass_leftMenu(strMenuID, true);
+    wfm_mainContent.setUserData(strkey, strMenuID);
+
+};
+scwin.dispPage = function (argMenuID) {
+    var jsnMenuData;
+    var strMenuID;
+    var strMenuTitle;
+    var isValid = false;
+
+    grp_main_wrap.removeClass("show_menu");
+
+    switch (typeof argMenuID) {
+        case "string":
+            jsnMenuData = scwin.menu.getMenuByID(argMenuID);
+            isValid = true;
+            break;
+        case "object":
+            if ($.isPlainObject(argMenuID) && argMenuID.ID) {
+                jsnMenuData = argMenuID;
+                isValid = true;
+            }
+            break;
+        default:
+            break;
+    }
+
+    if (!isValid) {
+        console.error("메뉴를 찾을 수 없습니다. >> " + argMenuID);
+        return false;
+    }
+
+    strMenuID = jsnMenuData["ID"];
+    strMenuTitle = jsnMenuData["TITLE"];
+
+    wfm_mainContent.setUserData("exam_menuID", strMenuID);
+
+    let strPageContainer;
+
+    if (jsnMenuData["DISPLAY_MODE"] == "NONE") {
+        strPageContainer = $c.frame.getSrc(jsnMenuData["PATH"]);
+    } else {
+        strPageContainer = $c.frame.getSrc("/frame/page/pageContainer_mobile.xml");
+    }
+
+    wfm_mainContent.setSrc(strPageContainer);
+
+    scwin.gVar.jsnContParam = { "menuData": jsnMenuData };
+
+    //강조 class 적용
+    let strSelectedMenuID;
+    let strkey = "ex_selectedMenuID";
+
+    //기 선택된 요소 class 제거
+    strSelectedMenuID = wfm_mainContent.getUserData(strkey);
+
+    if (strSelectedMenuID) {
+        scwin.setEmpClass_leftMenu(strSelectedMenuID, false);
+    }
+
+    //선택된 요소 class 추가 >>> 확장 처리까지.
+    scwin.setEmpClass_leftMenu(strMenuID, true);
+    wfm_mainContent.setUserData(strkey, strMenuID);
+
+};
+
+//dashboard 추가
+scwin.dispDashboard = function () {
+    wfm_mainContent.setSrc($c.frame.getSrc("/frame/page/intro_dashboard.xml"));
+
+    scwin.removeEmpClass_leftMenu();
+};
+
+scwin.btn_sitemap_onclick = function (e) {
+    var objRect;
+    var numMaxHeight, numMaxWidth;
+
+    objRect = document.body.getBoundingClientRect();
+
+    numMaxHeight = objRect.height;
+    numMaxWidth = objRect.width;
+
+    $p.openPopup(
+        $c.frame.getSrc("/frame/page/sitemap.xml"),
+        {
+            id: "pop_sitemap",
+            type: "browserPopup",
+            resizable: "true",
+            width: (numMaxWidth > 1300 ? 1300 : numMaxWidth) + "px",
+            height: (numMaxHeight > 600 ? 600 : numMaxHeight) + "px",
+            dataObject: {
+                "type": "json",
+                "name": "popupParam",
+                "data": scwin.menu.getAllMenuDataString()
+            }
+        });
+};
+
+//header 메뉴 확장/축소
+scwin.btn_toggle_menu_onclick = function () {
+    grp_main_wrap.toggleClass("show_menu");
+};
+
+/**
+ * 상단의 logo 클릭 시
+ */
+scwin.btn_logo_onclick = function () {
+    location.reload();
+};
+
+/**
+ * 좌측 메뉴 강조 class 적용
+ */
+scwin.setEmpClass_leftMenu = function (argCurMenuID, argIsRemove) {
+    var strMenuComp;
+    var arrMenuComp;
+    var numLenArrMenuComp;
+
+    strMenuComp = scwin.gVar.jsnLeftMenuLink[argCurMenuID];
+
+    if (!strMenuComp) { $c.frame.log("scwin.setEmpClass_leftMenu", "메뉴 정보가 없습니다 : " + argCurMenuID, "debug"); return; }
+
+    arrMenuComp = strMenuComp.split("|");
+
+    numLenArrMenuComp = arrMenuComp.length;
+
+    arrMenuComp.forEach((item, index) => {
+        //menu
+        let cmpMenu = $p.getComponentById(item);
+
+        if (!cmpMenu) { $c.frame.log("scwin.setEmpClass_leftMenu", "컴포넌트를 찾을 수 없습니다. : " + item, "debug"); return; }
+
+        if (argIsRemove === false) {
+            cmpMenu.removeClass("on");
+        } else {
+            cmpMenu.addClass("on");
+
+            if (numLenArrMenuComp - 1 == index) {
+                cmpMenu.getParent().removeClass("isCollapsed");
+            } else if (index == 1) {
+                cmpMenu.removeClass("isCollapsed");
+            }
+        }
+    });
+
+    $p.getComponentById(arrMenuComp[0]).focus();
+
+};
+
+/**
+ * 좌측 메뉴 강조 class 제거
+ */
+scwin.removeEmpClass_leftMenu = function () {
+    //강조 class 적용
+    var strSelectedMenuID;
+    var strkey = "ex_selectedMenuID";
+
+    //기 선택된 요소 class 제거
+    strSelectedMenuID = wfm_mainContent.getUserData(strkey);
+
+    if (strSelectedMenuID) {
+        scwin.setEmpClass_leftMenu(strSelectedMenuID, false);
+
+        wfm_mainContent.setUserData(strkey, "");
+    }
+};
+/**
+ * PC 모드 이동
+ */
+scwin.btn_pc_onclick = function (e) {
+    location.href = $c.frame.getConst("WRE_URL_PC");
+};
+
+scwin.menu = (function () {
+    let _var_jsnAllMenu;
+    let _var_arrAllMenu;
+
+    const _init = async function () {
+        var prmMenuResult;
+
+        try {
+            prmMenuResult = await _getMenuData();
+            _createMenuData(prmMenuResult);
+        } catch (ex) {
+            console.error(ex);
+        }
+    };
+
+    const _getMenuData = async function () {
+        var _promise;
+
+        _promise = new Promise((resolve, reject) => {
+            $p.ajax({
+                action: $c.frame.getSrc("/frame/data/menu.json") + "?postfix=" + $c.frame.getRandomString(),
+                method: "get",
+                success: function (argRes) { resolve(JSON.parse(argRes.responseText)); },
+                error: function (argRes) { reject(argRes); }
+            });
+        });
+        return _promise;
+    };
+
+    const _createMenuData = function (argArrMenuData) {
+        let jsnAllMenu = {};
+        let arrAllMenu = [];
+        let i, i_max, i_item;
+        let arrDCInfo = [];
+        let strDataListID = "dlt_menu";
+        let jsnCtgKeyword = {};
+        let jsnCtgMap = {};
+        let strHiddenStatus;
+        let numHiddenLevel;
+        let arrFileMenu = [];
+
+        _var_jsnAllMenu = [];
+        try { $p.data.remove(strDataListID); } catch (ex) { }
+
+        let api_regExp_1 = new RegExp("WebSquare\\.uiplugin\\.", "g");
+        let api_regExp_2 = new RegExp("[a-zA-Z]\\|", "g");
+        let api_regExp_3 = new RegExp(",", "g");
+
+        for (i = 0, i_max = argArrMenuData.length; i < i_max; i++) {
+            let menuID;
+            let strKeyword;
+            let strParentID;
+            let strHiddenYN;
+            let numDepth;
+
+            i_item = argArrMenuData[i];
+            menuID = i_item.ID;
+
+            if (!menuID) { throw "The menu data ID is missing. data : " + JSON.stringify(i_item); }
+
+            strKeyword = i_item.KEYWORD || "";
+            strParentID = i_item.PARENT_ID;
+            strHiddenYN = i_item.HIDDEN || "N";
+            numDepth = +i_item.DEPTH || 0;
+
+            // 메뉴명
+            i_item["TITLE_ORG"] = i_item["TITLE_KO"] + "";
+
+            i_item["TITLE"] = i_item["TITLE_KO"];
+
+			//Hidden == "Y" 건도 검색은 되야 해서 모두 담아온다 20260203 add 
+			/*
+            if (strHiddenYN === "Y") {
+                // $c.frame.log("[createMenuData] 메뉴가 hidden 처리 되었습니다. 메뉴명:" + i_item["TITLE"]);
+
+                if (i_item["TYPE"] === "C") {
+                    strHiddenStatus = "Y";
+                    numHiddenLevel = +i_item["DEPTH"];
+                } else {
+                    strHiddenStatus = "N";
+                    numHiddenLevel = -1;
+                }
+                continue;
+            }
+			*/
+
+            if (strHiddenStatus == "Y" && numDepth > numHiddenLevel) {
+                // $c.frame.log("[createMenuData] 상위 메뉴가 hidden 처리 되었습니다. 메뉴명:" + i_item["TITLE"]);
+                continue;
+            } else {
+                strHiddenStatus = "N";
+                numHiddenLevel = -1;
+            }
+
+            // API
+            let strAPI = (i_item["API"] || "").trim();
+            i_item["API"] = strAPI;
+
+            let strDispAPI = strAPI.replace(api_regExp_1, "").replace(api_regExp_2, "").replace(api_regExp_3, "|");
+            i_item["DISP_API"] = strDispAPI;
+
+            // 키워드
+            if (strParentID && jsnCtgKeyword[strParentID]) {
+                strKeyword = jsnCtgKeyword[strParentID] + (strKeyword ? "|" : "") + strKeyword;
+            }
+
+            // API도 키워드에 포함
+            // let strKeywordAPI = strAPI.split(",").map(item => { return item.replace(/.*\./, ""); }).join("|");
+            let strKeywordAPI = "";
+            if (strAPI) {
+                strKeywordAPI = strAPI.split(",").map(item => { return item.replace(/.*\./, ""); }).join("|");
+            }
+
+            // API와 중복되는 키워드 제거
+            if (strKeywordAPI) {
+                let strResult = "";
+                let strLowerKeywordAPI = strKeywordAPI.toLowerCase();
+                // let arrStrKeyword = strKeyword.split("|");
+                let arrStrKeyword = (strKeyword || "").split("|");
+
+                for (let i = 0, i_max = arrStrKeyword.length; i < i_max; i++) {
+                    let item = arrStrKeyword[i];
+
+                    if (strLowerKeywordAPI.indexOf(item.toLowerCase()) < 0) {
+                        strResult += (strResult ? "|" : "") + item;
+                    }
+                };
+
+                strKeyword = strResult + (strResult ? "|" : "") + strKeywordAPI;
+            }
+
+            if (strKeyword) {
+                strKeyword = [... new Set(strKeyword.split("|"))].sort().join("|");
+            }
+
+            i_item["ALL_KEYWORD"] = strKeyword;
+
+            if (i_item["TYPE"] === "C" || i_item["TYPE"] === "Z") {
+                // 메뉴 경로 표현을 위한 작업.
+                jsnCtgMap[menuID] = i_item["TITLE"];
+
+                if (strParentID) {
+                    jsnCtgMap[menuID] = (jsnCtgMap[strParentID] ? jsnCtgMap[strParentID] + "%||%" : "") + jsnCtgMap[menuID];
+                }
+
+                if (strKeyword) {
+                    jsnCtgKeyword[menuID] = strKeyword;
+                }
+            }
+
+            if (strParentID) {
+                let tmpParentTitle = jsnCtgMap[strParentID];
+                i_item["MENU_BREADCRUMBS"] = jsnCtgMap[strParentID];
+                i_item["DISP_MENU_TITLE"] = i_item["TITLE"].replace(new RegExp("\\[" + tmpParentTitle.split("%||%").join("\\]\\[") + "\\] {0,1}", "i"), "");
+            }
+
+            if (jsnAllMenu[menuID]) {
+                console.error("_createMenuData", "메뉴ID가 중복 되었습니다. >>>>>>>> ", "menuID : ", menuID, " | ", i_item.TITLE, " :::::::::::::::::::::::: ", JSON.stringify(jsnAllMenu[menuID]));
+            }
+
+            jsnAllMenu[menuID] = i_item;
+
+            if (menuID.indexOf("M01") != 0 && i_item.TYPE === "F") {
+                arrFileMenu.push(i_item);
+            } else {
+                // 파일명으로 정렬
+                arrFileMenu.sort((a, b) => {
+                    let strLowerA = a.TITLE.toLowerCase();
+                    let strLowerB = b.TITLE.toLowerCase();
+                    let returnValue = 0;
+
+                    if (strLowerA < strLowerB) {
+                        returnValue = -1;
+                    } else if (strLowerA > strLowerB) {
+                        returnValue = 1;
+                    } else {
+                        returnValue = 0;
+                    }
+
+                    return returnValue;
+                });
+
+                arrAllMenu = arrAllMenu.concat(arrFileMenu);
+                arrFileMenu = [];
+
+                arrAllMenu.push(i_item);
+            }
+        }// for
+
+        arrAllMenu = arrAllMenu.concat(arrFileMenu);
+        arrFileMenu = [];
+
+        Object.keys(arrAllMenu[0]).forEach((item) => {
+            arrDCInfo.push({
+                "id": item,
+                "name": item,
+                "dataType": "text"
+            });
+        });
+
+        $p.data.create({
+            "id": strDataListID,
+            "type": "dataList",
+            "option": {
+                "baseNode": "list",
+                "repeatNode": "map"
+            },
+            "columnInfo": arrDCInfo
+        });
+
+        $p.data.set("JSON", { [strDataListID]: arrAllMenu }, [strDataListID])
+
+        _var_jsnAllMenu = jsnAllMenu;
+        _var_arrAllMenu = arrAllMenu;
+    };
+
+    const _getMenuByID = function (argMenuID) {
+        var jsnMenuData;
+
+        jsnMenuData = _var_jsnAllMenu[argMenuID];
+        if (!jsnMenuData) {
+            throw "메뉴가 존재하지 않습니다. MENU ID : " + argMenuID
+        }
+        return JSON.parse(JSON.stringify(jsnMenuData));
+    };
+
+    const _getMenuByPage = function (argMenuPage) {
+        var returnValue;
+
+        _var_arrAllMenu.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+ 
+            if (!strPath) { return false; }
+
+            if (strPath.endsWith(argMenuPage) || strPath.endsWith(argMenuPage + ".xml")) {
+                returnValue = item;
+                return true;
+            }
+        });
+
+        return returnValue;
+    };
+
+    const _getAllMenuDataString = function () {
+        return JSON.stringify(_var_arrAllMenu);
+    };
+
+
+    return {
+        init: _init,
+        getMenuByID: _getMenuByID,
+        getMenuByPage: _getMenuByPage,
+        getAllMenuDataString: _getAllMenuDataString
+    };
+})();
+
+scwin.compent_path = (function () {
+    let _var_jsnAllMenu;
+ 
+    const _init = async function () {
+        var prmPathResult;
+
+        try {
+            prmPathResult = await _getCompentPathData(); 
+            _var_jsnAllpath = prmPathResult; 
+        } catch (ex) {
+            console.error(ex);
+        }
+    };
+
+    const _getCompentPathData = async function () {
+        var _promise;
+
+        _promise = new Promise((resolve, reject) => {
+            $p.ajax({
+                action: $c.frame.getSrc("/frame/data/fullpath.json") + "?postfix=" + $c.frame.getRandomString(),
+                method: "get",
+                success: function (argRes) { resolve(JSON.parse(argRes.responseText)); },
+                error: function (argRes) { reject(argRes); }
+            });
+        });
+        return _promise;
+    };
+
+    const _getFullPath = function (argPage, compName) {
+        var returnValue;
+        let i, i_max, i_item;
+        let strFullpath;
+        var addxml = "";
+ 
+        if (argPage.indexOf(".zip") > -1) {
+            argPage = argPage.replace(".zip", "/")
+            addxml = argPage;
+            addxml = addxml.replace("/", "") + ".xml"
+            console.log("pageUrl  addxml ==> " + addxml);
+        }
+        
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+
+            if (!strPath) { return false; }
+            //|| strPath.endsWith(argPage + ".xml")
+            if (strPath.endsWith(argPage)) {
+                returnValue = item;
+
+                returnValue = {
+                    ID: argPage,
+                    TITLE: "[" + compName + "]" + item.DESC,
+                    DISPLAY_MODE: "",
+                    MENU_BREADCRUMBS: compName,
+                    PATH: "/guide/" + item.PATH + addxml,
+                    GUIDE: "Y"
+                };
+
+
+                return true;
+            }
+        });
+ 
+        return returnValue;
+    };
+ 
+    const _getName = function (argPage) {
+        var returnValue;  
+		var parts = argPage.split('/');
+		var filename = parts[parts.length - 1];
+ 
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+
+            if (!strPath) { return false; } 
+            if (strPath.endsWith(filename)) {
+                returnValue = item.NAME;
+ 
+                return true;
+            }
+        });
+ 
+        return returnValue;
+    };
+
+    const _getTitle = function (argPage) {
+        var returnValue;  
+		var parts = argPage.split('/');
+		var filename = parts[parts.length - 1];
+ 
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+
+            if (!strPath) { return false; } 
+            if (strPath.endsWith(filename)) {
+                returnValue = item.TITLE;
+ 
+                return true;
+            }
+        });
+ 
+        return returnValue;
+    };
+     
+    const _getMenuInfo = function (argPage) {
+        var returnValue;  
+		var parts = argPage.split('/');
+		var filename = parts[parts.length - 1];
+ 
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+            let strfileNm = strPath.split("/").pop();
+
+            if (!strPath) { return false; } 
+                if (strPath.endsWith(filename)) {
+                    if(strfileNm === filename){ 
+                        returnValue = {
+                            ID: filename,
+                            TITLE: "[" + item.NAME + "] " + item.TITLE,
+                            DISPLAY_MODE: "",
+                            MENU_BREADCRUMBS: item.NAME,
+                            PATH: argPage,
+                            //ALL_KEYWORD: item.KEY,
+                            GUIDE: "Y"
+                        };
+    
+                    }
+                //  return true;
+                }
+        });
+ 
+        return returnValue;
+    };
+
+
+    const _getAllFullpathDataString = function () {
+        return JSON.stringify(_var_jsnAllpath);
+    }
+
+    return {
+        init: _init,
+        getFullPath: _getFullPath,
+        getName: _getName,
+        getTitle: _getTitle,
+        getMenuInfo: _getMenuInfo,
+        getAllFullpathDataString : _getAllFullpathDataString    // **
+    };
+})();
+
+/**
+ * 예제에서 다른 예제 호출할 때 사용
+ */
+scwin.openPage = function (argPageNo) {
+    var jsnMenu;
+    if (!argPageNo) { return; }
+
+    jsnMenu = scwin.menu.getMenuByPage(argPageNo);
+
+    if (jsnMenu && jsnMenu.ID) {
+        scwin.dispPage(jsnMenu, true);
+    }
+};
+
+scwin.compent_path = (function () {
+    let _var_jsnAllMenu;
+ 
+    const _init = async function () {
+        var prmPathResult;
+
+        try {
+            prmPathResult = await _getCompentPathData(); 
+            _var_jsnAllpath = prmPathResult; 
+        } catch (ex) {
+            console.error(ex);
+        }
+    };
+
+    const _getCompentPathData = async function () {
+        var _promise;
+
+        _promise = new Promise((resolve, reject) => {
+            $p.ajax({
+                action: $c.frame.getSrc("/frame/data/fullpath.json") + "?postfix=" + $c.frame.getRandomString(),
+                method: "get",
+                success: function (argRes) { resolve(JSON.parse(argRes.responseText)); },
+                error: function (argRes) { reject(argRes); }
+            });
+        });
+        return _promise;
+    };
+
+    const _getFullPath = function (argPage, compName) {
+        var returnValue;
+        let i, i_max, i_item;
+        let strFullpath;
+        var addxml = "";
+ 
+        if (argPage.indexOf(".zip") > -1) {
+            argPage = argPage.replace(".zip", "/")
+            addxml = argPage;
+            addxml = addxml.replace("/", "") + ".xml"
+            console.log("pageUrl  addxml ==> " + addxml);
+        }
+        
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+
+            if (!strPath) { return false; }
+            //|| strPath.endsWith(argPage + ".xml")
+            if (strPath.endsWith(argPage)) {
+                returnValue = item;
+
+                returnValue = {
+                    ID: argPage,
+                    TITLE: "[" + compName + "]" + item.DESC,
+                    DISPLAY_MODE: "",
+                    MENU_BREADCRUMBS: compName,
+                    PATH: "/guide/" + item.PATH + addxml,
+                    GUIDE: "Y"
+                };
+
+
+                return true;
+            }
+        });
+ 
+        return returnValue;
+    };
+ 
+    const _getName = function (argPage) {
+        var returnValue;  
+		var parts = argPage.split('/');
+		var filename = parts[parts.length - 1];
+ 
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+
+            if (!strPath) { return false; } 
+            if (strPath.endsWith(filename)) {
+                returnValue = item.NAME;
+ 
+                return true;
+            }
+        });
+ 
+        return returnValue;
+    };
+
+    const _getTitle = function (argPage) {
+        var returnValue;  
+		var parts = argPage.split('/');
+		var filename = parts[parts.length - 1];
+ 
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+
+            if (!strPath) { return false; } 
+            if (strPath.endsWith(filename)) {
+                returnValue = item.TITLE;
+ 
+                return true;
+            }
+        });
+ 
+        return returnValue;
+    };
+    
+    const _getMenuInfo = function (argPage) {
+        var returnValue;  
+		var parts = argPage.split('/');
+		var filename = parts[parts.length - 1];
+ 
+        _var_jsnAllpath.some((item, index) => {
+            let strPath = (item.PATH || "").trim();
+
+            if (!strPath) { return false; } 
+            if (strPath.endsWith(filename)) {
+                 
+                returnValue = {
+                    ID: filename,
+                    TITLE: "[" + item.NAME + "] " + item.TITLE,
+                    DISPLAY_MODE: "",
+                    MENU_BREADCRUMBS: item.NAME,
+                    PATH: argPage,
+                    //ALL_KEYWORD: item.KEY,
+                    GUIDE: "Y"
+                };
+ 
+ 
+                return true;
+            }
+        });
+ 
+        return returnValue;
+    };
+
+    const _getAllFullpathDataString = function () {
+        return JSON.stringify(_var_jsnAllpath);
+    }
+
+    return {
+        init: _init,
+        getFullPath: _getFullPath,
+        getName: _getName,
+        getTitle: _getTitle,
+        getMenuInfo: _getMenuInfo,
+        getAllFullpathDataString : _getAllFullpathDataString    // **
+    };
+})();]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="wrap mobile" id="grp_main_wrap" style="">
+    		<xf:group style="" id="" class="header">
+    			<w2:anchor class="btn_toggle_menu" id="btn_toggle_menu" name="" outerDiv="false" style=""
+    				ev:onclick="scwin.btn_toggle_menu_onclick" title="메뉴 확장/축소">
+    				<xf:label><![CDATA[tootleMenu]]></xf:label>
+    			</w2:anchor>
+    			<xf:group class="" id="" style="" tagname="h1">
+    				<w2:anchor class="logo" id="btn_logo" outerDiv="false" ev:onclick="scwin.btn_logo_onclick" title="브라우저 새로고침">
+    					<xf:label><![CDATA[inswave systems]]></xf:label>
+    				</w2:anchor>
+    				
+    			</xf:group>
+    			<xf:group class="version" id="" style="">
+    					<w2:textbox id="" label="v." tagname="span"></w2:textbox>
+    					<w2:textbox id="" label="SP6" tagname="strong"></w2:textbox>
+    				</xf:group><xf:group style="" id="" class="grp_r_link">
+    				<xf:group id="" class="">
+    					<xf:trigger ev:onclick="scwin.btn_sitemap_onclick" style="display: none;" id="btn_sitemap" type="button" class="btn_exam_tran">
+    						<xf:label><![CDATA[사이트맵]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_pc_mode" id="btn_pc" style="" type="button" ev:onclick="scwin.btn_pc_onclick">
+    						<xf:label><![CDATA[PC 모드]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group id="grp_container" class="container">
+    			<xf:group style="" id="" class="contents">
+    				<w2:wframe style="min-height:300px; height:100%;" id="wfm_mainContent"></w2:wframe>
+    			</xf:group>
+    		</xf:group>
+    		<w2:wframe class="side" id="wfm_leftContainer" style=""></w2:wframe>
+    	</xf:group>
+    	<input id="hidden_clipboard_input" style="position:absolute;left:-1000px;top:-1000px;border:0px solid #fff;"></input>
+    </body>
+</html>

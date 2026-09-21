@@ -1,0 +1,20 @@
+/*amd /guide/WindowContainer/useFixButton_nameLayerRearrange_WindowContainer.xml 3318 2cceb3ab36a56c66d74281ac3c30ab95a135fd747240222134cc884bef4ab963 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model'},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  scwin.createWindowTest("aaa");
+  scwin.createWindowTest("bbb");
+  scwin.createWindowTest("ccc");
+};
+scwin.onpageunload = function () {};
+scwin.createWindowTest = function (title) {
+  var winObj = {
+    title: title,
+    src: "a.xml",
+    windowTitle: title + "_windowTitle",
+    windowId: title + "_windowId",
+    frameMode: "wframe",
+    defaultWidth: "400",
+    defaultHeight: "400"
+  };
+  wc1.createWindow(winObj);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'고정된 윈도우를 네임 레이어의 최앞단으로 이동',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. WindowContainer 하단의 네임 레이어에 각 윈도우의 고정 버튼이 표시되는 것을 확인. (useFixButton="true") <br/>2. 임의의 윈도우의 고정 버튼을 클릭. <br/>3. 윈도우 모두를 정렬해서 표시하는 버튼을 클릭. <br/>4. 윈도우가 정렬되고, 위에서 고정 버튼을 클릭한 윈도우는 네임 레이어의 제일 앞으로 이동하는 것을 확인. (nameLayerRearrange="true")',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'속성 설정<br/>useFixButton="true" <br/>nameLayerRearrange="true"',escape:'false'}},{T:1,N:'w2:windowContainer',A:{sequentialArrangeColNum:'3',sequentialArrangeRowNum:'3',fixArrangeFullScreen:'false',frameMode:'wframe',useFixButton:'true',windowAutoResize:'false',verticalArrangeNum:'3',windowMaxNum:'5',useCloseButton:'false',nameLayerMove:'true',controlIconPosition:'left',windowMaximizeAll:'false',stopMinimizeOnNameLayer:'false',toolbarPosition:'bottom',useStatusMsg:'true',id:'wc1',class:'',hideTitleOnMaximize:'false',nameLayerRearrange:'true',stopToggleOnLast:'false',useNameScroll:'true',nameLayerMenu:'false',useNameContainer:'false','ev:onbeforecloseall':'scwin.wc1_onbeforecloseall',horizontalArrangeNum:'3',useCustomMsg:'false',spaAuto:'true',useControlIconTitle:'false',autoArrange:'true',tooltipDisplay:'true',tooltipGroupClass:'false',windowTooltipDisplay:'true',style:'position: relative;height: 300px;border: gray solid 1px;'},E:[{T:1,N:'w2:windowToolbar',E:[{T:1,N:'w2:nameLayer'},{T:1,N:'w2:controlIconLayer',E:[{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'}]},{T:1,N:'w2:selectedNameLayer'}]}]}]}]}]}]})

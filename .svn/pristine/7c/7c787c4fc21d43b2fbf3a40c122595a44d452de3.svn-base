@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Workflow] 다건 통신하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230713" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection>
+				<w2:workflow id="workflow1" resolveCallback="" rejectCallback="" processMsg="" description="">
+					<w2:step type="submit" action="sbm_1"></w2:step>
+					<w2:step type="submitDone" action="sbm_1"></w2:step>
+					<w2:step type="submit" action="sbm_2"></w2:step>
+					<w2:step type="submitDone" action="sbm_2"></w2:step>
+					<w2:step type="submit" action="sbm_3"></w2:step>
+					<w2:step type="submitDone" action="sbm_3"></w2:step>
+				</w2:workflow>
+				<w2:workflow id="workflow2" resolveCallback="" rejectCallback="" processMsg="" description="">
+					<w2:step type="submit" action="sbm_3"></w2:step>
+					<w2:step type="submit" action="sbm_1"></w2:step>
+					<w2:step type="submit" action="sbm_2"></w2:step>
+					<w2:step type="submitDone" action="sbm_1"></w2:step>
+					<w2:step type="submitDone" action="sbm_2"></w2:step>
+					<w2:step type="submitDone" action="sbm_3"></w2:step>
+				</w2:workflow>
+			</w2:workflowCollection>
+			<xf:submission id="sbm_1" ref="" target="" action="/data/sampleData/sampleData.xml" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="scwin.sbm_1_submit" ev:submitdone="scwin.sbm_1_submitdone"
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+			<xf:submission id="sbm_2" ref="" target="" action="/data/sampleData/sampleData.xml" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="scwin.sbm_2_submit" ev:submitdone="scwin.sbm_2_submitdone"
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+			<xf:submission id="sbm_3" ref="" target="" action="/data/sampleData/sampleData.xml" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="scwin.sbm_3_submit" ev:submitdone="scwin.sbm_3_submitdone"
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [Workflow1 - 실행 순서 : 1 2 3] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // Workflow 실행
+    $p.executeWorkflow("workflow1");
+
+    // 로그 출력
+    let strLog = "Workflow1 - 실행 순서 : 1 2 3";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+
+};
+
+/**
+ * 버튼 [Workflow2 - 실행 순서 : 3 1 2, callbakck  순서 : 1 2 3] 클릭 시
+ */
+scwin.brn_exam_2_onclick = function (e) {
+    // Workflow 실행
+    $p.executeWorkflow("workflow2");
+
+    // 로그 출력
+    let strLog = "Workflow2 - 실행 순서 : 3 1 2, callbakck  순서 : 1 2 3";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [Submission - 실행 순서 : 1 2 3] 클릭 시
+ */
+scwin.btn_exam_3_onclick = function (e) {
+    // 로그 출력
+    let strLog = "Submission - 실행 순서 : 1 2 3";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+
+    // submission 실행
+    $p.executeSubmission("sbm_1");
+    $p.executeSubmission("sbm_2");
+    $p.executeSubmission("sbm_3");
+};
+
+
+scwin.sbm_1_submitdone = function (e) {
+    // 로그 출력
+    let strLog = "sbm_1 완료 - submitdone 실행";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+scwin.sbm_2_submitdone = function (e) {
+    // 로그 출력
+    let strLog = "sbm_2 완료 - submitdone 실행";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+scwin.sbm_3_submitdone = function (e) {
+    // 로그 출력
+    let strLog = "sbm_3 완료 - submitdone 실행";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+scwin.sbm_1_submit = function (e) {
+    // 로그 출력
+    let strLog = "sbm_1 실행";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+scwin.sbm_2_submit = function (e) {
+    // 로그 출력
+    let strLog = "sbm_2 실행";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+scwin.sbm_3_submit = function (e) {
+    // 로그 출력
+    let strLog = "sbm_3 실행";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Workflow를 사용한 다건 통신 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group id="" style="" class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Workflow 실행하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+
+							<xf:group id="">
+								<xf:trigger ev:onclick="scwin.btn_exam1_1_onclick" style="" id="btn_exam1_1" type="button"
+									class="btn_exam_exec btn_txt_of" escape="false">
+									<xf:label><![CDATA[Workflow1 - 실행 순서 : 1 2 3]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+							<xf:group id="">
+								<xf:trigger ev:onclick="scwin.brn_exam_2_onclick" style="" id="brn_exam_2" type="button"
+									class="btn_exam_exec btn_txt_of" escape="false">
+									<xf:label><![CDATA[Workflow2 - 실행 순서 : 3 1 2, callback &nbsp;순서 : 1 2 3]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+							<xf:group id="" style="">
+								<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" id="btn_exam_3" style="" type="button"
+									ev:onclick="scwin.btn_exam_3_onclick">
+									<xf:label><![CDATA[Submission - 실행 순서 : 1 2 3 ]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+					
+				</xf:group>
+			</xf:group>
+		<xf:group style="" id="" class="example_div_tb_style_wrap mb_def"><xf:group id="" class="example_div_tr_style"><xf:group id="" class="example_div_th_style"><w2:span style="" id="" label="로그 확인" class="mr_def txt_bold"></w2:span><xf:trigger ev:onclick="scwin.btn_clearLog_onclick" style="" id="" userData1="txa_log_1" title="로그 삭제" type="button" class="wre_btn_log_clear">
+								<xf:label><![CDATA[검색 취소]]></xf:label>
+							</xf:trigger></xf:group><xf:group id="" class="example_div_td_style"><xf:textarea spellcheck="false" style="width: 100%;height: 150px;" id="txa_log_1" class="wre_txa_log"></xf:textarea></xf:group></xf:group></xf:group></xf:group>
+	</body>
+</html>

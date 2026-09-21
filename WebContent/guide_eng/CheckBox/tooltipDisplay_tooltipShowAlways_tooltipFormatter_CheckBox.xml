@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="country" name="country" dataType="text"></w2:column>
+            			<w2:column id="city" name="city" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+
+            				<country><![CDATA[Korea]]></country>
+            				<city><![CDATA[Seoul]]></city>
+            			</w2:row>
+            			<w2:row>
+
+            				<country><![CDATA[China]]></country>
+            				<city><![CDATA[Beijing]]></city>
+            			</w2:row>
+            			<w2:row>
+
+            				<country><![CDATA[Vietnam]]></country>
+            				<city><![CDATA[Hanoi]]></city>
+            			</w2:row>
+            			<w2:row>
+
+            				<country><![CDATA[Russian]]></country>
+            				<city><![CDATA[Vladivostok]]></city>
+            			</w2:row>
+            			<w2:row>
+
+            				<country><![CDATA[The Netherlands]]></country>
+            				<city><![CDATA[Amsterdam]]></city>
+            			</w2:row>
+            			<w2:row>
+
+            				<country><![CDATA[Indonesia]]></country>
+            				<city><![CDATA[Jakarta]]></city>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <style>
+        
+
+        	table {
+				table-layout:fixed;
+			}
+			
+        table td {
+				width:30px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			</style>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	scwin.tooltip = function(label, index) {		
+		var data = dataList1.getDataRow(index);
+		var value = data.country;
+		return label + ", " + value;
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Tooltip Setting&lt;br/&gt;" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Hover the mouse cursor over each item in the CheckBox.&lt;br/&gt;2. Confirm that the value returned by the function specified as the tooltipFormatter property is displayed as a tooltip.&lt;br/&gt;(The scwin.tooltip function specified as tooltipFormatter can be found in the Script tab.)' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox4"
+    		label='tooltipDisplay="true" &lt;br/&gt;tooltipShowAlways="true" &lt;br/&gt;tooltipFormatter="scwin.tooltip"'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:select tooltipShowAlways="true" tooltipFormatter="scwin.tooltip" ref="" appearance="full" tooltipDisplay="true" tooltipTime="0"
+    		tooltipItemLabel="tooltip" style="width:127px;" id="checkbox2" selectedindex="-1" rows="" cols="1">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="city"></xf:label>
+    				<xf:value ref="country"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select>
+    </xf:group></body>
+</html>

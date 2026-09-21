@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제]pageFrame 완성 chile_1 완성화면">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+//값 자동 넣기 
+scwin.btn_setData_onclick = function (e) {
+
+    ui_ipt1.setValue("child1_Value1");
+    ui_ipt2.setValue("child1_Value2");
+};
+
+//부모값 가져오기
+scwin.btn_getParent_onclick = function (e) {
+    ui_ipt1.setValue($p.parent().ui_ipt1.getValue());
+    
+};
+ 
+//자식값 보내기 
+scwin.btn_setParent_onclick = function (e) {
+    $p.parent().ui_ipt1.setValue(ui_ipt1.getValue());
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<w2:textbox tagname="h3" style="" id="" label="해당화면은 pageFrame 설명을 위한 pageFrame_child_1_c.xml" class="ws_example_txt_desc_info"></w2:textbox>
+    	<xf:group style="" id="" class="ws_example_grp_desc">
+    		<xf:group style="" id="" class="titbox">
+
+    		</xf:group>
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 방법" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label="1. 자식의 Frame 에 부모 Frame 의 값 가져오기&lt;br/&gt; &amp;nbsp;1) 부모값 가져오기 컴포넌트에 이벤트 생성&lt;br/&gt; &amp;nbsp;2) 이벤트 함수에 아래 명령어 작성&lt;br/&gt; &amp;nbsp; 객체명.setValue($p.parent().객체명.getValue());&lt;br/&gt;&lt;br/&gt;2. 자식의 Frame 에서 부모 Frame 으로 값 보내기 &lt;br/&gt; &amp;nbsp;1) 자식값 보내기 컴포넌트에 이벤트 생성&lt;br/&gt; &amp;nbsp;2) 이벤트 함수에 아래 명령어 작성&lt;br/&gt; &amp;nbsp; $p.parent().객체명.setValue(객체명.getValue());&lt;br/&gt; "
+    				class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group style="" id="" class="titbox">
+    			<w2:span style="margin-right: 10px;font-weight: bold;" id="" label="부모화면 값 참조 : $p.parent()"></w2:span>
+    			<xf:group style="" id="" class="rt">
+    				<xf:trigger ev:onclick="scwin.btn_getParent_onclick" style="" id="btn_getParent" type="button" class="btn_cm ">
+    					<xf:label><![CDATA[부모값 가져오기]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger ev:onclick="scwin.btn_setParent_onclick" style="" id="btn_setParent" type="button" class="btn_cm ">
+    					<xf:label><![CDATA[자식값 보내기]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group style="" id="" class="tblbox">
+    			<xf:group tagname="td" style="" class="w2tb_td"></xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td"></xf:group>
+    			<xf:group adaptive="layout" adaptiveThreshold="600" tagname="table" style="" id="" class="w2tb tbl">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group tagname="col" style="width:150px;"></xf:group>
+    					<xf:group tagname="col" style=""></xf:group>
+    					<xf:group tagname="col" style="width:150px;"></xf:group>
+    					<xf:group tagname="col" style=""></xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr" style="">
+    					<xf:group tagname="th" style="" class="w2tb_th">
+    						<w2:textbox ref="" style="" userData2="" id="" label="child1_헤더1" class="req"></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" style="" class="w2tb_td">
+    						<xf:input style="width: 144px;height: 21px;" id="ui_ipt1"></xf:input>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox ref="" style="" userData2="" id="" label="child1_헤더2" class=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input style="width: 144px;height: 21px;" id="ui_ipt2"></xf:input>
+    						<xf:trigger type="button" id="btn_setData" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_setData_onclick">
+    							<xf:label><![CDATA[값 자동 넣기]]></xf:label>
+    						</xf:trigger>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

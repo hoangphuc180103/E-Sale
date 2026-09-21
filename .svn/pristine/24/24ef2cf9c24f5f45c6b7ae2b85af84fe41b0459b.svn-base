@@ -1,0 +1,20 @@
+/*amd /guide_jpn/TabControl/closable_alwaysShowCloseBtn_TabControl.xml 4017 356babc5ef35116adbec42ffd527411c48afcc8af0bd472bdcfd6d4f1ecd1e07 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var tabOptions = {};
+  for (var i = 0; i < 10; i++) {
+    var addCount = i + 1;
+    var tabOptions = {
+      label: " " + addCount,
+      openAction: "new"
+    };
+    var contentsOptions = {
+      frameMode: "wframe",
+      alwaysDraw: false
+    };
+    tabControl1.addTab(i, tabOptions, contentsOptions);
+    tabControl2.addTab(i, tabOptions, contentsOptions);
+    tabControl3.addTab(i, tabOptions, contentsOptions);
+  }
+};
+scwin.onpageunload = function () {};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'margin-bottom: 10px;color: blue;',id:'textbox1',label:'タブ閉じるボタン表示',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 最初の TabControl のタブに閉じるボタンが常に表示されることを確認。 (closable="true" alwaysShowCloseBtn="true")<br/>2. 2番目のTabControlのタブにマウスカーソルを置くと閉じるボタンが表示されることを確認してください。 (closable="true")<br/>3. 3番目のTabControlのタブに閉じるボタンが表示されていないことを確認してください。 (closable="false")<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'プロパティの設定<br/>closable="true" &nbsp;<br/>alwaysShowCloseBtn="true"',escape:'false'}},{T:1,N:'w2:tabControl',A:{confirmTrueAction:'exist',useTabKeyOnly:'true',confirmFalseAction:'new',useMoveNextTabFocus:'false',tabScroll:'true',tabScrollAuto:'true',useConfirmMessage:'false',alwaysDraw:'false',style:'border: gray solid 1px;height: 200px;margin-bottom: 10px;',tabPosition:'top',id:'tabControl1',alwaysShowCloseBtn:'true',closable:'true'},E:[{T:1,N:'w2:content',A:{alwaysDraw:'false',style:'height:170px',id:'content1'}}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'プロパティの設定<br/>closable="true"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:tabControl',A:{alwaysDraw:'false',confirmFalseAction:'new',confirmTrueAction:'exist',id:'tabControl2',style:'border: gray solid 1px;height: 200px;margin-bottom: 10px;',tabPosition:'top',tabScroll:'true',tabScrollAuto:'true',useConfirmMessage:'false',useMoveNextTabFocus:'false',useTabKeyOnly:'true',closable:'true'},E:[{T:1,N:'w2:content',A:{alwaysDraw:'false',id:'content2',style:'height:170px'}}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox6',label:'プロパティの設定<br/>closable="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:tabControl',A:{alwaysDraw:'false',confirmFalseAction:'new',confirmTrueAction:'exist',id:'tabControl3',style:'border: gray solid 1px;height: 200px;',tabPosition:'top',tabScroll:'true',tabScrollAuto:'true',useConfirmMessage:'false',useMoveNextTabFocus:'false',useTabKeyOnly:'true'},E:[{T:1,N:'w2:content',A:{alwaysDraw:'false',id:'content3',style:'height:170px'}}]}]}]}]}]})

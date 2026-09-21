@@ -1,0 +1,25 @@
+/*amd /guide_jpn/WFrame/scopeInherit_WFrame/wframe11.xml 1915 59a6935907e7f1198d233471b14a3c08a5f737f109d1cc2013239dd27345ad5d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var tmpSrc = scwin.getfolderPath() + "/wframe111.xml";
+  wframe11.setSrc(tmpSrc);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var parent = textbox3.getValue();
+  alert(parent);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{style:'width: 500px;height: 30px;margin: 10px;font-weight: bolder;color: blue;',id:'textbox1',label:'textbox1 - wframe11'}},{T:1,N:'w2:textbox',A:{style:'width: 500px;height: 30px;margin: 10px;font-weight: bolder;color: blue;',id:'textbox2',label:'textbox2'}},{T:1,N:'w2:wframe',A:{scopeInherit:'all',style:'border:2px solid coral;padding: 1px;background-color: white',id:'wframe11'}}]}]}]}]})

@@ -1,0 +1,22 @@
+/*amd /guide/_Debugging/View_Submission_Debugging/source3.xml 3423 19e966df14502adbf9aa3a754d6e9d50cbdd0a61d06a8f334a5acadfb9b78550 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'},{T:1,N:'xf:submission',A:{id:'submission3',ref:'',target:'data:json,dataList1',action:'testdata3.json',method:'post',mediatype:'application/json',encoding:'UTF-8',instance:'',replace:'',errorHandler:'',customHandler:'',mode:'asynchronous',processMsg:'Loading...','ev:submit':'','ev:submitdone':'','ev:submiterror':'',abortTrigger:'true'}}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var objSubmission = $p.getSubmission("submission3");
+  objSubmission.action = scwin.getfolderPath() + '/testdata3.json';
+  $p.executeSubmission("submission3");
+};
+scwin.onpageunload = function () {};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{style:'font-size:30px;font-style:italic;color:green;margin-bottom: 10px;',id:'textbox1',label:'pageFrame3 (source3.xml) - "submission3"'}},{T:1,N:'w2:gridView',A:{autoFit:'allColumn',dataList:'data:dataList1',defaultCellHeight:'20',id:'gridView1',rowNumHeaderValue:'No.',rowNumVisible:'true',scrollByColumn:'false',scrollByColumnAdaptive:'false',style:'border: gray solid 1px;margin-bottom: 10px;',visibleRowNum:'7',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{id:'caption2',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{removeBorderStyle:'false',width:'70',inputType:'text',style:'',id:'column1',value:'name1',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',style:'',id:'column2',value:'name2'}},{T:1,N:'w2:column',A:{width:'70',style:'',id:'column3',value:'name3'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{removeBorderStyle:'false',width:'70',inputType:'text',style:'height:20px',id:'col1',value:'',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',id:'col2'}},{T:1,N:'w2:column',A:{width:'70',id:'col3'}}]}]}]}]}]}]}]})

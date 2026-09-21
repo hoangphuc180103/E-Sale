@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;margin-bottom: 100px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="최대 업로드 파일 개수 제한" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. MultiUpload 컴포넌트를 클릭. &lt;br/&gt;2. 업로드할 파일을 선택. &lt;br/&gt;3. maxcount 속성 값을 초과하는 파일을 선택할 경우, 안내 메시지가 표시되는 것을 확인. &lt;br/&gt;(본 예제의 경우 maxcount="3" 속성 설정을 사용.)' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;maxcount="3" // (기본 값: "5")' escape="false">
+    	</w2:textbox><w2:multiupload filter="*:*.*" mode="html5_transparent" maxcount="3" action="" style="width: 300px;height: 50px;border: solid gray 1px;" wmode="" id="upload1" maxsize="" userData1="" uploadButton="" displaySizeUnit="*:*.*">
+    	</w2:multiupload></xf:group></body>
+</html>

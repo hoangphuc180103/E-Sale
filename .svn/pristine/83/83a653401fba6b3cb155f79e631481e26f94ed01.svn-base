@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="JSON 관련 기본 API">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220522" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="예제의 구성이 변경되었습니다." meta_date="20240627" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * [String to JSON - JSON.parse] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    // json 문자열
+    let jsonStr = '{"no":"1", "name":"WebSquare"}';
+
+    // json 객체 생성
+    let jsonObj = JSON.parse(jsonStr);
+
+    // 로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex1_onclick 실행 **", txa_log, false);
+    $c.frame.printExampleLog("no : " + jsonObj.no, txa_log, false);
+    $c.frame.printExampleLog("name : " + jsonObj.name, txa_log, false);
+    console.log(jsonObj);
+};
+
+/**
+ * [JSON to String - JSON.stringify] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    // json 객체
+    let jsonObj = {
+        "no": "2",
+        "name": "WebSquare"
+    };
+
+    // json 객체를 문자열로 반환
+    let jsonStr = JSON.stringify(jsonObj);
+
+    // 로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex2_onclick 실행 **", txa_log, false);
+    $c.frame.printExampleLog("JSON 문자열 : " + jsonStr, txa_log, false);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox class="mb_def" escape="false" id="" label="JSON 문자열을 JSON 객체로 생성, JSON 객체를 문자열로 반환받는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="def_box nobottom" id="" style="" tagname="dt">
+							<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1"
+								style="" type="button">
+								<xf:label><![CDATA[String to JSON - JSON.parse]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2"
+								style="" type="button">
+								<xf:label><![CDATA[JSON to String - JSON.stringify]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

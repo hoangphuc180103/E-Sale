@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TreeView] 노드를 선택하면 상위 노드에 선택된 효과 적용하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230808" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 TreeView의 데이터가 변경되었습니다." meta_date="20240712" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.btn_getLabel_onclick = function (e) {
+    // 선택된 메뉴의 label 정보 가져오기
+    var _label = trv_main.getSelectedLabel();
+
+    // 로그 출력
+    let strLog = "[LABEL] "+ _label ;
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="TreeView의 'useHirarchySelect' 속성을 사용하여 하위 노드를 선택할 때 상위 노드도 선택된 효과가 적용되도록 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+
+				<xf:group class="example_div_tr_style" id="" style="">
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 5px;">
+							<xf:group id="" style="margin-bottom: 5px;">
+								<xf:trigger ev:onclick="scwin.btn_getLabel_onclick" style="" id="btn_getLabel" type="button" class="btn_exam_exec">
+									<xf:label><![CDATA[선택한 노드 Label 보기]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+							<xf:group class="tvwbox" id="" style="max-width:300px;">
+								<w2:treeview class="tvw P00333" dataType="listed" id="trv_main" style="min-height: 100px;" tooltipGroupClass="false"
+									useHirarchySelect="true">
+									<w2:node>
+										<w2:label><![CDATA[MENU 1]]></w2:label>
+										<w2:value><![CDATA[1]]></w2:value>
+										<w2:folder><![CDATA[]]>
+										</w2:folder>
+										<w2:checkbox><![CDATA[]]>
+										</w2:checkbox>
+										<w2:checkboxDisabled><![CDATA[]]>
+										</w2:checkboxDisabled>
+										<w2:image><![CDATA[]]>
+										</w2:image>
+										<w2:iconImage><![CDATA[]]>
+										</w2:iconImage>
+										<w2:selectedImage><![CDATA[]]>
+										</w2:selectedImage>
+										<w2:expandedImage><![CDATA[]]>
+										</w2:expandedImage>
+										<w2:leafImage><![CDATA[]]>
+										</w2:leafImage>
+										<w2:node>
+											<w2:label><![CDATA[MENU 1-1]]></w2:label>
+											<w2:value><![CDATA[1-1]]></w2:value>
+											<w2:folder><![CDATA[]]>
+											</w2:folder>
+											<w2:checkbox><![CDATA[]]>
+											</w2:checkbox>
+											<w2:checkboxDisabled><![CDATA[]]>
+											</w2:checkboxDisabled>
+											<w2:image><![CDATA[]]>
+											</w2:image>
+											<w2:iconImage><![CDATA[]]>
+											</w2:iconImage>
+											<w2:selectedImage><![CDATA[]]>
+											</w2:selectedImage>
+											<w2:expandedImage><![CDATA[]]>
+											</w2:expandedImage>
+											<w2:leafImage><![CDATA[]]>
+											</w2:leafImage>
+											<w2:node>
+												<w2:label><![CDATA[MENU 1-1-1]]></w2:label>
+												<w2:value><![CDATA[1-1-1]]></w2:value>
+												<w2:folder><![CDATA[]]>
+												</w2:folder>
+												<w2:checkbox><![CDATA[]]>
+												</w2:checkbox>
+												<w2:checkboxDisabled><![CDATA[]]>
+												</w2:checkboxDisabled>
+												<w2:image><![CDATA[]]>
+												</w2:image>
+												<w2:iconImage><![CDATA[]]>
+												</w2:iconImage>
+												<w2:selectedImage><![CDATA[]]>
+												</w2:selectedImage>
+												<w2:expandedImage><![CDATA[]]>
+												</w2:expandedImage>
+												<w2:leafImage><![CDATA[]]>
+												</w2:leafImage>
+											</w2:node>
+											<w2:node>
+												<w2:label><![CDATA[MENU 1-1-2]]></w2:label>
+												<w2:value><![CDATA[1-1-2]]></w2:value>
+												<w2:folder><![CDATA[]]>
+												</w2:folder>
+												<w2:checkbox><![CDATA[]]>
+												</w2:checkbox>
+												<w2:checkboxDisabled><![CDATA[]]>
+												</w2:checkboxDisabled>
+												<w2:image><![CDATA[]]>
+												</w2:image>
+												<w2:iconImage><![CDATA[]]>
+												</w2:iconImage>
+												<w2:selectedImage><![CDATA[]]>
+												</w2:selectedImage>
+												<w2:expandedImage><![CDATA[]]>
+												</w2:expandedImage>
+												<w2:leafImage><![CDATA[]]>
+												</w2:leafImage>
+											</w2:node>
+											<w2:node>
+												<w2:label><![CDATA[MENU 1-1-3]]></w2:label>
+												<w2:value><![CDATA[1-1-3]]></w2:value>
+												<w2:folder><![CDATA[]]>
+												</w2:folder>
+												<w2:checkbox><![CDATA[]]>
+												</w2:checkbox>
+												<w2:checkboxDisabled><![CDATA[]]>
+												</w2:checkboxDisabled>
+												<w2:image><![CDATA[]]>
+												</w2:image>
+												<w2:iconImage><![CDATA[]]>
+												</w2:iconImage>
+												<w2:selectedImage><![CDATA[]]>
+												</w2:selectedImage>
+												<w2:expandedImage><![CDATA[]]>
+												</w2:expandedImage>
+												<w2:leafImage><![CDATA[]]>
+												</w2:leafImage>
+											</w2:node>
+										</w2:node>
+									</w2:node>
+									<w2:node>
+										<w2:label><![CDATA[MENU 2]]></w2:label>
+										<w2:value><![CDATA[2]]></w2:value>
+										<w2:folder><![CDATA[]]>
+										</w2:folder>
+										<w2:checkbox><![CDATA[]]>
+										</w2:checkbox>
+										<w2:checkboxDisabled><![CDATA[]]>
+										</w2:checkboxDisabled>
+										<w2:image><![CDATA[]]>
+										</w2:image>
+										<w2:iconImage><![CDATA[]]>
+										</w2:iconImage>
+										<w2:selectedImage><![CDATA[]]>
+										</w2:selectedImage>
+										<w2:expandedImage><![CDATA[]]>
+										</w2:expandedImage>
+										<w2:leafImage><![CDATA[]]>
+										</w2:leafImage>
+										<w2:node>
+											<w2:label><![CDATA[MENU 2-1]]></w2:label>
+											<w2:value><![CDATA[2-1]]></w2:value>
+											<w2:folder><![CDATA[]]>
+											</w2:folder>
+											<w2:checkbox><![CDATA[]]>
+											</w2:checkbox>
+											<w2:checkboxDisabled><![CDATA[]]>
+											</w2:checkboxDisabled>
+											<w2:image><![CDATA[]]>
+											</w2:image>
+											<w2:iconImage><![CDATA[]]>
+											</w2:iconImage>
+											<w2:selectedImage><![CDATA[]]>
+											</w2:selectedImage>
+											<w2:expandedImage><![CDATA[]]>
+											</w2:expandedImage>
+											<w2:leafImage><![CDATA[]]>
+											</w2:leafImage>
+											<w2:node>
+												<w2:label><![CDATA[MENU 2-1-1]]></w2:label>
+												<w2:value><![CDATA[2-1-1]]></w2:value>
+												<w2:folder><![CDATA[]]>
+												</w2:folder>
+												<w2:checkbox><![CDATA[]]>
+												</w2:checkbox>
+												<w2:checkboxDisabled><![CDATA[]]>
+												</w2:checkboxDisabled>
+												<w2:image><![CDATA[]]>
+												</w2:image>
+												<w2:iconImage><![CDATA[]]>
+												</w2:iconImage>
+												<w2:selectedImage><![CDATA[]]>
+												</w2:selectedImage>
+												<w2:expandedImage><![CDATA[]]>
+												</w2:expandedImage>
+												<w2:leafImage><![CDATA[]]>
+												</w2:leafImage>
+											</w2:node>
+										</w2:node>
+									</w2:node>
+									<w2:node>
+										<w2:label><![CDATA[MENU 3]]></w2:label>
+										<w2:value><![CDATA[3]]></w2:value>
+										<w2:folder><![CDATA[]]>
+										</w2:folder>
+										<w2:checkbox><![CDATA[]]>
+										</w2:checkbox>
+										<w2:checkboxDisabled><![CDATA[]]>
+										</w2:checkboxDisabled>
+										<w2:image><![CDATA[]]>
+										</w2:image>
+										<w2:iconImage><![CDATA[]]>
+										</w2:iconImage>
+										<w2:selectedImage><![CDATA[]]>
+										</w2:selectedImage>
+										<w2:expandedImage><![CDATA[]]>
+										</w2:expandedImage>
+										<w2:leafImage><![CDATA[]]>
+										</w2:leafImage>
+										<w2:node>
+											<w2:label><![CDATA[MENU 3-1]]></w2:label>
+											<w2:value><![CDATA[3-1]]></w2:value>
+											<w2:folder><![CDATA[]]>
+											</w2:folder>
+											<w2:checkbox><![CDATA[]]>
+											</w2:checkbox>
+											<w2:checkboxDisabled><![CDATA[]]>
+											</w2:checkboxDisabled>
+											<w2:image><![CDATA[]]>
+											</w2:image>
+											<w2:iconImage><![CDATA[]]>
+											</w2:iconImage>
+											<w2:selectedImage><![CDATA[]]>
+											</w2:selectedImage>
+											<w2:expandedImage><![CDATA[]]>
+											</w2:expandedImage>
+											<w2:leafImage><![CDATA[]]>
+											</w2:leafImage>
+										</w2:node>
+										<w2:node>
+											<w2:label><![CDATA[MENU 3-2]]></w2:label>
+											<w2:value><![CDATA[3-2]]></w2:value>
+											<w2:folder><![CDATA[]]>
+											</w2:folder>
+											<w2:checkbox><![CDATA[]]>
+											</w2:checkbox>
+											<w2:checkboxDisabled><![CDATA[]]>
+											</w2:checkboxDisabled>
+											<w2:image><![CDATA[]]>
+											</w2:image>
+											<w2:iconImage><![CDATA[]]>
+											</w2:iconImage>
+											<w2:selectedImage><![CDATA[]]>
+											</w2:selectedImage>
+											<w2:expandedImage><![CDATA[]]>
+											</w2:expandedImage>
+											<w2:leafImage><![CDATA[]]>
+											</w2:leafImage>
+										</w2:node>
+										<w2:node>
+											<w2:label><![CDATA[MENU 3-3]]></w2:label>
+											<w2:value><![CDATA[3-3]]></w2:value>
+											<w2:folder><![CDATA[]]>
+											</w2:folder>
+											<w2:checkbox><![CDATA[]]>
+											</w2:checkbox>
+											<w2:checkboxDisabled><![CDATA[]]>
+											</w2:checkboxDisabled>
+											<w2:image><![CDATA[]]>
+											</w2:image>
+											<w2:iconImage><![CDATA[]]>
+											</w2:iconImage>
+											<w2:selectedImage><![CDATA[]]>
+											</w2:selectedImage>
+											<w2:expandedImage><![CDATA[]]>
+											</w2:expandedImage>
+											<w2:leafImage><![CDATA[]]>
+											</w2:leafImage>
+										</w2:node>
+									</w2:node>
+								</w2:treeview>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

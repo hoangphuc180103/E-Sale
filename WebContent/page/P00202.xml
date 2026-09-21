@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[InputCalendar] 입력값이 없을 때, 달력에 표시할 날짜를 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230201" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [달력에 표시되는 날짜를 1993-05-31로 변경하기] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    // InputCalendar 'ica_exam_3'의 defaultDate 속성의 값을 "19930531"로 설정합니다.
+    ica_exam_3.setDefaultDate("19930531");
+};
+
+/**
+ * 버튼 [달력에 표시되는 날짜를 획득하여 메시지 창에 표시하기] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    // InputCalendar 'ica_exam_3'의 defaultDate 속성의 값을 획득하여 메시지 창(alert)에 표시합니다.
+    let defaultDate = ica_exam_3.getDefaultDate();
+    alert(defaultDate);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label='InputCalendar의 입력값이 없을 때, 달력에 표시할 날짜를 설정하기'
+					style="margin-bottom: 10px;"></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='(기본 설정) defaultDate = ""' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" class="mr_def" focusOnDateSelect="false" id="ica_exam_1"
+							renderDiv="true" rightAlign="false" style="width:110px;min-height: 24px;">
+						</w2:inputCalendar>
+					</xf:group>
+				</xf:group>
+				<xf:group id="" style="" class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="defaultDate 속성에 날짜 설정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" class="mr_def" defaultDate="20230101" focusOnDateSelect="false"
+							id="ica_exam_2" renderDiv="true" rightAlign="false" style="width:110px;min-height: 24px;">
+						</w2:inputCalendar>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="스크립트로 defaultDate 속성에 날짜 설정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-top: 10px;">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+								style="min-width: 30px;height: 26px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[달력에 표시되는 날짜를 1993-05-31로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" style="margin: 10px 0px 10px 0px;">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" localeRef=""
+								style="min-width: 30px;height: 26px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[달력에 표시되는 날짜를 획득하여 메시지 창에 표시하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:inputCalendar calendarValueType="yearMonthDate" class="mr_def" focusOnDateSelect="false" id="ica_exam_3"
+							renderDiv="true" rightAlign="false" style="width:110px;min-height: 24px;">
+						</w2:inputCalendar>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

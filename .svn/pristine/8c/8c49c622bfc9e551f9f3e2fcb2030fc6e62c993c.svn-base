@@ -1,0 +1,53 @@
+/*amd /guide_eng/GridView/inputType/inputType_autoComplete_directOpen_gridView_column.xml 8149 a1af054f50a65a5afe2f889b9838dea43784d5437fb9ec6cf13e3880ed0d1d2e */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'Continent'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'Country'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'Item'}},{T:1,N:'w2:column',A:{dataType:'number',id:'col4',name:'Quantity'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList2',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'Asia'}]},{T:1,N:'col2',E:[{T:4,cdata:'01'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'Europe'}]},{T:1,N:'col2',E:[{T:4,cdata:'02'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'Americas'}]},{T:1,N:'col2',E:[{T:4,cdata:'03'}]}]}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList3'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'Continent',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'Country',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'Item',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col4',name:'Quantity',dataType:'number'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "13452",
+    "col4": "37.2"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "20392",
+    "col4": "40.3"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "45993",
+    "col4": "35.0"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "19034",
+    "col4": "39.8"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "58922",
+    "col4": "41.2"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "43267",
+    "col4": "38.7"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "32012",
+    "col4": "36.9"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "18290",
+    "col4": "38.1"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "34102",
+    "col4": "39.5"
+  }];
+  dataList1.setJSON(json);
+  dataList3.setJSON(json);
+};
+scwin.onpageunload = function () {};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Immediately Expand Selection Item List<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(In the first GridView)<br/>1. Click the icon in the Continent column.<br/>2. Click the option where the selection list appears immediately. (directOpen=“false”)<br/><br/>(In the second GridView)<br/>1. Click the icon in the Continent column.<br/>2. Click the option where the selection list does not appear immediately; instead, you must double-click to display the selection list. (directOpen=“true”)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'(Continent)<br/>directOpen="true"',escape:'false'}},{T:1,N:'w2:gridView',A:{showSortableUseFilter:'',scrollByColumnAdaptive:'false',rowNumVisible:'',useShiftKey:'true',scrollByColumn:'false',sortable:'',defaultCellHeight:'20',noResultMessageVisible:'',focusMode:'cell',selectedCellColor:'#FF8040',checkAllType:'false',dataList:'data:dataList1',copyType:'native',style:'border: solid gray 1px;margin-bottom: 10px;',id:'gridView1',autoFit:'allColumn',visibleRowNum:'5',useFilterList:'',useCtrlKey:'',copyOption:'',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column4',value:'Continent',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column3',value:'Country',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column2',value:'Item',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column1',value:'Quantity',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{ref:'',directOpen:'true',chooseOption:'',width:'70',viewType:'icon',inputType:'autoComplete',style:'height:20px',id:'col1',allOption:'',value:'',displayMode:'value delim label',viewTypeIconImage:'true'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList2'},E:[{T:1,N:'w2:label',A:{ref:'col2'}},{T:1,N:'w2:value',A:{ref:'col1'}}]}]}]},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col3',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col4',value:'',displayMode:'label'}}]}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'(Continent)<br/>directOpen="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:gridView',A:{autoFit:'allColumn',checkAllType:'false',copyOption:'',copyType:'native',dataList:'data:dataList3',defaultCellHeight:'20',focusMode:'cell',id:'gridView2',noResultMessageVisible:'',rowNumVisible:'',scrollByColumn:'false',scrollByColumnAdaptive:'false',selectedCellColor:'#FF8040',showSortableUseFilter:'',sortable:'',style:'border: solid gray 1px;',useCtrlKey:'',useFilterList:'',useShiftKey:'true',visibleRowNum:'5',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{id:'caption2',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column4',inputType:'text',style:'height:20px',value:'Continent',width:'70'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',style:'height:20px',value:'Country',width:'70'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',style:'height:20px',value:'Item',width:'70'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column1',inputType:'text',style:'height:20px',value:'Quantity',width:'70'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{allOption:'',chooseOption:'',displayMode:'label delim value',id:'col1',inputType:'autoComplete',ref:'',style:'height:20px',value:'',viewType:'icon',viewTypeIconImage:'true',width:'70'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList2'},E:[{T:1,N:'w2:label',A:{ref:'col2'}},{T:1,N:'w2:value',A:{ref:'col1'}}]}]}]},{T:1,N:'w2:column',A:{displayMode:'label',id:'col2',inputType:'text',style:'height:20px',value:'',width:'70'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'col3',inputType:'text',style:'height:20px',value:'',width:'70'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'col4',inputType:'text',style:'height:20px',value:'',width:'70'}}]}]}]}]}]}]}]})

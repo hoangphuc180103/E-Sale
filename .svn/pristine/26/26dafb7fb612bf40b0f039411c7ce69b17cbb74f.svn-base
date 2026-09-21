@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[tabControl]add tab sample 완성본">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dc_list" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="type" name="타입"></w2:column>
+            			<w2:column dataType="text" id="code" name="코드"></w2:column>
+            			<w2:column dataType="text" id="name" name="코드명 "></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<code><![CDATA[A01]]></code>
+            				<name><![CDATA[apple]]></name>
+            				<type><![CDATA[A]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[A02]]></code>
+            				<name><![CDATA[grape]]></name>
+            				<type><![CDATA[A]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B01]]></code>
+            				<name><![CDATA[APPLE]]></name>
+            				<type><![CDATA[B]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B02]]></code>
+            				<name><![CDATA[GRAPE]]></name>
+            				<type><![CDATA[B]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B03]]></code>
+            				<name><![CDATA[MELON]]></name>
+            				<type><![CDATA[B]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C01]]></code>
+            				<name><![CDATA[Apple]]></name>
+            				<type><![CDATA[C]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C02]]></code>
+            				<name><![CDATA[Grape]]></name>
+            				<type><![CDATA[C]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<type><![CDATA[C]]></type>
+            				<code><![CDATA[C02]]></code>
+            				<name><![CDATA[abcdefgh123456789abcde]]></name>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	 
+};  
+
+scwin.ui_textbox1_onclick = function (e) {  
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+//Tab 추가 
+scwin.btn_tab_onclick = async function (e) {
+
+    var indTab = tab1.getTabCount();
+    var addTabTt = "tab_"+indTab;
+    var newTabId = await tab1.addTab(addTabTt,  {   
+            "label": addTabTt, 
+            "title": "dataObject",
+            "openAction": "exist",
+            "closable": "true"
+        }, 
+         
+        {   
+            "src": "/edu/adv/tabindex_1.xml",
+            "frameMode" : "wframePreload",
+            "scope" : true, 
+            "alwaysDraw": "true" 
+        }
+        );
+
+
+        await tab1.setSelectedTabIndex(addTabTt);
+
+        tab1.getWindow(indTab).ui_inp1.setValue(addTabTt+"_Value1");
+
+
+};
+
+//Tab 삭제
+//
+scwin.btn_tabdelete_onclick = function (e) {
+    tab1.deleteTab(tab1.getSelectedTabIndex());
+};
+
+scwin.btn_setData_onclick = function (e) {
+    ui_ipt1.setValue("parent_Value1");
+    ui_ipt2.setValue("parent_Value2");
+};
+
+//값 보내기 
+scwin.btn_setTab_onclick = function (e) {
+
+    tab1.getWindow(tab1.getSelectedTabIndex()).ui_ipt1.setValue(ui_ipt1.getValue());
+    tab1.getWindow(tab1.getSelectedTabIndex()).ui_ipt2.setValue(ui_ipt2.getValue());
+         
+
+};
+
+//값 가져오기 
+
+scwin.btn_tabget_onclick = function (e) {
+
+    ui_ipt1.setValue(tab1.getWindow(tab1.getSelectedTabIndex()).ui_ipt1.getValue());
+    ui_ipt2.setValue(tab1.getWindow(tab1.getSelectedTabIndex()).ui_ipt2.getValue());
+     
+};
+
+//Tab2의 값 가져오기
+//alwaysDraw : false (기본 값)
+scwin.btn_gettab2Va_onclick = function (e) {
+
+    var tabValue = ui_tab2_ipt1.getValue(); 
+
+    alert(tabValue);
+};
+
+//Tab3의 값 가져오기 
+//alwaysDraw : true
+scwin.btn_gettab3Va_onclick = function (e) {
+
+    var tabValue = ui_tab3_ipt1.getValue(); 
+
+    alert(tabValue);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] tabControl 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style="cursor: pointer;"
+    					tagname="h3" userData1="/edu/adv/tabControl_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame id="" src="/edu/adv/tabControl_desc.xml" style=""></w2:pageFrame>
+    			<xf:group class="tblbox" id="" style="">
+    				<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    					<w2:attributes>
+    						<w2:summary></w2:summary>
+    					</w2:attributes>
+    					<xf:group tagname="colgroup">
+    						<xf:group style="width:150px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    						<xf:group style="width:150px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    					</xf:group>
+    					<xf:group style="" tagname="tr">
+    						<xf:group class="w2tb_th" style="" tagname="th">
+    							<w2:textbox class="req" id="" label="부모 헤더1" ref="" style="" userData2=""></w2:textbox>
+    						</xf:group>
+    						<xf:group class="w2tb_td" style="" tagname="td">
+    							<xf:input id="ui_ipt1" style="width: 144px;height: 21px;"></xf:input>
+    						</xf:group>
+    						<xf:group class="w2tb_th " tagname="th">
+    							<w2:attributes></w2:attributes>
+    							<w2:textbox class="" id="" label="부모 헤더2" ref="" style="" userData2=""></w2:textbox>
+    						</xf:group>
+    						<xf:group class="w2tb_td" tagname="td">
+    							<w2:attributes></w2:attributes>
+    							<xf:input id="ui_ipt2" style="width: 144px;height: 21px;"></xf:input>
+    							<xf:trigger class="" ev:onclick="scwin.btn_setData_onclick" id="btn_setData"
+    								style="width: 80px;height: 23px;" type="button">
+    								<xf:label><![CDATA[값 자동 넣기]]></xf:label>
+    							</xf:trigger>
+    						</xf:group>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="아래에는 tabControl이 존재합니다.(id:tab1)" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style="">
+    					<xf:trigger class="btn_cm " id="btn_tabadd" style="" type="button" ev:onclick="scwin.btn_tab_onclick">
+    						<xf:label><![CDATA[Tab 추가]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " id="btn_tabdelete" style="" type="button" ev:onclick="scwin.btn_tabdelete_onclick">
+    						<xf:label><![CDATA[Tab 삭제]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " id="btn_setTab" style="" type="button" ev:onclick="scwin.btn_setTab_onclick">
+    						<xf:label><![CDATA[값 보내기]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " id="btn_tabget" style="" type="button" ev:onclick="scwin.btn_tabget_onclick">
+    						<xf:label><![CDATA[값 가져오기]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="tbcbox" id="" style="">
+    				<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="tab1" style=""
+    					tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+    					<w2:tabs disabled="false" id="tabs1" label="TAB0" style=""></w2:tabs>
+    					<w2:content alwaysDraw="false" id="content1" style="" src="/edu/adv/tabindex_0.xml"></w2:content>
+    				</w2:tabControl>
+    				<xf:group class="tbcbox" id="" style="">
+    					<w2:textbox class="ws_example_txt_desc_info" id="" label="TabControl 컴포넌트의 alwaysDraw 속성 확인"
+    						style="background-color: #eee;padding:10px 10px;margin-bottom: 10px">
+    					</w2:textbox>
+    					<xf:group class="titbox" id="" style="">
+    						<w2:span id="" label="아래에는 tabControl이 존재합니다.(id:tab2)" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    						<xf:group class="rt" id="" style="">
+    							<xf:trigger class="btn_cm " id="btn_gettab2Va" style="" type="button"
+    								ev:onclick="scwin.btn_gettab2Va_onclick">
+    								<xf:label><![CDATA[Tab2의 값 가져오기]]></xf:label>
+    							</xf:trigger>
+    							<xf:trigger class="btn_cm " id="btn_gettab3Va" style="" type="button"
+    								ev:onclick="scwin.btn_gettab3Va_onclick">
+    								<xf:label><![CDATA[Tab3의 값 가져오기]]></xf:label>
+    							</xf:trigger>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group class="msgbox error" id="" style="">
+    						<w2:textbox class="txt_msg" for="" id="" label="TAB2 Content의 속성 alwaysDraw : false (기본 값)" style="" tagname=""></w2:textbox>
+    						<w2:textbox class="txt_con" for="" id=""
+    							label="초기 로딩 시, 첫번 째 탭의 컴포넌트만 렌더링.사용자 이벤트 혹은 스크립트 이벤트로 각 탭이 선택되는 시점에 해당 탭의 화면을 렌더링" style="" tagname="">
+    						</w2:textbox>
+    						<w2:textbox class="txt_msg" for="" id="" label="TAB3 Content의 속성 alwaysDraw : true" style="" tagname=""></w2:textbox>
+    						<w2:textbox class="txt_con" for="" id=""
+    							label="컴포넌트가 포함하는 모든 탭의 컴포넌트를 초기 화면 로딩 시 렌더링" style="" tagname="">
+    						</w2:textbox>
+    					</xf:group>
+    					<xf:group class="tbcbox" id="" style="">
+    						<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="tab2"
+    							style="" tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+    							<w2:tabs disabled="false" id="tabs1" label="TAB1" style=""></w2:tabs>
+    							<w2:tabs disabled="false" id="tabs2" label="TAB2" style=""></w2:tabs>
+    							<w2:tabs disabled="false" id="tabs3" label="TAB3" style=""></w2:tabs>
+    							<w2:tabs disabled="false" id="tabs4" label="TAB4" style=""></w2:tabs>
+    							<w2:tabs disabled="false" id="tabs5" label="TAB5" style=""></w2:tabs>
+    							<w2:tabs disabled="false" id="tabs6" label="TAB6" style=""></w2:tabs>
+    							<w2:content alwaysDraw="false" id="content1" style="">
+    								<xf:group class="tblbox" id="" style=""></xf:group>
+    								<xf:group class="tblbox" id="" style="">
+    									<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style=""
+    										tagname="table">
+    										<w2:attributes>
+    											<w2:summary></w2:summary>
+    										</w2:attributes>
+    										<xf:group tagname="colgroup">
+    											<xf:group style="width:150px;" tagname="col"></xf:group>
+    											<xf:group style="" tagname="col"></xf:group>
+    										</xf:group>
+    										<xf:group style="" tagname="tr">
+    											<xf:group class="w2tb_th" style="" tagname="th">
+    												<w2:textbox class="" id="" label="tab1의 input" ref="" style="" userData2=""></w2:textbox>
+    											</xf:group>
+    											<xf:group class="w2tb_td" style="" tagname="td">
+    												<xf:input id="ui_tab1_ipt1" style="width: 144px;height: 21px;"
+    													initValue="ui_tab1_ipt1_Va">
+    												</xf:input>
+    											</xf:group>
+    										</xf:group>
+    									</xf:group>
+    								</xf:group>
+    							</w2:content>
+    							<w2:content id="content2" style="">
+    								<xf:group class="tblbox" id="" style=""></xf:group>
+    								<xf:group class="tblbox" id="" style="">
+    									<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style=""
+    										tagname="table">
+    										<w2:attributes>
+    											<w2:summary></w2:summary>
+    										</w2:attributes>
+    										<xf:group tagname="colgroup">
+    											<xf:group style="width:150px;" tagname="col"></xf:group>
+    											<xf:group style="" tagname="col"></xf:group>
+    										</xf:group>
+    										<xf:group style="" tagname="tr">
+    											<xf:group class="w2tb_th" style="" tagname="th">
+    												<w2:textbox class="" id="" label="tab2의 input" ref="" style="" userData2=""></w2:textbox>
+    											</xf:group>
+    											<xf:group class="w2tb_td" style="" tagname="td">
+    												<xf:input id="ui_tab2_ipt1" style="width: 144px;height: 21px;"
+    													initValue="ui_tab2_ipt1_Va">
+    												</xf:input>
+    											</xf:group>
+    										</xf:group>
+    									</xf:group>
+    								</xf:group>
+    							</w2:content>
+    							<w2:content alwaysDraw="true" id="content3" style="">
+    								<xf:group class="tblbox" id="" style=""></xf:group>
+    								<xf:group class="tblbox" id="" style="">
+    									<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style=""
+    										tagname="table">
+    										<w2:attributes>
+    											<w2:summary></w2:summary>
+    										</w2:attributes>
+    										<xf:group tagname="colgroup">
+    											<xf:group style="width:150px;" tagname="col"></xf:group>
+    											<xf:group style="" tagname="col"></xf:group>
+    										</xf:group>
+    										<xf:group style="" tagname="tr">
+    											<xf:group class="w2tb_th" style="" tagname="th">
+    												<w2:textbox class="" id="" label="tab3의 input" ref="" style="" userData2=""></w2:textbox>
+    											</xf:group>
+    											<xf:group class="w2tb_td" style="" tagname="td">
+    												<xf:input id="ui_tab3_ipt1" style="width: 144px;height: 21px;"
+    													initValue="ui_tab3_ipt1_Va">
+    												</xf:input>
+    											</xf:group>
+    										</xf:group>
+    									</xf:group>
+    								</xf:group>
+    							</w2:content>
+    							<w2:content alwaysDraw="false" id="content4" style="height:0px"></w2:content>
+    							<w2:content alwaysDraw="false" id="content5" style="height:0px"></w2:content>
+    							<w2:content alwaysDraw="false" id="content6" style="height:0px"></w2:content>
+    						</w2:tabControl>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group class="tbcbox" id="" style=""></xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

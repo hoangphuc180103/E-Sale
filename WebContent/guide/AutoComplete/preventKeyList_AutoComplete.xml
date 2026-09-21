@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="특정 키 동작 방지" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. AutoComplete의 선택 목록 열기.&lt;br/&gt;2. preventKeyList 속성 설정에 따라 Up 방향키와 Enter 키가 동작하지 않는 것을 확인.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;preventKeyList="38, 13"' escape="false">
+    	</w2:textbox><w2:autoComplete preventKeyList="38, 13" submenuSize="auto" search="contain" ref="" caseSensitive="true" chooseOption="" editType="select" useKeywordHighlight="true" style="display: block;width: 50%" id="autoComplete1" allOption="" useLocale="false">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Seoul]]></w2:label>
+    				<w2:value><![CDATA[01]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Osong]]></w2:label>
+    				<w2:value><![CDATA[02]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Daejeon]]></w2:label>
+    				<w2:value><![CDATA[03]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Kimcheon]]></w2:label>
+    				<w2:value><![CDATA[04]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Incheon]]></w2:label>
+    				<w2:value><![CDATA[05]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Hadong]]></w2:label>
+    				<w2:value><![CDATA[06]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Ilsan]]></w2:label>
+    				<w2:value><![CDATA[07]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Gwangju]]></w2:label>
+    				<w2:value><![CDATA[08]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete></xf:group></body>
+</html>

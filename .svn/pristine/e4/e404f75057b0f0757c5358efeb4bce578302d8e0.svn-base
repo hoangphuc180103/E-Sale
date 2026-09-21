@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[FloatingLayer] 리사이즈 기능 사용하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231106" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [1.1 FloatingLayer 표시하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // FloatingLayer의 위치 조정
+    flt_exam1.setPosition(grp_exam1.getPosition("left"), grp_exam1.getPosition("top"));
+
+    // FloatingLayer 'flt_exam1'을 표시합니다.
+    flt_exam1.show();
+};
+
+/**
+ * 버튼 [2.1 FloatingLayer 표시하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // FloatingLayer의 위치 조정
+    flt_exam2.setPosition(grp_exam2.getPosition("left"), grp_exam2.getPosition("top"));
+    
+    // FloatingLayer 'flt_exam2'을 표시합니다.
+    flt_exam2.show();
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="FloatingLayer의 'dragResizable' 속성을 사용하여 사용자가 컴포넌트의 크기를 조절할 수 있도록 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 마우스 사용이 가능한 환경에서 정상 동작합니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="리사이즈 기능 사용하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick"
+								id="btn_exam1_1" style="" type="button">
+								<xf:label><![CDATA[1.1 FloatingLayer 표시하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="grp_exam1" style="height: 140px;position: relative;"></xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 리사이즈 기능 사용하지 않기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_1_onclick"
+								id="btn_exam2_1" style="" type="button">
+								<xf:label><![CDATA[2.1 FloatingLayer 표시하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="grp_exam2" style="height: 140px;position: relative;"></xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+		<w2:floatingLayer id="flt_exam2" style="position:absolute;width:240px;height:140px;left:22px;top:300px;display: none;"
+			title="리사이즈 불가" movable="true" fixed="true" dragResizable="false">
+			<w2:textbox id="" label="콘텐츠 영역입니다." style="padding: 12px 6px;"></w2:textbox>
+		</w2:floatingLayer>
+		<w2:floatingLayer fixed="true" id="flt_exam1" style="position:absolute;width:240px;height:140px;left:22px;top:580px;display: none;"
+			title="리사이즈 가능" dragResizable="true">
+			<w2:textbox id="" label="콘텐츠 영역입니다." style="padding: 12px 6px;"></w2:textbox>
+		</w2:floatingLayer>
+	</body>
+</html>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="merge" meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+        				<w2:column dataType="text" id="col2" name="Country"></w2:column>
+        				<w2:column dataType="text" id="col3" name="Item 1"></w2:column>
+        				<w2:column dataType="text" id="col4" name="Item 2"></w2:column>
+        				<w2:column dataType="text" id="col5" name="Quantity"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var json = [
+        { "col1": "Asia", "col2": "Korea", "col3": "TV", "col4": "TV", "col5": "1" },
+        { "col1": "Asia", "col2": "Korea", "col3": "TV", "col4": "TV", "col5": "2" },
+        { "col1": "Asia", "col2": "Korea", "col3": "TV", "col4": "Washer", "col5": "3" },
+        { "col1": "Asia", "col2": "Korea", "col3": "Heater", "col4": "Washer", "col5": "4" },
+        { "col1": "Asia", "col2": "China", "col3": "TV", "col4": "TV", "col5": "5" },
+        { "col1": "Asia", "col2": "China", "col3": "TV", "col4": "TV", "col5": "6" },
+        { "col1": "Asia", "col2": "China", "col3": "TV", "col4": "Freezer", "col5": "7" },
+        { "col1": "Asia", "col2": "Japan", "col3": "Washer", "col4": "Washer", "col5": "8" },
+        { "col1": "Asia", "col2": "Japan", "col3": "Washer", "col4": "Washer", "col5": "9" },
+        { "col1": "Asia", "col2": "Japan", "col3": "Washer", "col4": "TV", "col5": "10" },
+        { "col1": "Unknown", "col2": "Unknown", "col3": "Unknown", "col4": "Unknown", "col5": "11" },
+        { "col1": "Unknown", "col2": "Unknown", "col3": "Unknown", "col4": "Unknown", "col5": "12" },
+        { "col1": "Unknown", "col2": "Unknown", "col3": "Unknown", "col4": "TBD", "col5": "13" },
+        { "col1": "Unknown", "col2": "Unknown", "col3": "Unknown", "col4": "TBD", "col5": "14" }
+    ];
+    dataList1.setJSON(json);
+    gridView1.setFocusedCell(0, "col1", false);
+    gridView2.setFocusedCell(0, "col1", false);
+    gridView3.setFocusedCell(0, "col1", false);
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    gridView1.mergeByCol();
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Set Text Position when Merging by Column" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Verify that the cells in each GridView are merged based on columns.&lt;br/&gt;2. Verify that the text within merged cells is positioned at the top, middle, or bottom according to the mergedCellVerticalAlign property value.' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='mergeCells="bycol"&lt;br/&gt;mergedCellVerticalAlign="top"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView scrollByColumnAdaptive="false" hammerEnabled="true" dataDragDrop="true" selectedRowColor="orange" useShiftKey="true"
+    		useCtrlOnMultisort="" scrollByColumn="false" dataDragDropStatus="true" focusFlow="linear" defaultCellHeight="20"
+    		selectedCellColor="pink" focusMode="cell" contextMenu="true" visibleRowNumFix="true" dataList="data:dataList1" dataDragSelect=""
+    		style="border:solid 1px gray; margin-bottom:10px;" cellStatusIconPosition="left" id="gridView1" autoFit="allColumn" useCtrlKey=""
+    		cellStatusVisible="true" visibleRowNum="10" mergeCells="bycol" mergedCellVerticalAlign="top">
+    		<w2:caption style="" id="caption3" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header3">
+    			<w2:row style="" id="row5">
+    				<w2:column width="70" inputType="text" id="column17" value="Continent" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column16" value="Country" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column15" value="Item 1" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column14" value="Item 2" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column22" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody3">
+    			<w2:row style="" id="row6">
+    				<w2:column width="70" inputType="text" id="col1" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="col2" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="col3" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="col4" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="col5" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='mergeCells="bycol"&lt;br/&gt;mergedCellVerticalAlign="middle"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" cellStatusIconPosition="left" cellStatusVisible="true" contextMenu="true" dataDragDrop="true"
+    		dataDragDropStatus="true" dataDragSelect="" dataList="data:dataList1" defaultCellHeight="20" focusFlow="linear" focusMode="cell"
+    		hammerEnabled="true" id="gridView2" mergeCells="bycol" scrollByColumn="false" scrollByColumnAdaptive="false" selectedCellColor="pink"
+    		selectedRowColor="orange" style="border:solid 1px gray; margin-bottom:10px;" useCtrlKey="" useCtrlOnMultisort="" useShiftKey="true" visibleRowNum="10"
+    		visibleRowNumFix="true" mergedCellVerticalAlign="middle">
+    		<w2:caption id="caption4" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header3" style="">
+    			<w2:row id="row5" style="">
+    				<w2:column displayMode="label" id="column17" inputType="text" value="Continent" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column16" inputType="text" value="Country" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column15" inputType="text" value="Item 1" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column14" inputType="text" value="Item 2" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column22" inputType="text" value="Quantity" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody3" style="">
+    			<w2:row id="row6" style="">
+    				<w2:column displayMode="label" id="col1" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col2" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col3" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col4" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col5" inputType="text" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox6" label='mergeCells="bycol"&lt;br/&gt;mergedCellVerticalAlign="bottom"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" cellStatusIconPosition="left" cellStatusVisible="true" contextMenu="true" dataDragDrop="true"
+    		dataDragDropStatus="true" dataDragSelect="" dataList="data:dataList1" defaultCellHeight="20" focusFlow="linear" focusMode="cell"
+    		hammerEnabled="true" id="gridView3" mergeCells="bycol" scrollByColumn="false" scrollByColumnAdaptive="false" selectedCellColor="pink"
+    		selectedRowColor="orange" style="border: solid 1px gray;" useCtrlKey="" useCtrlOnMultisort="" useShiftKey="true" visibleRowNum="10"
+    		visibleRowNumFix="true" mergedCellVerticalAlign="bottom">
+    		<w2:caption id="caption5" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header3" style="">
+    			<w2:row id="row5" style="">
+    				<w2:column displayMode="label" id="column17" inputType="text" value="Continent" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column16" inputType="text" value="Country" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column15" inputType="text" value="Item 1" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column14" inputType="text" value="Item 2" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column22" inputType="text" value="Quantity" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody3" style="">
+    			<w2:row id="row6" style="">
+    				<w2:column displayMode="label" id="col1" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col2" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col3" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col4" inputType="text" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col5" inputType="text" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

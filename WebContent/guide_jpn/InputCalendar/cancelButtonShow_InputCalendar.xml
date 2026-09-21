@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+	inputCalendar1.validate();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+scwin.fn_msg = function () {
+	var msg = "";
+	var invalidType = this.getType();
+	if (invalidType == "mandatory") {
+		msg = "Enter a date. 날짜를 입력하세요. ";
+	} else {
+		msg = "Invalid date. 날짜 형식을 확인하세요.";
+	}
+	alert(msg);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="日付の選択を解除ボタンを表示する"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. InputCalendarコンポーネントのカレンダーアイコンをクリックします。 &lt;br/&gt;2.日付の選択を解除ボタンがカレンダーの上に表示されることを確認してください。' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;cancelButtonShow="true"' escape="false">
+    	</w2:textbox>
+    	<w2:inputCalendar style="margin-bottom: 10px;" id="inputCalendar1" calendarValueType="yearMonthDate" cancelButtonShow="true" setCurrentDate="true">
+    	</w2:inputCalendar>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;cancelButtonShow="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:inputCalendar calendarValueType="yearMonthDate" cancelButtonShow="false" id="inputCalendar2" setCurrentDate="true" style=""></w2:inputCalendar>
+    </xf:group></body>
+</html>

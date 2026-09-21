@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[PageList] 브라우저에 렌더링할 때, 'table' 또는 'ul' 태그로 구성하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231115" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // PageList 'pgc_exam1', 'pgc_exam2'의 전체 페이지 수를 12로 설정합니다.
+    pgl_exam1.setCount(12);
+    pgl_exam2.setCount(12);
+};
+]]>
+		</script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="PageList의 'renderType' 속성을 사용하여 브라우저에 렌더링할 때, 'table' 태그로 구성할지, 'ul' 태그로 구성할지를 설정한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 'table'로 구성하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="">
+							<w2:pageList pageSize="10" id="pgl_exam1" displayFormat="#" style="min-width: 390px;" renderType="table">
+							</w2:pageList>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'ul', 'li'로 구성하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="">
+							<w2:pageList displayFormat="#" id="pgl_exam2" pageSize="10" style="min-width: 390px;" renderType="list"></w2:pageList>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

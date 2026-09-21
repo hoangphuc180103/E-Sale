@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[Seoul]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Daegu]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Incheon]]></col1>
+            				<col2><![CDATA[Incheon]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Busan]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    autoComplete1.setValue("Busan");
+};
+
+scwin.autoComplete1_onviewchange = function (info) {
+    var oldValue = info.oldValue;
+    var newValue = info.newValue;
+    var oldSelectedIndex = info.oldIndex;
+    var newSelectedIndex = info.newIndex;
+
+    alert("onviewchange - " + oldValue + " is changed to " + newValue + ".");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="이벤트 - onviewchange" style="color: blue;margin-bottom: 10px;" tagname="h1"></w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. 마우스로 항목을 선택하고, onviewchange 이벤트가 발생하는 것을 확인. &lt;br/&gt;2. 키보드로 항목을 선택하고, &amp;nbsp;onviewchange 이벤트가 발생하는 것을 확인. &lt;br/&gt;3. 하단의 setValue() 버튼을 클릭하여 동적으로 항목을 선택하면, onviewchange 이벤트가 발생하지 "않는" 것을 확인.'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="이벤트 설명&lt;br/&gt;onviewchange - 키보드 혹은 마우스 조작을 통해 값이 변경될 경우 발생. &lt;br/&gt;(JavaScript 코드에 의한 변경은 해당 없음.)"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox5" label='/// Sample Code&lt;br/&gt;&lt;br/&gt;scwin.autoComplete1_onviewchange = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var oldValue = info.oldValue;&lt;br/&gt; &amp;nbsp; &amp;nbsp;var newValue = info.newValue;&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onviewchange - " + oldValue + " is changed to " + newValue + ".");&lt;br/&gt;};&lt;br/&gt;' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[autoComplete1.setValue("Busan");]]></xf:label>
+    	</xf:trigger>
+    	<w2:autoComplete submenuSize="auto" search="start" ref="" chooseOption="" ev:onviewchange="scwin.autoComplete1_onviewchange"
+    		editType="select" style="width: 50%;" id="autoComplete1" allOption="">
+    		<w2:choices>
+    			<w2:itemset nodeset="data:dataList1">
+    				<w2:label ref="col1"></w2:label>
+    				<w2:value ref="col2"></w2:value>
+    			</w2:itemset>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

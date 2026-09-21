@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>TabControl</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_acd6b6420b2a4274" class="chapter_title">TabControl</h1>
+		<h1 id="r_1c4d2c53c474fd53" class="element heading1"
+			data-element-id="1c4d2c53c474fd53">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_612f284ac55ac5cb" class="element normal"
+			data-element-id="612f284ac55ac5cb">
+			TabControl은 웹 애플리케이션에서 다중 화면을 탭 형태로 관리할 수 있는 강력한 UI 컴포넌트입니다. 사용자는
+			TabControl을 통해 단일 화면에서 여러 탭을 오가며 다양한 정보를 확인하거나 작업을 수행할 수 있어, 사용자 경험을
+			향상시키고 복잡한 인터페이스를 간결하게 만듭니다. 각 탭은 별도의 화면 파일(
+			<code>src</code>
+			)을 로드할 수 있어 독립적인 콘텐츠와 기능을 제공합니다. TabControl은
+			<code>iframe</code>
+			,
+			<code>wframe</code>
+			,
+			<code>wframePreload</code>
+			,
+			<code>pageFrame</code>
+			의 프레임 모드를 지원하며, 각 모드는 객체 참조나 성능에 따라 구분됩니다.
+		</p>
+		<dl id="r_1608b103eea4b241" class="element definition_list"
+			data-element-id="1608b103eea4b241">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2icS8hs4SXmAE-rs_JGrhb">TabControl
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb2-1F4lhG4W0DYu_zPynva7">TabControl
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_6f0d421179d95bce" class="element heading1"
+			data-element-id="6f0d421179d95bce">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_a497bb2c0c247ec0" class="element normal"
+			data-element-id="a497bb2c0c247ec0">TabControl은 다음과 같은 다양한 상황에서
+			활용됩니다.</p>
+		<dl id="r_9753d2e9b1129f14" class="element definition_list"
+			data-element-id="9753d2e9b1129f14">
+			<dt>
+				<strong>폼 양식 구성</strong>
+			</dt>
+			<dd>
+				<p>복잡한 입력 폼을 여러 단계나 카테고리로 나누어 사용자의 입력 부담을 줄이고 직관적인 인터페이스를 제공합니다.
+					예를 들어, 회원가입 폼을 개인정보, 연락처, 추가정보 탭으로 구분하여 단계별 입력을 가능하게 합니다.</p>
+			</dd>
+			<dt>
+				<strong>대시보드 및 관리 화면</strong>
+			</dt>
+			<dd>
+				<p>관리자 화면에서 다양한 기능들을 탭으로 구분하여 효율적인 화면 관리를 제공합니다. 사용자 관리, 시스템 설정,
+					통계 분석 등을 별도의 탭으로 구성하여 업무 효율성을 높입니다.</p>
+			</dd>
+			<dt>
+				<strong>문서 관리 시스템</strong>
+			</dt>
+			<dd>
+				<p>여러 문서나 파일을 동시에 열어 작업할 때 탭 형태로 관리하여 빠른 전환과 비교 작업을 지원합니다.</p>
+			</dd>
+			<dt>
+				<strong>설정 및 환경설정 화면</strong>
+			</dt>
+			<dd>
+				<p>애플리케이션의 다양한 설정 옵션들을 카테고리별로 분류하여 사용자가 쉽게 찾고 수정할 수 있도록 합니다.</p>
+			</dd>
+			<dt>
+				<strong>데이터 뷰어</strong>
+			</dt>
+			<dd>
+				<p>동일한 데이터를 다양한 형태(그래프, 테이블, 차트)로 표시할 때 각각을 별도의 탭으로 구성하여 사용자가
+					원하는 형태로 데이터를 확인할 수 있게 합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_96a192504b51e9ff" class="element heading1"
+			data-element-id="96a192504b51e9ff">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_023d59ea82f481b1" class="element unordered_list"
+			data-element-id="023d59ea82f481b1">
+			<li><p>
+					탭 생성 –
+					<code>addTab()</code>
+				</p>
+				<ul>
+					<li><p>
+							<code>alwaysDraw</code>
+							설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00315.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							<code>openAction</code>
+							설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00313.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							탭 소스 동적 변경 –
+							<code>getFrame().setSrc()</code>
+						</p></li>
+					<li><p>
+							탭 생성 시 파라미터 전달 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/getParameter_p_addTab_TabControl/getParameter_p_addTab_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Z2Mrdxt2uws">YouTube</a>)
+						</p></li>
+					<li><p>
+							부모의 Scope 상속 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/addTab_scopeInherit_TabControl/addTab_scopeInherit_TabControl.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							PageFrame 탭 생성 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/pageFrame_addTab_TabControl/pageFrame_addTab_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/2409hnwuHMU">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>탭 선택</p>
+				<ul>
+					<li><p>
+							초기 탭 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00334.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							탭의 Index로 탭 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00293.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Tab 키로 다음 탭으로 이동 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00461.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>탭 관리</p>
+				<ul>
+					<li><p>
+							탭의 ID로 Index 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00295.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							선택된 탭의 ID 또는 Index 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00292.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							탭 정보 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00294.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							자식 탭의 비활성화 상태 유지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00158.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/keepDisabledTab_TabControl/keepDisabledTab_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/5BCe5c4avtM">YouTube</a>)
+						</p></li>
+					<li><p>
+							탭의 컨텐츠에 구성된 컴포넌트의 메소드 호출 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00296.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							마우스 드래깅으로 탭 순서 변경 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00462.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>팝업</p>
+				<ul>
+					<li><p>
+							탭에서 생성한 부모-자식 팝업 함께 닫기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/frameModal_TabControl/frameModal_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/eA6lQkcBGsY">YouTube</a>)
+						</p></li>
+					<li><p>
+							탭 내부에서 프레임 기반 모달 팝업 생성 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/frameMode_tabControl_content_openPopup_frameModal_p/frameMode_tabControl_content_openPopup_frameModal_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/dGoIpOaHJcA">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>탭 스크롤</p>
+				<ul>
+					<li><p>
+							탭의 이동 버튼의 기능 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00161.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							탭을 닫을 때 스크롤에 보이는 탭의 수를 유지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00162.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/tabScroll_tabScrollAuto_TabControl/tabScroll_tabScrollAuto_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/nt3DExi4iTs">YouTube</a>)
+						</p></li>
+					<li><p>
+							탭 스크롤 위치 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/tabScroll_tabPosition_TabControl/tabScroll_tabPosition_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/G2NKZg9n_eM">YouTube</a>)
+						</p></li>
+					<li><p>
+							스크롤 버튼으로 탭 선택 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/tabScroll_changeActiveTab_TabControl/tabScroll_changeActiveTab_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/srqwDbr70FM">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>적응형 디자인 및 상태창</p>
+				<ul>
+					<li><p>
+							적응형 디자인 적용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/addTab_adaptiveFrame_TabControl/addTab_adaptiveFrame_TabControl.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>서브미션 상태창 표시</p>
+				<ul>
+					<li><p>
+							기본 상태창 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/processMsgFrame_TabControl/processMsgFrame_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/XH8obZkSyEo">YouTube</a>)
+						</p></li>
+					<li><p>
+							커스텀 상태창 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/processMsgFrameURL_config_processMsgFrame_TabControl/processMsgFrameURL_config_processMsgFrame_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/BcEO_wVyTc8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>탭 UI 설정</p>
+				<ul>
+					<li><p>
+							탭의 기능(탭 이동, 목록 보기) 버튼 사용 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00160.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							탭 위치 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00159.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/tabPosition_TabControl/tabPosition_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/HXLexQKZUTU">YouTube</a>)
+						</p></li>
+					<li><p>
+							탭 닫기 버튼 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/closable_alwaysShowCloseBtn_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/pNuDxa8PJQI">YouTube</a>)
+						</p></li>
+					<li><p>
+							탭 선택 상태를 툴팁으로 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/useTabTitleSelected_TabControl.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/iUZKEXx_XHE">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_fb3d6c7e8a43d8cd" class="element heading1"
+			data-element-id="fb3d6c7e8a43d8cd">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_fec8b63d5ee978ef" class="element unordered_list"
+			data-element-id="fec8b63d5ee978ef">
+			<li><p>
+					<code>onchange</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00254.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					<code>onscrollleftbtnclick</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/onscrollleftbtnclick_onscrollrightbtnclick_onsubmenubtnclick_TabControl.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/81mP-CegE6k">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>onscrollrightbtnclick</code>
+				</p></li>
+			<li><p>
+					<code>onsubmenubtnclick</code>
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

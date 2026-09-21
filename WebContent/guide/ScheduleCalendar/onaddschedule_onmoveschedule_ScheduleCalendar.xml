@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate />
+        <xf:model>
+            <xf:instance>
+                <data xmlns="" />
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+                <w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+                    <w2:columnInfo>
+                        <w2:column id="title" name="title" dataType="text"></w2:column>
+                        <w2:column id="id" name="id" dataType="text"></w2:column>
+                        <w2:column id="start" name="start" dataType="text"></w2:column>
+                        <w2:column id="end" name="end" dataType="text"></w2:column>
+                    </w2:columnInfo>
+                </w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection></w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[scwin.count = 0;
+
+scwin.onpageload = function () {
+
+    var jsonData = [
+        { "startColumn": "20200909", "endColumn": "20200909", "titleColumn": "Seminar A", "idColumn": "id1" }
+        , { "startColumn": "20200916", "endColumn": "20200921", "titleColumn": "Seminar B", "idColumn": "id2" }
+        , { "startColumn": "20200911", "endColumn": "20200911", "titleColumn": "Meeting", "idColumn": "id3" }
+        , { "startColumn": "20200913", "endColumn": "20200913", "titleColumn": "Airport Pick-up", "idColumn": "id6" }
+        , { "startColumn": "20200922", "endColumn": "20200926", "titleColumn": "Visit to Parents", "idColumn": "id5" }
+        , { "startColumn": "20200924", "endColumn": "20200924", "titleColumn": "B-day", "idColumn": "id4" }
+    ];
+
+    dataList1.setJSON(jsonData);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    var dateStr = WebSquare.date.getCurrentServerDate("yyyyMMdd");
+    var addDate = WebSquare.date.dateAdd(dateStr, 3);
+
+    scheduleCalendar1.addSchedule({
+        "title": "My Schedule",
+        "start": dateStr,
+        "end": addDate,
+        "id": scwin.count
+    });
+    scwin.count++;
+};
+
+
+
+scwin.scheduleCalendar1_onaddschedule = function (rowIndex) {
+    alert("onaddschedule - Added!");
+};
+
+scwin.scheduleCalendar1_onmoveschedule = function (rowIndex) {
+    alert("onmoveschedule - Moved!");
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin:10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="이벤트 - onaddschedule &amp; onmoveschedule" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 하단의 addSchedule() 버튼을 클릭하여 스케줄을 추가. (혹은 임의의 날짜를 클릭하고 스케줄을 추가.)&lt;br/&gt;2. onaddschedule 이벤트가 발생하는 것을 확인. &lt;br/&gt;3. 달력에서 추가된 스케줄을 드래깅하여 스케줄을 이동. &lt;br/&gt;4. onmoveschedule 이벤트가 발생하는 것을 확인. &lt;br/&gt;(각 이벤트 핸들러는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='이벤트 설명&lt;br/&gt;onaddschedule - 스케줄을 추가할 때 발생. &lt;br/&gt;onmoveschedule - 스케줄을 이동할 때 발생.' escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox5" label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.count = 0;&lt;br/&gt;&lt;br/&gt;scwin.trigger1_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var dateStr = WebSquare.date.getCurrentServerDate("yyyyMMdd");&lt;br/&gt; &amp;nbsp; &amp;nbsp;var addDate = WebSquare.date.dateAdd(dateStr, 3);&lt;br/&gt;&lt;br/&gt; &amp;nbsp; &amp;nbsp;scheduleCalendar1.addSchedule({&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"title": "My Schedule",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"start": dateStr,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"end": addDate,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"id": scwin.count&lt;br/&gt; &amp;nbsp; &amp;nbsp;});&lt;br/&gt; &amp;nbsp; &amp;nbsp;scwin.count++;&lt;br/&gt;};' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[addSchedule()]]></xf:label>
+    	</xf:trigger>
+    	<w2:scheduleCalendar dataList="dataList1" defaultDate="" editable="true" endColumn="end" eventLimit="false" headerLeftBtn="true"
+    		headerRightBtn="false" headerTitle="true" id="scheduleCalendar1" lang="" selectable="true" startColumn="start"
+    		style="width: 400px;height: 500px;margin-bottom: 10px;" titleColumn="title" useHeaderToolbar="false" version="6.1.11"
+    		ev:onaddschedule="scwin.scheduleCalendar1_onaddschedule" ev:onmoveschedule="scwin.scheduleCalendar1_onmoveschedule">
+    	</w2:scheduleCalendar>
+    </xf:group></body>
+</html>

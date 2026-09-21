@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="교육문서 표시">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	var tmpJSON;
+    
+    tmpJSON = $p.getParameter( "rowObj" ); 
+
+     
+
+	tab1.deleteAllTabs();
+    var _tabKey = "pdf1";
+    var _url = tmpJSON.pdfNm; 
+    var _label = tmpJSON.label;
+     
+    		var tabOptions = {
+			"label" : _label,
+			"closable" : true,
+			"openAction" : "select"
+		};
+		
+		var contentsOptions = {
+			"src" : _url,
+			"frameMode" : "iframe"
+		};
+ 
+		console.log(_tabKey);
+		console.log(_url);
+		tab1.addTab(_tabKey, tabOptions, contentsOptions); 
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="" id="" style="position: absolute;left:10px;top:10px;bottom:0px;right: 10px;">
+    		<w2:iframe id="iframe1" src="" style="position:relative;width:100%;height:100%;display: none;"></w2:iframe>
+    		<w2:tabControl alwaysDraw="false" class="tbc" closable="" confirmFalseAction="new" confirmTrueAction="exist" hiddenTab=""
+    			id="tab1" style="position:absolute;left:5px;right:5px;top:5px;bottom:0px;background:transparent;" useConfirmMessage="false"
+    			useMoveNextTabFocus="false" useTabKeyOnly="true">
+    		</w2:tabControl>
+    	</xf:group>
+    </body>
+</html>

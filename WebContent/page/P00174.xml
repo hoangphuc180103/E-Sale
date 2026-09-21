@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] inputType이 checkbox로 지정된 열의 선택, 선택 해제 값 지정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221230" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="예시별 '로그 확인' 영역 추가" meta_date="20231004" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="04" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam_1" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="chk_1" name="Checkbox" dataType="text" defaultValue="0"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_2" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="chk_1" name="Checkbox" dataType="text" defaultValue="false"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_3" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="chk_1" name="Checkbox" dataType="text" defaultValue="N"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    var arrData = [{}, {}];
+
+    dlt_exam_1.setJSON(arrData);
+    dlt_exam_2.setJSON(arrData);
+    dlt_exam_3.setJSON(arrData);
+};
+
+/**
+ * 버튼 [Data 출력하기 - dlt_exam_1] 클릭 시
+ * DataList dlt_exam_1 출력
+ */
+scwin.btn_ex1_onclick = function (e) {
+    let jsnData = dlt_exam_1.getAllJSON();
+
+    //로그 출력
+    let strLog = "[(기본 설정) valueType : binary] dlt_exam_1 출력\n";
+    strLog += JSON.stringify(jsnData, null, "\t");
+
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [Data 출력하기 - dlt_exam_2] 클릭 시
+ * DataList dlt_exam_2 출력
+ */
+scwin.btn_ex2_onclick = function (e) {
+    let jsnData = dlt_exam_2.getAllJSON();
+
+    //로그 출력
+    let strLog = "[valueType : boolean] dlt_exam_2 출력\n";
+    strLog += JSON.stringify(jsnData, null, "\t");
+
+    $c.frame.printExampleLog(strLog, txa_log_2, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [Data 출력하기 - dlt_exam_3] 클릭 시
+ * DataList dlt_exam_3 출력
+ */
+scwin.btn_ex3_onclick = function (e) {
+    let jsnData = dlt_exam_3.getAllJSON();
+
+    //로그 출력
+    let strLog = "[valueType : other] dlt_exam_3 출력\n";
+    strLog += JSON.stringify(jsnData, null, "\t");
+
+    $c.frame.printExampleLog(strLog, txa_log_3, false);
+    console.log(strLog);
+};
+
+
+/**
+ * [공통] 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox class="" escape="false" id=""
+					label="GridView의 바디 컬럼의 'inputType'이 'checkbox'로 설정되었을 때, 바디 컬럼의 'valueType' 속성을 사용하여, 체크 또는 체크 해제된 값을 설정한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) valueType : binary" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="체크된 값 : 1, 체크 해제된 값 : 0, 기본 값(사용자 지정) : 0" style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" id="btn_ex1" style="" type="button"
+								ev:onclick="scwin.btn_ex1_onclick">
+								<xf:label><![CDATA[Data 출력하기 - dlt_exam_1]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox" style="width: 230px;">
+							<w2:gridView rowNumVisible="true" defaultCellHeight="37" rowStatusHeaderValue="Status" rowStatusVisible="true"
+								dataList="data:dlt_exam_1" style="height:100px;" autoFit="lastColumn" id="grd_exam1" visibleRowNum="2" class="gvw"
+								autoFitMinWidth="162" rowNumWidth="40" rowStatusWidth="60" visibleRowNumFix="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="80" inputType="text" style="" id="column5" value="Checkbox" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column valueType="binary" width="80" inputType="checkbox" style="" id="chk_1" value="" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+						<xf:group class="" style="">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 110px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="valueType : boolean" style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="체크된 값 : true, 체크 해제된 값 : false, 기본 값(사용자 지정) : false"
+							style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" id="btn_ex2" style="" type="button"
+								ev:onclick="scwin.btn_ex2_onclick">
+								<xf:label><![CDATA[Data 출력하기 - dlt_exam_2]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox" style="width: 230px;">
+							<w2:gridView rowNumVisible="true" defaultCellHeight="37" rowStatusHeaderValue="Status" rowStatusVisible="true"
+								dataList="data:dlt_exam_2" style="height:100px;" autoFit="lastColumn" id="grd_exam2" visibleRowNum="2" class="gvw"
+								autoFitMinWidth="162" rowNumWidth="40" rowStatusWidth="60" visibleRowNumFix="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="80" inputType="text" style="" id="column5" value="Checkbox" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column valueType="boolean" width="80" inputType="checkbox" style="" id="chk_1" value="" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+						<xf:group class="" style="">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_2">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_2" spellcheck="false" style="width: 100%;height: 110px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="valueType : other" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="체크된 값 : Y, 체크 해제된 값 : N, 기본 값 (사용자 지정): N" style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" id="btn_ex3" style="" type="button"
+								ev:onclick="scwin.btn_ex3_onclick">
+								<xf:label><![CDATA[Data 출력하기 - dlt_exam_3]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox" style="width: 230px;">
+							<w2:gridView rowNumVisible="true" defaultCellHeight="37" rowStatusHeaderValue="Status" rowStatusVisible="true"
+								dataList="data:dlt_exam_3" style="height:100px;" autoFit="lastColumn" id="grd_exam3" visibleRowNum="2" class="gvw"
+								autoFitMinWidth="162" rowNumWidth="40" rowStatusWidth="60" visibleRowNumFix="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="80" inputType="text" style="" id="column5" value="Checkbox" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column falseValue="N" valueType="other" trueValue="Y" width="80" inputType="checkbox" style="" id="chk_1" value=""
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+						<xf:group class="" style="">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_3">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_3" spellcheck="false" style="width: 100%;height: 110px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

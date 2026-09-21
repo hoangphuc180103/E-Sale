@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[AliasDataList] 상위(부모, 조상) 화면의 DataList를 링크하여 사용하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230810" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [DataList의 데이터 복원하기] 클릭 시
+ */
+scwin.btn_resetData_onclick = function(e) {
+    // DataList 'dlt_exam'의 값을 복원합니다.
+    dlt_exam.undoAll();
+    // DataList 'dlt_exam'에 적용된 정렬을 제거합니다.
+    dlt_exam.removeColumnFilterAll();
+};
+
+/**
+ * 버튼 [DataList의 첫 번째 행의 'B' 컬럼의 셀 값 변경하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function(e) {
+    // DataList 'dlt_exam'의 첫 번째 행의 'B' 컬럼의 셀을 변경합니다.
+    dlt_exam.setCellData(0, "col_b", "B999");
+};
+
+/**
+ * 버튼 [DataList의 'A' 컬럼을 내림차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function(e) {
+    // DataList 'dlt_exam'의 'A' 컬럼을 내림차순으로 정렬합니다.
+    dlt_exam.sort("col_a", 1);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="PageFrame에 정의된 AliasDataList의 'scope' 속성을 사용하여, AliasDataList와 예제 화면의 DataList 간 동작을 확인할 수 있는 예제입니다."
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_cm" id="btn_resetData" type="button" ev:onclick="scwin.btn_resetData_onclick">
+								<xf:label><![CDATA[DataList의 데이터 복원하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" type="button">
+								<xf:label><![CDATA[DataList의 첫 번째 행의 'B' 컬럼의 셀 값 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_exam2_1" type="button" ev:onclick="scwin.btn_exam2_1_onclick">
+								<xf:label><![CDATA[DataList의 'A' 컬럼을 내림차순으로 정렬하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="mb_def_box nobottom" style="max-width: 400px;">
+							<w2:textbox style="" id="" label="DataList의 ID : 'dlt_exam'" class="wre_txt_normal" escape="false">
+							</w2:textbox>
+							<xf:group id="" class="gvwbox">
+								<w2:gridView editModeEvent="onclick" dataList="data:dlt_exam" style="height:60px;" autoFit="allColumn" id="grd_exam1"
+									visibleRowNum="2" class="gvw" defaultCellHeight="37" autoFitMinWidth="300" rowStatusVisible="true" rowStatusWidth="40"
+									keepDefaultColumnWidth="true">
+									<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+									<w2:header id="header1">
+										<w2:row id="row1">
+											<w2:column width="70" inputType="text" id="h_col_a" value="A" displayMode="label"></w2:column>
+											<w2:column width="70" inputType="text" id="h_col_b" value="B" displayMode="label"></w2:column>
+										</w2:row>
+									</w2:header>
+									<w2:gBody id="gBody1">
+										<w2:row id="row2">
+											<w2:column width="70" inputType="text" id="col_a" displayMode="label"></w2:column>
+											<w2:column width="70" inputType="text" id="col_b" displayMode="label"></w2:column>
+										</w2:row>
+									</w2:gBody>
+								</w2:gridView>
+							</xf:group>
+							<w2:pageFrame src="/page/P00325S01.xml" style="min-height: 30px;border: 2px solid orange;padding: 6px 6px 0px 6px;"></w2:pageFrame>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

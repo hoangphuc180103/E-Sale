@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+    scwin.onpageload = function() {
+        inputCal1.setValue("10032000");
+    };
+    
+    scwin.onpageunload = function() {
+        
+    };
+    
+    ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="カレンダーの年と月の表示方法を設定する" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 最初の InputCalendar のカレンダーアイコンをクリックします。 &lt;br/&gt;2.カレンダーの上部の年と月がリスト形式で表示されることを確認します。 (pickerType="selectbox")&lt;br/&gt;3. 2番目のInputCalendarのカレンダーアイコンをクリックします。 &lt;br/&gt;4.カレンダーの上部の年と月をクリックすると、年と月が動的に変更に表示されることを確認します。 (pickerType="dynamic")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;pickerType="selectbox"' escape="false">
+    	</w2:textbox>
+    	<w2:inputCalendar pickerType="selectbox" minYear="1900" footerDiv="false" focusOnDateSelect="false" displayFormat=""
+    		calendarValueType="yearMonthDate" maxYear="2100" nextTabID="" rightAlign="false"
+    		monthNamesForYearMonthType="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" style="margin-bottom: 10px;" id="inputCalendar1"
+    		renderType="component" renderDiv="true" monthNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" yearSuffix="Y">
+    	</w2:inputCalendar>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;pickerType="dynamic"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:inputCalendar calendarValueType="yearMonthDate" displayFormat="" focusOnDateSelect="false" footerDiv="false" id="inputCalendar2"
+    		maxYear="2100" minYear="1900" monthNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
+    		monthNamesForYearMonthType="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" nextTabID="" pickerType="dynamic"
+    		renderDiv="true" renderType="component" rightAlign="false" style="" yearSuffix="Y">
+    	</w2:inputCalendar>
+    </xf:group></body>
+</html>

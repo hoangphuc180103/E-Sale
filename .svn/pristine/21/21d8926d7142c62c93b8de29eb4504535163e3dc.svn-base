@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 마우스로 드래그-앤-드롭하여 행의 위치 변경하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220916" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정 및 예제명 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam_1" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_2" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_3" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    var arrData = [
+        { "category": "Software", "product": "SecureGate" },
+        { "category": "Hardware", "product": "FastServe" },
+        { "category": "Services", "product": "CloudFlex" },
+        { "category": "Software", "product": "CodeStream" },
+        { "category": "Hardware", "product": "NetMax" },
+        { "category": "Services", "product": "TechAssist" }
+    ];
+
+    dlt_exam_1.setJSON(arrData);
+    dlt_exam_2.setJSON(arrData);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView의 'dataDragDrop' 속성을 사용하여, 행의 데이터를 마우스로 드래그-앤-드롭하여 이동할 수 있도록 설정된 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 마우스 사용이 가능한 환경에서 정상 동작합니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'DragDrop'을 통한 행 이동 설정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="Drag&amp;Drop으로 GridView내 행의 이동이 가능합니다.&lt;br/&gt;행을 Drag하여 다른 GridView에 Drop하면 행이 이동됩니다." style="">
+						</w2:textbox>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView rowNumWidth="34" rowNumVisible="true" visibleRowNumFix="true" dataList="data:dlt_exam_2" dataDragDrop="true"
+								style="height:100px;" autoFit="lastColumn" id="" visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="240"
+								readOnly="true" noSelect="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="100" inputType="text" id="column2" value="Category" displayMode="label"></w2:column>
+										<w2:column width="130" inputType="text" id="column3" value="Product" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="100" inputType="text" id="category" value="" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="130" inputType="text" id="product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="행 이동 테스트용 GridView" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="이곳에 행을 Drop 하세요." style=""></w2:textbox>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView noResultMessageVisibleAlways="true" rowNumVisible="true" dataDragDrop="true" defaultCellHeight="37"
+								noResultMessage="이곳에 행을 Drop 하세요." rowNumWidth="34" visibleRowNumFix="true" dataList="data:dlt_exam_3" style="height:100px;"
+								autoFit="lastColumn" id="" visibleRowNum="4" class="gvw" autoFitMinWidth="240" readOnly="true" noSelect="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="100" inputType="text" id="column2" value="Category" displayMode="label"></w2:column>
+										<w2:column width="130" inputType="text" id="column3" value="Product" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="100" inputType="text" id="category" value="" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="130" inputType="text" id="product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) DragDrop 설정 없음" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="기능 비교를 위해 구성된 GridView니다. 'Drag&amp;Drop'을 통해 데이터 이동 기능이 비활성화되었습니다." style=""></w2:textbox>
+						<xf:group class="gvwbox" id="">
+							<w2:gridView autoFit="lastColumn" autoFitMinWidth="240" class="gvw" dataDragDrop="false" dataList="data:dlt_exam_1"
+								defaultCellHeight="37" id="" rowNumVisible="true" rowNumWidth="34" style="height:100px;" visibleRowNum="4" visibleRowNumFix="true"
+								readOnly="true" noSelect="true">
+								<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+								<w2:header id="header1" style="">
+									<w2:row id="row1" style="">
+										<w2:column displayMode="label" id="column2" inputType="text" value="Category" width="100"></w2:column>
+										<w2:column displayMode="label" id="column3" inputType="text" value="Product" width="130">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody1" style="">
+									<w2:row id="row2" style="">
+										<w2:column displayMode="label" id="category" inputType="text" value="" width="100"></w2:column>
+										<w2:column displayMode="label" id="product" inputType="text" textAlign="left" width="130"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    checkcombobox1.setSelectedInfo([{ index: 2, checked: true }]);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    checkcombobox1.setDelimiter(" / ");
+    checkcombobox1.setSelectedInfo([{ index: 2, checked: true }]);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="区切り文字の動的設定" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1.現在のCheckComboBox選択リストに表示されている項目の区切り文字が "-"であることを確認してください。 &lt;br/&gt;2.下部の setDelimiter() ボタンをクリックします。 &lt;br/&gt;3. CheckComboBox選択リストに表示されている項目の区切り文字が "/"で変更になることを確認してください。' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;" id="textbox4" label='プロパティの設定&lt;br/&gt;delimiter=" - "' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:30px;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[checkcombobox1.setDelimiter(" / ");]]></xf:label>
+    	</xf:trigger><xf:checkcombobox displayAllOptionLabel="false" ref="" submenuSize="auto" appearance="minimal" delimiter=" - " chooseOption="" disabled="false" style="width: 50%;display: block" allOption="" id="checkcombobox1" displayMode="label delim value" direction="auto">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[Home]]></xf:label>
+    				<xf:value><![CDATA[H]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Office]]></xf:label>
+    				<xf:value><![CDATA[0]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Travel]]></xf:label>
+    				<xf:value><![CDATA[T]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Sick]]></xf:label>
+    				<xf:value><![CDATA[S]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Leave]]></xf:label>
+    				<xf:value><![CDATA[L]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:checkcombobox></xf:group></body>
+</html>

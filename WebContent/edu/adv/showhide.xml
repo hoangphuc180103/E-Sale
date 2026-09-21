@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제] show/hide tableLayout 동적표현 실습화면">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dlt_member" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="number" id="EMP_CD" name="사번"></w2:column>
+            			<w2:column dataType="text" id="EMP_NM" name="성명"></w2:column>
+            			<w2:column dataType="text" id="GENDER_CD" name="성별"></w2:column>
+            			<w2:column dataType="text" id="JOIN_DATE" name="입사일"></w2:column>
+            			<w2:column dataType="text" id="POSITION_CD" name="직위"></w2:column>
+            			<w2:column dataType="text" id="ROLE_CD" name="역할"></w2:column>
+            			<w2:column dataType="text" id="EMAIL" name="이메일"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<EMP_CD><![CDATA[10001334]]></EMP_CD>
+            				<EMP_NM><![CDATA[전성은]]></EMP_NM>
+            				<GENDER_CD><![CDATA[여]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20021201]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[차장]]></POSITION_CD>
+            				<ROLE_CD><![CDATA[퍼블리싱]]></ROLE_CD>
+            				<EMAIL><![CDATA[piho888@inswave02.com]]></EMAIL>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10001337]]></EMP_CD>
+            				<EMP_NM><![CDATA[마정연]]></EMP_NM>
+            				<GENDER_CD><![CDATA[남]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20120430]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[사원]]></POSITION_CD>
+            				<ROLE_CD><![CDATA[개발]]></ROLE_CD>
+            				<EMAIL><![CDATA[zibe925@inswave02.com]]></EMAIL>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10001335]]></EMP_CD>
+            				<EMP_NM><![CDATA[동세희]]></EMP_NM>
+            				<GENDER_CD><![CDATA[여]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20050401]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[부장]]></POSITION_CD>
+            				<ROLE_CD><![CDATA[디자인]]></ROLE_CD>
+            				<EMAIL><![CDATA[cane427@inswave02.com]]></EMAIL>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+scwin.ui_textbox1_onclick = function (e) {  
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+
+//테이블 숨김 버튼 이벤트
+ //ui_table.hide();
+scwin.btn_hide_onclick = function (e) {
+    //1.테이블 컴포넌트 숨기기   
+};
+//테이블 보임 버튼 이벤트
+//ui_table.show("");
+scwin.btn_show_onclick = function (e) {
+    //1.테이블 컴포넌트 보이기   
+};
+
+//첫번째 행 숨김 버튼 이벤트
+scwin.btn_tr1_hide_onclick = function (e) {
+    //1.첫번째 행 숨기기 
+ 
+};
+
+//두번째 행(TR) 숨김 버튼 이벤트
+scwin.btn_tr2_hide_onclick = function (e) { 
+    //1.두번째 행 숨기기   
+    ui_tr2.hide();
+
+};
+
+//추가 버튼 숨김 버튼 이벤트
+scwin.btn_addBt_hide_onclick = function (e) { 
+    //1.추가 버튼 숨기기  
+};
+ 
+//첫번째 행 보임 버튼 이벤트
+scwin.btn_tr1_show_onclick = function (e) {
+    //1.첫번째 행 보이기
+     
+};
+
+//두번째 행 보임 버튼 이벤트
+scwin.btn_tr2_show_onclick = function (e) { 
+    //1.두번째 행 보이기 
+    ui_tr2.show("");
+};
+
+//추가 버튼 보이기 버튼 이벤트
+scwin.btn_addBt_show_onclick = function (e) { 
+    //1.추가 버튼 보이기 
+};
+ 
+//세번째 열 숨김 버튼 이벤트
+scwin.btn_col_hide_onclick = function (e) {
+    //1.열에 해당하는 ID 숨기기  
+    ui_col_3.hide();
+    ui_td3_1.hide();
+    ui_td3_2.hide();
+    ui_td3_3.hide();
+
+};
+
+//세번째 열 보임 버튼 이벤트
+scwin.btn_col_show_onclick = function (e) {
+    //1.열에 해당하는 ID 보이기  
+    ui_col_3.show("");
+    ui_td3_1.show("");
+    ui_td3_2.show("");
+    ui_td3_3.show("");
+};
+
+
+
+
+
+/**
+ * 버튼 [컬럼 '성명' 숨기기] 클릭 시
+ */ 
+//grd_exam1.setColumnVisible("EMP_NM", false);
+scwin.btn_ex1_1_onclick = function (e) {
+    //GridView 'grd_exam1'의 컬럼 '성명'을 숨기기
+     
+};
+
+/**
+ * 버튼 [컬럼 '성명' 보이기] 클릭 시
+ */
+//grd_exam1.setColumnVisible("EMP_NM", true);
+scwin.btn_ex1_2_onclick = function (e) {
+    //GridView 'grd_exam1'의 컬럼 '성명'을 보이기
+    
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] show/hide 사용" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style="cursor: pointer;"
+    					tagname="h3" userData1="/edu/adv/showhide_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame style="" id="" src="/edu/adv/showhide_desc.xml"></w2:pageFrame>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<xf:group class="rt" id="" style="">
+    				<w2:span id="" label="아래 tableLayout 의 id:ui_table 입니다." style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:trigger class="btn_cm " ev:onclick="scwin.btn_hide_onclick" id="btn_hide" style="" type="button">
+    					<xf:label><![CDATA[테이블 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm " id="btn_show" style="" type="button" ev:onclick="scwin.btn_show_onclick">
+    					<xf:label><![CDATA[테이블 보임]]></xf:label>
+    				</xf:trigger>
+
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style=""></xf:group>
+    		<xf:group class="tblbox" id="" style=""></xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="ui_table" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:150px;" tagname="col" id="ui_col_1"></xf:group>
+    					<xf:group style="" tagname="col" id="ui_col_2"></xf:group>
+    					<xf:group style="width:150px;" tagname="col" id="ui_col_3"></xf:group>
+    					<xf:group style="" tagname="col" id="ui_col_4"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr" id="ui_tr1">
+    					<xf:group class="w2tb_th" style="" tagname="th">
+    						<w2:textbox class="req" id="" label="첫번째 행" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" style="" tagname="td">
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th" id="ui_td3_1">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="세번째 열" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td" id="ui_td_1">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr" id="ui_tr2">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="두번째 행" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<xf:select1 id="" chooseOption="false" style="width: 148px;height: 21px;" submenuSize="auto" allOption="false"
+    							disabled="false" direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled">
+    						</xf:select1>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th" id="ui_td3_2">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="세번째 열" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td" id="ui_td_2">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr" id="ui_tr3">
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="세번째 행" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<xf:trigger type="button" id="ui_addBt" style="width: 80px;height: 23px;" class="btn_exam_exec btn_txt_of">
+    							<xf:label><![CDATA[추가 버튼]]></xf:label>
+    						</xf:trigger>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th " id="ui_td3_3">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="세번째 열" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td" id="ui_td_3">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="btnbox" id="" style="">
+    			<xf:group class="rt" id="" style="">
+    				<w2:textbox class="bar_btndiv" id="" label="" style=""></w2:textbox>
+    				<xf:trigger class="btn_cm" id="btn_tr1_hide" style="" type="button" ev:onclick="scwin.btn_tr1_hide_onclick">
+    					<xf:label><![CDATA[첫번째 행 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_tr2_hide" style="" type="button" ev:onclick="scwin.btn_tr2_hide_onclick">
+    					<xf:label><![CDATA[두번째 행(TR) 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_addBt_hide" style="" type="button" ev:onclick="scwin.btn_addBt_hide_onclick">
+    					<xf:label><![CDATA[추가 버튼 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_col_hide" style="" type="button" ev:onclick="scwin.btn_col_hide_onclick">
+    					<xf:label><![CDATA[세번째 열 숨김]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="btnbox" id="" style="">
+    			<xf:group class="rt" id="" style="">
+    				<w2:textbox class="bar_btndiv" id="" label="" style=""></w2:textbox>
+    				<xf:trigger class="btn_cm" id="btn_tr1_show" style="" type="button" ev:onclick="scwin.btn_tr1_show_onclick">
+    					<xf:label><![CDATA[첫번째 행 보임]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_tr2_show" style="" type="button" ev:onclick="scwin.btn_tr2_show_onclick">
+    					<xf:label><![CDATA[두번째 행(TR) 보임]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_addBt_show" style="" type="button" ev:onclick="scwin.btn_addBt_show_onclick">
+    					<xf:label><![CDATA[추가 버튼 보임]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_col_show" style="" type="button" ev:onclick="scwin.btn_col_show_onclick">
+    					<xf:label><![CDATA[세번째 열 보임]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="example_div_tr_style" id="" style="">
+    			<w2:textbox class="ws_example_txt_desc_info" id="" label="grideView 컴포넌트 스크립트로 특정 컬럼의 숨김 여부 지정하기"
+    				style="background-color: #eee;padding:10px 10px;margin-bottom: 10px;">
+    			</w2:textbox>
+    			<xf:group class="example_div_td_style" id="" style="">
+    				<xf:group class="mb_def_box nobottom" id="" style="">
+    					<w2:span id="" label="아래 gridView 의 id:grd_exam1 입니다." style="margin-right: 10px;font-weight: bold;"></w2:span>
+    					<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex1_1_onclick"
+    						id="btn_ex1_1" style="" type="button">
+    						<xf:label><![CDATA[컬럼 '성명' 숨기기]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex1_2_onclick"
+    						id="btn_ex1_2" style="" type="button">
+    						<xf:label><![CDATA[컬럼 '성명' 보이기]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    				<xf:group class="gvwbox" id=""></xf:group>
+    			</xf:group>
+
+    		</xf:group>
+    	</xf:group>
+
+
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		var date1 = input1.getValue();
+		var result1 = WebSquare.date.toSolar(date1);
+		input2.setValue(result1);
+	};
+	
+	scwin.trigger2_onclick = function(e) {
+		var date2 = input1.getValue();
+		var result2 = WebSquare.date.toLunar(date2);
+		input3.setValue(result2);
+		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="양력 및 음력으로 날짜 변환" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. 변환할 날짜를 입력. &amp;nbsp;(예: "20260101")&lt;br/&gt;2. WebSquare.date.toSolar() 버튼을 클릭. &lt;br/&gt;3. 양력 날짜로 변환된 결과가 표시되는 것을 확인. &lt;br/&gt;4. WebSquare.date.toLunar() 버튼을 클릭. &lt;br/&gt;5. 음력 날짜로 변환된 결과가 표시되는 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;" id="textbox4" label="변환할 날짜 입력" escape="false">
+    	</w2:textbox><xf:input style="width: 100%;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;" id="input1" placeholder="변환할 날짜"></xf:input><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;display: block" id="trigger1" type="button">
+    		<xf:label><![CDATA[WebSquare.date.toSolar()]]></xf:label>
+    	</xf:trigger><xf:input nextTabID="trigger1" dataType="date" displayFormat="yyyy-MM-dd" adjustMaxLength="false" style="width: 100%;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;margin-bottom: 10px;font-weight:bolder;color: orange;margin-top: 10px;" id="input2" displaymessage="" placeholder="양력 변환 결과">
+    	</xf:input><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;display: block;margin-bottom: 10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[WebSquare.date.toLunar()]]></xf:label>
+    	</xf:trigger><xf:input nextTabID="trigger2" dataType="date" displayFormat="yyyy-MM-dd" adjustMaxLength="false" style="width: 100%;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: green;" id="input3" placeholder="음력 변환 결과">
+    	</xf:input></xf:group></body>
+</html>

@@ -1,0 +1,79 @@
+/*amd /page/P00176.xml 6710 d388f16be10a08c4c04ff6a258ed6900ca9645359f3542d28ad140a3708f3218 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'chk_1',name:'Checkbox',dataType:'text',defaultValue:'0'}},{T:1,N:'w2:column',A:{id:'col_a',name:'A',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col_b',name:'B',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  var arrData = [{
+    "col_a": "A1",
+    "col_b": "B1",
+    "chk_1": "0"
+  }, {
+    "col_a": "A2",
+    "col_b": "B2",
+    "chk_1": "1"
+  }, {
+    "col_a": "A3",
+    "col_b": "B3",
+    "chk_1": "0"
+  }];
+  dlt_exam.setJSON(arrData);
+};
+
+/**
+ * 버튼 [getCheckedJSON] 클릭 시
+ * getCheckedJSON 메소드를 사용하여 반환 받기
+ */
+scwin.btn_ex1_onclick = function (e) {
+  // GridView grd_exam1의 컬럼 chk_1의 체크된 행의 데이터를 JSON으로 반환 받기
+  // 인덱스는 컬럼이 추가/삭제되면 변경되기 때문에 컬럼의 아이디를 사용합니다.
+  let objData = grd_exam1.getCheckedJSON("chk_1");
+
+  //로그 출력
+  let strLog = "getCheckedJSON 반환 값 : \n";
+  strLog += JSON.stringify(objData, null, "\t");
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+  console.log(strLog);
+};
+
+/**
+ * 버튼 [getCheckedXML] 클릭 시
+ * getCheckedXML 메소드를 사용하여 반환 받기
+ */
+scwin.btn_ex2_onclick = function (e) {
+  // GridView grd_exam1의 컬럼 chk_1의 체크된 행의 데이터를 XML로 반환 받기
+  // 인덱스는 컬럼이 추가/삭제되면 변경되기 때문에 컬럼의 아이디를 사용합니다.
+  let objData = grd_exam1.getCheckedXML("chk_1");
+
+  //로그 출력
+  let strLog = "getCheckedXML 반환 값 : \n";
+  strLog += WebSquare.xml.indent(objData);
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+  console.log(strLog);
+};
+
+/**
+ * 버튼 [getCheckedData] 클릭 시
+ * getCheckedData 메소드를 사용하여 반환 받기
+ */
+scwin.btn_ex3_onclick = function (e) {
+  // GridView grd_exam1의 컬럼 chk_1의 체크된 행의 데이터를 2차원 배열로 반환 받기
+  // 인덱스는 컬럼이 추가/삭제되면 변경되기 때문에 컬럼의 아이디를 사용합니다.
+  let objData = grd_exam1.getCheckedData("chk_1");
+
+  //로그 출력
+  let strLog = "getCheckedData 반환 값 : \n";
+  strLog += JSON.stringify(objData, null, "\t");
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+  console.log(strLog);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  txa_log.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 바디 컬럼의 \'inputType\'이 \'checkbox\'로 설정되었을 때, 체크된 행의 데이터를 반환받는 예제입니다.',style:'',class:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'체크된 행의 Data 반환받기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false',id:'btn_ex1',style:'',type:'button','ev:onclick':'scwin.btn_ex1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'getCheckedJSON'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'getCheckedXML'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex3_onclick',id:'btn_ex3',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'getCheckedData'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'40',rowNumVisible:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'allColumn',id:'grd_exam1',visibleRowNum:'3',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'260'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column5',value:'Checkbox',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column1',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column2',value:'B',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{valueType:'binary',width:'70',inputType:'checkbox',style:'',id:'chk_1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_a',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_b',displayMode:'label'}}]}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_th_style',id:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_blue',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'btn_clearLog',style:'',title:'로그 삭제',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log',spellcheck:'false',style:'width: 100%;height: 140px;'}}]}]}]}]}]}]}]})

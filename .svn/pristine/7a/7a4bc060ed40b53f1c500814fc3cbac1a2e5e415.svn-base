@@ -1,0 +1,144 @@
+/*amd /page/P00382.xml 13458 28034efe36dc30165b0c5e738a7919d4344fb010fee3ca63b7840ca5b9888941 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataMap',A:{baseNode:'map',id:'dma_exam1'},E:[{T:1,N:'w2:keyInfo',E:[{T:1,N:'w2:key',A:{id:'key_1',name:'name1',dataType:'text'}},{T:1,N:'w2:key',A:{id:'key_2',name:'name2',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'key_1',E:[{T:4,cdata:'B'}]},{T:1,N:'key_2',E:[{T:4,cdata:'D'}]}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam1',saveRemovedData:'true',initRowPosition:'0'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col_1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col_2',name:'name2',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_1',E:[{T:4,cdata:'B'}]},{T:1,N:'col_2',E:[{T:4,cdata:'D'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_1',E:[{T:4,cdata:'A'}]},{T:1,N:'col_2',E:[{T:4,cdata:'E'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 로그 출력 - DataMap의 데이터
+  scwin.printDataMapWithMessage();
+
+  // 로그 출력 - DataMap의 데이터
+  scwin.printDataListWithMessage();
+};
+
+/**
+ * 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  let strTargetId = this.getUserData("userData1");
+  let cmpTarget;
+  if (strTargetId) {
+    cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+  } else {
+    cmpTarget = txa_log;
+  }
+  //textarea value를 빈문자열로 할당.
+  cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [1-1 DataMap 'dma_exam1'의 'key_1' 키의 값을 'C'로 변경하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // DataMap 'dma_exam1'의 'key_1' 키의 값을 'C'로 변경합니다.
+  dma_exam1.set("key_1", "C");
+
+  // 로그 출력 - DataMap의 데이터
+  scwin.printDataMapWithMessage('스크립트 실행 : dma_exam1.set("key_1", "C");');
+};
+
+/**
+ * 버튼 [1-2 SelectBox의 값을 'F'로 변경하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+  // SelectBox 'sbx_exam1'의 값을 'F'로 변경합니다.
+  sbx_exam1.setValue("F");
+
+  // 로그 출력 - DataMap의 데이터
+  scwin.printDataMapWithMessage('스크립트 실행 : sbx_exam1.setValue("F");');
+};
+
+/**
+ * 버튼 [1-3 'ref' 속성을 DataMap 'dma_exam1'의 'key_2' 키로 변경하기] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+  // SelectBox 'sbx_exam1'의 'ref' 속성의 설정 값을 DataMap 'dma_exam1'의 'key_2' 키로 변경합니다.
+  // 설정 값의 'data:'는 고정 값입니다.
+  sbx_exam1.setRef("data:dma_exam1.key_2");
+
+  // 로그 출력 - DataMap의 데이터
+  scwin.printDataMapWithMessage('스크립트 실행 : sbx_exam1.setRef("data:dma_exam1.key_2");');
+};
+
+/**
+ * 버튼 [DataMap의 데이터 확인하기] 클릭 시
+ */
+scwin.btn_printDataMapWithMessage_onclick = function (e) {
+  // 로그 출력 - DataMap의 데이터
+  scwin.printDataMapWithMessage();
+};
+
+/**
+ * DataMap 'dma_exam1'의 데이터를 JSON 형식으로 출력합니다.
+ */
+scwin.printDataMapWithMessage = function (argMsg) {
+  // DataMap 'dma_exam1'의 데이터를 JSON 형식으로 반환받습니다.
+  let result = dma_exam1.getJSON();
+
+  // 로그 출력
+  if (argMsg && typeof argMsg == "string") {
+    $c.frame.printExampleLog($p, argMsg, txa_log_1, false);
+    console.log(argMsg);
+  }
+  let strLog = '# DataMap "dma_exam1"의 JSON 형식의 데이터\n';
+  $c.frame.printExampleLog($p, strLog + JSON.stringify(result, null, "  "), txa_log_1, false);
+  console.log(strLog);
+  console.log(result);
+};
+
+/**
+ * 버튼 [2-1 DataList 'dlt_exam1'의 키 'col_1'의 값을 'C'로 변경하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+  // DataList 'dlt_exam1'의 1번째 로우의 'col_1' 컬럼의 값을 'C'로 변경합니다.
+  dlt_exam1.setCellData(0, "col_1", "C");
+
+  // 로그 출력 - DataList의 데이터
+  scwin.printDataListWithMessage('스크립트 실행 : dlt_exam1.setCellData(0, "col_1", "C");');
+};
+
+/**
+ * 버튼 [2-2 SelectBox의 값을 'F'로 변경하기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+  // SelectBox 'sbx_exam2'의 값을 'F'로 변경합니다.
+  sbx_exam2.setValue("F");
+
+  // 로그 출력 - DataList의 데이터
+  scwin.printDataListWithMessage('스크립트 실행 : sbx_exam2.setValue("F");');
+};
+
+/**
+ * 버튼 [2-3 'ref' 속성을 DataList 'dlt_exam1'의 첫 번째 로우의 'col_2' 컬럼으로 변경하기] 클릭 시
+ */
+scwin.btn_exam2_3_onclick = function (e) {
+  // SelectBox 'sbx_exam2'의 'ref' 속성의 설정 값을 DataList 'dlt_exam1'의 키 'col_2'로 변경합니다.
+  // 설정 값의 'data:'는 고정 값입니다.
+  sbx_exam2.setRef("data:dlt_exam1.col_2");
+
+  // 로그 출력 - DataList의 데이터
+  scwin.printDataListWithMessage('스크립트 실행 : sbx_exam2.setRef("data:dlt_exam1.col_2");');
+};
+
+/**
+ * 버튼 [DataList의 데이터 확인하기] 클릭 시
+ */
+scwin.btn_printDataListWithMessage_onclick = function (e) {
+  // 로그 출력 - DataList의 데이터
+  scwin.printDataListWithMessage();
+};
+
+/**
+ * DataList 'dlt_exam1'의 데이터를 JSON 형식으로 출력합니다.
+ */
+scwin.printDataListWithMessage = function (argMsg) {
+  // DataList 'dlt_exam1'의 데이터를 JSON 형식으로 반환받습니다.
+  let result = dlt_exam1.getAllJSON();
+
+  // 로그 출력
+  if (argMsg && typeof argMsg == "string") {
+    $c.frame.printExampleLog($p, argMsg, txa_log_2, false);
+    console.log(argMsg);
+  }
+  let strLog = '# DataList "dlt_exam1"의 JSON 형식의 데이터\n';
+  $c.frame.printExampleLog($p, strLog + JSON.stringify(result, null, "  "), txa_log_2, false);
+  console.log(strLog);
+  console.log(result);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'SelectBox의 \'ref\' 속성과 \'setRef\' 메소드를 사용하여 컴포넌트의 값과 데이터 객체(DataMap, DataList)를 연결하는 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',label:'SelectBox 목록의 label과 value는 동일한 값으로 설정되었습니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',label:'버튼에 표시된 순서에 따라 버튼을 클릭하여 실행 결과를 확인합니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'DataMap의 \'key\'와 연결',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'SelectBox의 \'ref\' 속성의 초기 설정 값은 DataMap \'dma_exam1\'의 \'key_1\' 키입니다.',style:''}},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_printDataMapWithMessage_onclick',id:'btn_printDataMap',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'DataMap의 데이터 확인하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1-1 DataMap \'dma_exam1\'의 \'key_1\' 키의 값을 \'C\'로 변경하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_exam1_2_onclick',id:'btn_exam1_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1-2 SelectBox의 값을 \'F\'로 변경하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btn_exam1_3',style:'',type:'button','ev:onclick':'scwin.btn_exam1_3_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1-3 \'ref\' 속성을 DataMap \'dma_exam1\'의 \'key_2\' 키로 변경하기'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'mb_def_box'},E:[{T:1,N:'xf:select1',A:{id:'sbx_exam1',style:'width: 120px;min-height: 26px;',submenuSize:'auto',disabled:'false',direction:'auto',appearance:'minimal',disabledClass:'w2selectbox_disabled',ref:'data:dma_exam1.key_1',class:'tac'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'A'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'A'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'B'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'B'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'C'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'C'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'D'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'D'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'E'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'E'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'F'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'F'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'G'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'G'}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_bold',label:'로그 확인'}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',title:'로그 삭제',type:'button',userData1:'txa_log_1'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log_1',spellcheck:'false',style:'width: 100%;height: 110px;'}}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'DataList의 \'column\'과 연결',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'SelectBox의 \'ref\' 속성의 초기 설정 값은 DataList \'dlt_exam1\'의 첫 번째 로우의 \'col_1\' 컬럼입니다.',style:''}},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.printDataListWithMessage',id:'btn_printDataList',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'DataList의 데이터 확인하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_exam2_1_onclick',id:'btn_exam2_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2-1 DataList \'dlt_exam1\'의 첫 번째 로우의 \'col_1\' 컬럼의 값을 \'C\'로 변경하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_exam2_2_onclick',id:'btn_exam2_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2-2 SelectBox의 값을 \'F\'로 변경하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_exam2_3_onclick',id:'btn_exam2_3',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2-3 \'ref\' 속성을 DataList \'dlt_exam1\'의 첫 번째 로우의 \'col_2\' 컬럼으로 변경하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box',id:''},E:[{T:1,N:'xf:select1',A:{appearance:'minimal',class:'tac',direction:'auto',disabled:'false',disabledClass:'w2selectbox_disabled',id:'sbx_exam2',ref:'data:dlt_exam1.col_1',style:'width: 120px;min-height: 26px;',submenuSize:'auto'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'A'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'A'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'B'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'B'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'C'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'C'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'D'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'D'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'E'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'E'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'F'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'F'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'G'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'G'}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_bold',label:'로그 확인'}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',title:'로그 삭제',type:'button',userData1:'txa_log_2'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log_2',spellcheck:'false',style:'width: 100%;height: 220px;'}}]}]}]}]}]}]}]})

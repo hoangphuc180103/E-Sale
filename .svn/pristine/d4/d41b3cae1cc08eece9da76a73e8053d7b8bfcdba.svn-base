@@ -1,0 +1,36 @@
+/*amd /page/P00373.xml 4362 5e927d918586fb2fca5333898799cfd90d5010c5e7646a639c053cb80c63a225 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  // InputCalendar에 할당할 날짜 문자열. 연월일시분초(yyyyMMddHHmmss)
+  let strCurDate = "20241231235959";
+
+  // InputCalendar 'ica_exam1'의 초기 값 할당
+  // calendarValueType="yearMonthDate" : 연월일(yyyyMMdd)
+  ica_exam1.setValue(strCurDate.substring(0, 8));
+
+  // InputCalendar 'ica_exam2'의 초기 값 할당
+  // calendarValueType="yearMonth" : 연월(yyyyMM)
+  ica_exam2.setValue(strCurDate.substring(0, 6));
+
+  // InputCalendar 'ica_exam3'의 초기 값 할당
+  // calendarValueType="year" : 연도(yyyy)
+  ica_exam3.setValue(strCurDate.substring(0, 4));
+
+  // InputCalendar 'ica_exam4'의 초기 값 할당
+  // calendarValueType="yearMonthDateHour" : 연월일시(yyyyMMddHH)
+  ica_exam4.setValue(strCurDate.substring(0, 10));
+
+  // InputCalendar 'ica_exam5'의 초기 값 할당
+  // calendarValueType="yearMonthDateTime" : 연월일시분(yyyyMMddHHmm)
+  ica_exam5.setValue(strCurDate.substring(0, 12));
+
+  // InputCalendar 'ica_exam6'의 초기 값 할당
+  // calendarValueType="yearMonthDateTimeSec" : 연월일시분초(yyyyMMddHHmmss)
+  ica_exam6.setValue(strCurDate.substring(0, 14));
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents P00373',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'InputCalendar의 \'calendarValueType\' 속성 설정에 따른 입력 필드의 출력 형식과 달력 UI를 비교하는 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'wre_txt_list',id:'',label:'(기본 설정) yearMonthDate',style:'display: block;margin-bottom:6px;'}},{T:1,N:'w2:inputCalendar',A:{id:'ica_exam1',style:'width: 120px;min-height: 26px;',calendarValueType:'yearMonthDate'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'wre_txt_list',id:'',label:'yearMonth',style:'display: block;margin-bottom:6px;'}},{T:1,N:'w2:inputCalendar',A:{calendarValueType:'yearMonth',id:'ica_exam2',style:'width: 100px;min-height: 26px;'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'wre_txt_list',id:'',label:'year',style:'display: block;margin-bottom:6px;'}},{T:1,N:'w2:inputCalendar',A:{calendarValueType:'year',id:'ica_exam3',style:'width: 80px;min-height: 26px;'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'wre_txt_list',id:'',label:'yearMonthDateHour',style:'display: block;margin-bottom:6px;'}},{T:1,N:'w2:inputCalendar',A:{calendarValueType:'yearMonthDateHour',id:'ica_exam4',style:'width: 136px;min-height: 26px;'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'wre_txt_list',id:'',label:'yearMonthDateTime',style:'display: block;margin-bottom:6px;'}},{T:1,N:'w2:inputCalendar',A:{calendarValueType:'yearMonthDateTime',id:'ica_exam5',style:'width: 150px;min-height: 26px;'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'wre_txt_list',id:'',label:'yearMonthDateTimeSec',style:'display: block;margin-bottom:6px;'}},{T:1,N:'w2:inputCalendar',A:{calendarValueType:'yearMonthDateTimeSec',id:'ica_exam6',style:'width: 170px;min-height: 26px;'}}]}]}]}]}]}]}]}]})

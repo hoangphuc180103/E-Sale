@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 탭을 닫았을 때 탭 영역에 보이는 탭의 수를 유지하는 기능 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221104" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+    //예제 테스트를 위해 TabControl의 마지막 탭을 선택(활성화)
+    tac_exam1.setSelectedTabIndex(tac_exam1.getTabCount() - 1);
+    tac_exam2.setSelectedTabIndex(tac_exam2.getTabCount() - 1);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'tabScrollAuto' 속성을 사용하여, 탭을 닫았을 때 탭이 표시되는 영역에 탭을 채워서 보이도록 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="" class=""></xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 동작) tabScrollAuto 미사용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" id="" label="마지막 탭(TAB8)을 닫으면 닫힌 탭의 영역이 빈 상태입니다." style=""></w2:textbox>
+						<w2:tabControl alwaysDraw="false" class="tbc default_tabcontrol" confirmFalseAction="new" confirmTrueAction="exist" id="tac_exam1"
+							style="position: relative;height: 120px;width: 400px;" tabScroll="true" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true"
+							changeActiveTab="false" tabScrollAuto="false" closable="true" alwaysShowCloseBtn="true">
+							<w2:tabs disabled="false" id="tabs1" label="TAB1" style="width:100px;"></w2:tabs>
+							<w2:tabs disabled="false" id="tabs2" label="TAB2" style="width:100px;"></w2:tabs>
+							<w2:tabs disabled="false" id="tabs3" label="TAB3" style="width:100px;"></w2:tabs>
+							<w2:tabs disabled="false" id="tabs4" label="TAB4" style="width:100px;"></w2:tabs>
+							<w2:tabs disabled="false" id="tabs5" label="TAB5" style="width:100px;"></w2:tabs>
+							<w2:tabs disabled="false" id="tabs6" label="TAB6" style="width:100px;"></w2:tabs>
+							<w2:tabs disabled="false" id="tabs7" label="TAB7" style="width:100px;"></w2:tabs>
+							<w2:tabs disabled="false" id="tabs8" label="TAB8" style="width:100px;"></w2:tabs>
+							<w2:content alwaysDraw="false" id="content1" style="min-height:30px;">
+								<w2:textbox id="" label="TAB1 CONTENT" style="font-size: 1.2em;padding: 6px;color: steelblue;"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" id="content2" style="min-height:30px;">
+								<w2:textbox id="" label="TAB2 CONTENT" style="font-size: 1.2em;padding: 6px;color: forestgreen;"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" id="content3" style="min-height:30px;">
+								<w2:textbox id="" label="TAB3 CONTENT" style="font-size: 1.2em;padding: 6px;color: firebrick;"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" id="content4" style="min-height:30px;">
+								<w2:textbox id="" label="TAB4 CONTENT" style="font-size: 1.2em;padding: 6px;color: gold;"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" id="content5" style="min-height:30px;">
+								<w2:textbox id="" label="TAB5 CONTENT" style="font-size: 1.2em;padding: 6px;color: darkviolet;"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" id="content6" style="min-height:30px;">
+								<w2:textbox id="" label="TAB6 CONTENT" style="font-size: 1.2em;padding: 6px;color: dimgray;"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" id="content7" style="min-height:30px;">
+								<w2:textbox id="" label="TAB7 CONTENT" style="font-size: 1.2em;padding: 6px;color: darkorange;"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" id="content8" style="min-height:30px;">
+								<w2:textbox id="" label="TAB8 CONTENT" style="font-size: 1.2em;padding: 6px;color: crimson;"></w2:textbox>
+							</w2:content>
+						</w2:tabControl>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="tabScrollAuto 사용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" id="" label="마지막 탭(TAB8)을 닫으면 탭의 위치가 오른쪽으로 이동되어 닫힌 탭의 공간이 채워집니다." style=""></w2:textbox>
+					<xf:group id="" class="tbcbox"><w2:tabControl useTabKeyOnly="true" tabScroll="true" useMoveNextTabFocus="false" tabScrollAuto="true" closable="true" useConfirmMessage="false" confirmTrueAction="exist" changeActiveTab="false" confirmFalseAction="new" alwaysDraw="false" style="position: relative;height: 120px;width: 400px;" id="tac_exam2" class="tbc default_tabcontrol" alwaysShowCloseBtn="true">
+							<w2:tabs disabled="false" style="width:100px;" id="tabs1" label="TAB1"></w2:tabs>
+							<w2:tabs disabled="false" style="width:100px;" id="tabs2" label="TAB2"></w2:tabs>
+							<w2:tabs disabled="false" style="width:100px;" id="tabs3" label="TAB3"></w2:tabs>
+							<w2:tabs disabled="false" style="width:100px;" id="tabs4" label="TAB4"></w2:tabs>
+							<w2:tabs disabled="false" style="width:100px;" id="tabs5" label="TAB5"></w2:tabs>
+							<w2:tabs disabled="false" style="width:100px;" id="tabs6" label="TAB6"></w2:tabs>
+							<w2:tabs disabled="false" style="width:100px;" id="tabs7" label="TAB7"></w2:tabs>
+							<w2:tabs disabled="false" style="width:100px;" id="tabs8" label="TAB8"></w2:tabs>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content1">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: steelblue;" id="" label="TAB1 CONTENT"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content2">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: forestgreen;" id="" label="TAB2 CONTENT"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content3">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: firebrick;" id="" label="TAB3 CONTENT"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content4">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: gold;" id="" label="TAB4 CONTENT"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content5">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: darkviolet;" id="" label="TAB5 CONTENT"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content6">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: dimgray;" id="" label="TAB6 CONTENT"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content7">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: darkorange;" id="" label="TAB7 CONTENT"></w2:textbox>
+							</w2:content>
+							<w2:content alwaysDraw="false" style="min-height:30px;" id="content8">
+								<w2:textbox style="font-size: 1.2em;padding: 6px;color: crimson;" id="" label="TAB8 CONTENT"></w2:textbox>
+							</w2:content>
+						</w2:tabControl></xf:group></xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

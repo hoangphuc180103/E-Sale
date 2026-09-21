@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Open File Explorer by Clicking Input Box&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(First Upload)&lt;br/&gt;1. Click the input area of the Upload component.&lt;br/&gt;2. Confirm that the file explorer does not open. (clickOpenFileDialog=“false”)&lt;br/&gt;3. Confirm that clicking the file upload icon opens the file explorer.&lt;br/&gt;&lt;br/&gt;(Second Upload)&lt;br/&gt;1. Click the input area of the Upload component.&lt;br/&gt;2. Confirm that the file explorer opens. (clickOpenFileDialog=“true”)' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='clickOpenFileDialog="false"' escape="false">
+    	</w2:textbox>
+    	<w2:upload clickOpenFileDialog="false" inputStyle="vertical-align:middle;word-wrap:break-word" style="margin-bottom: 10px;" id="upload1"
+    		imageStyle="position:absolute;vertical-align:middle;word-wrap:break-word">
+    	</w2:upload>
+    	<w2:textbox escape="false" id="textbox5" label='clickOpenFileDialog="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:upload clickOpenFileDialog="true" id="upload2" imageStyle="position:absolute;vertical-align:middle;word-wrap:break-word"
+    		inputStyle="vertical-align:middle;word-wrap:break-word" style="margin-bottom: 10px;">
+    	</w2:upload>
+    </xf:group></body>
+</html>

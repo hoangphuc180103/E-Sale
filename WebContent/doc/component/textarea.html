@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>TextArea</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_8cb909d0bf0879bd" class="chapter_title">TextArea</h1>
+		<h1 id="r_c429d3da8da9d7e4" class="element heading1"
+			data-element-id="c429d3da8da9d7e4">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_2410e01ab518090d" class="element normal"
+			data-element-id="2410e01ab518090d">
+			TextArea 컴포넌트는 사용자가 여러 줄의 텍스트를 입력할 수 있도록 도와주는 UI 구성 요소입니다. HTML의
+			<code>&lt;textarea&gt;</code>
+			요소와 유사한 기능을 제공하며, InputBox와 달리 여러 줄의 텍스트 입력이 가능하여 보다 긴 내용의 텍스트를 처리할 수
+			있습니다. 개발자는 TextArea 컴포넌트를 통해 단순한 메모 형식부터 사용자 의견, 긴 텍스트 필드 입력 등 다양한 입력
+			요구에 대응할 수 있습니다. 일반적으로 사용자가 긴 텍스트를 입력해야 하는 경우에 활용됩니다.
+		</p>
+		<p id="r_972b3e3874d7a860" class="element normal"
+			data-element-id="972b3e3874d7a860">TextArea는 단순 텍스트 입력보다 더 많은 내용을
+			다루어야 할 때 InputBox 컴포넌트 대신 사용하는 것이 적합합니다. 특히 사용자가 자유롭게 텍스트를 입력하고 편집할 수
+			있는 넓은 공간이 필요한 경우에 이상적입니다.</p>
+		<dl id="r_878dde0fe3ad8d3f" class="element definition_list"
+			data-element-id="878dde0fe3ad8d3f">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3QoNos0n8Xv3Axfc21i6Pa">TextArea
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_4616395561f1284f" class="element heading1"
+			data-element-id="4616395561f1284f">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_ce6ebc92cf47475d" class="element normal"
+			data-element-id="ce6ebc92cf47475d">TextArea 컴포넌트는 다음과 같은 상황에서
+			효과적으로 활용할 수 있습니다:</p>
+		<dl id="r_cc6a8fdd8073c31e" class="element definition_list"
+			data-element-id="cc6a8fdd8073c31e">
+			<dt>
+				<strong>긴 텍스트 입력</strong>
+			</dt>
+			<dd>
+				<p>사용자 의견, 댓글, 리뷰 등 여러 줄의 텍스트 입력이 필요한 경우 사용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>텍스트 편집</strong>
+			</dt>
+			<dd>
+				<p>기존 텍스트 내용을 편집하거나 수정해야 하는 경우 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>멀티라인 표시</strong>
+			</dt>
+			<dd>
+				<p>여러 줄로 구성된 데이터를 표시할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>폼 제출</strong>
+			</dt>
+			<dd>
+				<p>대량의 텍스트 데이터가 포함된 폼을 제출해야 하는 경우 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>메모 또는 노트 기능</strong>
+			</dt>
+			<dd>
+				<p>사용자에게 자유로운 텍스트 입력 공간을 제공하여 메모 기능을 구현할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_3278502ae03352c7" class="element heading1"
+			data-element-id="3278502ae03352c7">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_287883e496b65cac" class="element unordered_list"
+			data-element-id="287883e496b65cac">
+			<li><p>Placeholder</p>
+				<ul>
+					<li><p>
+							Placeholder 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00408.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							읽기 전용 혹은 비활성화 상태에서 Placeholder 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00409.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TextArea/showPlaceHolderOnReadOnly_TextArea.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/oG856h31NQE">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					CSS로 리사이징 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00407.xml">WRE</a>)
+				</p></li>
+			<li><p>상태 관리 기능</p>
+				<ul>
+					<li><p>
+							읽기 전용 모드 –
+							<code>readOnly</code>
+						</p></li>
+					<li><p>
+							비활성화 상태 –
+							<code>disabled</code>
+						</p></li>
+				</ul></li>
+			<li><p>
+					필수 입력 표시 –
+					<code>mandatory</code>
+				</p></li>
+			<li><p>
+					최대 길이 제한 –
+					<code>maxByteLength</code>
+					,
+					<code>maxLength</code>
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

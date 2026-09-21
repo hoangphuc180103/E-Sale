@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="Code" name="name1"></w2:column>
+            			<w2:column dataType="text" id="City" name="name2"></w2:column>
+            			<w2:column dataType="text" id="Country" name="name3"></w2:column>
+            			<w2:column dataType="text" id="Type" name="name4"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+		var json = [
+			{"Code" : "MSC", "City" : "Moscow", "Country" : "Russia", "Type" : "Domestic"},
+			{"Code" : "TKY", "City" : "Tokyo", "Country" : "Japan", "Type" : "Domestic"},
+			{"Code" : "PRS", "City" : "Paris", "Country" : "France", "Type" : "Domestic"},
+			{"Code" : "BGK", "City" : "Bangkok", "Country" : "Thailand", "Type" : "Domestic"},
+			{"Code" : "TPI", "City" : "Taipei", "Country" : "Taiwan", "Type" : "Domestic"},
+			{"Code" : "OTW", "City" : "Ottawa", "Country" : "Canada", "Type" : "Overseas"},
+			{"Code" : "LDN", "City" : "Toronto", "Country" : "Canada", "Type" : "Overseas"},
+			{"Code" : "BRN", "City" : "Berlin", "Country" : "Germany", "Type" : "Overseas"},
+			{"Code" : "BJG", "City" : "Beijing", "Country" : "China", "Type" : "Overseas"},
+			{"Code" : "LDN", "City" : "London", "Country" : "UK", "Type" : "Overseas"},
+			];
+		dataList1.setJSON(json);		
+	
+};
+
+scwin.trigger1_onclick = function(e) {
+		select1.setVisibleRowNum(3);
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Set Number of Rows to Display&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Open the SelectBox.&lt;br/&gt;2. Confirm that 10 rows are displayed based on the current visibleRowNum="10" setting.&lt;br/&gt;3. Click the setVisibleRowNum(3) button at the bottom.&lt;br/&gt;4. Open the SelectBox.&lt;br/&gt;5. Confirm that 3 rows are displayed.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='visibleRowNum="10"' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[select1.setVisibleRowNum(3);]]></xf:label>
+    	</xf:trigger><xf:select1 submenuSize="auto" ref="" appearance="minimal" disabledClass="w2selectbox_disabled" chooseOption="" style="width: 50%;" disabled="false" id="select1" allOption="" visibleRowNum="10" direction="auto">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="City"></xf:label>
+    				<xf:value ref="Code"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1></xf:group></body>
+</html>

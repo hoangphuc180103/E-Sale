@@ -1,0 +1,61 @@
+/*amd /page/P00158.xml 4981 87a50dcd55dcdba1ced0839fcb785f74a02bdcffc33d71447473b713ab083f67 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  scwin.initPage();
+};
+
+/**
+ * 화면 초기화
+ */
+scwin.initPage = function () {
+  tac_exam1.addTab("P00158S01", {
+    "label": "P00158S01",
+    "openAction": "select"
+  }, {
+    "src": "/page/P00158S01.xml",
+    "wframe": true
+  });
+  tac_exam2.addTab("P00158S02", {
+    "label": "P00158S02",
+    "openAction": "select"
+  }, {
+    "src": "/page/P00158S02.xml",
+    "wframe": true
+  });
+};
+
+/**
+ * 영역 [(기본 동작) keepDisabledTab 미사용]의
+ * 버튼 [비활성화 하기 1-1] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  //TabControl [tac_exam1] 비활성화 설정
+  tac_exam1.setDisabled(true);
+};
+
+/**
+ * 영역 [(기본 동작) keepDisabledTab 미사용]의
+ * 버튼 [활성화 하기 1-1] 클릭 시
+ */
+scwin.btn_ex1_1_onclick = function (e) {
+  //TabControl [tac_exam1] 활성화 설정
+  tac_exam1.setDisabled(false);
+};
+
+/**
+ * 영역 [keepDisabledTab 사용]의
+ * 버튼 [비활성화 하기 2-1] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  //TabControl [tac_exam2] 비활성화 설정
+  tac_exam2.setDisabled(true);
+};
+
+/**
+ * 영역 [keepDisabledTab 사용]의
+ * 버튼 [활성화 하기 2-1] 클릭 시
+ */
+scwin.btn_ex2_1_onclick = function (e) {
+  //TabControl [tac_exam2] 활성화 설정
+  tac_exam2.setDisabled(false);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'TabControl의 \'keepDisabledTab\' 속성을 사용하여, 탭의 비활성화를 유지하도록 설정한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{id:'',style:'',class:''}},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mw600',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 동작) keepDisabledTab 미사용',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'상위 TabControl이 비활성화 되었다가 활성화되면 하위 TabControl의 비활성화된 Tab도 활성화됩니다.',style:''}},{T:1,N:'xf:group',A:{class:'mb10',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'비활성화 하기 1-1'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec',id:'btn_ex1_1',style:'',type:'button','ev:onclick':'scwin.btn_ex1_1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'활성화 하기 1-1'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'tbcbox'},E:[{T:1,N:'w2:tabControl',A:{confirmTrueAction:'exist',confirmFalseAction:'new',useTabKeyOnly:'true',tabScroll:'',useMoveNextTabFocus:'false',useConfirmMessage:'false',alwaysDraw:'false',style:'position: relative;height: 340px;',id:'tac_exam1',class:'tbc'}}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'keepDisabledTab 사용',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'상위 TabControl이 비활성화 되었다가 활성화되면 하위 TabControl의 비활성화된 Tab은 비활성화 상태가 유지됩니다.',style:''}},{T:1,N:'xf:group',A:{class:'mb10',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec',id:'btn_ex2',style:'',type:'button','ev:onclick':'scwin.btn_ex2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'비활성화 하기 2-1'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec',id:'btn_ex2_1',style:'',type:'button','ev:onclick':'scwin.btn_ex2_1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'활성화 하기 2-1'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'tbcbox'},E:[{T:1,N:'w2:tabControl',A:{frameModal:'true',confirmTrueAction:'exist',confirmFalseAction:'new',useTabKeyOnly:'true',tabScroll:'',useMoveNextTabFocus:'false',useConfirmMessage:'false',alwaysDraw:'false',style:'position: relative;height: 340px;',id:'tac_exam2',class:'tbc'}}]}]}]}]}]}]}]}]})

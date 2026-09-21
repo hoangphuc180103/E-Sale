@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[FusionChart] 차트 타입을 스크립트로 변경하기 - Combination" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230725" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_chartData_1" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="quarter" name="quarter"></w2:column>
+						<w2:column dataType="number" id="type1" name="type1"></w2:column>
+						<w2:column dataType="number" id="type2" name="type2"></w2:column>
+						<w2:column dataType="number" id="type3" name="type3"></w2:column>
+						<w2:column dataType="number" id="type4" name="type3"></w2:column>
+						<w2:column id="client" name="client" dataType="number"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<quarter><![CDATA[Q1]]></quarter>
+							<type1><![CDATA[11500]]></type1>
+							<type2><![CDATA[28110]]></type2>
+							<type3><![CDATA[23990]]></type3>
+							<type4><![CDATA[14400]]></type4>
+							<client><![CDATA[16]]></client>
+						</w2:row>
+						<w2:row>
+							<quarter><![CDATA[Q2]]></quarter>
+							<type1><![CDATA[1500]]></type1>
+							<type2><![CDATA[10600]]></type2>
+							<type3><![CDATA[10000]]></type3>
+							<type4><![CDATA[5200]]></type4>
+							<client><![CDATA[24]]></client>
+						</w2:row>
+						<w2:row>
+							<quarter><![CDATA[Q3]]></quarter>
+							<type1><![CDATA[27400]]></type1>
+							<type2><![CDATA[31800]]></type2>
+							<type3><![CDATA[42800]]></type3>
+							<type4><![CDATA[15300]]></type4>
+							<client><![CDATA[29]]></client>
+						</w2:row>
+						<w2:row>
+							<quarter><![CDATA[Q4]]></quarter>
+							<type1><![CDATA[27400]]></type1>
+							<type2><![CDATA[22900]]></type2>
+							<type3><![CDATA[20800]]></type3>
+							<type4><![CDATA[15200]]></type4>
+							<client><![CDATA[25]]></client>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType_1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="chart_name" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="chart_value" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<chart_name><![CDATA[Multi-series 2D Single Y Combination Chart (Column + Line + Area)]]></chart_name>
+							<chart_value><![CDATA[mscombi2d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Multi-series 3D Single Y Combination Chart (Column + Line + Area)]]></chart_name>
+							<chart_value><![CDATA[mscombi3d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Multi-series Column 3D + Line - Single Y Axis]]></chart_name>
+							<chart_value><![CDATA[mscolumnline3d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Stacked Column2D + Line Single Y Axis]]></chart_name>
+							<chart_value><![CDATA[stackedcolumn2dline]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Stacked Column3D + Line Single Y Axis]]></chart_name>
+							<chart_value><![CDATA[stackedcolumn3dline]]></chart_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType_2" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="chart_name" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="chart_value" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<chart_name><![CDATA[Multi-series 2D Dual Y Combination Chart (Column + Line + Area)]]></chart_name>
+							<chart_value><![CDATA[mscombidy2d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Multi-series 3D Dual Y Combination Chart (Column + Line + Area)]]></chart_name>
+							<chart_value><![CDATA[mscombidy3d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Multi-series Column 3D + Line - Dual Y Axis]]></chart_name>
+							<chart_value><![CDATA[mscolumn3dlinedy]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Stacked Column2D + Line Dual Y Axis]]></chart_name>
+							<chart_value><![CDATA[stackedcolumn2dlinedy]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Stacked Column 3D + Line Dual Y Axis]]></chart_name>
+							<chart_value><![CDATA[stackedcolumn3dlinedy]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Stacked Area + Line Dual Y Axis]]></chart_name>
+							<chart_value><![CDATA[stackedarea2dlinedy]]></chart_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType_3" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="chart_name" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="chart_value" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<chart_name><![CDATA[Multi-series Stacked Column 2D + Line Dual Y Axis]]></chart_name>
+							<chart_value><![CDATA[msstackedcolumn2dlinedy]]></chart_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // Fusionchart 'cht_exam1'의 초기 속성을 설정합니다.
+    cht_exam1.setChartAttribute({
+        "caption": rad_chartType1.getText(), // radio에 선택된 text를 차트의 caption으로 지정.
+        "captionFontSize": "10px",
+        "captionAlignment": "left",
+        "canvasTopPadding": 6,
+        "canvasRightMargin": 10,
+        "canvasLeftPadding": 6,
+        "canvasRightPadding": 6,
+        "chartBottomMargin": 12
+    });
+
+    // 지정한 속성을 바탕으로 브라우저에 그립니다.
+    cht_exam1.draw();
+
+    // Fusionchart 'cht_exam2'의 초기 속성을 설정합니다.
+    cht_exam2.setChartAttribute({
+        "caption": rad_chartType2.getText(), // radio에 선택된 text를 차트의 caption으로 지정.
+        "sYAxisMaxValue": "40",
+        "captionFontSize": "10px",
+        "captionAlignment": "left",
+        "canvasTopPadding": 6,
+        "canvasRightMargin": 10,
+        "canvasLeftPadding": 6,
+        "canvasRightPadding": 6,
+        "chartBottomMargin": 12
+    });
+
+    // 지정한 속성을 바탕으로 브라우저에 그립니다.
+    cht_exam2.draw();
+
+    // Fusionchart 'cht_exam3'의 초기 속성을 설정합니다.
+    cht_exam3.setChartAttribute({
+        "caption": rad_chartType3.getText(), // radio에 선택된 text를 차트의 caption으로 지정.
+        "sYAxisMaxValue": "40",
+        "captionFontSize": "10px",
+        "captionAlignment": "left",
+        "canvasTopPadding": 6,
+        "canvasRightMargin": 10,
+        "canvasLeftPadding": 6,
+        "canvasRightPadding": 6,
+        "chartBottomMargin": 12
+    });
+
+    // 지정한 속성을 바탕으로 브라우저에 그립니다.
+    cht_exam3.draw();
+};
+
+/**
+ * 차트 'Combination Single Y Axis Charts' 타입이 구성된 Radio 'rad_chartType1'의 이벤트 'onviewchange' 핸들러
+ */
+scwin.rad_chartType1_onviewchange = function (info) {
+    let chartAlias = info.value;
+    // Fusionchart 'cht_exam1'의 속성을 설정합니다.
+    // radio에 선택된 text를 차트의 caption으로 지정.
+    cht_exam1.setChartAttribute({
+        "caption": this.getText()
+    });
+
+    cht_exam1.changeType(chartAlias);
+
+    // 'Combination Single Y Axis Charts' 타입 변경 예시)
+    // Fucionchart의 'seriesColumns' 속성 예시) [['type1','type2',{'id':'type3','renderas':'Line'},{'id':'type4','renderas':'area'}]]
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Multi-series 2D Single Y Combination Chart (Column + Line + Area)'로 변경합니다.
+    // cht_exam1.changeType('mscombi2d');
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Multi-series 3D Single Y Combination Chart (Column + Line + Area)'로 변경합니다.
+    // cht_exam1.changeType('mscombi3d');
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Multi-series Column 3D + Line - Single Y Axis'로 변경합니다.
+    // cht_exam1.changeType('mscolumnline3d');
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Stacked Column2D + Line Single Y Axis'로 변경합니다.
+    // cht_exam1.changeType('stackedcolumn2dline');
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Stacked Column3D + Line Single Y Axis'로 변경합니다.
+    // cht_exam1.changeType('stackedcolumn3dline');
+};
+
+
+/**
+ * 차트 'Combination Dual Y Axis Charts' 타입이 구성된 Radio 'rad_chartType2'의 이벤트 'onviewchange' 핸들러
+ */
+scwin.rad_chartType2_onviewchange = function (info) {
+    let chartAlias = info.value;
+    // Fusionchart 'cht_exam2'의 속성을 설정합니다.
+    // radio에 선택된 text를 차트의 caption으로 지정.
+    cht_exam2.setChartAttribute({
+        "caption": this.getText()
+    });
+
+    cht_exam2.changeType(chartAlias);
+
+    // 'Combination Dual Y Axis Charts' 타입 변경 예시)
+    // Fucionchart의 'seriesColumns' 속성 예시) [['type1','type2',{'id':'type3','renderas':'area'}, {'id':'client','renderas':'line', 'color' : '#DC143C', 'parentYAxis': 'S'}]]
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Multi-series 2D Dual Y Combination Chart (Column + Line + Area)'로 변경합니다.
+    // cht_exam2.changeType('mscombidy2d');
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Multi-series 3D Dual Y Combination Chart (Column + Line + Area)'로 변경합니다.
+    // cht_exam2.changeType('mscombidy3d');
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Multi-series Column 3D + Line - Dual Y Axis'로 변경합니다.
+    // cht_exam2.changeType('mscolumn3dlinedy');
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Stacked Column2D + Line Dual Y Axis'로 변경합니다.
+    // cht_exam2.changeType('stackedcolumn2dlinedy');
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Stacked Column 3D + Line Dual Y Axis'로 변경합니다.
+    // cht_exam2.changeType('stackedcolumn3dlinedy');
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Stacked Area + Line Dual Y Axis'로 변경합니다.
+    // cht_exam2.changeType('stackedarea2dlinedy');
+
+};
+
+/**
+ * 차트 'Multi-series Stacked Combination Charts' 타입이 구성된 Radio 'rad_chartType1'의 이벤트 'onviewchange' 핸들러
+ */
+scwin.rad_chartType3_onviewchange = function (info) {
+    let chartAlias = info.value;
+    // Fusionchart 'cht_exam1'의 속성을 설정합니다.
+    // radio에 선택된 text를 차트의 caption으로 지정.
+    cht_exam3.setChartAttribute({
+        "caption": this.getText()
+    });
+
+    cht_exam3.changeType(chartAlias);
+
+    // 'Multi-series Stacked Combination Charts' 타입 변경 예시)
+    // Fucionchart의 'seriesColumns' 속성 예시) [['type1', 'type2'], ['type4', 'type3'], [{ 'id': 'client', 'color': '#DC143C', 'parentYAxis': 'S', 'linethickness': '3' }]]
+
+    // Fusionchart 'cht_exam3'의 차트 타입을 'Multi-series Stacked Column 2D + Line Dual Y Axis'로 변경합니다.
+    // cht_exam3.changeType('msstackedcolumn2dlinedy');
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Fusionchart의 'changeType' 메소드를 사용하여 'Combination' 타입의 차트를 설정하는 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제의 Fusion Chart 버전은 3.19입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Combination Single Y Axis Charts" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:select1 appearance="full" class="w_per_100" cols="" id="rad_chartType1" ref="" renderType="radiogroup" rows=""
+								selectedIndex="0" style="min-height: 26px;" ev:onviewchange="scwin.rad_chartType1_onviewchange">
+								<xf:choices>
+									<xf:itemset nodeset="data:dlt_chartType_1">
+										<xf:label ref="chart_name"></xf:label>
+										<xf:value ref="chart_value"></xf:value>
+									</xf:itemset>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:fusionchart chartType="MSCombi2D" drawType="javascript" id="cht_exam1" labelNode="quarter"
+								ref="data:dlt_chartData_1" seriesColumns="[['type1','type2',{'id':'type3','renderas':'Line'},{'id':'type4','renderas':'area'}]]"
+								style="height: 300px;min-width:200px;" version="3.19">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Combination Dual Y Axis Charts" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:select1 appearance="full" class="w_per_100" cols="" ev:onviewchange="scwin.rad_chartType2_onviewchange"
+								id="rad_chartType2" ref="" renderType="radiogroup" rows="" selectedIndex="0" style="min-height: 26px;">
+								<xf:choices>
+									<xf:itemset nodeset="data:dlt_chartType_2">
+										<xf:label ref="chart_name"></xf:label>
+										<xf:value ref="chart_value"></xf:value>
+									</xf:itemset>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:fusionchart chartType="MSCombiDY2D" drawType="javascript" id="cht_exam2" labelNode="quarter"
+								ref="data:dlt_chartData_1"
+								seriesColumns="[['type1','type2',{'id':'type3','renderas':'area'}, {'id':'client','renderas':'line', 'color' : '#DC143C', 'parentYAxis': 'S'}]]"
+								style="height: 300px;min-width:200px;" version="3.19">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Multi-series Stacked Combination Charts" style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:select1 appearance="full" class="w_per_100" cols="" ev:onviewchange="scwin.rad_chartType3_onviewchange"
+								id="rad_chartType3" ref="" renderType="radiogroup" rows="" selectedIndex="0" style="min-height: 26px;">
+								<xf:choices>
+									<xf:itemset nodeset="data:dlt_chartType_3">
+										<xf:label ref="chart_name"></xf:label>
+										<xf:value ref="chart_value"></xf:value>
+									</xf:itemset>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:fusionchart chartType="MSStackedColumn2DLineDY" drawType="javascript" id="cht_exam3" labelNode="quarter"
+								ref="data:dlt_chartData_1" seriesColumns="[['type1', 'type2'], ['type4', 'type3'], [{ 'id': 'client', 'color': '#DC143C', 'parentYAxis': 'S', 'linethickness': '3' }]]"
+								style="height: 300px;min-width:200px;" version="3.19">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

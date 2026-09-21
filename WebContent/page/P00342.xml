@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[DataMap] JSON 형식의 데이터를 할당하고 원본 데이터로 지정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230816" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="04" meta_desc="예제에서 사용하는 DataMap이 변경되고, 이에 따른 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataMap baseNode="map" id="dma_exam">
+					<w2:keyInfo>
+						<w2:key id="key_a" name="KEY A" dataType="text"></w2:key>
+						<w2:key id="key_b" name="KEY B" dataType="text"></w2:key>
+					</w2:keyInfo>
+					<w2:data use="true">
+						<key_a><![CDATA[A1]]></key_a>
+						<key_b><![CDATA[B1]]></key_b>
+					</w2:data>
+				</w2:dataMap>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+};
+
+/**
+ * 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [2. 스크립트로 데이터 할당하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // DataMap 'dma_exam'에 key 'key_b'의 값을 할당합니다.
+    dma_exam.setJSON({
+        "key_b": "B2"
+    });
+
+    // 로그 출력
+    let strLog = '# 스크립트 실행\ndma_exam.setJSON({ "key_b" : "B2" });';
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [4. 스크립트로 'KEY B'의 데이터를 할당하고 원본 데이터로 지정하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // DataMap 'dma_exam'에 key 'key_b'의 값을 할당합니다.
+    dma_exam.setJSON({
+        "key_b": "B3"
+    });
+
+    // DataMap 'dma_exam'의 현재 데이터를 원본(Original) 데이터로 지정합니다. 데이터의 상태 값은 모두 초기화됩니다.
+    dma_exam.reform();
+
+    // 로그 출력
+    let strLog = '# 스크립트 실행\ndma_exam.setJSON({ "key_b" : "B3" });\ndma_exam.reform();';
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [1. 변경된 데이터의 'key' 목록 반환받기], 
+ * 버튼 [3. 변경된 데이터의 'key' 목록 반환받기],
+ * 버튼 [5. 변경된 데이터의 'key' 목록 반환받기]
+ * 클릭 시
+ */
+scwin.dma_exam_getModifiedKey = function (e) {
+    // DataMap 'dma_exam'의 수정된 'key' 목록 반환받기
+    let result = dma_exam.getModifiedKey();
+
+    // 로그 출력
+    let strLog = '# 스크립트 dma_exam.getModifiedKey(); 반환 값: \n';
+    $c.frame.printExampleLog(strLog + JSON.stringify(result), txa_log_1, false);
+    console.log(strLog, result);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false" label="DataMap의 'setJSON' 메소드와 'reform' 메소드를 사용하여 JSON 데이터를 할당하고, 이 데이터를 원본 데이터로 설정하는 예제입니다."
+					class="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" label="버튼을 순서대로 클릭하여 테스트합니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.dma_exam_getModifiedKey" type="button">
+								<xf:label><![CDATA[1. 변경된 데이터의 'key' 목록 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								type="button">
+								<xf:label><![CDATA[2. 스크립트로 'KEY B'의 데이터를 'B2'로 할당하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.dma_exam_getModifiedKey" id="btn_exam1_2"
+								type="button">
+								<xf:label><![CDATA[3. 변경된 데이터의 'key' 목록 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1"
+								type="button">
+								<xf:label><![CDATA[4. 스크립트로 'KEY B'의 데이터를 'B3'으로 할당하고 원본 데이터로 지정하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.dma_exam_getModifiedKey" id="btn_exam2_2"
+								type="button">
+								<xf:label><![CDATA[5. 변경된 데이터의 'key' 목록 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:textbox class="wre_txt_normal" escape="false" label="아래는 DataMap의 데이터를 확인하기 위해 구성된 출력 폼입니다.">
+						</w2:textbox>
+						<xf:group class="mb_def" style="border: 1px solid #ddd;">
+							<xf:group class="" style="margin-bottom: 0px !important; border-bottom: 1px solid #ddd;">
+								<w2:span class="" label="KEY A"
+									style="background-color:#eee;display: inline-block;width:70px;margin-right:6px;line-height: 36px;text-align: center;"></w2:span>
+								<w2:span class="" label="" style="display: inline-block;line-height: 36px;min-width:100px;" ref="data:dma_exam.key_a">
+								</w2:span>
+							</xf:group>
+							<xf:group class="">
+								<w2:span class="" label="KEY B"
+									style="background-color:#eee;display: inline-block;width:70px;margin-right:6px;line-height: 36px;text-align: center;"></w2:span>
+								<w2:span class="" label="" ref="data:dma_exam.key_b" style="display: inline-block;line-height: 36px;min-width:100px;">
+								</w2:span>
+							</xf:group>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 110px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

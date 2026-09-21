@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+    text1.hide();
+
+    text2.hide();
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    var tmpSrc = scwin.getfolderPath() + "/02_openPopUp.xml";
+    wframe1.setSrc(tmpSrc);
+    wframe2.setSrc(tmpSrc);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Close Parent-Child Popups Created in WFrame Together&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Click the setSrc() button.&lt;br/&gt;&lt;br/&gt;(First WFrame)&lt;br/&gt;2-1. Click each button to sequentially create parent-child popups.&lt;br/&gt;2-2. Close the parent popup.&lt;br/&gt;2-3. Confirm that all child popups belonging to the parent popup also close. (frameModal=“true”)&lt;br/&gt;&lt;br/&gt;(Second WFrame)&lt;br/&gt;3-1. Click each button to sequentially create parent-child popups.&lt;br/&gt;3-2. Close the parent popup.&lt;br/&gt;3-3. Confirm that only the parent popup closes. (frameModal=“false”)&lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[setSrc()]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='frameModal="true" (WFrame)' escape="false">
+    	</w2:textbox>
+    	<w2:wframe frameModal="true" style="height: 300px;border: gray 1px solid;margin-bottom: 10px;" id="wframe1"></w2:wframe>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox5" label='frameModal="false" (WFrame)' escape="false">
+    	</w2:textbox>
+    	<w2:wframe style="height: 300px;border: gray 1px solid;margin-bottom: 10px;" id="wframe2"></w2:wframe>
+    	<w2:textbox style="width: 150px;height: 23px;" id="text1" label="A"></w2:textbox>
+    	<w2:textbox style="width: 150px;height: 23px;" id="text2" label="B"></w2:textbox>
+    </xf:group></body>
+</html>

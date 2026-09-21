@@ -1,0 +1,73 @@
+/*amd /page/P00423.xml 5931 4ecde9696a373f121305312d27341b077bc88593bd52d3523c7511b2c0e214eb */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataMap',A:{baseNode:'map',id:'dma_exam1'},E:[{T:1,N:'w2:keyInfo',E:[{T:1,N:'w2:key',A:{id:'type1',name:'예시유형1',dataType:'text'}},{T:1,N:'w2:key',A:{id:'type2',name:'예시유형2',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 최초 선택 값 로그 출력
+  scwin.printInitLog();
+};
+scwin.printInitLog = function () {
+  // 로그 출력
+  let strLog = '# 최초 선택 값 확인\n';
+  strLog += "선택된 값 : " + acb_exam1.getValue();
+  strLog += "\n";
+  strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+  $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+  console.log(strLog);
+};
+
+/**
+ * [공통] 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  let strTargetId = this.getUserData("userData1");
+  let cmpTarget;
+  if (strTargetId) {
+    cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+  } else {
+    cmpTarget = txa_log;
+  }
+  //textarea value를 빈문자열로 할당.
+  cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [1.1 선택된 값과 인덱스 확인하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // 로그 출력
+  let strLog = '# 버튼 [' + this.getValue() + '] 클릭\n';
+  strLog += "선택된 값 : " + acb_exam1.getValue();
+  strLog += "\n";
+  strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+  $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+  console.log(strLog);
+};
+
+/**
+ * 버튼 [2.2 메소드 setValue("") 실행하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+  acb_exam1.setValue("");
+
+  // 로그 출력
+  let strLog = '# 버튼 [' + this.getValue() + '] 클릭\n';
+  strLog += "선택된 값 : " + acb_exam1.getValue();
+  strLog += "\n";
+  strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+  $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+  console.log(strLog);
+};
+
+/**
+ * 버튼 [1.3 목록에 없는 항목 설정하기 - 메소드 setValue("NONE") 실행] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+  acb_exam1.setValue("NONE");
+
+  // 로그 출력
+  let strLog = '# 버튼 [' + this.getValue() + '] 클릭\n';
+  strLog += "선택된 값 : " + acb_exam1.getValue();
+  strLog += "\n";
+  strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+  $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+  console.log(strLog);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'AutoComplete의 \'emptyItem\' 속성과 \'emptyIndex\' 속성을 사용하여 화면 로딩 시 항목이 선택되지 않도록 설정한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',label:'항목을 선택하고 버튼을 클릭하여 실행 결과를 비교합니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.1 선택된 값과 인덱스 확인하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false',id:'btn_exam1_2',style:'',type:'button','ev:onclick':'scwin.btn_exam1_2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.2 메소드 setValue("") 실행하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false',id:'btn_exam1_3',style:'',type:'button','ev:onclick':'scwin.btn_exam1_3_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.3 목록에 없는 항목 설정하기 - 메소드 setValue("NONE") 실행'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'mb_def_box nobottom'},E:[{T:1,N:'w2:autoComplete',A:{emptyIndex:'-1',emptyItem:'true',id:'acb_exam1',ref:'',style:'width: 130px;min-height:26px;',submenuSize:'auto'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'Apple'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'Apple'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'Banana'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'Banana'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'Cat'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'Cat'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'Dog'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'Dog'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'Happy'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'Happy'}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_bold',label:'로그 확인'}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',title:'로그 삭제',type:'button',userData1:'txa_log_1'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log_1',spellcheck:'false',style:'width: 100%;height: 120px;'}}]}]}]}]}]}]}]})

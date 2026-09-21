@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};	
+	
+	scwin.input1_oneditfull = function() {
+		alert("oneditfull - Maximum length reached.");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="イベント - oneditfull"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. maxByteLength属性値で指定した「7」バイト長のテキストを入力します。 （例：「1234567」）&lt;br/&gt;2. oneditfull イベントが発生していることを確認してください。' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox2" label='プロパティの設定&lt;br/&gt;maxByteLength="7" &lt;br/&gt;autoFocus="true"' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox5" label="イベント説明&lt;br/&gt;oneditfull - ユーザー入力がmaxByteLength値に達したときに発生します。" escape="false">
+    	</w2:textbox>
+    	<xf:input maxByteLength="7" ev:oneditfull="scwin.input1_oneditfull" adjustMaxLength="false"
+    		style="width: 100%;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: red;"
+    		id="input1" autoFocus="true">
+    	</xf:input>
+    	<w2:textbox escape="false" id="textbox6"
+    		label='/// サンプルコード &lt;br/&gt;&lt;br/&gt;scwin.input1_oneditfull = function() {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("oneditfull - Maximum length reached.");&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

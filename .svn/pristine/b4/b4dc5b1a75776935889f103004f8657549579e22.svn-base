@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+        				<w2:column dataType="text" id="col2" name="Country"></w2:column>
+        				<w2:column dataType="text" id="col3" name="Item"></w2:column>
+        				<w2:column dataType="text" id="col4" name="Quantity"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+	var json = [
+		{ "col1": "Asia", "col2": "Korea", "col3": "TV", "col4": "400" },
+		{ "col1": "Asia", "col2": "Korea", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Asia", "col2": "Korea", "col3": "Washer", "col4": "100" },
+		{ "col1": "Asia", "col2": "Korea", "col3": "Heater", "col4": "250" },
+		{ "col1": "Asia", "col2": "China", "col3": "TV", "col4": "400" },
+		{ "col1": "Asia", "col2": "China", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Asia", "col2": "China", "col3": "Washer", "col4": "100" },
+		{ "col1": "Asia", "col2": "Japan", "col3": "TV", "col4": "100" },
+		{ "col1": "Asia", "col2": "Japan", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Asia", "col2": "Japan", "col3": "Washer", "col4": "200" },
+		{ "col1": "Europe", "col2": "Germany", "col3": "TV", "col4": "100" },
+		{ "col1": "Europe", "col2": "Germany", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Europe", "col2": "Germany", "col3": "Washer", "col4": "200" },
+		{ "col1": "Europe", "col2": "France", "col3": "TV", "col4": "100" },
+		{ "col1": "Europe", "col2": "France", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Europe", "col2": "France", "col3": "Washer", "col4": "200" },
+		{ "col1": "Europe", "col2": "Denmark", "col3": "TV", "col4": "100" },
+		{ "col1": "Europe", "col2": "Denmark", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Europe", "col2": "Denmark", "col3": "Washer", "col4": "200" },
+		{ "col1": "Americas", "col2": "Canada", "col3": "TV", "col4": "100" },
+		{ "col1": "Americas", "col2": "Canada", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Americas", "col2": "Canada", "col3": "Washer", "col4": "200" },
+		{ "col1": "Americas", "col2": "USA", "col3": "TV", "col4": "100" },
+		{ "col1": "Americas", "col2": "USA", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Americas", "col2": "USA", "col3": "Washer", "col4": "200" },
+		{ "col1": "Americas", "col2": "Mexico", "col3": "TV", "col4": "100" },
+		{ "col1": "Americas", "col2": "Mexico", "col3": "Freezer", "col4": "300" },
+		{ "col1": "Americas", "col2": "Mexico", "col3": "Washer", "col4": "200" }
+	];
+	dataList1.setJSON(json);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+	dataList1.setJSON([]);
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="데이터가 없을 경우 특정 화면 파일 표시" style="color: blue;margin-bottom: 10px;" tabIndex="h1"
+    		tagname="h1">
+    	</w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='(예제를 단독으로 실행.)&lt;br/&gt;1. 하단의 setJSON() 버튼을 클릭하여 빈 데이터를 설정. &lt;br/&gt;&lt;br/&gt;(첫 번째 GridView의 경우)&lt;br/&gt;2. noResultMessageURL 속성 값으로 설정한 파일이 표시되는 것을 확인. &lt;br/&gt;(본 예제의 경우, useNoResultMessageURL_noResultMessageURL_message.xml 파일이 표시됨.)&lt;br/&gt;&lt;br/&gt;(두 번째 GridView의 경우)&lt;br/&gt;2. "데이터가 없음"이 표시됨.'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='속성 설정&lt;br/&gt;useNoResultMessageUR="true" &lt;br/&gt;noResultMessageURL="useNoResultMessageURL"&lt;br/&gt;noResultMessageURL_message.xml"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[dataList1.setJSON([]);]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView noResultMessageURL="useNoResultMessageURL_noResultMessageURL_message.xml" scrollByColumn="false" defaultCellHeight="20"
+    		selectedCellColor="lightgreen" focusMode="none" dataDragSelect="" id="gridView1" autoFit="allColumn" cellStatusVisible="true"
+    		scrollByColumnAdaptive="false" hammerEnabled="true" dataDragDrop="true" selectedRowColor="pink" useShiftKey="true"
+    		useCtrlOnMultisort="" dataDragDropStatus="true" focusFlow="linear" useNoResultMessageURL="true"
+    		contextMenu="true" visibleRowNumFix="true" dataList="data:dataList1" style="border: solid gray 1px;margin-bottom: 10px;" cellStatusIconPosition="left"
+    		columnMove="true" visibleRowNum="10" useCtrlKey="">
+    		<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header2">
+    			<w2:row style="" id="row3">
+    				<w2:column width="70" inputType="text" style="" id="column11" value="Continent" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column10" value="Country" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column9" sortable="true" value="Item" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column8" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody2">
+    			<w2:row style="" id="row4">
+    				<w2:column width="70" inputType="" style="" id="col1" value="" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col4" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='속성 설정&lt;br/&gt;useNoResultMessageUR="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" cellStatusIconPosition="left" cellStatusVisible="true" columnMove="true" contextMenu="true"
+    		dataDragDrop="true" dataDragDropStatus="true" dataDragSelect="" dataList="data:dataList1" defaultCellHeight="20" focusFlow="linear"
+    		focusMode="none" hammerEnabled="true" id="gridView2" scrollByColumn="false" scrollByColumnAdaptive="false"
+    		selectedCellColor="lightgreen" selectedRowColor="pink" style="border: solid gray 1px;" useCtrlKey="" useCtrlOnMultisort=""
+    		useNoResultMessageURL="true" useShiftKey="true" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption id="caption3" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header2" style="">
+    			<w2:row id="row3" style="">
+    				<w2:column displayMode="label" id="column11" inputType="text" style="" value="Continent" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column10" inputType="text" style="" value="Country" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column9" inputType="text" sortable="true" style="" value="Item" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column8" inputType="text" style="" value="Quantity" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody2" style="">
+    			<w2:row id="row4" style="">
+    				<w2:column displayMode="label" id="col1" inputType="" style="" useFilter="true" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col2" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col3" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col4" inputType="text" style="" value="" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

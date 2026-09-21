@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] Popup 실습">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" ev:ondataload="scwin.dc_userInfoList_ondataload"
+            		ev:oninsertrow="scwin.dc_userInfoList_oninsertrow" ev:onremoverow="scwin.dc_userInfoList_onremoverow" id="dc_userInfoList"
+            		repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="EMP_CD" name="사번"></w2:column>
+            			<w2:column dataType="text" id="EMP_NM" name="이름"></w2:column>
+            			<w2:column dataType="text" id="EMAIL" name="이메일"></w2:column>
+            			<w2:column dataType="text" id="ADDRESS1" name="주소1"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000001]]></EMP_CD>
+            				<EMP_NM><![CDATA[김길동]]></EMP_NM>
+            				<EMAIL><![CDATA[aaa@inswav.com]]></EMAIL>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000002]]></EMP_CD>
+            				<EMP_NM><![CDATA[이길동]]></EMP_NM>
+            				<EMAIL><![CDATA[aaa@inswav.com]]></EMAIL>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000003]]></EMP_CD>
+            				<EMP_NM><![CDATA[박길동]]></EMP_NM>
+            				<EMAIL><![CDATA[aaa@inswav.com]]></EMAIL>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000004]]></EMP_CD>
+            				<EMP_NM><![CDATA[강길동]]></EMP_NM>
+            				<EMAIL><![CDATA[aaa@inswav.com]]></EMAIL>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000005]]></EMP_CD>
+            				<EMP_NM><![CDATA[홍길동]]></EMP_NM>
+            				<EMAIL><![CDATA[aaa@inswav.com]]></EMAIL>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	ui_float.hide();
+};
+ 
+//Layer popup 
+scwin.btn_laypop_onclick = function (e) {
+// 팝업 화면에 데이터를 전달 (dataObject를 통해 전달 가능)
+ 
+
+// 팝업 생성 옵션 지정
+ 
+// 팝업 생성 
+ 
+};
+
+
+
+// 팝업 생성 옵션의 closeAction 함수 정의 예시
+scwin.popup_closeAction = function (argRuntimeID, argJsnInfo) {
+  // argRuntimeID : 팝업의 실행 시점 아이디
+  // argJsnInfo : 팝업의 부가 정보를 담은 JSON 객체
+  // argJsnInfo.isCloseButtonClick : [true, false] 팝업의 닫기 버튼을 클릭해서 호출되었는지의 여부
+ 
+  // popup 객체 접근 하기 
+  // var popupObj = $p.getPopupWindow(argRuntimeID);
+
+  // 팝업창에서 전달받은 데이터를 반환받기
+  // var jsnParamData = $p.getParameter("exam_param");
+ 
+  return true ; //팝업 닫기 (반환 값이 true인 경우만 팝업이 닫힘)
+};
+
+scwin.btn_broPop_onclick = function (e) {
+// 팝업 화면에 데이터를 전달 (dataObject를 통해 전달 가능)
+ 
+// 팝업 생성 옵션 지정
+ 
+// 팝업 생성 
+};
+
+//isPopup
+//var _chPop = $p.isPopup();
+//alert(_chPop);
+scwin.btn_isPop_onclick = function (e) {
+};
+
+//Floating Layer show
+//ui_float.show();
+scwin.btn_float_show_onclick = function (e) {
+};
+
+//Floating Layer hide
+//ui_float.hide();
+scwin.btn_float_hide_onclick = function (e) {
+};
+
+scwin.ui_textbox1_onclick = function (e) {
+    var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] 팝업" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style="cursor: pointer;"
+    					tagname="h3" userData1="/edu/adv/popup_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame style="" id="" src="/edu/adv/popup_desc.xml"></w2:pageFrame>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="팝업 Type 차이 확인/모달과 모달리스의 차이 확인" style="" tagname="h4"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<xf:group class="rt" id="" style=""></xf:group>
+    			<xf:group class="btnbox" id="" style="">
+    				<xf:group class="rt" id="" style="">
+    					<w2:textbox class="bar_btndiv" id="" label="" style=""></w2:textbox>
+    					<xf:trigger class="btn_cm pt" id="btn_laypop" style="" type="button" ev:onclick="scwin.btn_laypop_onclick">
+    						<xf:label><![CDATA[wframePopup]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm" id="btn_broPop" style="" type="button" ev:onclick="scwin.btn_broPop_onclick">
+    						<xf:label><![CDATA[Browser Popup]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm pt" id="btn_float_show" style="" type="button"
+    						ev:onclick="scwin.btn_float_show_onclick">
+    						<xf:label><![CDATA[Floating Layer show]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " id="btn_float_hide" style="" type="button" ev:onclick="scwin.btn_float_hide_onclick">
+    						<xf:label><![CDATA[Floating Layer hide]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="btnbox" id="" style="">
+    				<xf:group class="rt" id="" style="">
+    					<w2:textbox class="bar_btndiv" id="" label="" style=""></w2:textbox>
+    					<xf:trigger class="btn_cm pt" id="btn_isPop" style="" type="button" ev:onclick="scwin.btn_isPop_onclick">
+    						<xf:label><![CDATA[isPopup]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<w2:gridView checkAllType="false" defaultCellHeight="20" id="ui_grd" style="width: 500px;height: 150px;" dataList="">
+    				<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    				<w2:header style="" id="header1">
+    					<w2:row style="" id="row1">
+    						<w2:column width="70" inputType="text" style="" id="column1" value="" displayMode="label"></w2:column>
+    					</w2:row>
+    				</w2:header>
+    				<w2:gBody style="" id="gBody1">
+    					<w2:row style="" id="row2">
+    						<w2:column width="70" inputType="text" style="" id="column2" value="" displayMode="label"></w2:column>
+    					</w2:row>
+    				</w2:gBody>
+    			</w2:gridView>
+    			<xf:group adaptiveThreshold="" class="gvwbox" id="" style="">
+    				<xf:group adaptiveThreshold="" class="gvwbox" id="" style="">
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+
+
+    </body>
+</html>

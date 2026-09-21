@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="DataList와 GridView의 CUD API 속도 비교">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220706" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_desc="setBroadcast 메소드 호출 인자 추가" meta_date="20230811" meta_user="InswaveSystems" meta_no="02"></w2:history>
+			<w2:history meta_no="03" meta_desc="DataList 'dlt_member'의 데이터가 변경되고, 이에 따른 스크립트가 수정되었습니다." meta_date="20240627" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_member" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="USER_PK" name="고유키" dataType="text"></w2:column>
+						<w2:column id="USER_ID" name="아이디" dataType="text"></w2:column>
+						<w2:column id="NAME" name="이름" dataType="text"></w2:column>
+						<w2:column id="GROUP_A" name="그룹 A" dataType="text"></w2:column>
+						<w2:column id="GROUP_B" name="그룹 B" dataType="text"></w2:column>
+						<w2:column id="GROUP_C" name="그룹 C" dataType="text"></w2:column>
+						<w2:column id="GROUP_D" name="그룹 D" dataType="text"></w2:column>
+						<w2:column id="EMAIL" name="이메일" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList id="dlt_execLog" baseNode="list" saveRemovedData="true" repeatNode="map">
+					<w2:columnInfo>
+						<w2:column id="desc" name="실행한 API" dataType="text"></w2:column>
+						<w2:column id="timeTaken" name="소요 시간" dataType="text"></w2:column>
+						<w2:column id="startTime" name="시작 시각" dataType="text"></w2:column>
+						<w2:column id="type" name="타입 고유값" dataType="text"></w2:column>
+						<w2:column id="typeNm" name="타입명" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_getUserData" ref="" target="data:array"
+				action="/data/sampleData/largeData/dlt_member_8X2000_array.json" method="post" mediatype="application/json" encoding="UTF-8"
+				mode="asynchronous">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    $p.executeSubmission("sbm_getUserData");
+};
+
+/**
+ * 로그 출력용 메소드
+ */
+scwin.fn_getLogDataObj = function (e) {
+    var arrTmpDate = ($p.getCurrentServerDate("yyyyMMdd-HHmmss")).split("-");
+
+    return {
+        "strCurDate": arrTmpDate[0],
+        "strStartTime": arrTmpDate[1],
+        "startDate": new Date(),
+        "endDate": null
+    };
+};
+
+/**
+ * 반복할 행의 수 입력 값 검증
+ */
+scwin.fn_getTotCount = function () {
+    var totCount = ui_rowCount.getValue();
+
+    if (!totCount) {
+        alert("반복할 행의 수를 입력하세요");
+        ui_rowCount.focus();
+        return 0;
+    }
+
+    return totCount;
+};
+
+
+//insertRow 버튼 클릭 시
+scwin.btn_insertRow_onclick = function (e) {
+    var idx,
+        logDefData = scwin.fn_getLogDataObj(),
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+    for (let i = 1; i <= totCount; i++) {
+        idx = dlt_member.insertRow();
+        dlt_member.setCellData(idx, "NAME", "inserRow " + i);
+        dlt_member.setCellData(idx, "GROUP_A", "A01");
+        dlt_member.setCellData(idx, "GROUP_B", "B01");
+        dlt_member.setCellData(idx, "GROUP_C", "C01");
+        dlt_member.setCellData(idx, "GROUP_D", "D01");
+    }
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(1, logDefData, totCount);
+};
+
+//insertJSON 버튼 클릭 시
+scwin.btn_insertJSON_onclick = function (e) {
+    var idx, arrData = [],
+        logDefData = scwin.fn_getLogDataObj(),
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+
+    for (let i = 1; i <= totCount; i++) {
+        arrData.push({
+            "NAME": "insertJSON " + i,
+            "GROUP_A": "A01",
+            "GROUP_B": "B01",
+            "GROUP_C": "C01",
+            "GROUP_D": "D01"
+        });
+    }
+    idx = dlt_member.getRowCount();
+    dlt_member.insertJSON(idx, arrData);
+    ui_grid.setFocusedCell(idx, 0, false);
+
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(2, logDefData, totCount);
+};
+
+//insertRow(BroadCast) 버튼 클릭 시
+scwin.btn_insertRowBroadCast_onclick = function (e) {
+    var idx,
+        logDefData = scwin.fn_getLogDataObj(),
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+    dlt_member.setBroadcast(false);
+    for (let i = 1; i <= totCount; i++) {
+        idx = dlt_member.insertRow();
+        dlt_member.setCellData(idx, "NAME", "inserRow " + i);
+        dlt_member.setCellData(idx, "GROUP_A", "A01");
+        dlt_member.setCellData(idx, "GROUP_B", "B01");
+        dlt_member.setCellData(idx, "GROUP_C", "C01");
+        dlt_member.setCellData(idx, "GROUP_D", "D01");
+    }
+    dlt_member.setBroadcast(true, true);  // data적용이 끝난후 화면에 갱신한다.
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(1, logDefData, totCount);
+};
+
+//removeRow 버튼 클릭 시 
+scwin.btn_removeRow_onclick = function (e) {
+    var i, idxArr = [], idxArrLen,
+        logDefData = scwin.fn_getLogDataObj(),
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+
+    //삭제할 index가 담긴 array 생성	
+    for (i = 0; i < totCount; i++) {
+        idxArr[i] = i;
+    }
+
+    for (i = totCount; i >= 0; i--) {
+        dlt_member.removeRow(idxArr[i]);
+    }
+
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(3, logDefData, totCount);
+};
+
+//removeRows 버튼 클릭 시
+scwin.btn_removeRows_onclick = function (e) {
+    var i, idxArr = [],
+        logDefData = scwin.fn_getLogDataObj(),
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+
+    //삭제할 index가 담긴 array 생성	
+    for (i = 0; i < totCount; i++) {
+        idxArr[i] = i;
+    }
+
+    dlt_member.removeRows(idxArr);
+
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(4, logDefData, totCount);
+};
+
+//setCellData 버튼 클릭 시
+scwin.btn_setCellData_onclick = function (e) {
+    var idx = dlt_member.getRowCount() - 1,
+        logDefData = scwin.fn_getLogDataObj(),
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+
+    for (let i = 0; i < totCount; i++) {
+        dlt_member.setCellData(i, "USER_PK", 80000000 + i + 1);
+        dlt_member.setCellData(i, "NAME", "setCellData");
+        dlt_member.setCellData(i, "GROUP_A", "A88");
+        dlt_member.setCellData(i, "GROUP_B", "B88");
+        dlt_member.setCellData(i, "GROUP_C", "C88");
+        dlt_member.setCellData(i, "GROUP_D", "D88");
+        dlt_member.setCellData(i, "EMAIL", "setCellData@inswave.com");
+    }
+
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(5, logDefData, totCount);
+};
+
+//setRowJSON 버튼 클릭 시
+scwin.btn_setRowJSON_onclick = function (e) {
+    var logDefData = scwin.fn_getLogDataObj(),
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+
+    for (let i = 0; i < totCount; i++) {
+        tmpData = {
+            "EMP_CD": 700000000 + i + 1,
+            "NAME": "setRowJSON",
+            "GROUP_A": "A77",
+            "GROUP_B": "B77",
+            "GROUP_C": "C77",
+            "GROUP_D": "D77",
+            "EMAIL": "setRowJSON@inswave.com"
+        };
+
+        dlt_member.setRowJSON(i, tmpData, true);
+    }
+
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(6, logDefData, totCount);
+
+};
+
+/**
+ * [getCellData] 버튼 클릭 시
+ */
+scwin.btn_getCellData_onclick = function (e) {
+    var logDefData = scwin.fn_getLogDataObj(),
+        tmpStr = "",
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+
+    for (let i = 0; i < totCount; i++) {
+        tmpStr += dlt_member.getCellData(i, "USER_PK");
+        tmpStr += dlt_member.getCellData(i, "USER_ID");
+        tmpStr += dlt_member.getCellData(i, "NAME");
+        tmpStr += dlt_member.getCellData(i, "GROUP_A");
+        tmpStr += dlt_member.getCellData(i, "GROUP_B");
+        tmpStr += dlt_member.getCellData(i, "GROUP_C");
+        tmpStr += dlt_member.getCellData(i, "GROUP_D");
+        tmpStr += dlt_member.getCellData(i, "EMAIL");
+    }
+    // console.log(tmpStr);
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(7, logDefData, totCount);
+};
+
+/**
+ * [getRowJSON] 버튼 클릭 시
+ */
+scwin.btn_getRowJSON_onclick = function (e) {
+    var logDefData = scwin.fn_getLogDataObj(),
+        tmpData, tmpStr = "",
+        totCount = scwin.fn_getTotCount();
+
+    if (!totCount) { return; }
+
+    for (let i = 0; i < totCount; i++) {
+        tmpData = dlt_member.getRowJSON(i);
+
+        tmpStr += tmpData.USER_PK;
+        tmpStr += tmpData.USER_ID;
+        tmpStr += tmpData.NAME;
+        tmpStr += tmpData.GROUP_A;
+        tmpStr += tmpData.GROUP_B;
+        tmpStr += tmpData.GROUP_C;
+        tmpStr += tmpData.GROUP_D;
+        tmpStr += tmpData.EMAIL;
+    }
+    // console.log(tmpStr);
+    logDefData.endDate = new Date();
+    scwin.fn_printLog(8, logDefData, totCount);
+};
+
+/**
+ * API별 실행 로그 출력
+ */
+scwin.fn_printLog = function (execType, defLogObj, rowCount) {
+    var rowJSON = {
+        "desc": "",
+        "timeTaken": defLogObj.endDate - defLogObj.startDate,
+        "startTime": defLogObj.strStartTime,
+        "type": execType
+    },
+        lastIdx = dlt_execLog.getRowCount();
+
+
+    switch (execType) {
+        case 1:
+            rowJSON.desc = "insertRow " + rowCount + "행";
+            rowJSON.typeNm = "insertRow";
+            break;
+        case 2:
+            rowJSON.desc = "insertJSON " + rowCount + "행";
+            rowJSON.typeNm = "insertJSON";
+            break;
+        case 3:
+            rowJSON.desc = "removeRow " + rowCount + "행";
+            rowJSON.typeNm = "removeRow";
+            break;
+        case 4:
+            rowJSON.desc = "removeRows " + rowCount + "행";
+            rowJSON.typeNm = "removeRows";
+            break;
+        case 5:
+            rowJSON.desc = "setCellData " + rowCount + "행";
+            rowJSON.typeNm = "setCellData";
+            break;
+        case 6:
+            rowJSON.desc = "setRowJSON " + rowCount + "행";
+            rowJSON.typeNm = "setRowJSON";
+            break;
+        case 7:
+            rowJSON.desc = "getCellData " + rowCount + "행";
+            rowJSON.typeNm = "getCellData";
+            break;
+        case 8:
+            rowJSON.desc = "getRowJSON " + rowCount + "행";
+            rowJSON.typeNm = "getRowJSON";
+            break;
+        default: return;
+    }
+
+    dlt_execLog.insertJSON(lastIdx, [rowJSON]);
+    grd_log.setFocusedCell(lastIdx, 0);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="DataList에서 제공하는 insert, remove에 관련된 메소드의 속도를 측정할 수 있습니다.&lt;br/&gt;각 버튼을 클릭하여 로직이 수행되는 시간을 하단의 그리드뷰에서 확인할 수 있습니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<w2:textbox class="mb_def" id="" label="DataList의 API별 속도 측정 예시" style="" tagname="h3"></w2:textbox>
+			<xf:group class="mb_def_box" id="" style="">
+				<w2:span class="mr_def" id="" label="반복할 행의 수 :" style=""></w2:span>
+				<xf:input adjustMaxLength="false" dataType="number" ev:onviewchange="" id="ui_rowCount" initValue="100"
+					style="width: 60px;display: inline;" type="number">
+				</xf:input>
+			</xf:group>
+			<xf:group class="mb_def_box nobottom" id="" style="">
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_insertRow_onclick" id="btn_insertRow" style="width:130px;" type="button">
+					<xf:label><![CDATA[insertRow]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_insertJSON_onclick" id="btn_insertJSON" style="width:130px;" type="button">
+					<xf:label><![CDATA[insertJSON]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_insertRowBroadCast_onclick" id="btn_insertRowBroadCast" style="width:160px;"
+					type="button">
+					<xf:label><![CDATA[insertRow(BroadCast)]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_removeRow_onclick" id="btn_removeRow" style="width:130px;" type="button">
+					<xf:label><![CDATA[removeRow]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_removeRows_onclick" id="btn_removeRows" style="width:130px;" type="button">
+					<xf:label><![CDATA[removeRows]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+			<xf:group class="mb_def_box nobottom" id="" style="">
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_setCellData_onclick" id="btn_setCellData" style="width:130px;" type="button">
+					<xf:label><![CDATA[setCellData]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_setRowJSON_onclick" id="btn_setRowJSON" style="width:130px;" type="button">
+					<xf:label><![CDATA[setRowJSON]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_getCellData_onclick" id="btn_getCellData" style="width:130px;" type="button">
+					<xf:label><![CDATA[getCellData]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_getRowJSON_onclick" id="btn_getRowJSON" style="width:130px;" type="button">
+					<xf:label><![CDATA[getRowJSON]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="37" applyAllColumnStyle="false" senseReader="false"
+					dataList="data:dlt_member" ev:onviewchange="" ignoreCellClick="false" style="height: 280px;margin-top: 10px;" autoFit="allColumn"
+					id="ui_grid" visibleRowNum="10" class="gvw" ignoreToggleOnDisabled="false" autoFitMinWidth="900">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="80" inputType="text" id="column29" value="고유키" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column27" value="아이디" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column25" value="이름" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column23" value="그룹 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column21" value="그룹 B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column19" value="그룹 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column17" value="그룹 D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="180" inputType="text" id="column13" value="이메일" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="80" inputType="text" id="USER_PK" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="USER_ID" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="NAME" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="180" inputType="text" id="EMAIL" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+			<w2:textbox class="mb_def" id="" label="API별 실행 로그" style="" tagname="h3"></w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" selectedRowColor="orange" summaryAuto="false"
+					useShiftKey="true" readOnly="true" scrollByColumn="false" sortable="true" summaryOnlyAuto="false" focusMode="row" rowMouseOver="false"
+					fixedColumnWithHidden="true" dataList="data:dlt_execLog" ignoreCellClick="false" style="height: 150px;" autoFit="allColumn"
+					id="grd_log" useFilterList="false" visibleRowNum="5" class="gvw" ignoreToggleOnDisabled="false" autoFitMinWidth="570"
+					defaultCellHeight="37">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="116" inputType="text" style="" id="column13" value="실행 타입" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="227" inputType="text" style="" id="column10" value="호출 API " blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="109" inputType="text" style="" id="column12" value="실행 시각" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="109" inputType="text" style="" id="column3" value="소요 시간(ms)" blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column textAlign="left" width="116" inputType="text" style="" id="typeNm" value="" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column textAlign="left" width="227" inputType="text" style="height:20px" id="desc" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column dataType="time" width="109" displayFormat="HH:mm:ss" inputType="text" style="height:20px" id="startTime"
+								blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column textAlign="right" dataType="number" width="109" displayFormat="#,##0 ms" inputType="text" style="height:20px"
+								id="timeTaken" blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+					<w2:subTotal targetColumnID="typeNm" style="" id="subTotal1">
+						<w2:row style="" id="row3">
+							<w2:column rowSpan="" expression="targetColValue() + ' (총 ' +count('row_total') + '건)'" textAlign="right" colSpan="3"
+								width="452" inputType="expression" style="height:29px;" id="column18" value="" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="avg('timeTaken')" hidden="false" textAlign="right" dataType="number" width="109"
+								displayFormat="#,###.#[round] ms" inputType="expression" style="height:27px" id="column19" value="" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:subTotal>
+				</w2:gridView>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

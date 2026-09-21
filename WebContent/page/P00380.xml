@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Input] 컴포넌트의 값(value)과 데이터 객체(DataMap, DataList) 연결하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230919" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataMap baseNode="map" id="dma_exam1">
+					<w2:keyInfo>
+						<w2:key id="key_1" name="name1" dataType="text"></w2:key>
+						<w2:key id="key_2" name="name2" dataType="text"></w2:key>
+					</w2:keyInfo>
+					<w2:data use="true">
+						<key_1><![CDATA[금요일]]></key_1>
+						<key_2><![CDATA[월요일]]></key_2>
+					</w2:data>
+				</w2:dataMap>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true" initRowPosition="0">
+					<w2:columnInfo>
+						<w2:column id="col_1" name="name1" dataType="text"></w2:column>
+						<w2:column id="col_2" name="name2" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_1><![CDATA[금요일]]></col_1>
+							<col_2><![CDATA[월요일]]></col_2>
+						</w2:row>
+						<w2:row>
+							<col_1><![CDATA[화요일]]></col_1>
+							<col_2><![CDATA[일요일]]></col_2>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 로그 출력 - DataMap의 데이터
+    scwin.printDataMapWithMessage();
+
+    // 로그 출력 - DataMap의 데이터
+    scwin.printDataListWithMessage();
+};
+
+/**
+ * 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [1-1 DataMap 'dma_exam1'의 'key_1' 키의 값을 '목요일'로 변경하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // DataMap 'dma_exam1'의 'key_1' 키의 값을 '목요일'로 변경합니다.
+    dma_exam1.set("key_1", "목요일");
+
+    // 로그 출력 - DataMap의 데이터
+    scwin.printDataMapWithMessage('스크립트 실행 : dma_exam1.set("key_1", "목요일");');
+};
+
+/**
+ * 버튼 [1-2 Input의 값을 '토요일'로 변경하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // Input 'ibx_exam1'의 값을 '토요일'로 변경합니다.
+    ibx_exam1.setValue("토요일");
+
+    // 로그 출력 - DataMap의 데이터
+    scwin.printDataMapWithMessage('스크립트 실행 : ibx_exam1.setValue("토요일");');
+};
+
+/**
+ * 버튼 [1-3 'ref' 속성을 DataMap 'dma_exam1'의 'key_2' 키로 변경하기] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+    // Input 'ibx_exam1'의 'ref' 속성의 설정 값을 DataMap 'dma_exam1'의 'key_2' 키로 변경합니다.
+    // 설정 값의 'data:'는 고정 값입니다.
+    ibx_exam1.setRef("data:dma_exam1.key_2");
+
+    // 로그 출력 - DataMap의 데이터
+    scwin.printDataMapWithMessage('스크립트 실행 : ibx_exam1.setRef("data:dma_exam1.key_2");');
+};
+
+/**
+ * 버튼 [DataMap의 데이터 확인하기] 클릭 시
+ */
+scwin.btn_printDataMapWithMessage_onclick = function (e) {
+    // 로그 출력 - DataMap의 데이터
+    scwin.printDataMapWithMessage();
+};
+
+/**
+ * DataMap 'dma_exam1'의 데이터를 JSON 형식으로 출력합니다.
+ */
+scwin.printDataMapWithMessage = function (argMsg) {
+    // DataMap 'dma_exam1'의 데이터를 JSON 형식으로 반환받습니다.
+    let result = dma_exam1.getJSON();
+
+    // 로그 출력
+    if (argMsg && typeof argMsg == "string") {
+        $c.frame.printExampleLog(argMsg, txa_log_1, false);
+        console.log(argMsg);
+    }
+    let strLog = '# DataMap "dma_exam1"의 JSON 형식의 데이터\n';
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 [2-1 DataList 'dlt_exam1'의 키 'col_1'의 값을 '목요일'로 변경하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // DataList 'dlt_exam1'의 1번째 로우의 'col_1' 컬럼의 값을 '목요일'로 변경합니다.
+    dlt_exam1.setCellData(0, "col_1", "목요일");
+
+    // 로그 출력 - DataList의 데이터
+    scwin.printDataListWithMessage('스크립트 실행 : dlt_exam1.setCellData(0, "col_1", "목요일");');
+};
+
+/**
+ * 버튼 [2-2 Input의 값을 '토요일'로 변경하기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // Input 'ibx_exam2'의 값을 '토요일'로 변경합니다.
+    ibx_exam2.setValue("토요일");
+
+    // 로그 출력 - DataList의 데이터
+    scwin.printDataListWithMessage('스크립트 실행 : ibx_exam2.setValue("토요일");');
+};
+
+/**
+ * 버튼 [2-3 'ref' 속성을 DataList 'dlt_exam1'의 첫 번째 로우의 'col_2' 컬럼으로 변경하기] 클릭 시
+ */
+scwin.btn_exam2_3_onclick = function (e) {
+    // Input 'ibx_exam2'의 'ref' 속성의 설정 값을 DataList 'dlt_exam1'의 키 'col_2'로 변경합니다.
+    // 설정 값의 'data:'는 고정 값입니다.
+    ibx_exam2.setRef("data:dlt_exam1.col_2");
+
+    // 로그 출력 - DataList의 데이터
+    scwin.printDataListWithMessage('스크립트 실행 : ibx_exam2.setRef("data:dlt_exam1.col_2");');
+};
+
+/**
+ * 버튼 [DataList의 데이터 확인하기] 클릭 시
+ */
+scwin.btn_printDataListWithMessage_onclick = function (e) {
+    // 로그 출력 - DataList의 데이터
+    scwin.printDataListWithMessage();
+};
+
+/**
+ * DataList 'dlt_exam1'의 데이터를 JSON 형식으로 출력합니다.
+ */
+scwin.printDataListWithMessage = function (argMsg) {
+    // DataList 'dlt_exam1'의 데이터를 JSON 형식으로 반환받습니다.
+    let result = dlt_exam1.getAllJSON();
+
+    // 로그 출력
+    if (argMsg && typeof argMsg == "string") {
+        $c.frame.printExampleLog(argMsg, txa_log_2, false);
+        console.log(argMsg);
+    }
+
+    let strLog = '# DataList "dlt_exam1"의 JSON 형식의 데이터\n';
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_2, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="Input의 'ref' 속성과 'setRef' 메소드를 사용하여 컴포넌트의 값과 데이터 객체(DataMap, DataList)를 연결하는 예제입니다." style=""></w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" label="버튼에 표시된 순서에 따라 버튼을 클릭하여 실행 결과를 확인합니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="DataMap의 'key'와 연결" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="Input의 'ref' 속성의 초기 설정 값은 DataMap 'dma_exam1'의 'key_1' 키입니다." style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_cm" ev:onclick="scwin.btn_printDataMapWithMessage_onclick" id="btn_printDataMap" style=""
+								type="button">
+								<xf:label><![CDATA[DataMap의 데이터 확인하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" style=""
+								type="button">
+								<xf:label><![CDATA[1-1 DataMap 'dma_exam1'의 'key_1' 키의 값을 '목요일'로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2" style=""
+								type="button">
+								<xf:label><![CDATA[1-2 Input의 값을 '토요일'로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_exam1_3" style="" type="button"
+								ev:onclick="scwin.btn_exam1_3_onclick">
+								<xf:label><![CDATA[1-3 'ref' 속성을 DataMap 'dma_exam1'의 'key_2' 키로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="mb_def_box">
+							<xf:input ref="data:dma_exam1.key_1" style="width:110px;height: 26px;margin-right: 8px;" id="ibx_exam1"></xf:input>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제"
+								type="button" userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 110px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="DataList의 'column'과 연결" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="Input의 'ref' 속성의 초기 설정 값은 DataList 'dlt_exam1'의 첫 번째 로우의 'col_1' 컬럼입니다."
+							style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_cm" ev:onclick="scwin.printDataListWithMessage" id="btn_printDataList" style=""
+								type="button">
+								<xf:label><![CDATA[DataList의 데이터 확인하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1" style=""
+								type="button">
+								<xf:label><![CDATA[2-1 DataList 'dlt_exam1'의 첫 번째 로우의 'col_1' 컬럼의 값을 '목요일'로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_2_onclick" id="btn_exam2_2" style=""
+								type="button">
+								<xf:label><![CDATA[2-2 Input의 값을 '토요일'로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_3_onclick" id="btn_exam2_3" style=""
+								type="button">
+								<xf:label><![CDATA[2-3 'ref' 속성을 DataList 'dlt_exam1'의 첫 번째 로우의 'col_2' 컬럼로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box" id="">
+							<xf:input id="ibx_exam2" ref="data:dlt_exam1.col_1" style="width:110px;height: 26px;margin-right: 8px;"></xf:input>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제"
+								type="button" userData1="txa_log_2">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_2" spellcheck="false" style="width: 100%;height: 220px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

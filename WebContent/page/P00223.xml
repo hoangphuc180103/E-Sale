@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[WindowContainer] 네임 레이어 상의 윈도우 순서 변경하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230130" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="윈도우의 'frameMode'를 'pageFrame'으로 설정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+	// 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    // windowContainer 'wdc_exam1', 'wdc_exam2'의 윈도우 생성하기
+    for (let i = 1; i <= 3; i++) {
+        // 툴바의 네임레이어에 표시되는 타이틀
+        let title = "window " + i;
+        // 서브화면의 경로
+        let srcPath = "/page/P00223S0" + i + ".xml";
+        // window ID로 null 이나 ""입력 시 title이 id로 생성
+        let windowId = "window_" + i;
+
+        let options = {
+            "title": title,
+            "windowID": windowId,
+            "frameMode": "pageFrame",
+            "src": srcPath
+        };
+
+        wdc_exam1.createWindow(options);
+        wdc_exam2.createWindow(options);
+    }
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="WindowContainer의 'nameLayerMove' 속성을 'true'로 설정하여 마우스로 네임 레이어를 드래그 앤 드롭하여 위치를 변경할 수 있도록 한 예제입니다."
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group style="" id="" class="example_div_tr_style">
+					<w2:textbox style="" id="" label="nameLayerMove: true" class="example_div_th_style" escape="false"></w2:textbox>
+					<xf:group style="" id="" class="example_div_td_style">
+						<w2:windowContainer sequentialArrangeColNum="2" sequentialArrangeRowNum="2" fixArrangeFullScreen="false"
+							useFixButton="false" windowAutoResize="false" verticalArrangeNum="2" windowMaxNum="10" useCloseButton="false"
+							controlIconPosition="left" nameLayerMove="true" toolbarPosition="bottom" windowMaximizeAll="false" stopMinimizeOnNameLayer="true"
+							id="wdc_exam1" useStatusMsg="false" hideTitleOnMaximize="false" spaInitCount="0" nameLayerRearrange="false" stopToggleOnLast="false"
+							useNameContainer="false" horizontalArrangeNum="2" useCustomMsg="false" useControlIconTitle="false" tooltipDisplay="true"
+							tooltipGroupClass="false" windowTooltipDisplay="true" style="position: relative;height: 300px;border: gray solid 1px;" frameMode="pageFrame">
+							<w2:windowToolbar>
+								<w2:controlIconLayer>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+								</w2:controlIconLayer>
+								<w2:nameLayer></w2:nameLayer>
+								<w2:selectedNameLayer></w2:selectedNameLayer>
+							</w2:windowToolbar>
+						</w2:windowContainer>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) nameLayerMove: false" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:windowContainer controlIconPosition="left" fixArrangeFullScreen="false" hideTitleOnMaximize="false"
+							horizontalArrangeNum="2" id="wdc_exam2" nameLayerRearrange="false" sequentialArrangeColNum="2" sequentialArrangeRowNum="2"
+							spaInitCount="0" stopToggleOnLast="false" style="position: relative;height: 300px;border: gray solid 1px;" toolbarPosition="bottom"
+							tooltipDisplay="true" tooltipGroupClass="false" useCloseButton="false" useControlIconTitle="false" useCustomMsg="false"
+							useFixButton="false" useNameContainer="false" useStatusMsg="false" verticalArrangeNum="2" windowAutoResize="false" windowMaxNum="10"
+							windowMaximizeAll="false" windowTooltipDisplay="true" stopMinimizeOnNameLayer="true" frameMode="pageFrame" nameLayerMove="false">
+							<w2:windowToolbar>
+								<w2:controlIconLayer>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+									<w2:controlIcon></w2:controlIcon>
+								</w2:controlIconLayer>
+								<w2:nameLayer></w2:nameLayer>
+								<w2:selectedNameLayer></w2:selectedNameLayer>
+							</w2:windowToolbar>
+						</w2:windowContainer>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

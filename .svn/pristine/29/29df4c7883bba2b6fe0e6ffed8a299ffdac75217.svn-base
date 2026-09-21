@@ -1,0 +1,286 @@
+/*amd /page/P00053.xml 18279 6902d956b505fa75801f9623f6f614d6ee5aeb8ba3c1c1d41c21c6de3e438ff4 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{id:'dlt_member',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'USER_PK',name:'고유키',dataType:'text'}},{T:1,N:'w2:column',A:{id:'USER_ID',name:'아이디',dataType:'text'}},{T:1,N:'w2:column',A:{id:'NAME',name:'이름',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_A',name:'그룹 A',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_B',name:'그룹 B',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_C',name:'그룹 C',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_D',name:'그룹 D',dataType:'text'}},{T:1,N:'w2:column',A:{id:'EMAIL',name:'이메일',dataType:'text'}}]}]},{T:1,N:'w2:dataList',A:{id:'dlt_execLog',baseNode:'list',saveRemovedData:'true',repeatNode:'map'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'desc',name:'실행한 API',dataType:'text'}},{T:1,N:'w2:column',A:{id:'timeTaken',name:'소요 시간',dataType:'text'}},{T:1,N:'w2:column',A:{id:'startTime',name:'시작 시각',dataType:'text'}},{T:1,N:'w2:column',A:{id:'type',name:'타입 고유값',dataType:'text'}},{T:1,N:'w2:column',A:{id:'typeNm',name:'타입명',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'},{T:1,N:'xf:submission',A:{id:'sbm_getUserData',ref:'',target:'data:array',action:'/data/sampleData/largeData/dlt_member_8X2000_array.json',method:'post',mediatype:'application/json',encoding:'UTF-8',mode:'asynchronous'}}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  $p.executeSubmission("sbm_getUserData");
+};
+
+/**
+ * 로그 출력용 메소드
+ */
+scwin.fn_getLogDataObj = function (e) {
+  var arrTmpDate = $p.getCurrentServerDate("yyyyMMdd-HHmmss").split("-");
+  return {
+    "strCurDate": arrTmpDate[0],
+    "strStartTime": arrTmpDate[1],
+    "startDate": new Date(),
+    "endDate": null
+  };
+};
+
+/**
+ * 반복할 행의 수 입력 값 검증
+ */
+scwin.fn_getTotCount = function () {
+  var totCount = ui_rowCount.getValue();
+  if (!totCount) {
+    alert("반복할 행의 수를 입력하세요");
+    ui_rowCount.focus();
+    return 0;
+  }
+  return totCount;
+};
+
+//insertRow 버튼 클릭 시
+scwin.btn_insertRow_onclick = function (e) {
+  var idx,
+    logDefData = scwin.fn_getLogDataObj(),
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+  for (let i = 1; i <= totCount; i++) {
+    idx = dlt_member.insertRow();
+    dlt_member.setCellData(idx, "NAME", "inserRow " + i);
+    dlt_member.setCellData(idx, "GROUP_A", "A01");
+    dlt_member.setCellData(idx, "GROUP_B", "B01");
+    dlt_member.setCellData(idx, "GROUP_C", "C01");
+    dlt_member.setCellData(idx, "GROUP_D", "D01");
+  }
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(1, logDefData, totCount);
+};
+
+//insertJSON 버튼 클릭 시
+scwin.btn_insertJSON_onclick = function (e) {
+  var idx,
+    arrData = [],
+    logDefData = scwin.fn_getLogDataObj(),
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+  for (let i = 1; i <= totCount; i++) {
+    arrData.push({
+      "NAME": "insertJSON " + i,
+      "GROUP_A": "A01",
+      "GROUP_B": "B01",
+      "GROUP_C": "C01",
+      "GROUP_D": "D01"
+    });
+  }
+  idx = dlt_member.getRowCount();
+  dlt_member.insertJSON(idx, arrData);
+  ui_grid.setFocusedCell(idx, 0, false);
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(2, logDefData, totCount);
+};
+
+//insertRow(BroadCast) 버튼 클릭 시
+scwin.btn_insertRowBroadCast_onclick = function (e) {
+  var idx,
+    logDefData = scwin.fn_getLogDataObj(),
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+  dlt_member.setBroadcast(false);
+  for (let i = 1; i <= totCount; i++) {
+    idx = dlt_member.insertRow();
+    dlt_member.setCellData(idx, "NAME", "inserRow " + i);
+    dlt_member.setCellData(idx, "GROUP_A", "A01");
+    dlt_member.setCellData(idx, "GROUP_B", "B01");
+    dlt_member.setCellData(idx, "GROUP_C", "C01");
+    dlt_member.setCellData(idx, "GROUP_D", "D01");
+  }
+  dlt_member.setBroadcast(true, true); // data적용이 끝난후 화면에 갱신한다.
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(1, logDefData, totCount);
+};
+
+//removeRow 버튼 클릭 시 
+scwin.btn_removeRow_onclick = function (e) {
+  var i,
+    idxArr = [],
+    idxArrLen,
+    logDefData = scwin.fn_getLogDataObj(),
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+
+  //삭제할 index가 담긴 array 생성	
+  for (i = 0; i < totCount; i++) {
+    idxArr[i] = i;
+  }
+  for (i = totCount; i >= 0; i--) {
+    dlt_member.removeRow(idxArr[i]);
+  }
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(3, logDefData, totCount);
+};
+
+//removeRows 버튼 클릭 시
+scwin.btn_removeRows_onclick = function (e) {
+  var i,
+    idxArr = [],
+    logDefData = scwin.fn_getLogDataObj(),
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+
+  //삭제할 index가 담긴 array 생성	
+  for (i = 0; i < totCount; i++) {
+    idxArr[i] = i;
+  }
+  dlt_member.removeRows(idxArr);
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(4, logDefData, totCount);
+};
+
+//setCellData 버튼 클릭 시
+scwin.btn_setCellData_onclick = function (e) {
+  var idx = dlt_member.getRowCount() - 1,
+    logDefData = scwin.fn_getLogDataObj(),
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+  for (let i = 0; i < totCount; i++) {
+    dlt_member.setCellData(i, "USER_PK", 80000000 + i + 1);
+    dlt_member.setCellData(i, "NAME", "setCellData");
+    dlt_member.setCellData(i, "GROUP_A", "A88");
+    dlt_member.setCellData(i, "GROUP_B", "B88");
+    dlt_member.setCellData(i, "GROUP_C", "C88");
+    dlt_member.setCellData(i, "GROUP_D", "D88");
+    dlt_member.setCellData(i, "EMAIL", "setCellData@inswave.com");
+  }
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(5, logDefData, totCount);
+};
+
+//setRowJSON 버튼 클릭 시
+scwin.btn_setRowJSON_onclick = function (e) {
+  var logDefData = scwin.fn_getLogDataObj(),
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+  for (let i = 0; i < totCount; i++) {
+    tmpData = {
+      "EMP_CD": 700000000 + i + 1,
+      "NAME": "setRowJSON",
+      "GROUP_A": "A77",
+      "GROUP_B": "B77",
+      "GROUP_C": "C77",
+      "GROUP_D": "D77",
+      "EMAIL": "setRowJSON@inswave.com"
+    };
+    dlt_member.setRowJSON(i, tmpData, true);
+  }
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(6, logDefData, totCount);
+};
+
+/**
+ * [getCellData] 버튼 클릭 시
+ */
+scwin.btn_getCellData_onclick = function (e) {
+  var logDefData = scwin.fn_getLogDataObj(),
+    tmpStr = "",
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+  for (let i = 0; i < totCount; i++) {
+    tmpStr += dlt_member.getCellData(i, "USER_PK");
+    tmpStr += dlt_member.getCellData(i, "USER_ID");
+    tmpStr += dlt_member.getCellData(i, "NAME");
+    tmpStr += dlt_member.getCellData(i, "GROUP_A");
+    tmpStr += dlt_member.getCellData(i, "GROUP_B");
+    tmpStr += dlt_member.getCellData(i, "GROUP_C");
+    tmpStr += dlt_member.getCellData(i, "GROUP_D");
+    tmpStr += dlt_member.getCellData(i, "EMAIL");
+  }
+  // console.log(tmpStr);
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(7, logDefData, totCount);
+};
+
+/**
+ * [getRowJSON] 버튼 클릭 시
+ */
+scwin.btn_getRowJSON_onclick = function (e) {
+  var logDefData = scwin.fn_getLogDataObj(),
+    tmpData,
+    tmpStr = "",
+    totCount = scwin.fn_getTotCount();
+  if (!totCount) {
+    return;
+  }
+  for (let i = 0; i < totCount; i++) {
+    tmpData = dlt_member.getRowJSON(i);
+    tmpStr += tmpData.USER_PK;
+    tmpStr += tmpData.USER_ID;
+    tmpStr += tmpData.NAME;
+    tmpStr += tmpData.GROUP_A;
+    tmpStr += tmpData.GROUP_B;
+    tmpStr += tmpData.GROUP_C;
+    tmpStr += tmpData.GROUP_D;
+    tmpStr += tmpData.EMAIL;
+  }
+  // console.log(tmpStr);
+  logDefData.endDate = new Date();
+  scwin.fn_printLog(8, logDefData, totCount);
+};
+
+/**
+ * API별 실행 로그 출력
+ */
+scwin.fn_printLog = function (execType, defLogObj, rowCount) {
+  var rowJSON = {
+      "desc": "",
+      "timeTaken": defLogObj.endDate - defLogObj.startDate,
+      "startTime": defLogObj.strStartTime,
+      "type": execType
+    },
+    lastIdx = dlt_execLog.getRowCount();
+  switch (execType) {
+    case 1:
+      rowJSON.desc = "insertRow " + rowCount + "행";
+      rowJSON.typeNm = "insertRow";
+      break;
+    case 2:
+      rowJSON.desc = "insertJSON " + rowCount + "행";
+      rowJSON.typeNm = "insertJSON";
+      break;
+    case 3:
+      rowJSON.desc = "removeRow " + rowCount + "행";
+      rowJSON.typeNm = "removeRow";
+      break;
+    case 4:
+      rowJSON.desc = "removeRows " + rowCount + "행";
+      rowJSON.typeNm = "removeRows";
+      break;
+    case 5:
+      rowJSON.desc = "setCellData " + rowCount + "행";
+      rowJSON.typeNm = "setCellData";
+      break;
+    case 6:
+      rowJSON.desc = "setRowJSON " + rowCount + "행";
+      rowJSON.typeNm = "setRowJSON";
+      break;
+    case 7:
+      rowJSON.desc = "getCellData " + rowCount + "행";
+      rowJSON.typeNm = "getCellData";
+      break;
+    case 8:
+      rowJSON.desc = "getRowJSON " + rowCount + "행";
+      rowJSON.typeNm = "getRowJSON";
+      break;
+    default:
+      return;
+  }
+  dlt_execLog.insertJSON(lastIdx, [rowJSON]);
+  grd_log.setFocusedCell(lastIdx, 0);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'DataList에서 제공하는 insert, remove에 관련된 메소드의 속도를 측정할 수 있습니다.<br/>각 버튼을 클릭하여 로직이 수행되는 시간을 하단의 그리드뷰에서 확인할 수 있습니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',id:'',label:'이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다.',style:''}}]},{T:1,N:'w2:textbox',A:{class:'mb_def',id:'',label:'DataList의 API별 속도 측정 예시',style:'',tagname:'h3'}},{T:1,N:'xf:group',A:{class:'mb_def_box',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def',id:'',label:'반복할 행의 수 :',style:''}},{T:1,N:'xf:input',A:{adjustMaxLength:'false',dataType:'number','ev:onviewchange':'',id:'ui_rowCount',initValue:'100',style:'width: 60px;display: inline;',type:'number'}}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_insertRow_onclick',id:'btn_insertRow',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'insertRow'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_insertJSON_onclick',id:'btn_insertJSON',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'insertJSON'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_insertRowBroadCast_onclick',id:'btn_insertRowBroadCast',style:'width:160px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'insertRow(BroadCast)'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_removeRow_onclick',id:'btn_removeRow',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'removeRow'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_removeRows_onclick',id:'btn_removeRows',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'removeRows'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_setCellData_onclick',id:'btn_setCellData',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'setCellData'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_setRowJSON_onclick',id:'btn_setRowJSON',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'setRowJSON'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_getCellData_onclick',id:'btn_getCellData',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'getCellData'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm','ev:onclick':'scwin.btn_getRowJSON_onclick',id:'btn_getRowJSON',style:'width:130px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'getRowJSON'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',rowNumVisible:'true',summaryAuto:'false',useShiftKey:'true',readOnly:'true',scrollByColumn:'false',summaryOnlyAuto:'false',defaultCellHeight:'37',applyAllColumnStyle:'false',senseReader:'false',dataList:'data:dlt_member','ev:onviewchange':'',ignoreCellClick:'false',style:'height: 280px;margin-top: 10px;',autoFit:'allColumn',id:'ui_grid',visibleRowNum:'10',class:'gvw',ignoreToggleOnDisabled:'false',autoFitMinWidth:'900'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column29',value:'고유키',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column27',value:'아이디',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column25',value:'이름',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column23',value:'그룹 A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column21',value:'그룹 B',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column19',value:'그룹 C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column17',value:'그룹 D',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'180',inputType:'text',id:'column13',value:'이메일',blockSelect:'false',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_PK',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_ID',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'NAME',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_B',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_D',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'180',inputType:'text',id:'EMAIL',blockSelect:'false',displayMode:'label'}}]}]}]}]},{T:1,N:'w2:textbox',A:{class:'mb_def',id:'',label:'API별 실행 로그',style:'',tagname:'h3'}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',rowNumVisible:'true',selectedRowColor:'orange',summaryAuto:'false',useShiftKey:'true',readOnly:'true',scrollByColumn:'false',sortable:'true',summaryOnlyAuto:'false',focusMode:'row',rowMouseOver:'false',fixedColumnWithHidden:'true',dataList:'data:dlt_execLog',ignoreCellClick:'false',style:'height: 150px;',autoFit:'allColumn',id:'grd_log',useFilterList:'false',visibleRowNum:'5',class:'gvw',ignoreToggleOnDisabled:'false',autoFitMinWidth:'570',defaultCellHeight:'37'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'116',inputType:'text',style:'',id:'column13',value:'실행 타입',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'227',inputType:'text',style:'',id:'column10',value:'호출 API ',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'109',inputType:'text',style:'',id:'column12',value:'실행 시각',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'109',inputType:'text',style:'',id:'column3',value:'소요 시간(ms)',blockSelect:'false',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{textAlign:'left',width:'116',inputType:'text',style:'',id:'typeNm',value:'',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'227',inputType:'text',style:'height:20px',id:'desc',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{dataType:'time',width:'109',displayFormat:'HH:mm:ss',inputType:'text',style:'height:20px',id:'startTime',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'109',displayFormat:'#,##0 ms',inputType:'text',style:'height:20px',id:'timeTaken',blockSelect:'false',displayMode:'label'}}]}]},{T:1,N:'w2:subTotal',A:{targetColumnID:'typeNm',style:'',id:'subTotal1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{rowSpan:'',expression:'targetColValue() + \' (총 \' +count(\'row_total\') + \'건)\'',textAlign:'right',colSpan:'3',width:'452',inputType:'expression',style:'height:29px;',id:'column18',value:'',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{expression:'avg(\'timeTaken\')',hidden:'false',textAlign:'right',dataType:'number',width:'109',displayFormat:'#,###.#[round] ms',inputType:'expression',style:'height:27px',id:'column19',value:'',blockSelect:'false',displayMode:'label'}}]}]}]}]}]}]}]}]})

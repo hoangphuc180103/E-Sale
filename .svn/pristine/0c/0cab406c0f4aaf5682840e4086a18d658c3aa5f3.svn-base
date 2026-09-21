@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1">
+            		<w2:columnInfo>
+            			<w2:column id="title" name="title" dataType="text"></w2:column>
+            			<w2:column id="id" name="id" dataType="text"></w2:column>
+            			<w2:column id="start" name="start" dataType="text"></w2:column>
+            			<w2:column id="end" name="end" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList2">
+            		<w2:columnInfo>
+            			<w2:column id="title" name="title" dataType="text"></w2:column>
+            			<w2:column id="id" name="id" dataType="text"></w2:column>
+            			<w2:column id="start" name="start" dataType="text"></w2:column>
+            			<w2:column id="end" name="end" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var dateStr = WebSquare.date.getCurrentServerDate("yyyyMMdd");
+    var addDate = WebSquare.date.dateAdd(dateStr, 3);
+    var tmpArr = [{ "title": "My Schedule", "id": "001", "start": dateStr, "end": addDate }];
+    dataList1.setJSON(tmpArr);
+    dataList2.setJSON(tmpArr);
+};
+
+scwin.onpageunload = function () {
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin:10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="マウスクリックまたはドラッグによるスケジュール登録" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='（最初の ScheduleCalendar）&lt;br/&gt;1.カレンダーで任意の日付をクリックするか、複数の日付をドラッグして選択します。&lt;br/&gt;2. スケジュール登録のためのメインプロンプトウィンドウが入力されていることを確認してください。 &lt;br/&gt;3.スケジュール登録。 &lt;br/&gt;4. Ctrl + マウス右クリック後、「dataCollection 表示」メニューを選択し、追加したスケジュールが DataList に設定されていることを確認します。 &lt;br/&gt;&lt;br/&gt;（セカンド ScheduleCalenar）&lt;br/&gt;1.カレンダーの日付をクリックしたり、複数の日付をドラッグしてもスケジュール登録ウィンドウが表示されないことを確認。'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;selectable="true"' escape="false">
+    	</w2:textbox>
+    	<w2:scheduleCalendar dataList="data:dataList1" defaultDate="" editable="false" endColumn="end" eventLimit="false" headerLeftBtn="true"
+    		headerRightBtn="false" headerTitle="true" id="scheduleCalendar1" lang="" selectable="true" startColumn="start"
+    		style="width: 400px;height: 500px;margin-bottom: 10px;" titleColumn="title" useHeaderToolbar="false" version="6.1.11">
+    	</w2:scheduleCalendar>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;selectable="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:scheduleCalendar dataList="data:dataList2" defaultDate="" editable="false" endColumn="end" eventLimit="false" headerLeftBtn="true"
+    		headerRightBtn="false" headerTitle="true" id="scheduleCalendar3" lang="" selectable="false" startColumn="start"
+    		style="width: 400px;height: 500px;margin-bottom: 10px;" titleColumn="title" useHeaderToolbar="false" version="6.1.11">
+    	</w2:scheduleCalendar>
+    </xf:group></body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00303 서브 페이지 04">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	$p.$(".notic_tit li a").click(function(){
+        $(this).parent().addClass("on").siblings().removeClass("on");
+    });
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="noticbox" id="" style="">
+    		<xf:group class="notic_tit" id="" style="" tagname="ul">
+    			<xf:group class="on" id="" style="" tagname="li">
+    				<w2:anchor id="" outerDiv="false" style="">
+    					<xf:label><![CDATA[새소식]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    			<xf:group id="" style="" tagname="li">
+    				<w2:anchor id="" outerDiv="false" style="">
+    					<xf:label><![CDATA[이벤트]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="notic_con scrollbar" id="" style="">
+    			<xf:group class="notic_items" id="" style="">
+    				<xf:group class="left_noticbox" id="">
+    					<w2:textbox class="contxt" id="" label="프라이빗 클라우드 기술검증 요청 공고" style=""></w2:textbox>
+    					<w2:textbox class="tit" id="" label="은행의 프라이빗 클라우드 도입을 위한 사전 기술검증" style=""></w2:textbox>
+    				</xf:group>
+    				<xf:group class="right_noticbox" id="">
+    					<w2:textbox class="ymdtxt" id="" label="2022-06-03" style=""></w2:textbox>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="notic_items" id="" style="">
+    				<xf:group class="left_noticbox" id="">
+    					<w2:textbox class="contxt" id="" label="손님케어섹션 채팅(화상)시스템 고도화를 위한 제안 공고" style=""></w2:textbox>
+    					<w2:textbox class="tit" id="" label="'손님케어섹션 채팅(화상)시스템 고도화' 업체 선정을 위한 공고" style=""></w2:textbox>
+    				</xf:group>
+    				<xf:group class="right_noticbox" id="">
+    					<w2:textbox class="ymdtxt" id="" label="2022-06-03" style=""></w2:textbox>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

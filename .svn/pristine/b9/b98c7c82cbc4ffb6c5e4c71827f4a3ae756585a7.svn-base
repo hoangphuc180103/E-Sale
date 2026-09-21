@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Year" dataType="text"></w2:column>
+            			<w2:column id="col2" name="City" dataType="text"></w2:column>
+            			<w2:column id="col3" name="Continent" dataType="text"></w2:column>
+            			<w2:column id="col4" name="Expense" dataType="number"></w2:column>
+            			<w2:column id="col5" name="Saving" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+	scwin.trigger1_onclick = function(e) {		
+		var options = {};  
+		options.sumColor = "red";
+		options.sumFontSize = "15";
+		options.sumFormat = "#,###";
+		options.bodyFormat = "#,###";
+		pivot1.pivotExcelDownload( options );
+		
+	};	
+        
+	scwin.onpageload = function() {				
+				var jsonData = [
+				{"col1":"2017","col2":"Seoul","col3":"Asia","col4":"250","col5": "1000","rowStatus":"R"}
+				,{"col1":"2017","col2":"Paris","col3":"Europe","col4":"223","col5": "1000","rowStatus":"R"}
+				,{"col1":"2017","col2":"Beijing","col3":"Asia","col4":"250","col5": "1000","rowStatus":"R"}
+				,{"col1":"2017","col2":"Bangkok","col3":"Asia","col4":"245","col5": "1000","rowStatus":"R"}
+				,{"col1":"2017","col2":"London","col3":"Europe","col4":"245","col5": "1000","rowStatus":"R"}
+				,{"col1":"2018","col2":"Seoul","col3":"Asia","col4":"209","col5": "2000","rowStatus":"R"}
+				,{"col1":"2018","col2":"Paris","col3":"Europe","col4":"223","col5": "2000","rowStatus":"R"}
+				,{"col1":"2018","col2":"Beijing","col3":"Asia","col4":"245","col5": "2000","rowStatus":"R"}
+				,{"col1":"2018","col2":"Bangkok","col3":"Asia","col4":"245","col5": "2000","rowStatus":"R"}
+				,{"col1":"2018","col2":"London","col3":"Europe","col4":"245","col5": "2000","rowStatus":"R"}
+				,{"col1":"2019","col2":"Seoul","col3":"Asia","col4":"250","col5": "1000","rowStatus":"R"}
+				,{"col1":"2019","col2":"Paris","col3":"Europe","col4":"213","col5": "1000","rowStatus":"R"}
+				,{"col1":"2019","col2":"Beijing","col3":"Asia","col4":"245","col5": "1000","rowStatus":"R"}
+				,{"col1":"2019","col2":"Bangkok","col3":"Asia","col4":"245","col5": "1000","rowStatus":"R"}
+				,{"col1":"2019","col2":"London","col3":"Europe","col4":"245","col5": "1000","rowStatus":"R"}]; 
+				dataList1.setJSON(jsonData);
+		
+	}; 
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Pivot→Excelダウンロード"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 下の pivotExcelDownload() ボタンクリック。 &lt;br/&gt;2. 画面の Pivotこの Excel ファイルとしてダウンロードされるもの確認。&lt;br/&gt;3. Excel ファイル開く pivotExcelDownload() メソッドのオプション設定にフォロー Excel ファイルにフォーマット適用されるもの確認。 &lt;br/&gt;（詳細スクリプトは Script タブから確認。）'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[pivotExcelDownload()]]></xf:label>
+    	</xf:trigger>
+    	<w2:pivot grandTotalDisplayType="both" grandTotalName="Expense Total / Saving Total" allTotalName="City Total" vals="col4,col5"
+    		noColumnMove="true" rows="col1" valuesAxis="" showGrandTotal="true" headerListOrder="col,row,val,hidden" totalTextAlign=""
+    		dataList="data:dataList1" style="height:450px;margin-bottom: 10px;" autoFit="" id="pivot1" cols="col2" autoFitMinWidth="100">
+    		<w2:fieldInfo style="padding: 10px;">
+    			<w2:field name="Year" id="col1"></w2:field>
+    			<w2:field name="City" id="col2"></w2:field>
+    			<w2:field name="Continent" id="col3"></w2:field>
+    			<w2:field name="Expense" id="col4"></w2:field>
+    			<w2:field name="Saving" id="col5"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='/// サンプルコード &lt;br/&gt;&lt;br/&gt;var options = {};&lt;br/&gt;options.sumColor = "red";&lt;br/&gt;options.sumFontSize = "15";&lt;br/&gt;options.sumFormat = "#,###";&lt;br/&gt;options.bodyFormat = "#,###";&lt;br/&gt;pivot1.pivotExcelDownload(options);'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

@@ -1,0 +1,135 @@
+/*amd /edu/training0_desc.xml 13170 f664cbee2961bf474077092cc65091373b93fb9e8e0dee01fd49734b1233db3a */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:7,N:'xml-stylesheet',instruction:'href="/edu/css/edu.css" type="text/css"'},{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',A:{palette:'support'},E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.anc_icon1_onclick = function (e) {
+  var rowJSON = {
+    //"pdfNm": "/edu/docs/WebSquare5개발자교육커리큘럼.pdf#page=2",
+    "pdfNm": "/edu/docs/WebSquare_developer_curiculum.pdf#page=2",
+    "title": "개발자 교육 커리큘럼",
+    "label": "교육 상세 시간표"
+  };
+  scwin.openPopup(rowJSON, false, "wframePopup");
+};
+scwin.anc_icon2_onclick = function (e) {
+  var rowJSON = {
+    //"pdfNm": "/edu/docs/WebSquare5개발자교육이론_SP5.pdf#page=1",
+    "pdfNm": "/edu/docs/WebSquare_developer_basic_AI.pdf#page=1",
+    "title": "개발자 교육 이론",
+    "label": "웹스퀘어 기본이론"
+  };
+  scwin.openPopup(rowJSON, false, "wframePopup");
+};
+/*
+scwin.anc_icon3_onclick = function(e) {
+
+	 var rowJSON = {
+		//"pdfNm": "/edu/docs/WebSquare5심화교육이론.pdf#page=1",
+		"pdfNm": "/edu/docs/WebSquare5_developer_advanced.pdf#page=1",
+		"title": "WebSquare AI 심화교육이론" ,
+		"label": "웹스퀘어 AI 심화이론" 
+	};
+
+	 scwin.openPopup(rowJSON, false, "wframePopup");
+};
+*/
+scwin.openPopup = function (rowJSON, useIFrameMode, openType) {
+  //dataObject{ dataType: ["xml","string","json","array"], data: "전달 데이터" , name :"변수명"}
+  var _width = "850px";
+  var _height = "850px";
+  if (useIFrameMode == false) {
+    _width = "850px";
+    _height = "850px";
+  }
+  var dataObj = {
+    type: "json",
+    data: rowJSON,
+    name: "rowObj"
+  };
+  var options = {
+    id: "popup1",
+    //popupUrl : "popup.html",
+    type: openType,
+    width: _width,
+    height: _height,
+    top: 130,
+    left: 250,
+    popupName: rowJSON.title,
+    modal: true,
+    useIFrame: useIFrameMode,
+    resizable: true,
+    status: true,
+    menubar: false,
+    scrollbars: false,
+    title: false,
+    dataObject: dataObj
+  };
+
+  //모바일에서의 크기,위치 조절을 위해 공통 함수 사용하였습니다. 기본 옵션은 최초 선언된 options를 참고하시기 바랍니다.
+  options.left = "auto";
+  options = $c.frame.getPopupPosition($p, options);
+  $p.openPopup("/edu/training0_pdf.xml", options);
+};
+scwin.txt_desc_onclick = function (e) {
+  var _page = "";
+  var _label = "";
+  _page = this.getUserData("userData1");
+  _label = this.getUserData("userData2");
+  var rowJSON = {
+    //"pdfNm": "/edu/docs/WebSquare5개발자교육이론_SP5.pdf#page="+ _page,
+    "pdfNm": "/edu/docs/WebSquare_developer_basic_AI.pdf#page=" + _page,
+    "title": "개발자 교육 이론",
+    "label": _label
+  };
+  scwin.openPopup(rowJSON, false, "wframePopup");
+};
+scwin.txt_link_onclick = function (e) {
+  var _url = "";
+  var _path = "";
+  _path = this.getUserData("userData1");
+  _url = $c.frame.getBasePageURL($p, true) + "#w2xPath=" + _path;
+  window.open(_url, "_blank");
+};
+scwin.textbox_link_onclick = function (e) {
+  var strPage;
+  var jsnMenu;
+  var _main;
+  strPage = this.getUserData("userData1");
+  _main = $p.main();
+  switch (typeof _main.scwin.menu) {
+    case "object":
+      jsnMenu = _main.scwin.menu.getMenuByPage(strPage);
+      if (jsnMenu && jsnMenu.ID) {
+        _main.scwin.dispPage(jsnMenu, true);
+      }
+      break;
+    default:
+      var _url = "";
+      _url = $c.frame.getBasePageURL($p, true) + "#w2xPath=" + strPage;
+      window.open(_url, "_blank");
+      break;
+  }
+};
+scwin.btn_play1_onclick = function (e) {
+  // 1교시 동영상 
+  window.open("https://www.youtube.com/watch?v=KEPuK3erXWM&list=PL7a9HhkvOVb09T_2Xdxs4sPgyDjkGlT9G&index=1");
+};
+scwin.btn_play2_onclick = function (e) {
+  // 2교시 동영상 
+  window.open("https://www.youtube.com/watch?v=BIgFry-z39Y&list=PL7a9HhkvOVb09T_2Xdxs4sPgyDjkGlT9G&index=2");
+};
+scwin.btn_play3_onclick = function (e) {
+  // 3교시 동영상 
+  window.open("https://www.youtube.com/watch?v=1hK9ZEUCp-Q&list=PL7a9HhkvOVb09T_2Xdxs4sPgyDjkGlT9G&index=3");
+};
+scwin.btn_play4_onclick = function (e) {
+  // 4교시 동영상 
+  window.open("https://www.youtube.com/watch?v=pkAo2GguTlQ&list=PL7a9HhkvOVb09T_2Xdxs4sPgyDjkGlT9G&index=4");
+};
+scwin.btn_play5_onclick = function (e) {
+  // 5교시 동영상 
+  window.open("https://www.youtube.com/watch?v=NT7g9qWaHG0&list=PL7a9HhkvOVb09T_2Xdxs4sPgyDjkGlT9G&index=5&t=1361s");
+};
+scwin.btn_qna_onclick = function () {
+  btn_qna.toggleClass('active');
+  list_qna.toggleClass('active');
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'box_edu',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'tit_main',escape:'false',id:'',label:'개발자 기본 교육',style:''}},{T:1,N:'w2:textbox',A:{class:'txt_check',escape:'false',id:'',label:'HTML, CSS, JavaScript 등 기본적인 웹 지식을 가지고 있으며 다만 WebSquare 제품을 처음 접하는 개발자 대상의 커리큘럼',style:''}},{T:1,N:'w2:textbox',A:{class:'tit_sub',escape:'false',id:'',label:'개발자 커리큘럼',style:''}},{T:1,N:'xf:group',A:{class:'list_step',id:'',style:'',tagname:'ul'},E:[{T:1,N:'xf:group',A:{id:'',style:'overflow: hidden;',tagname:'li'},E:[{T:1,N:'w2:textbox',A:{class:'badge',id:'',label:'step 01',style:''}},{T:1,N:'w2:textbox',A:{class:'tit','ev:onclick':'scwin.txt_desc_onclick',id:'txt_desc1',label:'교육자료 소개, WebSquare 소개',style:'',userData1:'3',userData2:'소개'}},{T:1,N:'w2:textbox',A:{class:'txt','ev:onclick':'scwin.txt_desc_onclick',id:'txt_desc2',label:'WebSquare Studio 설명',style:'',userData1:'14',userData2:'Studio 설명'}},{T:1,N:'w2:anchor',A:{class:'edu_video','ev:onclick':'scwin.btn_play1_onclick',id:'btn_play1',outerDiv:'false',style:'display: none;'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'동영상 강의 바로가기'}]}]}]},{T:1,N:'xf:group',A:{id:'',style:'overflow: hidden;',tagname:'li'},E:[{T:1,N:'w2:textbox',A:{class:'badge',id:'',label:'step 02',style:''}},{T:1,N:'w2:textbox',A:{class:'tit','ev:onclick':'scwin.txt_desc_onclick',id:'txt_desc3',label:'컴포넌트 기본 사용방법 (속성, 이벤트, API), 컴포넌트 소개',style:'',userData1:'27',userData2:'컴포넌트 기본 사용방법'}},{T:1,N:'w2:anchor',A:{class:'edu_video','ev:onclick':'scwin.btn_play2_onclick',id:'btn_play2',outerDiv:'false',style:'display: none;'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'동영상 강의 바로가기'}]}]}]},{T:1,N:'xf:group',A:{id:'',style:'overflow: hidden;',tagname:'li'},E:[{T:1,N:'w2:textbox',A:{class:'badge',id:'',label:'step 03',style:''}},{T:1,N:'w2:textbox',A:{'ev:onclick':'scwin.txt_link_onclick',style:'',id:'textbox14',label:'[실습] 목록성 컴포넌트 사용 방법,',userData1:'/edu/training1_dataMap.xml',class:'tit'}},{T:1,N:'w2:textbox',A:{class:'tit','ev:onclick':'scwin.txt_desc_onclick',id:'textbox13',label:'UI Design',style:'margin-left: 10px;',userData1:'31',userData2:'UI Design'}},{T:1,N:'w2:anchor',A:{class:'edu_video','ev:onclick':'scwin.btn_play3_onclick',id:'btn_play3',outerDiv:'false',style:'display: none;'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'동영상 강의 바로가기'}]}]}]},{T:1,N:'xf:group',A:{id:'',style:'overflow: hidden;',tagname:'li'},E:[{T:1,N:'w2:textbox',A:{class:'badge',id:'',label:'step 04',style:''}},{T:1,N:'w2:textbox',A:{class:'tit','ev:onclick':'scwin.txt_link_onclick',id:'txt_desc7',label:'[실습] DataCollection과 Submission 처리 방법',style:'',userData1:'/edu/training1_dataMap.xml'}},{T:1,N:'w2:textbox',A:{class:'txt','ev:onclick':'scwin.txt_desc_onclick',id:'txt_desc8',label:'DataCollection 과 Submission 처리 방법',style:'',userData1:'41',userData2:'DataCollection&Submission'}},{T:1,N:'w2:anchor',A:{class:'edu_video','ev:onclick':'scwin.btn_play4_onclick',id:'btn_play4',outerDiv:'false',style:'display: none;'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'동영상 강의 바로가기'}]}]}]},{T:1,N:'xf:group',A:{id:'',style:'overflow: hidden;',tagname:'li'},E:[{T:1,N:'w2:textbox',A:{class:'badge',id:'',label:'step 05',style:''}},{T:1,N:'w2:textbox',A:{class:'tit','ev:onclick':'scwin.txt_link_onclick',id:'txt_desc9',label:'[실습] DataCollection 과 gridView 연동',style:'',userData1:'/edu/training1_gridView.xml'}},{T:1,N:'w2:textbox',A:{class:'txt','ev:onclick':'scwin.txt_desc_onclick',id:'txt_desc10',label:'gridView',style:'',userData1:'48',userData2:'gridView'}},{T:1,N:'w2:anchor',A:{class:'edu_video','ev:onclick':'scwin.btn_play5_onclick',id:'btn_play5',outerDiv:'false',style:'display: none;'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'동영상 강의 바로가기'}]}]}]},{T:1,N:'xf:group',A:{id:'',style:'',tagname:'li',class:''},E:[{T:1,N:'xf:group',A:{id:'',class:'flex'},E:[{T:1,N:'w2:textbox',A:{style:'',id:'',label:'step 06',class:'badge'}},{T:1,N:'w2:textbox',A:{style:'',id:'',label:'자주 묻는 질문',class:'tit',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'',id:'txt_desc12',label:'Q&A',class:'txt'}},{T:1,N:'w2:anchor',A:{outerDiv:'false',style:'',id:'btn_qna',class:'btn_qna','ev:onclick':'scwin.btn_qna_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'목록보기'}]}]}]},{T:1,N:'xf:group',A:{class:'list_qna',id:'list_qna',style:'',tagname:'ul'},E:[{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox_link1',label:'1. JSON 관련 기본 API',style:'',tagname:'li',userData1:'/page/P00036.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false',id:'textbox_link2',label:'2. [GridView] 관련',style:'',tagname:'li'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox3',label:'2-1. 컨텍스트 메뉴 사용 설정하기',style:'',tagname:'li',userData1:'/page/P00169.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox7',label:'2-2. Groupby 기능 적용하기',style:'',tagname:'li',userData1:'/page/P00194.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox8',label:'2-3. scrollEnd 기능을 사용한 데이터 추가하기',style:'',tagname:'li',userData1:'/page/P00054.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox12',label:'2-4.GridView Style 개인화 하기',style:'',tagname:'li',userData1:'/page/P00198.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox6',label:'2-5.컬럼 동적 변경',style:'',tagname:'li',userData1:'/page/P00014.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox4',label:'3.특이기능',style:'',tagname:'li'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox5',label:'3-1.Pivot',style:'',tagname:'li',userData1:'/page/P00139.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox10',label:'3-2.Fusion 차트',style:'',tagname:'li',userData1:'/page/P00017.xml'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false','ev:onclick':'scwin.textbox_link_onclick',id:'textbox11',label:'3-3.위젯 컨테이너',style:'',tagname:'li',userData1:'/page/P00007.xml'}}]}]}]},{T:1,N:'xf:group',A:{class:'ban_box',id:'',style:'',tagname:'ul'},E:[{T:1,N:'xf:group',A:{id:'',tagname:'li'},E:[{T:1,N:'xf:group',A:{id:'',class:'txt'},E:[{T:1,N:'w2:textbox',A:{tagname:'p',style:'',id:'',label:'개발자 교육 커리큘럼',escape:'false',class:'tit'}},{T:1,N:'w2:textbox',A:{tagname:'p',style:'',id:'',label:'개발자 교육 커리큘럼',escape:'false'}}]},{T:1,N:'w2:anchor',A:{outerDiv:'false','ev:onclick':'scwin.anc_icon1_onclick',style:'',id:'anc_icon1'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'바로열기'}]}]}]},{T:1,N:'xf:group',A:{id:'',tagname:'li',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'txt'},E:[{T:1,N:'w2:textbox',A:{tagname:'p',style:'',id:'',label:'개발자 교육 이론문서',escape:'false',class:'tit'}},{T:1,N:'w2:textbox',A:{tagname:'p',style:'',id:'',label:'개발자 교육 이론문서',escape:'false'}}]},{T:1,N:'w2:anchor',A:{'ev:onclick':'scwin.anc_icon2_onclick',id:'anc_icon2',outerDiv:'false',style:''},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'바로열기'}]}]}]},{T:1,N:'xf:group',A:{class:'anc_banner ico2','ev:onclick':'scwin.anc_icon3_onclick',id:'anc_icon3',style:'display: none;',tagname:'a'},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'개발자 교육<br/>심화문서',style:'',tagname:'p'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'바로열기',style:'',tagname:'span',userData1:''}}]}]}]}]}]}]})

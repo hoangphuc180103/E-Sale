@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.group1_onmouseleave = function(e) {
+		alert("onmouseleave - Mouse LEAVING the Group component.");
+	};
+	
+	scwin.group1_onmouseenter = function(e) {
+		alert("onmouseenter - Mouse ENTERING the Group component.");		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Event - onmouseenter &amp; onmouseleave&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Move the mouse cursor inside the Group.&lt;br/&gt;2. Confirm that the onmouseenter event occurs.&lt;br/&gt;3. Move the mouse cursor outside the Group.&lt;br/&gt;4. Confirm that the onmouseleave event occurs.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;" id="textbox4" label="Event Description&lt;br/&gt;&lt;br/&gt;onmouseenter - Fired when the mouse enters the Group component.&lt;br/&gt;onmouseleave - Fired when the mouse leaves the Group component.&lt;br/&gt;" escape="false">
+    	</w2:textbox><xf:group ev:onmouseenter="scwin.group1_onmouseenter" tagname="" ev:onmouseleave="scwin.group1_onmouseleave" style="padding: 20px;border: solid teal 2px;font-size: 30px;color: teal;" id="group1" text="Group">
+    	</xf:group></xf:group></body>
+</html>

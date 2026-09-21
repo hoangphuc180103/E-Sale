@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="name1" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		dataMap1.setArray(["20200101"]);        
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="オートフォーカス移動" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Spinner コンポーネントで矢印ボタンをクリックして値を選択します。 &lt;br/&gt;2. Tab キーを押します。 &lt;br/&gt;3.フォーカスがid = "input2" コンポーネントに移動することを確認してください。' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;nextTabID="input2"' escape="false">
+    	</w2:textbox><w2:spinner ref="data:dataMap1.key1" dateIncrementType="day" nextTabID="input2" dataType="date" skin="type1" inputReadOnly="false" style="width: 50%;margin-bottom: 10px;" id="spinner1" autoFocus="true" buttonSize="30">
+    	</w2:spinner><xf:input adjustMaxLength="false" style="display: block;width: 50%;margin-bottom: 10px;" id="input1" placeholder='id="input1"'>
+    	</xf:input><xf:input adjustMaxLength="false" style="display: block;width: 50%;" id="input2" placeholder='id="input2"'>
+    	</xf:input></xf:group></body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="code" name="name1"></w2:column>
+            			<w2:column dataType="text" id="value" name="name2"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<code><![CDATA[0]]></code>
+            				<value><![CDATA[Seoul]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[1]]></code>
+            				<value><![CDATA[Busan]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[2]]></code>
+            				<value><![CDATA[Daejeon]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[3]]></code>
+            				<value><![CDATA[Jeju]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[4]]></code>
+            				<value><![CDATA[Incheon]]></value>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="특정 키 동작 방지" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. SelectBox의 선택 목록 열기.&lt;br/&gt;2. preventKeyList 속성 설정에 따라 Up 방향키와 Enter 키가 동작하지 않는 것을 확인.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;preventKeyList="38, 13"' escape="false">
+    	</w2:textbox><xf:select1 preventKeyList="38, 13" ref="" submenuSize="auto" appearance="minimal" labelWidthAuto="" disabledClass="w2selectbox_disabled" chooseOption="" disabled="false" style="width: 50%;" allOption="" id="select1" direction="auto">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="value"></xf:label>
+    				<xf:value ref="code"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1></xf:group></body>
+</html>

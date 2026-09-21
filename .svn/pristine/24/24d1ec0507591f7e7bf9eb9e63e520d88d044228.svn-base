@@ -1,0 +1,127 @@
+/*amd /guide_eng/Pivot/grandTotalValsNameFormatter_Pivot.xml 5449 50b36f2f2b71ff3b7cf34643fd9fc4d6526615381a6987e3116707f655586688 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'Year',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'City',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'Continent',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col4',name:'Expense',dataType:'number'}},{T:1,N:'w2:column',A:{id:'col5',name:'Saving',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var jsonData = [{
+    "col1": "2017",
+    "col2": "Seoul",
+    "col3": "Asia",
+    "col4": "250",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2017",
+    "col2": "Paris",
+    "col3": "Europe",
+    "col4": "223",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2017",
+    "col2": "Beijing",
+    "col3": "Asia",
+    "col4": "250",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2017",
+    "col2": "Bangkok",
+    "col3": "Asia",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2017",
+    "col2": "London",
+    "col3": "Europe",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2018",
+    "col2": "Seoul",
+    "col3": "Asia",
+    "col4": "209",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2018",
+    "col2": "Paris",
+    "col3": "Europe",
+    "col4": "223",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2018",
+    "col2": "Beijing",
+    "col3": "Asia",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2018",
+    "col2": "Bangkok",
+    "col3": "Asia",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2018",
+    "col2": "London",
+    "col3": "Europe",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2019",
+    "col2": "Seoul",
+    "col3": "Asia",
+    "col4": "250",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2019",
+    "col2": "Paris",
+    "col3": "Europe",
+    "col4": "213",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2019",
+    "col2": "Beijing",
+    "col3": "Asia",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2019",
+    "col2": "Bangkok",
+    "col3": "Asia",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }, {
+    "col1": "2019",
+    "col2": "London",
+    "col3": "Europe",
+    "col4": "245",
+    "col5": "100",
+    "rowStatus": "R"
+  }];
+  dataList1.setJSON(jsonData);
+};
+scwin.onpageunload = function () {};
+scwin.pivot1_grandTotalValsNameFormatter = function (colId) {
+  if (colId === "col1") {
+    return "Year_Field_Totall";
+  } else if (colId === "City_Field_Total") {
+    return "col1";
+  } else if (colId === "col3") {
+    return "Continent_Field_Total";
+  } else if (colId === "col4") {
+    return "Expense_Field_Total";
+  } else if (colId === "col5") {
+    return "Saving_Field_Total";
+  } else {
+    return "Other_Field_Total";
+  }
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox3',label:'Custom Set Label Values for Field Totals<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox4',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox5',label:'Confirm that the field total label in the lower-left corner is set to the value returned by the scwin.pivot1_grandTotalValsNameFormatter function, which is configured as the value for the grandTotalValsNameFormatter property.<br/>(In the example below, the field totals are displayed as “Expense_Field_Total” and “Saving_Field_Total”.)<br/>(See the Script tab for the detailed script.)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox6',label:'grandTotalValsNameFormatter="scwin.pivot1_grandTotalValsNameFormatter"',escape:'false'}},{T:1,N:'w2:pivot',A:{grandTotalDisplayType:'both',grandTotalName:'Expense & Saving Total',allTotalName:'City Total',vals:'col4,col5',noColumnMove:'true',rows:'col1',valuesAxis:'row',showGrandTotal:'true',headerListOrder:'col,row,val,hidden',dataList:'data:dataList1',style:'height:500px;',columnNameFormatter:'',autoFit:'',id:'pivot1',cols:'col2',autoFitMinWidth:'100',grandTotalValsNameFormatter:'scwin.pivot1_grandTotalValsNameFormatter'},E:[{T:1,N:'w2:fieldInfo',A:{style:'padding: 10px;'},E:[{T:1,N:'w2:field',A:{name:'Year',id:'col1'}},{T:1,N:'w2:field',A:{name:'City',id:'col2'}},{T:1,N:'w2:field',A:{name:'Continent',id:'col3'}},{T:1,N:'w2:field',A:{name:'Expense',id:'col4'}},{T:1,N:'w2:field',A:{name:'Saving',id:'col5'}}]}]}]}]}]}]})

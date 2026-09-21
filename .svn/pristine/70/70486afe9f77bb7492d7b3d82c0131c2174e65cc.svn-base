@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>ProgressBar</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_81715a51f6d6a5f3" class="chapter_title">ProgressBar</h1>
+		<h1 id="r_7ade25f5b695a314" class="element heading1"
+			data-element-id="7ade25f5b695a314">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_59540404cf026250" class="element normal"
+			data-element-id="59540404cf026250">ProgressBar 컴포넌트는 시스템에서 수행 중인
+			작업의 진행 상태를 시각적으로 나타내는 핵심 UI 컴포넌트입니다. 사용자에게 "작업이 멈추지 않고 진행 중임"을 알림으로써
+			대기 시간에 대한 불안감을 해소하고, 서비스의 신뢰도를 높이는 역할을 합니다. 막대 형태로 진행률을 "시각적"으로 표시하여,
+			작업이 얼마나 완료되었는지 또는 얼마나 남았는지를 명확하게 보여주는 역할을 합니다. 일반적으로 긴 대기 시간이 요구되는
+			작업(파일 업로드, 데이터 처리 등)에서 사용자에게 상태 정보를 제공할 때 사용합니다.</p>
+		<h1 id="r_0a0c0b2a102512c5" class="element heading1"
+			data-element-id="0a0c0b2a102512c5">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_480da58392fe7769" class="element normal"
+			data-element-id="480da58392fe7769">ProgressBar는 단순히 막대가 차오르는 것
+			이상의 정보를 전달합니다. 주로 다음과 같은 상황에서 필수적으로 사용됩니다.</p>
+		<dl id="r_b02cb795e4798a17" class="element definition_list"
+			data-element-id="b02cb795e4798a17">
+			<dt>진행률 추적</dt>
+			<dd>
+				<p>대용량 데이터 업로드/다운로드, 파일 압축, 시스템 업데이트 등 시간이 소요되는 작업의 현재 단계를 명확히
+					전달할 때 사용합니다.</p>
+			</dd>
+			<dt>프로세스 가이드</dt>
+			<dd>
+				<p>설문 조사, 회원 가입 단계, 대출 심사 등 여러 단계를 거쳐야 하는 사용자 여정에서 현재 위치와 남은 단계를
+					인지시킵니다.</p>
+			</dd>
+			<dt>상태 피드백</dt>
+			<dd>
+				<p>비동기 통신(Ajax)이나 복잡한 계산 작업 시, 시스템이 응답 대기 상태임을 시각적으로 표현하여 사용자의
+					중복 클릭이나 이탈을 방지합니다.</p>
+			</dd>
+			<dt>사용자 불만 최소화</dt>
+			<dd>
+				<p>UI가 멈춘 듯 보이는 상황에서 진행 상태를 시각적으로 제공해 사용자 불만을 줄입니다.</p>
+			</dd>
+		</dl>
+		<p id="r_1f33ae69382b63fe" class="element normal"
+			data-element-id="1f33ae69382b63fe">UI 디자인 관점에서도, 대부분의 프레임워크는
+			프로그래스 바를 시각적 피드백 요소로 권장합니다. 이는 사용자가 현재 상황을 이해하고, 시스템이 반응하고 있다는 신뢰를
+			높이는 데 중요한 요소입니다.</p>
+		<h1 id="r_2a6af2f7478ef3fe" class="element heading1"
+			data-element-id="2a6af2f7478ef3fe">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_989e787e65849af5" class="element unordered_list"
+			data-element-id="989e787e65849af5">
+			<li><p>
+					값 표시 형식 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ProgressBar/displayFormat_displayFormatter_ProgressBar.xml">샘플</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

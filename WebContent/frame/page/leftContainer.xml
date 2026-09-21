@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[공통] 메인 좌측 메뉴" meta_author="InswaveSystems" meta_type="서브">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[scwin.gVar = {
+    strArrOrgMenu: null,
+    arrOrgMenu: [],
+    arrCmpCagetory: [],
+    arrCmpCagetory2: [],
+    strArrCompData: null,    // **
+    arrFullpathMenu: []
+};
+
+scwin.onpageload = function () {
+    scwin.initPage();
+};
+
+/**
+ * 화면 초기화. maincontainer에서 
+ */
+scwin.initPage = function () {
+    scwin.displayMenu(scwin.getMenuData());
+    scwin.displaycompentMenu(scwin.getMenuData());
+};
+
+scwin.getMenuData = function () {
+    var winObjMain;
+    var arrAllMenuData;
+    var getFullPathData;    // **
+
+    arrAllMenuData = $p.main().scwin.menu.getAllMenuDataString();
+    getFullPathData = $p.main().scwin.compent_path.getAllFullpathDataString();  // ** fullpath.json
+
+    if (!arrAllMenuData) {
+        console.log("메뉴 데이터가 없습니다. ", arrAllMenuData);
+        return false;
+    }
+
+    // **
+    if (!getFullPathData) {
+        console.log("메뉴 데이터가 없습니다. ", getFullPathData);
+        return false;
+    }
+
+    arrAllMenuData = JSON.parse(arrAllMenuData);
+    getFullPathData = JSON.parse(getFullPathData);  // **
+
+    scwin.gVar.arrOrgMenu = arrAllMenuData;
+    scwin.gVar.strArrOrgMenu = JSON.stringify(arrAllMenuData);    
+
+    scwin.gVar.arrFullpathMenu = getFullPathData;
+    scwin.gVar.strArrCompData = JSON.stringify(getFullPathData); 
+
+    return arrAllMenuData;
+};
+
+scwin.setMenuTitle = function (argComp, argLabel, argPath, argMenuID) {
+    argComp.setValue(argLabel);
+    argComp.setUserData("menu_path", argPath);
+    argComp.setUserData("menu_id", argMenuID); 
+
+	if (/\.xml$/i.test(argPath)) { 
+        argComp.bind("onclick", scwin.lblMenu_onclick);
+    } else {
+        //argComp.setUserData("depth", "2");
+        argComp.setUserData("path", argPath);
+        argComp.bind("onclick", scwin.txt_comp_onclick); 
+    } 
+};
+
+//메뉴 출력
+scwin.displayMenu = function (argArrMenu) {
+    var i, i_max, i_item;
+    var compGen1,
+        numGen1,
+        compGenComp,
+        compGen2,
+        numGen2,
+        strDynamicGenID2,
+        compGen3,
+        numGen3,
+        strKeyGen1,
+        strKeyGen2;
+    var jsnMenuCompLink = {};
+
+    var refFnc_setMenuTitle = scwin.setMenuTitle;
+    var refFnc_getHTML_keyword = $c.frame.getHtml_keyword;
+
+    var innFnc_setMenuCategory = function (argComp, argLabel) {
+        argComp.addClass("wre_left_menu_category");  //카테고리 class 추가
+        argComp.addClass("isCollapsed");  //접힘 class 추가
+        argComp.removeClass("wre_left_menu_lbl");  //label class 삭제
+        argComp.setValue(argLabel);
+        argComp.bind("onclick", scwin.lblMenuCategory_onclick); 
+    };
+
+    var innFnc_setMenuKeyword = function (argStrCompID, argCompParent, argStrKeyword) {
+        if (!argStrKeyword) return;
+        //태그 동적 생성.
+        let compTmp = $p.dynamicCreate(
+            argStrCompID,
+            "textbox",
+            {
+                "escape": "false"
+            },
+            argCompParent
+        );
+        compTmp.addClass("wre_lef_menu_keyword");
+        compTmp.setValue(refFnc_getHTML_keyword($p, argStrKeyword));
+
+    };
+
+
+    scwin.gVar.arrCmpCagetory = []; //카테고리 객체 배열
+    let arrCmpCagetory = [];
+
+    numGen1 = 0;    //depth1 반복수
+    numGen2 = 0;
+    numGen3 = 0;
+    numGenComp = 0;  // 컴포넌트 목록에 표시되는 수
+
+    let strID_depth1 = "";
+    let strID_depth2 = "";
+
+	//HIDDEN==="" 것만 메뉴에 제공 20260203 add
+	var argArrMenuY;
+	argArrMenuY = argArrMenu.filter((item) => {
+        let retValue = false;
+        //파일이 아닌 경우  
+        if (item.HIDDEN === "") return true;
+        return retValue;
+    }); 
+
+    for (i = 0, i_max = argArrMenuY.length; i < i_max; i++) {
+        let jsnMenu = argArrMenuY[i];
+        let strMenuDepth = jsnMenu.DEPTH;
+        let strMenuType = jsnMenu.TYPE;
+        let strMenuTitle = jsnMenu.DISP_MENU_TITLE || jsnMenu.TITLE;
+        let strMenuPath = jsnMenu.PATH;
+        let strMenuKeyword = jsnMenu.ALL_KEYWORD;
+        let strMenuID = jsnMenu.ID; 
+ 
+        let cmpTmp, cmpTmpComp;
+
+        let isUnsorted = false; //미분류
+
+        switch (strMenuDepth) {
+            case "1":   //대분류
+                if (strMenuType == "C") {
+                    compGen1 = $p.getComponentById("gen_depth1");
+
+                    compGen1.insertChild(numGen1);
+
+                    //title
+                    cmpTmp = compGen1.getChild(numGen1, "tbx_title_depth1");
+                    strID_depth1 = cmpTmp.getID();
+                    cmpTmp.setValue(strMenuTitle);
+/*
+                    ////// 컴포넌트 목록 셋팅 - 2025.05.16 //////////////  
+                    if(strMenuTitle == "Appendix"){
+                        // Appendix 는 컴포넌트가 아니므로 목록에서 제외 
+                    }else{
+                        const regexEng = /^[a-z|A-Z]+$/;
+                        if(regexEng.test(strMenuTitle)){  // 영문 컴포넌트일 경우에만 추가 
+                            compGenComp = $p.getComponentById("gen_comp");
+                            compGenComp.insertChild(numGenComp);
+
+                            cmpTmpComp = compGenComp.getChild(numGenComp, "txt_comp");
+                            cmpTmpComp.setValue(strMenuTitle);
+
+                            numGenComp++;
+                        }
+                    }
+
+                    */
+                    ///////////////////////////////////////////////////
+
+                    //확장축소 객체
+                    let cmpTmpCate = compGen1.getChild(numGen1, "grp_depth1_title");
+                    cmpTmpCate.setUserData("cate_depth", "1");
+                    arrCmpCagetory.push(cmpTmpCate);
+
+                    strKeyGen1 = jsnMenu.ID;
+
+                    compGen2 = compGen1.getChild(numGen1, "gen_depth2");
+
+                    numGen1++;
+
+                    numGen2 = 0;
+                    numGen3 = 0;
+                    strKeyGen2 = null;
+                    compGen3 = null;
+
+                    strID_depth2 = "";
+
+                } else {
+                    isUnsorted = true;
+                }
+                break;
+            case "2":
+                if (jsnMenu.PARENT_ID === strKeyGen1) {
+                    compGen1 = gen_depth1;
+
+                    //메뉴 출력.
+                    compGen2.insertChild(numGen2);
+
+                    let compTitle_depth2 = compGen2.getChild(numGen2, "lbl_menu_depth2");
+
+                    //메뉴 타입이 분류인 경우
+                    if (strMenuType == "C") {
+                        compGen2.getChild(numGen2, "grp_list_depth2").removeClass("wre_left_menu_lbl_wrap");
+
+                        innFnc_setMenuCategory(compTitle_depth2, strMenuTitle);
+                        strDynamicGenID2 = compGen1.getOriginalID() + "_" + numGen1 + "_" + "gen_depth2" + "_" + numGen2;
+
+                        //확장축소 객체
+                        compTitle_depth2.setUserData("cate_depth", "2");
+                        arrCmpCagetory.push(compTitle_depth2);
+
+                        compGen3 = $p.dynamicCreate(
+                            strDynamicGenID2,
+                            "group",
+                            {
+                                "tagname": "ul"
+                            },
+                            compGen2.getChild(numGen2, "grp_list_depth2")
+                        );
+
+                        strID_depth2 = compTitle_depth2.getID();
+
+                        strKeyGen2 = jsnMenu.ID;
+
+                        numGen3 = 0;
+                    } else {
+
+                         
+                        compTitle_depth2.setUserData("depth", "2");
+                        refFnc_setMenuTitle(compTitle_depth2, strMenuTitle, strMenuPath, strMenuID);
+
+                        // if (strMenuKeyword) {
+                        //     //태그 동적 생성.
+                        //     innFnc_setMenuKeyword(compGen1.getOriginalID()+"_" + numGen1 + "_" + "tbx_keyword_depth2" + "_" + numGen2, compGen2.getChild(numGen2, "grp_list_depth2"), strMenuKeyword);
+                        // }
+
+                        //메뉴별 컴포넌트 아이디 할당
+                        jsnMenuCompLink[strMenuID] = compTitle_depth2.getID() + "|" + strID_depth1;
+                    }
+
+                    numGen2++;
+                } else {
+                    isUnsorted = true;
+                }
+
+                break;
+            case "3":
+                if (jsnMenu.PARENT_ID === strKeyGen2) {
+                    let strTmpID_li = compGen3.getOriginalID() + "_" + "grp_menu_li_depth3" + "_" + numGen3;
+                    let strTmpID_anchor = compGen3.getOriginalID() + "_" + "lbl_menu_depth3" + "_" + numGen3;
+                    let strTmpID_keyword = compGen3.getOriginalID() + "_" + "tbx_keyword_depth3" + "_" + numGen3;
+
+                    let tmpComp_li = $p.dynamicCreate(
+                        strTmpID_li,
+                        "group",
+                        { "tagname": "li" },
+                        compGen3
+                    );
+
+                    tmpComp_li.addClass("wre_left_menu_lbl_wrap");
+
+                    let tmpComp_lbl = $p.dynamicCreate(
+                        strTmpID_anchor,
+                        "anchor",
+                        { "outerDiv": "false" },
+                        tmpComp_li
+                    );
+
+                    tmpComp_lbl.addClass("wre_left_menu_lbl");
+                    refFnc_setMenuTitle(tmpComp_lbl, strMenuTitle, strMenuPath, strMenuID);
+
+                    // if (strMenuKeyword) {
+                    //     //태그 동적 생성.
+                    //     innFnc_setMenuKeyword(strTmpID_keyword, tmpComp_li, strMenuKeyword);
+                    // }
+
+                    //메뉴별 컴포넌트 아이디 할당
+                    jsnMenuCompLink[strMenuID] = tmpComp_lbl.getID() + "|" + strID_depth2 + "|" + strID_depth1;
+
+                    numGen3++;
+                }
+                break;
+            default:
+                isUnsorted = true;
+                break;
+        }
+
+        if (isUnsorted === true) {
+           // console.log("분류 없음!!! >> ", JSON.stringify(jsnMenu));
+        }
+
+    }//for
+
+    scwin.gVar.arrCmpCagetory = arrCmpCagetory;
+
+    let _main = $p.main().scwin;
+    if (!_main.gVar) _main.gVar = {};
+
+    _main.gVar.jsnLeftMenuLink = jsnMenuCompLink;
+
+    //첫번째 메뉴의 카테고리 열기.   
+    arrCmpCagetory[0].removeClass("isCollapsed");
+    let cmpTmpSecDepth = arrCmpCagetory[1];
+    if (cmpTmpSecDepth.getUserData("cate_depth") == "2") {
+        cmpTmpSecDepth.addClass("isCollapsed");
+    }
+	 
+};
+
+//메뉴 click
+scwin.lblMenu_onclick = function () {
+    var menuID = this.getUserData("menu_id");
+    var objMain;
+
+    objMain = $p.main();
+    
+    if (!menuID) {  // fullpath.json
+        var strPage = this.getUserData("menu_path");
+        var strLink = "https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide";
+        
+        objMain.scwin.dispPage3("", "샘플", strLink + strPage, true);
+    } else {    // menu.json
+        objMain.scwin.dispPage(menuID, true);
+    }
+
+};
+
+//분류 label click
+scwin.lblMenuCategory_onclick = function () {
+    var strClass = "isCollapsed";
+
+    if (this.hasClass(strClass)) {
+        this.removeClass(strClass)
+    } else {
+        this.addClass(strClass)
+    }
+
+};
+
+//대분류 label click
+scwin.lbl_menu_depth2_onclick = function () {
+    var strClass = "isCollapsed";
+
+    if (this.hasClass(strClass)) {
+        this.removeClass(strClass)
+    } else {
+        this.addClass(strClass)
+    }
+};
+
+scwin.tbx_title_depth1_onclick = function (e) {
+    var strClass = "isCollapsed";
+    var cmpGroup;
+
+    cmpGroup = this.getParent();
+
+    if (cmpGroup.hasClass(strClass)) {
+        cmpGroup.removeClass(strClass)
+    } else {
+        cmpGroup.addClass(strClass)
+    }
+};
+
+// 메뉴 검색 버튼 click 시
+scwin.btn_searchMenu_onclick = function (e) {
+    scwin.searchMenu();
+};
+
+// 메뉴 검색
+scwin.searchMenu = function () {
+    var strKeyword;
+    var arrOrgMenu;
+    var arrResult;
+    var _WRE_CONTEXT_PATH = $c.frame.getConst("WRE_CONTEXT_PATH");
+    var strOrgKeyword;
+
+    strOrgKeyword = ibx_search_input.getValue().trim();
+    strKeyword = strOrgKeyword.toLowerCase();
+
+    if (!strKeyword) {
+        scwin.switchView("default");
+        return;
+    }
+
+    arrOrgMenu = JSON.parse(scwin.gVar.strArrOrgMenu);  // menu.json
+    arrFullpathMenu = JSON.parse(scwin.gVar.strArrCompData);    // fullpath.json
+
+    // menu.json 처리 함수
+    arrResult = arrOrgMenu.filter((item) => {
+
+        let retValue = false;
+        //파일이 아닌 경우 
+        if (item.TYPE != "F") return false;
+
+        //메뉴명
+        let strFilter_TITLE = item["TITLE"].toLowerCase();
+        if (strFilter_TITLE.indexOf(strKeyword) > -1) {
+            //강조
+            item["DISP_TITLE"] = item["TITLE"].replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+            retValue = true;
+        } else {
+            item["DISP_TITLE"] = item["TITLE"];
+        }
+
+        //키워드
+        let strFilter_ALL_KEYWORD = ("|" + item["ALL_KEYWORD"] + "|");
+        //let strFilter_KEYWORD = "|" + strKeyword + "|";   //keyword와 동일한 경우만 출력
+        let strFilter_KEYWORD = strKeyword;
+
+        if (strFilter_ALL_KEYWORD.toLowerCase().indexOf(strFilter_KEYWORD) > -1) {
+            //item["ALL_KEYWORD"] = strFilter_ALL_KEYWORD.replace(new RegExp(strFilter_KEYWORD,"ig"), '|<span class="highlight">'+strKeyword+'</span>|').replace(/^[|]/,"").replace(/[|]$/,""); //keyword와 동일한 경우만 출력
+            item["ALL_KEYWORD"] = strFilter_ALL_KEYWORD.replace(new RegExp("(" + strFilter_KEYWORD + ")", "ig"), '<span class="highlight">$1</span>').replace(/^[|]/, "").replace(/[|]$/, "");
+
+            let arrSearchedKeyword = item["ALL_KEYWORD"].split("|").filter(function (argItem) {
+                if (argItem.indexOf('<span class="highlight">') > -1) return true;
+                return false;
+            });
+            item["SEARCHED_KEYWORD"] = arrSearchedKeyword.join("|");
+            retValue = true;
+        }
+
+        //파일명
+        item["DISP_PATH"] = (_WRE_CONTEXT_PATH + item["PATH"]);
+        let strFilter_PATH = item["DISP_PATH"].toLowerCase();
+        if (strFilter_PATH.indexOf(strKeyword) > -1) {
+            item["DISP_PATH"] = item["DISP_PATH"].replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+            //강조
+            retValue = true;
+        }
+
+        return retValue;
+    });
+
+    // fullpath.json 처리 함수 _251120 신규 생성
+    arrResult2 = arrFullpathMenu.filter((item) => {
+        // .xml 이 아닌 파일은 검색 제외
+        if(!item["PATH"].endsWith(".xml")) {
+            return false;
+        }
+
+        let retValue = false;
+
+        //메뉴명
+        let strFilter_TITLE = item["TITLE"].toLowerCase();
+        if (strFilter_TITLE.indexOf(strKeyword) > -1) {
+            //강조
+            item["DISP_TITLE"] = item["TITLE"].replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+            retValue = true;
+        } else {
+            item["DISP_TITLE"] = item["TITLE"];
+        }
+
+        //파일명
+        item["DISP_PATH"] = (_WRE_CONTEXT_PATH + item["PATH"]);
+        let strFilter_PATH = item["DISP_PATH"].toLowerCase();
+        if (strFilter_PATH.indexOf(strKeyword) > -1) {
+            item["DISP_PATH"] = item["DISP_PATH"].replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+            //강조
+            retValue = true;
+        }
+
+        return retValue;
+    });
+
+    // menu.json과 fullpath.json 결과 합치기
+    arrResult = arrResult.concat(arrResult2);
+    
+    scwin.displayResult(arrResult, strKeyword, strOrgKeyword);
+
+    scwin.switchView("result");
+};
+
+//검색 결과 출력
+scwin.displayResult = function (argArrMenu, argKeyword, argOrgKeyword) {
+    var numArrLength;
+    var i, i_max, i_item;
+    var compGen1;
+
+    var refFnc_setMenuTitle = scwin.setMenuTitle;
+    var refFnc_getHTML_keyword = $c.frame.getHtml_keyword;
+
+    compGen1 = gen_result_ul;
+
+    i_max = argArrMenu.length;
+
+    compGen1.removeAll();
+
+    tbx_result_title.setValue('<span class="highlight">' + argOrgKeyword + '</span>으(로) <span class="highlight">' + i_max + '</span>건이 검색되었습니다.');
+    // 검색결과 상단 문구 ex) 44으(로) 11건이 검색되었습니다.
+
+    for (i = 0; i < i_max; i++) {
+
+        let compTmp;
+        let strKeyword;
+        let tmpStr;
+
+        i_item = argArrMenu[i];
+
+        compGen1.insertChild(i);
+
+        compTmp = compGen1.getChild(i, "lbl_result_menu");  // 결과 목록
+
+        //브래드크럼 출력
+        tmpStr = i_item["MENU_BREADCRUMBS"];
+
+        tmpStr = (tmpStr ? "[" + tmpStr.split("%||%").join(" > ") + "] " : "");
+
+        //메뉴명에 브래드크럼이 포함된 경우 제외
+        if (i_item["TITLE"].toLowerCase().indexOf(tmpStr.toLowerCase()) == 0) { tmpStr = ""; }
+
+        refFnc_setMenuTitle(compTmp, (i + 1) + ". " + tmpStr + i_item["DISP_TITLE"], i_item["PATH"], i_item["ID"]);
+
+        // strKeyword = i_item["ALL_KEYWORD"]; // 키워드 출력 - 전체
+        strKeyword = i_item["SEARCHED_KEYWORD"] || ""; // 검색된 키워드 출력
+
+        compTmp = compGen1.getChild(i, "tbx_result_keyword");
+        if (strKeyword) {
+            compTmp.setValue(refFnc_getHTML_keyword($p, strKeyword, "leftmenu"));
+        } else {
+            //compTmp.setStyle("display","none");
+            compTmp.remove(false);
+        }
+
+        compTmp = compGen1.getChild(i, "tbx_result_path");
+        //파일 경로 출력
+        compTmp.setValue("파일 경로 : " + i_item["DISP_PATH"]);
+    }
+
+};
+
+// //메뉴 영역 노출 컨텐츠 결정
+// scwin.switchView = function (argType) {
+//     if (grp_left_menu_tabbutton.hasClass(argType)) { return; }
+
+//     switch (argType) {
+//         case "result":
+//             grp_left_menu_tabbutton.changeClass("default", "result");
+//             break;
+//         case "default":
+//         default:
+//             grp_left_menu_tabbutton.changeClass("result", "default");
+
+//             break;
+//     }
+// };
+
+//메뉴 영역 노출 컨텐츠 결정
+
+//메뉴 영역 노출 컨텐츠 결정
+scwin.switchView = function (argType) { 
+    if (grp_left_menu_tabbutton.hasClass(argType)) { return; } 
+    switch (argType) {
+        case "result":
+            grp_left_menu_tabbutton.removeClass("default");
+            grp_left_menu_tabbutton.removeClass("component");
+            grp_left_menu_tabbutton.addClass("result");
+            //grp_left_menu_tabbutton.changeClass("default", "result");
+            //grp_left_menu_tabbutton.changeClass("component", "default");
+            //btn_showComponent.changeClass("component", "default");
+            //grp_left_component.hide();
+            
+            break;
+        case "default":
+        default:
+            //grp_left_menu_tabbutton.changeClass("result", "default");
+            grp_left_menu_tabbutton.removeClass("result");
+            grp_left_menu_tabbutton.removeClass("component");
+            grp_left_menu_tabbutton.addClass("default");
+            break;
+    }
+};
+
+scwin.change_menuTab = function () {
+    var strTarget;
+    var cmpParent;
+
+    
+    strTarget = this.getUserData("userData1"); 
+    cmpParent = this.getParent();
+ 
+    if(strTarget == "component" ){
+        scwin._arrCmpCagetory = scwin.gVar.arrCmpCagetory2;
+    } else if (strTarget == "default"){
+
+        scwin._arrCmpCagetory = scwin.gVar.arrCmpCagetory;
+    } 
+    cmpParent.removeClass("component");
+    cmpParent.removeClass("default");
+    cmpParent.removeClass("result");
+    
+    cmpParent.addClass(strTarget);
+};
+scwin.ibx_search_input_oneditkeyup = function (info, e) {
+    if (info.keyCode == 13) {
+        scwin.searchMenu();
+    }
+};
+
+/**
+ * 모두 펼치기
+ */
+scwin.btn_menu_expand_onclick = function (e) {
+    btn_menu_collapse.removeClass("on");
+    btn_menu_expand.addClass("on");
+   
+
+    //let _arrCmpCagetory = scwin.gVar.arrCmpCagetory;  
+    scwin._arrCmpCagetory.forEach(function (argItem) {
+        if (argItem.hasClass("isCollapsed")) {
+            argItem.removeClass("isCollapsed");
+        }
+    });
+};
+
+/**
+ * 모두 접기
+ */
+scwin.btn_menu_collapse_onclick = function (e) {
+    btn_menu_expand.removeClass("on");
+    btn_menu_collapse.addClass("on");
+
+   // let _arrCmpCagetory = scwin.gVar.arrCmpCagetory;
+
+    scwin._arrCmpCagetory.forEach(function (argItem) {
+        if (!argItem.hasClass("isCollapsed")) {
+            argItem.addClass("isCollapsed");
+        }
+    });
+};
+
+// 2025.05.16 추가 - 3rabbitz의 문서와 직접 연결한다. ////////////////////////////////
+scwin.txt_comp_onclick = async function (e) {
+	// 이벤트를 상위 컴포넌트 이동에 따른 추가 로직
+	let grpObj = this.getChildren();
+	
+	let _min   = grpObj.length > 0 ? grpObj[0].getUserData("min")   : this.getUserData("min");
+	let _depth = grpObj.length > 0 ? grpObj[0].getUserData("depth") : this.getUserData("depth");
+	let _path  = grpObj.length > 0 ? grpObj[0].getUserData("path")  : this.getUserData("path");
+ 
+    if(_min == "Y"){
+        let strClass = "isCollapsed";
+        
+        if(_depth == "1"){
+            let _grpParent = grpObj[0].getParent();
+            _grpParent.toggleClass(strClass);
+        }else if(_depth == "2"){
+            grpObj[0].toggleClass(strClass);
+        }
+    }else{
+ 
+        let _docName = this.getValue();
+ 
+        //모바일 버젼 분기 add 20251201 hee  
+        if($p.main().scwin.gVar.WRE_MAIN_TYPE=="M"){  
+            await $p.main().scwin.pageDoc(_docName, _path);
+        } else {   
+            await scwin.addDoc(_docName, _path);
+
+        }
+    }
+};
+///////////////////////////////////////////////////
+
+scwin.addDoc = async function(docName, path){
+
+    var _tabDocId;
+    if(path!=""){
+        _tabDocId = "tabDoc_" + path;  
+    } else {
+        _tabDocId = "tabDoc_" + docName;  
+    }
+    await $p.main().tac_main.addTab(
+            _tabDocId,
+            {
+                "label": docName,
+                "closable": "true",
+                "openAction": "select"
+            },
+            {
+                "src": "/frame/page/page_doc.xml",
+                "scope": true,
+                "frameMode": "pageFrame",
+                "dataObject": {
+                    "type": "json",
+                    "name": "tabParam",
+                    "data": {
+                        "compName": docName,
+                        "path" : path
+                    }
+                }
+            }
+        );
+
+    $p.main().tac_main.setSelectedTabIndex($p.main().tac_main.getTabIndex(_tabDocId));  
+};
+ 
+scwin.menuComp = function(argArrMenu) {
+    return argArrMenu.TYPE == "Z" || argArrMenu.TYPE == "Q";
+};
+
+//메뉴 출력 - 첫번째 컴포넌트 리스트 사용
+scwin.displaycompentMenu = function (argArrMenu) {
+    const argArrMenu2 = argArrMenu.filter(scwin.menuComp);
+
+    var i, i_max;
+    var compGen1,
+        numGen1,
+        compGen2,
+        numGen2,
+        strDynamicGenID2,
+        compGen3,
+        numGen3,
+        strKeyGen1,
+        strKeyGen2;
+    var jsnMenuCompLink = {};
+
+    var refFnc_setMenuTitle2 = function (argComp, argLabel, argDepth) {
+        argComp.setValue(argLabel);
+        argComp.setUserData("depth", argDepth);
+        argComp.bind("onclick", scwin.txt_comp_onclick);
+    };
+
+    var innFnc_setMenuCategory = function (argComp, argLabel, argDepth) {
+        argComp.addClass("wre_left_menu_category");  //카테고리 class 추가
+        argComp.addClass("isCollapsed");  //접힘 class 추가
+        argComp.removeClass("wre_left_menu_lbl");  //label class 삭제
+        argComp.setUserData("depth", argDepth);
+        argComp.setValue(argLabel);
+        argComp.bind("onclick", scwin.txt_comp_onclick);
+    };
+
+    scwin.gVar.arrCmpCagetory2 = []; //카테고리 객체 배열
+    let arrCmpCagetory = [];
+
+    numGen1 = 0;     //depth1 반복수
+    numGen2 = 0;
+    numGen3 = 0;
+    
+    let strID_depth1 = "";
+    let strID_depth2 = "";
+    
+    i_max = argArrMenu2.length;
+
+    for (i = 0; i < i_max; i++) {
+        let jsnMenu = argArrMenu2[i];
+        let strMenuDepth = jsnMenu.DEPTH;
+        let strMenuTitle = jsnMenu.DISP_MENU_TITLE || jsnMenu.TITLE;
+        let strMenuID = jsnMenu.ID;
+        let strMenuType = jsnMenu.TYPE;
+        let strMenuMin = jsnMenu.MIN_VER;
+        let strMenuPath = jsnMenu.PATH; 
+
+        let cmpTmpComp;
+
+        let isUnsorted = false; //미분류
+
+        switch (strMenuDepth) {
+            case "1":   //대분류 - 신규 추가된 컴포넌트 
+                compGen1 = $p.getComponentById("gen_comp");
+                compGen1.insertChild(numGen1);
+                cmpTmpComp = compGen1.getChild(numGen1, "txt_comp");
+                cmpTmpComp.setValue(strMenuTitle);
+                cmpTmpComp.setUserData("min", strMenuMin);
+                cmpTmpComp.setUserData("depth", "1"); 
+                cmpTmpComp.setUserData("path", strMenuPath); 
+
+                //확장축소 객체
+                let cmpTmpCate = compGen1.getChild(numGen1, "grp_depth1_comp");
+                cmpTmpCate.setUserData("cate_depth", "1");
+                
+                if(strMenuMin == "Y"){
+                    cmpTmpCate.addClass("wre_left_menu_category");  //카테고리 class 추가
+                    cmpTmpCate.addClass("isCollapsed");  //접힘 class 추가
+                    cmpTmpCate.removeClass("wre_left_menu_lbl");  //label class 삭제
+                }
+                
+                arrCmpCagetory.push(cmpTmpCate);
+                
+                strKeyGen1 = jsnMenu.ID;
+                compGen2 = compGen1.getChild(numGen1, "gen_comp2");
+                numGen1++;
+                numGen2 = 0;
+                numGen3 = 0;
+                strKeyGen2 = null;
+                compGen3 = null;
+
+                strID_depth2 = "";
+                
+                break;
+            case "2":
+                if (jsnMenu.PARENT_ID === strKeyGen1) {
+                    compGen1 = gen_comp;
+
+                    //메뉴 출력.
+                    compGen2.insertChild(numGen2);
+                    
+                    let compTitle_depth2 = compGen2.getChild(numGen2, "lbl_comp_depth2");
+                    compTitle_depth2.setUserData("min", strMenuMin); 
+               
+                    compTitle_depth2.setUserData("path", strMenuPath);  //20250821 add
+
+                    //메뉴 타입이 분류인 경우
+                    if (strMenuType == "Z") {
+                        compGen2.getChild(numGen2, "grp_comp_depth2").removeClass("wre_left_menu_lbl_wrap");
+                        innFnc_setMenuCategory(compTitle_depth2, strMenuTitle, strMenuDepth);
+                        strDynamicGenID2 = compGen1.getOriginalID() + "_" + numGen1 + "_" + "gen_comp2" + "_" + numGen2;
+
+                        //확장축소 객체
+                        compTitle_depth2.setUserData("cate_depth", "2"); 
+                        arrCmpCagetory.push(compTitle_depth2);
+
+                        compGen3 = $p.dynamicCreate(
+                            strDynamicGenID2,
+                            "group",
+                            {
+                                "tagname": "ul"
+                            },
+                            compGen2.getChild(numGen2, "grp_comp_depth2")
+                        );
+
+                        strID_depth2 = compTitle_depth2.getID();
+                        strKeyGen2 = jsnMenu.ID;
+                        numGen3 = 0;
+                    }else{
+                        refFnc_setMenuTitle2(compTitle_depth2, strMenuTitle, strMenuDepth);
+                        //메뉴별 컴포넌트 아이디 할당
+                        jsnMenuCompLink[strMenuID] = compTitle_depth2.getID() + "|" + strID_depth1;
+                    }
+                    numGen2++;
+                } else {
+                    isUnsorted = true;
+                }
+                break;
+            case "3":
+                if (jsnMenu.PARENT_ID === strKeyGen2) {
+                    let strTmpID_li = compGen3.getOriginalID() + "_" + "grp_comp_li_depth3" + "_" + numGen3;
+                    let strTmpID_anchor = compGen3.getOriginalID() + "_" + "lbl_comp_depth3" + "_" + numGen3;
+
+                    let tmpComp_li = $p.dynamicCreate(
+                        strTmpID_li,
+                        "group",
+                        { "tagname": "li" },
+                        compGen3
+                    );
+
+                    tmpComp_li.addClass("wre_left_menu_lbl_wrap");
+
+                    let tmpComp_lbl = $p.dynamicCreate(
+                        strTmpID_anchor,
+                        "anchor",
+                        { "outerDiv": "false" },
+                        tmpComp_li
+                    );
+
+                    tmpComp_lbl.addClass("wre_left_menu_lbl");
+                    refFnc_setMenuTitle2(tmpComp_lbl, strMenuTitle, strMenuDepth);
+
+                    //메뉴별 컴포넌트 아이디 할당
+                    jsnMenuCompLink[strMenuID] = tmpComp_lbl.getID() + "|" + strID_depth2 + "|" + strID_depth1;
+
+                    numGen3++;
+                }
+                
+                break;
+            default:
+                isUnsorted = true;
+                break;
+        }
+
+        if (isUnsorted === true) {
+           // console.log("분류 없음!!! >> ", JSON.stringify(jsnMenu));
+        }
+    }//for
+   
+    scwin.gVar.arrCmpCagetory2 = arrCmpCagetory;
+    scwin._arrCmpCagetory = scwin.gVar.arrCmpCagetory2;
+
+    let _main = $p.main().scwin;
+    if (!_main.gVar) _main.gVar = {};
+
+    _main.gVar.jsnLeftMenuLink = jsnMenuCompLink;
+
+    //첫번째 메뉴의 카테고리 열기.   
+    arrCmpCagetory[0].removeClass("isCollapsed"); 
+    let cmpTmpSecDepth = arrCmpCagetory[1];
+    if (cmpTmpSecDepth.getUserData("cate_depth") == "2") {
+        cmpTmpSecDepth.removeClass("isCollapsed");
+    }
+     
+    arrCmpCagetory[1].removeClass("isCollapsed"); 
+    let cmpTmpSecDepth2 = arrCmpCagetory[2];
+    if (cmpTmpSecDepth2.getUserData("cate_depth") == "2") {
+        cmpTmpSecDepth2.removeClass("isCollapsed");
+    } 
+ 
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="" class="wre_left_menu grp_tab">
+    		<xf:group style="" id="" class="grp_left_menu_search">
+    			<xf:input class="" id="ibx_search_input" placeholder="메뉴명, 파일명, 키워드로 검색" style="min- width:148px;"
+    				ev:oneditkeyup="scwin.ibx_search_input_oneditkeyup" enterBlur="false">
+    			</xf:input>
+    			<xf:trigger class="btn_all_search" id="btn_searchMenu" style="" type="button"
+    				ev:onclick="scwin.btn_searchMenu_onclick">
+    				<xf:label><![CDATA[Search]]></xf:label>
+    			</xf:trigger>
+    		</xf:group>
+    		<xf:group style="" id="grp_left_menu_tabbutton" class="grp_left_menu_tabbutton component">
+    			<w2:anchor outerDiv="false" style="" id="btn_showComponent" class="left_menu_tabbutton component" ev:onclick="scwin.change_menuTab" userData1="component">
+    				<xf:label><![CDATA[컴포넌트]]></xf:label>
+    			</w2:anchor>
+    			<w2:anchor class="left_menu_tabbutton default" ev:onclick="scwin.change_menuTab" id="btn_showMenu" outerDiv="false"
+    				userData1="default">
+    				<xf:label><![CDATA[전체목록]]></xf:label>
+    			</w2:anchor>
+    			<w2:anchor class="left_menu_tabbutton result" ev:onclick="scwin.change_menuTab" id="btn_showResult" outerDiv="false"
+    				userData1="result">
+    				<xf:label><![CDATA[검색 결과]]></xf:label>
+    			</w2:anchor>
+    			<xf:group id="grp_left_menu_shortcut_box" style="" class="shortcut_box">
+    				<w2:anchor class="btn_fold_list on" id="btn_menu_expand" outerDiv="false" style=""
+    					ev:onclick="scwin.btn_menu_expand_onclick" title="메뉴 전체 펼치기">
+    					<xf:label><![CDATA[메뉴펼치기]]></xf:label>
+    				</w2:anchor>
+    				<w2:anchor class="btn_fold" id="btn_menu_collapse" outerDiv="false" style="" disabled=""
+    					ev:onclick="scwin.btn_menu_collapse_onclick" title="메뉴 전체 접기">
+    					<xf:label><![CDATA[메뉴접기]]></xf:label>
+    				</w2:anchor>
+
+    			</xf:group>
+    		</xf:group>
+    		<xf:group id="" class="grp_left_menu_content">
+    			<xf:group style="" id="grp_left_component" class="grp_left_menu_component scrollbar">
+    				<w2:generator tagname="ul" style="" id="gen_comp" class="minH wre_grp_margin_1depth depth1">
+    				<xf:group id="" tagname="li">
+    					<xf:group id="grp_depth1_comp" class="pos_relative ofh isCollapsed" ev:onclick="scwin.txt_comp_onclick">
+    						<w2:textbox class="fl wre_left_menu_category_depth1" id="txt_comp" label="서브타이틀" style="">
+    						</w2:textbox>
+    					</xf:group>
+    					<w2:generator id="gen_comp2" style="" tagname="ul">
+    						<xf:group class="wre_left_menu_lbl_wrap" id="grp_comp_depth2" tagname="li">
+    							<w2:anchor class="wre_left_menu_lbl" id="lbl_comp_depth2" outerDiv="false" style="">
+    								<xf:label><![CDATA[depth2 label]]></xf:label>
+    							</w2:anchor>
+    						</xf:group>
+    					</w2:generator>
+    				</xf:group></w2:generator>
+    			</xf:group>
+    			<xf:group style="" id="grp_left_menu" class="grp_left_menu_default scrollbar">
+
+    				<w2:generator tagname="ul" style="" id="gen_depth1" class="minH wre_grp_margin_1depth depth1">
+    					<xf:group tagname="li" id="">
+    						<xf:group style="" id="grp_depth1_title" class="pos_relative ofh isCollapsed">
+    							<w2:textbox ev:onclick="scwin.tbx_title_depth1_onclick" style="" id="tbx_title_depth1" label="서브타이틀"
+    								class="fl wre_left_menu_category_depth1">
+    							</w2:textbox>
+    						</xf:group>
+    						<w2:generator tagname="ul" style="" id="gen_depth2">
+    							<xf:group tagname="li" id="grp_list_depth2" class="wre_left_menu_lbl_wrap">
+    								<w2:anchor outerDiv="false" style="" id="lbl_menu_depth2" class="wre_left_menu_lbl">
+    									<xf:label><![CDATA[depth2 label]]></xf:label>
+    								</w2:anchor>
+    							</xf:group>
+    						</w2:generator>
+    					</xf:group>
+    				</w2:generator>
+    			</xf:group>
+    			<xf:group style="" id="grp_left_menu_result" class="grp_left_menu_result scrollbar">
+    				<xf:group style="" id="" class="grp_left_menu_result_text">
+    					<w2:textbox style="" id="tbx_result_title" label="" class="" escape="false"></w2:textbox>
+    				</xf:group>
+    				<w2:generator tagname="ul" style="" id="gen_result_ul" class="grp_result_ul">
+    					<xf:group tagname="li" id="grp_result_li">
+    						<w2:anchor outerDiv="false" style="" id="lbl_result_menu" class="wre_left_menu_lbl" escape="false">
+    							<xf:label><![CDATA[depth2 label]]></xf:label>
+    						</w2:anchor>
+    						<w2:textbox style="" id="tbx_result_keyword" label="" class="wre_lef_menu_keyword" escape="false"></w2:textbox>
+    						<w2:textbox class="wre_lef_menu_result_path" escape="false" id="tbx_result_path" label="" style=""></w2:textbox>
+    					</xf:group>
+    				</w2:generator>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

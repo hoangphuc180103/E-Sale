@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+var tmpSrc = scwin.getfolderPath() + "/tab_";
+
+		var tabOptions = {};
+		
+		for (var i = 0; i < 10; i++) {
+			var addCount = i + 1;
+			var tabOptions = {
+				label : "Tab " + addCount,
+				openAction: "new",
+				closable: "true"
+			}
+			
+			const tab = [tmpSrc, i+1, ".xml"];
+			var first = tab[0];
+			var second = tab[1];
+			var third = tab[2];
+			var all = first + second + third;
+			
+			var contentsOptions = {
+                    frameMode : "wframe",
+                    alwaysDraw : false,
+                    src: all
+                }
+			tabControl1.addTab(i, tabOptions, contentsOptions);
+			tabControl2.addTab(i, tabOptions, contentsOptions);
+		}
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="Select Tab with Scroll Buttons&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1-1. Click the left/right scroll button in the upper-right corner of the first TabControl.&lt;br/&gt;1-2. Confirm that the tab automatically selects as the scroll moves. (changeActiveTab=“true”)&lt;br/&gt;&lt;br/&gt;2-1. Click the left/right scroll button in the upper-right corner of the second TabControl.&lt;br/&gt;2-2. Confirm that only the scroll moves. (changeActiveTab=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox4" label='tabScroll="true" &lt;br/&gt;changeActiveTab="true"' escape="false">
+    	</w2:textbox>
+    	<w2:tabControl changeActiveTab="true" confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" tabScroll="true" useMoveNextTabFocus="false" tabScrollAuto="true" useConfirmMessage="false" alwaysDraw="false" style="border: gray solid 1px;margin-bottom: 10px;height: 200px;" tabPosition="top" id="tabControl1">
+    	</w2:tabControl>
+    	<w2:textbox escape="false" id="textbox5" label='tabScroll="true" &lt;br/&gt;changeActiveTab="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<w2:tabControl alwaysDraw="false" changeActiveTab="false" confirmFalseAction="new" confirmTrueAction="exist" id="tabControl2"
+    		style="border: gray solid 1px;height: 200px;" tabPosition="top" tabScroll="true" tabScrollAuto="true" useConfirmMessage="false"
+    		useMoveNextTabFocus="false" useTabKeyOnly="true">
+    	</w2:tabControl>
+    </xf:group></body>
+</html>

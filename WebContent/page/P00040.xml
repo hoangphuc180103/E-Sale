@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="이중 Accordion으로 UI 구성 하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220522" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="화면 구성 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    var i;
+    var genArr = ["package_WebSquare5.png", "package_Proworks.png", "package_W-gear.png"];
+    var genArrLen = genArr.length, genObj, imgNm;
+
+    for (i = 0; i < genArrLen; i++) {
+        ui_genProduct.insertChild();
+        imgNm = genArr[i];
+        ui_genProduct.getChild(i, "ui_prdImg").setSrc("/img/example/" + imgNm);
+        ui_genProduct.getChild(i, "ui_prdNm").setValue(imgNm.replace("package_", "").replace(".png", ""));
+    }
+
+};
+
+/**
+ * 화면의 버튼 클릭 시 - 공통
+ */
+scwin.ui_btnSend_onclick = function () {
+    alert("기능이 구현되지 않았습니다.");
+};
+]]></script>
+		<style type="text/css"><![CDATA[
+.example_P00040 .acd01Box{ border-left:1px solid #c0c0c0; border-right:1px solid #c0c0c0; border-bottom: 1px solid #c0c0c0; }
+.example_P00040 .w2accordion{ border-style:none; }
+.example_P00040 .w2panels_content_open
+.example_P00040 .w2panels_content_open, .example_P00040 .w2panels_content_closed { padding:0px; }
+.example_P00040 .w2accordion .w2panel_title_text {font-weight:600;}
+.example_P00040 .w2accordion.acd01 .w2panels_title{
+	background: none;
+	background-color: #497ba4;
+	padding: 6px;
+	color: #fff;
+	border-style:none;
+	border-bottom:1px solid #ddd;
+}
+.example_P00040 .w2accordion.acd02 .w2panels_title{
+	background-color: #eee;
+	color: #497ba4;
+	padding: 0px 6px;
+	border-style:none;
+	border-bottom:1px solid #dbdbdb;
+	height: 40px;
+}
+.example_P00040 .w2accordion.acd01 .w2panel_title_text{ font-size: 1.6rem; }
+.example_P00040 .w2accordion.acd02 .w2panel_title_text{ font-size: 1.5rem; }
+.example_P00040 .w2accordion .w2panels_title{ overflow: hidden; }
+.example_P00040 .w2accordion .w2panels_title span{ float:left; }
+.example_P00040 .w2accordion .w2panels_title div{ float:right; }
+.example_P00040 .w2accordion .w2panels_title_image {
+	background: url(/img/example/accordion_close01.png) no-repeat center center;
+	background-size: 16px;
+}
+
+.example_P00040 .w2accordion .w2panels_title_image_open{
+	background: url(/img/example/accordion_open01.png) no-repeat center center;
+	background-size: 16px;
+}
+
+.example_P00040 .w2accordion .w2panels{ border-style:none; }
+.example_P00040 .w2accordion .w2panel_title_text{ line-height: 25px;padding-top:0px;vertical-align: none; }
+
+.example_P00040 .w2panels_content_open>.w2group, .genProduct>.w2group { border-top:1px solid #eee; }
+.example_P00040 .w2panels_content_open>.w2group:first-child, .genProduct>.w2group:first-child{ border-top-style:none; }
+
+.example_P00040 .txtOpt{padding:6px 20px;background-color: #64c0be; color:#fff;}
+.example_P00040 .txtAmount{font-weight:bold; font-size:2rem;margin-right:10px;}
+.example_P00040 .txtAmount:after, .example_P00040 .txtAmount::after {
+	content: " 원";
+	font-size:1.3rem;
+	color:#999;
+}
+.example_P00040 .txtTot{
+	color: #ff6347;
+	font-weight:bold;
+	font-size:2.2rem;
+}
+.example_P00040 .txtTot:after, .example_P00040 .txtTot::after{
+	content: "원";
+	font-size:1.3rem;
+}
+.example_P00040 .btnTotAch{
+	display: block;
+	text-align:center;
+	background-color: #ff6347;/*64c0be*/
+}
+.example_P00040 .btnTotAch a{
+	display: block;
+	line-height:50px;
+	color: #fff;
+	font-weight:bold;
+	font-size:2.2rem;
+}
+.example_P00040 .btnTotAch a:after, .btnTotAch a::after{
+	content: "원 결제하기";
+	font-size:1.4rem;
+	font-weight:normal;
+}
+
+.example_P00040 .w2checkbox_label:before {
+	position: absolute;
+	left: 0;
+	top: 5px;
+	content: none;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #cfd5d8;
+	box-sizing: border-box;
+	background: #fff;
+}
+
+.example_P00040 .w2radio_label:before{
+	position: absolute;
+	left: 1px;
+	top: 5px;
+	content: none;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #cfd5d8;
+	box-sizing: border-box;
+	border-radius: 50%;
+	background: #fff;
+}			    	
+    	]]></style>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="Accordion, Generator 컴포넌트를 활용하여 구성한 화면 입니다.&lt;br/&gt;UI에 적용한 CSS는 이 파일에 작성되어있습니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="max-width: 450px;" class="example_P00040">
+				<xf:group class="acd01Box" id="" style="">
+					<w2:accordion class="acd01" collapseAll="" collapsible="true" id="ui_accordion" selectedPanel="panels4"
+						style="overflow: inherit;">
+						<w2:panels class="" id="panels1" style="">
+							<w2:panelTitle class="" id="panelTitle1" label="주문정보" style=""></w2:panelTitle>
+							<w2:panelContent class="" id="panelContent1" style="">
+								<w2:accordion class="acd02" collapseAll="" collapsible="true" id="" selectedPanel="" style="overflow: inherit;">
+									<w2:panels class="" id="panels5" style="">
+										<w2:panelTitle class="" id="panelTitle5" label="주문자정보" style=""></w2:panelTitle>
+										<w2:panelContent class="" id="panelContent5" style="padding: 0px 10px;">
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="주문자명" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:input adjustMaxLength="false" id="" initValue="이유은" style="width: 100%;height: 3em;box-sizing:border-box;">
+													</xf:input>
+												</xf:group>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="연락처" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+														disabledClass="w2selectbox_disabled" displayMode="label" id="" optionOrder="false" ref=""
+														style="width: 32%;height: 3em;box-sizing:border-box;margin-right: 2%;" submenuSize="auto">
+														<xf:choices>
+															<xf:item>
+																<xf:label><![CDATA[010]]></xf:label>
+																<xf:value><![CDATA[010]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[011]]></xf:label>
+																<xf:value><![CDATA[011]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[016]]></xf:label>
+																<xf:value><![CDATA[016]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[017]]></xf:label>
+																<xf:value><![CDATA[017]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[018]]></xf:label>
+																<xf:value><![CDATA[018]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[019]]></xf:label>
+																<xf:value><![CDATA[019]]></xf:value>
+															</xf:item>
+														</xf:choices>
+													</xf:select1>
+													<xf:input adjustMaxLength="false" id="" initValue="8240"
+														style="width: 32%;height: 3em;box-sizing:border-box;margin-right: 2%;">
+													</xf:input>
+													<xf:input adjustMaxLength="false" id="" initValue="8282" style="width: 32%;height: 3em;box-sizing:border-box;">
+													</xf:input>
+												</xf:group>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="이메일" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:input initValue="g_edu@inswave.com" id="" style="width: 100%;height: 3em;box-sizing:border-box;">
+													</xf:input>
+												</xf:group>
+											</xf:group>
+										</w2:panelContent>
+									</w2:panels>
+									<w2:panels class="" id="panels6" style="">
+										<w2:panelTitle class="" id="panelTitle6" label="품절시 환불방법" style=""></w2:panelTitle>
+										<w2:panelContent class="" id="panelContent6" style="padding: 0px 10px;">
+											<xf:group class="" id="" style="padding: 10px 0px;">
+												<xf:select1 appearance="full" cols="" id="" ref="" rows="" selectedIndex="0" style="">
+													<xf:choices>
+														<xf:item>
+															<xf:label><![CDATA[주문 시 결제수단으로 환불받기]]></xf:label>
+															<xf:value><![CDATA[01]]></xf:value>
+														</xf:item>
+														<xf:item>
+															<xf:label><![CDATA[예치금으로 자동 환불받기]]></xf:label>
+															<xf:value><![CDATA[02]]></xf:value>
+														</xf:item>
+													</xf:choices>
+												</xf:select1>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;">
+												<xf:select appearance="full" cols="" id="" ref="" rows="" selectedindex="-1" style="">
+													<xf:choices>
+														<xf:item>
+															<xf:label><![CDATA[환불방법 저장하기]]></xf:label>
+															<xf:value><![CDATA[01]]></xf:value>
+														</xf:item>
+													</xf:choices>
+												</xf:select>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;" tagname="">
+												<xf:group id="" style="padding-left: 20px;" tagname="ul">
+													<w2:textbox id="" label="예치금은 현금성포인트로, 상품 구매 시 언제든 사용이 가능하며 원하시는 경우 현금으로전환이 가능한 편리한 결제수단입니다."
+														style="margin-bottom: 6px;" tagname="li">
+													</w2:textbox>
+													<w2:textbox id=""
+														label="품절로 인한 한불금액의 합이 5마원 미만일 경우, 예치금으로 자동환불되며, 5만원 이상이거나 비회원 주문일 경우 원결제수단으로 환불처리 됩니다.(품절 발생 익일 오후 5시부터 환불처리)"
+														style="margin-bottom: 6px;" tagname="li">
+													</w2:textbox>
+													<w2:textbox id="" label="예치금환불이 아닌 주문하신 결제수단으로 환불받기를 원하실 경우, '주문 시 결제수단으로 환불받기'를 선택해 주세요." style="" tagname="li">
+													</w2:textbox>
+												</xf:group>
+											</xf:group>
+										</w2:panelContent>
+									</w2:panels>
+									<w2:panels class="" id="panels7" style="">
+										<w2:panelTitle class="" id="panelTitle7" label="주문확인서 받는 방법" style=""></w2:panelTitle>
+										<w2:panelContent class="" id="panelContent7" style="padding: 0px 10px;">
+											<xf:group class="" id="" style="padding: 10px 0px;">
+												<xf:select1 appearance="full" cols="" id="" ref="" rows="" selectedIndex="0" style="">
+													<xf:choices>
+														<xf:item>
+															<xf:label><![CDATA['모바일' 주문확인서만 받기]]></xf:label>
+															<xf:value><![CDATA[01]]></xf:value>
+														</xf:item>
+														<xf:item>
+															<xf:label><![CDATA['모바일+종이' 주문확인서 모두 받기]]></xf:label>
+															<xf:value><![CDATA[02]]></xf:value>
+														</xf:item>
+													</xf:choices>
+												</xf:select1>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;">
+												<w2:textbox id="" escape="false"
+													label="&lt;span class='txtGreen'&gt;종이절약&lt;/span&gt;은 &lt;span class='txtGreen'&gt;환경보호와 자원절약&lt;/span&gt; 실천의 한 방법입니다."
+													style="margin-bottom: 10px;">
+												</w2:textbox>
+											</xf:group>
+										</w2:panelContent>
+									</w2:panels>
+								</w2:accordion>
+							</w2:panelContent>
+						</w2:panels>
+						<w2:panels class="" id="panels2" style="">
+							<w2:panelTitle class="" id="panelTitle2" label="배송정보" style=""></w2:panelTitle>
+							<w2:panelContent class="" id="panelContent2" style="">
+								<w2:accordion class="acd02" collapseAll="" collapsible="true" id="" selectedPanel="" style="">
+									<w2:panels class="" id="panels8" style="">
+										<w2:panelTitle class="" id="panelTitle8" label="배송지정보" style=""></w2:panelTitle>
+										<w2:panelContent class="" id="panelContent8" style="padding: 0px 10px;">
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="배송지" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto"
+														disabled="false" disabledClass="w2selectbox_disabled" displayMode="label" id="" optionOrder="false" ref=""
+														style="width: 100%;height: 3em;box-sizing:border-box;" submenuSize="auto">
+														<xf:choices>
+															<xf:item>
+																<xf:label><![CDATA[[기본배송지]우리집]]></xf:label>
+																<xf:value><![CDATA[01]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[회사]]></xf:label>
+																<xf:value><![CDATA[02]]></xf:value>
+															</xf:item>
+														</xf:choices>
+													</xf:select1>
+												</xf:group>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="받는분" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:input adjustMaxLength="false" id="" initValue="인스웨이브시스템즈" style="width: 100%;height: 3em;box-sizing:border-box;">
+													</xf:input>
+												</xf:group>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="연락처" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+														disabledClass="w2selectbox_disabled" displayMode="label" id="" optionOrder="false" ref=""
+														style="width: 32%;height: 3em;box-sizing:border-box;margin-right: 2%;" submenuSize="auto">
+														<xf:choices>
+															<xf:item>
+																<xf:label><![CDATA[010]]></xf:label>
+																<xf:value><![CDATA[010]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[011]]></xf:label>
+																<xf:value><![CDATA[011]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[016]]></xf:label>
+																<xf:value><![CDATA[016]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[017]]></xf:label>
+																<xf:value><![CDATA[017]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[018]]></xf:label>
+																<xf:value><![CDATA[018]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[019]]></xf:label>
+																<xf:value><![CDATA[019]]></xf:value>
+															</xf:item>
+														</xf:choices>
+													</xf:select1>
+													<xf:input adjustMaxLength="false" id="" initValue="1234"
+														style="width: 32%;height: 3em;box-sizing:border-box;margin-right: 2%;">
+													</xf:input>
+													<xf:input adjustMaxLength="false" id="" initValue="5678" style="width: 32%;height: 3em;box-sizing:border-box;">
+													</xf:input>
+												</xf:group>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<xf:select1 appearance="full" cols="" id="" ref="" rows="1" selectedIndex="0" style="">
+													<xf:choices>
+														<xf:item>
+															<xf:label><![CDATA[안심번호 사용한함]]></xf:label>
+															<xf:value><![CDATA[01]]></xf:value>
+														</xf:item>
+														<xf:item>
+															<xf:label><![CDATA[안심번호 사용]]></xf:label>
+															<xf:value><![CDATA[02]]></xf:value>
+														</xf:item>
+													</xf:choices>
+												</xf:select1>
+												<xf:trigger class="btn_cm" ev:onclick="scwin.ui_btnSend_onclick" id="" style="width: 60px;float : right;"
+													type="button">
+													<xf:label><![CDATA[안내]]></xf:label>
+												</xf:trigger>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="주소" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:input adjustMaxLength="false" id="" initValue="07339"
+														style="width: 64%;height: 3em;box-sizing:border-box;margin-right: 2%;margin-bottom: 10px;">
+													</xf:input>
+													<xf:trigger class="btn_cm" ev:onclick="scwin.ui_btnSend_onclick" id=""
+														style="width: 32%;height: 3em;margin-bottom: 10px;" type="button">
+														<xf:label><![CDATA[우편번호]]></xf:label>
+													</xf:trigger>
+													<xf:input adjustMaxLength="false" id="" initValue="서울 영등포구 여의도동 국제금융로 39"
+														style="width: 100%;height: 3em;box-sizing:border-box;margin-bottom: 10px;">
+													</xf:input>
+													<xf:input adjustMaxLength="false" id="" initValue="앵커원 20층"
+														style="width: 100%;height: 3em;box-sizing:border-box;margin-bottom: 10px;">
+													</xf:input>
+												</xf:group>
+												<w2:textbox id="" label="기본 배송지는 MY PAGE &gt; 배송지관리 메뉴에서 변경 가능합니다." style="clear: both;"></w2:textbox>
+											</xf:group>
+										</w2:panelContent>
+									</w2:panels>
+									<w2:panels class="" id="panels9" style="">
+										<w2:panelTitle class="" id="panelTitle9" label="택배배송 메시지" style=""></w2:panelTitle>
+										<w2:panelContent class="" id="panelContent9" style="padding: 0px 10px;">
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="배송 메시지" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+														disabledClass="w2selectbox_disabled" displayMode="label" emptyValue="" id="" optionOrder="false" ref=""
+														style="width: 100%;height: 3em;box-sizing:border-box;" submenuSize="auto">
+														<xf:choices>
+															<xf:item>
+																<xf:label><![CDATA[빠른 배송 바랍니다]]></xf:label>
+																<xf:value><![CDATA[01]]></xf:value>
+															</xf:item>
+															<xf:item>
+																<xf:label><![CDATA[도착 전 연락 주세요]]></xf:label>
+																<xf:value><![CDATA[02]]></xf:value>
+															</xf:item>
+														</xf:choices>
+													</xf:select1>
+												</xf:group>
+											</xf:group>
+											<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+												<w2:textbox id="" label="선물 메시지" style="width:25%;float:left;line-height: 3em;"></w2:textbox>
+												<xf:group class="" id="" style="float: right;width:75%;">
+													<xf:textarea id="" placeholder="받으실 분에게 전달할 메세지를 입력해주세요." style="width: 100%;height: 100px;box-sizing:border-box;">
+													</xf:textarea>
+												</xf:group>
+											</xf:group>
+										</w2:panelContent>
+									</w2:panels>
+								</w2:accordion>
+							</w2:panelContent>
+						</w2:panels>
+						<w2:panels class="" id="panels3" style="">
+							<w2:panelTitle class="" id="panelTitle3" label="상품정보" style=""></w2:panelTitle>
+							<w2:panelContent class="" id="panelContent3" style="padding: 0px 10px;">
+								<w2:generator class="genProduct" id="ui_genProduct" style="">
+									<xf:group class="" id="" style="padding: 10px 0px;overflow:hidden;">
+										<xf:image id="ui_prdImg" src="" style="width:20%;float:left;"></xf:image>
+										<xf:group class="" id="" style="float: right;width:75%;">
+											<xf:group id="" style="">
+												<w2:textbox id="ui_prdNm" label="" style="margin-bottom: 6px;color:#999;font-size:1.4rem;font-weight: bold;">
+												</w2:textbox>
+												<xf:group id="" style="margin-bottom: 6px;">
+													<w2:span class="txtAmount" dataType="number" displayFormat="#,###" id="" label="48600000" style="">
+													</w2:span>
+													<w2:span id="" label="1개" style="padding: 0px 10px;border-left: 1px solid #ddd;color:#999;">
+													</w2:span>
+												</xf:group>
+												<xf:group id="" style="overflow: hidden;">
+													<w2:textbox class="txtOpt" id="" label="옵션" style="float : left;margin-right: 10px;"></w2:textbox>
+													<w2:textbox id="" label="없음" style="padding:6px 0px;float: left;"></w2:textbox>
+												</xf:group>
+											</xf:group>
+										</xf:group>
+									</xf:group>
+								</w2:generator>
+							</w2:panelContent>
+						</w2:panels>
+						<w2:panels class="" id="panels4" style="">
+							<w2:panelTitle class="" id="panelTitle4" label="최종결제금액" style=""></w2:panelTitle>
+							<w2:panelContent class="" id="panelContent4" style="padding: 10px;">
+								<xf:group class="" id="" style="overflow: hidden;padding: 10px;">
+									<w2:textbox id="" label="총 주문 금액" style="font-size:1.4rem;float: left;margin-right: 10px;"></w2:textbox>
+									<w2:textbox dataType="number" displayFormat="#,##0원" id="" label="145800000" style="font-size:1.4rem;float: left;">
+									</w2:textbox>
+									<w2:textbox id="" label="(배송비 무료)" style="font-size:1.4rem;float: right;"></w2:textbox>
+								</xf:group>
+								<xf:group class="" id="" style="overflow: hidden;padding: 10px;position: relative;text-align: center;">
+									<w2:textbox id="" label="총 할인금액&lt;br/&gt;0원"
+										style="float : left;width: 50%;box-sizing:border-box;text-align: center;border:2px dashed #00bba9;border-right-width: 1px;padding: 6px 0px;"
+										escape="false">
+									</w2:textbox>
+									<w2:textbox id="" label="포인트 사용금액&lt;br/&gt;0원"
+										style="float : left;width: 50%;box-sizing:border-box;text-align: center;border:2px dashed #00bba9;padding: 6px 0px;border-left-width: 1px;"
+										escape="false">
+									</w2:textbox>
+									<xf:image id="" src="/img/example/bg_minus.png"
+										style="width: 2em;height: 2em;position: absolute;left: calc(50% - 1em);    top: calc(50% - 1em);}">
+									</xf:image>
+								</xf:group>
+								<xf:group class="" id="" style="overflow: hidden;padding: 10px;">
+									<w2:textbox id="" label="최종 결제금액" style="float : left;padding-top:10px;font-size: 1.6rem;"></w2:textbox>
+									<w2:textbox class="txtTot" dataType="number" displayFormat="#,##0" id="" label="145800000" style="float : right;">
+									</w2:textbox>
+								</xf:group>
+							</w2:panelContent>
+						</w2:panels>
+					</w2:accordion>
+				</xf:group>
+				<xf:group class="" id="" style="padding: 10px 0px;">
+					<w2:anchor class="btnTotAch" clickEventElement="outerDiv" ev:onclick="scwin.ui_btnSend_onclick" id="ui_btnSend"
+						outerDiv="true" style="">
+						<xf:label><![CDATA[145,800,000]]></xf:label>
+					</w2:anchor>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

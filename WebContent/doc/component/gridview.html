@@ -1,0 +1,1893 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>GridView</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_f7449b9308c8878a" class="chapter_title">GridView</h1>
+		<h1 id="r_14720d4627dff497" class="element heading1"
+			data-element-id="14720d4627dff497">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_c1f67eb1a7127430" class="element normal"
+			data-element-id="c1f67eb1a7127430">GridView는 테이블 형태의 데이터를 효율적으로
+			표시하고 조작할 수 있는 웹스퀘어 AI의 핵심 UI 컴포넌트입니다. 기본적으로 Body와 Header, 그리고 Footer로
+			구분되어 있으며, 별도의 소계(SubTotal) 기능을 통해 특정 컬럼의 통계 데이터를 계산하여 표시할 수 있습니다. 복잡한
+			데이터 구조를 직관적인 그리드 형태로 제공하여 사용자가 데이터를 쉽게 탐색하고 편집할 수 있도록 지원합니다.
+			GridView는 DataList (DataCollection)와 바인딩되어 데이터를 처리하며, 다양한 데이터 형식 지원,
+			자유로운 그리드 편집, 페이징, 정렬, 필터링, 그룹핑 등 폭넓은 기능을 제공합니다. 특히, 순차적인 데이터 표시와 무한
+			스크롤링을 통해 대용량 데이터 처리 시에도 뛰어난 출력 속도와 성능을 보장하는 것이 특징입니다.</p>
+		<dl id="r_9315bafea4e4b667" class="element definition_list"
+			data-element-id="9315bafea4e4b667">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3rbVfPAsS3Pq_rvxmdM1Ru">GridView
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb213UWbVH8U1V2api8n2JjU">GridView
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_7ff9ff602a1dd5a0" class="element heading1"
+			data-element-id="7ff9ff602a1dd5a0">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_fd184cf4e767b06d" class="element normal"
+			data-element-id="fd184cf4e767b06d">GridView는 다음과 같은 시나리오에서 특히
+			유용하게 활용될 수 있습니다.</p>
+		<dl id="r_8a6975ee782b80f8" class="element definition_list"
+			data-element-id="8a6975ee782b80f8">
+			<dt>
+				<strong>복잡한 테이블 구성</strong>
+			</dt>
+			<dd>
+				<p>
+					다양한 데이터 형식과 복잡한 레이아웃이 필요한 테이블을 구성할 때 GridView의 유연한
+					<code>inputType</code>
+					및 셀 병합 기능이 효과적으로 활용될 수 있습니다. 또한 컬럼과 행 병합, Header 병합 기능 등을 통해 복잡한
+					데이터 구조를 명확하게 표현할 수 있습니다.
+				</p>
+			</dd>
+			<dt>
+				<strong>대량의 데이터 처리</strong>
+			</dt>
+			<dd>
+				<p>수십만 건 이상의 데이터를 조회, 편집, 분석해야 하는 환경에서 GridView의 순차적인 데이터 표시 및
+					무한 스크롤링 지원 기능은 대용량 데이터의 출력 속도를 개선하고 향상된 사용자 경험을 제공합니다.</p>
+			</dd>
+			<dt>
+				<strong>대용량 파일 업로드/다운로드</strong>
+			</dt>
+			<dd>
+				<p>Excel, CSV, 한셀/넥셀 등 대용량 파일과의 연동 기능을 통해 데이터 가져오기/내보내기 기능을 구현할
+					때 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>데이터 기반 보고서 및 대시보드</strong>
+			</dt>
+			<dd>
+				<p>
+					실시간 데이터 변동을 반영하거나, 통계 및 요약 정보가 필요한 보고서 및 대시보드 화면 구성에 GridView의
+					<code>subTotal</code>
+					및
+					<code>footer</code>
+					기능이 적합합니다. 이를 통해 사용자는 데이터를 시각적으로 분석하고 중요한 비즈니스 지표를 한눈에 파악할 수 있습니다.
+				</p>
+			</dd>
+			<dt>실시간 데이터 바인딩</dt>
+			<dd>
+				<p>DataList와의 연동을 통해 실시간으로 데이터가 갱신되도록 할 수 있으며, 클립보드 및 드래그 앤 드롭
+					기능을 활용해 빠른 데이터 처리가 가능합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_7d67e6b9eae21d13" class="element heading1"
+			data-element-id="7d67e6b9eae21d13">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<h2 id="r_a7c6813de74fa92e" class="element heading2"
+			data-element-id="a7c6813de74fa92e">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.1</span><span>데이터</span>
+			</div>
+		</h2>
+		<ul id="r_912e1d9ef3592fd9" class="element unordered_list"
+			data-element-id="912e1d9ef3592fd9">
+			<li><p>
+					데이터 로딩, 추가, 제거, 삭제, 초기화, 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/load_add_remove_delete_initilize_view_GridView/load_add_remove_delete_initilize_view_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					데이터 설정 (<a class="link" href="https://youtu.be/caCW-DB97EI">YouTube</a>)
+				</p></li>
+			<li><p>
+					동적 행 추가 및 삭제 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/insertRow_removeRows_DataList.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/_TfJtScLtoQ">YouTube</a>)
+				</p></li>
+			<li><p>데이터 복사</p>
+				<ul>
+					<li><p>
+							복사할 값 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00088.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/copyOption_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/WEkPBLOgshE">YouTube</a>)
+						</p></li>
+					<li><p>
+							복사 방법 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00089.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/copyType_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/wtetKx3tna0">YouTube</a>)
+						</p></li>
+					<li><p>
+							여러 개의 셀 데이터 붙여넣기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/checkEditOnPaste_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/QIBmgFv5pho">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					셀 데이터 반환 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00290.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					셀 포맷 초기화 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00455.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					헤더의 ID 또는 Index로 헤더의 Value 반환 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00347.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_64c5fef38bcfd88a" class="element heading2"
+			data-element-id="64c5fef38bcfd88a">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.2</span><span><code>column</code></span>
+			</div>
+		</h2>
+		<ul id="r_93ebede3a308a59f" class="element unordered_list"
+			data-element-id="93ebede3a308a59f">
+			<li><p>
+					각 컬럼의 입력 방식 (
+					<code>inputType</code>
+					)
+				</p>
+				<ul>
+					<li><p>
+							<code>inputType</code>
+							설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_checkbox_select_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/kiyeMLD5PNs">YouTube</a>)
+						</p></li>
+					<li><p>
+							컬럼의 일부 선택 항목 숨기기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00095.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setColumnVisibleColumn_GridView/setColumnVisibleColumn_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/TG3nZBI8msE">YouTube</a>)
+						</p></li>
+					<li><p>
+							컬럼의 일부 선택 항목 비활성화하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00094.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setColumnEnableColumn_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/0IybbS4LnxU">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					각 컬럼의 데이터 타입 (
+					<code>dataType</code>
+					)
+				</p>
+				<ul>
+					<li><p>
+							<code>dataType</code>
+							설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setDataType_getDataType_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/5jcVHiTcUuQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							컬럼에
+							<code>datatType="date"</code>
+							설정하기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setDataType_date_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/fOV1CcG-ohE">YouTube</a>)
+						</p></li>
+					<li><p>
+							<code>dataType</code>
+							속성과
+							<code>displayFormat</code>
+							속성을 함수로 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00191.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					각 컬럼의 데이터 표시 형식 (
+					<code>displayFormat</code>
+					)
+				</p>
+				<ul>
+					<li><p>
+							속성을 통한 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/gridView.column/displayFormat_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/6Zeh7zcZrHU">YouTube</a>)
+						</p></li>
+					<li><p>
+							함수를 통한 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00340.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/gridView.column/displayFormatter_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/rpAfKJRLKqA">YouTube</a>)
+						</p></li>
+					<li><p>
+							커스텀 함수를 통한 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/gridView.column/customFormatter_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/I3IWomt4n7o">YouTube</a>)
+						</p></li>
+					<li><p>
+							바인딩된 DataList의 데이터 변경을 통한 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/importFormatter_dataList_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/0rb9R-itwAQ">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h2 id="r_ef25e05c5548cd4d" class="element heading2"
+			data-element-id="ef25e05c5548cd4d">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.3</span><span><code>subTotal</code></span>
+			</div>
+		</h2>
+		<ul id="r_d35fc9a80d9cc614" class="element unordered_list"
+			data-element-id="d35fc9a80d9cc614">
+			<li><p>
+					<code>subTotal</code>
+					추가 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/subTotal/subtotal_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/WsJdYLy8lcU">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>subTotal</code>
+					표시/숨김 처리 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/subTotal/setSubtotalVisible_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/U-IW9JUdi5M">YouTube</a>)
+				</p></li>
+			<li><p>
+					값 기준 스타일 적용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/subTotal/subtotalStyleFormatter_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/vGa9ayKAHtc">YouTube</a>)
+				</p></li>
+			<li><p>
+					컬럼 별 스타일 적용 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00098.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/subTotal/subtotalStyleFormatter_subtotalColumnId_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/3xh5OE5Mar4">YouTube</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_97855b95c3242465" class="element heading2"
+			data-element-id="97855b95c3242465">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.4</span><span><code>footer</code></span>
+			</div>
+		</h2>
+		<ul id="r_1dbc33c07c9fb7ea" class="element unordered_list"
+			data-element-id="1dbc33c07c9fb7ea">
+			<li><p>
+					푸터 추가 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/footer_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/Cs-DeBICs6s">YouTube</a>)
+				</p></li>
+			<li><p>
+					푸터 추가 및 연산자 사용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/inputType_expression_footer_gridView_column/inputType_expression_footer_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/tqulgI92fOU">YouTube</a>)
+				</p></li>
+			<li><p>
+					올림, 반올림, 내림 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00044.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					조건부 합계 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/inputType_expression_sumif_sumifs_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/mgx5RrhrgsU">YouTube</a>)
+				</p></li>
+			<li><p>
+					값 확인 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/getFooterData_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/u1TYaMl_enY">YouTube</a>)
+				</p></li>
+			<li><p>부동 소수점 오류 자동 보정</p>
+				<ul>
+					<li><p>
+							<code>SUM</code>
+							(<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/inputType_expression_SUM_gridView_column/inputType_expression_SUM_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/L1GGULl6cFA">YouTube</a>)
+						</p></li>
+					<li><p>
+							<code>AVG</code>
+							(<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/inputType_expression_AVG_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/ojd55iLjAOg">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					푸터 드래깅이 종료될 때 실행할 함수 지정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/footerDragEndFunction_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					푸터 셀에 포커스 허용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/focusFooter_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					푸터 셀(들)을 포커스하고 (푸터 기준) 컬럼 ID 확인 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/getFocusedFooterID_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					푸터 셀(들)을 포커스하고 (푸터 기준) 컬럼 인덱스 확인 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/getFocusedFooterIndex_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					푸터 셀(들)을 포커스하고 셀 정보 확인 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/getFocusedFooterCell_GridView.xml">샘플</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_42eda380b67f14a0" class="element heading2"
+			data-element-id="42eda380b67f14a0">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.5</span><span>디자인</span>
+			</div>
+		</h2>
+		<h3 id="r_b8af5884df19baf4" class="element heading3"
+			data-element-id="b8af5884df19baf4">
+			<div class="r_heading_inner">
+				<span>틀 고정</span>
+			</div>
+		</h3>
+		<ul id="r_77fbc633b2717b83" class="element unordered_list"
+			data-element-id="77fbc633b2717b83">
+			<li><p>
+					컬럼 고정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00199.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							속성을 통해 고정 ( <a class="link" href="https://youtu.be/Kxh6WwZUUWo">YouTube</a>)
+						</p></li>
+					<li><p>
+							속성 및 함수를 통해 고정 (<a class="link"
+								href="https://youtu.be/vXsMm4ydtY4">YouTube</a>)
+						</p></li>
+					<li><p>
+							고정된 컬럼 이동 방지 (<a class="link" href="https://youtu.be/CHgj4fpmYEQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							고정된 컬럼을 포함하거나 제외하고 계산 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00345.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					틀 고정 컬럼 이동 허용 및 방지 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/fixedColumn_columnMove_fixedColumnNoMove_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					행 고정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00200.xml">WRE</a>,
+					<a class="link" href="https://youtu.be/1Gta-JwBQNI">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_3d7c7cc149aee347" class="element heading3"
+			data-element-id="3d7c7cc149aee347">
+			<div class="r_heading_inner">
+				<span>행 번호 및 상태 컬럼 표시</span>
+			</div>
+		</h3>
+		<ul id="r_02b6911c2c71659b" class="element unordered_list"
+			data-element-id="02b6911c2c71659b">
+			<li><p>행 번호 컬럼</p>
+				<ul>
+					<li><p>
+							속성을 통한 행 번호 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00182.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide//GridView/_General/rowNumVisible_rowStatusVisible_Gridview.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/BOpVAFxToUI">YouTube</a>)
+						</p></li>
+					<li><p>
+							함수를 통한 행 번호 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setRowNumVisible_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/0TGGOtcwl-Q">YouTube</a>)
+						</p></li>
+					<li><p>
+							행 번호의 시작 값 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00181.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							행 번호 헤더 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00180.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/rowNumVisible_rowNumHeaderValue_rowNumWidth_rowNumBackgroundColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/J9zuH4HJq4Q">YouTube</a>)
+						</p></li>
+					<li><p>
+							마우스-오버 시 행 번호 컬럼도 지정한 배경색으로 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/rowNumRowMouseOverColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/i5NXh_Ymgx8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>행 상태 컬럼</p>
+				<ul>
+					<li><p>
+							함수를 통한 행 상태 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setRowStatusVisible_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/8pmqZSebcz8">YouTube</a>)
+						</p></li>
+					<li><p>
+							속성을 통한 행 상태 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00179.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/rowNumVisible_rowStatusVisible_Gridview.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/BOpVAFxToUI">YouTube</a>)
+						</p></li>
+					<li><p>
+							행 상태 헤더 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00183.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/rowStatusVisible_rowStatusHeaderValue_rowStatusWidth_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/xiPsLhJgKrU">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					행 번호 및 상태 컬럼 숨기기 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00213.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_01dd59a67f8ef929" class="element heading3"
+			data-element-id="01dd59a67f8ef929">
+			<div class="r_heading_inner">
+				<span>그리기</span>
+			</div>
+		</h3>
+		<ul id="r_8ae5e73c7f5103e8" class="element unordered_list"
+			data-element-id="8ae5e73c7f5103e8">
+			<li><p>
+					렌더링 방법 선택 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00090.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/drawType_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/JvQNnEjHWzc">YouTube</a>)
+				</p></li>
+			<li><p>
+					행 수를 기반으로 초기 높이 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/visibleRowNum_visibleRowNumFix_GridView/visibleRowNum_visibleRowNumFix_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/vftrJvR2tT8">YouTube</a>)
+				</p></li>
+			<li><p>스타일</p>
+				<ul>
+					<li><p>
+							현재 GridView 상태 확인 및 지정한 상태로 GridView 그리기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00198.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/getCurrentGridStyle_setGridStyle_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/B8Nbvp_CF_E">YouTube</a>)
+						</p></li>
+					<li><p>
+							바디 컬럼, 바디 셀, 헤더 셀의 스타일을 함수로 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00297.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							바디 컬럼, 바디 셀, 헤더 셀의 클래스를 함수로 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00298.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>컬럼 폭 자동 맞춤</p>
+				<ul>
+					<li><p>
+							컬럼 폭 자동 맞춤 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00166.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/autoFit_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/pjEYTl_b7TI">YouTube</a>)
+						</p></li>
+					<li><p>
+							컬럼 폭 자동 맞춤을 위한 최소 너비 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00167.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/autoFit_autoFitMinWidth_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/VtwE8p1ALfc">YouTube</a>)
+						</p></li>
+					<li><p>
+							컬럼 폭 자동 맞춤 설정 및 취소 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00184.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setAutoFit_clearAutoFit_GridView/setAutoFit_clearAutoFit_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/08K5gCovQcc">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>데이터가 없을 경우</p>
+				<ul>
+					<li><p>
+							"데이터 없음" 메시지 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00092.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/noResultMessage_noResultMessageVisibleAlways_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/rHG-CO9T2eI">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 화면 파일 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/useNoResultMessageURL_noResultMessageURL_GridView/useNoResultMessageURL_noResultMessageURL_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Wp3dO7_7RkE">YouTube</a>)
+						</p></li>
+					<li><p>
+							출력된 데이터가 없으면, 정렬 아이콘 표시하지 않기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00389.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h2 id="r_2b81ec750d6f4fda" class="element heading2"
+			data-element-id="2b81ec750d6f4fda">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.6</span><span>컬럼의 <code>inputType</code></span>
+			</div>
+		</h2>
+		<ul id="r_9075c24dd147d76e" class="element unordered_list"
+			data-element-id="9075c24dd147d76e">
+			<li><p>
+					컬럼
+					<code>inputType</code>
+					동적 변경 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00116.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_custom_typeGetter_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/NSicuP53ywk">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>inputType</code>
+					별 컬럼 아이콘 표시 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/viewType_inputType_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/_wk3gTOxPt4">YouTube</a>)
+				</p></li>
+			<li><p>
+					데이터 표시 형식 동적 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/setDisplayMode_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/zYHD84kaN4Y">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_129a9c75a0d3ea27" class="element heading3"
+			data-element-id="129a9c75a0d3ea27">
+			<div class="r_heading_inner">
+				<span><code>inputType="autoComplete"</code></span>
+			</div>
+		</h3>
+		<ul id="r_dd005734608515ba" class="element unordered_list"
+			data-element-id="dd005734608515ba">
+			<li><p>
+					설정 방법 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_autoComplete_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/IEJiQnLUlxQ">YouTube</a>)
+				</p></li>
+			<li><p>
+					선택 항목 목록 즉시 펼치기 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00118.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_autoComplete_directOpen_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/hGZhEpgzH0s">YouTube</a>)
+				</p></li>
+			<li><p>
+					구분자 동적 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/setDelimiter_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/jcE6477rwcc">YouTube</a>)
+				</p></li>
+			<li><p>
+					선택 항목에 없는 값 동적 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_autoComplete_emptyItem_emptyValue_gridView_column.xml">샘플</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_ce22c70a4767a9fd" class="element heading3"
+			data-element-id="ce22c70a4767a9fd">
+			<div class="r_heading_inner">
+				<span><code>inputType="calendar"</code></span>
+			</div>
+		</h3>
+		<ul id="r_bd246cff469df5b6" class="element unordered_list"
+			data-element-id="bd246cff469df5b6">
+			<li><p>
+					날짜 입력 순서 및 표시 형식 지정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_calendar_setColumnIoFormat_gridView_column/inputType_calendar_setColumnIoFormat_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/T-qhSZ7K3Tk">YouTube</a>)
+				</p></li>
+			<li><p>
+					달력에서의 연도 및 월 선택 방법 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_calendar_pickerType_fixPickerStatus_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/wKSARWUQoI4">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_dd0a69bf2343569e" class="element heading3"
+			data-element-id="dd0a69bf2343569e">
+			<div class="r_heading_inner">
+				<span><code>inputType="checkbox"</code></span>
+			</div>
+		</h3>
+		<ul id="r_4607b4f94503a9b2" class="element unordered_list"
+			data-element-id="4607b4f94503a9b2">
+			<li><p>
+					설정 방법 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_checkbox_select_gridView_column.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					기본 값 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00173.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					<code>label</code>
+					표시 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00100.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					다른 컬럼 값을 조합하여 라벨 값으로 사용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/checkboxLabelColumn_radioLabelColumn_gridView_column/checkboxLabelColumn_radioLabelColumn_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/3AzVyG6XZ6k">YouTube</a>)
+				</p></li>
+			<li><p>체크 박스 선택</p>
+				<ul>
+					<li><p>
+							전체 체크 박스 선택 및 해제 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/checkAll_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/b1UcSFvlJMY">YouTube</a>)
+						</p></li>
+					<li><p>
+							전체 체크 박스 선택 순서 결정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_checkbox_partialCheckNextClick_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/GQtn0YSOPmc">YouTube</a>)
+						</p></li>
+					<li><p>
+							헤더의 체크 박스 선택 시 disabled 및 readOnly 셀 처리 방식 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/checkAllType_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/LzioAerK1g0">YouTube</a>)
+						</p></li>
+					<li><p>
+							체크 또는 체크 해제된 값을 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00174.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							체크 박스를 선택해도 상태 값이 변경되는 것을 방지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00444.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					Shift 키로 여러 체크 박스 선택 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_checkbox_useShiftKey_useShiftKeyCheck_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/pSTt1MH9vAY">YouTube</a>)
+				</p></li>
+			<li><p>
+					체크 박스로 선택한 행의 인덱스 및 데이터 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/getCheckedXXX_Gridview.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/3HiSk4YkkT4">YouTube</a>)
+				</p>
+				<ul>
+					<li><p>
+							인덱스 확인 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00175.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							데이터 확인 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00176.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					체크한 행 삭제 및 제거 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_checkbox_gridView_column/inputType_checkbox_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/UF44Y8TMKOs">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_4ac263d0b2fd3a3e" class="element heading3"
+			data-element-id="4ac263d0b2fd3a3e">
+			<div class="r_heading_inner">
+				<span><code>inputType="checkcombobox"</code></span>
+			</div>
+		</h3>
+		<ul id="r_e7774bd23b08e13c" class="element unordered_list"
+			data-element-id="e7774bd23b08e13c">
+			<li><p>
+					설정 방법 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_checkcombobox_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/4EHQtRAoEV4">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_0a5ecba45b0f26d8" class="element heading3"
+			data-element-id="0a5ecba45b0f26d8">
+			<div class="r_heading_inner">
+				<span><code>inputType="drilldown"</code></span>
+			</div>
+		</h3>
+		<ul id="r_53c133ec342d2d04" class="element unordered_list"
+			data-element-id="53c133ec342d2d04">
+			<li><p>
+					설정 방법 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_drilldown_gridView_column/inputType_drilldown_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/S87KThzT_SY">YouTube</a>)
+				</p></li>
+			<li><p>
+					Enter 키로 드릴다운 컬럼의 목록 열고 닫기 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/drilldownToggle_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/_w0u0yvnkug">YouTube</a>)
+				</p></li>
+			<li><p>
+					모바일에서 셀 터치로 목록 열기/닫기 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Mobile/drilldownToggle_hammerEnabled_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/K8ACGkL6xio">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>oncellclick</code>
+					이벤트 방지 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00348.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					비활성화된 셀의 토글 버튼도 비활성 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00349.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_b10a1a603d9050fd" class="element heading3"
+			data-element-id="b10a1a603d9050fd">
+			<div class="r_heading_inner">
+				<span><code>inputType="image"</code></span>
+			</div>
+		</h3>
+		<ul id="r_671aa0ea3ba898a9" class="element unordered_list"
+			data-element-id="671aa0ea3ba898a9">
+			<li><p>
+					Blob 데이터를 이미지로 표현 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00432.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_77ecc2c8bf94357a" class="element heading3"
+			data-element-id="77ecc2c8bf94357a">
+			<div class="r_heading_inner">
+				<span><code>inputType="radio"</code></span>
+			</div>
+		</h3>
+		<ul id="r_0c0e1e5a7cfff095" class="element unordered_list"
+			data-element-id="0c0e1e5a7cfff095">
+			<li><p>
+					<code>label</code>
+					표시 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00211.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					다른 컬럼 값을 조합하여 라벨 값으로 사용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/checkboxLabelColumn_radioLabelColumn_gridView_column/checkboxLabelColumn_radioLabelColumn_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/3AzVyG6XZ6k">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_a26e0f44bef3add9" class="element heading3"
+			data-element-id="a26e0f44bef3add9">
+			<div class="r_heading_inner">
+				<span><code>inputType="select"</code></span>
+			</div>
+		</h3>
+		<ul id="r_1921fddd2ebfb3a7" class="element unordered_list"
+			data-element-id="1921fddd2ebfb3a7">
+			<li><p>
+					설정 방법 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_select_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/QwmMkijoymM">YouTube</a>)
+				</p></li>
+			<li><p>
+					선택 항목에 없는 값 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_select_emptyItem_emptyValue_gridView_column.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					SelectBox 목록을 펼치지 않고
+					<code>inputType='select'</code>
+					셀에 포커스 주기 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/skipOption_setFocusedCell_GridView.xml">샘플</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_d71eacafb5c97bb3" class="element heading3"
+			data-element-id="d71eacafb5c97bb3">
+			<div class="r_heading_inner">
+				<span><code>inputType="spinner"</code></span>
+			</div>
+		</h3>
+		<ul id="r_a48e3b16acb1f547" class="element unordered_list"
+			data-element-id="a48e3b16acb1f547">
+			<li><p>
+					최소값 및 최대값 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_spinner_min_max_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/brUpez4WXvc">YouTube</a>)
+				</p></li>
+			<li><p>
+					아이콘 표시 (<a class="link" href="https://youtu.be/hfi2sQqtKsU">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>inputType='spinner'</code>
+					컬럼의 증감 단위 설정 및 확인 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_spinner_increment_gridView_column.xml">샘플</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_b263ea90ef620296" class="element heading3"
+			data-element-id="b263ea90ef620296">
+			<div class="r_heading_inner">
+				<span><code>inputType="textImage"</code></span>
+			</div>
+		</h3>
+		<ul id="r_9685f7f897b3ac45" class="element unordered_list"
+			data-element-id="9685f7f897b3ac45">
+			<li><p>
+					텍스트와 이미지 표시 순서 지정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/gridView.column/imageAlign_gridView_column/imageAlign_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/tmJwhCkyO_g">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_c35cb41279eac56c" class="element heading3"
+			data-element-id="c35cb41279eac56c">
+			<div class="r_heading_inner">
+				<span>선택형 <code>inputType</code></span>
+			</div>
+		</h3>
+		<ul id="r_07a05d2350edd6f3" class="element unordered_list"
+			data-element-id="07a05d2350edd6f3">
+			<li><p>
+					목록 중 특정 항목 비활성화 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00094.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					목록 중 특정 항목 숨기기 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00095.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_d22ab7a1c2a39a1a" class="element heading2"
+			data-element-id="d22ab7a1c2a39a1a">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.7</span><span>컬럼</span>
+			</div>
+		</h2>
+		<ul id="r_3f05dbee680ae3c8" class="element unordered_list"
+			data-element-id="3f05dbee680ae3c8">
+			<li><p>컬럼 이동</p>
+				<ul>
+					<li><p>
+							헤더 드래깅을 통한 컬럼 이동 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00168.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/columnMove_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/3oD-HTt34Hw">YouTube</a>)
+						</p></li>
+					<li><p>
+							푸터와 함께 컬럼 이동 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/columnMove_columnMoveWithFooter_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/A--6TD6vDCM">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>스타일링</p>
+				<ul>
+					<li><p>
+							특정 컬럼의 배경색 설정 및 확인 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00351.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setColumnBackgroundColor_getColumnBackgroundColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/v9XqrXxDW60">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 컬럼의 글자색 설정 및 확인 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00352.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setColumnColor_getColumnColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/diWw0lLhNCs">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 컬럼의 스타일 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setColumnStyle_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/iz9ZqR_0hqs">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					컬럼 데이터를 다른 컴포넌트와 맵핑 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/column_mapping_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/47hscGTF_gI">YouTube</a>)
+				</p></li>
+			<li><p>
+					컬럼 순서 변경 및 순서 확인 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00346.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					선택된 컬럼의 인덱스 반환 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00289.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					컬럼의
+					<code>inputType</code>
+					반환 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00288.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					특정 컬럼 숨기기 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00212.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					A 컬럼의 선택값에 따라 B 컬럼의 목록 구성 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00041.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					가로 스크롤이 이동될 때 컬럼 단위로 데이터 표시 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00371.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_ea7ae696558c4bee" class="element heading2"
+			data-element-id="ea7ae696558c4bee">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.8</span><span>행</span>
+			</div>
+		</h2>
+		<ul id="r_7db53f063520724c" class="element unordered_list"
+			data-element-id="7db53f063520724c">
+			<li><p>
+					표시할 행 수 지정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00207.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							속성을 통한 지정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/visibleRowNum_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/d-eyEgACxd0">YouTube</a>)
+						</p></li>
+					<li><p>
+							함수를 통한 지정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setVisibleRowNum_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/gobAwLOYX1I">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					현재 표시된 행 수 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/getRowCount_DataList/getRowCount_DataList.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					행 수를 기반으로 높이 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/visibleRowNum_visibleRowNumFix_GridView/visibleRowNum_visibleRowNumFix_GridView.xml">샘플</a>,
+					<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00209.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					행 숨김 및 숨김 해제 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00206.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setRowVisible_clearRowVisible_GridView/setRowVisible_clearRowVisible_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/CTF5kjlN10k">YouTube</a>)
+				</p></li>
+			<li><p>
+					삭제 상태 행 숨김 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/hideDeletedRow_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/ualtfURZIX8">YouTube</a>)
+				</p></li>
+			<li><p>
+					선택된 행의 인덱스 반환 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00289.xml">WRE</a>)
+				</p></li>
+			<li><p>스타일링</p>
+				<ul>
+					<li><p>
+							특정 행의 배경색 지정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00204.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setRowBackgroundColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/h4a3nwF5VpE">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 행의 글자색 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00205.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setRowColor_getRowColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Wty0OZuJkK4">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 행에 CSS 클래스 적용 및 취소 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setRowClass_removeRowClass_GridView.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							마우스-오버된 행에 적용할 스타일 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/rowMouseOverClass_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/m6TbtM062xE">YouTube</a>)
+						</p></li>
+					<li><p>
+							마우스-오버된 행에 적용할 배경색 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/rowMouseOver_rowMouseOverColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/NCAJNV0oRJs">YouTube</a>)
+						</p></li>
+					<li><p>
+							선택된 셀 혹은 행의 배경색 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00172.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h2 id="r_eba8e420f41a98ac" class="element heading2"
+			data-element-id="eba8e420f41a98ac">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.9</span><span>셀</span>
+			</div>
+		</h2>
+		<ul id="r_53d558f7ee72e085" class="element unordered_list"
+			data-element-id="53d558f7ee72e085">
+			<li><p>
+					셀 데이터 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/getCellData_DataList/getCellData_DataList.xml">샘플</a>)
+				</p></li>
+			<li><p>셀 삭제/복사</p>
+				<ul>
+					<li><p>
+							선택한 셀의 데이터를 복사 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragSelect_useShiftKey_to_copy_GridView/dataDragSelect_useShiftKey_to_copy_GridView.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							선택한 셀의 데이터를 삭제 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragSelect_useShiftKey_GridView.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					셀의
+					<code>inputType</code>
+					동적 변경 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00117.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/setCellInputType_setCellInputTypeCustom_GridView/setCellInputType_setCellInputTypeCustom_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/GaGi7q3_Lps">YouTube</a>)
+				</p></li>
+			<li><p>셀 크기</p>
+				<ul>
+					<li><p>
+							셀 너비/높이 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00093.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							셀의 기본 높이 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00344.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>셀 선택</p>
+				<ul>
+					<li><p>
+							셀 선택 범위 지정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00096.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							연속적인 셀 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00097.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setFocusedMultiCell_GridView/setFocusedMultiCell_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/erKy4irXoBY">YouTube</a>)
+						</p></li>
+					<li><p>
+							여러 셀들을 한번에 선택하거나 선택 해제 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setMultiFocus_removeMultiFocus_GridView.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							지정한 셀 선택 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setFocusedCell_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/kNXNkiRxhWs">YouTube</a>)
+						</p></li>
+					<li><p>
+							드래깅 및 Shift 키를 통한 셀 선택 및 데이터 삭제 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00104.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragSelect_useShiftKey_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/qLlMWSH_WwE">YouTube</a>)
+						</p></li>
+					<li><p>
+							Ctrl 및 Shift 키를 통한 다중 선택 허용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/ctrlShiftKey_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/r84IR-bECaI">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					특정 컬럼의 셀 선택 차단 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00093.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							속성 설정을 통한 셀 선택 차단 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/blockSelect_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/BKVzAv9EVNM">YouTube</a>)
+						</p></li>
+					<li><p>
+							함수를 통한 셀 선택 차단 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setBlockSelect_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/c0Atmug5x1U">YouTube</a>)
+						</p></li>
+					<li><p>
+							마우스 드래깅을 통한 셀 텍스트 선택 방지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00178.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/noSelect_GridView/noSelect_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/h9GJfv6sopE">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>스타일링</p>
+				<ul>
+					<li><p>
+							셀 배경색 지정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00185.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setCellBackgroundColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/qH62eyFsngM">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 셀의 글자색 설정 및 확인 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00187.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setCellColor_getCellColor_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/P7KKscs83Jo">YouTube</a>)
+						</p></li>
+					<li><p>
+							선택된 셀 혹은 행의 배경색 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00172.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							특정 셀에 스타일 직접 적용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setCellStyle_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/EPRchTEh4A0">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 셀에 CSS 클래스 적용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00186.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/setCellClass_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/adJpaP0DK_4">YouTube</a>)
+						</p></li>
+					<li><p>
+							비활성화된 셀의 배경색 및 글자색 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00189.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							특정 셀 비활성화 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setCellDisabled_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/_CkuXLhoAnE">YouTube</a>)
+						</p></li>
+					<li><p>
+							셀 데이터의 변경 상태 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/cellStatusVisible_cellStatusIconPosition_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/f0wjJ7mRjsM">YouTube</a>)
+						</p></li>
+					<li><p>
+							셀 단위로 상태 아이콘 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00406.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							셀의
+							<code>inputType</code>
+							변경
+						</p>
+						<ul>
+							<li><p>
+									속성 설정을 통해 변경 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00116.xml">WRE</a>)
+								</p></li>
+							<li><p>
+									함수를 통해 변경 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00117.xml">WRE</a>)
+								</p></li>
+						</ul></li>
+				</ul></li>
+		</ul>
+		<h2 id="r_10b9c1aed44af62f" class="element heading2"
+			data-element-id="10b9c1aed44af62f">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.10</span><span>정렬, 필터링, 그룹핑, 병합</span>
+			</div>
+		</h2>
+		<h3 id="r_c56ba35f19b07508" class="element heading3"
+			data-element-id="c56ba35f19b07508">
+			<div class="r_heading_inner">
+				<span>정렬</span>
+			</div>
+		</h3>
+		<ul id="r_78f145581ace5e26" class="element unordered_list"
+			data-element-id="78f145581ace5e26">
+			<li><p>
+					정렬 기능 추가 및 정렬 아이콘 표시 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Sorting/sortable_showSortableImage_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/ghQHUfvTGEc">YouTube</a>)
+				</p></li>
+			<li><p>
+					각 열에 정렬 기능 추가 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Sorting/sortable_sortEvent_showSortableImage_sortedIconPosition_sortOrderReverse_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/P-vOAmfu4mw">YouTube</a>)
+				</p></li>
+			<li><p>
+					동적으로 정렬 기능 설정 및 해제 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Sorting/setSortable_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/Noawlm0IjXQ">YouTube</a>)
+				</p></li>
+			<li><p>
+					다중 정렬 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Sorting/useCtrlOnMultisort_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/CfSolomJuKI">YouTube</a>)
+				</p></li>
+			<li><p>
+					(여러 헤더 컬럼이 병합된 경우) 정렬 기준 컬럼 지정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00119.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Sorting/orderByColumn_gridView_column/orderByColumn_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/PlMxvfTZ55o">YouTube</a>)
+				</p></li>
+			<li><p>
+					label 값을 기준으로 정렬 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Sorting/sortLabel_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/9iG--eshvBI">YouTube</a>)
+				</p></li>
+			<li><p>
+					데이터가 없을 경우 정렬 아이콘 숨기기 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Sorting/hideSortIconOnNoData_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/Ww-uwKEmwBg">YouTube</a>)
+				</p></li>
+			<li><p>
+					목록형
+					<code>inputType</code>
+					컬럼의 정렬 대상 데이터 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00120.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					정렬 아이콘과 필터링 아이콘 모두 표시 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00111.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Filtering/showSortableUseFilter_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/5iI3EWzctyg">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_6ba30c3545653b34" class="element heading3"
+			data-element-id="6ba30c3545653b34">
+			<div class="r_heading_inner">
+				<span>필터링</span>
+			</div>
+		</h3>
+		<ul id="r_c41c54372d2dc150" class="element unordered_list"
+			data-element-id="c41c54372d2dc150">
+			<li><p>
+					동적으로 필터링 적용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/setColumnFilter_DataList.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/7gFGWg2RdVY">YouTube</a>)
+				</p></li>
+			<li><p>
+					필터링 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00099.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							비교 연산자 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00112.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							필터 목록 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Filtering/useFilter_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/k6mRK45a-2I">YouTube</a>)
+						</p></li>
+					<li><p>
+							필터 상자에 검색 기능 제공 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Filtering/useFilterSearch_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/VPx1BHrDEjc">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					헤더 필터 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Filtering/defaultShowHeaderFilter_headerFilter_GridView/defaultShowHeaderFilter_headerFilter_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					사용자 정의 필터 저장 후 다시 로딩 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/getFiterList_clearFilter_setColumnFilter_DataList/getFiterList_clearFilter_setColumnFilter_DataList.xml">샘플</a>)
+				</p></li>
+			<li><p>필터링 아이콘</p>
+				<ul>
+					<li><p>
+							필터링 아이콘 및 필터링 항목 표시 (<a class="link"
+								href="https://youtu.be/2Fzwxj5d7SU">YouTube</a>)
+						</p></li>
+					<li><p>
+							정렬 아이콘과 필터링 아이콘 모두 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00111.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Filtering/showSortableUseFilter_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/5iI3EWzctyg">YouTube</a>)
+						</p></li>
+					<li><p>
+							데이터가 없을 경우 필터링 아이콘 숨기기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00401.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Filtering/hideFilterIconOnNoData_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/W8AuO1d5E_o">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					필터링 후의 컬럼 데이터만 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/getFilteredColData_getColData_DataList.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/cmcqLapaPwk">YouTube</a>)
+				</p></li>
+			<li><p>
+					필터링된 데이터만 JSON 형식으로 반환 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00210.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_DataCollection/DataList/getAllFilteredJSON_DataList.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/o9Rc0rjzixc">YouTube</a>)
+				</p></li>
+			<li><p>
+					필터 상자 폭 자동 맞춤 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/autoFitFilterList_gridView_column.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/J086xJbf7Wg">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_6cb5d7049bf7b38c" class="element heading3"
+			data-element-id="6cb5d7049bf7b38c">
+			<div class="r_heading_inner">
+				<span>그룹핑</span>
+			</div>
+		</h3>
+		<ul id="r_ce7c5b7855c97d9e" class="element unordered_list"
+			data-element-id="ce7c5b7855c97d9e">
+			<li><p>그룹핑 실행</p>
+				<ul>
+					<li><p>
+							함수를 통한 동적 그룹핑 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00194.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/groupby_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/1THvU4kuA5Y">YouTube</a>)
+						</p></li>
+					<li><p>
+							사용자의 헤더 드래깅을 통한 그룹핑 허용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/groupbyZone_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/uu1wFeYjNKc">YouTube</a>)
+						</p></li>
+					<li><p>
+							그룹핑 후 라벨 값으로 마지막 단계의 항목만 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/groupby_showOnlyLastDepth_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/t6ENhJNOeas">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>그룹핑 해제</p>
+				<ul>
+					<li><p>
+							동적으로 실행된 그룹핑을 해제 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/clearGroupby_groupby_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/ODulxBbi1hY">YouTube</a>)
+						</p></li>
+					<li><p>
+							헤더 드래깅을 통해 실행된 그룹핑을 해제 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/clearGroupby_groupbyZone_GridView.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>그룹핑 &amp; 필터링</p>
+				<ul>
+					<li><p>
+							필터링을 유지한 채로 그룹핑 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/customFilterBox_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/PuhCRu0KEmo">YouTube</a>)
+						</p></li>
+					<li><p>
+							그룹핑 및 필터링 조건 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/groupbyFilterBox_groupbyFilterBoxLocation_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/-qWrX0UwPnE">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							그룹핑 영역 높이 및 메시지 지정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/groupbyZoneHeight_groupbyZoneMessage_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/eI_9K0QEJI4">YouTube</a>)
+						</p></li>
+					<li><p>
+							그룹핑 컬럼 수 제한 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/groupbyMaxCount_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/H3h9EJvdoIk">YouTube</a>)
+						</p></li>
+					<li><p>
+							그룹핑 조건 확인 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Grouping/getGroupbyData_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/8QHBOsQZ4VQ">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h3 id="r_e7ef364acdd4f8b4" class="element heading3"
+			data-element-id="e7ef364acdd4f8b4">
+			<div class="r_heading_inner">
+				<span>병합</span>
+			</div>
+		</h3>
+		<ul id="r_6f7216b1ac857a50" class="element unordered_list"
+			data-element-id="6f7216b1ac857a50">
+			<li><p>
+					병합 방법 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00287.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							컬럼 기준 병합 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeCells_mergeByCol_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/ZwOzIKH8X5w">YouTube</a>)
+						</p>
+						<ul>
+							<li><p>
+									컬럼 기준으로 병합할 경우 텍스트 위치 설정 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergedCellVerticalAlign_GridView.xml">샘플</a>)
+								</p></li>
+						</ul></li>
+					<li><p>
+							컬럼 기준 병합 후, 행 기준 병합 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeCells_mergeByColRec_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/_PjiyUupNqQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							모든 왼쪽 컬럼을 기준으로 병합 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeCells_mergeByRestricCol_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/pqgJWbglxlw">YouTube</a>)
+						</p></li>
+					<li><p>
+							지정한 왼쪽 컬럼만을 기준으로 병합 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/bycolupper_mergeCells_GridView.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							행 기준 병합 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeCells_mergeByRow_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/v9fKLoRsxE0">YouTube</a>)
+						</p></li>
+					<li><p>
+							행 기준 병합 후, 컬럼 기준 병합 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeCells_mergeByRowRec_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Lsv70-rBMMg">YouTube</a>)
+						</p></li>
+					<li><p>
+							윗 행 기준 행 병합 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeCells_mergeByRestricRow_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/CkW9YXR0w7g">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>병합 해제</p>
+				<ul>
+					<li><p>
+							셀 병합 해제 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeClear_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/bjXdUUifNlw">YouTube</a>)
+						</p></li>
+					<li><p>
+							포커스된 셀 병합 및 병합 해제 (<a class="link"
+								href="https://youtu.be/UPplWg8kuXM">YouTube</a>)
+						</p></li>
+					<li><p>
+							지정한 영역의 셀을 병합하거나 병합을 해제 (<a class="link"
+								href="https://youtu.be/X16DleFE0Vg">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							특정 컬럼에서만 병합 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00286.xml">WRE</a>,
+							<a class="link" href="https://youtu.be/mq_Zq0H_K9c">YouTube</a>)
+						</p></li>
+					<li><p>
+							틀 고정(행 고정)된 부분에서만 병합 (<a class="link"
+								href="https://youtu.be/MKQ1c0k33bw">YouTube</a>)
+						</p></li>
+					<li><p>
+							틀 고정(컬럼 고정)된 부분에서만 병합 (<a class="link"
+								href="https://youtu.be/N6Md83g1YgY">YouTube</a>)
+						</p></li>
+					<li><p>
+							데이터가 다른 셀 병합 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00350.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							병합에서 제외할 컬럼 지정 (<a class="link"
+								href="https://youtu.be/bl6q791x12U">YouTube</a>)
+						</p></li>
+					<li><p>
+							병합에서 제외할 값 지정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Merge/mergeExcludeValue_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/1K7Imek4BuA">YouTube</a>)
+						</p></li>
+					<li><p>
+							병합 상태 확인 (<a class="link" href="https://youtu.be/TCRq5oo_wxw">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h2 id="r_0b873e214dff6640" class="element heading2"
+			data-element-id="0b873e214dff6640">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.11</span><span>사용자 조작</span>
+			</div>
+		</h2>
+		<h3 id="r_02cb1345a8d5b8ba" class="element heading3"
+			data-element-id="02cb1345a8d5b8ba">
+			<div class="r_heading_inner">
+				<span>포커싱</span>
+			</div>
+		</h3>
+		<ul id="r_36fd2fa5eae8974e" class="element unordered_list"
+			data-element-id="36fd2fa5eae8974e">
+			<li><p>
+					포커싱 방법 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Style/focusMode_selectedCellColor_selectedRowColor_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/-URZvBoXkI4">YouTube</a>)
+				</p></li>
+			<li><p>
+					DataList의
+					<code>rowPosition</code>
+					에 해당하는 행을 포커싱 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/syncRowPositionOption_GridView.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					포커스 이동 방향 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00171.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/focusFlow_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/RRYtExw8mC4">YouTube</a>)
+				</p></li>
+			<li><p>
+					Enter 키를 통한 포커스 이동 방향 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00091.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/enterKeyMove_GridView/enterKeyMove_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/mM_2hO0FG1s">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_ecad8ab33d5f33db" class="element heading3"
+			data-element-id="ecad8ab33d5f33db">
+			<div class="r_heading_inner">
+				<span>셀 편집</span>
+			</div>
+		</h3>
+		<ul id="r_e7565bb25742f62a" class="element unordered_list"
+			data-element-id="e7565bb25742f62a">
+			<li><p>
+					셀 편집 모드로 진입하기 위한 키 지정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/keyMoveEditMode_moveKeyEditMode_moveKeyEditModeAll_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/boSQiWkQzAM">YouTube</a>)
+				</p></li>
+			<li><p>
+					셀 편집 모드로 진입하기 위한 방향키 지정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/moveKeyEditMode_moveKeyEditModeAll_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/eJTTpnbLIeY">YouTube</a>)
+				</p></li>
+			<li><p>
+					셀 편집 모드로 진입하기 위한 마우스 동작 지정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00170.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/editModeEvent_editModeEventIcon_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/E_fmzz4D0Zo">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_8f7d417d5c078e85" class="element heading3"
+			data-element-id="8f7d417d5c078e85">
+			<div class="r_heading_inner">
+				<span>드래깅</span>
+			</div>
+		</h3>
+		<ul id="r_ce98243448b323cb" class="element unordered_list"
+			data-element-id="ce98243448b323cb">
+			<li><p>
+					행을 드래깅하여 이동 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00101.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragDrop_GridView/dataDragDrop_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/Mycybcw6kZ4">YouTube</a>)
+				</p></li>
+			<li><p>
+					다른 GridView로의 행 이동 금지 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragDropSelf_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/RpqcN6rku28">YouTube</a>)
+				</p></li>
+			<li><p>
+					동일한 GridView 내에서의 행 이동 금지 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragDropOther_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/OaPwYvixkpA">YouTube</a>)
+				</p></li>
+			<li><p>
+					다른 GridView로의 드래깅 금지 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00102.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					드릴다운 컬럼을 포함한 행 전체를 드래깅하여 이동 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/setDrillDownDragDrop_GridView/setDrillDownDragDrop_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/CAh0xUkNLts">YouTube</a>)
+				</p></li>
+			<li><p>
+					행 상태를 유지한 채로 행을 드래깅하여 이동 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00103.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragDropStatus_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/_Hh63KhRaII">YouTube</a>)
+				</p></li>
+			<li><p>
+					드래깅 시 자동 스크롤 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00214.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/dataDragSelect_dataDragSelectAutoScroll_2_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/ebiRwO4IaDo">YouTube</a>)
+				</p></li>
+		</ul>
+		<h3 id="r_1b70b7ef32170b71" class="element heading3"
+			data-element-id="1b70b7ef32170b71">
+			<div class="r_heading_inner">
+				<span>스크롤링</span>
+			</div>
+		</h3>
+		<ul id="r_d67e8b388aa962be" class="element unordered_list"
+			data-element-id="d67e8b388aa962be">
+			<li><p>
+					<code>onscrollend</code>
+					이벤트를 사용하여 데이터 추가 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00054.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					<code>onscrollstart</code>
+					이벤트를 항상 발생 시킬지의 여부 지정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00229.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					두 GridView의 스크롤 동기화 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00456.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_0fe2527d070ad2b5" class="element heading2"
+			data-element-id="0fe2527d070ad2b5">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.12</span><span>기타</span>
+			</div>
+		</h2>
+		<ul id="r_8647c0cfa53bff0d" class="element unordered_list"
+			data-element-id="8647c0cfa53bff0d">
+			<li><p>툴팁</p>
+				<ul>
+					<li><p>
+							툴팁 표시하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00208.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/tooltipDisplay_tooltipShowAlways_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/2WxgLVxA4Qs">YouTube</a>)
+						</p></li>
+					<li><p>
+							툴팁을 표시하지 않을 컬럼 지정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/tooltipHideInputType_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/62HEXAOmUUE">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					컨텍스트 메뉴 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00389.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							컨텍스트 메뉴 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/contextMenu_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/AF3KgtSROwc">YouTube</a>)
+						</p></li>
+					<li><p>
+							Alt 키 + 마우스 좌클릭을 통한 컨텍스트 메뉴 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/contextMenuAltClick_GridView/contextMenuAltClick_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/iqsNUcLaBIU">YouTube</a>)
+						</p></li>
+					<li><p>
+							헤더 우클릭을 통한 컨텍스트 메뉴 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/useHeaderContextMenu_contextMenu_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Ggkkn42zZMU">YouTube</a>)
+						</p></li>
+					<li><p>
+							컨텍스트 메뉴를 통한 컬럼 폭 조정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/contextMenu_autoFit_GridView/contextMenu_autoFit_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/PYq9S0e4T8w">YouTube</a>)
+						</p></li>
+					<li><p>
+							드래깅된 셀 선택을 유지한 채로 컨텍스트 메뉴 열기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Dragging/keepDataDragSelection_GridView.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>모바일</p>
+				<ul>
+					<li><p>
+							모바일 Press 이벤트 지원 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Mobile/hammerEnabled_hammerPressTime_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/rLljniG8Bik">YouTube</a>)
+						</p></li>
+					<li><p>
+							모바일에서 드릴다운 목록 열고 닫기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Mobile/drilldownToggle_hammerEnabled_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/K8ACGkL6xio">YouTube</a>)
+						</p></li>
+					<li><p>
+							세로 스크롤 속도 조절 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00439.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>읽기 전용</p>
+				<ul>
+					<li><p>
+							속성으로 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00356.xml">WRE</a>)
+						</p></li>
+					<li><p>함수로 설정</p>
+						<ul>
+							<li><p>
+									GridView 전체 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00357.xml">WRE</a>,
+									<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/setReadOnly_GridView.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/CaUt7NoNdqM">YouTube</a>)
+								</p></li>
+							<li><p>
+									GridView 행 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00359.xml">WRE</a>)
+								</p></li>
+							<li><p>
+									GridView 컬럼 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00358.xml">WRE</a>)
+								</p></li>
+							<li><p>
+									GridView 셀 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00370.xml">WRE</a>)
+								</p></li>
+						</ul></li>
+					<li><p>
+							읽기 전용 컬럼의 데이터 붙여넣기(Ctrl + V) 허용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00343.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							읽기 전용 셀 더블 클릭 시 편집창 숨기기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00440.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>비활성화</p>
+				<ul>
+					<li><p>
+							GridView (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00190.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							셀, 컬럼, 행 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00188.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							렌더링 방법 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00090.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/_General/drawType_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/JvQNnEjHWzc">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_abd473e2ab544f64" class="element heading1"
+			data-element-id="abd473e2ab544f64">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_d9fb89dce29ca453" class="element unordered_list"
+			data-element-id="d9fb89dce29ca453">
+			<li><p>정렬</p>
+				<ul>
+					<li><p>
+							<code>onsort</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00216.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Events/adding_event_example_onsort_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/lmR6qWDyeqQ">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>셀 클릭</p>
+				<ul>
+					<li><p>
+							<code>oncellclick</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00217.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Events/oncellclick_2_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/VNIi6KxFbV8">YouTube</a>)
+						</p></li>
+					<li><p>
+							<code>oncelldblclick</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00218.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Events/oncelldblclick_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/6tF7LMesjgM">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>푸터 셀 클릭</p>
+				<ul>
+					<li><p>
+							<code>onfooterclick</code>
+							(<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/footer/onfooterclick_GridView.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					<code>inputType="checkbox"</code>
+					컬럼의 헤더를 클릭
+				</p>
+				<ul>
+					<li><p>
+							<code>onviewechangevent</code>
+							이벤트 발생 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/inputType/inputType_checkbox_checkHeaderOnviewchange_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/CcE_1CQpaq4">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>스크롤링</p>
+				<ul>
+					<li><p>
+							<code>onscrollstart</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00228.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Events/onscrollstart_alwaysTriggerScrollStart_GridView/onscrollstart_alwaysTriggerScrollStart_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/x9bKnWeS3OA">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>날짜/시간 선택</p>
+				<ul>
+					<li><p>
+							<code>ondateselect</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00225.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Events/ondateselect_onmonthselect_onyearselect_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/-2yFh9y4rcQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							<code>onmonthselect</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00227.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							<code>onyearselect</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00226.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>컨텍스트 메뉴</p>
+				<ul>
+					<li><p>
+							<code>oncontextopen</code>
+							(<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00219.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Events/oncontextopen_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/2sRK1QVpSZo">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>마우스 오버</p>
+				<ul>
+					<li><p>
+							<code>onheadermouseover</code>
+							(<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Events/onheadermouseover_onheadermouseout_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/scCOCdn5lLU">YouTube</a>)
+						</p></li>
+					<li><p>
+							<code>onheadermouseout</code>
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

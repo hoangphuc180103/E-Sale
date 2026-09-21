@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00158 서브 페이지 01">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221104" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    tac_exam1.disableTab(1)
+};
+
+
+/**
+ * 버튼 [비활성화 하기 1-2] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    //TabControl [tac_exam1] 비활성화 설정
+    tac_exam1.setDisabled(true);
+};
+
+/**
+ * 버튼 [활성화 하기 1-2] 클릭 시
+ */
+scwin.btn_ex1_1_onclick = function (e) {
+    //TabControl [tac_exam1] 활성화 설정
+    tac_exam1.setDisabled(false);
+};
+
+/**
+ * 버튼 [화면 초기화] 클릭 시
+ */
+scwin.btn_ex1_3_onclick = function (e) {
+    $p.reinitialize();
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="" id="" style="">
+			<w2:textbox id="" label="P00158S01.xml" style="color: dodgerblue;font-size: 1.4em;font-weight: bold;"></w2:textbox>
+			<w2:textbox class="wre_txt_normal mb10" escape="false" id=""
+				label="TabControl의 속성 keepDisabledTab이 false로 지정되어있습니다.&lt;br/&gt;두 번째 탭이 비활성화된 상태입니다." style="">
+			</w2:textbox>
+			<xf:group class="mb_def_box" id="" style="margin-bottom: 0px !important;">
+				<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style="" type="button">
+					<xf:label><![CDATA[비활성화 하기 1-2]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex1_1_onclick" id="btn_ex1_1" style="" type="button">
+					<xf:label><![CDATA[활성화 하기 1-2]]></xf:label>
+				</xf:trigger>
+				<xf:trigger class="btn_exam_exec" id="btn_ex1_3" style="" type="button" ev:onclick="scwin.btn_ex1_3_onclick">
+					<xf:label><![CDATA[화면 초기화]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+			<xf:group class="tbcbox" id="" style="">
+				<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="tac_exam1"
+					style="position: relative;height: 110px;" tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true"
+					keepDisabledTab="false">
+					<w2:tabs disabled="false" style="width:100px;" id="tabs1" label="TAB1"></w2:tabs>
+					<w2:tabs disabled="false" style="width:180px;" id="tabs2" label="TAB2 - 비활성화"></w2:tabs>
+					<w2:content alwaysDraw="false" style="" id="content1">
+						<w2:textbox id="" label="SUB TAB 1 Content 영역" style="font-size: 1.2em;"></w2:textbox>
+					</w2:content>
+					<w2:content alwaysDraw="false" style="" id="content2">
+						<xf:group id="" style="">
+							<xf:input adjustMaxLength="false" style="width: 100px;margin-right: 10px;" id=""></xf:input>
+							<xf:trigger useDefaultLabel="true" localeRef="" style="min-width: 30px;" id="" type="" class="btn_com">
+								<xf:label><![CDATA[임시 버튼]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</w2:content>
+				</w2:tabControl>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

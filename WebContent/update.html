@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	<title>WRE</title>
+	<style type="text/css">
+		body{margin: 0px; padding: 0px;}
+		.wrap{max-width:530px; height:350px;padding:65px 14px 20px 14px;box-sizing:border-box;margin:0 auto;}
+		.pop_cnt{text-align:center}
+		.pop_cnt .tit{color:#F27C58;font-size:24px;font-weight:bold}
+		.pop_cnt .tit_sub{font-weight:bold}
+		.pop_cnt .tit + p{margin-top:16px;font-weight:600;line-height:24px}
+		.pop_cnt .tit_sub + p{margin-top:6px}
+		.pop_cnt p{font-size:14px}
+		.pop_cnt .sub_cnt{margin-top: 30px;padding:15px;background:#f2f2f2;box-sizing:border-box}
+	</style>
+	<script type="text/javascript">
+		const WE_IS_ANDROID = /Android/.test(navigator.userAgent);
+		const WE_IS_IPHONE = /iPhone/.test(navigator.userAgent) || /iPhone/.test(navigator.platform);
+		const WE_IS_IPAD = /iPad/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) && !window.MSStream;
+		const WE_IS_IPOD = /iPod/.test(navigator.userAgent);
+		const WE_IS_BLACKBERRY = /BlackBerry/.test(navigator.userAgent);
+		const WE_IS_WEBOS = /webOS/.test(navigator.userAgent);
+		const WE_URL_PC = "/websquare/websquare.html?w2xPath=/mainContainer.xml";
+		const WE_URL_MOBILE = "/websquare/websquare.html?w2xPath=/mainContainer_mobile.xml";
+		
+		const WE_MAIN_URL = (WE_IS_ANDROID || WE_IS_IPHONE || WE_IS_IPAD || WE_IS_IPOD || WE_IS_BLACKBERRY) ? WE_URL_MOBILE : WE_URL_PC;
+		const WE_MAIN_URL_WITH_QUERY = WE_MAIN_URL + (location.search || "").replace("?","&");
+		
+		const WE_UPDATE_URL = "/update.html" + location.search;
+		
+		const WE_GET_SCHEDULE = async function () {
+			let res = {};
+			try {
+				let _fetch = await fetch("/frame/data/inspection.json");
+				res = await _fetch.json();
+				
+				if (!_fetch.ok) { 
+					throw "inspection.json Error"; 
+				}
+			} catch (ex) {
+				console.error(ex);
+				return { "status": "EXCEPTION" }
+			}
+			
+			return res;
+		};
+		
+		window.onload = async function () {
+			let res = await WE_GET_SCHEDULE();
+			
+			if (res.is_inspection === true) {
+    			fn_init(res);
+    		} else {
+    			if (location.search == "?force") {
+    				document.getElementById("txt_title").innerText = "시스템 점검 중 입니다.";
+    			} else {
+    				location.href = WE_MAIN_URL_WITH_QUERY;	
+    			}
+    		}
+		};
+		
+		function fn_init(argData) {
+			let regExpDate = new RegExp(/([\d]{4})([\d]{2})([\d]{2})/);
+			let regExpTime = new RegExp(/([\d]{2})([\d]{2})/);
+			
+			let start_date = argData.start_date || "";
+			let start_time = argData.start_time || "";
+			let end_date = argData.end_date || "";
+			let end_time = argData.end_time || "";
+			
+			if (!start_date || start_date.length < 8) {
+				document.getElementById("div_schedule").remove();
+			} else {
+				let strStart = (start_date).replace(regExpDate, "$1-$2-$3");
+				let strEnd = (end_date).replace(regExpDate, "$1-$2-$3");
+				
+				if (start_time.length == 4 && end_time.length == 4) {
+					strStart += " " + (start_time).replace(regExpTime, "$1:$2");
+					strEnd += " " + (end_time).replace(regExpTime, "$1:$2");
+				}
+				
+				if (!end_date && end_date.length < 8) {
+					document.getElementById("startDate").innerText = strStart;
+				} else {
+					document.getElementById("startDate").innerText = "시작일 : " + strStart;
+					document.getElementById("endDate").innerText = "종료일 : " + strEnd;
+				}
+				
+				document.getElementById("div_schedule").style.display = "block";
+			}
+			
+		};
+	</script>
+</head>
+<body>
+	<div class="wrap" id="cnt_wrap">
+		<div class="w2group pop_cnt">
+			<p class="w2textbox tit" id="txt_title">시스템 점검 중 입니다.</p>
+			<p class="w2textbox ">
+				이용에 불편을 드려 죄송합니다.
+			</p>
+			<div class="w2group sub_cnt" style="display:none;" id="div_schedule">
+				<p class="w2textbox tit_sub">점검 일정</p>
+				<p class="w2textbox" id="startDate"></p>
+				<p class="w2textbox" id="endDate"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

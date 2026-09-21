@@ -1,0 +1,17 @@
+/*amd /page/P00418.xml 2643 aeaf205cde62ab5f7ae0d0eeae435d921683890411f2c87a5debd2871f8604d9 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  // PageList 'pgc_exam1', 'pgc_exam2'의 전체 페이지 수를 14로 설정합니다.
+  pgl_exam1.setCount(14);
+  pgl_exam2.setCount(14);
+
+  // PageList 'pgc_exam1', 'pgc_exam2'의 선택된 페이지를 12로 설정합니다.
+  pgl_exam1.setSelectedIndex(12);
+  pgl_exam2.setSelectedIndex(12);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'PageList의 \'pagingType\' 속성을 사용하여 잔여 페이지를 화면에 표시하는 방식을 설정한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'예제의 PageList는 다음의 조건이 동일하게 설정되었습니다.<br/>- 화면에 표시할 페이지 수(\'pageSize\' 속성) : \'10\'<br/>- 전체 페이지 수 : \'14\'<br/>- 선택된 페이지 : \'12\'',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) pagingType: 1',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:pageList',A:{displayFormat:'#',id:'pgl_exam1',style:'',pagingType:'1',pageSize:'10'}}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'pagingType: 2',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:pageList',A:{displayFormat:'#',id:'pgl_exam2',style:'',pagingType:'2',pageSize:'10'}}]}]}]}]}]}]}]})

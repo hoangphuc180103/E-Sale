@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[메인] 메인화면_모바일">
+    	<w2:type>COMPONENT</w2:type>
+    	<w2:buildDate />
+    	<w2:MSA />
+    	<xf:model>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dlt_viewSource_data" saveRemovedData="true">
+    				<w2:columnInfo>
+    					<w2:column id="col1" name="name1" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    			</w2:dataList>
+    			<w2:aliasDataList scope="/dlt_cssFileList" id="adl_cssFileList"></w2:aliasDataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection />
+    	</xf:model>
+    	<w2:layoutInfo />
+    	<w2:publicInfo method="" />
+    	<script lazy="false" type="text/javascript"><![CDATA[scwin.gVar = {
+    "pageParam": null,  //tabControl parameter
+    "path_example": "",
+    "jsnMenuData": null    //menu data
+};
+
+scwin.onpageload = function () {
+    scwin.initPageContainer();
+};
+
+scwin.initPageContainer = function () {
+    var jsnParam;
+    var jsnMenuData;
+    var strPath;
+    var strExamplePath;
+    var strExampleDocumentPath;
+    var _main;
+
+    _main = $p.main();
+
+    jsnParam = _main.scwin.gVar.jsnContParam;
+
+    scwin.gVar.pageParam = jsnParam;
+
+    jsnMenuData = jsnParam["menuData"];
+
+    //tbx_pageTitle.setValue((jsnMenuData["TITLE"] || "예제 파일") + scwin.getBreadcrumb(jsnMenuData["MENU_BREADCRUMBS"]));
+    tbx_pageTitle.setValue((jsnMenuData["TITLE"] || "예제 파일"));
+
+    //화면 요약 미출력
+    //scwin.dispPageSummary(jsnMenuData["SUMMARY"]);
+
+    //예제 화면 경로 설정
+    strPath = $c.frame.getSrc(jsnMenuData["PATH"]);
+
+    if (strPath.indexOf(".xml") > -1) {
+        strExamplePath = strPath;
+        //wfm_example.setSrc(strExamplePath);
+        udc_exampleViewer.init(jsnMenuData);
+    } else {
+        strExamplePath = strPath + ".xml";
+        //wfm_example.setSrc(strPath + ".xml"); 
+        udc_exampleViewer.init(jsnMenuData);
+    }
+
+    scwin.dispPageKeyword(jsnMenuData["ALL_KEYWORD"], strExamplePath);
+
+    scwin.gVar.path_example = strExamplePath;
+    scwin.gVar.jsnMenuData = JSON.parse(JSON.stringify(jsnMenuData));
+
+    //console.log("jsnMenuData==>"+JSON.stringify(jsnMenuData));
+
+    strExampleDocumentPath = $c.frame.getExampleDocumentPath(jsnMenuData); 
+    
+    //가이드 샘플자료 열기 추가 20251203  
+    if(jsnMenuData["GUIDE"] == "Y" ){
+        strExampleDocumentPath =  "/guide/_component_images" + jsnMenuData["PATH"].substring(jsnMenuData["PATH"].lastIndexOf('/'), jsnMenuData["PATH"].length).replace(".xml", ".png");
+      
+        if(!scwin.doesFileExist(strExampleDocumentPath)){  
+            strExampleDocumentPath = "";  
+        }
+    }  
+
+    if (strExampleDocumentPath) {
+        let objIframe = document.getElementById(ifm_example_desc.getID());
+        objIframe.onload = scwin.ifm_example_desc_onload_handler;
+
+        ifm_example_desc.setSrc(strExampleDocumentPath);
+    } else {
+        btn_example_tabbutton_desc.remove();
+        ifm_example_desc.remove();
+        grp_examplebox.addClass("single");
+    }
+
+};
+
+/**
+ * 설명부 iframe onload 이벤트 핸들러
+*/
+scwin.ifm_example_desc_onload = function (e) {
+    window.setTimeout(scwin.ifm_example_desc_onload_handler, 100);
+};
+
+/**
+ * 설명부 iframe onload 이벤트 핸들러
+*/
+scwin.ifm_example_desc_onload_handler = function (e) {
+    var objWin;
+    var eleContent;
+    var strSrc;
+    var i, i_max, item;
+    var objLink;
+    var strIframeHref;
+    var arrAnchor;
+
+    strSrc = ifm_example_desc.getSrc();
+    
+    objWin = ifm_example_desc.getWindow();
+
+    //2022.06.15 간헐적으로 html 컨텐츠가 표현되지 않는 현상이 발생. 관련 보완 로직.
+    strIframeHref = objWin.location.href;
+    if (strIframeHref == "about:blank" && ifm_example_desc.render.src != strIframeHref) {
+        let num_ex_recount = +ifm_example_desc.getUserData("ex_recount") || 0;
+
+        // console.log("==ifm_example_desc.render.src != objWin.location.href==>>>"+num_ex_recount);
+
+        if (num_ex_recount < 5) {
+            ifm_example_desc.setUserData("ex_recount", num_ex_recount++);
+            ifm_example_desc.setSrc(strSrc);
+        }
+
+        return;
+    } else {
+        ifm_example_desc.setUserData("ex_recount", 0);
+    }
+
+    //css 추가
+    objLink = document.createElement('link');
+    objLink.rel = 'stylesheet';
+    objLink.type = 'text/css';
+    objLink.href = $c.frame.getSrc('/frame/css/wre_doc.css') + "?" + $c.frame.getConst("WRE_VER_WS5_EXAMPLE_DOC_CSS");
+
+    objWin.document.getElementsByTagName('head')[0].appendChild(objLink);
+
+    eleContent = objWin.document.getElementById("content");
+
+    if (!eleContent || !eleContent.classList) {
+        // console.log("====(!eleContent || !eleContent.classList)=========================");
+        // console.log(eleContent);
+        return;
+    }
+
+    eleContent.classList.add('example_desc');
+
+    //2022.06.15 외부 링크 새창으로 열기. 3rabbitz에서 target 속성을 지원하지 않음.
+    arrAnchor = objWin.document.getElementsByTagName('a') || [];
+    for (i = 0, i_max = arrAnchor.length; i < i_max; i++) {
+        item = arrAnchor[i];
+        if ((item.className || "").indexOf("link") > -1) {
+            item.target = "_blank";
+        }
+    }
+
+    //2022.06.15 컨텐츠 목차 추가
+    let domDocContext = document.createElement("div");
+    domDocContext.setAttribute("id", "ws_doc_context");
+    domDocContext.setAttribute("class", "doc_context");
+    domDocContext.innerHTML = scwin.getHTML_docContext(objWin.document.getElementsByTagName('h1'));
+    objWin.document.body.appendChild(domDocContext);
+};
+
+scwin.getHTML_docContext = function (argArrElement) {
+    var i, i_max, item;
+    var rerunValue;
+    var strPrefix, strPostfix;
+    var strList = "";
+
+    //strPrefix = '<dl><dt>CONTENTS</dt><dd><ul>';
+    //<li class="doc_title"></li>
+    //strPostfix = '</ul></dd></dl>';
+
+    strPrefix = '<details><summary>목차</summary><ul>';
+    strPostfix = '</ul></details>';
+
+    for (i = 0, i_max = argArrElement.length; i < i_max; i++) {
+        item = argArrElement[i];
+        if (item.className.indexOf('chapter_title') > -1) {
+            continue;
+        }
+        //strList += '<li class="doc_title">' + item.textContent + '</li>';
+        strList += '<li class="doc_title"><a href="#' + item.id + '">' + item.getInnerHTML() + '</a></li>';
+    }
+
+    rerunValue = strPrefix + strList + strPostfix;
+
+    return rerunValue;
+};
+
+//화면 요약 출력
+scwin.dispPageSummary = function (argStr) {
+    if (!argStr) {
+        return;
+    }
+    tbx_page_summary.setValue(argStr);
+    grp_page_summary.removeClass("hide");
+};
+
+//메뉴 키워드 출력
+scwin.dispPageKeyword = function (argStr, argExamPath) {
+    var strTagStart = '<span>';
+    var strTagEnd = '</span>';
+    var strKeyword;
+    //tbx_page_keyword.setValue(strTagStart + argStr.replace(new RegExp("\|","g"), strTagEnd + strTagStart) + strTagEnd);
+
+    if (!argStr) {
+        strKeyword = "";
+        btn_showKeyword.hide(); //키워드 버튼 hide
+    } else {
+        strKeyword = strTagStart + argStr.split("|").join(strTagEnd + strTagStart) + strTagEnd;
+    }
+
+    tbx_page_keyword.setValue(strTagStart + argExamPath.replace($c.frame.getConst("WRE_CONTEXT_PATH"), "") + strTagEnd + strKeyword);
+};
+
+//메뉴 경로 출력
+scwin.getBreadcrumb = function (argStr) {
+    var strBreadcrumb = "";
+
+    if (argStr) {
+        strBreadcrumb = '<span class="example_breadcrumb_mobile">(' + argStr.replace(new RegExp("%\\|\\|%", "g"), " > ") + ')</span>';
+    }
+
+    return strBreadcrumb;
+};
+
+//예제 실행 파일 경로 반환
+scwin.getExamplePath = function () { 
+    return scwin.gVar.path_example;
+};
+
+//예제 실행 경로 반환
+scwin.getExampleLink = function (argWithHost) { 
+    return $c.frame.getLinkURL(true, scwin.getExamplePath());
+};
+
+//[예제 바로 보기 링크 복사] 버튼 클릭 - 예제 바로 보기 링크 복사
+scwin.btn_copyLink_example_onclick = function (e) {
+    var strURL = scwin.getExampleLink(true); 
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(strURL).then(() => {
+            $c.frame.alert($p, "예제 파일 경로가 복사되었습니다.");
+        });
+    } else {
+        let eleTmp = $("#hidden_clipboard_input:first")[0];
+
+        eleTmp.value = strURL;
+        eleTmp.focus();
+        eleTmp.select();
+        document.execCommand("copy");
+        $c.frame.alert($p, "예제 파일 경로가 복사되었습니다.");
+    }
+
+};
+
+//예제 파일 다운로드 버튼 클릭
+scwin.btn_download_example_onclick = function (e) {
+    $c.frame.downloadSource(scwin.getExamplePath(), true);
+};
+
+//화면 새로 고침
+scwin.btn_reloadPageContainer_onclick = function (e) {
+    $p.reinitialize();
+};
+
+//메뉴 데이터 반환.
+scwin.getMenuData = function () {
+    return scwin.gVar.pageParam.menuData;
+};
+
+scwin.change_exampleTab = function () {
+    var strTarget;
+    var cmpParent;
+
+    strTarget = this.getUserData("userData1");
+
+    cmpParent = this.getParent();
+
+    cmpParent.removeClass("exam");
+    cmpParent.removeClass("desc");
+    cmpParent.addClass(strTarget);
+
+    if (strTarget == "desc") {
+        ifm_example_desc.setStyle("height", document.body.getBoundingClientRect().height - ifm_example_desc.render.getBoundingClientRect().top - 15 + "px")
+    }
+};
+
+scwin.btn_popup_example_onclick = function (e) {
+    let strLink = $c.frame.getBasePageURL(true) + "?w2xPath=" + scwin.getExamplePath();
+
+    window.open(strLink, "_blank");
+};
+
+scwin.btnMore_onclick = function (e) {
+    grp_top_page_info.toggleClass("active");
+};
+
+
+scwin.btn_showKeyword_onclick = function (e) {
+    if (grp_page_keyword.hasClass("hide") === true) {
+        grp_page_keyword.removeClass("hide");
+        this.addClass("on");
+    } else {
+        grp_page_keyword.addClass("hide");
+        this.removeClass("on");
+    }
+};
+
+scwin.doesFileExist = function(urlToFile)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', urlToFile, false);
+    xhr.send();
+
+    if (xhr.status == "404") {
+        return false;
+    } else {
+        return true;
+    }
+};]]></script>
+    	<w2:require as="udc_example_viewer" type="page" variableClone="true" src="/frame/udc/example_viewer.xml"></w2:require>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents exam_subbox" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<w2:textbox class="pgt_tit" id="tbx_pageTitle" label="화면타이틀" style="" tagname="" escape="false"></w2:textbox>
+    			<xf:group class="example_page_info" id="" style="">
+    				<xf:group id="" class="pgt_titbtn mt_def detail_btnBox">
+    					<xf:trigger ev:onclick="scwin.btn_reloadPageContainer_onclick" style="" id="trigger19" title="화면 새로 고침"
+    						type="button" class="btn_cm btn_refresh">
+    						<xf:label><![CDATA[새로고침]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger style="" id="btn_showKeyword" type="button" class="btn_cm keyword" ev:onclick="scwin.btn_showKeyword_onclick">
+    						<xf:label><![CDATA[키워드]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger style="" id="trigger21" type="button" class="btn_cm btn_more" ev:onclick="scwin.btnMore_onclick">
+    						<xf:label><![CDATA[더보기]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    				<xf:group id="grp_top_page_info" class="detail_btn_itemBox" style="display:none;">
+    					<xf:trigger ev:onclick="scwin.btn_popup_example_onclick" style="" id="trigger16" type="button"
+    						class="btn_cm target">
+    						<xf:label><![CDATA[예제단독실행]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger ev:onclick="scwin.btn_copyLink_example_onclick" style="" id="trigger17" type="button"
+    						class="btn_cm copy">
+    						<xf:label><![CDATA[예제 링크 복사]]></xf:label>
+    					</xf:trigger>
+    					<!-- 
+    					<xf:trigger ev:onclick="scwin.btn_download_example_onclick" style="" id="trigger18" type="button"
+    						class="btn_cm download">
+    						<xf:label><![CDATA[예제 파일 다운로드]]></xf:label>
+    					</xf:trigger>
+    					-->
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="hide mt_def" id="grp_page_keyword" style="">
+    					<w2:textbox class="wre_grp_keyword" escape="false" id="tbx_page_keyword" label="화면 요약" style=""></w2:textbox>
+    				</xf:group><xf:group style="" id="grp_page_summary" class="dfbox hide mt_def">
+    			<w2:textbox id="tbx_page_summary" label="" style=""></w2:textbox>
+    		</xf:group>
+
+    		<xf:group style="" id="grp_examplebox" class="exam_examplebox">
+    			<xf:group style="" id="" class="tabbutton exam ofh">
+
+    				<xf:trigger type="button" style="" id="btn_example_tabbutton_exam" class="exam_example_tabbutton exam fl"
+    					userData1="exam" ev:onclick="scwin.change_exampleTab">
+    					<xf:label><![CDATA[예제]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="exam_example_tabbutton desc fl" id="btn_example_tabbutton_desc" style="" type="button"
+    					userData1="desc" ev:onclick="scwin.change_exampleTab">
+    					<xf:label><![CDATA[예제 가이드]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    			<xf:group id="" class="examplebox_contents_mobile">
+    				<xf:group id="" class="frame_exam">
+    					<w2:udc_example_viewer style="" id="udc_exampleViewer"></w2:udc_example_viewer>
+    				</xf:group>
+    				<w2:iframe src="" style="width: 100%;" id="ifm_example_desc" class="frame_desc" spa="false"></w2:iframe>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+
+    </body>
+</html>

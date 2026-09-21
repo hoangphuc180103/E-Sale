@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] onchange 이벤트">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230810" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.tabc_main_onchange = function (tabID, idx, userTabID) {
+    // 로그 출력
+    let strLog = tabID + " - " + idx + " - "+ userTabID;
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }	
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'onchange' 이벤트를 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 5px;" class="tbcbox">
+							<w2:tabControl id="tabc_main" alwaysDraw="false" style="width: 100%;height: 100px;" ev:onchange="scwin.tabc_main_onchange" class="tbc">
+								<w2:tabs disabled="false" style="width:70px;" id="tabs1" label="TAB 1"></w2:tabs>
+								<w2:tabs disabled="false" style="width:70px;" id="tabs2" label="TAB 2"></w2:tabs>
+								<w2:content alwaysDraw="false" style="" id="content1">
+									<w2:textbox class="wre_txt_normal" escape="false" id="" label="TAB 1의 콘텐츠입니다." style="">
+									</w2:textbox>
+								</w2:content>
+								<w2:content alwaysDraw="false" style="" id="content2">
+									<w2:textbox class="wre_txt_normal" escape="false" id="" label="TAB 2의 콘텐츠입니다." style="">
+									</w2:textbox>
+								</w2:content>
+							</w2:tabControl>
+						</xf:group>
+					</xf:group>
+
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+		
+		
+	</body>
+</html>

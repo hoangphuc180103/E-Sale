@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.multiSelect1_onrowclick = function(info) {
+    var info = JSON.stringify(info);
+    alert(info);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="イベント - onrowclick"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1. （Script タブで onrowclick イベントハンドラを確認します。）&lt;br/&gt;2. 選択リストから任意の項目を選択します。&lt;br/&gt;3. onrowclick イベントが発生し、選択した行の情報が表示されることを確認。"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="イベント説明&lt;br/&gt;onrowclick - 選択リストの項目を選択したときに発生します。" escape="false">
+    	</w2:textbox>
+    	<xf:select ref="" ev:onrowclick="scwin.multiSelect1_onrowclick" appearance="minimal" style="width: 30%;" id="multiSelect1">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[AAA]]></xf:label>
+    				<xf:value><![CDATA[1]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[BBB]]></xf:label>
+    				<xf:value><![CDATA[2]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[CCC]]></xf:label>
+    				<xf:value><![CDATA[3]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[DDD]]></xf:label>
+    				<xf:value><![CDATA[4]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[EEE]]></xf:label>
+    				<xf:value><![CDATA[5]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:select>
+    	<w2:textbox escape="false" id="textbox5"
+    		label="/// サンプルコード &lt;br/&gt;&lt;br/&gt;scwin.multiSelect1_onrowclick = function(info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var info = JSON.stringify(info);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert(info);&lt;br/&gt;};"
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

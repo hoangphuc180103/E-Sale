@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="mergeCells_mergeByRestricRow_GridView" meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+        				<w2:column dataType="text" id="col2" name="Country"></w2:column>
+        				<w2:column dataType="text" id="col3" name="Item 1"></w2:column>
+        				<w2:column dataType="text" id="col4" name="Item 2"></w2:column>
+        				<w2:column dataType="text" id="col5" name="Quantity"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var json = [
+        { "col1": "Asia", "col2": "Asia", "col3": "Asia", "col4": "Asia", "col5": "Asia" },
+        { "col1": "Asia", "col2": "Asia", "col3": "Asia", "col4": "Asia", "col5": "Asia" },
+        { "col1": "Asia", "col2": "East", "col3": "East", "col4": "East", "col5": "East" },
+        { "col1": "Asia", "col2": "Far-east", "col3": "Far-east", "col4": "Far-east", "col5": "South-east" },
+        { "col1": "Asia", "col2": "Far-east 1", "col3": "Far-east 1", "col4": "Far-east 2", "col5": "South-east" },
+        { "col1": "Asia", "col2": "Asia", "col3": "Asia", "col4": "Asia", "col5": "Asia" },
+        { "col1": "Asia", "col2": "Far-east", "col3": "Far-east", "col4": "Far-east", "col5": "Far-east" },
+        { "col1": "Asia", "col2": "Far-east", "col3": "Far-east", "col4": "Far-east", "col5": "Far-east" },
+        { "col1": "Asia", "col2": "Far-east", "col3": "Far-east", "col4": "Far-east", "col5": "Far-east" }
+    ];
+    dataList1.setJSON(json);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    gridView1.mergeClear();
+    gridView1.mergeByRestricRow();
+};
+
+scwin.trigger2_onclick = function (e) {
+    gridView1.mergeClear();
+    gridView1.mergeByRow();
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="윗행 기준 병합" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. 하단의 첫 번째 버튼을 클릭하여, 윗 행을 기준으로 행 기준 병합이 수행되는 것을 확인.&lt;br/&gt;2. 하단의 두 번째 버튼을 클릭하여, 단순한 행 기준 병합 결과와 비교.' escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;mergeCells="byrestricrow"' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button" class="">
+    		<xf:label><![CDATA[gridView1.mergeByRestricRow();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button" class="">
+    		<xf:label><![CDATA[gridView1.mergeByRow();]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView scrollByColumnAdaptive="false" hammerEnabled="true" dataDragDrop="true" selectedRowColor="orange" useShiftKey="true"
+    		useCtrlOnMultisort="" scrollByColumn="false" dataDragDropStatus="true" focusFlow="linear" defaultCellHeight="20"
+    		selectedCellColor="pink" contextMenu="true" visibleRowNumFix="true" dataList="data:dataList1" dataDragSelect=""
+    		style="border: solid 1px gray;" cellStatusIconPosition="left" id="gridView1" autoFit="allColumn" visibleRowNum="9" useCtrlKey=""
+    		cellStatusVisible="true" focusMode="row">
+    		<w2:caption style="" id="caption3" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header3">
+    			<w2:row style="" id="row5">
+    				<w2:column width="100" inputType="text" id="column17" value="Continent" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="column16" value="Country" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="column15" value="Item 1" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="column14" value="Item 2" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="column22" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody3">
+    			<w2:row style="" id="row6">
+    				<w2:column width="100" inputType="text" id="col1" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="col2" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="col3" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="col4" displayMode="label"></w2:column>
+    				<w2:column width="100" inputType="text" id="col5" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_vertical_guides="" meta_horizontal_guides="938" meta_author="InswaveSystems" meta_screenName="[PageFrame] 서브 화면 구성하기">
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map" />
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20250108" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.btn_main_onclick = function (e) {
+    alert(ipt1.getValue());
+};
+
+scwin.btn_sub_onclick = function (e) {
+    alert(pfm1.getWindow().ipt1.getValue());
+};
+]]></script>
+		<style type="text/css"><![CDATA[.accordion {
+  background-color: #99999930;
+}
+
+.accordion ul > li {
+  overflow: hidden;
+  max-height: 40px;
+  transition: 0.3s;
+}
+.accordion ul > li.on {
+  max-height: 600px;
+}
+.accordion ul > li .title {
+  background-color: antiquewhite;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  margin-bottom: 10px;
+}
+.accordion ul > li .desc {
+  padding: 0.5rem;
+}]]></style>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group style="" id="" class="ws_example_grp_desc">
+				<w2:textbox style="margin-bottom: 10px;" id="" label="PageFrame을 사용해 서브 페이지를 구성한 예제입니다." escape="false"></w2:textbox>
+			</xf:group>
+			<xf:group class="pgtbox" id="" style="">
+				<w2:textbox class="pgt_tit" id="" label=" Main" style="" tagname=""></w2:textbox>
+			</xf:group>
+			<xf:group class="tblbox" id="" style="">
+				<xf:group adaptive="layout" adaptiveThreshold="768" class="w2tb tbl" id="" style="" tagname="table">
+					<w2:attributes>
+						<w2:summary></w2:summary>
+					</w2:attributes>
+					<xf:group tagname="colgroup">
+						<xf:group style="width:150px;" tagname="col"></xf:group>
+						<xf:group style="" tagname="col"></xf:group>
+					</xf:group>
+					<xf:group style="" tagname="tr">
+						<xf:group class="w2tb_th" style="" tagname="th">
+							<w2:textbox class="" id="" label="main 헤더" ref="" style="" userData2=""></w2:textbox>
+						</xf:group>
+						<xf:group class="w2tb_td" style="" tagname="td">
+							<xf:input id="ipt1" style="width: 144px;height: 21px;" dataType="number" validateOnInput="true"></xf:input>
+							<xf:trigger id="btn_main" style="width: 80px;height: 23px;" type="button" ev:onclick="scwin.btn_main_onclick">
+								<xf:label><![CDATA[main]]></xf:label>
+							</xf:trigger>
+							<xf:trigger id="btn_sub" style="width: 80px;height: 23px;" type="button" ev:onclick="scwin.btn_sub_onclick">
+								<xf:label><![CDATA[sub]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<w2:pageFrame id="pfm1" style="height: 200px;" src="/page/P00435S01.xml"></w2:pageFrame>
+		</xf:group>
+	</body>
+</html>

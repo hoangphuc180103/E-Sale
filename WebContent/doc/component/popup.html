@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>팝업</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_b16f684c415d88d9" class="chapter_title">팝업</h1>
+		<h1 id="r_a392aedda477ab01" class="element heading1"
+			data-element-id="a392aedda477ab01">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_56a6b2c995ffa8ff" class="element normal"
+			data-element-id="56a6b2c995ffa8ff">
+			WebSquare AI의 팝업 시스템은
+			<code>$p.openPopup()</code>
+			함수를 통해 생성되는 강력하고 유연한 윈도우 관리 솔루션입니다. 이 시스템은 현대적인 웹 애플리케이션에서 요구되는 다양한
+			사용자 인터페이스 패턴을 지원하며, 복잡한 비즈니스 로직과 사용자 상호작용을 효과적으로 처리할 수 있도록 설계되었습니다.
+		</p>
+		<p id="r_8892806ca3b4b48e" class="element normal"
+			data-element-id="8892806ca3b4b48e">WebSquare AI의 팝업은 단순한 알림창을 넘어서
+			완전한 기능을 갖춘 독립적인 윈도우로 작동하며, 부모-자식 관계를 통한 계층적 구조, 스코프 기반의 데이터 공유, 그리고
+			다양한 프레임 타입을 통한 유연한 렌더링을 제공합니다. 이러한 특징들은 엔터프라이즈급 애플리케이션 개발에 필요한 확장성과
+			유지보수성을 보장합니다.</p>
+		<dl id="r_97df3211b28d2291" class="element definition_list"
+			data-element-id="97df3211b28d2291">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb1ijrxDMsk6eDkjwy1Fgb_X">팝업
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb2h5n79Lwv-cr_bzx7oijIM">팝업
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_dc1e747ae9b316dd" class="element heading1"
+			data-element-id="dc1e747ae9b316dd">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_25ca139abf64bfd4" class="element normal"
+			data-element-id="25ca139abf64bfd4">팝업은 단순한 알림 창이나 추가 입력, 세부 정보 제공
+			등의 역할을 수행할 뿐만 아니라 다음과 같은 다양한 용도로 사용할 수 있습니다.</p>
+		<dl id="r_ee02b0defc2b2a66" class="element definition_list"
+			data-element-id="ee02b0defc2b2a66">
+			<dt>
+				<strong>정보 표시</strong>
+			</dt>
+			<dd>
+				<p>사용자에게 중요한 알림, 경고, 또는 추가 정보를 일시적으로 표시할 때 사용됩니다.</p>
+			</dd>
+			<dt>
+				<strong>사용자 입력</strong>
+			</dt>
+			<dd>
+				<p>복잡한 폼이나 상세 정보를 입력받을 때 별도의 팝업 윈도우를 통해 사용자의 집중도를 높이고 주 화면의
+					컨텍스트를 유지할 수 있습니다. 특히 마스터-디테일 관계의 데이터를 다룰 때 효과적입니다.</p>
+			</dd>
+			<dt>
+				<strong>데이터 선택</strong>
+			</dt>
+			<dd>
+				<p>주소 검색, 달력에서 날짜 선택 등과 같이 특정 데이터를 선택하고 부모 창으로 반환해야 할 때 사용됩니다.</p>
+			</dd>
+			<dt>
+				<strong>워크플로우 관리</strong>
+			</dt>
+			<dd>
+				<p>복잡한 작업 흐름을 여러 단계의 팝업으로 나누어 사용자에게 명확한 가이드라인을 제공할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>리포팅 및 대시보드</strong>
+			</dt>
+			<dd>
+				<p>상세 분석 결과나 드릴다운 데이터를 별도 팝업에서 표시하여 주 화면의 개요와 상세 정보를 동시에 제공할 수
+					있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_85d243e7754896c0" class="element heading1"
+			data-element-id="85d243e7754896c0">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_633dd94fdbc86b9b" class="element unordered_list"
+			data-element-id="633dd94fdbc86b9b">
+			<li><p>팝업 생성 및 유형</p>
+				<ul>
+					<li><p>
+							PageFrame, WFrame, IFrame, 브라우저 팝업 생성 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_p/openPopup_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Sf3n416Lk4k">YouTube</a>)
+						</p></li>
+					<li><p>
+							PageFrame 팝업 활용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/pageFramePopup_openPopup_p/pageFramePopup_openPopup_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/4vfk-718Noc">YouTube</a>)
+						</p></li>
+					<li><p>
+							팝업 생성 시 파라미터 전달 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/getParameter_p_openPopup_p/getParameter_p_openPopup_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/WF4TOcHZCxI">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>모달 팝업</p>
+				<ul>
+					<li><p>
+							모달 팝업 생성 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_modal_p/openPopup_modal_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/vf18BZmGuoQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							모달 팝업 Vs. 모달리스 팝업 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00057.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							프레임 기반 모달 팝업 생성 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_frameModal_p/openPopup_frameModal_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/R2pEQDkH6Yw">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>팝업 여부 확인</p>
+				<ul>
+					<li><p>
+							팝업 여부 확인 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/isPopUp_p/isPopUp_p.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							WFrame 팝업 여부 확인 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/isWFramePopUp_p/isWFramePopUp_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/8_M6tXdgwgM">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>팝업 간 상호 작용 및 데이터 전달</p></li>
+			<li><p>
+					부모의 Scope 상속 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_scopeInherit_p/openPopup_scopeInherit_p.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					팝업 여부 확인 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00055.xml">WRE</a>,
+					<a class="link" href="https://youtu.be/MbaDvgdtVIQ">YouTube</a>)
+				</p></li>
+			<li><p>팝업 반환 및 접근</p>
+				<ul>
+					<li><p>
+							전체 팝업 객체 반환 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/getAllPopupList_p/getAllPopupList_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/DPxCM7q6kNQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							개별 팝업 윈도우 반환 및 접근 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/getPopupWindow_p/getPopupWindow_p.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							(브라우저 팝업 포함) 전체 팝업 윈도우 반환 및 접근 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/getAllPopupWindowList_p/getAllPopupWindowList_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/qYy9EjFJVbA">YouTube</a>)
+						</p></li>
+					<li><p>
+							(브라우저 팝업 제외) 전체 팝업 윈도우 반환 및 접근 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/getPopupWindowList_p/getPopupWindowList_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/T6Jz2O14CKo">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>팝업 닫기 및 생명 주기 관리</p>
+				<ul>
+					<li><p>
+							팝업 닫기 함수 지정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_closeAction_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/kq_mC97YZeI">YouTube</a>)
+						</p></li>
+					<li><p>
+							부모 팝업만 닫기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_popupAutoCloseSkip_p/openPopup_popupAutoCloseSkip_p.xml">샘플</a>)
+						</p></li>
+					<li><p>부모-자식 팝업 함께 닫기</p>
+						<ul>
+							<li><p>
+									TabControl에서 부모-자식 팝업 함께 닫기 (<a class="link"
+										href="https://example.websquare.kr/link.html?p=/page/P00157.xml">WRE</a>,
+									<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TabControl/frameModal_TabControl/frameModal_TabControl.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/dGoIpOaHJcA">YouTube</a>)
+								</p></li>
+							<li><p>
+									WFame에서 부모-자식 팝업 함께 닫기 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/frameModal_WFrame/frameModal_WFrame.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/ru16t-GdHx0">YouTube</a>)
+								</p></li>
+							<li><p>
+									WindowContainer에서 부모-자식 팝업 함께 닫기 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/createWindow_frameModal_WindowContainer/createWindow_frameModal_WindowContainer.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/Ch-k_-Vo8Kk">YouTube</a>)
+								</p></li>
+						</ul></li>
+				</ul></li>
+			<li><p>팝업 표시</p>
+				<ul>
+					<li><p>
+							전체 화면에 표시 (<a class="link" href="https://youtu.be/ZVnDEldLee0">YouTube</a>)
+						</p></li>
+					<li><p>
+							팝업 위치 고정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00404.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_fixPosition_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/v65iVnWntpk">YouTube</a>)
+						</p></li>
+					<li><p>
+							팝업 크기 기반 적응형 디자인 적용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/PopUp/openPopup_adaptiveFrame_p/openPopup_adaptiveFrame_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/crqRrjPWwP8">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

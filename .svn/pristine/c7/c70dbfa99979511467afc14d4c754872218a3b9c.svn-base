@@ -1,0 +1,56 @@
+/*amd /edu/adv/popup.xml 6836 eadb106a390dedb3d1f315951288c7e7a49a209752d12e2291e184b1bd271a5b */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list','ev:ondataload':'scwin.dc_userInfoList_ondataload','ev:oninsertrow':'scwin.dc_userInfoList_oninsertrow','ev:onremoverow':'scwin.dc_userInfoList_onremoverow',id:'dc_userInfoList',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'EMP_CD',name:'사번'}},{T:1,N:'w2:column',A:{dataType:'text',id:'EMP_NM',name:'이름'}},{T:1,N:'w2:column',A:{dataType:'text',id:'EMAIL',name:'이메일'}},{T:1,N:'w2:column',A:{dataType:'text',id:'ADDRESS1',name:'주소1'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000001'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'김길동'}]},{T:1,N:'EMAIL',E:[{T:4,cdata:'aaa@inswav.com'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000002'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'이길동'}]},{T:1,N:'EMAIL',E:[{T:4,cdata:'aaa@inswav.com'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000003'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'박길동'}]},{T:1,N:'EMAIL',E:[{T:4,cdata:'aaa@inswav.com'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000004'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'강길동'}]},{T:1,N:'EMAIL',E:[{T:4,cdata:'aaa@inswav.com'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000005'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'홍길동'}]},{T:1,N:'EMAIL',E:[{T:4,cdata:'aaa@inswav.com'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  ui_float.hide();
+};
+
+//Layer popup 
+scwin.btn_laypop_onclick = function (e) {
+  // 팝업 화면에 데이터를 전달 (dataObject를 통해 전달 가능)
+
+  // 팝업 생성 옵션 지정
+
+  // 팝업 생성 
+};
+
+// 팝업 생성 옵션의 closeAction 함수 정의 예시
+scwin.popup_closeAction = function (argRuntimeID, argJsnInfo) {
+  // argRuntimeID : 팝업의 실행 시점 아이디
+  // argJsnInfo : 팝업의 부가 정보를 담은 JSON 객체
+  // argJsnInfo.isCloseButtonClick : [true, false] 팝업의 닫기 버튼을 클릭해서 호출되었는지의 여부
+
+  // popup 객체 접근 하기 
+  // var popupObj = $p.getPopupWindow(argRuntimeID);
+
+  // 팝업창에서 전달받은 데이터를 반환받기
+  // var jsnParamData = $p.getParameter("exam_param");
+
+  return true; //팝업 닫기 (반환 값이 true인 경우만 팝업이 닫힘)
+};
+scwin.btn_broPop_onclick = function (e) {
+  // 팝업 화면에 데이터를 전달 (dataObject를 통해 전달 가능)
+
+  // 팝업 생성 옵션 지정
+
+  // 팝업 생성 
+};
+
+//isPopup
+//var _chPop = $p.isPopup();
+//alert(_chPop);
+scwin.btn_isPop_onclick = function (e) {};
+
+//Floating Layer show
+//ui_float.show();
+scwin.btn_float_show_onclick = function (e) {};
+
+//Floating Layer hide
+//ui_float.hide();
+scwin.btn_float_hide_onclick = function (e) {};
+scwin.ui_textbox1_onclick = function (e) {
+  var _url = "";
+  var _path = "";
+  _path = this.getUserData("userData1");
+  _url = $c.frame.getBasePageURL($p, true) + "#w2xPath=" + _path;
+  window.open(_url, "_blank");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'pgtbox',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_fav',id:'',style:'',type:'button'},E:[{T:1,N:'xf:label'}]},{T:1,N:'w2:textbox',A:{class:'pgt_tit',id:'',label:'[실습화면] 팝업',style:'',tagname:''}}]},{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',id:'',label:'해당화면은 코딩이 없는 실습용 화면',style:'',tagname:'h3'}},{T:1,N:'w2:textbox',A:{class:'','ev:onclick':'scwin.ui_textbox1_onclick',id:'ui_textbox1',label:'[완성 화면 보기]',style:'cursor: pointer;',tagname:'h3',userData1:'/edu/adv/popup_c.xml'}}]},{T:1,N:'w2:pageFrame',A:{style:'',id:'',src:'/edu/adv/popup_desc.xml'}}]},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'',id:'',label:'팝업 Type 차이 확인/모달과 모달리스의 차이 확인',style:'',tagname:'h4'}}]},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'rt',id:'',style:''}},{T:1,N:'xf:group',A:{class:'btnbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'bar_btndiv',id:'',label:'',style:''}},{T:1,N:'xf:trigger',A:{class:'btn_cm pt',id:'btn_laypop',style:'',type:'button','ev:onclick':'scwin.btn_laypop_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'wframePopup'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm',id:'btn_broPop',style:'',type:'button','ev:onclick':'scwin.btn_broPop_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Browser Popup'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm pt',id:'btn_float_show',style:'',type:'button','ev:onclick':'scwin.btn_float_show_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Floating Layer show'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm ',id:'btn_float_hide',style:'',type:'button','ev:onclick':'scwin.btn_float_hide_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Floating Layer hide'}]}]}]}]},{T:1,N:'xf:group',A:{class:'btnbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'bar_btndiv',id:'',label:'',style:''}},{T:1,N:'xf:trigger',A:{class:'btn_cm pt',id:'btn_isPop',style:'',type:'button','ev:onclick':'scwin.btn_isPop_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'isPopup'}]}]}]}]},{T:1,N:'w2:gridView',A:{checkAllType:'false',defaultCellHeight:'20',id:'ui_grd',style:'width: 500px;height: 150px;',dataList:''},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'',displayMode:'label'}}]}]}]},{T:1,N:'xf:group',A:{adaptiveThreshold:'',class:'gvwbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{adaptiveThreshold:'',class:'gvwbox',id:'',style:''}}]}]}]}]}]}]})

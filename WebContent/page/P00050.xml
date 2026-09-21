@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] customFormatter 적용 속도 비교">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220706" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="DataList 'dlt_member'의 데이터가 변경되고, 이에 따른 스크립트와 GridView 설정이 수정되었습니다." meta_date="20240627" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_member" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="USER_PK" name="고유키" dataType="text"></w2:column>
+						<w2:column id="USER_ID" name="아이디" dataType="text"></w2:column>
+						<w2:column id="NAME" name="이름" dataType="text"></w2:column>
+						<w2:column id="GROUP_A" name="그룹 A" dataType="text"></w2:column>
+						<w2:column id="GROUP_B" name="그룹 B" dataType="text"></w2:column>
+						<w2:column id="GROUP_C" name="그룹 C" dataType="text"></w2:column>
+						<w2:column id="GROUP_D" name="그룹 D" dataType="text"></w2:column>
+						<w2:column id="EMAIL" name="이메일" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_getUserData" ref="" target="data:array"
+				action="/data/sampleData/largeData/dlt_member_8X2000_array.json" method="post" mediatype="application/json" encoding="UTF-8" instance="" replace=""
+				errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submitdone="scwin.sbm_getUserData_submitdone" ev:submit=""
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    $p.executeSubmission("sbm_getUserData")
+};
+
+scwin.sbm_getUserData_submitdone = function (e) {
+
+};
+
+
+/**
+ * grd_example의 NAME 컬럼의 customFormatter
+ */
+scwin.grd_example_NAME = function (data, formattedData, rowIndex, colIndex) {
+    if (formattedData.indexOf("2") > 0) {
+        grd_example.setCellColor(rowIndex, colIndex, "red");
+    }
+    return formattedData;
+};
+
+/**
+ * grd_example의 GROUP_B 컬럼의 customFormatter
+ */
+scwin.grd_example_GROUP_B = function (data, formattedData, rowIndex, colIndex) {
+    if (data === "GROUP B01") {
+        grd_example.setCellBackgroundColor(rowIndex, colIndex, "blue");
+        grd_example.setCellColor(rowIndex, colIndex, "#fff");
+    }
+    return formattedData;
+};
+
+
+/**
+ * grd_example의 GROUP_D 컬럼의 customFormatter
+ */
+scwin.grd_example_GROUP_D = function (data, formattedData, rowIndex, colIndex) {
+    if (data === "GROUP D01") {
+        grd_example.setCellColor(rowIndex, colIndex, "orange");
+    }
+    return formattedData;
+};
+
+/**
+ * grd_example의 EMAIL 컬럼의 customFormatter
+ */
+scwin.grd_example_EMAIL = function (data, formattedData, rowIndex, colIndex) {
+    if (data.indexOf("inswave03.com") > 0) {
+        grd_example.setCellColor(rowIndex, colIndex, "blue");
+    }
+    return formattedData;
+};
+
+
+/**
+ * grd_example2의 NAME 컬럼의 customFormatter
+ */
+scwin.grd_example2_NAME = function (data, formattedData, rowIndex, colIndex) {
+    if (formattedData.indexOf("2") > 0) {
+        return "<span style='color:red'>" + formattedData + "</span>";
+    }
+    return data;
+};
+
+/**
+ * grd_exampl2e의 GROUP_B 컬럼의 customFormatter
+ */
+scwin.grd_example2_GROUP_B = function (data, formattedData, rowIndex, colIndex) {
+    if (data === "GROUP B01") {
+        return "<div style='display:inline-block;background-color:blue;line-height:38px;color:#fff;width:100%;box-sizing:border-box;position:relative;left:-4px;'>" + formattedData + "</div>";
+    }
+    return formattedData;
+};
+
+/**
+ * grd_example2의 GROUP_D 컬럼의 customFormatter
+ */
+scwin.grd_example2_GROUP_D = function (data, formattedData, rowIndex, colIndex) {
+    if (data === "GROUP D01") {
+        return "<span style='color:orange'>" + formattedData + "</span>";
+    }
+    return formattedData;
+};
+
+/**
+ * grd_exampl2e의 EMAIL 컬럼의 customFormatter
+ */
+scwin.grd_example2_EMAIL = function (data, formattedData) {
+    if (data.indexOf("inswave03.com") > 0) {
+        return "<span style='color:blue'>" + formattedData + "</span>";
+    }
+    return formattedData;
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="그리드뷰에 데이터를 customFormatter속성을 사용하여 style을 변경 할 때, 구현 방식에 따른 렌더링 속도를 비교하기 위해 작성된 화면입니다." style="">
+				</w2:textbox>
+				<w2:textbox escape="false" id=""
+					label="각 GridView의 세로 스크롤을 이동시켜 렌더링 속도를 비교합니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label="customformatter 미적용" style="" tagname="h3"></w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="37" applyAllColumnStyle="false" backgroundColorMode="always"
+					senseReader="false" dataList="data:dlt_member" ev:onviewchange="" ignoreCellClick="false" style="height: 506px;" autoFit="allColumn"
+					id="" visibleRowNum="20" fastScroll="false" class="gvw " ignoreToggleOnDisabled="false" autoFitMinWidth="900">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="80" inputType="text" id="column29" value="고유키" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column27" value="아이디" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column25" value="이름" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column23" value="그룹 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column21" value="그룹 B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column19" value="그룹 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column17" value="그룹 D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="175" inputType="text" id="column13" value="이메일" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="80" inputType="text" id="USER_PK" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="USER_ID" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="NAME" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="175" inputType="text" id="EMAIL" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label="customformatter 적용 - setCellBackgroundColor, setCellColor 메소드 사용"
+				style="" tagname="h3"></w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="37" applyAllColumnStyle="false" backgroundColorMode="always"
+					senseReader="false" dataList="data:dlt_member" ev:onviewchange="" ignoreCellClick="false" style="height: 506px;" autoFit="allColumn"
+					id="grd_example" visibleRowNum="20" fastScroll="false" class="gvw " ignoreToggleOnDisabled="false" autoFitMinWidth="900">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="80" inputType="text" id="column29" value="고유키" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column27" value="아이디" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column25" value="이름" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+							<w2:column width="100" inputType="text" id="column23" value="그룹 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column21" value="그룹 B" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+							<w2:column width="100" inputType="text" id="column19" value="그룹 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column17" value="그룹 D" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+							<w2:column width="175" inputType="text" id="column13" value="이메일" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="80" inputType="text" id="USER_PK" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="USER_ID" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="NAME" customFormatter="scwin.grd_example_NAME" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_B" customFormatter="scwin.grd_example_GROUP_B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_D" customFormatter="scwin.grd_example_GROUP_D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="175" inputType="text" id="EMAIL" customFormatter="scwin.grd_example_EMAIL" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label="customformatterr 적용 - innerHTML 사용" style="" tagname="h3"></w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="37" applyAllColumnStyle="false" senseReader="false"
+					dataList="data:dlt_member" ev:onviewchange="" ignoreCellClick="false" style="height: 506px;" autoFit="allColumn" id="grd_example2"
+					visibleRowNum="20" fastScroll="false" class="gvw" ignoreToggleOnDisabled="false" autoFitMinWidth="900">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="80" inputType="text" id="column29" value="고유키" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column27" value="아이디" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column25" value="이름" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+							<w2:column width="100" inputType="text" id="column23" value="그룹 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column21" value="그룹 B" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+							<w2:column width="100" inputType="text" id="column19" value="그룹 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="column17" value="그룹 D" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+							<w2:column width="175" inputType="text" id="column13" value="이메일" blockSelect="false" displayMode="label" class="wre_txt_blue"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="80" inputType="text" id="USER_PK" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="USER_ID" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="NAME" customFormatter="scwin.grd_example2_NAME" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_B" customFormatter="scwin.grd_example2_GROUP_B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="100" inputType="text" id="GROUP_D" customFormatter="scwin.grd_example2_GROUP_D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="175" inputType="text" id="EMAIL" customFormatter="scwin.grd_example2_EMAIL" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

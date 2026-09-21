@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko"><head><title>[Checkbox] GridView 연계하기</title><link rel="stylesheet" href="css/book.css" type="text/css" /><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" /><meta name="EPB-UUID" content="f1fbcef72ff0a2ec" /></head><body><div class="chapter_content"><h1 id="r_eb30f2945b401e22" class="chapter_title">[Checkbox] GridView 연계하기</h1><h1 id="r_4c42b628bf0fc95c" class="element heading1" data-element-id="4c42b628bf0fc95c"><div class="r_heading_inner"><span class="heading1_n">1</span><span>개요</span></div></h1><pre id="r_e82802a6ea771448" class="element pre" data-element-id="e82802a6ea771448">Checkbox와 GridView를 연동하여 조회하는 예제입니다.</pre><p id="r_cab6d76694ffb047" class="element r_example_link_p" data-element-id="cab6d76694ffb047"><a class="link" href="http://example.websquare.kr/link.html?p=P00383">P00457</a></p><h1 id="r_1b290f47e3a80711" class="element heading1" data-element-id="1b290f47e3a80711"><div class="r_heading_inner"><span class="heading1_n">2</span><span>구현된 기능</span></div></h1><ul id="r_e2483deae1395cfe" class="element unordered_list" data-element-id="e2483deae1395cfe"><li><p>체크된 항목을 gridView에 나타내기</p></li></ul><h1 id="r_fb273081c163e74b" class="element heading1" data-element-id="fb273081c163e74b"><div class="r_heading_inner"><span class="heading1_n">3</span><span>예제 테스트 방법</span></div></h1><h2 id="r_b9b055531b9fcf1f" class="element heading2" data-element-id="b9b055531b9fcf1f"><div class="r_heading_inner"><span class="heading2_n">3.1</span><span>체크된 항목을 GridView에 나타내기</span></div></h2><div id="r_1eaaad354aa08903" class="element step1" data-element-id="1eaaad354aa08903"><p class="step1_n">1</p><p>STEP 1: 초기 상태를 확인합니다.</p></div><p id="r_a2ec315b3f458c95" class="element normal step1_indent" data-element-id="a2ec315b3f458c95">Checkbox에 항목이 선택되어 있지 않고, GridView에 데이터가 표시되지 않습니다.</p><div id="r_a92d79c4d43a0b82" class="element image step1_indent" data-element-id="a92d79c4d43a0b82"><p class="caption"><span class="image_caption_n">Image 1.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image331.png" width="502" height="257" /></p></div><div id="r_a1e94324e16b94da" class="element step1" data-element-id="a1e94324e16b94da"><p class="step1_n">2</p><p>STEP 2: Checkbox에서 항목을 선택합니다.</p></div><pre id="r_65639ec273f9755b" class="element pre step1_indent" data-element-id="65639ec273f9755b">선택된 항목이 GridView에 나타납니다.</pre><div id="r_bef3c0e15a176e18" class="element image step1_indent" data-element-id="bef3c0e15a176e18"><p class="caption"><span class="image_caption_n">Image 2.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image332.png" width="502" height="260" /></p></div><div id="r_976d1301c6fd1738" class="element step1" data-element-id="976d1301c6fd1738"><p class="step1_n">3</p><p>STEP 3: Checkbox에서 선택된 항목을 해제합니다.</p></div><pre id="r_ef9aece802c36f69" class="element pre step1_indent" data-element-id="ef9aece802c36f69">해제한 항목의 데이터가 사라집니다.</pre><div id="r_426f0cd9bff44ce8" class="element image step1_indent" data-element-id="426f0cd9bff44ce8"><p class="caption"><span class="image_caption_n">Image 3.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image333.png" width="502" height="259" /></p></div><h1 id="r_1e3b9dc8a4220a53" class="element heading1" data-element-id="1e3b9dc8a4220a53"><div class="r_heading_inner"><span class="heading1_n">4</span><span>구현 예시</span></div></h1><h2 id="r_028f588c000e734f" class="element heading2" data-element-id="028f588c000e734f"><div class="r_heading_inner"><span class="heading2_n">4.1</span><span>체크된 항목을 GridView에 나타내기</span></div></h2><div id="r_6874a1a17e2e7f3d" class="element step1" data-element-id="6874a1a17e2e7f3d"><p class="step1_n">1</p><p>STEP 1: Checkbox에 onchange 이벤트 함수를 적용합니다.</p></div><p id="r_594139610e2e8a4b" class="element normal step1_indent" data-element-id="594139610e2e8a4b">예제 파일에서는 핸들러로 사용할 메소드명을 다음과 같이 정의하였습니다.</p><p id="r_ca35295ea1c93be6" class="element normal step1_indent" data-element-id="ca35295ea1c93be6">아래는 순서대로 각각의 checkBox에 이벤트를 적용한 예시입니다.</p><ul id="r_d908f0a03072b9ce" class="element unordered_list step1_indent" data-element-id="d908f0a03072b9ce"><li><p>'전체' 항목이 있는 checkBox</p></li><li><p>'1회, 2회, 3회' 항목이 있는 checkBox</p></li><li><p>'4회, 5회, 6회, 7회' 항목이 있는 checkBox</p></li></ul><div id="r_7a0abb20eaff8c36" class="element image step1_indent" data-element-id="7a0abb20eaff8c36"><p class="caption"><span class="image_caption_n">Image 4.</span>웹스퀘어 스튜디오의 Component View - 이벤트 설정 예시</p><p class="content"><img alt="" src="images/image334.png" width="362" height="144" /></p></div><div id="r_497281576d21a02f" class="element image step1_indent" data-element-id="497281576d21a02f"><p class="caption"><span class="image_caption_n">Image 5.</span>웹스퀘어 스튜디오의 Component View - 이벤트 설정 예시</p><p class="content"><img alt="" src="images/image335.png" width="362" height="144" /></p></div><div id="r_6eb7b7ce328bb2bd" class="element image step1_indent" data-element-id="6eb7b7ce328bb2bd"><p class="caption"><span class="image_caption_n">Image 6.</span>웹스퀘어 스튜디오의 Component View - 이벤트 설정 예시</p><p class="content"><img alt="" src="images/image336.png" width="362" height="147" /></p></div><div id="r_a2df791e85684662" class="element code support_code_numbering step1_indent" data-element-id="a2df791e85684662"><p class="caption"><span class="code_caption_n">Example 1.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">//예제 파일에서는 스크립트의 'scwin.chk1_onchange','scwin.chk2_onchange', 'scwin.chkA_onchange'에 작성되어 있습니다.</span>
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>scwin.chk1_onchange = <span class="r_h_keyword_span">function</span>(info) {
+<span class="digits_10 code_line"></span>    <span class="r_h_comment_span">// '전체' 항목 체크 해제</span>
+<span class="digits_10 code_line"></span>    chkA.checkAll(<span class="r_h_keyword_span">false</span>);
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>    scwin.chk(<span class="r_h_string_span">"1"</span>);    
+<span class="digits_10 code_line"></span>};
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>scwin.chk2_onchange = <span class="r_h_keyword_span">function</span>(info) {
+<span class="digits_10 code_line"></span>    <span class="r_h_comment_span">// '전체' 항목 체크 해제</span>
+<span class="digits_10 code_line"></span>    chkA.checkAll(<span class="r_h_keyword_span">false</span>);
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>    scwin.chk(<span class="r_h_string_span">"2"</span>);    
+<span class="digits_10 code_line"></span>};
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>scwin.chkA_onchange = <span class="r_h_keyword_span">function</span>(info) {
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">if</span> ( chk1.getDisabled()){
+<span class="digits_10 code_line"></span>        <span class="r_h_keyword_span">return</span>;
+<span class="digits_10 code_line"></span>    }
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">if</span> (info.newValue == <span class="r_h_string_span">""</span>) {
+<span class="digits_10 code_line"></span>        chk1.checkAll(<span class="r_h_keyword_span">false</span>);
+<span class="digits_10 code_line"></span>        chk2.checkAll(<span class="r_h_keyword_span">false</span>);
+<span class="digits_10 code_line"></span>    } <span class="r_h_keyword_span">else</span> {
+<span class="digits_10 code_line"></span>        chk1.checkAll(<span class="r_h_keyword_span">true</span>);
+<span class="digits_10 code_line"></span>        chk2.checkAll(<span class="r_h_keyword_span">true</span>);
+<span class="digits_10 code_line"></span>    }
+<span class="digits_10 code_line"></span>    scwin.chk(<span class="r_h_string_span">"1"</span>);    
+<span class="digits_10 code_line"></span>    scwin.chk(<span class="r_h_string_span">"2"</span>);    
+<span class="digits_10 code_line"></span>};</pre></div><div id="r_c2b47a24e6b1e227" class="element step1" data-element-id="c2b47a24e6b1e227"><p class="step1_n">2</p><p>STEP 2: 체크된 항목을 GridView에 표시합니다.</p></div><p id="r_a372a31a6a31f250" class="element normal step1_indent" data-element-id="a372a31a6a31f250">GridView의 'setColumnVisible' 메소드를 사용해 컬럼의 표시 여부를 설정합니다.</p><div id="r_6f532f0eea9222ca" class="element code support_code_numbering step1_indent" data-element-id="6f532f0eea9222ca"><p class="caption"><span class="code_caption_n">Example 2.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">//예제 파일에서는 스크립트의 'scwin.chk()'에 작성되어 있습니다.</span>
+<span class="digits_10 code_line"></span>scwin.chk = <span class="r_h_keyword_span">function</span> (type) {
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> chkValue = <span class="r_h_string_span">""</span>;
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> chkItem = [];
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">if</span> ( type == <span class="r_h_string_span">"1"</span> ) {
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>        chkItem = [
+<span class="digits_10 code_line"></span>            { label: <span class="r_h_string_span">"1회"</span>, value: <span class="r_h_string_span">"02"</span> },
+<span class="digits_10 code_line"></span>            { label: <span class="r_h_string_span">"2회"</span>, value: <span class="r_h_string_span">"03"</span> },
+<span class="digits_10 code_line"></span>            { label: <span class="r_h_string_span">"3회"</span>, value: <span class="r_h_string_span">"04"</span> }
+<span class="digits_10 code_line"></span>        ];
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>        <span class="r_h_comment_span">// 체크된 항목의 value 값</span>
+<span class="digits_10 code_line"></span>        chkValue = chk1.getValue();
+<span class="digits_10 code_line"></span>    } <span class="r_h_keyword_span">else</span> <span class="r_h_keyword_span">if</span> ( type == <span class="r_h_string_span">"2"</span>) {
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>        chkItem = [
+<span class="digits_10 code_line"></span>            { label: <span class="r_h_string_span">"4회"</span>, value: <span class="r_h_string_span">"05"</span> },
+<span class="digits_10 code_line"></span>            { label: <span class="r_h_string_span">"5회"</span>, value: <span class="r_h_string_span">"06"</span> },
+<span class="digits_10 code_line"></span>            { label: <span class="r_h_string_span">"6회"</span>, value: <span class="r_h_string_span">"07"</span> },
+<span class="digits_10 code_line"></span>            { label: <span class="r_h_string_span">"7회"</span>, value: <span class="r_h_string_span">"08"</span> }
+<span class="digits_10 code_line"></span>        ];
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>        <span class="r_h_comment_span">// 체크된 항목의 value 값</span>
+<span class="digits_10 code_line"></span>        chkValue = chk2.getValue();
+<span class="digits_10 code_line"></span>    }
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">for</span> (<span class="r_h_keyword_span">var</span> i = <span class="r_h_number_span">0</span>; i &lt; chkItem.length ; i++){
+<span class="digits_10 code_line"></span>        <span class="r_h_keyword_span">var</span> flag = <span class="r_h_keyword_span">false</span>;
+<span class="digits_10 code_line"></span>        <span class="r_h_keyword_span">if</span> ( chkValue.indexOf(chkItem[i].value) &gt; <span class="r_h_number_span">-1</span> ) {
+<span class="digits_10 code_line"></span>            flag = <span class="r_h_keyword_span">true</span>;
+<span class="digits_10 code_line"></span>        } 
+<span class="digits_10 code_line"></span>        <span class="r_h_comment_span">// Checkbox에 체크된 항목에 대해 컬럼 표시 여부를 설정</span>
+<span class="digits_10 code_line"></span>        grd_Exam.setColumnVisible(<span class="r_h_string_span">"col"</span>+chkItem[i].value, flag);
+<span class="digits_10 code_line"></span>    }
+<span class="digits_10 code_line"></span>};</pre></div><h1 id="r_dc36fed2d98ccfa4" class="element heading1" data-element-id="dc36fed2d98ccfa4"><div class="r_heading_inner"><span class="heading1_n">5</span><span>주요 API</span></div></h1><ul id="r_cfaf8e89a8339cbf" class="element unordered_list" data-element-id="cfaf8e89a8339cbf"><li><p><span class="r_ex_api_event_span">onchange</span></p></li><li><p><span class="r_ex_api_method_span">setColumnVisible(columnInfo, columnVisible)</span></p></li></ul></div></body></html>

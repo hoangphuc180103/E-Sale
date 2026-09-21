@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:linkedDataList bind="dataList1" id="linkedDataList1">
+        			<w2:condition type="filter"><![CDATA[]]></w2:condition>
+        			<w2:condition type="sort"><![CDATA[DESC('ID')]]></w2:condition>
+        		</w2:linkedDataList>
+        		<w2:dataList baseNode="list" ev:oncelldatachange="scwin.dataList1_oncelldatachange" id="dataList1" repeatNode="map"
+        			saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="Change" ignoreStatus="true" name="Change"></w2:column>
+        				<w2:column dataType="text" id="Status" name="Status"></w2:column>
+        				<w2:column dataType="text" id="Date" name="Date"></w2:column>
+        				<w2:column dataType="text" id="Expense" name="Expense"></w2:column>
+        				<w2:column dataType="text" id="Income" name="Income"></w2:column>
+        				<w2:column dataType="text" id="Hobby" name="Hobby"></w2:column>
+        				<w2:column dataType="text" id="Region" name="Region"></w2:column>
+        				<w2:column dataType="text" id="Frequency" name="Frequency"></w2:column>
+        				<w2:column dataType="text" id="ID" name="ID"></w2:column>
+        				<w2:column dataType="text" id="Age" name="Age"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/data.json';
+
+    $p.executeSubmission("submission1");
+    radio1.setStyle("background-color", "lightpink");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    linkedDataList1.setColumnFilter({
+        type: 'row',
+        colIndex: 'Hobby',
+        key: 'Movie',
+        condition: 'and'
+    });
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="LinkedDataList 필터 설정"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(0. Radio와 바인딩된 "linkedDataList1"은 현재 ID를 기준으로 내림차순 정렬되어 있음.)&lt;br/&gt;1. setColumnFilter() 버튼을 클릭. &lt;br/&gt;2. Radio컴포넌트의 선택 항목으로 Hobby가 "Movie"인 데이터의 ID가 표시됨. (Radio 컴포넌트는 LinkedDataList와 바인딩되어 있음.)&lt;br/&gt;3. 하단 GridView의 Hobby 컬럼에서 필터를 "Movie"로 설정. &lt;br/&gt;4. GridView 필터링 결과와 LinkedDataList와 바인딩된 상단 Radio의 선택 항목이 동일한 것을 확인.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox8" label="바인딩 설명&lt;br/&gt;GriView는 &quot;dataList1&quot;과 바인딩되어 있음. &lt;br/&gt;Radio는 &quot;linkedDataList1&quot;과 바인딩되어 있음.&lt;br/&gt;&quot;linkedDataList1&quot;은 &quot;dataList1&quot;과 연결되어 있음. &amp;nbsp;&lt;br/&gt;&quot;linkedDataList1&quot;은 현재 ID를 기준으로 내림차순 정렬되어 있음. (DESC('ID'))" escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button" rightOnImageClass="">
+    		<xf:label><![CDATA[linkedDataList1.setColumnFilter()]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;"
+    		id="textbox6" label="LinkedDataList (DESC('ID'))" escape="false">
+    	</w2:textbox>
+    	<xf:select1 ref="" appearance="full" style="margin-bottom: 10px;padding: 10px;" id="radio1" rows="" cols="5" selectedIndex="-1">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:linkedDataList1">
+    				<xf:label ref="ID"></xf:label>
+    				<xf:value ref="Age"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1>
+    	<w2:textbox escape="false" id="textbox7" label="GridView"
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView checkAllType="false" id="gridView1" style="border: solid gray 1px;" dataList="data:dataList1" visibleRowNum="10"
+    		visibleRowNumFix="true" rowNumVisible="true" useFilterList="true" autoFit="allColumn">
+    		<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header2">
+    			<w2:row style="" id="row3">
+    				<w2:column width="70" inputType="text" style="" id="column11" value="Status" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column8" value="Income" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column7" value="Hobby" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column4" value="ID" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column3" value="Age" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody2">
+    			<w2:row style="" id="row4">
+    				<w2:column width="70" inputType="text" style="" id="Status" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="Income" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="Hobby" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="ID" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="Age" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

@@ -1,0 +1,27 @@
+/*amd /page/P00223.xml 4571 f5ea4333e684c29ea8c90353e3b2be4fdccfab66f7fadfb7534460429dceafbf */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  // windowContainer 'wdc_exam1', 'wdc_exam2'의 윈도우 생성하기
+  for (let i = 1; i <= 3; i++) {
+    // 툴바의 네임레이어에 표시되는 타이틀
+    let title = "window " + i;
+    // 서브화면의 경로
+    let srcPath = "/page/P00223S0" + i + ".xml";
+    // window ID로 null 이나 ""입력 시 title이 id로 생성
+    let windowId = "window_" + i;
+    let options = {
+      "title": title,
+      "windowID": windowId,
+      "frameMode": "pageFrame",
+      "src": srcPath
+    };
+    wdc_exam1.createWindow(options);
+    wdc_exam2.createWindow(options);
+  }
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'WindowContainer의 \'nameLayerMove\' 속성을 \'true\'로 설정하여 마우스로 네임 레이어를 드래그 앤 드롭하여 위치를 변경할 수 있도록 한 예제입니다.',style:'margin-bottom: 10px;'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'example_div_tr_style'},E:[{T:1,N:'w2:textbox',A:{style:'',id:'',label:'nameLayerMove: true',class:'example_div_th_style',escape:'false'}},{T:1,N:'xf:group',A:{style:'',id:'',class:'example_div_td_style'},E:[{T:1,N:'w2:windowContainer',A:{sequentialArrangeColNum:'2',sequentialArrangeRowNum:'2',fixArrangeFullScreen:'false',useFixButton:'false',windowAutoResize:'false',verticalArrangeNum:'2',windowMaxNum:'10',useCloseButton:'false',controlIconPosition:'left',nameLayerMove:'true',toolbarPosition:'bottom',windowMaximizeAll:'false',stopMinimizeOnNameLayer:'true',id:'wdc_exam1',useStatusMsg:'false',hideTitleOnMaximize:'false',spaInitCount:'0',nameLayerRearrange:'false',stopToggleOnLast:'false',useNameContainer:'false',horizontalArrangeNum:'2',useCustomMsg:'false',useControlIconTitle:'false',tooltipDisplay:'true',tooltipGroupClass:'false',windowTooltipDisplay:'true',style:'position: relative;height: 300px;border: gray solid 1px;',frameMode:'pageFrame'},E:[{T:1,N:'w2:windowToolbar',E:[{T:1,N:'w2:controlIconLayer',E:[{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'}]},{T:1,N:'w2:nameLayer'},{T:1,N:'w2:selectedNameLayer'}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) nameLayerMove: false',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:windowContainer',A:{controlIconPosition:'left',fixArrangeFullScreen:'false',hideTitleOnMaximize:'false',horizontalArrangeNum:'2',id:'wdc_exam2',nameLayerRearrange:'false',sequentialArrangeColNum:'2',sequentialArrangeRowNum:'2',spaInitCount:'0',stopToggleOnLast:'false',style:'position: relative;height: 300px;border: gray solid 1px;',toolbarPosition:'bottom',tooltipDisplay:'true',tooltipGroupClass:'false',useCloseButton:'false',useControlIconTitle:'false',useCustomMsg:'false',useFixButton:'false',useNameContainer:'false',useStatusMsg:'false',verticalArrangeNum:'2',windowAutoResize:'false',windowMaxNum:'10',windowMaximizeAll:'false',windowTooltipDisplay:'true',stopMinimizeOnNameLayer:'true',frameMode:'pageFrame',nameLayerMove:'false'},E:[{T:1,N:'w2:windowToolbar',E:[{T:1,N:'w2:controlIconLayer',E:[{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'}]},{T:1,N:'w2:nameLayer'},{T:1,N:'w2:selectedNameLayer'}]}]}]}]}]}]}]}]}]})

@@ -1,0 +1,33 @@
+/*amd /page/P00231.xml 6314 429d71b41ef74ff57d90c6cfd4d2fe5983ab202d56d64073b6bab63ebbdc8f29 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{id:'dlt_exam',saveRemovedData:'true','ev:ondataload':'scwin.dlt_exam_ondataload'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'user_pk',name:'USER PK',dataType:'text'}},{T:1,N:'w2:column',A:{id:'user_name',name:'NAME',dataType:'text'}},{T:1,N:'w2:column',A:{id:'group_a',name:'GROUP A',dataType:'text'}},{T:1,N:'w2:column',A:{id:'group_b',name:'GROUP B',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'user_name',E:[{T:4,cdata:'USER 1'}]},{T:1,N:'user_pk',E:[{T:4,cdata:'10000001'}]},{T:1,N:'group_a',E:[{T:4,cdata:'GROUP A01'}]},{T:1,N:'group_b',E:[{T:4,cdata:'GROUP B01'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'user_name',E:[{T:4,cdata:'USER 2'}]},{T:1,N:'user_pk',E:[{T:4,cdata:'10000002'}]},{T:1,N:'group_a',E:[{T:4,cdata:'GROUP A01'}]},{T:1,N:'group_b',E:[{T:4,cdata:'GROUP B01'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'user_name',E:[{T:4,cdata:'USER 3'}]},{T:1,N:'user_pk',E:[{T:4,cdata:'10000003'}]},{T:1,N:'group_a',E:[{T:4,cdata:'GROUP A01'}]},{T:1,N:'group_b',E:[{T:4,cdata:'GROUP B01'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'user_name',E:[{T:4,cdata:'USER 4'}]},{T:1,N:'user_pk',E:[{T:4,cdata:'10000004'}]},{T:1,N:'group_a',E:[{T:4,cdata:'GROUP A01'}]},{T:1,N:'group_b',E:[{T:4,cdata:'GROUP B02'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'user_name',E:[{T:4,cdata:'USER 5'}]},{T:1,N:'user_pk',E:[{T:4,cdata:'10000005'}]},{T:1,N:'group_a',E:[{T:4,cdata:'GROUP A02'}]},{T:1,N:'group_b',E:[{T:4,cdata:'GROUP B01'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'user_name',E:[{T:4,cdata:'USER 6'}]},{T:1,N:'user_pk',E:[{T:4,cdata:'10000006'}]},{T:1,N:'group_a',E:[{T:4,cdata:'GROUP A02'}]},{T:1,N:'group_b',E:[{T:4,cdata:'GROUP B02'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'user_name',E:[{T:4,cdata:'USER 7'}]},{T:1,N:'user_pk',E:[{T:4,cdata:'10000007'}]},{T:1,N:'group_a',E:[{T:4,cdata:'GROUP A02'}]},{T:1,N:'group_b',E:[{T:4,cdata:'GROUP B02'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00231_TYPE1.xlsx"
+  };
+  grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 병합된 상태 적용] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00231_TYPE2.xlsx",
+    //엑셀의 파일명
+    colMerge: "true",
+    //colMerge된 컬럼을 병합 출력
+    colMergeValue: "true" //Excel에서 병합을 취소할 경우 셀에 데이터를 채움
+  };
+  //colMerge : [default: false, true] colMerge된 컬럼을 Merge해서 출력할 지 여부
+  //colMergeValue : [default: false, true] colMerge된 컬럼을 Excel에서 병합을 취소할 경우 모든 셀에 데이터를 채우는 기능. (true : 병합 해제된 모든 셀에 데이터를 채움, false :  첫 행이나 첫 열에만 데이터가 표시)
+
+  //GridView "grd_exam1"의 엑셀 다운로드 실행
+  grd_exam1.advancedExcelDownload(jsnOptions);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 \'advancedExcelDownload\' 메소드의 첫 번째 인자인 JSON 객체의 \'colMerge\'와 \'colMergeValue\'를 사용하여 셀이 병합된 상태로 엑셀 파일이 다운로드되도록 설정한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{id:'',style:'',class:'example_div_tb_style_wrap'},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'엑셀 다운로드 - 기본'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'엑셀 다운로드 - 병합된 상태 적용'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{oddEvenColorDisplay:'false',dataList:'data:dlt_exam',style:'height: 100px;',autoFit:'allColumn',id:'grd_exam1',visibleRowNum:'all',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'280'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',style:'',id:'column4',value:'USER PK',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'NAME',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',style:'',id:'column2',value:'GROUP A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',style:'',id:'column1',value:'GROUP B',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',style:'',id:'user_pk',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'user_name',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',style:'',id:'group_a',value:'',displayMode:'label',colMerge:'true'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',style:'',id:'group_b',value:'',displayMode:'label',colMerge:'true'}}]}]}]}]}]}]}]}]}]})

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    alert("onpageload: (1) main");
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 20px;">
+    	<w2:textbox style="background-color: coral;font-size:20px;text-align:left;margin-bottom: 10px;padding-left: 20px;" id="textbox1" label="main.xml">
+    	</w2:textbox>
+    	<w2:pageFrame style="height: 200px;margin-bottom: 10px;border: green 3px solid;" id="pageFrame1" src="AB.xml"></w2:pageFrame>
+    	<w2:pageFrame style="height: 150px;border: orange 3px solid;" id="pageFrame2" src="C.xml"></w2:pageFrame>
+    </xf:group></body>
+</html>

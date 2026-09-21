@@ -1,0 +1,49 @@
+/*amd /page/P00453.xml 5013 023dbd903612ecc3ecc5f0d9f7d7508977c1eb87199d868e0b2090d93d15aef9 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam_code',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'label',dataType:'text'}},{T:1,N:'w2:column',A:{id:'code',name:'code',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'01'}]},{T:1,N:'label',E:[{T:4,cdata:'Orange'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'02'}]},{T:1,N:'label',E:[{T:4,cdata:'Lime'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'03'}]},{T:1,N:'label',E:[{T:4,cdata:'Cherry'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'04'}]},{T:1,N:'label',E:[{T:4,cdata:'Avocado'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'05'}]},{T:1,N:'label',E:[{T:4,cdata:'Melon'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+// 단건 선택하기 버튼 클릭
+scwin.btn_ex1_onclick = function (e) {
+  // All Option 체크한 상태 - 전체 선택이 index : 0
+  ccb_exam1.setSelectedInfo([{
+    index: 0,
+    checked: true
+  }]);
+};
+
+// 단건 해지하기 버튼 클릭
+scwin.btn_ex2_onclick = function (e) {
+  // All Option 체크한 상태 - 전체 선택이 index : 0
+  ccb_exam1.setSelectedInfo([{
+    index: 0,
+    checked: false
+  }]);
+};
+
+// 다건 선택하기 버튼 클릭
+scwin.btn_ex3_onclick = function (e) {
+  ccb_exam2.setSelectedInfo([{
+    index: 0,
+    checked: true
+  }, {
+    index: 2,
+    checked: true
+  }, {
+    index: 3,
+    checked: true
+  }]);
+};
+
+// 다건 해지하기 버튼 클릭
+scwin.btn_ex4_onclick = function (e) {
+  ccb_exam2.setSelectedInfo([{
+    index: 0,
+    checked: false
+  }, {
+    index: 2,
+    checked: false
+  }, {
+    index: 3,
+    checked: false
+  }]);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'CheckCombobox의 단건, 다건 항목을 메소드로 선택 및 해지하는 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'단건 선택 및 해지 - 스크립트',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:'',class:'mb10'},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'단건 선택하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec',id:'btn_ex2',style:'',type:'button','ev:onclick':'scwin.btn_ex2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'단건 해지하기'}]}]}]},{T:1,N:'xf:checkcombobox',A:{allOption:'true',appearance:'minimal',chooseOption:'',direction:'auto',disabled:'false',displayAllOptionLabel:'false',displayMode:'label',id:'ccb_exam1',ref:'',style:'width: 150px;min-height:24px;',submenuSize:'auto'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'xf:label',A:{ref:'label'}},{T:1,N:'xf:value',A:{ref:'code'}}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'다건 선택 및 해지 - 스크립트',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb10',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec',id:'btn_ex3',style:'',type:'button','ev:onclick':'scwin.btn_ex3_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'다건 선택하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec','ev:onclick':'scwin.btn_ex4_onclick',id:'btn_ex4',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'다건 해지하기'}]}]}]},{T:1,N:'xf:checkcombobox',A:{allOption:'',appearance:'minimal',chooseOption:'',direction:'auto',disabled:'false',displayAllOptionLabel:'false',displayMode:'label',id:'ccb_exam2',ref:'',style:'width: 150px;min-height:24px;',submenuSize:'auto',separator:','},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'xf:label',A:{ref:'label'}},{T:1,N:'xf:value',A:{ref:'code'}}]}]}]}]}]}]}]}]}]}]})

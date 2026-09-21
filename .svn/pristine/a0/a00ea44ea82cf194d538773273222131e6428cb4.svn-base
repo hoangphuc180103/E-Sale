@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+		
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Enter 키를 통한 자동 포커스 이동" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. AutoComplete 컴포넌트에서 화살표 버튼을 클릭한 후 목록에서 항목을 선택. &lt;br/&gt;2. Enter 키 누르기. &lt;br/&gt;3. 포커스가 id="input2" 컴포넌트로 이동하는 것을 확인.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;nextTabByEnter"true" nextTabID="input2"' escape="false">
+    	</w2:textbox><w2:autoComplete submenuSize="auto" chooseOptionLabel="Select a city." caseSensitive="false" chooseOption="" useKeywordHighlight="true" allOption="" nextTabByEnter="true" searchTarget="label" search="contain" ref="" nextTabID="input2" editType="select" style="width: 50%;margin-bottom: 10px;display: block" id="autoComplete1">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Hanoi]]></w2:label>
+    				<w2:value><![CDATA[001]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Danang]]></w2:label>
+    				<w2:value><![CDATA[002]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Taipei]]></w2:label>
+    				<w2:value><![CDATA[003]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Bangkok]]></w2:label>
+    				<w2:value><![CDATA[004]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Hawaii]]></w2:label>
+    				<w2:value><![CDATA[005]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete><xf:input adjustMaxLength="false" style="display: block;width: 50%;margin-bottom: 10px;" id="input1" placeholder='id="input1"'>
+    	</xf:input>
+    	<xf:input adjustMaxLength="false" style="display: block;width: 50%;" id="input2" placeholder='id="input2"'>
+    	</xf:input></xf:group></body>
+</html>

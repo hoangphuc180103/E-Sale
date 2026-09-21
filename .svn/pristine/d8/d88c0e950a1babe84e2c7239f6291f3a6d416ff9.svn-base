@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+scwin.onpageload = function () {
+    text1.hide();
+    text2.hide();
+    trigger1.hide();
+
+    var tmpSrc1 = scwin.getfolderPath() + "/11_wframe_01.xml";
+    var tmpSrc2 = scwin.getfolderPath() + "/02_openPopUp_tab.xml";
+
+    tabControl1.addTab(scwin.count,
+        {
+            label: "wframe",
+            title: "wframe",
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc1,
+            "frameMode": "wframe"
+        }
+    );
+
+    scwin.count++;
+
+    tabControl1.addTab(scwin.count + 1,
+        {
+            label: "wframePreload",
+            title: "wframePreload",
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc2,
+            "frameMode": "wframePreload"
+        }
+    );
+    tabControl1.setSelectedTabIndex(scwin.count);
+
+    scwin.count++;
+
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="タブ内部でフレームベースのモーダルポップアップを生成" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='（初めて目 frameMode="wframe" タブ）&lt;br/&gt;1-1. openPopup() メソッドの frameModal オプション選択。 ("frame", "parent", "top", TabControl ID)&lt;br/&gt;1-2. タブ &amp;nbsp;内部 $p.openPopup() ボタンクリック。&lt;br/&gt;1-3. オプション設定にフォローポップアップアクション範囲確認。&lt;br/&gt; &amp;nbsp; "frame" : 該当フレーム内部にモーダルポップアップで表示。&lt;br/&gt; &amp;nbsp; "parent" : 親フレーム内部にモーダルポップアップで表示。&lt;br/&gt; &amp;nbsp; "top" : 全体画面上モーダルポップアップで表示。&lt;br/&gt; &amp;nbsp; TabControl ID : TabControl 内部にモーダルポップアップで表示。 (ああ例のケース $p.getFrame().getParentFrame().getParentFrame().idロー TabControl IDを求める。)&lt;br/&gt;&lt;br/&gt;（二つ目 frameMode="wframePreload" タブ）&lt;br/&gt;2-1. 各ボタンクリックして PageFrame, WFrame, IFrame タイプポップアップ作成。 &lt;br/&gt;2-2. options.frameModal オプションでフォロー最上段("top") または自分属するフレーム内部("frame")にポップアップ表示されるもの確認。 &lt;br/&gt;（詳細スクリプトは Script タブから確認。）' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;" id="textbox4" label='プロパティの設定&lt;br/&gt;frameMode="wframe" "wframePreload" (tabControl.content)&lt;br/&gt;$p.openPopup(options) - options.modal : "true" &amp; options.frameModal; 「フレーム」（ポップアップウィンドウ）' escape="false">
+    	</w2:textbox><w2:tabControl frameModal="true" confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" useMoveNextTabFocus="false" closable="true" useConfirmMessage="false" alwaysDraw="false" userData3="" style="border: gray solid 1px;height: 500px;margin-bottom: 10px;" id="tabControl1" processMsgFrame="true">
+    	</w2:tabControl><w2:textbox style="width: 150px;height: 23px;" id="text1" label="Main A"></w2:textbox><w2:textbox style="width: 150px;height: 23px;" id="text2" label="Main B"></w2:textbox><xf:trigger style="width: 80px;height: 23px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

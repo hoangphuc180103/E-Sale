@@ -1,0 +1,123 @@
+/* 예제 가이드 문서에서 사용 */
+
+/** start websquare example **/
+/* scrollbar */
+html::-webkit-scrollbar{ width:6px; height: 7px; background:#ECECEC; border-radius: 10px}
+html::-webkit-scrollbar-thumb { background:#a0a6ab; border-radius:10px}
+
+body {
+  counter-reset: ordered 0;
+  margin: 0px 8px;
+}
+
+.example_desc {
+	padding-bottom: 30px;
+}
+img.example_desc{width:100%}
+
+.example_desc .h_title {
+	border-bottom: 1px solid #cfcfcf;
+	margin-bottom: 10px !important;
+	padding-top: 0px !important;
+    padding-bottom: 10px !important;
+    display: none;
+}
+
+.example_desc span.heading3_n,
+.example_desc span.heading4_n,
+.example_desc span.heading5_n {
+	display: none !important;
+}
+
+/* 예제 사이트 링크 hide */
+.r_example_link_p {
+	display: none;
+} 
+
+/* 최상단 장명*/
+h1.chapter_title{
+	display: none;
+}
+
+h1.chapter_title + * {
+	/* margin-top: 34px !important; */ /* 목차로 인해 문자열 가림 현상 처리. 23.09 목차 임시 제거로 여백 제거*/
+	margin-top: 16px !important;
+}
+
+#ws_doc_context,
+.doc_context {
+    position: fixed;
+    top:5px; /* 첫 로딩 시 글자를 가리지 않게 하기 위한 위치*/
+    right: 24px;
+    padding: 2px 10px 4px 10px;
+    background-color: #fff;  
+    border-radius: 5px;   
+}
+
+#ws_doc_context summary,
+#ws_doc_context dt {
+	font-size: 13px;
+	color: #505c71;
+	font-weight: 900;
+	padding-top:2px;
+	letter-spacing: 4px;
+}
+
+#ws_doc_context summary {
+	cursor: pointer;
+}
+
+#ws_doc_context details > summary:after{
+	content: '(펼치기)';
+	font-size: 11px;
+	letter-spacing: 1px;
+}
+
+#ws_doc_context details[open] > summary:after{
+	content: '(접기)';
+	font-size: 11px;
+	letter-spacing: 1px;
+}
+
+
+#ws_doc_context summary::marker {
+	padding-right: 12px;
+}
+
+#ws_doc_context ul {
+	margin-top: 6px;
+}
+
+#ws_doc_context .doc_title {
+	font-size: 11px;
+    color: #5E6C84;
+    display: block;
+    font-weight: 400;
+    line-height: 2em;
+}
+
+#ws_doc_context .doc_title a{
+	text-decoration: none;
+	color: #505c71;
+	letter-spacing: -1px;
+	display: block;
+	line-height: 2em;
+	border-left: 1px solid #eee;
+	padding-left:10px;
+}
+#ws_doc_context .doc_title a:hover {font-weight:600;border-left: 1px solid #368CB2;color:#368CB2}
+
+#ws_doc_context .doc_title .heading1_n,
+#ws_doc_context .doc_title .heading2_n {
+	margin-right: 1px;
+	font-weight: bold;
+}
+.chapter_content {
+  counter-reset: num;
+}
+.chapter_content ol.ordered_list > li > p:before{
+  counter-increment: num;
+  content: counter(num) ". ";
+  font-weight: bold;
+  margin-left:0;
+}

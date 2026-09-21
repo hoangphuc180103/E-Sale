@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="" meta_screenName="guide_sample">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+        			<w2:columnInfo>
+        				<w2:column id="ID" name="ID" dataType="text"></w2:column>
+        				<w2:column id="Age" name="Age" dataType="text"></w2:column>
+        				<w2:column id="Region" name="Region" dataType="text"></w2:column>
+        				<w2:column id="Hobby" name="Hobby" dataType="text"></w2:column>
+        				<w2:column id="Status" name="Status" dataType="text"></w2:column>
+        				<w2:column id="Income" name="Income" dataType="text"></w2:column>
+        				<w2:column id="Frequency" name="Frequency" dataType="text"></w2:column>
+        				<w2:column id="Expense" name="Expense" dataType="text"></w2:column>
+        				<w2:column id="Date" name="Date" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/data.json';
+    $p.executeSubmission("submission1");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.input1_onviewchange = function (info) {
+    var count = dataList1.getRowCount();
+    var input = input1.getValue();
+    var i = 0;
+    while (i <= count) {
+        var id = dataList1.getCellData(i, "ID");
+        var city = dataList1.getCellData(i, "Region");
+        if (id == input) {
+            alert("The user " + id + " is from " + city + ".");
+            break;
+        }
+        i++;
+    }
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox2" label="셀 데이터 반환" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox4"
+    		label='1. 하단의 InputBox에 ID를 입력하고 Enter 키를 누름. (예: "10001")&lt;br/&gt;2. getCellData() 함수가 실행되어 입력한 ID에 해당하는 Region 값을 반환되는 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:input ev:onviewchange="scwin.input1_onviewchange" adjustMaxLength="false" style="margin-bottom: 10px;font-size: 20px;"
+    		id="input1" placeholder="ID를 입력하고 엔터를 누르세요. Input ID and press Enter.">
+    	</xf:input>
+    	<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" visibleRowNumFix="true" checkAllType="false"
+    		dataList="data:dataList1" style="border: solid 1px gray; margin-bottom: 10px;" scrollByColumn="false" id="gridView1" visibleRowNum="10" autoFit="allColumn"
+    		defaultCellHeight="20">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="height:20px" id="column9" value="ID" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column7" value="Region" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column6" value="Hobby" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column4" value="Income" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Frequency" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="height:20px" id="ID" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Region" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Hobby" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Income" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Frequency" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.input1_onviewchange = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var count = dataList1.getRowCount();&lt;br/&gt; &amp;nbsp; &amp;nbsp;var input = input1.getValue();&lt;br/&gt; &amp;nbsp; &amp;nbsp;var i = 0;&lt;br/&gt; &amp;nbsp; &amp;nbsp;while (i &lt;= count) {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;var id = dataList1.getCellData(i, "ID");&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;var city = dataList1.getCellData(i, "Region");&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;if (id == input) {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;alert("The user " + id + " is from " + city + ".");&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;break;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;i++;&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt;};&lt;br/&gt;'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

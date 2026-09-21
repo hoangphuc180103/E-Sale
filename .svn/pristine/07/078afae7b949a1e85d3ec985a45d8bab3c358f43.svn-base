@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 열 고정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230127" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+						<w2:column dataType="text" name="C" id="col_c"></w2:column>
+						<w2:column dataType="text" name="D" id="col_d"></w2:column>
+						<w2:column dataType="text" name="E" id="col_e"></w2:column>
+						<w2:column dataType="text" name="F" id="col_f"></w2:column>
+						<w2:column dataType="text" name="G" id="col_g"></w2:column>
+						<w2:column dataType="text" name="H" id="col_h"></w2:column>
+						<w2:column dataType="text" name="I" id="col_i"></w2:column>
+						<w2:column dataType="text" name="J" id="col_j"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+							<col_d><![CDATA[D1]]></col_d>
+							<col_e><![CDATA[E1]]></col_e>
+							<col_f><![CDATA[F1]]></col_f>
+							<col_g><![CDATA[G1]]></col_g>
+							<col_h><![CDATA[H1]]></col_h>
+							<col_i><![CDATA[I1]]></col_i>
+							<col_j><![CDATA[J1]]></col_j>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+							<col_d><![CDATA[D2]]></col_d>
+							<col_e><![CDATA[E2]]></col_e>
+							<col_f><![CDATA[F2]]></col_f>
+							<col_g><![CDATA[G2]]></col_g>
+							<col_h><![CDATA[H2]]></col_h>
+							<col_i><![CDATA[I2]]></col_i>
+							<col_j><![CDATA[J2]]></col_j>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+							<col_d><![CDATA[D3]]></col_d>
+							<col_e><![CDATA[E3]]></col_e>
+							<col_f><![CDATA[F3]]></col_f>
+							<col_g><![CDATA[G3]]></col_g>
+							<col_h><![CDATA[H3]]></col_h>
+							<col_i><![CDATA[I3]]></col_i>
+							<col_j><![CDATA[J3]]></col_j>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A4]]></col_a>
+							<col_b><![CDATA[B4]]></col_b>
+							<col_c><![CDATA[C4]]></col_c>
+							<col_d><![CDATA[D4]]></col_d>
+							<col_e><![CDATA[E4]]></col_e>
+							<col_f><![CDATA[F4]]></col_f>
+							<col_g><![CDATA[G4]]></col_g>
+							<col_h><![CDATA[H4]]></col_h>
+							<col_i><![CDATA[I4]]></col_i>
+							<col_j><![CDATA[J4]]></col_j>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [좌측 2번째 열까지 고정하기] 클릭 시
+ */
+scwin.btn_ex1_1_onclick = function (e) {
+    //GridView 'grd_exam4'의 좌측에서 두번째 열까지 고정하기
+    grd_exam4.setFixedColumn(2);
+};
+
+/**
+ * 버튼 [우측 1번째 열까지 고정하기] 클릭 시
+ */
+scwin.btn_ex1_2_onclick = function (e) {
+    //GridView 'grd_exam4'의 우측에서 첫번째 열까지 고정하기
+    grd_exam4.setFixedRightColumn(1);
+};
+
+/**
+ * 버튼 [열 고정 모두 해제하기] 클릭 시
+ */
+scwin.btn_ex1_3_onclick = function (e) {
+    //GridView 'grd_exam4'의 열 고정 해제
+    grd_exam4.setFixedColumn(0);
+    grd_exam4.setFixedRightColumn(0);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='GridView의 속성과 메소드를 사용하여, 열을 고정하는 예제입니다.' style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="좌측 열 고정 설정하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView fixedColumn="1" dataList="data:dlt_exam" style="height: 100px;" scrollByColumn="true" id=""
+								visibleRowNum="all" autoFit="none" class="gvw" defaultCellHeight="37">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column10" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column9" value="B" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column8" value="C" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column7" value="D" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column6" value="E" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column5" value="F" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column4" value="G" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column3" value="H" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column2" value="I" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="J" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_d" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_e" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_f" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_g" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_h" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_i" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_j" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="우측 열 고정 설정하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView dataList="data:dlt_exam" style="height: 100px;" scrollByColumn="true" autoFit="none" id=""
+								visibleRowNum="all" class="gvw" defaultCellHeight="37" fixedRightColumn="1">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column10" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column9" value="B" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column8" value="C" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column7" value="D" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column6" value="E" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column5" value="F" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column4" value="G" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column3" value="H" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column2" value="I" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="J" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_d" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_e" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_f" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_g" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_h" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_i" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_j" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="좌측과 우측 열 고정 설정하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView fixedColumn="1" dataList="data:dlt_exam" style="height: 100px;" scrollByColumn="true" autoFit="none" id=""
+								visibleRowNum="all" class="gvw" defaultCellHeight="37" fixedRightColumn="1">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column10" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column9" value="B" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column8" value="C" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column7" value="D" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column6" value="E" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column5" value="F" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column4" value="G" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column3" value="H" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column2" value="I" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="J" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_d" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_e" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_f" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_g" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_h" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_i" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_j" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="메소드를 사용하여 열 고정 설정하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex1_1_onclick"
+								id="btn_ex1_1" style="" type="button">
+								<xf:label><![CDATA[좌측 2번째 열까지 고정하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex1_2_onclick"
+								id="btn_ex1_2" style="" type="button">
+								<xf:label><![CDATA[우측 1번째 열까지 고정하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex1_3_onclick"
+								id="btn_ex1_3" style="" type="button">
+								<xf:label><![CDATA[열 고정 모두 해제하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView dataList="data:dlt_exam" style="height: 100px;" scrollByColumn="false" autoFit="none" id="grd_exam4"
+								visibleRowNum="all" class="gvw" defaultCellHeight="37">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column10" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column9" value="B" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column8" value="C" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column7" value="D" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column6" value="E" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column5" value="F" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column4" value="G" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column3" value="H" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column2" value="I" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="J" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_d" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_e" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_f" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_g" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_h" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_i" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_j" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

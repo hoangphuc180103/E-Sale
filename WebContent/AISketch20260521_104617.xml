@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map" />
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group style="position:absolute;background-color:white;width:595px;height:842px;">
+			<w2:textbox escape="false" label="집합투자상품 판매 점검 체크리스트"
+				style="position:absolute;top:12px;left:141px;width:358px;height:20px;font-size:18px;font-family:&quot;ABCDEE+원신한 Bold&quot;;font-weight:bold" />
+			<w2:textbox escape="false" label="금융위원회에서’19.4월제정한「금융소비자보호 종합방안」에따라 판매직원이금융투자상품"
+				style="position:absolute;top:88px;left:62px;width:496px;height:12px;font-size:10px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="판매시필수적으로확인해야하는체크리스트입니다.아래 표시되는확인사항의누락이없도록"
+				style="position:absolute;top:102px;left:62px;width:499px;height:12px;font-size:10px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="소비자보호관련판매절차를필히점검하여주시기바랍니다."
+				style="position:absolute;top:117px;left:62px;width:331px;height:12px;font-size:10px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="□ 투자권유 희망하는 경우"
+				style="position:absolute;top:194px;left:48px;width:183px;height:14px;font-size:12px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="년"
+				style="position:absolute;top:726px;left:503px;width:29px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="월"
+				style="position:absolute;top:726px;left:529px;width:29px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="일"
+				style="position:absolute;top:726px;left:555px;width:29px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="집합투자상품판매점검체크리스트(2022.09. 개정)"
+				style="position:absolute;top:819px;left:34px;width:217px;height:9px;font-size:7px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="1 -1"
+				style="position:absolute;top:822px;left:291px;width:34px;height:8px;font-size:6px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<w2:textbox escape="false" label="3-105-0290"
+				style="position:absolute;top:819px;left:514px;width:72px;height:9px;font-size:7px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			<xf:group style="position:absolute;border:1px solid black;top:142px;left:46px;width:64px;height:22px;">
+				<w2:textbox escape="false" label="고객명"
+					style="position:absolute;top:5px;left:17px;width:53px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:142px;left:111px;width:105px;height:22px;" />
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:142px;left:216px;width:65px;height:22px;">
+				<w2:textbox escape="false" label="고객연령"
+					style="position:absolute;top:5px;left:10px;width:67px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:142px;left:281px;width:105px;height:22px;" />
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:142px;left:386px;width:65px;height:22px;">
+				<w2:textbox escape="false" label="투자자성향"
+					style="position:absolute;top:5px;left:5px;width:77px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:142px;left:451px;width:105px;height:22px;" />
+			<xf:group style="position:absolute;border:1px solid black;border-top:none;top:165px;left:46px;width:64px;height:22px;">
+				<w2:textbox escape="false" label="계좌번호"
+					style="position:absolute;top:5px;left:11px;width:64px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:165px;left:111px;width:275px;height:22px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:165px;left:386px;width:65px;height:22px;">
+				<w2:textbox escape="false" label="상품등급"
+					style="position:absolute;top:5px;left:12px;width:63px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:165px;left:451px;width:105px;height:22px;" />
+			<xf:group style="position:absolute;border:1px solid black;top:215px;left:46px;width:61px;height:20px;">
+				<w2:textbox escape="false" label="단계"
+					style="position:absolute;top:4px;left:19px;width:47px;height:12px;font-size:10px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:215px;left:108px;width:94px;height:20px;">
+				<w2:textbox escape="false" label="항목"
+					style="position:absolute;top:4px;left:35px;width:47px;height:12px;font-size:10px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:215px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="점검 내용"
+					style="position:absolute;top:4px;left:135px;width:73px;height:12px;font-size:10px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:215px;left:522px;width:34px;height:20px;">
+				<w2:textbox escape="false" label="확인"
+					style="position:absolute;top:4px;left:5px;width:47px;height:12px;font-size:10px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-top:none;top:236px;left:46px;width:61px;height:20px;">
+				<w2:textbox escape="false" label="투자자방문"
+					style="position:absolute;top:4px;left:5px;width:74px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:236px;left:108px;width:94px;height:20px;">
+				<w2:textbox escape="false" label="고령투자자보호①"
+					style="position:absolute;top:4px;left:5px;width:106px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:236px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="고령투자자전담창구(마음맞춤창구)안내"
+					style="position:absolute;top:6px;left:5px;width:196px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:236px;left:522px;width:34px;height:20px;" />
+			<xf:group style="position:absolute;border:1px solid black;border-top:none;top:256px;left:46px;width:61px;height:65px;">
+				<w2:textbox escape="false" label="투자자"
+					style="position:absolute;top:8px;left:16px;width:52px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="성향분석및"
+					style="position:absolute;top:20px;left:5px;width:74px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="투자권유"
+					style="position:absolute;top:33px;left:11px;width:62px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="단계"
+					style="position:absolute;top:46px;left:21px;width:42px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:256px;left:108px;width:94px;height:45px;">
+				<w2:textbox escape="false" label="투자자정보및"
+					style="position:absolute;top:4px;left:14px;width:87px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="투자성향파악"
+					style="position:absolute;top:17px;left:16px;width:84px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="(적합성원칙)"
+					style="position:absolute;top:29px;left:18px;width:80px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:256px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="투자자정보파악, 투자자성향분석및결과제공"
+					style="position:absolute;top:6px;left:5px;width:220px;height:9px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:256px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:276px;left:202px;width:320px;height:25px;">
+				<w2:textbox escape="false" label="투자자성향에맞는적합한펀드권유"
+					style="position:absolute;top:8px;left:5px;width:174px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:276px;left:522px;width:34px;height:25px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:301px;left:108px;width:94px;height:20px;">
+				<w2:textbox escape="false" label="고령투자자보호②"
+					style="position:absolute;top:4px;left:5px;width:106px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:301px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="조력자제도안내"
+					style="position:absolute;top:6px;left:5px;width:92px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:301px;left:522px;width:34px;height:20px;" />
+			<xf:group style="position:absolute;border:1px solid black;border-top:none;top:321px;left:46px;width:61px;height:238px;">
+				<w2:textbox escape="false" label="상품신규전"
+					style="position:absolute;top:88px;left:5px;width:74px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="투자자"
+					style="position:absolute;top:100px;left:16px;width:52px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="보호제도및"
+					style="position:absolute;top:113px;left:5px;width:74px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="상품설명"
+					style="position:absolute;top:125px;left:11px;width:62px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+				<w2:textbox escape="false" label="단계"
+					style="position:absolute;top:138px;left:21px;width:42px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:321px;left:108px;width:94px;height:59px;">
+				<w2:textbox escape="false" label="고령투자자보호③"
+					style="position:absolute;top:24px;left:5px;width:106px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:321px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="계약사실지정인알림서비스안내및신청서징구"
+					style="position:absolute;top:5px;left:5px;width:229px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:321px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:341px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="계약체결전&quot;시니어투자자투자상담체크리스트&quot; 작성및관리직직원사전확인"
+					style="position:absolute;top:5px;left:5px;width:329px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:341px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:361px;left:202px;width:320px;height:19px;">
+				<w2:textbox escape="false" label="투자권유유의상품가입추가확인서징구및조력자제도안내"
+					style="position:absolute;top:5px;left:5px;width:277px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:361px;left:522px;width:34px;height:19px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:380px;left:108px;width:94px;height:20px;">
+				<w2:textbox escape="false" label="녹취제도"
+					style="position:absolute;top:4px;left:27px;width:62px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:380px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="판매과정녹취안내및녹취실시"
+					style="position:absolute;top:6px;left:5px;width:157px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:380px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:400px;left:108px;width:94px;height:20px;">
+				<w2:textbox escape="false" label="적합성보고서"
+					style="position:absolute;top:4px;left:16px;width:84px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:400px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="추천사유및유의사항등기재한적합성보고서교부"
+					style="position:absolute;top:6px;left:5px;width:239px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:400px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:420px;left:108px;width:94px;height:119px;">
+				<w2:textbox escape="false" label="상품설명"
+					style="position:absolute;top:53px;left:27px;width:62px;height:11px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:420px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="투자설명서(사모펀드의 경우신탁계약서및핵심상품설명서)사용및교부"
+					style="position:absolute;top:5px;left:5px;width:331px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:420px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:440px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="투자목적, 투자대상자산및투자전략설명"
+					style="position:absolute;top:5px;left:5px;width:201px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:440px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:460px;left:202px;width:320px;height:19px;">
+				<w2:textbox escape="false" label="투자위험설명"
+					style="position:absolute;top:5px;left:5px;width:80px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:460px;left:522px;width:34px;height:19px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:479px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="기준평가가격결정일및손익구조에대한설명"
+					style="position:absolute;top:6px;left:5px;width:214px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:479px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:499px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="수수료(판매/환매) 및펀드보수설명"
+					style="position:absolute;top:6px;left:5px;width:171px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:499px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:519px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="환매(중도상환)관련사항설명"
+					style="position:absolute;top:5px;left:5px;width:149px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:519px;left:522px;width:34px;height:20px;" />
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:539px;left:108px;width:94px;height:20px;">
+				<w2:textbox escape="false" label="숙려제도"
+					style="position:absolute;top:4px;left:27px;width:62px;height:10px;font-size:9px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:539px;left:202px;width:320px;height:20px;">
+				<w2:textbox escape="false" label="청약시숙려기간을부여하는등숙려제도에대한안내"
+					style="position:absolute;top:5px;left:5px;width:246px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group
+				style="position:absolute;border:1px solid black;border-top:none;border-left:none;top:539px;left:522px;width:34px;height:20px;" />
+			<xf:group style="position:absolute;border:1px solid black;top:743px;left:336px;width:52px;height:30px;">
+				<w2:textbox escape="false" label="판매직원"
+					style="position:absolute;top:10px;left:8px;width:58px;height:10px;font-size:8px;font-family:&quot;ABCDEE+원신한 Light&quot;;" />
+			</xf:group>
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:743px;left:389px;width:119px;height:30px;" />
+			<xf:group style="position:absolute;border:1px solid black;border-left:none;top:743px;left:508px;width:59px;height:30px;" />
+		</xf:group>
+	</body>
+</html>

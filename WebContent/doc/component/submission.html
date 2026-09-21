@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>서브미션</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_f3822c9a733cce53" class="chapter_title">서브미션</h1>
+		<h1 id="r_b9176821a7e8d176" class="element heading1"
+			data-element-id="b9176821a7e8d176">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_6134c1de6fd9d0fa" class="element normal"
+			data-element-id="6134c1de6fd9d0fa">WebSquare AI의 DataCollection은
+			현재 화면에서 사용되는 데이터를 직관적으로 개체화하여 UI 컨포넌트와 연계하고, Submission은 서버와의 AJAX 기반
+			통신을 통해 화면 전환 없이 데이터만 전송하고 수신할 수 있는 모듈로 개발자가 용도에 맞게 유연하게 사용할 수 있습니다.</p>
+		<p id="r_5236d1b676db57a9" class="element normal"
+			data-element-id="5236d1b676db57a9">DataCollection은 단일 데이터(키/값
+			방식)부터 다중 데이터(리스트 형태)에 이르기까지 폭넓은 데이터를 손쉽게 관리할 수 있도록 설계되어 JSON, XML,
+			JSON Array 형식으로 추가/바꿈/삭제 할 수 있고, 다수의 컨포넌트와 다수의 클래스 화면에서 공유 할 수 있습니다.
+			또한, 각 데이터 객체는 고유의 ID가 필수적으로 부여되어, 여러 페이지 컴포넌트 간의 데이터 공유 및 복사가 용이합니다.</p>
+		<dl id="r_74410f1f1824bc76" class="element definition_list"
+			data-element-id="74410f1f1824bc76">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb1J5nm94k4wl0Mx4gb0b7U6">Submission
+						사용법 모음 1</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_2742292fc44cb13e" class="element heading1"
+			data-element-id="2742292fc44cb13e">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_8e9347a399334ffe" class="element normal"
+			data-element-id="8e9347a399334ffe">Submission은 다음과 같은 용도로 사용할 수
+			있습니다.</p>
+		<dl id="r_b86d46c0d01db7b2" class="element definition_list"
+			data-element-id="b86d46c0d01db7b2">
+			<dt>서버와의 원활한 데이터 통신</dt>
+			<dd>
+				<p>웹 브라우저에서 원격 서버에 존재하는 데이터를 추가, 삭제, 편집 등 관리할 수 있는 인터페이스를 제공합니다.
+				</p>
+				<p>서버로 전달할 데이터 규격을 정의(Reference)하거나, 서버로부터 받을 데이터 규격을
+					정의(Target)하는 데 사용됩니다.</p>
+				<p>웹 페이지 전환 없이 데이터만을 주고받아 효율적인 통신이 가능합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_1badd3b7e3362382" class="element heading1"
+			data-element-id="1badd3b7e3362382">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_9bc5cb57e3e7089a" class="element unordered_list"
+			data-element-id="9bc5cb57e3e7089a">
+			<li><p>Submission 생성</p>
+				<ul>
+					<li><p>
+							생성 및 실행 1 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/Submission/executeSubmission_p_DataList_GridView/executeSubmission_p_DataList_GridView.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							생성 및 실행 2 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/Submission/executeSubmission_p_DataList/executeSubmission_p_DataList.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							Submission 헤더 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/Submission/setRequestHeader_getSubmission_p/setRequestHeader_getSubmission_p.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							<code>ref</code>
+							와
+							<code>target</code>
+							속성 값에 따른 DataCollection 적용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00038.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							동적으로 생성, 삭제, 실행 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00030.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					전체 Submission 객체 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/Submission/getSubmissionList_p/getSubmissionList_p.xml">샘플</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_d0a353585facf129" class="element heading1"
+			data-element-id="d0a353585facf129">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_88680ae53c2cc941" class="element unordered_list"
+			data-element-id="88680ae53c2cc941">
+			<li><p>
+					<code>submit</code>
+					&amp;
+					<code>submitdone</code>
+					&amp;
+					<code>submiterror</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/Submission/executeSubmission_p/executeSubmission_p.xml">샘플</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

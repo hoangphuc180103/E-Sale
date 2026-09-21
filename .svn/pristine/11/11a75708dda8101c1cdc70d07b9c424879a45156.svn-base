@@ -1,0 +1,57 @@
+/*amd /guide_eng/TabControl/frameMode_tabControl_content_openPopup_frameModal_p/02_openPopUp_tab.xml 3415 717e9ab4ec269a2f114b7e22285d8956dd4ac50dc2ff82948c603c34fb572c7a */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  requires("uiplugin.popup");
+  var parent = $p.parent().text1.getValue();
+  var triggerName = parent;
+  trigger1.setLabel(triggerName + " - pageFrame - (options.frameModal : top)");
+  text1.hide();
+  var parent2 = $p.parent().text2.getValue();
+  var triggerName2 = parent2;
+  trigger2.setLabel(triggerName2 + " - wframe - (options.frameModal : frame)");
+  text2.hide();
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var options = {
+    id: "pageFramePopup - top",
+    type: "pageFramePopup",
+    // "iframePopup", "browserPopup"
+    width: "300px",
+    height: "200px",
+    popupName: "pageFramePopup - top",
+    modal: "true",
+    frameModal: "top"
+  };
+  $p.openPopup("", options);
+};
+scwin.trigger2_onclick = function (e) {
+  var options = {
+    id: "wframePopup - frame",
+    type: "wframePopup",
+    // "iframePopup", "browserPopup"
+    width: "300px",
+    height: "200px",
+    popupName: "wframePopup - frame",
+    resizable: true,
+    modal: "true",
+    frameModal: "frame"
+  };
+  $p.openPopup("", options);
+};
+scwin.trigger3_onclick = function (e) {
+  var options = {
+    id: "iframePopup - frame",
+    type: "iframePopup",
+    // "iframePopup", "browserPopup"
+    width: "300px",
+    height: "200px",
+    top: "200",
+    left: "200",
+    popupName: "iframePopup - frame",
+    resizable: true,
+    modal: "true",
+    frameModal: "frame"
+  };
+  $p.openPopup("", options);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;margin-top: 100px;margin-bottom: 100px;'},E:[{T:1,N:'w2:textbox',A:{style:'margin-bottom:10px;font-size:20px;font-weight:bolder;font-style:italic;text-align:left;',id:'textbox1',label:'02_openPopUp_tab.xml'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label'}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color: lightblue;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label'}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'height:42px;line-height:32px;padding:5px;background-color: lightpink;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Main C - iframe &nbsp;- (options.frameModal : frame)'}]}]},{T:1,N:'w2:textbox',A:{style:'width: 150px;height: 23px;',id:'text1',label:''}},{T:1,N:'w2:textbox',A:{style:'width: 150px;height: 23px;',id:'text2',label:''}}]}]}]}]})

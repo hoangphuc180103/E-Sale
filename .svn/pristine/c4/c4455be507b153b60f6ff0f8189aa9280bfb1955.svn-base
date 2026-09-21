@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] dataCollection 설명">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    
+};
+
+ 
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="학습목표" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group id="" class="detailsbox">
+    				<xf:group tagname="details" style="" id="" class="">
+    					<w2:textbox tagname="summary" style="" id="" label="DataList 활용" escape="false"></w2:textbox>
+    					<w2:textbox style="" id=""
+    						label="1.API를 활용하여 DataList를 다양하게 처리&lt;br/&gt;필터 : DataList ID.setColumnFilter();&lt;br/&gt;검색 : DataList ID.getMatchedIndex();&lt;br/&gt;&lt;br/&gt;2.반환 데이터의 유형은 5가지이며, 유형별 함수는 아래와 같습니다. &amp;nbsp; &lt;br/&gt; &amp;nbsp; 1) JSON 형식 : getMatchedJSON()&lt;br/&gt; &amp;nbsp; 2) 1차원 Array 형식 + 컬럼 정보 : getMatchedArray()&lt;br/&gt; &amp;nbsp; 3) 2차원 Array 형식 : getMatchedData()&lt;br/&gt; &amp;nbsp; 4) XML 형식 : getMatchedXML()"
+    						class="" escape="false">
+    					</w2:textbox>
+    				</xf:group>
+    				<xf:group tagname="details" style="" id="" class="">
+    					<w2:textbox tagname="summary" style="" id="" label="AliasDataList 활용" escape="false"></w2:textbox>
+    					<w2:textbox style="" id="" label="1.AliasDataList 만들어 보기&lt;br/&gt;2.AliasDataList 에 API 적용하여 sort 해보기&lt;br/&gt;"
+    						class="" escape="false">
+    					</w2:textbox>
+    				</xf:group></xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

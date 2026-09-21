@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 초기 탭 선택하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230808" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'tabMove' 속성을 사용해 마우스로 드래그-앤-드롭하여 탭 순서를 변경할 수 있도록 구현한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+
+				<xf:group class="example_div_tr_style" id="" style="">
+
+					<xf:group class="example_div_th_style" id="" style="">
+						<w2:span class="mr_def txt_blue" id="" label="tabMove : true" style=""></w2:span>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 5px;">
+						<xf:group id="" class="tbcbox">
+							<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist"
+								id="tabControl4" style="position: relative;height: 120px;" tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false"
+								useTabKeyOnly="true" tabMove="true">
+								<w2:tabs disabled="false" id="tabs10" label="TAB1" style="width:100px;"></w2:tabs>
+								<w2:tabs disabled="false" id="tabs11" label="TAB2" style="width:100px;"></w2:tabs>
+								<w2:tabs disabled="false" id="tabs12" label="TAB3" style="width:100px;"></w2:tabs>
+								<w2:tabs disabled="false" id="tabs13" label="TAB4" style="width:100px;"></w2:tabs>
+								<w2:content alwaysDraw="false" id="content10" style="min-height:30px;">
+									<w2:textbox id="" label="TAB1 CONTENT" style="font-size: 1.2em;color: steelblue;font-weight: bold;"></w2:textbox>
+								</w2:content>
+								<w2:content alwaysDraw="false" id="content11" style="min-height:30px;">
+									<w2:textbox id="" label="TAB2 CONTENT" style="font-size: 1.2em;color: salmon;font-weight: bold;"></w2:textbox>
+								</w2:content>
+								<w2:content alwaysDraw="false" id="content12" style="min-height:30px;">
+									<w2:textbox id="" label="TAB3 CONTENT" style="font-size: 1.2em;color: forestgreen;font-weight: bold;"></w2:textbox>
+								</w2:content>
+								<w2:content alwaysDraw="false" id="content13" style="min-height:30px;">
+									<w2:textbox id="" label="TAB4 CONTENT" style="font-size: 1.2em;color: gold;font-weight: bold;"></w2:textbox>
+								</w2:content>
+							</w2:tabControl>
+						</xf:group></xf:group>
+					</xf:group>
+
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="" style="">
+						<w2:span class="mr_def txt_blue" id="" label="tabMove : false (기본 값)" style=""></w2:span>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style=""><xf:group id="" style="">
+		<xf:group id="" class="tbcbox">
+			<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="tabControl3"
+				style="position: relative;height: 120px;" tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+				<w2:tabs disabled="false" id="tabs6" label="TAB1" style="width:100px;"></w2:tabs>
+				<w2:tabs disabled="false" id="tabs7" label="TAB2" style="width:100px;"></w2:tabs>
+				<w2:tabs disabled="false" id="tabs8" label="TAB3" style="width:100px;"></w2:tabs>
+				<w2:tabs disabled="false" style="width:100px;" id="tabs9" label="TAB4"></w2:tabs>
+				<w2:content alwaysDraw="false" id="content6" style="min-height:30px;">
+					<w2:textbox id="" label="TAB1 CONTENT" style="font-size: 1.2em;color: steelblue;font-weight: bold;"></w2:textbox>
+				</w2:content>
+				<w2:content alwaysDraw="false" id="content7" style="min-height:30px;">
+					<w2:textbox id="" label="TAB2 CONTENT" style="font-size: 1.2em;color: salmon;font-weight: bold;"></w2:textbox>
+				</w2:content>
+				<w2:content alwaysDraw="false" id="content8" style="min-height:30px;">
+					<w2:textbox id="" label="TAB3 CONTENT" style="font-size: 1.2em;color: forestgreen;font-weight: bold;"></w2:textbox>
+				</w2:content>
+				<w2:content alwaysDraw="false" style="min-height:30px;" id="content9">
+					<w2:textbox id="" label="TAB4 CONTENT" style="font-size: 1.2em;color: gold;font-weight: bold;"></w2:textbox>
+				</w2:content>
+			</w2:tabControl>
+		</xf:group></xf:group></xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+		
+		
+	</body>
+</html>

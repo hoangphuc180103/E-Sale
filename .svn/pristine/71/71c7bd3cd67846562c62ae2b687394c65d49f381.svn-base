@@ -1,0 +1,61 @@
+/*amd /guide/AutoComplete/appearance_AutoComplete.xml 4218 73393a130f502bbcc4387203b8a3b79a42e0f2bdeedcd3605f93a6d0665f13b4 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'C_Code',name:'name1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'City',name:'name2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Country',name:'name3'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Airport',name:'name4'}},{T:1,N:'w2:column',A:{dataType:'text',id:'A_Code',name:'name5'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "C_Code": "PAR",
+    "Airport": "ORLY",
+    "Country": "FRANCE",
+    "City": "PARIS",
+    "A_Code": "ORY"
+  }, {
+    "C_Code": "PDX",
+    "Airport": "PORTLAND INT’L",
+    "Country": "U.S.A.",
+    "City": "PORTLAND",
+    "A_Code": "PDX"
+  }, {
+    "C_Code": "PEK",
+    "Airport": "CAPITAL",
+    "Country": "CHINA",
+    "City": "BEIJING",
+    "A_Code": "PEK"
+  }, {
+    "C_Code": "PER",
+    "Airport": "PERTH",
+    "Country": "AUSTRALIA",
+    "City": "PERTH",
+    "A_Code": "PER"
+  }, {
+    "C_Code": "PHL",
+    "Airport": "PHILADELPHIA INT’L",
+    "Country": "U.S.A.",
+    "City": "PHILADELPHIA",
+    "A_Code": "PHL"
+  }, {
+    "C_Code": "PHX",
+    "Airport": "SKY HARBOR ",
+    "Country": "U.S.A.",
+    "City": "PHOENIX",
+    "A_Code": "PHX"
+  }, {
+    "C_Code": "PIT",
+    "Airport": "PITTSBURGH INT’L",
+    "Country": "U.S.A.",
+    "City": "PITTSBURGH",
+    "A_Code": "PIT"
+  }, {
+    "C_Code": "PNH",
+    "Airport": "POCHENTONG",
+    "Country": "CAMBODIA",
+    "City": "PHNOMPENH",
+    "A_Code": "PNH"
+  }, {
+    "C_Code": "PUS",
+    "Airport": "KIMHAE",
+    "Country": "KOREA",
+    "City": "PUSAN",
+    "A_Code": "PUS"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'선택 항목 목록의 화살표 표시/숨김',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'선택 항목 목록에 화살표가 표시되지 않는 것을 확인. ',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'속성 설정<br/>appearance="display"',escape:'false'}},{T:1,N:'w2:autoComplete',A:{submenuSize:'auto',search:'contain',ref:'',appearance:'display',delimiter:' / ',chooseOption:'',useKeywordHighlight:'false',style:'width: 50%;margin-bottom: 10px;',id:'autoComplete1',displayMode:'label delim value',useLocale:'false',caseSensitive:'false'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'w2:label',A:{ref:'City'}},{T:1,N:'w2:value',A:{ref:'C_Code'}}]}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'속성 설정<br/>appearance="none"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:autoComplete',A:{appearance:'none',chooseOption:'',delimiter:' / ',displayMode:'label delim value',id:'autoComplete2',ref:'',search:'contain',style:'width: 50%;',submenuSize:'auto',useKeywordHighlight:'false',useLocale:'false',caseSensitive:'false'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'w2:label',A:{ref:'City'}},{T:1,N:'w2:value',A:{ref:'C_Code'}}]}]}]}]}]}]}]})

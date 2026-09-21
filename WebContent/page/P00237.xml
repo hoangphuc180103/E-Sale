@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 엑셀 다운로드 시 스타일 설정하기 - 푸터(footer)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230310" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="stock" name="Stock"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<category><![CDATA[Hardware]]></category>
+							<stock><![CDATA[98291]]></stock>
+							<product><![CDATA[UltraNet]]></product>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Hardware]]></category>
+							<stock><![CDATA[528]]></stock>
+							<product><![CDATA[UltraServer]]></product>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Hardware]]></category>
+							<stock><![CDATA[73928]]></stock>
+							<product><![CDATA[StoreSafe]]></product>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Software]]></category>
+							<stock><![CDATA[6894]]></stock>
+							<product><![CDATA[IntelliAI]]></product>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Software]]></category>
+							<product><![CDATA[DeepThink]]></product>
+							<stock><![CDATA[4536219]]></stock>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00237_TYPE1.xlsx" //엑셀의 파일명
+    };
+
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 푸터의 스타일 설정] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00237_TYPE2.xlsx", //엑셀의 파일명
+        useStyle: "false", //필수 설정
+        footerColor: "blue", //푸터의 배경색 (Green)
+        footerFontName: "Arial", //푸터의 글자체
+        footerFontSize: "14", //푸터의 글자 크기
+        footerFontColor: "white", //푸터의 글자색 (White)
+        footerFontBold: "true" //푸터의 글자 굵게 설정
+    };
+
+    //usefooter : <String:N> [default: false, true] 다운로드시 footer을 출력 할지 여부.
+    //useStyle <String:N> [default: false] 다운로드시 css를 제외한, style을 excel에도 설정할 지 여부 (배경색,폰트)
+    //footerColor : <String:N> [default: #CCFFCC] Excel 파일에서 그리드의 footer의 배경색
+    //footerFontName : <String:N> [default: 없음] Excel 파일에서 그리드의 footer의 font name
+    //footerFontSize : <String:N> Excel 파일에서 그리드의 footer의 font size
+    //footerFontColor : <String:N> [default: 없음] Excel 파일에서 그리드의 footer의 font 색
+    //footerFontBold : <String:N> [default: 없음] Excel 파일에서 그리드의 footer의 Bold 설정 유무
+
+    //GridView "grd_exam1"의 엑셀 다운로드 실행
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox class="" escape="false" label="GridView의 'advancedExcelDownload' 메소드를 사용하여, 엑셀 다운로드 시 푸터 컬럼에 스타일을 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="mb_def_box nobottom">
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+						style="min-width: 30px; height: 26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 기본]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" localeRef=""
+						style="min-width:30px;height:26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 푸터의 스타일 설정]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group class="gvwbox" id="" style="max-width: 400px;">
+					<w2:gridView autoFit="allColumn" autoFitMinWidth="266" baseNode="" class="gvw" dataList="data:dlt_exam"
+						defaultCellHeight="37" focusMode="row" id="grd_exam1" readOnly="true" style="height:200px;" visibleRowNum="all">
+						<w2:header id="header5" style="">
+							<w2:row id="row35" style="">
+								<w2:column blockSelect="false" displayMode="label" hidden="false" id="column572" inputType="text" value="Category"
+									width="100">
+								</w2:column>
+								<w2:column blockSelect="false" displayMode="label" id="column575" inputType="text" value="Product" width="110">
+								</w2:column>
+								<w2:column id="column468" inputType="text" value="Stock" width="100"></w2:column>
+							</w2:row>
+						</w2:header>
+						<w2:gBody id="gBody5" style="">
+							<w2:row id="row37" style="">
+								<w2:column blockSelect="false" colMerge="true" displayMode="label" hidden="false" id="category" inputType="text"
+									width="100">
+								</w2:column>
+								<w2:column blockSelect="false" displayMode="label" id="product" inputType="text" textAlign="left" width="110">
+								</w2:column>
+								<w2:column dataType="number" displayFormat="#,###" id="stock" inputType="text" textAlign="right" width="100">
+								</w2:column>
+							</w2:row>
+						</w2:gBody>
+						<w2:footer id="footer1" style="">
+							<w2:row id="row41" style="">
+								<w2:column blockSelect="false" displayMode="label" id="column580" inputType="text" style="height:40px;" value="Total"
+									width="100">
+								</w2:column>
+								<w2:column expression="'Products: '+ count('product')" id="column597" inputType="expression" style="height:40px;"
+									textAlign="left" width="110">
+								</w2:column>
+								<w2:column dataType="number" displayFormat="#,###" expression="sum('stock')" id="column526" inputType="expression"
+									style="height:40px;" textAlign="right" width="100">
+								</w2:column>
+							</w2:row>
+						</w2:footer>
+					</w2:gridView>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

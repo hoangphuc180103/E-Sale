@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="col1" name="name1"></w2:column>
+						<w2:column dataType="text" id="col2" name="name2"></w2:column>
+						<w2:column dataType="text" id="col3" name="name3"></w2:column>
+						<w2:column dataType="text" id="col4" name="name4"></w2:column>
+						<w2:column dataType="text" id="col5" name="name5"></w2:column>
+						<w2:column dataType="text" id="col6" name="name6"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+scwin.onpageload = function () {
+    var data = [];
+    var row = 10;
+    var col = 6;
+    for (var i = 0; i < row; i++) {
+        for (var j = 0; j < col; j++) {
+            var t = Math.floor(i / 5);
+            data.push(t * 100 + j * (t + 1));
+        }
+    }
+    dataList1.setData(data);
+};
+
+scwin.onpageunload = function () {
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    var options = {
+        useSubTotal: true,
+        headerFontBold: true
+    };
+    gridView1.advancedExcelDownload(options);
+};
+
+scwin.trigger2_onclick = function (e) {
+    var options = {
+        useSubTotal: true,
+        bodyFontBold: true
+    };
+    gridView1.advancedExcelDownload(options);
+
+};
+
+scwin.trigger3_onclick = function (e) {
+    var options = {
+        useSubTotal: true,
+        subTotalFontBold: true
+    };
+    gridView1.advancedExcelDownload(options);
+
+};
+
+scwin.trigger4_onclick = function (e) {
+    var options = {
+        useSubTotal: true,
+        footerFontBold: true
+    };
+    gridView1.advancedExcelDownload(options);
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+	<xf:group id="" style="margin: 10px;">
+		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Display Specified Area in Excel File as Bold&lt;br/&gt;"
+			escape="false">
+		</w2:textbox>
+		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+			label="1. Click each button below.&lt;br/&gt;2. Open the downloaded Excel file.&lt;br/&gt;3. Confirm that the header, body, subtotal, and footer areas appear bold according to the options settings.&lt;br/&gt;(See the Script tab for detailed script.)"
+			escape="false">
+		</w2:textbox>
+		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+			id="trigger1" type="button">
+			<xf:label><![CDATA[advancedExcelDownload(options) - options.headerFontBold="true"]]></xf:label>
+		</xf:trigger>
+		<xf:trigger ev:onclick="scwin.trigger2_onclick"
+			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+			id="trigger2" type="button">
+			<xf:label><![CDATA[advancedExcelDownload(options) - options.bodyFontBold="true"]]></xf:label>
+		</xf:trigger>
+		<xf:trigger ev:onclick="scwin.trigger3_onclick"
+			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+			id="trigger3" type="button">
+			<xf:label><![CDATA[advancedExcelDownload(options) - options.subTotalFontBold="true"]]></xf:label>
+		</xf:trigger>
+		<xf:trigger ev:onclick="scwin.trigger4_onclick"
+			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+			id="trigger4" type="button">
+			<xf:label><![CDATA[advancedExcelDownload(options) - options.footerFontBold="true"]]></xf:label>
+		</xf:trigger>
+		<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" useShiftKey="true" scrollByColumn="false"
+			fixedColumnWithHidden="true" visibleRowNumFix="true" dataList="data:dataList1" ignoreCellClick="false" style="border: solid gray 1px;margin-bottom: 10px;"
+			id="gridView1" visibleRowNum="10" autoFit="allColumn" ignoreToggleOnDisabled="false">
+			<w2:header style="" id="header1">
+				<w2:row style="" id="row1">
+					<w2:column width="70" inputType="text" style="height:20px;" id="column7" value="name1" blockSelect="false"
+						displayMode="label">
+					</w2:column>
+					<w2:column width="70" inputType="text" style="height:20px;" id="column1" value="name2" blockSelect="false"
+						displayMode="label">
+					</w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="column22" value="name3" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="column18" value="name4" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="column14" value="name5" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px;" id="column3" value="name6" blockSelect="false"
+						displayMode="label">
+					</w2:column>
+				</w2:row>
+			</w2:header>
+			<w2:gBody style="" id="gBody1">
+				<w2:row style="" id="row2">
+					<w2:column width="70" inputType="text" style="height:20px" id="col1" blockSelect="false" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="col2" blockSelect="false" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="col5" value="" displayMode="label"></w2:column>
+					<w2:column width="70" inputType="text" style="height:20px" id="col6" blockSelect="false" displayMode="label"></w2:column>
+				</w2:row>
+			</w2:gBody>
+			<w2:subTotal targetColumnID="col1" style="" id="subTotal1">
+				<w2:row style="" id="row4">
+					<w2:column expression="sum('col1')" width="70" inputType="expression" style="height:20px" id="column13"
+						blockSelect="false" displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col2')" width="70" inputType="expression" style="height:20px" id="column12"
+						blockSelect="false" displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col3')" width="70" inputType="expression" style="height:20px" id="column24" value=""
+						displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col4')" width="70" inputType="expression" style="height:20px" id="column20" value=""
+						displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col5')" width="70" inputType="expression" style="height:20px" id="column16" value=""
+						displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col6')" width="70" inputType="expression" style="height:20px" id="column11"
+						blockSelect="false" displayMode="label">
+					</w2:column>
+				</w2:row>
+			</w2:subTotal>
+			<w2:footer style="" id="footer1">
+				<w2:row style="" id="row3">
+					<w2:column expression="sum('col1')" width="70" inputType="expression" style="height:20px" id="column10"
+						blockSelect="false" displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col2')" width="70" inputType="expression" style="height:20px" id="column9"
+						blockSelect="false" displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col3')" width="70" inputType="expression" style="height:20px" id="column25" value=""
+						displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col4')" width="70" inputType="expression" style="height:20px" id="column21" value=""
+						displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col5')" width="70" inputType="expression" style="height:20px" id="column17" value=""
+						displayMode="label">
+					</w2:column>
+					<w2:column expression="sum('col6')" width="70" inputType="expression" style="height:20px" id="column8"
+						blockSelect="false" displayMode="label">
+					</w2:column>
+				</w2:row>
+			</w2:footer>
+		</w2:gridView>
+		<w2:textbox escape="false" id="textbox4"
+			label="/// Sample Code (1)&lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;useSubTotal: true,&lt;br/&gt; &amp;nbsp; &amp;nbsp;headerFontBold: true&lt;br/&gt;};&lt;br/&gt;gridView1.advancedExcelDownload(options);&lt;br/&gt;&lt;br/&gt;/// Sample Code (2)&lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;useSubTotal: true,&lt;br/&gt; &amp;nbsp; &amp;nbsp;bodyFontBold: true&lt;br/&gt;};&lt;br/&gt;gridView1.advancedExcelDownload(options);&lt;br/&gt;&lt;br/&gt;/// Sample Code (3)&lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;useSubTotal: true,&lt;br/&gt; &amp;nbsp; &amp;nbsp;subTotalFontBold: true&lt;br/&gt;};&lt;br/&gt;gridView1.advancedExcelDownload(options);&lt;br/&gt;&lt;br/&gt;/// Sample Code (4)&lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;useSubTotal: true,&lt;br/&gt; &amp;nbsp; &amp;nbsp;footerFontBold: true&lt;br/&gt;};&lt;br/&gt;gridView1.advancedExcelDownload(options);"
+			style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+			tagname="">
+		</w2:textbox>
+	</xf:group></body>
+</html>

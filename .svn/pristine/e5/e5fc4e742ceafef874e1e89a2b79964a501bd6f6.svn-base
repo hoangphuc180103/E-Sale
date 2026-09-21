@@ -1,0 +1,61 @@
+/*amd /guide_jpn/AutoComplete/searchTargetItemColumns_AutoComplete.xml 6763 7029413dc79be3c8e81a810fa1d2b0335a5402c897f8ae8f1d7c429b3ab12824 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'C_Code',name:'C_Code'}},{T:1,N:'w2:column',A:{id:'Airport',name:'Airport',dataType:'text'}},{T:1,N:'w2:column',A:{dataType:'text',id:'City',name:'City'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Country',name:'Country'}},{T:1,N:'w2:column',A:{dataType:'text',id:'A_Code',name:'A_Code'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "C_Code": "PAR",
+    "Airport": "ORLY",
+    "Country": "FRANCE",
+    "City": "PARIS",
+    "A_Code": "ORY"
+  }, {
+    "C_Code": "PDX",
+    "Airport": "PORTLAND INT’L",
+    "Country": "U.S.A.",
+    "City": "PORTLAND",
+    "A_Code": "PDX"
+  }, {
+    "C_Code": "PEK",
+    "Airport": "CAPITAL",
+    "Country": "CHINA",
+    "City": "BEIJING",
+    "A_Code": "PEK"
+  }, {
+    "C_Code": "PER",
+    "Airport": "PERTH",
+    "Country": "AUSTRALIA",
+    "City": "PERTH",
+    "A_Code": "PER"
+  }, {
+    "C_Code": "PHL",
+    "Airport": "PHILADELPHIA INT’L",
+    "Country": "U.S.A.",
+    "City": "PHILADELPHIA",
+    "A_Code": "PHL"
+  }, {
+    "C_Code": "PHX",
+    "Airport": "SKY HARBOR ",
+    "Country": "U.S.A.",
+    "City": "PHOENIX",
+    "A_Code": "PHX"
+  }, {
+    "C_Code": "PIT",
+    "Airport": "PITTSBURGH INT’L",
+    "Country": "U.S.A.",
+    "City": "PITTSBURGH",
+    "A_Code": "PIT"
+  }, {
+    "C_Code": "PNH",
+    "Airport": "POCHENTONG",
+    "Country": "CAMBODIA",
+    "City": "PHNOMPENH",
+    "A_Code": "PNH"
+  }, {
+    "C_Code": "PUS",
+    "Airport": "KIMHAE",
+    "Country": "KOREA",
+    "City": "PUSAN",
+    "A_Code": "PUS"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'GridViewItemsetとバインディングで複数の列の検索をサポート',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 各 AutoCompleteの矢印アイコンクリック。 <br/>2. GridView 形のテーブルリスト形で表示されるもの確認。 <br/>3. キーワード入力。 <br/><br/>4-1. 初めて目 AutoCompleteのケース, すべて列から検索結果表示されるもの確認。 <br/>4-2. 二つ目 AutoCompleteのケース, Airport 列のみ検索結果表示されるもの確認。<br/>4-3. 二つ目 AutoCompleteのケース, Airport と Country 列のみ検索結果表示されるもの確認。',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'プロパティの設定<br/>searchTarget="itemColumns"<br/>searchTargetItemColumns=""',escape:'false'}},{T:1,N:'w2:autoComplete',A:{submenuSize:'auto',search:'contain',ref:'',chooseOption:'',editType:'select',useKeywordHighlight:'true',style:'width:500px; margin-bottom:10px; display:block;',id:'autoComplete1',allOption:'',displayMode:'label',useLocale:'false',caseSensitive:'true',searchTargetItemColumns:'',searchTarget:'itemColumns'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:gridViewItemset',A:{hideHeader:'',rowMouseOver:'',nodeset:'data:dataList1',width:'500',selectedRowColor:'',label:'Airport',visibleRowNum:'',autoFit:'',value:'A_Code',rowMouseOverColor:'',height:''},E:[{T:1,N:'w2:item',A:{ref:'Airport',hidden:'',header:'Airport',style:'',headerStyle:''}},{T:1,N:'w2:item',A:{ref:'City',hidden:'',header:'City',style:'',headerStyle:''}},{T:1,N:'w2:item',A:{ref:'Country',hidden:'',header:'Country',style:'',headerStyle:''}}]}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'プロパティの設定<br/>searchTarget="itemColumns"<br/>searchTargetItemColumns="Airport"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:autoComplete',A:{allOption:'',caseSensitive:'true',chooseOption:'',displayMode:'label',editType:'select',id:'autoComplete2',ref:'',search:'contain',searchTarget:'itemColumns',searchTargetItemColumns:'Airport',style:'width:500px; margin-bottom:10px; display:block;',submenuSize:'auto',useKeywordHighlight:'true',useLocale:'false'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:gridViewItemset',A:{hideHeader:'',rowMouseOver:'',nodeset:'data:dataList1',width:'500',selectedRowColor:'',label:'Airport',visibleRowNum:'',autoFit:'',value:'A_Code',rowMouseOverColor:'',height:''},E:[{T:1,N:'w2:item',A:{ref:'Airport',hidden:'',header:'Airport',style:'',headerStyle:''}},{T:1,N:'w2:item',A:{ref:'City',hidden:'',header:'City',style:'',headerStyle:''}},{T:1,N:'w2:item',A:{ref:'Country',hidden:'',header:'Country',style:'',headerStyle:''}}]}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox8',label:'プロパティの設定<br/>searchTarget="itemColumns"<br/>searchTargetItemColumns="Airport,Country"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:autoComplete',A:{allOption:'',caseSensitive:'true',chooseOption:'',displayMode:'label',editType:'select',id:'autoComplete6',ref:'',search:'contain',searchTarget:'itemColumns',searchTargetItemColumns:'Airport,Country',style:'width:500px; margin-bottom:10px; display:block;',submenuSize:'auto',useKeywordHighlight:'true',useLocale:'false'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:gridViewItemset',A:{autoFit:'',height:'',hideHeader:'',label:'Airport',nodeset:'data:dataList1',rowMouseOver:'',rowMouseOverColor:'',selectedRowColor:'',value:'A_Code',visibleRowNum:'',width:'500'},E:[{T:1,N:'w2:item',A:{header:'Airport',headerStyle:'',hidden:'',ref:'Airport',style:''}},{T:1,N:'w2:item',A:{header:'City',headerStyle:'',hidden:'',ref:'City',style:''}},{T:1,N:'w2:item',A:{header:'Country',headerStyle:'',hidden:'',ref:'Country',style:''}}]}]}]}]}]}]}]})

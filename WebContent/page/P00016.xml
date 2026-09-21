@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 트리">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="주석 수정\ntrv_ex02(오른쪽 treeview) 컴포넌트의 drop할 경우 =&gt;\ntrv_ex02(오른쪽 treeview) 컴포넌트의 label에 drop할 경우로 변경" meta_date="20231117" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_leftTree" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="depth" name="depth"></w2:column>
+						<w2:column dataType="text" id="label" name="label"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[메뉴1]]></label>
+							<value><![CDATA[menu1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[메뉴1-1]]></label>
+							<value><![CDATA[menu1-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[메뉴1-2]]></label>
+							<value><![CDATA[menu1-2]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[메뉴1-2-1]]></label>
+							<value><![CDATA[menu1-2-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[메뉴1-3]]></label>
+							<value><![CDATA[menu1-3]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[메뉴2]]></label>
+							<value><![CDATA[menu2]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[메뉴2-1]]></label>
+							<value><![CDATA[menu2-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[메뉴3]]></label>
+							<value><![CDATA[menu3]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[메뉴3-1]]></label>
+							<value><![CDATA[menu3-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[메뉴3-2]]></label>
+							<value><![CDATA[menu3-2]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_rightTree" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="depth" name="depth"></w2:column>
+						<w2:column dataType="text" id="label" name="label"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[즐겨찾기]]></label>
+							<value><![CDATA[menu0]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * trv_ex02(오른쪽 treeview) 컴포넌트의 label에 drop할 경우 ondrop 이벤트 발생 시
+ */
+scwin.trv_ex02_ondrop = function (dragNode, dropNode, dragControl, dropControl, e) {
+    //drag를 통해 가져온 컴포넌트의 ID
+    var srcCompId = dragControl.id;
+
+    //이벤트에서 넘어오는 dropNode와 dragNode를 사용하여 현재 컴포넌트에 노드 추가
+    //dropNode : drop 이벤트가 일어난 노드, dragNode : drag 되어 넘어온 노드
+    this.appendNode(dropNode, dragNode);
+
+    if (srcCompId === this.id) {
+        dragControl.removeNode(dragNode);
+    }
+
+    //drag되어 넘어 온 노드를 drag된 컴포넌트에서 삭제
+    //dragNode : drag 된 노드, dragControl : drag가 일어난 컴포넌트로 trv_ex01 이다.
+    //dragControl.removeNode( dragNode );
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="계층형 데이터를 출력하는 컴포넌트 예시입니다.&lt;br/&gt;대표적으로 Treeview가 해당됩니다." style=""></w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 마우스 사용이 가능한 환경에서 정상 동작합니다." style=""></w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="">
+			</xf:group>
+			<xf:group id="">
+				<xf:group style="width: 530px;" id="" class="tvwbox">
+					<w2:treeview checkAllChildNodes="true" showCheckbox="true" showTreeDepth="" dataType="listed" hierarchy="true" lineShow=""
+						style="float:left;width: 210px;height: 300px;border: 1px solid #d7dce1;padding: 10px;margin-right: 6px;" id="trv_ex01" class="tvw"
+						useDrag="true" toggleEvent="onclick">
+						<w2:itemset nodeset="data:dlt_leftTree">
+							<w2:label ref="label"></w2:label>
+							<w2:value ref="value"></w2:value>
+							<w2:depth ref="depth"></w2:depth>
+							<w2:folder ref=""></w2:folder>
+							<w2:checkbox ref=""></w2:checkbox>
+							<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+							<w2:image ref=""></w2:image>
+							<w2:iconImage ref=""></w2:iconImage>
+							<w2:selectedImage ref=""></w2:selectedImage>
+							<w2:expandedImage ref=""></w2:expandedImage>
+							<w2:leafImage ref=""></w2:leafImage>
+						</w2:itemset>
+					</w2:treeview>
+					<w2:treeview checkAllChildNodes="" showCheckbox="false" showTreeDepth="1" dynamicAppend="true" dataType="listed"
+						lineShow="" style="float:left;width: 210px;height: 300px;border: 1px solid #d7dce1;padding: 10px;" id="trv_ex02"
+						ev:ondrop="scwin.trv_ex02_ondrop" useDrag="true" class="tvw">
+						<w2:itemset nodeset="data:dlt_rightTree">
+							<w2:label ref="label"></w2:label>
+							<w2:value ref="value"></w2:value>
+							<w2:depth ref="depth"></w2:depth>
+							<w2:folder ref=""></w2:folder>
+							<w2:checkbox ref=""></w2:checkbox>
+							<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+							<w2:image ref=""></w2:image>
+							<w2:iconImage ref=""></w2:iconImage>
+							<w2:selectedImage ref=""></w2:selectedImage>
+							<w2:expandedImage ref=""></w2:expandedImage>
+							<w2:leafImage ref=""></w2:leafImage>
+						</w2:itemset>
+					</w2:treeview>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

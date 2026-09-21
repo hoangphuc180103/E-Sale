@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Treeview] 노드의 툴팁에 'w2group' class를 추가하지 않기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230921" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam1" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="depth" name="depth"></w2:column>
+						<w2:column dataType="text" id="label" name="label"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[[tooltipGroupClass="true"] 메뉴1]]></label>
+							<value><![CDATA[menu1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[[tooltipGroupClass="true"] 메뉴1-1]]></label>
+							<value><![CDATA[menu1-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[[tooltipGroupClass="true"] 메뉴2]]></label>
+							<value><![CDATA[menu2]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam2" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="depth" name="depth"></w2:column>
+						<w2:column dataType="text" id="label" name="label"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[[tooltipGroupClass="false"] 메뉴1]]></label>
+							<value><![CDATA[menu1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[[tooltipGroupClass="false"] 메뉴1-1]]></label>
+							<value><![CDATA[menu1-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[[tooltipGroupClass="false"] 메뉴2]]></label>
+							<value><![CDATA[menu2]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="Treeview의 'tooltipGroupClass' 속성을 사용하여 노드의 툴팁에 'w2group' class가 추가되지 않도록 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id=""
+					label="이 예제는 기능 비교를 위해 Treeview의 'tooltipClass' 속성을 설정하여 별도의 CSS Class가 적용된 상태입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id=""
+					label="마우스 사용이 가능한 환경에서 정상 동작합니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="노드 툴팁의 'class'에 'w2group' 추가하지 않기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="노드 툴팁의 CSS Class Selector : &lt;br/&gt;.w2treeview_tooltip.tooltipStyleClass" style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom">
+							<xf:group class="" id="" style="padding: 6px;border: 1px solid #CED4DA;box-sizing: border-box;">
+								<w2:treeview class="tvw" dataType="listed" id="trv_exam2" style="min-height: 50px;overflow: inherit;"
+									toggleEvent="none" tooltipDisplay="true" tooltipShowAlways="true" tooltipGroupClass="false" tooltipClass="P00387">
+									<w2:itemset nodeset="data:dlt_exam2">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="value"></w2:value>
+										<w2:depth ref="depth"></w2:depth>
+										<w2:folder ref=""></w2:folder>
+										<w2:checkbox ref=""></w2:checkbox>
+										<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+										<w2:image ref=""></w2:image>
+										<w2:iconImage ref=""></w2:iconImage>
+										<w2:selectedImage ref=""></w2:selectedImage>
+										<w2:expandedImage ref=""></w2:expandedImage>
+										<w2:leafImage ref=""></w2:leafImage>
+									</w2:itemset>
+								</w2:treeview>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 노드 툴팁의 'class'에 'w2group' 추가하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="노드 툴팁의 CSS Class Selector : &lt;br/&gt;.w2group.w2treeview_tooltip.tooltipStyleClass" style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom">
+							<xf:group class="" id="" style="padding: 6px;border: 1px solid #CED4DA;box-sizing: border-box;">
+								<w2:treeview class="tvw" dataType="listed" id="trv_exam1" style="min-height: 50px;overflow: inherit;"
+									toggleEvent="none" tooltipClass="P00387" tooltipDisplay="true" tooltipGroupClass="true" tooltipShowAlways="true">
+									<w2:itemset nodeset="data:dlt_exam1">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="value"></w2:value>
+										<w2:depth ref="depth"></w2:depth>
+										<w2:folder ref=""></w2:folder>
+										<w2:checkbox ref=""></w2:checkbox>
+										<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+										<w2:image ref=""></w2:image>
+										<w2:iconImage ref=""></w2:iconImage>
+										<w2:selectedImage ref=""></w2:selectedImage>
+										<w2:expandedImage ref=""></w2:expandedImage>
+										<w2:leafImage ref=""></w2:leafImage>
+									</w2:itemset>
+								</w2:treeview>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

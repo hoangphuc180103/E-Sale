@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[FusionChart] 차트 타입 예제 - FwPyramidChart_simple">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dlt_userInfo" saveRemovedData="true" ev:ondataload="scwin.dlt_userInfo_ondataload" ev:oncelldatachange="scwin.dlt_userInfo_oncelldatachange">
+            		<w2:columnInfo>
+            			<w2:column id="name" name="이름" dataType="text"></w2:column>
+            			<w2:column id="gender" name="성별" dataType="text"></w2:column>
+            			<w2:column id="birthDate" name="생년월일" dataType="text"></w2:column>
+            			<w2:column id="koreanAge" name="나이" dataType="text" importFormatter="scwin.koreanAgeFormatter"></w2:column>
+            			<w2:column id="age" name="만나이" dataType="text" importFormatter="scwin.ageFormatter"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    var json = [{
+            "name": "김길동",
+            "gender": "남",
+            "birthDate": "19980215",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "이수진",
+            "gender": "여",
+            "birthDate": "20010328",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "박민준",
+            "gender": "남",
+            "birthDate": "19950412",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "최지은",
+            "gender": "여",
+            "birthDate": "20000519",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "정준호",
+            "gender": "남",
+            "birthDate": "19920606",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "한소영",
+            "gender": "여",
+            "birthDate": "20030725",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "오태환",
+            "gender": "남",
+            "birthDate": "19970830",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "강민지",
+            "gender": "여",
+            "birthDate": "20040914",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "윤석호",
+            "gender": "남",
+            "birthDate": "19991009",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "송유리",
+            "gender": "여",
+            "birthDate": "20021123",
+            "koreanAge": "",
+            "age": ""
+        },
+        {
+            "name": "이준수",
+            "gender": "남",
+            "birthDate": "20061230",
+            "koreanAge": "",
+            "age": ""
+        }];
+	
+    dlt_userInfo.setJSON(json);
+	
+};
+
+// 나이 계산
+scwin.koreanAgeFormatter = function(rowJson, rowIndex, colIndex) {    
+    var birthDate = String(rowJson.birthDate);  
+    
+    if (!birthDate || birthDate.length < 8) {
+        return "";
+    }
+    
+    var year = parseInt(birthDate.substring(0, 4));  
+    
+    var currentDate = $p.getCurrentServerDate();  
+    var currentYear = parseInt(currentDate.substring(0, 4));  
+    
+    // 나이 = 현재 연도 - 출생 연도 + 1
+    var koreanAge = currentYear - year + 1;
+    
+    return koreanAge;  
+}
+
+// 만나이 계산
+scwin.ageFormatter = function(rowJson, rowIndex, colIndex) {    
+    var birthDate = rowJson.birthDate;  
+    var year = parseInt(birthDate.substring(0, 4));  
+    var month = birthDate.substring(4, 6);  
+    var day = birthDate.substring(6, 8);  
+      
+    var fullYear = year;  
+    var birthMonthDay = month + day;  
+      
+    var currentDate = $p.getCurrentServerDate();  
+    var currentYear = parseInt(currentDate.substring(0, 4));  
+    var currentMonthDay = currentDate.substring(4, 8);  
+      
+    var age;  
+      
+    // 올해 생일이 지났는지 확인  
+    if (currentMonthDay >= birthMonthDay) {  
+        age = currentYear - fullYear;  
+    } else {  
+        age = currentYear - fullYear - 1;  
+    }  
+
+    return age;  
+}
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<w2:textbox escape="false" id="" label="DataList의 컬럼 속성 'importFormatter'를 사용한 예제입니다.&lt;br/&gt;'importFormatter' 함수를 지정하여 '나이'와 '만나이'를 구하였습니다." style=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<xf:group class="gvwbox" id="" style="">
+    					<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="false" scrollByColumn="false" defaultCellHeight="26"
+    						checkReadOnlyOnPasteEnable="" focusMode="row" dataList="data:dlt_userInfo" style="height: 150px;" autoFit="allColumn"
+    						id="gridView1" visibleRowNum="10" class="" touchScrollDelta="1" readOnly="true">
+    						<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    						<w2:header style="" id="header1">
+    							<w2:row style="" id="row1">
+    								<w2:column width="70" inputType="text" style="" id="column5" value="이름" displayMode="label"></w2:column>
+    								<w2:column width="70" inputType="text" style="" id="column4" value="성별" displayMode="label"></w2:column>
+    								<w2:column width="95" inputType="text" style="" id="column3" value="생년월일" displayMode="label"></w2:column>
+    								<w2:column width="70" inputType="text" style="" id="column2" value="나이" displayMode="label"></w2:column>
+    								<w2:column width="70" inputType="text" style="" id="column1" value="만나이" displayMode="label"></w2:column>
+    							</w2:row>
+    						</w2:header>
+    						<w2:gBody style="" id="gBody1">
+    							<w2:row style="" id="row2">
+    								<w2:column width="70" inputType="text" style="" id="name" value="" displayMode="label"></w2:column>
+    								<w2:column width="70" inputType="text" style="" id="gender" value="" displayMode="label"></w2:column>
+    								<w2:column width="95" inputType="calendar" style="" id="birthDate" value="" displayMode="label"></w2:column>
+    								<w2:column width="70" inputType="text" style="" id="koreanAge" value="" displayMode="label"></w2:column>
+    								<w2:column width="70" inputType="text" style="" id="age" value="" displayMode="label"></w2:column>
+    							</w2:row>
+    						</w2:gBody>
+    					</w2:gridView>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

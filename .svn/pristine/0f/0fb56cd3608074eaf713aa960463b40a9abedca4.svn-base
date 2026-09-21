@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="getRefComponent_DataMap">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1" preserveType="true">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="name1" dataType="text"></w2:key>
+            			<w2:key id="key2" name="name2" dataType="number"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+scwin.trigger1_onclick = function (e) {
+    dataMap1.set("key1", 333);
+    dataMap1.set("key2", 555);
+};
+
+scwin.trigger2_onclick = function (e) {
+    var ref = dataMap1.getRefComponent();
+    var ref_string = JSON.stringify(ref);
+    alert(ref_string);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="DataMap과 바인딩된 컴포넌트의 ID 반환"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1. 하단의 첫 번째 버튼을 클릭하여 dataMap1에 데이터를 설정. &lt;br/&gt;2. dataMap1이 하단의 InputBox들과 바인딩되어, 설정한 데이터가 InputBox에 표시되는 것을 확인. &lt;br/&gt;3. 하단의 두 번째 버튼을 클릭. &lt;br/&gt;4. dataMap1과 바인딩된 InputBox들의 정보가 표시되는 것을 확인. &lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)"
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[dataMap1.set()]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger type="button" id="trigger2"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[getRefComponent()]]></xf:label>
+    	</xf:trigger>
+    	<xf:input ref="data:dataMap1.key1"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;color: purple;"
+    		id="input1">
+    	</xf:input>
+    	<xf:input ref="data:dataMap1.key2"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;color: purple;"
+    		id="input2">
+    	</xf:input>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.trigger1_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;dataMap1.set("key1", 333);&lt;br/&gt; &amp;nbsp; &amp;nbsp;dataMap1.set("key2", 555);&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.trigger2_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var ref = dataMap1.getRefComponent();&lt;br/&gt; &amp;nbsp; &amp;nbsp;var ref_string = JSON.stringify(ref);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert(ref_string);&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

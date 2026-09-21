@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="javascript"><![CDATA[ 
+            
+		
+	scwin.trigger1_onclick = function(e) {
+		group1.setDisabled(true);
+	};
+	
+	scwin.trigger2_onclick = function(e) {
+		group1.setDisabled(false);
+	};
+	]]></script>
+    </head>
+    <body>
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Enable/Disable All Components&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Click the first setDisabled(true) button.&lt;br/&gt;2. Confirm that all components within the group are disabled.&lt;br/&gt;3. Click the second setDisabled(false) button.&lt;br/&gt;4. Confirm that all components, including those previously disabled, are enabled.'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[group1.setDisabled(true);]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger type="button" id="trigger2" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[group1.setDisabled(false);]]></xf:label>
+    	</xf:trigger>
+    	<xf:group ev:onclick="scwin.group1_onclick" style="padding: 20px;border: solid teal 2px;;font-size: 30px;color: teal;" id="group1" text="Group">
+    		<xf:input maskFormat="reverse" adjustMaxLength="false" style="width: 20%;height: 40px;margin-right: 10px;border: solid red 1px;"
+    			id="input1">
+    		</xf:input>
+    		<xf:input adjustMaxLength="false" style="width: 20%;height: 40px;border: solid red 1px;margin-right: 10px;" id="input2" disabled="true"></xf:input>
+    		<xf:input adjustMaxLength="false" style="width: 20%;height: 40px;border: solid red 1px;margin-right: 10px;" id="input3"></xf:input>
+
+    	</xf:group>
+    </xf:group></body>
+</html>

@@ -1,0 +1,16 @@
+/*amd /guide_eng/CheckComboBox/setDelimiter_CheckComboBox.xml 3043 7c1b8919218829a1ae4b44bc0533b37bc35af509c1bd4858cd9cdd27742cba0a */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  checkcombobox1.setSelectedInfo([{
+    index: 2,
+    checked: true
+  }]);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  checkcombobox1.setDelimiter(" / ");
+  checkcombobox1.setSelectedInfo([{
+    index: 2,
+    checked: true
+  }]);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Dynamic Set Delimiter<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Confirmhat the delimiter for items displayed in the CheckComboBox selection list is “ - ”.<br/>2. Click the setDelimiter() button at the bottom.<br/>3. Confirm that the delimiter for items displayed in the CheckComboBox selection list changes to “ / ”.',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;',id:'textbox4',label:'delimiter=" - "',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:30px;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'checkcombobox1.setDelimiter(" / ");'}]}]},{T:1,N:'xf:checkcombobox',A:{displayAllOptionLabel:'false',ref:'',submenuSize:'auto',appearance:'minimal',delimiter:' - ',chooseOption:'',disabled:'false',style:'width: 50%;display: block',allOption:'',id:'checkcombobox1',displayMode:'label delim value',direction:'auto'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Home'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'H'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Office'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'0'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Travel'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'T'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Sick'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'S'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Leave'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'L'}]}]}]}]}]}]}]}]})

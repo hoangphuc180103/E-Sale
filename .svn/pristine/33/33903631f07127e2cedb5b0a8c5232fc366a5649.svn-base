@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    input1.setMaxByteLength(-1);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox style="color: blue;margin-bottom: 10px;" id="textbox1" label="Set and Reset Max Input Byte Length&lt;br/&gt;" escape="false" tagname="h1">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox2"
+    		label='1. Confirm that only text up to 5 bytes in length can be entered, as specified by the maxByteLength="5" setting.&lt;br/&gt;2. Click the setMaxByteLength(-1) button to reset the maxByteLength property value.&lt;br/&gt;3. Confirm that text longer than 5 bytes can now be entered.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox3" label='maxByteLength="5"' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[input1.setMaxByteLength(-1);]]></xf:label>
+    	</xf:trigger>
+    	<xf:input
+    		style="width: 100%;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: red;"
+    		id="input1" maxByteLength="5">
+    	</xf:input>
+    </xf:group></body>
+</html>

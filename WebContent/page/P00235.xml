@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 엑셀 다운로드 시 스타일 설정하기 - 바디(body)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230310" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+						<w2:column dataType="text" name="C" id="col_c"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00235_TYPE1.xlsx"
+    };
+
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 바디의 스타일 설정] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00235_TYPE2.xlsx", //엑셀의 파일명
+        useStyle: "false", //필수 설정
+        bodyColor: "#F0E68C", //바디의 배경색 - Khaki
+        bodyFontName: "Arial", //바디의 글자체
+        bodyFontSize: "13", //바디의 글자 크기
+        bodyFontColor: "#0000FF", //바디의 글자색 - Blue
+        bodyFontBold: "true" //바디의 글자 굵게 설정
+    };
+
+    //useStyle <String:N> [default: false] 다운로드시 css를 제외한, style을 excel에도 설정할 지 여부 (배경색,폰트)
+    //bodyColor : <String:N> [default: #FFFFFF] Excel 파일에서 그리드의 body의 색
+    //bodyFontName : <String:N> [default: 없음] Excel 파일에서 그리드의 body의 font name
+    //bodyFontSize : <String:N> Excel 파일에서 그리드의 body의 font size
+    //bodyFontColor : <String:N> [default: 없음] Excel 파일에서 그리드의 body의 font 색
+    //bodyFontBold : <String:N> [default: 없음] Excel 파일에서 그리드의 body의 Bold 설정 유무
+
+    //GridView "grd_exam1"의 엑셀 다운로드 실행
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 바디의 홀수행, 짝수행 배경색 설정] 클릭 시
+ */
+scwin.btn_ex3_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00235_TYPE3.xlsx", //엑셀의 파일명
+        oddRowBackgroundColor: "#F0E68C", //바디의 홀수행 배경색 - Khaki
+        evenRowBackgroundColor: "#FFA500" //바디의 짝수행 배경색 - Orange
+    };
+
+    //oddRowBackgroundColor : <String:N> [default: 없음] Excel 파일에서 그리드 body의 홀수 줄의 배경색
+    //evenRowBackgroundColor : <String:N> [default: 없음] Excel 파일에서 그리드 body의 짝수 줄의 배경색
+
+    //GridView "grd_exam1"의 엑셀 다운로드 실행
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox class="" escape="false" id=""
+					label="GridView의 'advancedExcelDownload' 메소드를 사용하여, 엑셀 다운로드 시 바디 컬럼에 스타일을 설정한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="mb_def_box nobottom" id="" style="">
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+						style="min-width: 30px; height: 26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 기본]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" localeRef=""
+						style="min-width:30px;height:26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 바디의 스타일 설정]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3" localeRef=""
+						style="min-width:30px;height:26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 바디의 홀수행, 짝수행 배경색 설정]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group id="" class="gvwbox">
+					<w2:gridView rowNumVisible="true" rowNumWidth="40" keepDefaultColumnWidth="true" visibleRowNumFix="true"
+						dataList="data:dlt_exam" readOnly="true" style="height:100px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="3" class="gvw"
+						defaultCellHeight="37" autoFitMinWidth="240">
+						<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+						<w2:header id="header1">
+							<w2:row id="row1">
+								<w2:column width="70" inputType="text" id="column1" value="A" displayMode="label"></w2:column>
+								<w2:column width="70" inputType="text" id="column2" value="B" displayMode="label"></w2:column>
+								<w2:column width="70" inputType="text" id="column3" value="C" displayMode="label"></w2:column>
+							</w2:row>
+						</w2:header>
+						<w2:gBody id="gBody1">
+							<w2:row id="row2">
+								<w2:column width="70" inputType="text" id="col_a" displayMode="label"></w2:column>
+								<w2:column width="70" inputType="text" id="col_b" displayMode="label"></w2:column>
+								<w2:column width="70" inputType="text" id="col_c" displayMode="label"></w2:column>
+							</w2:row>
+						</w2:gBody>
+					</w2:gridView>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

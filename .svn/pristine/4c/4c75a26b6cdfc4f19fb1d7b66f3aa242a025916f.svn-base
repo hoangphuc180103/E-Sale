@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+            			<w2:column dataType="text" id="col2" name="Country"></w2:column>
+            			<w2:column dataType="text" id="col3" name="Item"></w2:column>
+            			<w2:column dataType="text" id="col4" name="Quantity"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList2" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Continent" dataType="text"></w2:column>
+            			<w2:column id="col2" name="Country" dataType="text"></w2:column>
+            			<w2:column id="col3" name="Item" dataType="text"></w2:column>
+            			<w2:column id="col4" name="Quantity" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList3">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var json = [
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "TV", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Washer", "col4" : "100"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Heater", "col4" : "250"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "TV", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "Washer", "col4" : "100"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "Washer", "col4" : "200"}
+			];
+		dataList1.setJSON(json);
+		dataList2.setJSON(json);
+	};
+	
+	scwin.onpageunload = function() {		
+			
+	};
+	
+	
+	
+	
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="다른 GridView로의 행 이동 금지"
+    			escape="false">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='(첫 번째 GridView)&lt;br/&gt;1. 동일한 GridView 내에서 행을 드래깅하여 이동할 수 있는 것을 확인. &lt;br/&gt;2. 외부의 테스트 GridView로는 행을 드래깅하여 이동할 수 없는 것을 확인. &lt;br/&gt;&lt;br/&gt;(두 번째 GridView)&lt;br/&gt;1. 동일한 GridView 내에서 행을 드래깅하여 이동할 수 있는 것을 확인. &lt;br/&gt;2. 외부의 테스트 GridView로도 행을 드래깅하여 이동할 수 있는 것을 확인.' escape="false">
+    		</w2:textbox>
+    		<w2:textbox
+    			style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    			id="textbox4" label='속성 설정&lt;br/&gt;dataDragDropSelf="true" &lt;br/&gt;dataDragDrop="true"' escape="false">
+    		</w2:textbox>
+    		<w2:gridView rowNumVisible="" showSortableImage="" scrollByColumn="false" defaultCellHeight="20" focusMode="cell"
+    			selectedCellColor="#FF8040" checkAllType="false" copyType="native" id="gridView1" autoFit="allColumn" copyOption=""
+    			showSortableUseFilter="" scrollByColumnAdaptive="false" noResultMessageVisibleAlways="" dataDragDrop="true" useShiftKey="true"
+    			sortable="" noResultMessageVisible="" noResultMessage="No data." noResultMessageClass="" visibleRowNumFix="true"
+    			dataList="data:dataList1" style="border: solid gray 1px;margin-bottom: 10px;" useFilterList="true" visibleRowNum="7" useCtrlKey=""
+    			dataDragDropSelf="true" rowStatusVisible="true">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="70" inputType="text" style="height:20px" id="column4" value="Continent" displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Country" displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column2" value="Item" displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column1" value="Quantity" displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" inputType="text" style="height:20px" id="col1" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:textbox escape="false" id="textbox5" label='속성 설정&lt;br/&gt;dataDragDropSelf="false" &lt;br/&gt;dataDragDrop="true"'
+    			style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    		</w2:textbox>
+    		<w2:gridView rowNumVisible="" showSortableImage="" scrollByColumn="false" defaultCellHeight="20" focusMode="cell"
+    			selectedCellColor="#FF8040" checkAllType="false" copyType="native" autoFit="allColumn" id="gridView3" copyOption=""
+    			showSortableUseFilter="" scrollByColumnAdaptive="false" noResultMessageVisibleAlways="" useShiftKey="true" sortable=""
+    			noResultMessageVisible="" noResultMessage="No data." noResultMessageClass="" visibleRowNumFix="true" dataList="data:dataList2"
+    			style="border: solid gray 1px;margin-bottom: 10px;" useFilterList="true" visibleRowNum="7" useCtrlKey="" dataDragDrop="true"
+    			rowStatusVisible="true" rowStatusWidth="true">
+    			<w2:caption style="" id="caption3" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="70" inputType="text" style="height:20px" id="column4" value="Continent" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Country" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column2" value="Item" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column1" value="Quantity" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" inputType="text" style="height:20px" id="col1" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;" id="textbox6" label='테스트 GridView' escape="false">
+    		</w2:textbox>
+    		<w2:gridView scrollByColumnAdaptive="false" noResultMessageVisibleAlways="true" scrollByColumn="false" defaultCellHeight="20"
+    			noResultMessageVisible="true" noResultMessage="No Data" visibleRowNumFix="true" checkAllType="false" dataList="data:dataList3"
+    			style="border: solid gray 1px;" id="gridView2" autoFit="allColumn" visibleRowNum="7" rowStatusVisible="true" rowStatusWidth="true" dataDragDrop="true">
+    			<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header2">
+    				<w2:row style="" id="row3">
+    					<w2:column width="70" inputType="text" style="height:20px" id="column12" value="name1" displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column11" value="name2" displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column10" value="name3" displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column9" value="name4" displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody2">
+    				<w2:row style="" id="row4">
+    					<w2:column width="70" inputType="text" style="height:20px" id="col1" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    	</xf:group>
+    </body>
+</html>

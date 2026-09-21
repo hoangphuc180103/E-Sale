@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TreeView] 초기 로딩 시 지정 depth까지 노드 자동 확장하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20251216" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="label" name="name1" dataType="text"></w2:column>
+						<w2:column id="value" name="name2" dataType="text"></w2:column>
+						<w2:column id="depth" name="name3" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<label><![CDATA[라벨A]]></label>
+							<depth><![CDATA[1]]></depth>
+							<value><![CDATA[a]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[라벨A-1]]></label>
+							<depth><![CDATA[2]]></depth>
+							<value><![CDATA[a1]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[라벨A-1-1]]></label>
+							<depth><![CDATA[3]]></depth>
+							<value><![CDATA[a11]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[라벨B]]></label>
+							<depth><![CDATA[1]]></depth>
+							<value><![CDATA[b]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[라벨B-1]]></label>
+							<value><![CDATA[b1]]></value>
+							<depth><![CDATA[2]]></depth>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+};
+
+scwin.tooltipCustom = function () {
+    return "툴팁을 변경했습니다."
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="Treeview의 'showTreeDepth' 속성을 사용하여 초기 로딩시 확장되어 보여질 노드의 depth값을 설정하는 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="showTreeDepth 미적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" tooltipDisplay="true">
+						<w2:treeview id="" dataType="listed" tooltipGroupClass="false" style="height:140px;">
+							<w2:itemset nodeset="data:dlt_exam1">
+								<w2:label ref="label"></w2:label>
+								<w2:value ref="value"></w2:value>
+								<w2:depth ref="depth"></w2:depth>
+								<w2:folder ref=""></w2:folder>
+								<w2:checkbox ref=""></w2:checkbox>
+								<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+								<w2:image ref=""></w2:image>
+								<w2:iconImage ref=""></w2:iconImage>
+								<w2:selectedImage ref=""></w2:selectedImage>
+								<w2:expandedImage ref=""></w2:expandedImage>
+								<w2:leafImage ref=""></w2:leafImage>
+							</w2:itemset>
+						</w2:treeview>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="showTreeDepth 적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<w2:treeview dataType="listed" id="" style="height:140px;" tooltipGroupClass="false" showTreeDepth="0">
+									<w2:itemset nodeset="data:dlt_exam1">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="value"></w2:value>
+										<w2:depth ref="depth"></w2:depth>
+										<w2:folder ref=""></w2:folder>
+										<w2:checkbox ref=""></w2:checkbox>
+										<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+										<w2:image ref=""></w2:image>
+										<w2:iconImage ref=""></w2:iconImage>
+										<w2:selectedImage ref=""></w2:selectedImage>
+										<w2:expandedImage ref=""></w2:expandedImage>
+										<w2:leafImage ref=""></w2:leafImage>
+									</w2:itemset>
+								</w2:treeview>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

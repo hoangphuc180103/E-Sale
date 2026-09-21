@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="title" name="title" dataType="text"></w2:column>
+            			<w2:column id="id" name="id" dataType="text"></w2:column>
+            			<w2:column id="start" name="start" dataType="text"></w2:column>
+            			<w2:column id="end" name="end" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<title><![CDATA[AAA]]></title>
+            				<id><![CDATA[1]]></id>
+            				<start><![CDATA[20261001]]></start>
+            				<end><![CDATA[20261002]]></end>
+            			</w2:row>
+            			<w2:row>
+            				<title><![CDATA[BBB]]></title>
+            				<id><![CDATA[2]]></id>
+            				<start><![CDATA[20261010]]></start>
+            				<end><![CDATA[20261012]]></end>
+            			</w2:row>
+            			<w2:row>
+            				<title><![CDATA[CCC]]></title>
+            				<id><![CDATA[3]]></id>
+            				<start><![CDATA[20261020]]></start>
+            				<end><![CDATA[20261023]]></end>
+            			</w2:row>
+            			<w2:row>
+            				<title><![CDATA[DDD]]></title>
+            				<id><![CDATA[4]]></id>
+            				<start><![CDATA[20261015]]></start>
+            				<end><![CDATA[20261017]]></end>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin:10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Add Schedule through DataList Binding&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Hold down the Ctrl key and right-click the mouse.&lt;br/&gt;2. Verify the data in datalist1.&lt;br/&gt;3. Confirm that the data from dataList1 is registered as a schedule in ScheduleCalendar.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:scheduleCalendar dataList="dataList1" defaultDate="20261001" editable="false" endColumn="end" eventLimit="false" headerLeftBtn="true"
+    		headerRightBtn="false" headerTitle="true" id="scheduleCalendar1" lang="" selectable="true" startColumn="start"
+    		style="width: 400px;height: 500px;margin-bottom: 10px;" titleColumn="title" useHeaderToolbar="false" version="6.1.11">
+    	</w2:scheduleCalendar>
+    </xf:group></body>
+</html>

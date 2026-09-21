@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] 목록성 컴포넌트 활용 설명">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="학습목표" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    		<xf:group id="" class="detailsbox"><xf:group tagname="details" style="" id="" class="">
+    				<w2:textbox tagname="summary" style="" id="" label="목록성 컴포넌트 특성 알기" escape="false"></w2:textbox>
+    				<w2:textbox style="" id="" label="selectbox : &amp;nbsp;사용자가 선택할 수 있는 여러 옵션 중에서 하나를 선택할 수 있는 &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 드롭다운 형태의 UI 컴포넌트&lt;br/&gt;&lt;br/&gt;autoComplete : 사용자가 입력한 내용을 기반으로 목록을 검색하여 출력하는 UI 컴포넌트&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 사용자 경험을 향상시키고 입력 오류를 줄일 수 있는 기능 제공&lt;br/&gt;&lt;br/&gt;checkcombobox : 사용자가 여러 개의 옵션 중에서 하나 이상을 선택할 수 있는 &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 드롭다운 목록을 제공하는 UI 컴포넌트&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 사용자는 checkcombobox를 클릭하면 드롭다운 목록이 펼쳐지고, &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 여러 개의 옵션 중에서 원하는 옵션을 선택할 수 있습니다.&lt;br/&gt; " class="" escape="false">
+    				</w2:textbox>
+    			</xf:group><xf:group tagname="details" style="" id="" class="">
+    				<w2:textbox tagname="summary" style="" id="" label="목록성 컴포넌트 활용" escape="false"></w2:textbox>
+    				<w2:textbox style="" id="" label="간단하게 속성과 API를 활용하여 autoComplete, checkcombobox의 다양한 기능 활용 " class="" escape="false">
+    				</w2:textbox>
+    			</xf:group></xf:group></xf:group>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="addWidgets_titleClass_WidgetContainer">
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+scwin.onpageload = function () {
+
+};
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    scwin.count++;
+    widgetContainer1.addWidgets({
+        id: "widget" + scwin.count,
+        title: "Widget_Red_" + scwin.count + "_",
+        src: null,
+        scope: true,
+        x: 0,
+        y: 0,
+        unitWidth: 1,
+        unitHeight: 1,
+        titleClass: "w2widget_red"
+    });
+    scwin.count++;
+    widgetContainer1.addWidgets({
+        id: "widget" + scwin.count,
+        title: "Widget_Blue_" + scwin.count + "_",
+        src: null,
+        scope: true,
+        x: 0,
+        y: 1,
+        unitWidth: 1,
+        unitHeight: 1,
+        titleClass: "w2widget_orange"
+    });
+    scwin.count++;
+    widgetContainer1.addWidgets({
+        id: "widget" + scwin.count,
+        title: "Widget_Green_" + scwin.count + "_",
+        src: null,
+        scope: true,
+        x: 1,
+        y: 0,
+        unitWidth: 1,
+        unitHeight: 2,
+        titleClass: "w2widget_green"
+    });
+};
+]]></script>
+    	<style type="text/css"><![CDATA[
+.w2widget_red{
+        background-color: red;
+        height: 50px;
+        color: white;
+    }
+    
+    .w2widget_orange{
+        background-color: orange;
+        color: greenyellow;
+    }
+    
+    .w2widget_green{
+        background-color: green;
+        color: yellow;
+    }]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ウィジェットタイトルにスタイルを適用" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Script タブで addWidgets() メソッドの titleClass オプション設定を確認します。 &lt;br/&gt;2.下部の addWidgets() ボタンをクリックします。 &lt;br/&gt;2. 3つのウィジェットが追加され、titleClassオプションで設定されたCSSクラスに従ってウィジェットのタイトルにアイコンが表示されることを確認します。' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[addWidgets( options.titleClass );]]></xf:label>
+    	</xf:trigger><w2:widgetContainer unitHeightPixel="100" accessibility="true" minUnitWidth="1" verticalMargin="5" threshold="500" rows="3" unfixedTitleButtons="true" params="false" processMsgFrame="true" widgetResize="true" mode="switch" preventMaximizeByTitle="false" widgetMove="true" style="height: 400px;border:1px solid black;" id="widgetContainer1" horizontalMargin="14" cols="3">
+    	</w2:widgetContainer></xf:group></body>
+</html>

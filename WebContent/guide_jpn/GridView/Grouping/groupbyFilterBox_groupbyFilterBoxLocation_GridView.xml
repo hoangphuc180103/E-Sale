@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+            			<w2:column dataType="text" id="col2" name="Country"></w2:column>
+            			<w2:column dataType="text" id="col3" name="Item"></w2:column>
+            			<w2:column dataType="number" id="col4" name="Quantity"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dataList2" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+            			<w2:column dataType="text" id="col2" name="Country"></w2:column>
+            			<w2:column dataType="text" id="col3" name="Item"></w2:column>
+            			<w2:column dataType="number" id="col4" name="Quantity"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {		
+		var json = [
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "TV", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Freezer", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Washer", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "TV", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "Freezer", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "Washer", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "TV", "col4" : "823"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "Freezer", "col4" : "288"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "Washer", "col4" : "325"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "TV", "col4" : "823"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "Freezer", "col4" : "288"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "Washer", "col4" : "325"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "TV", "col4" : "823"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "Freezer", "col4" : "288"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "Washer", "col4" : "325"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "TV", "col4" : "823"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "Freezer", "col4" : "288"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "Washer", "col4" : "325"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "TV", "col4" : "823"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "Freezer", "col4" : "288"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "Washer", "col4" : "325"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "TV", "col4" : "823"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "Freezer", "col4" : "288"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "Washer", "col4" : "325"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "TV", "col4" : "823"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "Freezer", "col4" : "288"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "Washer", "col4" : "325"}
+			];
+		dataList1.setJSON(json);
+		dataList2.setJSON(json);
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};	
+	
+	scwin.gridView1_ongroupby = function(options) {
+				options.groupbyHeader = [{ inputType: 'expression', expression: 'toggle() + depthStr() + "    [ " + count() + " Cases ]  "', align: 'left', colSpan:4 }];								options.closeGroup = true,
+				options.groupbyFooter = {
+				depth_0 : [ {colSpan:3, value: "Grand Total", align: "right"}, { inputType: 'expression', expression:'SUM("col4")'} ],
+				depth_1: [ {colSpan:3, value: "Total", align: "right"}, { inputType: 'expression', expression:'SUM("col4")'} ],
+				depth_2: [ {colSpan:3, value: "Sub Total", align: "right"}, { inputType: 'expression', expression:'SUM("col4")'} ]
+				};								
+				gridView1.groupby(options);
+		
+	};
+
+	scwin.gridView2_ongroupby = function(options) {
+				options.groupbyHeader = [{ inputType: 'expression', expression: 'toggle() + depthStr() + "    [ " + count() + " Cases ]  "', align: 'left', colSpan:4 }];								options.closeGroup = true,
+				options.groupbyFooter = {
+				depth_0 : [ {colSpan:3, value: "Grand Total", align: "right"}, { inputType: 'expression', expression:'SUM("col4")'} ],
+				depth_1: [ {colSpan:3, value: "Total", align: "right"}, { inputType: 'expression', expression:'SUM("col4")'} ],
+				depth_2: [ {colSpan:3, value: "Sub Total", align: "right"}, { inputType: 'expression', expression:'SUM("col4")'} ]
+				};								
+				gridView2.groupby(options);
+		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="グループ化とフィルタリング条件の表示" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='（最初のGridView）&lt;br/&gt;1-1.最初のGridViewの上部にグループ化フィルタボックスが表示されていることを確認してください。 &lt;br/&gt;1-2.最初のGridViewでフィルタを設定します。&lt;br/&gt;1-3フィルタリング条件が上部のボックスに表示されることを確認します。&lt;br/&gt;1-4.最初のGridViewのヘッダーをドラッグしてグループ化を実行します。 &lt;br/&gt;1-5.フィルタリング条件とグループ化条件が上部のボックスに表示されることを確認します。 &lt;br/&gt;1-6.上部のボックスを展開すると、これまでのフィルタリング条件とグループ化条件の両方が表示されることを確認します。 2番目のGridViewの上部にグループ化フィルタボックスがないことを確認してください。 &lt;br/&gt;2-2. 2番目のGridViewでフィルタを設定します。&lt;br/&gt;2-3.フィルタ条件が2番目のGridViewの上部に表示されないことを確認してください。'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;groupbyFilterBox="true" &lt;br/&gt;groupbyFilterBoxLocation="top"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView ev:ongroupby="scwin.gridView1_ongroupby" scrollByColumnAdaptive="false" groupbyZoneMessage="" scrollByColumn="false"
+    		groupbyFilterBox="true" customFilterBox="true" defaultCellHeight="20" groupbyMaxCount="" groupbyZone="true" groupbyFilterBoxLocation="top"
+    		checkAllType="false" dataList="data:dataList1" style="border: solid gray 1px;margin-bottom: 10px;" groupbyFilterBoxFormatter="" id="gridView1"
+    		autoFit="allColumn" useFilterList="true" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="height:20px" id="column4" value="Continent" displayMode="label"
+    					useFilter="true">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Country" displayMode="label"
+    					useFilter="true">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column2" value="Item" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column1" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="height:20px" id="col1" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;groupbyFilterBox="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" checkAllType="false" dataList="data:dataList2" defaultCellHeight="20"
+    		ev:ongroupby="scwin.gridView2_ongroupby" groupbyFilterBoxFormatter="" groupbyMaxCount="" groupbyZone="true" groupbyZoneMessage=""
+    		id="gridView2" scrollByColumn="false" scrollByColumnAdaptive="false" style="border: solid gray 1px;" useFilterList="true"
+    		visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="" id="column4" value="Continent" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column3" value="Country" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column2" value="Item" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column1" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col4" value="" displayMode="label" dataType="number"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

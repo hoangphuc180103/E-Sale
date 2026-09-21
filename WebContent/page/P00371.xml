@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 가로 스크롤이 이동될 때 컬럼(열) 단위로 표시되도록 설정하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230906" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="col_a" name="A" dataType="text"></w2:column>
+						<w2:column id="col_b" name="B" dataType="text"></w2:column>
+						<w2:column id="col_c" name="C" dataType="text"></w2:column>
+						<w2:column id="col_d" name="D" dataType="text"></w2:column>
+						<w2:column id="col_e" name="E" dataType="text"></w2:column>
+						<w2:column id="col_f" name="F" dataType="text"></w2:column>
+						<w2:column id="col_g" name="G" dataType="text"></w2:column>
+						<w2:column id="col_h" name="H" dataType="text"></w2:column>
+						<w2:column id="col_i" name="I" dataType="text"></w2:column>
+						<w2:column id="col_j" name="J" dataType="text"></w2:column>
+						<w2:column id="col_k" name="K" dataType="text"></w2:column>
+						<w2:column id="col_l" name="L" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A001]]></col_a>
+							<col_b><![CDATA[B001]]></col_b>
+							<col_c><![CDATA[C001]]></col_c>
+							<col_d><![CDATA[D001]]></col_d>
+							<col_e><![CDATA[E001]]></col_e>
+							<col_f><![CDATA[F001]]></col_f>
+							<col_g><![CDATA[G001]]></col_g>
+							<col_h><![CDATA[H001]]></col_h>
+							<col_i><![CDATA[I001]]></col_i>
+							<col_j><![CDATA[J001]]></col_j>
+							<col_k><![CDATA[K001]]></col_k>
+							<col_l><![CDATA[L001]]></col_l>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A002]]></col_a>
+							<col_b><![CDATA[B002]]></col_b>
+							<col_c><![CDATA[C002]]></col_c>
+							<col_d><![CDATA[D002]]></col_d>
+							<col_e><![CDATA[E002]]></col_e>
+							<col_f><![CDATA[F002]]></col_f>
+							<col_g><![CDATA[G002]]></col_g>
+							<col_h><![CDATA[H002]]></col_h>
+							<col_i><![CDATA[I002]]></col_i>
+							<col_j><![CDATA[J002]]></col_j>
+							<col_k><![CDATA[K002]]></col_k>
+							<col_l><![CDATA[L002]]></col_l>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A003]]></col_a>
+							<col_b><![CDATA[B003]]></col_b>
+							<col_c><![CDATA[C003]]></col_c>
+							<col_d><![CDATA[D003]]></col_d>
+							<col_e><![CDATA[E003]]></col_e>
+							<col_f><![CDATA[F003]]></col_f>
+							<col_g><![CDATA[G003]]></col_g>
+							<col_h><![CDATA[H003]]></col_h>
+							<col_i><![CDATA[I003]]></col_i>
+							<col_j><![CDATA[J003]]></col_j>
+							<col_k><![CDATA[K003]]></col_k>
+							<col_l><![CDATA[L003]]></col_l>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'scrollByColumn' 속성을 사용하여 가로 스크롤이 이동될 때 컬럼 단위로 이동하도록 설정한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="가로 스크롤 이동 시 컬럼 단위로 표시" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView dataList="data:dlt_exam1" style="height: 100px;" scrollByColumn="true" readOnly="true"
+								autoFit="none" id="" visibleRowNum="all" class="gvw" defaultCellHeight="37">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="50" inputType="text" style="" id="column12" value="A" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column11" value="B" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column10" value="C" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column9" value="D" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column8" value="E" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column7" value="F" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column6" value="G" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column5" value="H" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column4" value="I" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column3" value="J" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column2" value="K" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="column1" value="L" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="50" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_d" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_e" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_f" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_g" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_h" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_i" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_j" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_k" value="" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" style="" id="col_l" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 가로 스크롤 이동 시 컬럼의 너비(width)가 줄어들면서 표시"
+						style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="gvwbox" id="">
+							<w2:gridView autoFit="none" class="gvw" dataList="data:dlt_exam1" defaultCellHeight="37" id="" readOnly="true"
+								style="height: 100px;" visibleRowNum="all">
+								<w2:caption id="caption3" style="" value="this is a grid caption."></w2:caption>
+								<w2:header id="header3" style="">
+									<w2:row id="row5" style="">
+										<w2:column displayMode="label" id="column48" inputType="text" style="" value="A" width="50"></w2:column>
+										<w2:column displayMode="label" id="column47" inputType="text" style="" value="B" width="50"></w2:column>
+										<w2:column displayMode="label" id="column46" inputType="text" style="" value="C" width="50"></w2:column>
+										<w2:column displayMode="label" id="column45" inputType="text" style="" value="D" width="50"></w2:column>
+										<w2:column displayMode="label" id="column44" inputType="text" style="" value="E" width="50"></w2:column>
+										<w2:column displayMode="label" id="column43" inputType="text" style="" value="F" width="50"></w2:column>
+										<w2:column displayMode="label" id="column42" inputType="text" style="" value="G" width="50"></w2:column>
+										<w2:column displayMode="label" id="column41" inputType="text" style="" value="H" width="50"></w2:column>
+										<w2:column displayMode="label" id="column40" inputType="text" style="" value="I" width="50"></w2:column>
+										<w2:column displayMode="label" id="column39" inputType="text" style="" value="J" width="50"></w2:column>
+										<w2:column displayMode="label" id="column38" inputType="text" style="" value="K" width="50"></w2:column>
+										<w2:column displayMode="label" id="column37" inputType="text" style="" value="L" width="50"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody3" style="">
+									<w2:row id="row6" style="">
+										<w2:column displayMode="label" id="col_a" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_b" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_c" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_d" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_e" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_f" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_g" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_h" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_i" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_j" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_k" inputType="text" style="" value="" width="50"></w2:column>
+										<w2:column displayMode="label" id="col_l" inputType="text" style="" value="" width="50"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

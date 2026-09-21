@@ -1,0 +1,75 @@
+/*amd /page/P00097.xml 12910 71a629ed959a7da6c35f8702b141c7fd04af56a2518736ccdb5635f1bc5ce90d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'stock',name:'Stock'}},{T:1,N:'w2:column',A:{id:'created_date',name:'Date',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'SecureGate'}]},{T:1,N:'stock',E:[{T:4,cdata:'98291'}]},{T:1,N:'created_date',E:[{T:4,cdata:'20110715'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'FastServe'}]},{T:1,N:'stock',E:[{T:4,cdata:'528'}]},{T:1,N:'created_date',E:[{T:4,cdata:'19991225'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'CloudFlex'}]},{T:1,N:'stock',E:[{T:4,cdata:'3928'}]},{T:1,N:'created_date',E:[{T:4,cdata:'20140321'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'TechAssist'}]},{T:1,N:'stock',E:[{T:4,cdata:'73918'}]},{T:1,N:'created_date',E:[{T:4,cdata:'20190523'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'MobileMagic'}]},{T:1,N:'stock',E:[{T:4,cdata:'1746123'}]},{T:1,N:'created_date',E:[{T:4,cdata:'20160127'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'UltraServer'}]},{T:1,N:'stock',E:[{T:4,cdata:'291'}]},{T:1,N:'created_date',E:[{T:4,cdata:'20020116'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [1번째 행 1번째 컬럼 ~ 2번째 행 2번째 컬럼] 클릭시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  //1번째 행 1번째 컬럼 ~ 2번째 행 2번째 컬럼 선택하기
+  grd_exam1.setFocusedMultiCell(0, 0, 1, 1);
+  grd_exam2.setFocusedMultiCell(0, 0, 1, 1);
+  grd_exam3.setFocusedMultiCell(0, 0, 1, 1);
+  grd_exam4.setFocusedMultiCell(0, 0, 1, 1);
+
+  //포커스 버튼으로 이동.
+  btn_ex1.focus();
+};
+
+/**
+ * 버튼 [행:1, 열:1 ~ 행:2, 열:2 + ignoreFocusMode 적용] 클릭시
+ */
+scwin.btn_ex3_onclick = function (e) {
+  //1번째 행 1번째 컬럼 ~ 2번째 행 2번째 컬럼 선택하기 - 설정된 FocusMode 무시
+  grd_exam1.setFocusedMultiCell(0, 0, 1, 1, {
+    ignoreFocusMode: true
+  });
+  grd_exam2.setFocusedMultiCell(0, 0, 1, 1, {
+    ignoreFocusMode: true
+  });
+  grd_exam3.setFocusedMultiCell(0, 0, 1, 1, {
+    ignoreFocusMode: true
+  });
+  grd_exam4.setFocusedMultiCell(0, 0, 1, 1, {
+    ignoreFocusMode: true
+  });
+
+  //포커스 버튼으로 이동.
+  btn_ex3.focus();
+};
+
+/**
+ * 버튼 [2번째 행 2번째 컬럼 ~ 4번째 행 3번째 컬럼] 클릭시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  //2번째 행 2번째 컬럼 ~ 4번째 행 3번째 컬럼
+  grd_exam1.setFocusedMultiCell(1, 1, 3, 2);
+  grd_exam2.setFocusedMultiCell(1, 1, 3, 2);
+  grd_exam3.setFocusedMultiCell(1, 1, 3, 2);
+  grd_exam4.setFocusedMultiCell(1, 1, 3, 2);
+
+  //포커스 버튼으로 이동.
+  btn_ex2.focus();
+};
+
+/**
+ * 버튼 [행:2, 열:2 ~ 행:4, 열:3 + ignoreFocusMode 적용] 클릭시
+ */
+scwin.btn_ex4_onclick = function (e) {
+  //2번째 행 2번째 컬럼 ~ 4번째 행 3번째 컬럼 - 설정된 FocusMode 무시
+  grd_exam1.setFocusedMultiCell(1, 1, 3, 2, {
+    ignoreFocusMode: true
+  });
+  grd_exam2.setFocusedMultiCell(1, 1, 3, 2, {
+    ignoreFocusMode: true
+  });
+  grd_exam3.setFocusedMultiCell(1, 1, 3, 2, {
+    ignoreFocusMode: true
+  });
+  grd_exam4.setFocusedMultiCell(1, 1, 3, 2, {
+    ignoreFocusMode: true
+  });
+
+  //포커스 버튼으로 이동.
+  btn_ex4.focus();
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 \'focusMode\' 속성의 설정에 따라, GridView의 \'setFocusedMultiCell\' 메소드의 호출 결과를 비교한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'범위 선택 실행',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'행:1, 열:1 ~ 행:2, 열:2'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex3_onclick',id:'btn_ex3',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'행:1, 열:1 ~ 행:2, 열:2 + ignoreFocusMode 적용'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'행:2, 열:2 ~ 행:4, 열:3'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex4_onclick',id:'btn_ex4',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'행:2, 열:2 ~ 행:4, 열:3 + ignoreFocusMode 적용'}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'결과 확인용 GridView - (기본 설정) focusMode : cell',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'셀 선택 시 포커스(선택) 범위가 셀(Cell) 단위입니다.',style:''}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'34',visibleRowNumFix:'true',rowNumVisible:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'allColumn',id:'grd_exam1',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column2',value:'Stock',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',id:'column1',value:'Date',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'70',displayFormat:'#,###',inputType:'text',id:'stock',displayMode:'label'}},{T:1,N:'w2:column',A:{dataType:'date',width:'90',displayFormat:'yyyy-MM-dd',inputType:'text',id:'created_date',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'결과 확인용 GridView - focusMode : row',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'셀 선택 시 포커스(선택) 범위가 행(Row) 단위입니다.',style:''}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{focusMode:'row',rowNumWidth:'34',rowNumVisible:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'allColumn',id:'grd_exam2',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column2',value:'Stock',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',id:'column1',value:'Date',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'70',displayFormat:'#,###',inputType:'text',id:'stock',displayMode:'label'}},{T:1,N:'w2:column',A:{dataType:'date',width:'90',displayFormat:'yyyy-MM-dd',inputType:'text',id:'created_date',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'결과 확인용 GridView - focusMode : both',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'셀 선택 시 포커스(선택) 범위가 셀(Cell)+행(Row) 단위입니다.',style:''}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{focusMode:'both',rowNumWidth:'34',rowNumVisible:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'allColumn',id:'grd_exam3',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column2',value:'Stock',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',id:'column1',value:'Date',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'70',displayFormat:'#,###',inputType:'text',id:'stock',displayMode:'label'}},{T:1,N:'w2:column',A:{dataType:'date',width:'90',displayFormat:'yyyy-MM-dd',inputType:'text',id:'created_date',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'결과 확인용 GridView - focusMode : none',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'셀 선택 시 포커스(선택)가 되지 않습니다.',style:''}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{focusMode:'none',rowNumWidth:'34',rowNumVisible:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'allColumn',id:'grd_exam4',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column2',value:'Stock',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'90',inputType:'text',id:'column1',value:'Date',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'70',displayFormat:'#,###',inputType:'text',id:'stock',displayMode:'label'}},{T:1,N:'w2:column',A:{dataType:'date',width:'90',displayFormat:'yyyy-MM-dd',inputType:'text',id:'created_date',displayMode:'label'}}]}]}]}]}]}]}]}]}]}]}]})

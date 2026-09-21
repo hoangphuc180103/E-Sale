@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>FusionChart</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_a526a5d9341a13f0" class="chapter_title">FusionChart</h1>
+		<h1 id="r_086bcbca59e0d5dc" class="element heading1"
+			data-element-id="086bcbca59e0d5dc">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_9d6a049948798db2" class="element normal"
+			data-element-id="9d6a049948798db2">웹스퀘어 AI는 FusionChart의 기능을 손쉽게
+			사용할 수 있는 환경을 제공합니다. FusionChart는 다양한 디바이스, 브라우저 및 플랫폼에서 안정적으로 작동하는
+			JavaScript 기반 차트 라이브러리입니다. 개발자는 광범위한 차트 라이브러리, 대화형 기능 및 크로스 플랫폼 호환성을
+			통해 사용자 정의 및 확장이 가능한 차트를 만들 수 있습니다. 사용자에게 다양한 차트 유형과 풍부한 커스터마이징 옵션을
+			제공하여, 데이터 분석 및 의사 결정에 필요한 직관적인 인사이트를 얻을 수 있도록 지원합니다. FusionChart는 단순한
+			시각화를 넘어, 복잡한 대시보드를 구축하고 다양한 데이터 시각화 요구 사항을 충족하는 데 사용될 수 있습니다.</p>
+		<dl id="r_b728cbab9342e024" class="element definition_list"
+			data-element-id="b728cbab9342e024">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb0xvpS56yhKjv8hemJU9SKU">FusionChart
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb0Soxc06Pj6MBTgyORkHi0q&amp;si=7sFcbcqiwuBDaNBz">FusionChart
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_cb174bbf939fe46c" class="element heading1"
+			data-element-id="cb174bbf939fe46c">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_d1603087e4c79b99" class="element normal"
+			data-element-id="d1603087e4c79b99">FusionChart 컴포넌트는 다음과 같은 용도로
+			활용됩니다.</p>
+		<dl id="r_d614699eac99d517" class="element definition_list"
+			data-element-id="d614699eac99d517">
+			<dt>
+				<strong>비즈니스 인텔리전스 대시보드</strong>
+			</dt>
+			<dd>
+				<p>기업의 핵심 성과 지표(KPI)를 시각적으로 표현하여 의사결정을 지원합니다. 매출 추이, 고객 분석, 재무
+					데이터 등을 직관적인 차트로 표현할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>데이터 분석 및 리포팅</strong>
+			</dt>
+			<dd>
+				<p>대용량 데이터를 분석하고 그 결과를 효과적으로 전달하기 위한 리포트 작성에 활용됩니다. 통계적 분석 결과나
+					트렌드 분석을 시각화하여 이해하기 쉬운 형태로 제공합니다.</p>
+			</dd>
+			<dt>
+				<strong>실시간 모니터링 시스템</strong>
+			</dt>
+			<dd>
+				<p>서버 성능, 네트워크 상태, 시스템 리소스 사용량 등을 실시간으로 모니터링하는 대시보드 구축에 사용됩니다.</p>
+			</dd>
+			<dt>
+				<strong>웹 애플리케이션의 데이터 시각화</strong>
+			</dt>
+			<dd>
+				<p>사용자에게 복잡한 데이터를 이해하기 쉬운 형태로 표현하여 사용자 경험을 향상시킵니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_8ab6305384aaaabd" class="element heading1"
+			data-element-id="8ab6305384aaaabd">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_442e1086aa0d0a7b" class="element unordered_list"
+			data-element-id="442e1086aa0d0a7b">
+			<li><p>
+					속성 변경 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00284.xml">WRE</a>)
+				</p></li>
+			<li><p>차트 타입</p>
+				<ul>
+					<li><p>
+							fwBulletChart (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00434.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							fwFunnelChart (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00436.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							fwGanttChart (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00433.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							fwPyramidChart (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00437.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					차트 타입과 Alias 목록 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00312.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					차트 유형을 동적으로 변경 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/FusionChart/changeType_FusionChart.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/nyXDiCfCgc8">YouTube</a>)
+				</p>
+				<ul>
+					<li><p>
+							Combination (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00308.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Multi-series (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00305.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Multi-series Stacked (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00307.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Scroll Combination (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00311.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Scroll Single-series &amp; Scroll Stacked (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00310.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Single Series (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00299.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Stacked (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00306.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							XY Plot (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00309.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							트렌드 라인 추가 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00285.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="Country" name="Country" dataType="text"></w2:column>
+            			<w2:column id="City" name="City" dataType="text"></w2:column>
+            			<w2:column id="Airport" name="Airport" dataType="text"></w2:column>
+            			<w2:column id="C_Code" name="C_Code" dataType="text"></w2:column>
+            			<w2:column id="A_Code" name="A_Code" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:linkedDataList bind="dataList1" id="linkedDataList1">
+            		<w2:condition type="filter"><![CDATA[Country=="KOREA"]]></w2:condition>
+            		<w2:condition type="sort"><![CDATA[]]></w2:condition>
+            	</w2:linkedDataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+scwin.onpageload = function() {
+    var jsonData1 = [{
+            "C_Code": "PAR",
+            "Airport": "ORLY",
+            "Country": "FRANCE",
+            "City": "PARIS",
+            "A_Code": "ORY"
+        },
+        {
+            "C_Code": "PDX",
+            "Airport": "PORTLAND INT’L",
+            "Country": "U.S.A.",
+            "City": "PORTLAND",
+            "A_Code": "PDX"
+        },
+        {
+            "C_Code": "PEK",
+            "Airport": "CAPITAL",
+            "Country": "CHINA",
+            "City": "BEIJING",
+            "A_Code": "PEK"
+        },
+        {
+            "C_Code": "PER",
+            "Airport": "PERTH",
+            "Country": "AUSTRALIA",
+            "City": "PERTH",
+            "A_Code": "PER"
+        },
+        {
+            "C_Code": "PHL",
+            "Airport": "PHILADELPHIA INT’L",
+            "Country": "U.S.A.",
+            "City": "PHILADELPHIA",
+            "A_Code": "PHL"
+        },
+        {
+            "C_Code": "PHX",
+            "Airport": "SKY HARBOR ",
+            "Country": "U.S.A.",
+            "City": "PHOENIX",
+            "A_Code": "PHX"
+        },
+        {
+            "C_Code": "PIT",
+            "Airport": "PITTSBURGH INT’L",
+            "Country": "U.S.A.",
+            "City": "PITTSBURGH",
+            "A_Code": "PIT"
+        },
+        {
+            "C_Code": "PNH",
+            "Airport": "POCHENTONG",
+            "Country": "CAMBODIA",
+            "City": "PHNOMPENH",
+            "A_Code": "PNH"
+        },
+        {
+            "C_Code": "PUS",
+            "Airport": "KIMHAE",
+            "Country": "KOREA",
+            "City": "PUSAN",
+            "A_Code": "PUS"
+        },
+        {
+            "C_Code": "ICH",
+            "Airport": "Incheon International Airport",
+            "Country": "KOREA",
+            "City": "Incheon",
+            "A_Code": "ICN"
+        },
+        {
+            "C_Code": "JJU",
+            "Airport": "Jeju International Airport",
+            "Country": "KOREA",
+            "City": "Jeju",
+            "A_Code": "CJU"
+        },
+        {
+            "C_Code": "GPO",
+            "Airport": "Gimpo International Airport",
+            "Country": "KOREA",
+            "City": "Gimpo",
+            "A_Code": "GMP"
+        },
+        {
+            "C_Code": "NCE",
+            "Airport": "Nice",
+            "Country": "FRANCE",
+            "City": "Nice",
+            "A_Code": "NCE"
+        },
+        {
+            "C_Code": "LYN",
+            "Airport": "Lyon",
+            "Country": "FRANCE",
+            "City": "Lyon",
+            "A_Code": "LYS"
+        },
+        {
+            "C_Code": "ANQ",
+            "Airport": "Anqing Tianzhushan Airport",
+            "Country": "CHINA",
+            "City": "Anqing",
+            "A_Code": "AQG"
+        },
+        {
+            "C_Code": "HRB",
+            "Airport": "Harbin Taping International Airport",
+            "Country": "CHINA",
+            "City": "Harbin",
+            "A_Code": "HRB"
+        },
+        {
+            "C_Code": "SDN",
+            "Airport": "Sydney Aiport",
+            "Country": "AUSTRALIA",
+            "City": "Sydney",
+            "A_Code": "SYD"
+        },
+        {
+            "C_Code": "MBR",
+            "Airport": "Melbourne Aiport",
+            "Country": "AUSTRALIA",
+            "City": "Melbourne",
+            "A_Code": "MEL"
+        },
+        {
+            "C_Code": "BRB",
+            "Airport": "Brisbane Aiport",
+            "Country": "AUSTRALIA",
+            "City": "Brisbane",
+            "A_Code": "BNE"
+        },
+        {
+            "C_Code": "SRP",
+            "Airport": "Siem Reap Aiport",
+            "Country": "CAMBODIA",
+            "City": "Siem Reap",
+            "A_Code": "REP"
+        },
+        {
+            "C_Code": "SHV",
+            "Airport": "Sihanoukville International Aiport",
+            "Country": "CAMBODIA",
+            "City": "Sihanoukville",
+            "A_Code": "KOS"
+        }
+    ];
+    dataList1.setJSON(jsonData1);
+};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="LinkedDataList 생성" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 하단의 첫 번째 Radio는 "dataList1"과 바인딩 된 것을 확인. &lt;br/&gt;2. 하단의 두 번째 Radio는 "linkedDataList1"과 바인딩 된 것을 확인. &lt;br/&gt;3. "linkedDataList1"은 "dataList1"의 데이터 중 Contry가 "Korea"인 데이터만 사용하는 것을 확인. ' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='DataList&lt;br/&gt; &amp;nbsp; &amp;nbsp;id="dataList1"' escape="false">
+    	</w2:textbox>
+    	<xf:select1 ref="" appearance="full" style="margin-bottom: 10px;" id="radio1" rows="" cols="3" selectedIndex="-1">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="City"></xf:label>
+    				<xf:value ref="C_Code"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1>
+    	<w2:textbox escape="false" id="textbox5" label='LinkedDataList (Country=="KOREA")&lt;br/&gt; &amp;nbsp; &amp;nbsp;id="linkedDataList1"&lt;br/&gt; &amp;nbsp; &amp;nbsp;bind="dataList1"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<xf:select1 appearance="full" cols="3" id="radio2" ref="" rows="" selectedIndex="-1" style="">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:linkedDataList1">
+    				<xf:label ref="City"></xf:label>
+    				<xf:value ref="C_Code"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1>
+    </xf:group></body>
+</html>

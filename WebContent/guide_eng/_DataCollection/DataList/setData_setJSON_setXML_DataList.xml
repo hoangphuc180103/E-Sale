@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="guide_sample">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="Name" name="name1" dataType="text"></w2:column>
+            			<w2:column id="Value" name="name2" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<Name><![CDATA[Seoul]]></Name>
+            				<Value><![CDATA[001]]></Value>
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Busan]]></Name>
+            				<Value><![CDATA[002]]></Value>
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Daegu]]></Name>
+            				<Value><![CDATA[003]]></Value>
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Jeju]]></Name>
+            				<Value><![CDATA[004]]></Value>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		dataList1.setData(["Beijing", "201", "Tokyo", "202", "Taipei", "203"]);
+	};
+	
+	scwin.trigger2_onclick = function(e) {
+		var tmpJSON = [{"Name" : "Paris", "Value" : "101"},
+		{"Name" : "London", "Value" : "102"},
+		{"Name" : "Munich", "Value" : "103"}];
+		dataList1.setJSON(tmpJSON);
+        //dataList1.setJSON([{"Name" : "Munich", "Value" : "103"}]);
+	};
+	
+	scwin.trigger3_onclick = function(e) {
+		var tmpXMLStr ="";
+		tmpXMLStr += "<list>";
+		tmpXMLStr += "<map><Name>Toronto</Name><Value>301</Value></map>";
+		tmpXMLStr += "<map><Name>Vancouver</Name><Value>302</Value></map>";
+		tmpXMLStr += "<map><Name>Seattle</Name><Value>303</Value></map>";
+		tmpXMLStr += "</list>";
+		
+		var tmpXML = WebSquare.xml.parse(tmpXMLStr);
+		
+		dataList1.setXML(tmpXML);
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Set DataList Data&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1-1. Click the setData() button.&lt;br/&gt;1-2. Verify that the one-dimensional array data is set in dataList1 and displayed in the Radio button bound to dataList1.&lt;br/&gt;&lt;br/&gt;2-1. Click the setJSON() button.&lt;br/&gt;2-2. Verify that JSON data is set in dataList1 and displayed in the Radio button at the bottom bound to dataList1.&lt;br/&gt;&lt;br/&gt;3-1. Click the setJXML() button.&lt;br/&gt;3-2. Verify that XML data is set in dataList1 and displayed in the Radio button at the bottom bound to dataList1.&lt;br/&gt;&lt;br/&gt;(See the Script tab for detailed scripts.)"
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[dataList1.setData(["Beijing", "201", "Tokyo", "202", "Taipei", "203"]);]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[setJSON([{...}, {...}, {"Name" : "Munich", "Value" : "103"}])]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger3_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger3" type="button">
+    		<xf:label><![CDATA[setXML(tmpXML)]]></xf:label>
+    	</xf:trigger>
+    	<xf:select1 ref="" appearance="full" style="" id="radio1" rows="" cols="" selectedIndex="-1">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="Name"></xf:label>
+    				<xf:value ref="Value"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='/// Sample Code&lt;br/&gt;&lt;br/&gt;scwin.trigger2_onclick = function(e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var tmpJSON = [{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"Name": "Paris",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"Value": "101"&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"Name": "London",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"Value": "102"&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"Name": "Munich",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"Value": "103"&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;];&lt;br/&gt; &amp;nbsp; &amp;nbsp;dataList1.setJSON(tmpJSON);&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.trigger3_onclick = function(e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var tmpXMLStr = "";&lt;br/&gt; &amp;nbsp; &amp;nbsp;tmpXMLStr += "&lt;list&gt;";&lt;br/&gt; &amp;nbsp; &amp;nbsp;tmpXMLStr += "&lt;map&gt;&lt;Name&gt;Toronto&lt;/Name&gt;&lt;Value&gt;301&lt;/Value&gt;&lt;/map&gt;";&lt;br/&gt; &amp;nbsp; &amp;nbsp;tmpXMLStr += "&lt;map&gt;&lt;Name&gt;Vancouver&lt;/Name&gt;&lt;Value&gt;302&lt;/Value&gt;&lt;/map&gt;";&lt;br/&gt; &amp;nbsp; &amp;nbsp;tmpXMLStr += "&lt;map&gt;&lt;Name&gt;Seattle&lt;/Name&gt;&lt;Value&gt;303&lt;/Value&gt;&lt;/map&gt;";&lt;br/&gt; &amp;nbsp; &amp;nbsp;tmpXMLStr += "&lt;/list&gt;";&lt;br/&gt;&lt;br/&gt; &amp;nbsp; &amp;nbsp;var tmpXML = WebSquare.xml.parse(tmpXMLStr);&lt;br/&gt;&lt;br/&gt; &amp;nbsp; &amp;nbsp;dataList1.setXML(tmpXML);&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

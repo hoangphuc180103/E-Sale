@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] 차트에티터 컴포넌트 설명">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="학습목표" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    		<xf:group id="" class="detailsbox"><xf:group tagname="details" style="" id="" class="">
+    				<w2:textbox tagname="summary" style="" id="" label="차트 , 에티터 컴포넌트 사용하기" escape="false"></w2:textbox>
+    				<w2:textbox style="" id="" label="간단하게 속성과 API를 활용하여 FusionChart, Editor 의 다양한 기능 활용" class="" escape="false">
+    				</w2:textbox>
+    			</xf:group></xf:group></xf:group>
+    	</xf:group>
+    </body>
+</html>

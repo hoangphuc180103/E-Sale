@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 엑셀 다운로드 시 숫자형의 서식 설정하기 - inputType이 custom 인 경우">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220916" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="예제 설명 문구 수정" meta_date="20230306" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="04" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="number" id="stock" name="Stock"></w2:column>
+						<w2:column id="stock_custom" name="기능 비교 컬럼" dataType="number"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<product><![CDATA[SecureGate]]></product>
+							<stock><![CDATA[98291]]></stock>
+							<stock_custom><![CDATA[98291]]></stock_custom>
+						</w2:row>
+						<w2:row>
+							<product><![CDATA[CloudFlex]]></product>
+							<stock><![CDATA[3928]]></stock>
+							<stock_custom><![CDATA[3928]]></stock_custom>
+						</w2:row>
+						<w2:row>
+							<product><![CDATA[TechAssist]]></product>
+							<stock><![CDATA[73918]]></stock>
+							<stock_custom><![CDATA[73918]]></stock_custom>
+						</w2:row>
+						<w2:row>
+							<product><![CDATA[MobileMagic]]></product>
+							<stock><![CDATA[1746123]]></stock>
+
+							<stock_custom><![CDATA[1746123]]></stock_custom>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00105_TYPE1.xlsx",
+        customToDataType: "false"
+    };
+
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - "customToDataType" 옵션 활성화] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00105_TYPE2.xlsx", //엑셀의 파일명
+        customToDataType: "true"   //inputType이 custom인 경우 엑셀의 서식을 DataList에 정의된 DataType 형으로 지정합니다.(엑셀 내 연산이 가능합니다.)
+    };
+
+    //GridView "grd_exam1"의 엑셀 다운로드 실행
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'advancedExcelDownload' 메소드의 첫 번째 인자인 JSON 객체의 'customToDataType'을 사용하여, 엑셀 다운로드 시 숫자형 서식을 설정한 예제입니다."
+					style="" class="mb_def">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="mb_def_box nobottom" id="" style="">
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+						style="min-width: 30px; height: 26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 기본]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_ex2" localeRef="" style="min-width: 30px; height: 26px;" type=""
+						useDefaultLabel="true" ev:onclick="scwin.btn_ex2_onclick">
+						<xf:label><![CDATA[엑셀 다운로드 - "customToDataType" 옵션 활성화]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			<xf:group id="" class="gvwbox"><w2:gridView rowNumWidth="34" visibleRowNumFix="true" rowNumVisible="true" dataList="data:dlt_exam" style="height:100px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="280">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="140" inputType="text" id="column3" value="Product" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column2" value="Stock" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column4" value="inputType&lt;br/&gt;custom" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column textAlign="left" width="140" inputType="text" id="product" displayMode="label"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="80" displayFormat="#,###" inputType="text" id="stock" displayMode="label">
+							</w2:column>
+							<w2:column dataType="number" width="80" displayFormat="#,###" inputType="custom" id="stock_custom" displayMode="label" textAlign="right">
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView></xf:group></xf:group>
+		</xf:group>
+	</body>
+</html>

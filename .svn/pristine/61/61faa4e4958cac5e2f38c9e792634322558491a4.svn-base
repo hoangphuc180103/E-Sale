@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="웹스퀘어 개발을 위한 참고 사이트" meta_author="InswaveSystems" meta_type="메인">
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_site" saveRemovedData="true" style="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="disp" name="타이틀"></w2:column>
+						<w2:column dataType="text" id="url" name="이동 경로"></w2:column>
+						<w2:column dataType="text" id="desc" name="설명"></w2:column>
+						<w2:column dataType="text" id="li_class" name="li class"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList id="dlt_site_webDev" saveRemovedData="true" style="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="disp" name="타이틀"></w2:column>
+						<w2:column dataType="text" id="url" name="이동 경로"></w2:column>
+						<w2:column dataType="text" id="desc" name="설명"></w2:column>
+						<w2:column dataType="text" id="li_class" name="li class"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_init" ref="" target='data:json,["dlt_site","dlt_site_webDev"]' action="/frame/data/reference_sites.json"
+				method="post" mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+				processMsg="" ev:submit="" ev:submitdone="scwin.sbm_init_submitdone" ev:submiterror="" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	$p.executeSubmission( "sbm_init" );
+};
+
+scwin.sbm_init_submitdone = function(e) {
+    scwin.init_refList("ref_site");
+    scwin.init_refList("ref_site_web");
+};
+
+scwin.init_refList = function(argStrType){
+	var arrList, arrListLen, i, curObj, curRowData;
+    var _cmpGen;
+    var strID_dt, strID_dd, strID_li;
+    var isError = false;
+	
+    switch (argStrType) {
+    case "ref_site":
+        _cmpGen = gen_ref_site;
+        strID_dt = "btn_gen_ref_site_dt";
+        strID_dd = "tbx_gen_ref_site_dd";
+        strID_li = "grp_gen_ref_site_li";
+
+        arrList = dlt_site.getAllJSON();
+        break;
+    case "ref_site_web":
+        _cmpGen = gen_ref_site_web;
+        strID_dt = "btn_gen_ref_site_web_dt";
+        strID_dd = "tbx_gen_ref_site_web_dd";
+        strID_li = "grp_gen_ref_site_web_li";
+
+        arrList = dlt_site_webDev.getAllJSON();
+        break;
+    default:
+        isError = true;
+    }
+
+    if (isError === true) { return; }
+
+    arrListLen = arrList.length;
+	
+	for(i=0;i<arrListLen;i++){
+		curRowData = arrList[i];
+		_cmpGen.insertChild( i );
+
+        curObj = _cmpGen.getChild(i, strID_li);
+        if (curRowData.li_class) {
+            curObj.addClass(curRowData.li_class);
+        } else {
+            curObj.addClass("type05");
+        }
+        
+		curObj = _cmpGen.getChild( i , strID_dt );
+		curObj.setValue( curRowData.disp );
+		if((curRowData.url).indexOf("http") > -1){
+			curObj.setHref( curRowData.url );
+		}else{
+			curObj.setHref( "?w2xPath="+curRowData.url );
+		}
+		
+		curObj = _cmpGen.getChild( i , strID_dd );
+		curObj.setValue( curRowData.desc );
+	}
+	
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents exam_subbox" id="" style="">
+			<xf:group class="ws_example_grp_desc" style="">
+				<w2:textbox escape="false" label="온라인으로 제공하는 웹스퀘어 개발을 위한 참고 사이트 목록입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="p_refsite" id="" style="">
+				<xf:group class="site_grp" id="" style="">
+					<xf:group class="sitebox" id="" style="">
+						<w2:textbox class="intro_ref_title" escape="false" id="" label="웹스퀘어 참고 사이트" style=""></w2:textbox>
+						<w2:generator class="" id="gen_ref_site" style="" tagname="ul">
+							<xf:group class="" id="grp_gen_ref_site_li" style="" tagname="li">
+								<xf:group id="">
+									<w2:anchor class="" id="btn_gen_ref_site_dt" outerDiv="false" style="min-height:12px;" target="_blank">
+										<xf:label></xf:label>
+									</w2:anchor>
+									<w2:textbox class="" escape="false" id="tbx_gen_ref_site_dd" style="min-height:12px;"></w2:textbox>
+								</xf:group>
+							</xf:group>
+						</w2:generator>
+					</xf:group>
+					<xf:group class="sitebox" id="" style="">
+						<w2:textbox class="intro_ref_title" escape="false" id="" label="웹 개발 참고 사이트" style=""></w2:textbox>
+						<w2:generator class="" id="gen_ref_site_web" style="" tagname="ul">
+							<xf:group class="" id="grp_gen_ref_site_web_li" style="" tagname="li">
+								<xf:group id="">
+									<w2:anchor class="" id="btn_gen_ref_site_web_dt" outerDiv="false" style="min-height:12px;" target="_blank">
+										<xf:label></xf:label>
+									</w2:anchor>
+									<w2:textbox class="" escape="false" id="tbx_gen_ref_site_web_dd" style="min-height: 12px;"></w2:textbox>
+								</xf:group>
+							</xf:group>
+						</w2:generator>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

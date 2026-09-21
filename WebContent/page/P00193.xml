@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridVIew] 대용량 데이터의 통신 속도, 렌더링 시간 측정">
+    	<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230127" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+    	<w2:type>COMPONENT</w2:type>
+    	<w2:buildDate />
+    	<w2:MSA />
+    	<xf:model>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" id="dlt_gridview" repeatNode="map" saveRemovedData="true" style="">
+    				<w2:columnInfo>
+    					<w2:column dataType="text" id="chk" ignoreStatus="true" name="chk"></w2:column>
+    					<w2:column dataType="text" id="account" name="name1"></w2:column>
+    					<w2:column dataType="text" id="account_name" name="name2"></w2:column>
+    					<w2:column dataType="text" id="owner" name="name3"></w2:column>
+    					<w2:column dataType="text" id="national" name="name4"></w2:column>
+    					<w2:column dataType="text" id="stock_usd" name="name5"></w2:column>
+    					<w2:column dataType="text" id="stock_rate" name="name6"></w2:column>
+    					<w2:column dataType="text" id="bond_usd" name="name7"></w2:column>
+    					<w2:column dataType="text" id="bond_rate" name="name8"></w2:column>
+    					<w2:column dataType="text" id="etc_usd" name="name9"></w2:column>
+    					<w2:column dataType="text" id="etc_rate" name="name10"></w2:column>
+    					<w2:column dataType="text" id="tot_usd" name="name11"></w2:column>
+    					<w2:column dataType="text" id="tot_rate" name="name12"></w2:column>
+    					<w2:column dataType="text" id="date" name="name13"></w2:column>
+    				</w2:columnInfo>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection />
+    		<xf:submission id="sbm_gridview" ref="" target="" action="/data/sampleData/sampleData_json_gridview.json" method="post"
+    			mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+    			processMsg="" ev:submit="" ev:submitdone="scwin.sbm_gridview1_submitdone" ev:submiterror="" abortTrigger="">
+    		</xf:submission>
+    	</xf:model>
+    	<w2:layoutInfo />
+    	<w2:publicInfo method="" />
+    	<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+};
+
+// 시간 저장 변수
+scwin.startTime;
+scwin.serverEnd;
+scwin.renderEnd;
+
+// 점유율상세내역 버튼 클릭 이벤트
+scwin.btn_search_onclick = function (e) {
+    var sbm = $p.getSubmission("sbm_gridview");
+    var select_val = acb_size.getValue();
+    sbm.action = "/data/sampleData/sampleData_json_gridview"+select_val;
+    // 시간 측정 시작
+    scwin.startTime = new Date();
+    $p.executeSubmission("sbm_gridview");
+};
+
+// up 버튼 클릭 이벤트
+scwin.btn_up_onclick = function (e) {
+    var options = {};
+
+    options.useModalDisable = "true";
+    options.headerExist = "1";
+
+    grd.advancedExcelUpload(options);
+
+};
+
+// down 버튼 클릭 이벤트
+scwin.btn_down_onclick = function (e) {
+    var options = {};
+
+    options.fileName = "excel.xlsx";
+    options.chunkRow = 10000;
+
+    options.type = "1";
+    // 컬럼 무브를 적용해 다운 받을지 여부
+    options.columnMove = "true";
+    // 스타일 사용 여부
+    options.useStyle = "true";
+    // subtotal 포함 여부
+    options.useSubTotal = scwin.subTotVisble;
+    // footer 포함 여부
+    options.useFooter = "true";
+    // colMerge(예탁계좌 컬럼) 포함 여부
+    options.colMerge = "true";
+    options.startRowIndex = 0;
+    options.startColumnIndex = 0;
+    options.showProcess = true;
+    
+    grd.advancedExcelDownload(options);
+};
+
+// 저장된 각 파트별 시간을 이용해 전체, 서버, 렌더 완료 시간을 계산하고 세팅한다.
+scwin.calcTime = function (e) {
+    var total_time = scwin.renderEnd - scwin.startTime;
+    var server_time = scwin.serverEnd - scwin.startTime
+    var render_time = scwin.renderEnd - scwin.serverEnd;
+    var result = {
+        total : total_time,
+        server : server_time,
+        render : render_time
+    }
+    totalTime.setValue(total_time);
+    serverTime.setValue(server_time);
+    renderTime.setValue(render_time);
+
+    return result;
+};
+
+// submit 완료 메소드
+scwin.sbm_gridview1_submitdone = function(e) {
+    // 서버 완료 시간
+    scwin.serverEnd = new Date();
+    // 조회한 데이터 -> 데이터리스트에 입력후 그리드 렌더링
+    var jsonData = e.responseJSON.dlt_gridview;
+    dlt_gridview.setJSON(jsonData);
+    // 렌더링 완료 시간
+    scwin.renderEnd = new Date();
+    // 측정된 시간 표기
+    scwin.calcTime();
+};
+
+// 데이터 초기화
+scwin.btn_clear_onclick = function(e) {
+    dlt_gridview.setJSON([]);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<w2:textbox escape="false" id=""
+    				label="GridView에서 데이터를 조회 할 때, 데이터의 사이즈에 따른 서버 시간, 브라우저 렌더링 시간을 측정하는 예제입니다.&lt;br/&gt;Selectbox에서 데이터량을 선택하고 조회 버튼을 클릭 시 데이터 조회와 함께 시간을 측정합니다.&lt;br/&gt;조작 방법&lt;br/&gt;1. selectbox에서 조회 할 데이터의 사이즈를 선택하고 조회 버튼을 클릭해 데이터를 조회합니다.&lt;br/&gt;2. download 버튼을 클릭해 excel을 다운로드 합니다.&lt;br/&gt;3. clean 버튼을 클릭해 GridView의 데이터를 초기화 합니다.&lt;br/&gt;4. upload 버튼을 클릭합니다.&lt;br/&gt;5. 3번에서 download한 excel 파일을 선택해 데이터를 업로드 합니다."
+    				style="">
+    			</w2:textbox>
+    			<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style=""></w2:textbox>
+    			<w2:textbox class="ws_example_txt_desc_info" escape="false" id=""
+    				label="이 예제는 PC에 최적화 된 화면입니다. 모바일에서는 기능 일부가 작동하지 않을 수 있습니다." style="">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group id="" class="ofh">
+    			<xf:group class="fr mb_def_box nobottom" id="" style="">
+    				<xf:group class="time" id="" style="display: inline;">
+    					<xf:group class="tg" id="" style="display: inline-table;">
+    						<w2:textbox id="" label="Render: " style="display: inline-table;"></w2:textbox>
+    						<w2:textbox class="pt" id="renderTime" label="" style="display: inline-table;color: red"></w2:textbox>
+    						<w2:textbox id="" label="ms" style="margin-right: 30px;margin-left: 5px;display: inline-table;"></w2:textbox>
+    					</xf:group>
+    					<xf:group class="tg" id="" style="display: inline-table;">
+    						<w2:textbox id="" label="Server: " style="display: inline-table;"></w2:textbox>
+    						<w2:textbox class="pt" id="serverTime" label="" style="display: inline-table;color: red;"></w2:textbox>
+    						<w2:textbox id="" label="ms" style="margin-right: 30px;margin-left: 5px;display: inline-table;"></w2:textbox>
+    					</xf:group>
+    					<xf:group class="tg" id="" style="display: inline-table;">
+    						<w2:textbox id="" label="Total :" style="display: inline-table;"></w2:textbox>
+    						<w2:textbox class="pt" id="totalTime" label="" style="display: inline-table;color: red;"></w2:textbox>
+    						<w2:textbox id="" label="ms" style="margin-right: 30px;margin-left: 5px;display: inline-table;"></w2:textbox>
+    					</xf:group>
+    				</xf:group>
+
+    				<xf:select1 allOption="" appearance="minimal" chooseOption="" class="" direction="auto" disabled="false"
+    					disabledClass="w2selectbox_disabled" id="acb_size" ref="" renderType="" style="width:70px;margin-left: 5px;" submenuSize="auto">
+    					<xf:choices>
+    						<xf:item>
+    							<xf:label><![CDATA[1만]]></xf:label>
+    							<xf:value><![CDATA[_1.json]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[10만]]></xf:label>
+    							<xf:value><![CDATA[_10.json]]></xf:value>
+    						</xf:item>
+    					</xf:choices>
+    				</xf:select1>
+    				<xf:trigger class="btn_cm" id="btn_search" style="" type="button" ev:onclick="scwin.btn_search_onclick">
+    					<xf:label><![CDATA[조회]]></xf:label>
+    				</xf:trigger>
+
+    				<xf:trigger class="btn_cm" id="btn_down" style="" type="button" ev:onclick="scwin.btn_down_onclick">
+    					<xf:label><![CDATA[download]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm btn_line" id="btn_clear" style="width: 80px;" type="button"
+    					ev:onclick="scwin.btn_clear_onclick">
+    					<xf:label><![CDATA[clean]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_up_onclick" id="btn_up" style="" type="button">
+    					<xf:label><![CDATA[upload]]></xf:label>
+    				</xf:trigger>
+
+
+    			</xf:group>
+    		</xf:group>
+    		<xf:group id="" class="gvwbox">
+    			<w2:gridView adaptive="" autoFit="allColumn" autoFitMinWidth="1250" class="gvw" columnMove="false"
+    				dataList="data:dlt_gridview" enterKeyMove="" ev:onafteredit="" ev:oncellclick="scwin.grd_menu_oncellclick"
+    				ev:oneditkeyup="scwin.grd_menu_oneditkeyup" ev:onkeyup="" ev:onrowindexchange=""
+    				ev:ontextimageclick="scwin.grd_menu_ontextimageclick" ev:onviewchange="" fixedColumnWithHidden="true" focusMode="row" id="grd"
+    				ignoreCellClick="false" keepDefaultColumnWidth="true" rowNumHeaderValue="순번" rowNumVisible="true" rowNumWidth="50"
+    				rowStatusHeaderValue="상태" rowStatusVisible="true" rowStatusWidth="40" scrollByColumn="false" style="height:300px;"
+    				tooltipFormatter="" useShiftKey="true" userData3="" visibleRowNum="10" wheelRows="">
+    				<w2:header id="header1" style="">
+    					<w2:row id="row2" style="">
+    						<w2:column blockSelect="false" displayMode="label" id="chk" inputType="checkbox"
+    							removeBorderStyle="false" rowSpan="2" style="height:37px;" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column16" inputType="text" rowSpan="2"
+    							style="height:37px;" value="예탁계좌" width="79">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column109" inputType="text" removeBorderStyle="false"
+    							rowSpan="2" style="height:37px;" value="예탁계좌명" width="80">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" hidden="false" id="column104" inputType="text"
+    							removeBorderStyle="false" rowSpan="2" style="height:37px;" value="보관기관" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" hidden="false" id="column105" inputType="text"
+    							removeBorderStyle="false" rowSpan="2" style="height:37px;" value="국가" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" colSpan="2" displayMode="label" id="column25" inputType="text"
+    							removeBorderStyle="false" style="height:37px;" value="주식" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" colSpan="2" displayMode="label" id="column23" inputType="text"
+    							removeBorderStyle="false" style="height:37px;" value="채권" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" colSpan="2" displayMode="label" id="column21" inputType="text"
+    							removeBorderStyle="false" style="height:37px;" value="기타" width="130">
+    						</w2:column>
+    						<w2:column blockSelect="false" colSpan="2" displayMode="label" id="column99" inputType="text"
+    							removeBorderStyle="false" style="height:37px;" value="전체증권" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column89" inputType="text" removeBorderStyle="false"
+    							rowSpan="2" style="height:37px;" value="기준일" width="80">
+    						</w2:column>
+    					</w2:row>
+    					<w2:row id="row7" style="">
+    						<w2:column blockSelect="false" displayMode="label" id="column43" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="평균보관금액&lt;br/&gt;(USD)" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column51" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="점유율" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column42" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="평균보관금액&lt;br/&gt;(USD)" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column57" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="점유율" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column41" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="평균보관금액&lt;br/&gt;(USD)" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column60" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="점유율" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column100" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="평균보관금액&lt;br/&gt;(USD)" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column95" inputType="text" removeBorderStyle="false"
+    							style="height:60px;" value="점유율" width="70">
+    						</w2:column>
+    					</w2:row>
+    				</w2:header>
+    				<w2:gBody id="gBody4" style="">
+    					<w2:row id="row5" style="">
+    						<w2:column displayMode="label" id="chk" inputType="checkbox" removeBorderStyle="false"
+    							style="height:38px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" customFormatter="scwin.setFontFormat" displayMode="label" hidden="false"
+    							id="account" inputType="text" readOnly="true" style="height:38px;" width="79">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="account_name" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="80">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="owner" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="national" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="stock_usd" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="stock_rate" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="bond_usd" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="bond_rate" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="etc_usd" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="etc_rate" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="tot_usd" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="tot_rate" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="date" inputType="text" removeBorderStyle="false"
+    							style="height:38px" width="80" value="">
+    						</w2:column>
+    					</w2:row>
+    				</w2:gBody>
+    				<w2:footer id="footer1" style="">
+    					<w2:row id="row8" style="">
+    						<w2:column blockSelect="false" displayMode="label" id="column132" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column76" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="79">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column113" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="80">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column75" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column74" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column73" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column72" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column70" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column69" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column67" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column66" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column103" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="120">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="column98" inputType="text" removeBorderStyle="false"
+    							style="height:20px" width="70">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayFormat="#,###,### 건" displayMode="label" expression='COUNT("chk")'
+    							id="column93" inputType="expression" removeBorderStyle="false" style="height:20px" value="" width="80">
+    						</w2:column>
+    					</w2:row>
+    				</w2:footer>
+    			</w2:gridView>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

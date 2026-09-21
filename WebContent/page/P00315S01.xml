@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00315의 서브 페이지 01" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230802" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+    	<xf:group class="" id="" style="">
+    		<w2:textbox id="" label="P00315S01.xml" style="font-size: 1.2em;font-weight: bold;color: Salmon;margin-bottom: 6px;"></w2:textbox>
+    		<xf:group style="" id="">
+    			<xf:input adjustMaxLength="false" id="ibx_exam1" style="width: 144px;" initValue="P00315S01" readOnly="true"></xf:input>
+    		</xf:group>
+    	</xf:group>
+	</body>
+</html>

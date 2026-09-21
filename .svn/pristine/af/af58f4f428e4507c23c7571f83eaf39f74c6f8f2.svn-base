@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] 항목의 가장 긴 문자열에 맞춰 너비 자동 조절 하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221028" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="SelectBox의 'labelWidthAuto' 속성을 사용하여, 항목 중 가장 긴 문자열의 너비만큼 SelectBox의 너비가 자동으로 늘어나도록 설정한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 컴포넌트의 너비(width)를 사용자가 설정한 너비로 적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 id="sbx_exam1" chooseOption="" style="width:80px;min-height:24px;" submenuSize="auto" allOption=""
+							disabled="false" direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" labelWidthAuto="false">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[Apple]]></xf:label>
+									<xf:value><![CDATA[01]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Blackcurrant]]></xf:label>
+									<xf:value><![CDATA[02]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Cherry]]></xf:label>
+									<xf:value><![CDATA[03]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='컴포넌트의 너비(width)를 항목의 가장 긴 문자열을 기준으로 적용' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+							disabledClass="w2selectbox_disabled" id="sbx_exam2" ref="" style="width:80px;min-height:24px;" submenuSize="auto"
+							labelWidthAuto="true">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[Apple]]></xf:label>
+									<xf:value><![CDATA[01]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Blackcurrant]]></xf:label>
+									<xf:value><![CDATA[02]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Cherry]]></xf:label>
+									<xf:value><![CDATA[03]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

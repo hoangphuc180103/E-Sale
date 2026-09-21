@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 탭의 정보 반환받기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230717" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = async function () {
+    // 예제 테스트를 위해 탭 추가
+    await tac_exam1.addTab(
+        "tab_exam",
+        {
+            "label": "TAB2",
+            "openAction": "select",
+            "tabWidth": 100
+        },
+        {
+            "src": "/page/P00294S01.xml",
+            "wframe": true
+        }
+    );
+};
+
+/**
+ * 버튼 [탭의 정보 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // TabControl 'tac_exam1'의 탭 정보를 반환받습니다.
+    let result = tac_exam1.getTabInfo();
+    // 반환 값 예시)
+    // [
+    //   {
+    //     "id": "tabs1",
+    //     "label": "TAB1",
+    //     "defaultTabIndex": 0,
+    //     "currentTabIndex": 0,
+    //     "src": "",
+    //     "alwaysDraw": false
+    //   },
+    //   {
+    //     "id": "tab_exam",
+    //     "label": "TAB2",
+    //     "defaultTabIndex": 1,
+    //     "currentTabIndex": 1,
+    //     "src": "/page/P00294S01.xml",
+    //     "alwaysDraw": false
+    //   }
+    // ]
+
+    // 로그 출력
+    let strLog = "# TabControl의 'getTabInfo' 메소드의 반환 값: \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'getTabInfo' 메소드를 사용하여 각 탭의 정보를 반환받는 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group id="" style="" class=""></xf:group>
+			<xf:group class="example_div_tb_style_wrap mw600" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" style=""
+								type="button">
+								<xf:label><![CDATA[탭의 정보 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="tbcbox">
+							<w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" tabScroll=""
+								useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="position: relative;height: 120px;" id="tac_exam1"
+								class="tbc">
+								<w2:tabs disabled="false" style="width: 100px;" id="tabs1" label="TAB1"></w2:tabs>
+								<w2:content alwaysDraw="false" style="min-height:30px;" id="content1">
+									<w2:textbox style="font-size: 1.2em;color: steelblue;font-weight: bold;" id="" label="TAB1 CONTENT">
+									</w2:textbox>
+								</w2:content>
+							</w2:tabControl>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:span class="mr_def txt_bold" id="" label="로그 확인" style=""></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="" style="" title="로그 삭제"
+								type="button" userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 90px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

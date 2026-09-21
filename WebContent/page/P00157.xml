@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] frameModal을 활성화하였을 때의 팝업 동작 비교하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221104" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    scwin.initPage();
+};
+
+/**
+ * 화면 초기화
+ */
+scwin.initPage = function () {
+    var jsnTabOpt = {
+        "label": "P00157S01",
+        "openAction": "select"
+    };
+    var jsnContOpt = {
+        "src": "/page/P00157S01.xml",
+        "wframe": true
+
+    };
+
+    tac_exam1.addTab("P00157S01", jsnTabOpt, jsnContOpt);
+    tac_exam2.addTab("P00157S01", jsnTabOpt, jsnContOpt);
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'frameModal' 속성의 설정에 따른 팝업 동작을 비교한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="" class=""></xf:group>
+			<xf:group class="example_div_tb_style_wrap mw600" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) frameModal 비활성화" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="tbcbox" id="" style="">
+							<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="tac_exam1"
+								style="position: relative;height: 300px;" tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+							</w2:tabControl>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='frameModal 활성화' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="팝업이 탭 영역에서만 이동됩니다. 상위 팝업을 닫으면 하위 팝업이 닫힙니다."
+							style="">
+						</w2:textbox>
+						<xf:group class="tbcbox" id="" style="">
+							<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist"
+								frameModal="true" id="tac_exam2" style="position: relative;height: 300px;" tabScroll="" useConfirmMessage="false"
+								useMoveNextTabFocus="false" useTabKeyOnly="true">
+							</w2:tabControl>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

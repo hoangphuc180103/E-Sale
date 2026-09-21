@@ -1,0 +1,44 @@
+/*amd /guide_jpn/WindowContainer/createWindow_frameModal_WindowContainer/03_b_popUp_B.xml 2299 7e20170a7fadc63d1b95a9e01191e0d4341bfd6d9c2363486de06c971f61f6ee */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  requires("uiplugin.popup");
+  var parent2 = $p.parent().text2.getValue();
+  var triggerName2 = parent2;
+  trigger2.setLabel(triggerName2);
+  text2.hide();
+};
+scwin.onpageunload = function () {};
+scwin.trigger2_onclick = function (e) {
+  var tmpSrc = scwin.getfolderPath() + "/03_b_popUp_B.xml";
+  var random = Math.random();
+  var parent2 = $p.parent().text2.getValue();
+  var label2 = parent2 + "-1";
+  text2.setValue(label2);
+  var options = {
+    id: random,
+    type: "wframePopup",
+    // "iframePopup", "browserPopup"
+    width: "200px",
+    height: "200px",
+    top: "300px",
+    left: "300px",
+    popupName: label2,
+    modal: "modal",
+    frameModal: ""
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:trigger',A:{type:'button',style:'height:42px;line-height:32px;padding:5px;background-color:lightblue;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin: 30px;',id:'trigger2','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label'}]},{T:1,N:'w2:textbox',A:{id:'text2',label:'',style:'width: 150px;height: 23px;'}}]}]}]})

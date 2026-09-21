@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    const tmpSrc = scwin.getfolderPath() + "/wframe_01.xml";
+    wframe1.setSrc(tmpSrc);
+
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="프레임 기반 모달 팝업 생성" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. 가장 내부 프레임에서 &amp;nbsp;openPopup() 메소드의 frameModal 옵션을 선택. ("frame", "parent", "top", 프레임 ID)&lt;br/&gt;2. 윈도우 내부의 $p.openPopup() 버튼을 클릭.&lt;br/&gt;3. 옵션 설정에 따른 팝업 동작 범위를 확인.&lt;br/&gt;&lt;br/&gt;frameModal 옵션 값에 따른 동작은 다음과 같음.&lt;br/&gt; &amp;nbsp; &amp;nbsp;"frame" : 해당 프레임 내부에 모달 팝업으로 표시. &lt;br/&gt; &amp;nbsp; &amp;nbsp;"parent" : 부모 프레임 내부에 모달 팝업으로 표시. &lt;br/&gt; &amp;nbsp; &amp;nbsp;"top" : 전체 화면에 모달 팝업으로 표시. &lt;br/&gt; &amp;nbsp; &amp;nbsp;프레임 ID : 지정한 프레임 내부에 모달 팝업으로 표시. (아럐 예제의 경우 $p.getFrame().getParentFrame().getParentFrame().id로 프레임 ID를 구함.)' escape="false">
+    	</w2:textbox><w2:wframe style="border: gray solid 1px;" id="wframe1"></w2:wframe></xf:group></body>
+</html>

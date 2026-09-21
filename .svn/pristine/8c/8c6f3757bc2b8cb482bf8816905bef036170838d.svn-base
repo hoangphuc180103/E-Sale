@@ -1,0 +1,30 @@
+/*amd /page/P00232.xml 4651 9615e119fc313070e387b319f5e2797894d80e507cfe10d76b24ccdb8c86c2ab */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}},{T:1,N:'w2:column',A:{dataType:'text',name:'C',id:'col_c'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'   A 1   '}]},{T:1,N:'col_b',E:[{T:4,cdata:'B1'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'   A 2'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B2'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A 3   '}]},{T:1,N:'col_b',E:[{T:4,cdata:'B3'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C3'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00232_TYPE1.xlsx"
+  };
+  grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 데이터 좌우 공백 제거] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00232_TYPE2.xlsx",
+    //엑셀의 파일명
+    trim: "true" //데이터 좌우 공백 제거
+  };
+  //options.trim <String:N> [default: false] gridView 데이터를 좌우 공백 적용 유무 (true 설정시 공백 제거 후 적용)
+
+  //GridView "grd_exam1"의 엑셀 다운로드 실행
+  grd_exam1.advancedExcelDownload(jsnOptions);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'',escape:'false',id:'',label:'GridView의 \'advancedExcelDownload\' 메소드의 첫 번째 인자인 JSON 객체의 \'trim\' 속성을 사용하여, 엑셀 다운로드 시 셀 데이터의 좌우 공백이 제거되도록 설정한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'엑셀 다운로드 - 기본'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'엑셀 다운로드 - 데이터 좌우 공백 제거'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumVisible:'true',rowNumWidth:'40',keepDefaultColumnWidth:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'allColumn',id:'grd_exam1',visibleRowNum:'3',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'250'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'B',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'C',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_a',value:'',displayMode:'label',class:'P00000_preColumn'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_b',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_c',value:'',displayMode:'label'}}]}]}]}]}]}]}]}]}]})

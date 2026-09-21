@@ -1,0 +1,63 @@
+/*amd /guide/_p/PopUp/getAllPopupList_p/getAllPopupList_p.xml 4671 526a650dcf9d5f95f8907211ef60a57f666168f40469dc650c8bff66c9e90b23 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  requires("uiplugin.popup");
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  const tmpSrc = scwin.getfolderPath() + "/pop1.xml";
+  var options1 = {
+    id: "pop1",
+    type: "wframePopup",
+    popupName: "PopUp ID = pop1",
+    width: "300px",
+    height: "200px",
+    top: "50px",
+    left: "300px"
+  };
+  $p.openPopup(tmpSrc, options1);
+};
+scwin.trigger2_onclick = function (e) {
+  const tmpSrc = scwin.getfolderPath() + "/pop2.xml";
+  var options2 = {
+    id: "pop2",
+    type: "iframePopup",
+    popupName: "PopUp ID = pop2",
+    width: "300px",
+    height: "200px",
+    top: "250px",
+    left: "300px"
+  };
+  $p.openPopup(tmpSrc, options2);
+};
+scwin.trigger3_onclick = function (e) {
+  const tmpSrc = scwin.getfolderPath() + "/pop3.xml";
+  var options2 = {
+    id: "pop3",
+    type: "browserPopup",
+    popupName: "PopUp ID = pop3",
+    width: "300px",
+    height: "200px",
+    top: "110px",
+    left: "300px"
+  };
+  $p.openPopup(tmpSrc, options2);
+};
+scwin.trigger4_onclick = function (e) {
+  var popUps = $p.getAllPopupList();
+  console.table(popUps);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'전체 팝업 객체 반환',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(예제를 단독으로 실행.)<br/>1. F12 버튼을 눌러 개발자 도구를 실행. <br/>2. 개발자 도구에서 Console 탭을 선택. <br/>3. 예제 화면의 PopUp1, PopUp2, PopUP3 버튼을 클릭하여 팝업들을 생성. <br/>4. 예제 화면의 $p.getAllPopupList() 버튼을 클릭. <br/>5. 개발자 도구의 Console 탭에서 현재 생성된 팝업 객체가 반환되는 것을 확인.',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'width:80px;height:32px;font-weight:bolder;color:white;background-color:blue;border-style:none;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'PopUp1'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'width:80px;height:32px;margin-left:40px;font-weight:bolder;color:white;background-color:green;border-style:none;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'PopUp2'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'width:80px;height:32px;margin-left:40px;font-weight:bolder;color:white;background-color:orange;font-style:normal;border-style:none;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'PopUp3'}]}]},{T:1,N:'xf:trigger',A:{nextTabID:'','ev:onclick':'scwin.trigger4_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;margin-top:10px;text-align: left;',tabIndex:'',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.getAllPopupList()'}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox4',label:'/// 샘플 코드<br/><br/>var popUps = $p.getAllPopupList();<br/>console.table(popUps);',style:'padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;',tagname:''}}]}]}]}]})

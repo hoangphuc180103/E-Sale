@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 선택형 inputType의 목록 중 특정 항목 숨기기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220907" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="select" name="select"></w2:column>
+						<w2:column dataType="text" id="checkcombobox" name="checkcombobox"></w2:column>
+						<w2:column id="autoComplete" name="autoComplete" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="false">
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam_code" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="label" name="label" dataType="text"></w2:column>
+						<w2:column id="code" name="code" dataType="text"></w2:column>
+						<w2:column id="useYN" name="useYN" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //GridView의 선택형 inputType의 목록과 연결된 DataList "dlt_exam_code"에 데이터 할당
+    dlt_exam_code.setJSON([
+        { "label": "Apple", "code": "01", "useYN": "Y" },
+        { "label": "Pear", "code": "02", "useYN": "N" },
+        { "label": "Grapes", "code": "03", "useYN": "Y" },
+        { "label": "Melon", "code": "04", "useYN": "N" },
+        { "label": "Peach", "code": "05", "useYN": "Y" }
+    ]);
+
+    //GridView와 연결된 DataList에 빈 행 추가
+    dlt_exam.insertRow();
+    dlt_exam.insertRow();
+
+    //GridView의 컬럼 select에 미노출 항목 지정하기
+    //목록과 연결된 DataList의 "useYN" 컬럼의 값이 "N"이면 미노출 지정
+    grd_exam2.setColumnVisibleColumn("select", "useYN", "N");
+
+    //GridView의 컬럼 checkcombobox에 미노출 항목 지정하기
+    //목록과 연결된 DataList의 "useYN" 컬럼의 값이 "N"이면 미노출 지정
+    grd_exam2.setColumnVisibleColumn("checkcombobox", "useYN", "N");
+
+    //GridView의 컬럼 autoComplete에 미노출 항목 지정하기
+    //목록과 연결된 DataList의 "useYN" 컬럼의 값이 "N"이면 미노출 지정
+    grd_exam2.setColumnVisibleColumn("autoComplete", "useYN", "N");
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView 바디 컬럼의 'inputType'이 목록 선택형(DropDown) 타입인 경우, 목록의 특정 항목을 숨기는 예제입니다."
+					style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 모든 항목 표시" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+					<xf:group id="" class="gvwbox"><w2:gridView visibleRowNumFix="true" dataList="data:dlt_exam" style="height:80px;" autoFit="allColumn" id="" visibleRowNum="2" class="gvw" defaultCellHeight="37" autoFitMinWidth="240">
+							<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+							<w2:header style="" id="header1">
+								<w2:row style="" id="row1">
+									<w2:column width="70" inputType="text" id="column3" value="select" displayMode="label"></w2:column>
+									<w2:column width="100" inputType="text" id="column2" value="checkcombobox" displayMode="label">
+									</w2:column>
+									<w2:column width="100" inputType="text" id="column1" value="autoComplete" displayMode="label"></w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody style="" id="gBody1">
+								<w2:row style="" id="row2">
+									<w2:column chooseOptionLabel="- 선택 -" chooseOption="true" width="70" viewType="icon" inputType="select" id="select" displayMode="label">
+										<w2:choices>
+											<w2:itemset nodeset="data:dlt_exam_code">
+												<w2:label ref="label"></w2:label>
+												<w2:value ref="code"></w2:value>
+											</w2:itemset>
+										</w2:choices>
+									</w2:column>
+									<w2:column chooseOptionLabel="- 선택 -" chooseOption="true" width="100" viewType="icon" inputType="checkcombobox" id="checkcombobox" displayMode="label">
+										<w2:choices>
+											<w2:itemset nodeset="data:dlt_exam_code">
+												<w2:label ref="label"></w2:label>
+												<w2:value ref="code"></w2:value>
+											</w2:itemset>
+										</w2:choices>
+									</w2:column>
+									<w2:column chooseOptionLabel="- 선택 -" chooseOption="true" width="100" viewType="icon" inputType="autoComplete" id="autoComplete" displayMode="label">
+										<w2:choices>
+											<w2:itemset nodeset="data:dlt_exam_code">
+												<w2:label ref="label"></w2:label>
+												<w2:value ref="code"></w2:value>
+											</w2:itemset>
+										</w2:choices>
+									</w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView></xf:group></xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="숨김 항목 지정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+					<xf:group id="" class="gvwbox"><w2:gridView visibleRowNumFix="true" dataList="data:dlt_exam" style="height:80px;" autoFit="allColumn" id="grd_exam2" visibleRowNum="2" class="gvw" defaultCellHeight="37" autoFitMinWidth="240">
+							<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+							<w2:header style="" id="header1">
+								<w2:row style="" id="row1">
+									<w2:column width="70" inputType="text" id="column3" value="select" displayMode="label"></w2:column>
+									<w2:column width="100" inputType="text" id="column2" value="checkcombobox" displayMode="label"></w2:column>
+									<w2:column width="100" inputType="text" id="column1" value="autoComplete" displayMode="label"></w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody style="" id="gBody1">
+								<w2:row style="" id="row2">
+									<w2:column chooseOptionLabel="- 선택 -" chooseOption="true" viewType="icon" width="70" inputType="select" id="select" displayMode="label">
+										<w2:choices>
+											<w2:itemset nodeset="data:dlt_exam_code">
+												<w2:label ref="label"></w2:label>
+												<w2:value ref="code"></w2:value>
+											</w2:itemset>
+										</w2:choices>
+									</w2:column>
+									<w2:column chooseOptionLabel="- 선택 -" chooseOption="true" viewType="icon" width="100" inputType="checkcombobox" id="checkcombobox" displayMode="label">
+										<w2:choices>
+											<w2:itemset nodeset="data:dlt_exam_code">
+												<w2:label ref="label"></w2:label>
+												<w2:value ref="code"></w2:value>
+											</w2:itemset>
+										</w2:choices>
+									</w2:column>
+									<w2:column chooseOptionLabel="- 선택 -" chooseOption="true" viewType="icon" width="100" inputType="autoComplete" id="autoComplete" displayMode="label">
+										<w2:choices>
+											<w2:itemset nodeset="data:dlt_exam_code">
+												<w2:label ref="label"></w2:label>
+												<w2:value ref="code"></w2:value>
+											</w2:itemset>
+										</w2:choices>
+									</w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView></xf:group></xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

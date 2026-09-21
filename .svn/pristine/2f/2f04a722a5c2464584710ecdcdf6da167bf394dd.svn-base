@@ -1,0 +1,21 @@
+/*amd /guide/ScheduleCalendar/useFooterToolbar_customButtonText_customButtonClickFunction_ScheduleCalendar.xml 4049 a5735619b3177fdb39010fa0f342303078d964664e74d5bab05df53942635c66 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{id:'dataList1',baseNode:'list',style:'',saveRemovedData:'true',repeatNode:'map'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'title',name:'title',dataType:'text'}},{T:1,N:'w2:column',A:{id:'start',name:'start',dataType:'text'}},{T:1,N:'w2:column',A:{id:'end',name:'end',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'false'}}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var dateStr = WebSquare.date.getCurrentServerDate("yyyyMMdd");
+  var addDate = WebSquare.date.dateAdd(dateStr, 3);
+  var tmpArr = [{
+    "title": "My Schedule",
+    "start": dateStr,
+    "end": addDate
+  }];
+  dataList1.setJSON(tmpArr);
+};
+scwin.customButton1_onclick = function (e) {
+  alert("custom1 clicked");
+};
+scwin.customButton2_onclick = function (e) {
+  alert("custom2 clicked");
+};
+scwin.customButton3_onclick = function (e) {
+  alert("custom3 clicked");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin:10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'달력 푸터에 버튼 추가',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(첫 번째 ScheduleCalendar)<br/>1. 하단 푸터 부분에 customButtonText 속성으로 정의한 이름의 버튼들이 표시되는 것을 확인. <br/>2. 푸터 부분에 있는 각 버튼을 클릭. <br/>3. 각 버튼을 클릭할 때마다 customButtonClickFunction 속성으로 정의한 함수가 실행되는 것을 확인. <br/><br/>(두 번째 ScheduleCalendar)<br/>1. 하단 푸터 부분에 버튼이 없는 것을 확인.<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'속성 설정<br/>useFooterToolbar="true"<br/>customButtonText="aaa,bbbb,ccccc"<br/>customButtonClickFunction="scwin.customButton1_onclick,scwin.customButton2_onclick,scwin.customButton3_onclick"',escape:'false'}},{T:1,N:'w2:scheduleCalendar',A:{defaultDate:'',endColumn:'end',editable:'false',selectable:'',headerRightBtn:'false',useFooterToolbar:'true',version:'6.1.11',customButtonClickFunction:'scwin.customButton1_onclick,scwin.customButton2_onclick,scwin.customButton3_onclick',footerToolbarStart:'aaa,bbbb,ccccc',titleColumn:'title',startColumn:'start',dataList:'dataList1',customButtonText:'aaa,bbbb,ccccc',style:'width: 400px;height: 500px;margin-bottom: 10px;',eventLimit:'false',id:'scheduleCalendar1',headerLeftBtn:'true',headerTitle:'true'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'속성 설정<br/>useFooterToolbar="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:scheduleCalendar',A:{customButtonClickFunction:'scwin.customButton1_onclick,scwin.customButton2_onclick,scwin.customButton3_onclick',customButtonText:'aaa,bbbb,ccccc',dataList:'dataList1',defaultDate:'',editable:'false',endColumn:'end',eventLimit:'false',footerToolbarStart:'aaa,bbbb,ccccc',headerLeftBtn:'true',headerRightBtn:'false',headerTitle:'true',id:'scheduleCalendar2',selectable:'',startColumn:'start',style:'width: 400px;height: 500px;margin-bottom: 10px;',titleColumn:'title',version:'6.1.11'}}]}]}]}]})

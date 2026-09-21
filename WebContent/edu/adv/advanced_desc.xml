@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/edu/css/edu.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육]심화교육 과정 설명" meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:historyInfo>
+    	</w2:historyInfo>
+    	<w2:type palette="support">COMPONENT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+    	<script type="text/javascript" lazy="false"><![CDATA[
+
+	scwin.onpageload = function () {
+		
+	};
+
+scwin.txt_link_onclick = function(e) {
+
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+	window.open(_url, "_blank");
+};
+
+
+scwin.textbox_link_onclick = function(e) {
+ 
+	var strPage;
+    var jsnMenu;
+    var _main;
+ 
+	strPage = this.getUserData("userData1"); 
+ 
+	 
+    _main = $p.main();   
+	switch (typeof _main.scwin.menu) { 
+		case "object": 
+			
+			jsnMenu = _main.scwin.menu.getMenuByPage(strPage);
+			if (jsnMenu && jsnMenu.ID) {
+				_main.scwin.dispPage(jsnMenu, true);
+			}
+
+			break;
+		default:
+			var _url = ""; 
+			_url =  $c.frame.getBasePageURL(true)+"#w2xPath="+strPage; 
+			
+			window.open(_url, "_blank");
+			break;
+
+	} 
+}; 
+
+scwin.btn_modal_onclick = function (e) {
+
+	var _path= "";  
+	var _title= "";  
+	_path = this.getUserData("userData1"); 
+	_title = this.getUserData("userData2"); 
+//type : wframePopup , iframePopup, browserPopup 
+// 별도의 브라우저로 생성되는 팝업 예시 
+var jsnOptions = {
+        id: "popup1",
+        type: "wframePopup", //필수 고정
+        width: "500px",
+        height: "580px",
+        popupName: _title,
+        modal: "true" //필수 고정
+    };
+
+    $p.openPopup(_path, jsnOptions);
+};
+
+scwin.btn_qna_onclick = function () {
+	btn_qna.toggleClass('active');
+	list_qna.toggleClass('active');
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="box_edu" id="" style="">
+    		<w2:textbox class="tit_main" escape="false" id="" label="WebSquare 심화 교육" style=""></w2:textbox>
+    		<w2:textbox class="txt_check" escape="false" id=""
+    			label="WebSquare 개발자 기본 교육을 수료하여 기본 사용법을 숙지한 개발자 &lt;br/&gt;WebSquare 제품을 보다 효율적으로 활용하고자 하는 개발자" style="">
+    		</w2:textbox>
+    		<w2:textbox class="tit_sub" escape="false" id="" label="Curriculum" style=""></w2:textbox>
+    		<xf:group class="list_step" id="" style="" tagname="ul">
+    			<xf:group id="" style="overflow: hidden;" tagname="li">
+    				<w2:textbox class="badge" id="" label="step 01" style=""></w2:textbox>
+    				<w2:textbox class="tit" id="txt_desc1" label="PageFrame" style="" userData1="/edu/adv/desc_step01.xml"
+    					ev:onclick="scwin.btn_modal_onclick" userData2="PageFrame">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt11" label="iFrame Vs PageFrame 차이" style=""
+    					userData1="/edu/adv/iframe.xml">
+    				</w2:textbox>
+    				<w2:textbox ev:onclick="scwin.txt_link_onclick" style="" id="txt_desc_dt12" label="실습화면 - PageFrame"
+    					userData1="/edu/adv/pageFrame.xml" class="txt">
+    				</w2:textbox>
+    				<w2:textbox ev:onclick="scwin.txt_link_onclick" style="" id="txt_desc_dt81" label="TabControl 활용"
+    					userData1="/edu/adv/tabControl.xml" class="txt">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group id="" style="overflow: hidden;" tagname="li">
+    				<w2:textbox class="badge" id="" label="step 02" style=""></w2:textbox>
+    				<w2:textbox class="tit" ev:onclick="scwin.btn_modal_onclick" id="txt_desc2" label="Popup 활용" style=""
+    					userData1="/edu/adv/desc_step02.xml" userData2="Popup 활용">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt21" label="Popup 유형 알기" style=""
+    					userData1="/page/P00020.xml">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="textbox62" label="실습화면 - Popup" style=""
+    					userData1="/edu/adv/popup.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group id="" style="overflow: hidden;" tagname="li">
+    				<w2:textbox class="badge" id="" label="step 03" style=""></w2:textbox>
+    				<w2:textbox class="tit" ev:onclick="scwin.btn_modal_onclick" id="txt_desc4" label="컴포넌트 동적 활용" style=""
+    					userData1="/edu/adv/desc_step04.xml" userData2="컴포넌트 동적 활용">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt41" label="실습화면 - show/hide 사용" style=""
+    					userData1="/edu/adv/showhide.xml">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt42" label="Generator" style=""
+    					userData1="/edu/adv/generator.xml">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt43" label="dynamicCreate" style=""
+    					userData1="/edu/adv/dynamic.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group id="" style="overflow: hidden;" tagname="li">
+
+
+    				<w2:textbox class="badge" id="" label="step 04" style=""></w2:textbox>
+    				<w2:textbox class="tit" ev:onclick="scwin.btn_modal_onclick" id="txt_desc3" label="DataCollection 활용" style=""
+    					userData1="/edu/adv/desc_step03.xml" userData2="DataCollection 활용">
+    				</w2:textbox>
+
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt31" label="실습화면 - DataList" style=""
+    					userData1="/edu/adv/dataList.xml">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt32" label="AliasDataList" style=""
+    					userData1="/edu/adv/aliasDataList.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group id="" style="overflow: hidden;" tagname="li">
+    				<w2:textbox class="badge" id="" label="step 05" style=""></w2:textbox>
+    				<w2:textbox class="tit" ev:onclick="scwin.btn_modal_onclick" id="txt_desc5" label="응용 컴포넌트 활용 1" style=""
+    					userData1="/edu/adv/desc_step05.xml" userData2="응용 컴포넌트 활용1">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt51" label="실습화면 - AutoComplete" style=""
+    					userData1="/edu/adv/autoComplete.xml">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt52" label="CheckComboBox" style=""
+    					userData1="/edu/adv/checkCombobox.xml">
+    				</w2:textbox>
+
+    			</xf:group>
+    			<xf:group id="" style="overflow: hidden;" tagname="li">
+
+    				<w2:textbox class="badge" id="" label="step 06" style=""></w2:textbox>
+    				<w2:textbox class="tit" ev:onclick="scwin.btn_modal_onclick" id="txt_desc6" label="응용 컴포넌트 활용 2" style=""
+    					userData1="/edu/adv/desc_step06.xml" userData2="응용 컴포넌트 활용2">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt61" label="실습화면 - FusionChart" style=""
+    					userData1="/edu/adv/fusionChart.xml">
+    				</w2:textbox>
+    				<w2:textbox class="txt" ev:onclick="scwin.txt_link_onclick" id="txt_desc_dt62" label="Editor" style=""
+    					userData1="/edu/adv/editor.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="li">
+    				<xf:group class="flex" id="">
+    					<w2:textbox class="badge" id="" label="step 07" style=""></w2:textbox>
+    					<w2:textbox class="tit" escape="false" id="" label="자주 묻는 질문" style=""></w2:textbox>
+    					<w2:textbox class="txt" id="txt_desc_dt71" label="Q&amp;A" style=""></w2:textbox>
+    					<w2:anchor class="btn_qna" ev:onclick="scwin.btn_qna_onclick" id="btn_qna" outerDiv="false" style="">
+    						<xf:label><![CDATA[목록보기]]></xf:label>
+    					</w2:anchor>
+    				</xf:group>
+    				<xf:group class="list_qna" id="list_qna" style="" tagname="ul">
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox_link1"
+    						label="1. JSON 관련 기본 API" style="" tagname="li" userData1="/page/P00036.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" id="textbox_link2" label="2. [GridView] 관련" style="" tagname="li"></w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox3"
+    						label="2-1. 컨텍스트 메뉴 사용 설정하기" style="" tagname="li" userData1="/page/P00169.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox7"
+    						label="2-2. Groupby 기능 적용하기" style="" tagname="li" userData1="/page/P00194.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox8"
+    						label="2-3. scrollEnd 기능을 사용한 데이터 추가하기" style="" tagname="li" userData1="/page/P00054.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox12"
+    						label="2-4.GridView Style 개인화 하기" style="" tagname="li" userData1="/page/P00198.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox6" label="2-5.컬럼 동적 변경"
+    						style="" tagname="li" userData1="/page/P00014.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox4" label="3.특이기능" style=""
+    						tagname="li">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox5" label="3-1.Pivot" style=""
+    						tagname="li" userData1="/page/P00139.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox10" label="3-2.Fusion 차트"
+    						style="" tagname="li" userData1="/page/P00017.xml">
+    					</w2:textbox>
+    					<w2:textbox class="" escape="false" ev:onclick="scwin.textbox_link_onclick" id="textbox11" label="3-3.위젯 컨테이너"
+    						style="" tagname="li" userData1="/page/P00007.xml">
+    					</w2:textbox>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="ban_box" id="" style="display: none;" tagname="ul">
+    			<xf:group id="" tagname="li">
+    				<xf:group id="" class="txt"><w2:textbox tagname="p" style="" id="" label="Curriculum" escape="false" class="tit"></w2:textbox><w2:textbox tagname="p" style="" id="" label="Curriculum" escape="false"></w2:textbox></xf:group><w2:anchor outerDiv="false" ev:onclick="scwin.anc_icon1_onclick" style="" id="anc_icon1">
+    					<xf:label><![CDATA[open]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    			<xf:group id="" tagname="li" style=""><xf:group id="" class="txt"><w2:textbox tagname="p" style="" id="" label="理論文書 " escape="false" class="tit"></w2:textbox><w2:textbox tagname="p" style="" id="" label="理論文書 " escape="false"></w2:textbox></xf:group><w2:anchor ev:onclick="scwin.anc_icon2_onclick" id="anc_icon2" outerDiv="false" style="">
+    					<xf:label><![CDATA[open]]></xf:label>
+    				</w2:anchor>
+    				
+    			</xf:group>
+    			<xf:group class="anc_banner ico2" ev:onclick="scwin.anc_icon3_onclick" id="anc_icon3" style="display: none;" tagname="a">
+    				<w2:textbox escape="false" id="" label="개발자 교육&lt;br/&gt;심화문서" style="" tagname="p"></w2:textbox>
+    				<w2:textbox escape="false" id="" label="바로열기" style="" tagname="span" userData1=""></w2:textbox>
+    			</xf:group>
+    			
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

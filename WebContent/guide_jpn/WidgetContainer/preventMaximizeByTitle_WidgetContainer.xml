@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+var count = 0;
+
+scwin.trigger1_onclick = function (e) {
+    count++;
+    widgetContainer1.addWidgets({
+        id: "true_" + count,
+        title: "true_" + count,
+        //src : "widget.xml",
+        scope: true,
+        x: 0,
+        y: 0,
+        unitWidth: 2,
+        unitHeight: 1
+    });
+
+    widgetContainer2.addWidgets({
+        id: "false_" + count,
+        title: "false_" + count,
+        //src : "widget.xml",
+        scope: true,
+        x: 0,
+        y: 0,
+        unitWidth: 2,
+        unitHeight: 1
+    });
+};
+
+]]></script>
+    </head>
+    <body style="padding:20px;">
+    	<xf:group id="" style="">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ウィジェットタイトルのダブルクリックによるウィジェットの最大化を防ぐ"
+    			escape="false">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    			label='1. 下部の addWidgets() ボタンをクリックします。 &lt;br/&gt;2. ウィジェットが作成されることを確認してください。 &lt;br/&gt;&lt;br/&gt;（最初のウィジェットコンテナ）&lt;br/&gt;3-1. 追加されたウィジェットのタイトル部分をダブルクリック。 &lt;br/&gt;3-2. ウィジェットが最大化されていないことを確認してください。 (preventMaximizeByTitle="true")&lt;br/&gt;&lt;br/&gt;（2 番目の WidgetContainer） &lt;br/&gt;4-1. 追加されたウィジェットのタイトル部分をダブルクリック。 &lt;br/&gt;4-2. ウィジェットが最大化されることを確認してください。 (preventMaximizeByTitle="false")&lt;br/&gt;4-3. ウィジェットのタイトル部分をもう一度ダブルクリックします。 &lt;br/&gt;4-4. 元のウィジェットサイズに戻ることを確認してください。'
+    			escape="false">
+    		</w2:textbox>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[addWidgets()]]></xf:label>
+    		</xf:trigger>
+    		<w2:textbox
+    			style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    			id="textbox4" label='プロパティの設定&lt;br/&gt;preventMaximizeByTitle="true"' escape="false">
+    		</w2:textbox>
+    		<w2:widgetContainer mode="pushpull" unitHeightPixel="200" widgetMove="true"
+    			style="height: 200px;border:1px solid black;margin-bottom: 10px;" id="widgetContainer1" cols="3"
+    			ev:onwidgetmove="scwin.widgetContainer1_onwidgetmove" preventMaximizeByTitle="true">
+    		</w2:widgetContainer>
+    		<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;preventMaximizeByTitle="false"'
+    			style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    		</w2:textbox>
+    		<w2:widgetContainer cols="3" ev:onwidgetmove="scwin.widgetContainer1_onwidgetmove" id="widgetContainer2" mode="pushpull"
+    			style="height: 200px;border:1px solid black;margin-bottom: 10px;" unitHeightPixel="200"
+    			widgetMove="true">
+    		</w2:widgetContainer>
+    	</xf:group>
+    </body>
+</html>

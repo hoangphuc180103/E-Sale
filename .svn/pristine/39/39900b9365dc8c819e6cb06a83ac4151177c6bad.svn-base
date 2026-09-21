@@ -1,0 +1,28 @@
+/*amd /guide_eng/WidgetContainer/preventMaximizeByTitle_WidgetContainer.xml 3700 0e5011846b215637a75523f610c2e2e5662f600ff0313f6bc6b8a360eba0c30d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{id:'dataList1',baseNode:'list',saveRemovedData:'true',repeatNode:'map'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+var count = 0;
+scwin.trigger1_onclick = function (e) {
+  count++;
+  widgetContainer1.addWidgets({
+    id: "true_" + count,
+    title: "true_" + count,
+    //src : "widget.xml",
+    scope: true,
+    x: 0,
+    y: 0,
+    unitWidth: 2,
+    unitHeight: 1
+  });
+  widgetContainer2.addWidgets({
+    id: "false_" + count,
+    title: "false_" + count,
+    //src : "widget.xml",
+    scope: true,
+    x: 0,
+    y: 0,
+    unitWidth: 2,
+    unitHeight: 1
+  });
+};
+}}}]}]},{T:1,N:'body',A:{style:'padding:20px;'},E:[{T:1,N:'xf:group',A:{id:'',style:''},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Prevent Widget Maximization via Title Double-click<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Click the addWidgets() button at the bottom.<br/>2. Confirm the widget is created.<br/><br/>(First Widget Container)<br/>3-1. Double-click the title area of the added widget.<br/>3-2. Confirm the widget does not maximize. (preventMaximizeByTitle=“true”)<br/><br/>(Second Widget Container)<br/>4-1. Double-click the title bar of the added widget.<br/>4-2. Confirm that the widget maximizes. (preventMaximizeByTitle=“false”)<br/>4-3. Double-click the widget\'s title bar again.<br/>4-4. Confirm it returns to its original size.',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'addWidgets()'}]}]},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'preventMaximizeByTitle="true"',escape:'false'}},{T:1,N:'w2:widgetContainer',A:{mode:'pushpull',unitHeightPixel:'200',widgetMove:'true',style:'height: 200px;border:1px solid black;margin-bottom: 10px;',id:'widgetContainer1',cols:'3','ev:onwidgetmove':'scwin.widgetContainer1_onwidgetmove',preventMaximizeByTitle:'true'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'preventMaximizeByTitle="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:widgetContainer',A:{cols:'3','ev:onwidgetmove':'scwin.widgetContainer1_onwidgetmove',id:'widgetContainer2',mode:'pushpull',style:'height: 200px;border:1px solid black;margin-bottom: 10px;',unitHeightPixel:'200',widgetMove:'true'}}]}]}]}]})

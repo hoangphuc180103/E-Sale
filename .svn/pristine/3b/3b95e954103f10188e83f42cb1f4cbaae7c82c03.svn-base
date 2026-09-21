@@ -1,0 +1,23 @@
+/*amd /guide_eng/PageFrame/onresize_PageFrame/openPopup_p.xml 2034 238287513e87e3ac17ede8c9398969d0f76757fc95189c586e3f5fe9a6e6116d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var tmpSrc = scwin.getfolderPath() + "/src.xml";
+  pageFrame1.setSrc(tmpSrc);
+};
+scwin.pageFrame1_onresize = function (resizeInfo) {
+  alert("PageFrame resized.");
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'w2:textbox',A:{style:'margin: 10px;font-size: 30px;font-style: italic;color: lightgreen',id:'textbox1',label:'Popup (openPopup_p.xml)'}},{T:1,N:'w2:textbox',A:{style:'padding:5px; text-align:left; font-size:15px; font-weight:bolder; background-color:lightblue; border:none; margin:10px;',id:'textbox3',label:'resizeEvent="true" (PageFrame)',escape:'false'}},{T:1,N:'w2:pageFrame',A:{'ev:onbeforepageframeunload':'','ev:onpageframeload':'',style:'height: 250px;border: solid lightgreen 2px;margin: 30px;',id:'pageFrame1','ev:onresize':'scwin.pageFrame1_onresize',resizeEvent:'true'}}]}]}]})

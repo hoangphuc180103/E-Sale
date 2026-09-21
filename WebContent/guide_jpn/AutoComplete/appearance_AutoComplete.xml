@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="appearance">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="C_Code" name="name1"></w2:column>
+            			<w2:column dataType="text" id="City" name="name2"></w2:column>
+            			<w2:column dataType="text" id="Country" name="name3"></w2:column>
+            			<w2:column dataType="text" id="Airport" name="name4"></w2:column>
+            			<w2:column dataType="text" id="A_Code" name="name5"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+	scwin.onpageload = function() {
+		var json = [{
+			"C_Code" : "PAR",
+			"Airport" : "ORLY",
+			"Country" : "FRANCE",
+			"City" : "PARIS",
+			"A_Code" : "ORY"
+		}, {
+			"C_Code" : "PDX",
+			"Airport" : "PORTLAND INT’L",
+			"Country" : "U.S.A.",
+			"City" : "PORTLAND",
+			"A_Code" : "PDX"
+		}, {
+			"C_Code" : "PEK",
+			"Airport" : "CAPITAL",
+			"Country" : "CHINA",
+			"City" : "BEIJING",
+			"A_Code" : "PEK"
+		}, {
+			"C_Code" : "PER",
+			"Airport" : "PERTH",
+			"Country" : "AUSTRALIA",
+			"City" : "PERTH",
+			"A_Code" : "PER"
+		}, {
+			"C_Code" : "PHL",
+			"Airport" : "PHILADELPHIA INT’L",
+			"Country" : "U.S.A.",
+			"City" : "PHILADELPHIA",
+			"A_Code" : "PHL"
+		}, {
+			"C_Code" : "PHX",
+			"Airport" : "SKY HARBOR ",
+			"Country" : "U.S.A.",
+			"City" : "PHOENIX",
+			"A_Code" : "PHX"
+		}, {
+			"C_Code" : "PIT",
+			"Airport" : "PITTSBURGH INT’L",
+			"Country" : "U.S.A.",
+			"City" : "PITTSBURGH",
+			"A_Code" : "PIT"
+		}, {
+			"C_Code" : "PNH",
+			"Airport" : "POCHENTONG",
+			"Country" : "CAMBODIA",
+			"City" : "PHNOMPENH",
+			"A_Code" : "PNH"
+		}, {
+			"C_Code" : "PUS",
+			"Airport" : "KIMHAE",
+			"Country" : "KOREA",
+			"City" : "PUSAN",
+			"A_Code" : "PUS"
+		}];
+		dataList1.setJSON(json);
+
+	};
+
+	scwin.onpageunload = function() {
+
+	};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="選択項目リストの矢印を表示/非表示" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="選択項目リストに矢印が表示されないことを確認してください。" escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;appearance="display"' escape="false">
+    	</w2:textbox>
+    	<w2:autoComplete submenuSize="auto" search="contain" ref="" appearance="display" delimiter=" / " chooseOption="" useKeywordHighlight="false"
+    		style="width: 50%;margin-bottom: 10px;" id="autoComplete1" displayMode="label delim value" useLocale="false" caseSensitive="false">
+    		<w2:choices>
+    			<w2:itemset nodeset="data:dataList1">
+    				<w2:label ref="City"></w2:label>
+    				<w2:value ref="C_Code"></w2:value>
+    			</w2:itemset>
+    		</w2:choices>
+    	</w2:autoComplete>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;appearance="none"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:autoComplete appearance="none" chooseOption="" delimiter=" / " displayMode="label delim value" id="autoComplete2" ref=""
+    		search="contain" style="width: 50%;" submenuSize="auto" useKeywordHighlight="false" useLocale="false" caseSensitive="false">
+    		<w2:choices>
+    			<w2:itemset nodeset="data:dataList1">
+    				<w2:label ref="City"></w2:label>
+    				<w2:value ref="C_Code"></w2:value>
+    			</w2:itemset>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

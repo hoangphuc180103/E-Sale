@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko"><head><title>컴포넌트의 자식 또는 자손 컴포넌트 반환받기</title><link rel="stylesheet" href="css/book.css" type="text/css" /><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" /><meta name="EPB-UUID" content="f1fbcef72ff0a2ec" /></head><body><div class="chapter_content"><h1 id="r_37be5ebb3c546d69" class="chapter_title">컴포넌트의 자식 또는 자손 컴포넌트 반환받기</h1><h1 id="r_aae5fa3228c356f7" class="element heading1" data-element-id="aae5fa3228c356f7"><div class="r_heading_inner"><span class="heading1_n">1</span><span>개요</span></div></h1><p id="r_87cc7b021077517a" class="element normal" data-element-id="87cc7b021077517a">'WebSquare.util.getChildren' 메소드를 사용하여 컴포넌트의 자식 또는 자손 컴포넌트를 배열로 반환받는 예제입니다.</p><p id="r_28622f6048c71da7" class="element normal" data-element-id="28622f6048c71da7">이 예제에서 사용된 '자식'과 '자손' 단어의 의미는 다음과 같습니다.</p><ul id="r_da0fecca860ba998" class="element unordered_list" data-element-id="da0fecca860ba998"><li><p>자식: 대상 컴포넌트의 직계 자식 컴포넌트를 의미하며, 첫 번째 깊이의 컴포넌트만 포함합니다.</p></li><li><p>자손: 대상 컴포넌트의 자식, 손자, 증손자 등 모든 하위 컴포넌트를 의미하며, 깊이에 상관없이 모든 하위 컴포넌트를 포함합니다.</p></li></ul><p id="r_287dafbc8bc14845" class="element r_example_link_p" data-element-id="287dafbc8bc14845"><a class="link" href="http://example.websquare.kr/link.html?p=P00024">P00024</a></p><h1 id="r_465ef185315c3b20" class="element heading1" data-element-id="465ef185315c3b20"><div class="r_heading_inner"><span class="heading1_n">2</span><span>구현된 기능</span></div></h1><ul id="r_9d8ea426bd2d4ead" class="element unordered_list" data-element-id="9d8ea426bd2d4ead"><li><p>Group의 자식 컴포넌트 반환 받기</p></li><li><p>Group의 전체 자손 컴포넌트 반환 받기</p></li><li><p>Group의 전체 자손 컴포넌트 중 Group, Textbox를 제외하고 반환 받기</p></li></ul><h1 id="r_44b564d84b347565" class="element heading1" data-element-id="44b564d84b347565"><div class="r_heading_inner"><span class="heading1_n">3</span><span>예제 테스트 방법</span></div></h1><p id="r_0932116e538e8223" class="element normal" data-element-id="0932116e538e8223">예제 영역 '로그 확인'의 textarea와 브라우저 개발자 도구의 콘솔에 반환 받은 컴포넌트 정보가 출력됩니다.</p><div id="r_15eb6428a090fbcc" class="element code support_code_numbering" data-element-id="15eb6428a090fbcc"><p class="caption"><span class="code_caption_n">Example 1.</span>Log</p><pre><span class="digits_10 code_line"></span>[15:43:01] ** scwin.btn_ex1_onclick 실행 **
+<span class="digits_10 code_line"></span>[15:43:01] WebSquare.util.getChildren(grp_form);
+<span class="digits_10 code_line"></span>[15:43:01] ----------------------------------------
+<span class="digits_10 code_line"></span>전체 컴포넌트 수 : 7
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>0번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : wq_uuid_1557
+<span class="digits_10 code_line"></span>PluginName : group
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>- 생략 -</pre></div><h2 id="r_ec786a1477fb109e" class="element heading2" data-element-id="ec786a1477fb109e"><div class="r_heading_inner"><span class="heading2_n">3.1</span><span>자식 컴포넌트 반환받기</span></div></h2><div id="r_01b42482ec23a362" class="element step1" data-element-id="01b42482ec23a362"><p class="step1_n">1</p><p>'<span class="r_exec_btn_style_span">자식 컴포넌트 반환 받기</span>' 버튼을 클릭합니다.</p></div><p id="r_5ea235290266da50" class="element normal step1_indent" data-element-id="5ea235290266da50">예제 영역 '로그 확인'의 'textarea'와 브라우저 개발자 도구의 콘솔을 통해 컴포넌트 정보를 확인합니다. 'textarea'에는 컴포넌트의 ID와 PluginName만 출력되며, 반환되는 객체는 브라우저 콘솔을 통해 확인합니다.</p><p id="r_9e0779f1d4eb67f5" class="element normal step1_indent" data-element-id="9e0779f1d4eb67f5">'id'가 'grp_form'인 Group의 직계 자식 컴포넌트가 반환됩니다.</p><div id="r_87e0bd5c98eb3115" class="element code support_code_numbering step1_indent" data-element-id="87e0bd5c98eb3115"><p class="caption"><span class="code_caption_n">Example 2.</span>Log</p><pre><span class="digits_10 code_line"></span>[14:37:55] ** scwin.btn_ex1_onclick 실행 **
+<span class="digits_10 code_line"></span>[14:37:55] WebSquare.util.getChildren(grp_form);
+<span class="digits_10 code_line"></span>[14:37:55] ----------------------------------------
+<span class="digits_10 code_line"></span>전체 컴포넌트 수 : 7
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>0번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : wq_uuid_15
+<span class="digits_10 code_line"></span>PluginName : group
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>1번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : wq_uuid_16
+<span class="digits_10 code_line"></span>PluginName : group
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>- 생략 -</pre></div><h2 id="r_8b43906d1fa12293" class="element heading2" data-element-id="8b43906d1fa12293"><div class="r_heading_inner"><span class="heading2_n">3.2</span><span>전체 자손 컴포넌트 반환받기</span></div></h2><div id="r_d82bf5dad8c6a953" class="element step1" data-element-id="d82bf5dad8c6a953"><p class="step1_n">1</p><p>'<span class="r_exec_btn_style_span">전체 자손 컴포넌트 반환 받기</span>' 버튼을 클릭합니다.</p></div><p id="r_8954e2ef2e787f9c" class="element normal step1_indent" data-element-id="8954e2ef2e787f9c">예제 영역 '로그 확인'의 'textarea'와 브라우저 개발자 도구의 콘솔을 통해 컴포넌트 정보를 확인합니다. 'textarea'에는 컴포넌트의 ID와 PluginName만 출력되며, 반환되는 객체는 브라우저 콘솔을 통해 확인합니다.</p><p id="r_4b2b73cb1ca1889d" class="element normal step1_indent" data-element-id="4b2b73cb1ca1889d">'id'가 'grp_form'인 Group의 자손 컴포넌트(자식, 손자, 증손자 등 모든 하위 컴포넌트)를 반환합니다.</p><div id="r_049bc370b8a6a636" class="element code support_code_numbering step1_indent" data-element-id="049bc370b8a6a636"><p class="caption"><span class="code_caption_n">Example 3.</span>Log</p><pre><span class="digits_10 code_line"></span>[14:40:29] ** scwin.btn_ex2_onclick 실행 **
+<span class="digits_10 code_line"></span>[14:40:29] WebSquare.util.getChildren(grp_form, {recursive:true});
+<span class="digits_10 code_line"></span>[14:40:29] ----------------------------------------
+<span class="digits_10 code_line"></span>전체 컴포넌트 수 : 28
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>0번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : wq_uuid_15
+<span class="digits_10 code_line"></span>PluginName : group
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>- 중략 -
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>5번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : ibx_input
+<span class="digits_10 code_line"></span>PluginName : input
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>- 생략 -</pre></div><h2 id="r_85df859e03cb500b" class="element heading2" data-element-id="85df859e03cb500b"><div class="r_heading_inner"><span class="heading2_n">3.3</span><span>Group, Textbox를 제외한 자손 컴포넌트 반환받기</span></div></h2><div id="r_2c5b6fa795e367b4" class="element step1" data-element-id="2c5b6fa795e367b4"><p class="step1_n">1</p><p>'<span class="r_exec_btn_style_span">Group, Textbox를 제외한 자손 컴포넌트 반환 받기</span>' 버튼을 클릭합니다.</p></div><p id="r_379dd56e4d74863f" class="element normal step1_indent" data-element-id="379dd56e4d74863f">예제 영역 '로그 확인'의 'textarea'와 브라우저 개발자 도구의 콘솔을 통해 컴포넌트 정보를 확인합니다. 'textarea'에는 컴포넌트의 ID와 PluginName만 출력되며, 반환되는 객체는 브라우저 콘솔을 통해 확인합니다.</p><p id="r_fd9c53c59a3c07eb" class="element normal step1_indent" data-element-id="fd9c53c59a3c07eb">'id'가 'grp_form'인 Group에서 'Group, Textbox를 제외한 자식, 손자, 증손자 등 모든 하위 컴포넌트(깊이 상관없이 모든 하위 컴포넌트)를 반환합니다.</p><div id="r_8a842da21215e234" class="element code support_code_numbering step1_indent" data-element-id="8a842da21215e234"><p class="caption"><span class="code_caption_n">Example 4.</span>Log</p><pre><span class="digits_10 code_line"></span>[14:42:25] ** scwin.btn_ex3_onclick 실행 **
+<span class="digits_10 code_line"></span>[14:42:25] WebSquare.util.getChildren(grp_form, {recursive:true, excludePlugin:"group textbox"});
+<span class="digits_10 code_line"></span>[14:42:25] ----------------------------------------
+<span class="digits_10 code_line"></span>전체 컴포넌트 수 : 6
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>0번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : ibx_input
+<span class="digits_10 code_line"></span>PluginName : input
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>1번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : cbx_checkbox
+<span class="digits_10 code_line"></span>PluginName : checkbox
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>- 중략 -
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>4번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : ibx_tabcontrol_input
+<span class="digits_10 code_line"></span>PluginName : input
+<span class="digits_10 code_line"></span>----------------------------------------
+<span class="digits_10 code_line"></span>5번째 컴포넌트 정보
+<span class="digits_10 code_line"></span>ID : tac_tabControl
+<span class="digits_10 code_line"></span>PluginName : tabControl
+<span class="digits_10 code_line"></span>----------------------------------------</pre></div><h1 id="r_63f599ad97a6194d" class="element heading1" data-element-id="63f599ad97a6194d"><div class="r_heading_inner"><span class="heading1_n">4</span><span>주의사항</span></div></h1><div id="r_8b77c6dd6b4fecef" class="element caution" data-element-id="8b77c6dd6b4fecef"><p>WebSquare.util.getChildren의 인자값은 컴포넌트 객체입니다.</p><p>아래는 group 컴포넌트의 id가 "grp_form"인 경우 스크립트 예시입니다.</p><p> (O) <code>WebSquare.util.getChildren(grp_form);</code></p><p> <span class="r_red_highlight_span"><span class="r_bold01_span">(X)</span></span> <span class="r_red_highlight_span"><span class="r_bold01_span"><code>WebSquare.util.getChildren("grp_form");</code></span></span> </p><p> (O) <code>WebSquare.util.getChildren($p.getComponentById("grp_form"));</code></p></div><h1 id="r_2cf5b9d2191f6cf0" class="element heading1" data-element-id="2cf5b9d2191f6cf0"><div class="r_heading_inner"><span class="heading1_n">5</span><span>구현 예시</span></div></h1><h2 id="r_56037e86d7b351ac" class="element heading2" data-element-id="56037e86d7b351ac"><div class="r_heading_inner"><span class="heading2_n">5.1</span><span>자식 컴포넌트 반환받기</span></div></h2><pre id="r_727560730b7081b6" class="element pre" data-element-id="727560730b7081b6">' WebSquare.util.getChildren' 메소드를 사용하여 스크립트를 작성합니다.
+세부 스크립트는 아래의 예시에 작성되어 있습니다.</pre><div id="r_0e09e62b595a286a" class="element code support_code_numbering" data-element-id="0e09e62b595a286a"><p class="caption"><span class="code_caption_n">Example 5.</span>Script</p><pre><span class="digits_1 code_line"></span><span class="r_h_comment_span">// 'id' 속성이 'grp_form'인 컴포넌트의 자식 컴포넌트가 담긴 배열이 반환됩니다.</span>
+<span class="digits_1 code_line"></span><span class="r_h_comment_span">// 직계 자식 컴포넌트(첫 번째 깊이의 컴포넌트)</span>
+<span class="digits_1 code_line"></span><span class="r_h_keyword_span">var</span> arrComponents = WebSquare.util.getChildren(grp_form);</pre></div><h2 id="r_91701108ab27fa1f" class="element heading2" data-element-id="91701108ab27fa1f"><div class="r_heading_inner"><span class="heading2_n">5.2</span><span>전체 자손 컴포넌트 반환받기</span></div></h2><pre id="r_437b9ccfaed69758" class="element pre" data-element-id="437b9ccfaed69758">' WebSquare.util.getChildren' 메소드를 사용하여 스크립트를 작성합니다.
+- 두 번째 인자 JSON의 'recursive' 속성을 'true'로 설정합니다.
+세부 스크립트는 아래의 예시에 작성되어 있습니다.</pre><div id="r_69b5cbb3f03e0a00" class="element code support_code_numbering" data-element-id="69b5cbb3f03e0a00"><p class="caption"><span class="code_caption_n">Example 6.</span>Script</p><pre><span class="digits_1 code_line"></span><span class="r_h_comment_span">// 'id' 속성이 'grp_form'인 컴포넌트의 자손 컴포넌트가 담긴 배열이 반환됩니다.</span>
+<span class="digits_1 code_line"></span><span class="r_h_comment_span">// 자식, 손자, 증손자 등 모든 하위 컴포넌트(깊이 상관없이 모든 하위 컴포넌트)</span>
+<span class="digits_1 code_line"></span><span class="r_h_keyword_span">var</span> arrComponents = WebSquare.util.getChildren(
+<span class="digits_1 code_line"></span>    grp_form, 
+<span class="digits_1 code_line"></span>    {
+<span class="digits_1 code_line"></span>        recursive : <span class="r_h_keyword_span">true</span>
+<span class="digits_1 code_line"></span>    }
+<span class="digits_1 code_line"></span>);</pre></div><h2 id="r_633396c27af56e21" class="element heading2" data-element-id="633396c27af56e21"><div class="r_heading_inner"><span class="heading2_n">5.3</span><span>Group, Textbox를 제외한 자손 컴포넌트 반환받기</span></div></h2><pre id="r_1dd6d009df0ca970" class="element pre" data-element-id="1dd6d009df0ca970">' WebSquare.util.getChildren' 메소드를 사용하여 스크립트를 작성합니다.
+- 두 번째 인자 JSON의 'recursive' 속성을 'true'로 설정합니다.
+- 두 번째 인자 JSON의 ''excludePlugin' 속성에 제외할 PluginName을 설정합니다.
+세부 스크립트는 아래의 예시에 작성되어 있습니다.</pre><div id="r_e529e73ed923036b" class="element code support_code_numbering" data-element-id="e529e73ed923036b"><p class="caption"><span class="code_caption_n">Example 7.</span>Script</p><pre><span class="digits_1 code_line"></span><span class="r_h_comment_span">// 'id' 속성이 'grp_form'인 컴포넌트의 'group'과 'textbox' 컴포넌를 제외한 자손 컴포넌트가 담긴 배열이 반환됩니다.</span>
+<span class="digits_1 code_line"></span><span class="r_h_comment_span">// 자식, 손자, 증손자 등 모든 하위 컴포넌트(깊이 상관없이 모든 하위 컴포넌트)</span>
+<span class="digits_1 code_line"></span><span class="r_h_keyword_span">var</span> arrComponents = WebSquare.util.getChildren(
+<span class="digits_1 code_line"></span>    grp_form, 
+<span class="digits_1 code_line"></span>    {
+<span class="digits_1 code_line"></span>        recursive : <span class="r_h_keyword_span">true</span>, 
+<span class="digits_1 code_line"></span>        excludePlugin : <span class="r_h_string_span">"group textbox"</span>
+<span class="digits_1 code_line"></span>    }
+<span class="digits_1 code_line"></span>);</pre></div><h1 id="r_d73f5305c0dc63b2" class="element heading1" data-element-id="d73f5305c0dc63b2"><div class="r_heading_inner"><span class="heading1_n">6</span><span>주요 API</span></div></h1><dl id="r_df64f56e1361dd5c" class="element definition_list" data-element-id="df64f56e1361dd5c"><dt><span class="r_ex_api_utility_span">WebSquare.util.getChildren( component , options )</span></dt></dl></div></body></html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[FusionChart] 차트 타입 예제 - FwBulletChart_simple">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dlt_1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="target" name="target"></w2:column>
+            			<w2:column dataType="text" id="value" name="value"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<target><![CDATA[80]]></target>
+            				<value><![CDATA[40]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<target><![CDATA[90]]></target>
+            				<value><![CDATA[60]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<target><![CDATA[100]]></target>
+            				<value><![CDATA[70]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<target><![CDATA[110]]></target>
+            				<value><![CDATA[80]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<target><![CDATA[115]]></target>
+            				<value><![CDATA[90]]></value>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dlt_2" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="target" name="target"></w2:column>
+            			<w2:column dataType="text" id="value" name="value"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	var data = [{"target":"70","value":"30"},{"target":"90","value":"40"},{"target":"110","value":"50"}];
+	dlt_2.setJSON(data);
+
+    dlt_2.setRowPosition(1);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<w2:textbox escape="false" id="" label="FwBulletChart의 기본 사용 방법을 확인할 수 있는 예제입니다." style=""></w2:textbox>
+    			<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제의 Fusion Chart 버전은 3.19입니다." style=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<w2:textbox class="example_div_th_style" escape="false" id="" label='dataList structure 1' style="margin-bottom: 7px;"></w2:textbox>
+    				<w2:gridView autoFit="allColumn" dataList="data:dlt_1" fixedColumnWithHidden="true" id="grd_1"
+    					scrollByColumn="false" style="height:145px;" useShiftKey="true" focusMode="row">
+    					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    					<w2:header style="" id="header1">
+    						<w2:row style="" id="row1">
+    							<w2:column width="70" inputType="text" style="height:23px;" id="column2" value="target"
+    								displayMode="label">
+    							</w2:column>
+    							<w2:column width="70" inputType="text" style="height:23px;" id="column1" value="value"
+    								displayMode="label">
+    							</w2:column>
+    						</w2:row>
+    					</w2:header>
+    					<w2:gBody style="" id="gBody1">
+    						<w2:row style="" id="row2">
+    							<w2:column width="70" inputType="text" style="height:23px;" id="target" displayMode="label"></w2:column>
+    							<w2:column width="70" inputType="text" style="height:23px;" id="value" displayMode="label"></w2:column>
+    						</w2:row>
+    					</w2:gBody>
+    				</w2:gridView>
+    			</xf:group>
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<w2:textbox class="example_div_th_style" escape="false" id="" label='FwBulletChart - chartType = "vbullet" (기본 값)'
+    					style="margin-bottom: 7px;">
+    				</w2:textbox>
+    				<w2:fwBulletChart chartType="vbullet" style="width: 80px;height: 250px;" id="cht_vbullet" ref="data:dlt_1"
+    					targetNode="target" valueNode="value">
+    				</w2:fwBulletChart>
+    			</xf:group>
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<w2:textbox class="example_div_th_style" escape="false" id="" label='dataList structure 2' style="margin-bottom: 7px;"></w2:textbox>
+    				<w2:gridView autoFit="allColumn" dataList="data:dlt_2" fixedColumnWithHidden="true" id="grd_2"
+    					scrollByColumn="false" style="height:127px;" useShiftKey="true" focusMode="row">
+    					<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    					<w2:header id="header1" style="">
+    						<w2:row id="row1" style="">
+    							<w2:column displayMode="label" id="column2" inputType="text" style="height:23px;" value="target" width="70"></w2:column>
+    							<w2:column displayMode="label" id="column1" inputType="text" style="height:23px;" value="value" width="70"></w2:column>
+    						</w2:row>
+    					</w2:header>
+    					<w2:gBody id="gBody1" style="">
+    						<w2:row id="row2" style="">
+    							<w2:column displayMode="label" id="target" inputType="text" style="height:23px;" value="" width="70"></w2:column>
+    							<w2:column displayMode="label" id="value" inputType="text" style="height:23px;" value="" width="70"></w2:column>
+    						</w2:row>
+    					</w2:gBody>
+    				</w2:gridView>
+    			</xf:group>
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<w2:textbox class="example_div_th_style" escape="false" id="" label='FwBulletChart - chartType = "hbullet"'
+    					style="margin-bottom: 7px;">
+    				</w2:textbox>
+    				<w2:fwBulletChart chartType="hbullet" id="cht_hbullet" ref="data:dlt_2" style="width: 300px;height: 90px;"
+    					targetNode="target" valueNode="value">
+    				</w2:fwBulletChart>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

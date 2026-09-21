@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 공통] 스크립트로 이벤트 추가(추가)하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220522" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="예제 분리(이벤트 제거, 이벤트 발생 시키기)" meta_date="20221108" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제 설명 문구 수정" meta_date="20231129" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="04" meta_desc="버튼의 문자열과 설명 문구가 수정되었습니다." meta_date="20240627" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 예제 테스트를 위한 공용 onclick 핸들러
+ */
+scwin.btn_example_test_onclick_user = function (e) {
+    var strLog;
+
+    //로그 출력
+    strLog = "[공용] onclick 이벤트 핸들러 - 메소드 scwin.btn_example_test_onclick_user";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+
+};
+
+/**
+ * 영역 [이벤트 추가하기]의
+ * 버튼 [테스트 버튼에 onclick 이벤트 추가하기] 클릭 시
+ * [컴포넌트 ID].bind( eventType , function );
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var strLog;
+
+    //로그 출력
+    strLog = "** 메소드 scwin.btn_ex1_onclick **";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+    strLog = 'btn_exam_test1.bind("onclick", scwin.btn_example_test_onclick_user);';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+
+    //버튼 [테스트 버튼]에 onclick 이벤트 핸들러(scwin.btn_example_test_onclick_user) 연결
+    btn_exam_test1.bind("onclick", scwin.btn_example_test_onclick_user);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+
+
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc mb_def_box" id="" style="">
+				<w2:textbox class="" escape="false" id="" label="컴포넌트에 공통으로 제공되는 'bind' 메소드를 사용하여 'onclick' 이벤트와 핸들러를 추가하는 예제입니다." style=""></w2:textbox>
+				<w2:textbox id="" label="이벤트가 발생하면 영역 '로그 확인'의 textarea에 로그가 출력됩니다." style="" class="exam_txt caution"></w2:textbox>
+			</xf:group>
+			<xf:group class="mb_def_box nobottom" id="" style=""></xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="mb_def_box nobottom">
+							<xf:trigger ev:onclick="scwin.btn_ex1_onclick" disabled="" style="" id="btn_ex1" type="button"
+								class="btn_exam_exec btn_txt_of" escape="false">
+								<xf:label><![CDATA[테스트 버튼에 onclick 이벤트 추가하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:trigger class="btn_cm" id="btn_exam_test1" style="width: 100px;" type="button">
+							<xf:label><![CDATA[테스트 버튼]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

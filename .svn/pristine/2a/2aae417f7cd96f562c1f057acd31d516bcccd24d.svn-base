@@ -1,0 +1,154 @@
+/*amd /guide/GridView/Style/setCellColor_getCellColor_GridView.xml 6985 c8b776dcc0b759676915945a0f8a2c8010d9e1a2515fc5e5467b993923185a3e */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'Continent'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'Country'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'Item'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col4',name:'Quantity'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Washer",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Heater",
+    "col4": "250"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Washer",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "Washer",
+    "col4": "200"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  gridView1.setCellColor(1, 1, "blue");
+};
+scwin.trigger2_onclick = function (e) {
+  var cellColor = gridView1.getCellColor(1, 1);
+  alert(cellColor);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'특정 셀의 글자색 설정 및 확인',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 하단의 첫 번째 버튼을 클릭.<br/>2. (1,1) 좌표에 해당하는 셀의 글자색이 파란색으로 변경되는 것을 확인. <br/>3. 하단의 두 번째 버튼을 클릭. <br/>4. (1,1) 좌표에 해당하는 셀의 글자색이 반환되는 것을 확인. ',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.setCellColor(1, 1, "blue");'}]}]},{T:1,N:'xf:trigger',A:{style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger2',type:'button','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.getCellColor(1,1);'}]}]},{T:1,N:'w2:gridView',A:{scrollByColumn:'false',defaultCellHeight:'30',hideSortIconOnNoData:'true',selectedCellColor:'lightgreen',focusMode:'cell',keyMoveEditMode:'true',dataDragSelect:'',id:'gridView1',autoFit:'allColumn',cellStatusVisible:'true',scrollByColumnAdaptive:'false',hammerEnabled:'true',dataDragDrop:'true',selectedRowColor:'pink',useShiftKey:'true',useCtrlOnMultisort:'',dataDragDropStatus:'true',focusFlow:'default',contextMenu:'true',visibleRowNumFix:'true',dataList:'data:dataList1',style:'border: solid 1px gray;',cellStatusIconPosition:'left',visibleRowNum:'10',useCtrlKey:''},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption2',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column11',value:'Continent',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column10',value:'Country',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column9',value:'Item',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column8',value:'Quantity',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row4'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'',style:'',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col3',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col4',value:'',displayMode:'label'}}]}]}]}]}]}]}]})

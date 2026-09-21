@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Calendar] 지정된 휴일 제거하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220817" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_holiday" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="holiday" name="휴일" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<holiday><![CDATA[*1212]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*1230]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*1231]]></holiday>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //매년 12월 12일, 12월 30일, 12월 31일을 휴일로 지정
+    cal_exam1.setHoliday("*1212,*1230,*1231");
+
+    //DataList dlt_holiday의 컬럼 holiday를 휴일로 지정 (매년 12월 12일, 12월 30일, 12월 31일)
+    cal_exam2.setHolidayRef("data:dlt_holiday.holiday");
+
+    //테스트를 위해 2024년 12월 01일로 이동
+    cal_exam2.gotoCalendar("20241201");
+    cal_exam1.gotoCalendar("20241201");
+};
+
+/**
+ * Calendar - 지정된 휴일 제거하기 (setHoliday 메소드를 사용하여 설정)
+ * 버튼 [휴일 설정 제거하기]의 onclick 핸들러
+ */
+scwin.btn_exam1_onclick = function (e) {
+    //visibleWeekNum_Calendar.xml
+    //컴포넌트 cal_exam1의 지정된 휴일을 제거합니다.
+    cal_exam1.removeHoliday();
+};
+
+/**
+ * Calendar - 지정된 휴일 제거하기 (setHolidayRef 메소드를 사용하여 설정)
+ * 버튼 [휴일 설정 제거하기]의 onclick 핸들러
+ */
+scwin.btn_exam2_onclick = function (e) {
+    //컴포넌트 cal_exam2의 지정된 휴일을 제거합니다.
+    cal_exam2.removeHoliday();
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="Calendar의 'removeHoliday' 메소드를 사용하여 설정된 휴일을 제거하는 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id=""
+						label='Calendar의 setHoliday 메소드로 지정된 휴일 제거하기' style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="">
+							<xf:trigger useDefaultLabel="true" ev:onclick="scwin.btn_exam1_onclick" localeRef="" style="" id="btn_exam1"
+								type="" class="btn_exam_exec btn_txt_of">
+								<xf:label><![CDATA[휴일 설정 제거하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:calendar id="cal_exam1" style="min-width: 200px;min-height: 200px;"></w2:calendar>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id=""
+						label="Calendar의 setHolidayRef 메소드로 지정된 휴일 제거하기" style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="">
+							<xf:trigger useDefaultLabel="true" ev:onclick="scwin.btn_exam2_onclick" localeRef="" style="" id="btn_exam2"
+								type="" class="btn_exam_exec btn_txt_of">
+								<xf:label><![CDATA[휴일 설정 제거하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:calendar id="cal_exam2" style="min-width: 200px;min-height: 200px;"></w2:calendar>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+/*amd /guide_eng/WFrame/scopeInherit_WFrame/wframe111.xml 3598 784e3eb3bf61471114e6f37f0babcb57ddbb04eba7f012779ed18b40a87a9859 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var parent = textbox1.getValue();
+  alert(parent);
+};
+scwin.trigger2_onclick = function (e) {
+  var parent = textbox2.getValue();
+  alert(parent);
+};
+scwin.trigger3_onclick = function (e) {
+  var parent = textbox3.getValue();
+  alert(parent);
+};
+scwin.trigger4_onclick = function (e) {
+  var parent = textbox4.getValue();
+  alert(parent);
+};
+scwin.trigger5_onclick = function (e) {
+  var parent = $p.main().textbox1.getValue();
+  alert(parent);
+};
+scwin.trigger6_onclick = function (e) {
+  var parent = $p.top().textbox1.getValue();
+  alert(parent);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;padding: 5px;'},E:[{T:1,N:'w2:textbox',A:{style:'width: 500px;height: 30px;margin: 10px;font-weight: bolder;color: blue;',id:'textbox1',label:'textbox1 - wframe111'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;',id:'trigger1',type:'button',class:''},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'textbox1.getValue(); // (1) Access the parent page in a recursive way.'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'textbox2.getValue(); // (1) Access the parent page in a recursive way.'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'textbox3.getValue(); // (1) Access the parent page in a recursive way.'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger4_onclick',style:'width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'textbox4.getValue(); // (1) Access the parent page in a recursive way.'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger5_onclick',style:'width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;',id:'trigger5',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.main().textbox1.getValue(); // (2) Access the parent or the top-level page.'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger6_onclick',style:'width: 100%;height:10%;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;',id:'trigger6',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.top().textbox1.getValue(); // (3) &nbsp;Access the top-level page.'}]}]}]}]}]}]})

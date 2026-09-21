@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="keepDataType_DataList">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true" keepDataType="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="col1" dataType="number"></w2:column>
+            			<w2:column id="col2" name="col2" dataType="number"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    input1.setValue(111);
+    input2.setValue(222);
+};
+
+scwin.trigger1_onclick = function (e) {
+    var firstInput = input1.getValue();
+    var secondInput = input2.getValue();
+    alert(typeof (firstInput) + " & " + typeof (secondInput));
+
+};
+
+scwin.trigger2_onclick = function (e) {
+    var firstInput = input1.getValue();
+    var secondInput = input2.getValue();
+    var tmpArr = [{ "col1": firstInput, "col2": secondInput }];
+    dataList1.setJSON(tmpArr);
+    gridView1.setCellColor(0, 0, "blue");
+    gridView1.setCellColor(0, 1, "blue");
+};
+
+scwin.trigger3_onclick = function (e) {
+    var firstCol = dataList1.getCellData(0, 0);
+    var secondCol = dataList1.getCellData(0, 1);
+    alert(typeof (firstCol) + " & " + typeof (secondCol));
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox3" label="DataList에서 string 타입 데이터를 number 타입으로 설정" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox5" label="1. 첫 번째 버튼을 클릭하여 InputBox에 입력된 데이터의 dataType이 “string”인 것을 확인. &lt;br/&gt;2. 두 번째 버튼을 클릭하여 위의 string 타입으로 설정된 데이터를 GridView와 바인딩된 DataList에 설정. &amp;nbsp;&lt;br/&gt;3. 세 번째 버튼을 클릭하여 위에서 설정한 데이터의 dataType이 “number”로 변환된 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)" escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox6" label='속성 설정&lt;br/&gt;keepDataType="true" (DataList)&lt;br/&gt;dataType="number" (dataList.column - col1 &amp; col2)' escape="false">
+    	</w2:textbox><xf:group style="" id="group1">
+    		<xf:group style="margin-bottom: 10px;" id="">
+    			<xf:input style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;color: blue;" id="input1">
+    			</xf:input>
+    			<xf:input style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 20px;color: blue;" id="input2">
+    			</xf:input>
+    		</xf:group>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[1. typeof() InputBox]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;"
+    			id="trigger2" type="button">
+    			<xf:label><![CDATA[2. dataList1.setJSON();]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger ev:onclick="scwin.trigger3_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;"
+    			id="trigger3" type="button">
+    			<xf:label><![CDATA[3. typeof() DataList]]></xf:label>
+    		</xf:trigger>
+    		<w2:gridView noResultMessageVisibleAlways="true" visibleRowNumFix="true" checkAllType="false" dataList="data:dataList1"
+    			style="border: solid gray 1px;margin-bottom: 10px;" id="gridView1" autoFit="allColumn" visibleRowNum="2" defaultCellHeight="20">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="70" inputType="text" style="" id="column2" value="col1" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column1" value="col2" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    	</xf:group></xf:group></body>
+</html>

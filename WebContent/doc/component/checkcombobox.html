@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>CheckComboBox</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_efa0c8593d7c7c3f" class="chapter_title">CheckComboBox</h1>
+		<h1 id="r_3a8cd469baafae51" class="element heading1"
+			data-element-id="3a8cd469baafae51">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_985fa97ac7cbf103" class="element normal"
+			data-element-id="985fa97ac7cbf103">CheckComboBox 컴포넌트는 체크박스와 드롭다운
+			리스트가 결합된 형태의 다중 선택 컴포넌트로, 사용자가 여러 항목을 선택할 수 있도록 체크박스와 목록을 결합한 형태의 UI를
+			제공하는 컴포넌트입니다. CheckComboBox는 드롭다운 메뉴 형태로 선택 항목 목록을 표시하며, 각 항목 앞에
+			체크박스를 배치하여 사용자가 원하는 항목을 체크하는 방식으로 다중 선택이 가능합니다. 선택된 항목들은 컴포넌트의 표시 영역에
+			나열되어 사용자가 자신의 선택 내용을 쉽게 확인할 수 있습니다.</p>
+		<dl id="r_a5b668d6c9bd84e2" class="element definition_list"
+			data-element-id="a5b668d6c9bd84e2">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb00FkvHROGneUGph492q6wo">CheckComboBox
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2ovkNxgMERFSwoudvTF0PA">CheckComboBox
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_84cfbe2bec4f2fce" class="element heading1"
+			data-element-id="84cfbe2bec4f2fce">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_d8dcad4080c93fe6" class="element normal"
+			data-element-id="d8dcad4080c93fe6">CheckComboBox는 다음과 같은 상황에서 특히
+			유용하게 활용됩니다.</p>
+		<dl id="r_2fd36ea94aadebae" class="element definition_list"
+			data-element-id="2fd36ea94aadebae">
+			<dt>
+				<strong>다중 선택이 필요한 경우</strong>
+			</dt>
+			<dd>
+				<p>사용자가 여러 옵션을 동시에 선택해야 하는 폼 요소로 활용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>공간 효율성이 중요한 UI</strong>
+			</dt>
+			<dd>
+				<p>여러 체크박스를 나열하는 대신 드롭다운 형태로 제공하여 화면 공간을 효율적으로 사용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>카테고리 필터링</strong>
+			</dt>
+			<dd>
+				<p>데이터 필터링이나 검색 조건 설정 시 여러 카테고리를 선택할 수 있도록 합니다.</p>
+			</dd>
+			<dt>
+				<strong>설정 인터페이스</strong>
+			</dt>
+			<dd>
+				<p>다양한 옵션을 활성화/비활성화할 수 있는 설정 메뉴를 구현할 때 적합합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_ce8730d9d52b1dc8" class="element heading1"
+			data-element-id="ce8730d9d52b1dc8">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_aa9b47dcb75f5371" class="element unordered_list"
+			data-element-id="aa9b47dcb75f5371">
+			<li><p>선택 항목 설정</p>
+				<ul>
+					<li><p>
+							직접 입력 방식 (<a class="link" href="https://youtu.be/gDMHA9y-JOg">YouTube</a>)
+						</p></li>
+					<li><p>
+							DataList와 바인딩 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/BindItemSet_allOption_chooseOption_chooseOptionLabel_CheckComboBox/BindItemSet_allOption_chooseOption_chooseOptionLabel_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/-ES98SoWXIg">YouTube</a>)
+						</p></li>
+					<li><p>
+							선택 항목 동적 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00452.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							선택 항목 정보 반화 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00448.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>Label 및 Value 표시</p>
+				<ul>
+					<li><p>
+							정적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/displayMode_delimiter_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/6ft57Ht88Ok">YouTube</a>)
+						</p></li>
+					<li><p>
+							동적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/setDisplayMode_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/0ZQBY4xtgB8">YouTube</a>)
+						</p></li>
+					<li><p>
+							구분자 동적 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00086.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/setDelimiter_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/OX2SjjkP-2s">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>항목 제어</p>
+				<ul>
+					<li><p>
+							항목 선택 및 선택 해지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00453.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							일부 항목 숨기기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00080.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/visibleColumn_visibleColumnFalseValue_setVisibleColumn_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/ldOW5p20Bn8">YouTube</a>)
+						</p></li>
+					<li><p>
+							일부 항목 비활성화 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00079.xml">WRE</a>)
+						</p>
+						<ul>
+							<li><p>
+									정적 비활성화 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/enableColumn_enableColumnFalseValue_CheckComboBox.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/WGoQwiYj9ZM">YouTube</a>)
+								</p></li>
+							<li><p>
+									동적 비활성화 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/setEnableColumn_CheckComboBox.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/1WYG-PFPrWA">YouTube</a>)
+								</p></li>
+						</ul></li>
+				</ul></li>
+			<li><p>선택 항목 목록 표시 방식 설정</p>
+				<ul>
+					<li><p>
+							열 개수 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00083.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/visibleColNum_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/QguEZwvqZRI">YouTube</a>)
+						</p></li>
+					<li><p>
+							최대 열 개수 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/visibleColNum_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/xcc67MTK3qE">YouTube</a>)
+						</p></li>
+					<li><p>
+							표시할 행의 개수 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00084.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/visibleRowNum_setVisibleRowNum_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/g2DnSjLK56k">YouTube</a>)
+						</p></li>
+					<li><p>
+							선택 항목 목록 너비 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/submenuSize_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/mshwMU5eCQ4">YouTube</a>)
+						</p></li>
+					<li><p>
+							말 줄임표 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/columnEllipsis_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/zF4H-9lkg20">YouTube</a>)
+						</p></li>
+					<li><p>
+							선택된 항목을 목록 상단에 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00405.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/showCheckedTop_checkboxClickSync_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/M4dRiLebaU8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>UI 사용성 향상 기능</p>
+				<ul>
+					<li><p>
+							선택완료 및 선택해제 버튼 (<a class="link"
+								href="https://youtu.be/xBT12u0jQps">YouTube</a>)
+						</p></li>
+					<li><p>
+							전체 선택 옵션 및 선택 안내 메시지 (<a class="link"
+								href="https://youtu.be/Kk7D_8F6kOY">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>툴팁</p>
+				<ul>
+					<li><p>
+							선택된 항목 툴팁 –
+							<code>tooltipDisplay="true"</code>
+						</p></li>
+					<li><p>
+							항상 툴팁 표시 –
+							<code>tooltipShowAlways="true"</code>
+						</p></li>
+					<li><p>
+							툴팁 표시 시간 –
+							<code>tooltipTime</code>
+						</p></li>
+					<li><p>
+							목록 항목 툴팁 –
+							<code>itemTooltipDisplay="true"</code>
+						</p></li>
+					<li><p>
+							사용자 정의 툴팁 –
+							<code>itemTooltipFormatter</code>
+						</p></li>
+				</ul></li>
+			<li><p>
+					입력 시 검증 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/validateOnInput_CheckComboBox.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/wXujNpIOb7Q">YouTube</a>)
+				</p></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							마우스 드래깅을 통한 연속된 값 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00081.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/useDrag_rangeSeparator_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/rvPiBK7qh2o">YouTube</a>)
+						</p></li>
+					<li><p>
+							연속된 선택 항목을 축약 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00446.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							연속된 선택 항목들이 선택된 경우 출력하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00085.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							키보드 입력을 통한 선택 허용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00082.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/CheckComboBox/useEdit_CheckComboBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/IOQuojUp1IU">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

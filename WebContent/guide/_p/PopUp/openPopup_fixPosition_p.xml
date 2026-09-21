@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    scwin.count++;
+    var options = {
+        id: scwin.count,
+        type: "pageFramePopup",
+        height: "300px",
+        width: "400px",
+        popupName: "fixPosition: true",
+        fixPosition: true
+    };
+    $p.openPopup("", options);
+};
+
+scwin.trigger2_onclick = function (e) {
+    scwin.count++;
+    var options = {
+        id: scwin.count,
+        type: "pageFramePopup",
+        height: "300px",
+        width: "400px",
+        popupName: "fixPosition: false",
+        fixPosition: false
+    };
+    $p.openPopup("", options);
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="팝업 위치 고정" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1-1. 첫 번째 버튼을 클릭하여 팝업을 생성. &lt;br/&gt;1-2. 생성한 팝업의 위치가 고정되어, 팝업의 위치를 이동할 수 없는 것을 확인. (fixPosition: true)&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)&lt;br/&gt;&lt;br/&gt;2-1. 두 번째 버튼을 클릭하여 팝업을 생성. &lt;br/&gt;2-2. 생성한 팝업의 위치를 이동할 수 있는 것을 확인. (fixPosition: false)&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[openPopup() - fixPosition: true]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger type="button" id="trigger2" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[openPopup() - fixPosition: false]]></xf:label>
+    	</xf:trigger>
+    </xf:group></body>
+</html>

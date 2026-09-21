@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="gridView">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="chk" name="Check" dataType="text"></w2:column>
+            			<w2:column id="menu" name="Menu" dataType="text"></w2:column>
+            			<w2:column id="depthNo" name="Depth" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var jsonData = [{
+        "chk": "2",
+        "menu": "Americas",
+        "depthNo": 1
+    }, {
+        "chk": "2",
+        "menu": "Latin America",
+        "depthNo": 2
+    }, {
+        "chk": "2",
+        "menu": "Mexico",
+        "depthNo": 3
+    }, {
+        "chk": "2",
+        "menu": "Urguay",
+        "depthNo": 3
+    }, {
+        "chk": "2",
+        "menu": "Peru",
+        "depthNo": 3
+    }, {
+        "chk": "2",
+        "menu": "North America",
+        "depthNo": 2
+    }, {
+        "chk": "2",
+        "menu": "Canada",
+        "depthNo": 3
+    }, {
+        "chk": "2",
+        "menu": "USA",
+        "depthNo": 3
+    }];
+
+    dataList1.setJSON(jsonData);
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    gridView1.checkAll("chk", true);
+};
+
+scwin.trigger2_onclick = function (e) {
+    gridView1.checkAll("chk", false);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group style="margin: 10px;" id="">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="フルチェックボックスの選択と解除" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 下の初めて目ボタンクリックして, 全体チェックボックス選択されるもの確認。 &lt;br/&gt;2. 下の二つ繁栄ボタンクリックして, 全体チェックボックス選択解放されるもの確認。 &lt;br/&gt;（詳細スクリプトは Script タブから確認。）'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[gridView1.checkAll("chk", true);]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[gridView1.checkAll("chk", false);]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView syncScroll="false" scrollByColumnAdaptive="false" summaryAuto="false" useShiftKey="true" scrollByColumn="false"
+    		summaryOnlyAuto="false" defaultCellHeight="20" drilldownRealRowIndexAll="true" applyAllColumnStyle="false" tooltipDisplay="true"
+    		visibleRowNumFix="true" dataList="data:dataList1" style="border: solid gray 1px;" ignoreCellClick="false" id="gridView1"
+    		visibleRowNum="10" autoFit="allColumn" ignoreToggleOnDisabled="false">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column footerDiv="false" removeBorderStyle="false" width="70" inputType="checkbox" style="" id="column5"
+    					value="Check" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column footerDiv="false" removeBorderStyle="false" width="70" inputType="text" style="" id="column3" value="Menu"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column footerDiv="false" removeBorderStyle="false" width="70" inputType="text" style="" id="column1" value="Depth"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column footerDiv="false" removeBorderStyle="false" width="70" inputType="checkbox" style="" id="chk" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column textAlign="left" footerDiv="false" removeBorderStyle="false" width="70" inputType="drilldown" style=""
+    					id="menu" showDepth="3" value="" depthColumn="depthNo" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column footerDiv="false" removeBorderStyle="false" width="70" inputType="text" style="" id="depthNo" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

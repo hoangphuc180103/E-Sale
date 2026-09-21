@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="scopeInherit_WFrame">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    const tmpSrc = scwin.getfolderPath() + "/main.xml";
+    wframe1.setSrc(tmpSrc);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox3" label="Inherit Parent Scope&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox5"
+    		label='(Run the example standalone.)&lt;br/&gt;1. Confirm that a screen with nested WFrames is displayed.&lt;br/&gt;2. Click each button contained within the bottom-most WFrame.&lt;br/&gt;3. Confirm that each button behaves according to its scopeInherit="all" attribute setting.&lt;br/&gt;&lt;br/&gt;The behavior based on the scopeInherit attribute value is as follows:&lt;br/&gt; &amp;nbsp; &amp;nbsp; “none” : (1) X, (2) Top-level access, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; “api” : (1) X, (2) Parent access, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; “all” : (1) O, (2) Parent access, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; “component” : (1) O, (2) Top-level access, (3) O'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox6" label='scopeInherit="all"' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="text-align: left;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: blue;margin-bottom: 10px;"
+    		id="textbox1" label='Top (id="textbox1")'>
+    	</w2:textbox>
+    	<w2:wframe scopeInherit="all" style="padding: 10px;border: gray solid 1px;background-color: lightgreen;" id="wframe1"></w2:wframe>
+    </xf:group></body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="모든 패널을 열린 상태로 로딩" style="margin-bottom: 10px;color: blue;" tagname="h1"></w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3" label='(첫 번째 Acocrdion)&lt;br/&gt;첫 번째 패널만 열린 상태로 Accordion 컴포넌트가 로딩되는 것을 확인. (unCollapseAll="false")&lt;br/&gt;&lt;br/&gt;(두 번째 Acocrdion)&lt;br/&gt;모든 패널이 열린 상태로 Accordion 컴포넌트가 로딩되는 것을 확인. (unCollapseAll="true")'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox escape="false" id="textbox4" label='속성 설정&lt;br/&gt;unCollapseAll="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<w2:accordion collapseAll="" style="border:solid 2px gray;margin-bottom: 10px;" id="accordion1" selectedPanel="" collapsible=""
+    		class="" panelMoveSpeed="" titleDivTag="">
+    		<w2:panels style="" id="panels1" class="">
+    			<w2:panelTitle style="" id="panelTitle1" label="1" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent1" class="">
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 1">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels style="" id="panels2" class="">
+    			<w2:panelTitle style="" id="panelTitle2" label="2" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent2" class="">
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 2">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels style="width: 100%;" id="panels3" class="">
+    			<w2:panelTitle style="" id="panelTitle3" label="3" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;margin-bottom: 10px;" id="panelContent3" class="">
+    				<xf:select1 appearance="full" style="position: absolute ;left:589px;top:91px;width: 54px;height: 25px;" id="select1"
+    					selectedIndex="-1">
+    				</xf:select1>
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 3">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    	</w2:accordion>
+    	<w2:textbox escape="false" id="textbox5" label='속성 설정&lt;br/&gt;unCollapseAll="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<w2:accordion class="" collapseAll="" collapsible="" id="accordion2" panelMoveSpeed="" selectedPanel=""
+    		style="border:solid 2px gray;" titleDivTag="" unCollapseAll="true">
+    		<w2:panels class="" id="panels4" style="">
+    			<w2:panelTitle class="" id="panelTitle4" label="1" style=""></w2:panelTitle>
+    			<w2:panelContent class="" id="panelContent4" style="height:80%;width: 90%;">
+    				<w2:textbox id="" label="Panel 1"
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels class="" id="panels5" style="">
+    			<w2:panelTitle class="" id="panelTitle5" label="2" style=""></w2:panelTitle>
+    			<w2:panelContent class="" id="panelContent5" style="height:80%;width: 90%;">
+    				<w2:textbox id="" label="Panel 2"
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels class="" id="panels6" style="width: 100%;">
+    			<w2:panelTitle class="" id="panelTitle6" label="3" style=""></w2:panelTitle>
+    			<w2:panelContent class="" id="panelContent6" style="height:80%;width: 90%;">
+    				<xf:select1 appearance="full" id="radio1" selectedIndex="-1" style="position: absolute ;width: 54px;height: 25px;"></xf:select1>
+    				<w2:textbox id="" label="Panel 3"
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    	</w2:accordion>
+    </xf:group></body>
+</html>

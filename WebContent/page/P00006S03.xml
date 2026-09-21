@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="P00006 서브 페이지 03" meta_type="서브" meta_author="InswaveSystems">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.gVar = {
+    arrMenu: [
+        { "title": "항목, 값 선택", "page_key": "P00003" },
+        { "title": "컬럼 타입", "page_key": "P00008" },
+        { "title": "필터, 정렬, 컬럼간 이동", "page_key": "P00009" },
+        { "title": "드래그 & 드롭", "page_key": "P00010" },
+        { "title": "소계, 합계", "page_key": "P00011" },
+        { "title": "드릴다운", "page_key": "P00012" },
+        { "title": "ExcelDown Chart", "page_key": "P00013" },
+        { "title": "컬럼 동적 변경", "page_key": "P00014" },
+        { "title": "Fusion 차트", "page_key": "P00017" }
+    ]
+};
+
+scwin.onpageload = function () {
+    scwin.dispMenu();
+    scwin.dispPage("P00017", "Fusion 차트");
+    scwin.dispPage("P00014", "컬럼 동적 변경");
+};
+
+scwin.dispMenu = function () {
+    var _arrMenu;
+    var item, i, i_max;
+    var cmpGen, cmpTmp;
+
+    _arrMenu = scwin.gVar.arrMenu;
+    cmpGen = gen_top_menu;
+    for (i = 0, i_max = _arrMenu.length; i < i_max; i++) {
+        item = _arrMenu[i];
+        cmpGen.insertChild();
+        cmpTmp = gen_top_menu.getChild(i, "btn_gen_menu");
+        cmpTmp.setValue(item.title);
+        cmpTmp.setUserData("exam_key", item.page_key)
+    };
+
+    gen_top_menu.getChild(i_max - 1, "spa_gen_bar").hide();
+}
+
+/**
+ * 페이지 추가
+ */
+scwin.dispPage = function (argPageInfo, argPageTitle) {
+    var strPagePath;
+
+    if (!argPageInfo) { return; }
+
+    strPagePath = "/page/" + argPageInfo + ".xml";
+
+    wdc_main.createWindow(
+        argPageTitle,
+        null,
+        strPagePath,
+        argPageTitle,
+        "win_" + argPageInfo,
+        "selectWindow",
+        null,
+        null,
+        null,
+        {},
+        "wframe"
+    );
+};
+
+scwin.gen_btn_menu_onclick = function (e) {
+    scwin.dispPage(this.getUserData("exam_key"), this.getValue());
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="" id="grp_main_wrap" style="position: relative;    height: 100%;}">
+			<xf:group style="position: relative; z-index: 1000; width: 100%; height: 50px; font-weight: bold; box-sizing:border-box; padding: 12px 10px 0px 10px; background-color: #2D5277 !important; background: no-repeat right 300px top -50px/ 700px url(../../cm/images/contents/bg_w.png), linear-gradient(46deg, #2C599E 0%, #2197A1 100%) 0% 0% no-repeat padding-box;" id="" class="">
+				<w2:textbox id="" label="WindowContainer 예시" style="color: #fff;display: inline-block; vertical-align: middle; font-size: 16px; margin-top: 3px;" tagname="strong" class="fr"></w2:textbox>
+				<!-- <xf:group class="ofh p10" id="" style="display: none">
+					<xf:group id="" class="fl">
+					<xf:trigger class="btn_cm" id="btn_leftMenu" style="" type="button" ev:onclick="scwin.btn_leftMenu_onclick">
+					<xf:label><![CDATA[좌측 메뉴 열기/닫기]]></xf:label>
+					</xf:trigger>
+					</xf:group>
+					<xf:group style="" id="" class="fr">
+					<xf:trigger class="btn_cm" ev:onclick="scwin.btn_sitemap_onclick" id="btn_sitemap" style="" type="button">
+					<xf:label><![CDATA[예제 목록 전체 보기]]></xf:label>
+					</xf:trigger>
+					</xf:group>
+					</xf:group> -->
+				<w2:generator style="" id="gen_top_menu" class="fl">
+					<xf:trigger useDefaultLabel="true" localeRef="" style="min-width: 30px; min-height: 26px; margin: 0px; font-size: 14px; color:#fff;"
+						id="btn_gen_menu" type="" class="btn_exam_tran" ev:onclick="scwin.gen_btn_menu_onclick">
+						<xf:label><![CDATA[메뉴1]]></xf:label>
+					</xf:trigger>
+					<w2:span label="|" style="line-height: 26px;font-size: 10px;margin: 0px 4px;color: #fff;opacity: 0.5;" id="spa_gen_bar"></w2:span>
+				</w2:generator>
+			</xf:group>
+			<xf:group id="grp_container" class="container" style="position: absolute; top: 50px; right: 0; bottom: 0; left: 0; background: #fff;">
+				<xf:group style="position: absolute;left: 0px;right: 0px;bottom: 0px;top: 0px;" id="" class="">
+					<w2:windowContainer sequentialArrangeColNum="2" verticalArrangeNum="2" controlIconPosition="left"
+						windowMaximizeAll="false" id="wdc_main" useStatusMsg="true" hideTitleOnMaximize="false" spaInitCount="0" nameLayerRearrange="false"
+						useNameContainer="false" useControlIconTitle="false" tooltipDisplay="true"
+						style="position: relative;box-sizing: border-box;width: 100%;height: 100%;background: #fff;" sequentialArrangeRowNum="2"
+						fixArrangeFullScreen="false" useFixButton="false" windowAutoResize="false" windowMaxNum="5" useCloseButton="false"
+						stopMinimizeOnNameLayer="false" toolbarPosition="bottom" stopToggleOnLast="false" horizontalArrangeNum="2" useCustomMsg="false"
+						tooltipGroupClass="false" windowTooltipDisplay="true" class="">
+						<w2:windowToolbar>
+							<w2:controlIconLayer>
+								<w2:controlIcon></w2:controlIcon>
+								<w2:controlIcon></w2:controlIcon>
+								<w2:controlIcon></w2:controlIcon>
+								<w2:controlIcon></w2:controlIcon>
+								<w2:controlIcon></w2:controlIcon>
+							</w2:controlIconLayer>
+							<w2:nameLayer></w2:nameLayer>
+							<w2:selectedNameLayer></w2:selectedNameLayer>
+						</w2:windowToolbar>
+					</w2:windowContainer>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+		<xf:group style="display: none;" id="grp_hidden">
+			<a id="hidden_download_anchor"></a>
+		</xf:group>
+		<input id="hidden_clipboard_input" style="position:absolute;left:-1000px;top:-1000px;border:0px solid #fff;"></input>
+	</body>
+</html>

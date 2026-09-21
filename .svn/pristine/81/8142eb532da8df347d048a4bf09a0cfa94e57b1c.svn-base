@@ -1,0 +1,55 @@
+/*amd /page/P00258.xml 7066 27068951abe697e0d6fa3dd671c1e0741294322b967f7f17740c4143d77d75b6 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'Code',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'Label',name:'name2',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'01'}]},{T:1,N:'Label',E:[{T:4,cdata:'Apple'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'02'}]},{T:1,N:'Label',E:[{T:4,cdata:'Banana'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'03'}]},{T:1,N:'Label',E:[{T:4,cdata:'Cherry'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'04'}]},{T:1,N:'Label',E:[{T:4,cdata:'Dragon fruit'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // SelectBox의 선택된 항목을 해제합니다.
+  sbx_exam1.setValue("");
+};
+
+/**
+ * 버튼 [ 선택 여부 확인하기 ] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  // SelectBox 'sbx_exam1'의 체크 여부를 검증합니다.
+  let message = sbx_exam1.validate();
+  alert(message);
+};
+
+/**
+ * 버튼 [ 지정된 메시지 표시하기 ] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  // SelectBox 'sbx_exam2'의 체크 여부를 검증합니다.
+  sbx_exam2.validate();
+};
+
+/**
+ * 버튼 [ 사용자 설정 메시지 표시하기 ] 클릭 시
+ */
+scwin.btn_ex3_onclick = function (e) {
+  // SelectBox 'sbx_exam3'의 체크 여부를 검증합니다.
+  sbx_exam3.validate();
+};
+
+/**
+ * 버튼 [ 사용자 지정 메소드로 설정한 메시지 표시하기 ] 클릭 시
+ */
+scwin.btn_ex4_onclick = function (e) {
+  sbx_exam4.validate();
+};
+
+/**
+ * 영역 [ 사용자 지정 메소드로 설정한 메시지 표시하기 ]의
+ * SelectBox컴포넌트 [sbx_exam4]의 invalidMessageFunc메소드
+ */
+scwin.fn_msg = function () {
+  let invalidType = this.getType(); // invalid type
+  switch (invalidType) {
+    case "mandatory":
+      msg = "항목을 선택하세요.";
+      break;
+    default:
+      msg = "기본 메시지입니다.";
+      break;
+  }
+  alert(msg);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'SelectBox에서 선택된 데이터를 검증할 수 있는 속성과 메소드를 사용한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'이 예제의 모든 SelectBox는 항목이 선택되지 않았을 때 \'- choose -\'가 표시됩니다.',style:'',class:'exam_txt info'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'선택 여부 확인하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',style:'min-width: 30px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'선택 여부 확인하기'}]}]}]},{T:1,N:'xf:select1',A:{id:'sbx_exam1',style:'width: 148px;',submenuSize:'auto',appearance:'minimal',mandatory:'true',chooseOptionLabel:'- choose -',chooseOption:'true'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Label'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'지정된 메시지 표시하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',style:'min-width: 30px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'지정된 메시지 표시하기'}]}]}]},{T:1,N:'xf:select1',A:{appearance:'minimal',chooseOptionLabel:'- choose -',chooseOption:'true',id:'sbx_exam2',style:'width: 148px;',submenuSize:'auto',displaymessage:'true',mandatory:'true'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Label'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'사용자 설정 메시지 표시하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex3_onclick',id:'btn_ex3',style:'min-width: 30px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자 설정 메시지 표시하기'}]}]}]},{T:1,N:'xf:select1',A:{appearance:'minimal',chooseOptionLabel:'- choose -',chooseOption:'true',displaymessage:'true',id:'sbx_exam3',mandatory:'true',style:'width: 148px;',submenuSize:'auto',invalidMessage:'사용자 설정 메시지'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Label'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'사용자 지정 메소드로 설정한 메시지 표시하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex4_onclick',id:'btn_ex4',style:'min-width: 30px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자 지정 메소드로 설정한 메시지 표시하기'}]}]}]},{T:1,N:'xf:select1',A:{appearance:'minimal',chooseOptionLabel:'- choose -',chooseOption:'true',displaymessage:'true',id:'sbx_exam4',mandatory:'true',style:'width: 148px;',submenuSize:'auto',invalidMessageFunc:'scwin.fn_msg'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Label'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]}]}]}]}]}]})

@@ -1,0 +1,12 @@
+/*amd /guide_jpn/_WebSquare.logger/enableContextMenu_disableContextMenu_WebSquare_logger.xml 2634 e92f2ef665e15bc5d1277d19e0e10903bdc10277ea016dfe9c329c27618bc0c6 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  WebSquare.logger.disableContextMenu();
+  alert("Context menus will not be shown.");
+};
+scwin.trigger2_onclick = function (e) {
+  WebSquare.logger.enableContextMenu();
+  alert("Context menus will be available.");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'デバッグメニューの制御',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Ctrl +マウス右クリック後、デバッグメニューが表示されることを確認。 <br/>2.下部の disableContextMenu() ボタンをクリックします。 <br/>3. Ctrl+マウスを右クリックしても、デバッグメニューが表示されないことを確認。 &nbsp;<br/>4.下部の enableContextMenu() ボタンをクリックします。 <br/>5. Ctrl +マウスを右クリックすると、再びデバッグメニューが表示されることを確認。 &nbsp;',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'WebSquare.logger.disableContextMenu();'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',disabled:'',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'WebSquare.logger.enableContextMenu();'}]}]}]}]}]}]})

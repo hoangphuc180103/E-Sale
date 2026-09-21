@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] Map 차트">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_mapchart" repeatNode="map" saveRemovedData="true" style="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="code" name="code"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_getChartData" ref="" target="data:json" action="/data/sampleData/mapChartData.json" method="post"
+				mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg=""
+				ev:submit="" ev:submitdone="" ev:submiterror="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.gVar = {
+    "colorScale1": ""
+};
+
+scwin.onpageload = function () {
+    $p.executeSubmission("sbm_getChartData");
+    scwin.gVar.colorScale1 = d3.scale.linear().range(["red", "yellow", "green", "turquoise", "blue"]).domain([0, 0.25, 0.5, 0.75, 1]);
+};
+
+
+scwin.cht_ex1_onbeforemapchange = function (info) {
+    if (info.newMapCode.length >= 2) {
+        // 지도 확장기능 사용하지 않음 
+        return false;
+    }
+};
+
+scwin.cht_ex1_onmapdatachange = function (dataListId) {
+    var dataList = WebSquare.util.getComponentById(dataListId);
+    switch (dataListId) {
+        case "dataList1":
+            var data = dataList.getAllJSON();
+            for (var i = 0; i < data.length; i++) {
+                var municipality = d3.select("#" + this.id + "_map").select(".municipality.c" + data[i].code);
+                municipality.style("fill", scwin.gVar.colorScale1(data[i].value));
+            }
+            break;
+    }
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="MapChart 사용 예시입니다. MapChart는 d3을 이용해 우리나라 전국지도에 입력받은 데이터를 다양한 형태로 시각화하여 표현하는 컴포넌트입니다.&lt;br/&gt;MapChart는 d3를 사용하여 구현한 지도 형태의 컴포넌트로서 인스웨이브는 d3에서 제공한 바이너리, 샘플, 문서를 그대로 제공해드려야 하며 소스, 샘플, 문서에 대한 버그수정, 기능추가 및 번역 작업을 제공해 드리지 않습니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<w2:mapchart dataMapPath="/websquare/_websquare_/externalJS/mapchart" id="cht_ex1"
+				style="position: relative;height:500px;max-width: 700px;border: 1px solid #CED4DA;">
+			</w2:mapchart>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[PageControl] 총 페이지 수 설정하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230712" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_books_1" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="categoryLabel" name="분류"></w2:column>
+						<w2:column dataType="text" id="label" name="도서명"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // PageControl 'pgc_exam'의 선택 값을 3으로 지정합니다.
+    pgc_exam.setSelectedIndex(3);
+};
+
+/**
+ * 버튼 [총 페이지 수를 8로 설정하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // PageControl 'pgc_exam'의 총 페이지 수를 8로 설정합니다.
+    pgc_exam.setCount(8);
+};
+
+/**
+ * 버튼 [총 페이지 수를 5로 설정하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // PageControl 'pgc_exam'의 총 페이지 수를 5로 설정합니다.
+    pgc_exam.setCount(5);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="PageControl의 'setCount' 메소드를 사용하여 총 페이지수를 설정하는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger id="btn_exam1_1" style="" type="button" class="btn_exam_exec" ev:onclick="scwin.btn_exam1_1_onclick">
+								<xf:label><![CDATA[총 페이지 수를 8로 설정하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec" id="btn_exam1_2" style="" type="button" ev:onclick="scwin.btn_exam1_2_onclick">
+								<xf:label><![CDATA[총 페이지 수를 5로 설정하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="" style="">
+							<w2:pageControl style="width: 150px;height: 30px;" id="pgc_exam"></w2:pageControl>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

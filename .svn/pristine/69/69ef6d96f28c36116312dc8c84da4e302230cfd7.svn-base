@@ -1,0 +1,25 @@
+/*amd /guide_jpn/IFrame/spa_spaReplaceHistory_IFrame/spa_spaReplaceHistory_false_IFrame.xml 3507 a837fed81c03a063aec9419ed66295f71f07ba4a858322ab713f6f42dc693764 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  const tmpSrc = scwin.getfolderPath() + "/11.xml";
+  iframe1.setSrc(tmpSrc);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  const tmpSrc = scwin.getfolderPath() + "/22.xml";
+  iframe1.setSrc(tmpSrc);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'IFrame内のHistory機能を許可する',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. この例を単独で実行。 <br/>2. 任意のWebページに移動します。 <br/>3. この例を単独で実行したブラウザのアドレスをコピーして、任意のWebページを実行したブラウザのアドレス欄の貼り付け。<br/>4. setSrc() ボタンをクリックします。 <br/>5. IFrameの内部画面が変更になることを確認してください。 <br/>6. ブラウザの戻るボタンをクリックします。 <br/>7. 以前のIFrame画面が表示されることを確認してください。 (spaReplaceHistory="false")<br/>8. ブラウザの戻るボタンをもう一度クリックする必要があります前にランダムなWebページに移動することを確認してください。 <br/>（spaReplaceHistory="true" の例も一緒にチェックしてください。）',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'setSrc("22.xml")'}]}]},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'プロパティの設定<br/>spaReplaceHistory="false" <br/>spa="false"',escape:'false'}},{T:1,N:'w2:iframe',A:{scrolling:'',src:'',spa:'true',style:'border: solid 1px gray;margin-bottom: 10px;',id:'iframe1',spaReplaceHistory:'false'}}]}]}]}]})

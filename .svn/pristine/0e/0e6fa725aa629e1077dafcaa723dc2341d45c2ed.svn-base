@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>WFrame</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_685459fe61766aa8" class="chapter_title">WFrame</h1>
+		<h1 id="r_016148618c492d70" class="element heading1"
+			data-element-id="016148618c492d70">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_a677d0d9bbec8c86" class="element normal"
+			data-element-id="a677d0d9bbec8c86">WFrame 컴포넌트는 WebSquare AI에서
+			제공하는 프레임 컴포넌트로, 다른 웹스퀘어 화면을 현재 페이지에 포함시켜 하나의 통합된 페이지로 렌더링하는 기능을
+			제공합니다. 개발자는 복잡한 애플리케이션의 구조를 모듈화하고, 웹 애플리케이션 내에서 다른 웹 페이지나 문서를 효율적으로
+			포함하고 관리할 수 있습니다.</p>
+		<p id="r_7a630775239a6aaf" class="element normal"
+			data-element-id="7a630775239a6aaf">별도의 페이지를 독립적으로 호출하는 IFrame과 달리
+			WFrame은 삽입된 페이지가 상위 페이지와 함께 렌더링되어, 동일한 소스의 일부처럼 동작합니다. IFrame 컴포넌트에
+			삽입된 객체는 현재 웹 페이지와 무관한 독립적인 객체로 동작하지만, WFrame에 삽입된 객체는 현재 페이지에
+			포함(merge)되어 전체가 하나의 소스로 간주됩니다. 이는 페이지 로딩 시에도 차이를 보이는데, IFrame을 포함한
+			페이지는 메인 페이지와 IFrame 페이지가 각각 따로 호출되는 반면, WFrame을 포함한 페이지는 메인 페이지와
+			WFrame에 포함된 객체가 함께 호출됩니다. 즉, WFrame에 삽입된 페이지는 상위 페이지와 통합되어 관리되며,
+			DataCollection, 인스턴스, JavaScript, CSS의 공통화를 통한 유지보수 효율성을 극대화할 수 있습니다.</p>
+		<dl id="r_16bfa22ff7e5c37b" class="element definition_list"
+			data-element-id="16bfa22ff7e5c37b">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb09_rbMF_lMS0RA0Uf6qOUc">WFrame
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_bb3d66701f57031c" class="element heading1"
+			data-element-id="bb3d66701f57031c">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_ab9780e98179e7d9" class="element normal"
+			data-element-id="ab9780e98179e7d9">WFrame은 특히 대규모 엔터프라이즈 환경에서 재사용
+			가능한 UI 모듈을 구축하거나, 특정 기능 영역을 분리하여 개발 및 유지보수 효율성을 높일 때 유용하게 활용될 수 있습니다.
+			WFrame 컴포넌트는 다음과 같은 특히 유용하게 활용할 수 있습니다.</p>
+		<dl id="r_a20b407476fba754" class="element definition_list"
+			data-element-id="a20b407476fba754">
+			<dt>
+				모듈화된 <strong>화면 구성</strong>
+			</dt>
+			<dd>
+				<p>하나의 복잡한 화면을 여러 개의 작은 독립적인 WFrame으로 나누어 개발함으로써 개발 편의성과 유지보수성을
+					향상시킬 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>외부 콘텐츠 포함</strong>
+			</dt>
+			<dd>
+				<p>애플리케이션 내에 외부 웹 페이지, 문서 또는 동적인 콘텐츠를 쉽게 포함하여 표시할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>비동기 콘텐츠 로딩</strong>
+			</dt>
+			<dd>
+				<p>필요한 경우에만 WFrame 내부의 콘텐츠를 로딩하여 페이지 로딩 속도를 최적화하고 사용자 경험을 개선할 수
+					있습니다.</p>
+			</dd>
+			<dt>
+				<strong>데이터 교환 및 통신</strong>
+			</dt>
+			<dd>
+				<p>부모 화면과 WFrame 내부의 자식 화면 간에 데이터를 안전하고 효율적으로 주고받는 메커니즘을 제공합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_05b6f6266cc14fdc" class="element heading1"
+			data-element-id="05b6f6266cc14fdc">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_79922bb72f1cfbaf" class="element unordered_list"
+			data-element-id="79922bb72f1cfbaf">
+			<li><p>
+					부모 WFrame의 Scope 상속 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/scopeInherit_WFrame/scopeInherit_WFrame.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					소스(
+					<code>src</code>
+					) 화면 설정 시 파라미터 전달 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/getParameter_p_setSrc_WFrame/getParameter_p_setSrc_WFrame.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/FFOc-jYbgEw">YouTube</a>)
+				</p></li>
+			<li><p>서브미션 상태창 표시</p>
+				<ul>
+					<li><p>
+							기본 상태창 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/processMsgFrame_WFrame/processMsgFrame_WFrame.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/TRBw-YldeMY">YouTube</a>)
+						</p></li>
+					<li><p>
+							커스텀 상태창 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/processMsgFrameURL_config_processMsgFrame_WFrame/processMsgFrameURL_config_processMsgFrame_WFrame.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/CZBajC9oYm8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>팝업</p>
+				<ul>
+					<li><p>
+							WFrame에서 생성한 부모-자식 팝업 함께 닫기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/frameModal_WFrame/frameModal_WFrame.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					워터마크 표시 (<a class="link" href="https://youtu.be/2ifAe7gA_28">YouTube</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_d9704eddef371816" class="element heading1"
+			data-element-id="d9704eddef371816">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_752f3ab39d3d75b1" class="element unordered_list"
+			data-element-id="752f3ab39d3d75b1">
+			<li><p>
+					<code>onbeforewframeunload</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/onbeforewframeunload_WFrame/onbeforewframeunload_WFrame.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/0EKW1ten_ps">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>onresize</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/resizeEvent_onresize_WFrame/resizeEvent_onresize_WFrame.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/C26EtlEj9ZY">YouTube</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

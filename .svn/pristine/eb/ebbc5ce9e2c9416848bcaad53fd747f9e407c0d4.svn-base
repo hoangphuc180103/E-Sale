@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        const tmpSrc = scwin.getfolderPath() + "/source.xml";
+
+		windowContainer1.createWindow({
+			"title" : "Source", 
+			"src" : tmpSrc, 
+			"windowId" : "window1", 
+			"frameMode" : "wframe"
+		});	
+		
+		windowContainer2.createWindow({
+			"title" : "Source", 
+			"src" : tmpSrc, 
+			"windowId" : "window1", 
+			"frameMode" : "wframe"
+		});	
+        
+
+    const tmpSrc2 = scwin.getfolderPath() + "/processMsg_new.xml";
+    pageFrame1.setSrc(tmpSrc2);
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+    scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="サブミッションステータスウィンドウをウィンドウ内部のみ表示（カスタムステータスウィンドウ）" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='（最初の WindowContainer） &lt;br/&gt;1-1.内部の Submit ボタンをクリックします。 &lt;br/&gt;1-2. client.config.xml 設定ファイルで processMsgFrameURL 項目で指定したファイルが WFrame 内にのみ表示されることを確認します。 (processMsgFrame="true")&lt;br/&gt;&lt;br/&gt;（2 番目の WindowContainer） &lt;br/&gt;2-1.内部の Submit ボタンをクリックします。 &lt;br/&gt;2-2. client.config.xml 設定ファイルで processMsgFrameURL 項目で指定したファイルが全画面に表示されることを確認します。 (processMsgFrame="false")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='クライアント設定 (client.config.xml)&lt;br/&gt;processMsgFrameURL value="processMsg_new.xml"' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox5" label='プロパティの設定&lt;br/&gt;processMsgFrame="true"' escape="false">
+    	</w2:textbox>
+    	<w2:windowContainer style="position: relative;height: 300px;border: gray solid 1px;margin-bottom: 10px;" id="windowContainer1"
+    		processMsgFrame="true">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer>
+    	<w2:textbox escape="false" id="textbox7" label='プロパティの設定&lt;br/&gt;processMsgFrame="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:windowContainer style="position: relative;height: 300px;border: gray solid 1px;margin-bottom: 10px;" id="windowContainer2"
+    		processMsgFrame="false">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer>
+    	<w2:pageFrame src="processMsg_new.xml" style="width: 500px;height: 300px;" id="pageFrame1"></w2:pageFrame>
+    </xf:group></body>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] 속성을 사용하여 전체 항목 표시하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230818" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    scwin.displayValue();
+};
+
+scwin.sbx_exam1_onselected = function () {
+    scwin.displayValue();
+};
+
+scwin.displayValue = function () {
+    spa_span1.setValue("value: " + sbx_exam1.getValue());
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="SelectBox의 'allOption' 속성을 사용하여 '전체' 항목을 표시한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label='선택된 항목의 값이 오른쪽에 표시됩니다.' style="">
+						</w2:textbox>
+						<xf:group id="" style="margin-bottom: 5px;">
+							<xf:select1 allOption="true" appearance="minimal" chooseOption="" class="" direction="auto" disabled="false"
+								disabledClass="w2selectbox_disabled" id="sbx_exam1" ref="" renderType="" style="width: 148px;margin-right: 10px;"
+								submenuSize="auto" ev:onselected="scwin.sbx_exam1_onselected">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[Apple]]></xf:label>
+										<xf:value><![CDATA[01]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[Banana]]></xf:label>
+										<xf:value><![CDATA[02]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select1>
+							<w2:span id="spa_span1" label=" - " style=""></w2:span>
+							<w2:span id="spn_res" label="" style=""></w2:span>
+						</xf:group>
+
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+
+	</body>
+</html>

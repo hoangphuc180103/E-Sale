@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Checkbox] 모든 항목을 선택하거나 선택 해제하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230905" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+scwin.btn_true_onclick = function (e) {
+    cbx_main.checkAll(true);
+};
+
+scwin.btn_false_onclick = function (e) {
+    cbx_main.checkAll(false);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Checkbox의 'checkAll' 메소드를 사용하여 모든 항목을 선택하거나 선택을 해제하는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="">
+							<xf:trigger style="" id="btn_true" type="button" class="btn_exam_exec" ev:onclick="scwin.btn_true_onclick">
+								<xf:label><![CDATA[모든 항목 선택하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec" id="btn_false" style="" type="button" ev:onclick="scwin.btn_false_onclick">
+								<xf:label><![CDATA[모든 항목 선택 해제하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+
+						<xf:group id="">
+							<xf:select ref="" appearance="full" style="" id="cbx_main" selectedindex="-1" rows="" cols="4">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[A]]></xf:label>
+										<xf:value><![CDATA[A]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[B]]></xf:label>
+										<xf:value><![CDATA[B]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[C]]></xf:label>
+										<xf:value><![CDATA[C]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[D]]></xf:label>
+										<xf:value><![CDATA[D]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[E]]></xf:label>
+										<xf:value><![CDATA[E]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[F]]></xf:label>
+										<xf:value><![CDATA[F]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[G]]></xf:label>
+										<xf:value><![CDATA[G]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[H]]></xf:label>
+										<xf:value><![CDATA[H]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[I]]></xf:label>
+										<xf:value><![CDATA[I]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[J]]></xf:label>
+										<xf:value><![CDATA[J]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[K]]></xf:label>
+										<xf:value><![CDATA[K]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[L]]></xf:label>
+										<xf:value><![CDATA[L]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+
+	</body>
+</html>

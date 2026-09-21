@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Anchor] 'outerDiv' 속성의 설정 값 비교하기(브라우저 렌더링 시 div 요소 제외하기)" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230816" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="Anchor의 'outerDiv' 속성을 설정별로 비교할 수 있는 예제입니다." style=""
+					class=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정 값) 'outerDiv' 속성을 true로 지정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label='HTML 구성 예시: &lt;code&gt;&amp;lt;div id="컴포넌트의 런타임 ID" class="w2anchor"&amp;gt;&amp;lt;a&amp;gt;문자열&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;'
+							style="">
+						</w2:textbox>
+						<xf:group id="" class="">
+							<w2:anchor ref="" outerDiv="true" style="text-decoration: underline;" label="Anchor 예시 1" id="anchor_exam1">
+							</w2:anchor>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'outerDiv' 속성을 false로 지정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label=' HTML 구성 예시: &lt;code&gt;&amp;lt;a id="컴포넌트의 런타임 ID" class="w2anchor2"&amp;gt;문자열&amp;lt;/a&amp;gt;&lt;/code&gt;' style="">
+						</w2:textbox>
+						<xf:group class="" id="">
+							<w2:anchor id="anchor_exam2" label="Anchor 예시 2" outerDiv="false"
+								ref="" style="text-decoration: underline;">
+							</w2:anchor>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+/*amd /guide/TreeView/showCheckbox_setShowCheckBox_TreeView.xml 3976 8e52e3d9a6b71c0ab69570fe64b573270d587bee6fc1566f1ca9a1846d8673bc */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'name1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'name2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'name3'}},{T:1,N:'w2:column',A:{id:'col4',name:'name4',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'false'}}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "Asia",
+    "col2": "1",
+    "col3": "con"
+  }, {
+    "col1": "Korea",
+    "col2": "2",
+    "col3": "nat"
+  }, {
+    "col1": "Seoul",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "Busan",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "China",
+    "col2": "2",
+    "col3": "nat",
+    "col4": "checkcheck"
+  }, {
+    "col1": "Beijing",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "Europe",
+    "col2": "1",
+    "col3": "con"
+  }, {
+    "col1": "Germany",
+    "col2": "2",
+    "col3": "nat"
+  }, {
+    "col1": "Berlin",
+    "col2": "3",
+    "col3": "ct"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  treeview1.setShowCheckBox(true);
+};
+scwin.trigger2_onclick = function (e) {
+  treeview1.setShowCheckBox(false);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'각 노드에 체크 박스 표시',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 첫 번째 setShowCheckbox(true) 버튼을 클릭. <br/>2. 각 노드 앞에 체크 박스가 표시되는 것을 확인. <br/>3. 두 번째 setShowCheckbox(false) 버튼을 클릭. <br/>4. 체크 박스가 사라지는 것을 확인.<br/>(상세한 스크립트는 Script 탭에서 확인.)<br/>',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'treeview1.setShowCheckBox(true);'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger2',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'treeview1.setShowCheckBox(false);'}]}]},{T:1,N:'w2:treeview',A:{dataType:'listed',hierarchy:'',id:'treeview1',showCheckbox:'',showCheckboxLabel:'',style:'width: 200px;',tooltipGroupClass:'false'},E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'w2:label',A:{ref:'col1'}},{T:1,N:'w2:value',A:{ref:'col3'}},{T:1,N:'w2:depth',A:{ref:'col2'}},{T:1,N:'w2:folder',A:{ref:''}},{T:1,N:'w2:checkbox',A:{ref:'col4'}},{T:1,N:'w2:checkboxDisabled',A:{ref:''}},{T:1,N:'w2:image',A:{ref:''}},{T:1,N:'w2:iconImage',A:{ref:''}},{T:1,N:'w2:selectedImage',A:{ref:''}},{T:1,N:'w2:expandedImage',A:{ref:''}},{T:1,N:'w2:leafImage',A:{ref:''}}]}]}]}]}]}]})

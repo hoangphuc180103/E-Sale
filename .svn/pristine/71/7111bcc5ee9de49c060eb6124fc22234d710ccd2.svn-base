@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] inputType이 checkbox로 지정된 열의 체크된 행의 Data 반환받기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221230" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="chk_1" name="Checkbox" dataType="text" defaultValue="0"></w2:column>
+						<w2:column id="col_a" name="A" dataType="text"></w2:column>
+						<w2:column id="col_b" name="B" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    var arrData = [
+        { "col_a": "A1", "col_b": "B1", "chk_1": "0" },
+        { "col_a": "A2", "col_b": "B2", "chk_1": "1" },
+        { "col_a": "A3", "col_b": "B3", "chk_1": "0" }
+    ];
+
+    dlt_exam.setJSON(arrData);
+};
+
+/**
+ * 버튼 [getCheckedJSON] 클릭 시
+ * getCheckedJSON 메소드를 사용하여 반환 받기
+ */
+scwin.btn_ex1_onclick = function (e) {
+    // GridView grd_exam1의 컬럼 chk_1의 체크된 행의 데이터를 JSON으로 반환 받기
+    // 인덱스는 컬럼이 추가/삭제되면 변경되기 때문에 컬럼의 아이디를 사용합니다.
+    let objData = grd_exam1.getCheckedJSON("chk_1");
+
+    //로그 출력
+    let strLog = "getCheckedJSON 반환 값 : \n";
+    strLog += JSON.stringify(objData, null, "\t");
+
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [getCheckedXML] 클릭 시
+ * getCheckedXML 메소드를 사용하여 반환 받기
+ */
+scwin.btn_ex2_onclick = function (e) {
+    // GridView grd_exam1의 컬럼 chk_1의 체크된 행의 데이터를 XML로 반환 받기
+    // 인덱스는 컬럼이 추가/삭제되면 변경되기 때문에 컬럼의 아이디를 사용합니다.
+    let objData = grd_exam1.getCheckedXML("chk_1");
+
+    //로그 출력
+    let strLog = "getCheckedXML 반환 값 : \n";
+    strLog += WebSquare.xml.indent(objData);
+
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [getCheckedData] 클릭 시
+ * getCheckedData 메소드를 사용하여 반환 받기
+ */
+scwin.btn_ex3_onclick = function (e) {
+    // GridView grd_exam1의 컬럼 chk_1의 체크된 행의 데이터를 2차원 배열로 반환 받기
+    // 인덱스는 컬럼이 추가/삭제되면 변경되기 때문에 컬럼의 아이디를 사용합니다.
+    let objData = grd_exam1.getCheckedData("chk_1");
+
+    //로그 출력
+    let strLog = "getCheckedData 반환 값 : \n";
+    strLog += JSON.stringify(objData, null, "\t");
+
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView의 바디 컬럼의 'inputType'이 'checkbox'로 설정되었을 때, 체크된 행의 데이터를 반환받는 예제입니다." style=""
+					class="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="체크된 행의 Data 반환받기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" id="btn_ex1" style="" type="button"
+								ev:onclick="scwin.btn_ex1_onclick">
+								<xf:label><![CDATA[getCheckedJSON]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2"
+								style="" type="button">
+								<xf:label><![CDATA[getCheckedXML]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3"
+								style="" type="button">
+								<xf:label><![CDATA[getCheckedData]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView rowNumWidth="40" rowNumVisible="true" visibleRowNumFix="true" dataList="data:dlt_exam" style="height:100px;"
+								autoFit="allColumn" id="grd_exam1" visibleRowNum="3" class="gvw" defaultCellHeight="37" autoFitMinWidth="260">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column5" value="Checkbox" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" id="column1" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" id="column2" value="B" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column valueType="binary" width="70" inputType="checkbox" style="" id="chk_1" value="" displayMode="label">
+										</w2:column>
+										<w2:column width="70" inputType="text" id="col_a" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" id="col_b" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

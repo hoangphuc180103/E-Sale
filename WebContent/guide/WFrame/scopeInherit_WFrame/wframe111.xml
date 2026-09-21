@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="scopeInherit_WFrame">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    var parent = textbox1.getValue();
+    alert(parent);
+};
+
+scwin.trigger2_onclick = function (e) {
+    var parent = textbox2.getValue();
+    alert(parent);
+
+};
+
+scwin.trigger3_onclick = function (e) {
+    var parent = textbox3.getValue();
+    alert(parent);
+
+};
+
+scwin.trigger4_onclick = function (e) {
+    var parent = textbox4.getValue();
+    alert(parent);
+};
+
+scwin.trigger5_onclick = function (e) {
+    var parent = $p.main().textbox1.getValue();
+    alert(parent);
+};
+
+scwin.trigger6_onclick = function (e) {
+    var parent = $p.top().textbox1.getValue();
+    alert(parent);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;padding: 5px;"><w2:textbox style="width: 500px;height: 30px;margin: 10px;font-weight: bolder;color: blue;" id="textbox1" label="textbox1 - wframe111"></w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;" id="trigger1" type="button" class="">
+    		<xf:label><![CDATA[textbox1.getValue(); // (1) 재귀적으로 부모에 접근.]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[textbox2.getValue(); // (1) 재귀적으로 부모에 접근.]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger3_onclick" style="width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;" id="trigger3" type="button">
+    		<xf:label><![CDATA[textbox3.getValue(); // (1) 재귀적으로 부모에 접근.]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger4_onclick" style="width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;" id="trigger4" type="button">
+    		<xf:label><![CDATA[textbox4.getValue(); // (1) 재귀적으로 부모에 접근.]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger5_onclick" style="width: 100%;height:10%;margin-bottom: 10px;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;" id="trigger5" type="button">
+    		<xf:label><![CDATA[$p.main().textbox1.getValue(); // (2) 부모 혹은 최상단에 접근.]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger6_onclick" style="width: 100%;height:10%;background-color: coral;display: block;font-weight: bolder;text-align: left;padding: 5px;" id="trigger6" type="button">
+    		<xf:label><![CDATA[$p.top().textbox1.getValue(); // (3) 최상단에 접근.]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

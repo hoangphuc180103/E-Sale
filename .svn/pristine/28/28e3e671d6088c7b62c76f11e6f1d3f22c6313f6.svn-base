@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>Trigger</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_f9506fa2650fd09e" class="chapter_title">Trigger</h1>
+		<h1 id="r_b23885fa25b4a2f7" class="element heading1"
+			data-element-id="b23885fa25b4a2f7">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_d9a966c42d3bc6c0" class="element normal"
+			data-element-id="d9a966c42d3bc6c0">
+			Trigger 컴포넌트는 웹스퀘어 AI가 제공하는 사용자 상호작용을 위한 버튼 인터페이스입니다. 이 컴포넌트는 웹
+			애플리케이션에서 다양한 형태의 버튼을 생성하고 관리할 수 있도록 설계되었으며, HTML의
+			<code>&lt;input type="button"&gt;</code>
+			요소와 유사한 기능을 제공합니다. 클릭 가능한 버튼 형태의 사용자 인터페이스 요소를 구현할 수 있도록 도와주는 UI
+			컴포넌트입니다. Trigger 컴포넌트는 웹 애플리케이션의 UI/UX 설계에서 가장 기본적이면서도 필수적인 요소로, 웹
+			애플리케이션의 사용자 인터랙션을 구현하는 핵심 요소입니다.
+		</p>
+		<dl id="r_b14228d2bfdd5b50" class="element definition_list"
+			data-element-id="b14228d2bfdd5b50">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2vYP1KWIKGoIBhTYeOrjQ3">Trigger
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_f8541ec50ee69f5e" class="element heading1"
+			data-element-id="f8541ec50ee69f5e">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_6cb8bcc9e56fbbee" class="element normal"
+			data-element-id="6cb8bcc9e56fbbee">Trigger 컴포넌트는 다양한 상황에서 활용할 수
+			있습니다:</p>
+		<dl id="r_830f635c4cde9657" class="element definition_list renumbered"
+			data-element-id="830f635c4cde9657">
+			<dt>
+				<strong>양식 제출</strong>
+			</dt>
+			<dd>
+				<p>사용자가 작성한 데이터를 서버로 전송하는 제출 버튼으로 활용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>기능 실행</strong>
+			</dt>
+			<dd>
+				<p>특정 함수나 액션을 실행하는 트리거 역할을 수행합니다. 예를 들어, 팝업 창 열기, 데이터 조회, 페이지 이동
+					등의 기능을 실행할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>UI 상태 변경</strong>
+			</dt>
+			<dd>
+				<p>UI 요소의 상태를 변경하는 컨트롤러로 사용할 수 있습니다. 예를 들어, 패널 확장/축소, 탭 전환 등의 UI
+					상태 변경을 제어할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>다이얼로그 컨트롤</strong>
+			</dt>
+			<dd>
+				<p>확인, 취소, 닫기 등 다이얼로그 창에서 사용자의 결정을 입력받는 버튼으로 활용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>네비게이션</strong>
+			</dt>
+			<dd>
+				<p>애플리케이션 내 다른 페이지로의 이동을 위한 버튼으로 사용할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_19350b98b0f41705" class="element heading1"
+			data-element-id="19350b98b0f41705">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_c150032db2128626" class="element unordered_list"
+			data-element-id="c150032db2128626">
+			<li><p>
+					다양한 버튼 유형 제공 –
+					<code>type</code>
+				</p>
+				<ul>
+					<li><p>
+							<code>type="anchor"</code>
+							설정을 사용할 경우,
+							<code>"w2group"</code>
+							class를 추가하지 않기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00388.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					툴팁 표시 위치 지정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Trigger/tooltipShowPositionX_tooltipShowPositionY_Trigger.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/7qlRlBlOwko">YouTube</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

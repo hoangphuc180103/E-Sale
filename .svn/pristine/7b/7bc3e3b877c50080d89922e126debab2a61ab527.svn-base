@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko"><head><title>[DataList] 컬럼에 importFormatter 적용하기</title><link rel="stylesheet" href="css/book.css" type="text/css" /><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" /><meta name="EPB-UUID" content="f1fbcef72ff0a2ec" /></head><body><div class="chapter_content"><h1 id="r_3e753da75558abf8" class="chapter_title">[DataList] 컬럼에 importFormatter 적용하기</h1><h1 id="r_ba7134c637028b5b" class="element heading1" data-element-id="ba7134c637028b5b"><div class="r_heading_inner"><span class="heading1_n">1</span><span>개요</span></div></h1><pre id="r_6dc7a9c195134151" class="element pre" data-element-id="6dc7a9c195134151">DataList의 Column 속성 'importFormatter'를 사용하여 컬럼 값을 변환한 예제입니다.
+setXML, setJSON 메소드로 데이터를 입력했을 때, 해당 속성으로 데이터 변환을 적용할 수 있습니다.</pre><p id="r_bec5ed81815be3b7" class="element r_example_link_p" data-element-id="bec5ed81815be3b7"><a class="link" href="http://example.websquare.kr/link.html?p=P00443">P00443</a></p><h1 id="r_8f92738219d6a8d0" class="element heading1" data-element-id="8f92738219d6a8d0"><div class="r_heading_inner"><span class="heading1_n">2</span><span>구현된 기능</span></div></h1><ul id="r_3b57bdc5886bdb2a" class="element unordered_list" data-element-id="3b57bdc5886bdb2a"><li><p>'importFormatter' 속성 설정</p></li></ul><h1 id="r_569450db75ecbf72" class="element heading1" data-element-id="569450db75ecbf72"><div class="r_heading_inner"><span class="heading1_n">3</span><span>예제 테스트 방법</span></div></h1><h2 id="r_9bb6637004317e75" class="element heading2" data-element-id="9bb6637004317e75"><div class="r_heading_inner"><span class="heading2_n">3.1</span><span>'importFormatter' 속성 설정</span></div></h2><div id="r_1eb65763f5040f04" class="element step1" data-element-id="1eb65763f5040f04"><p class="step1_n">1</p><p>STEP 1: setJson 메소드로 추가한 데이터를 확인합니다.</p></div><p id="r_0acaeb368eaa6602" class="element normal step1_indent" data-element-id="0acaeb368eaa6602">스크립트에서 'koreanAge', 'age' 컬럼의 값을 확인합니다.</p><div id="r_3652e07e17d8dbf3" class="element code support_code_numbering step1_indent" data-element-id="3652e07e17d8dbf3"><p class="caption"><span class="code_caption_n">Example 1.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">//'dlt_userInfo'에 setJSON 메소드로 데이터를 추가</span>
+<span class="digits_10 code_line"></span>scwin.onpageload = <span class="r_h_keyword_span">function</span>() {
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> json = [{
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"name"</span>: <span class="r_h_string_span">"김길동"</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"gender"</span>: <span class="r_h_string_span">"남"</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"birthDate"</span>: <span class="r_h_string_span">"19980215"</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"koreanAge"</span>: <span class="r_h_string_span">""</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"age"</span>: <span class="r_h_string_span">""</span>
+<span class="digits_10 code_line"></span>        }, {
+<span class="digits_10 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<span class="digits_10 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, {
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"name"</span>: <span class="r_h_string_span">"이준수"</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"gender"</span>: <span class="r_h_string_span">"남"</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"birthDate"</span>: <span class="r_h_string_span">"20061230"</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"koreanAge"</span>: <span class="r_h_string_span">""</span>,
+<span class="digits_10 code_line"></span>            <span class="r_h_string_span">"age"</span>: <span class="r_h_string_span">""</span>
+<span class="digits_10 code_line"></span>        }];
+<span class="digits_10 code_line"></span>        dlt_userInfo.setJSON(json);
+<span class="digits_10 code_line"></span>    
+<span class="digits_10 code_line"></span>};</pre></div><div id="r_010dde4ebc3f0f84" class="element step1" data-element-id="010dde4ebc3f0f84"><p class="step1_n">2</p><p>STEP 2: importFormatter가 적용된 데이터를 확인합니다.</p></div><p id="r_b718fe00321a1242" class="element normal step1_indent" data-element-id="b718fe00321a1242">'나이(koreanAge)'와 '만나이(age)' 컬럼의 값이 변경되어 나타납니다.</p><div id="r_bcc9cb24449d0585" class="element image step1_indent" data-element-id="bcc9cb24449d0585"><p class="caption"><span class="image_caption_n">Image 1.</span>브라우저(Chrome) 실행 예시 - 2025.12.16 기준</p><p class="content"><img alt="" src="images/image105.png" width="402" height="241" /></p></div><h1 id="r_b690554c7d19f591" class="element heading1" data-element-id="b690554c7d19f591"><div class="r_heading_inner"><span class="heading1_n">4</span><span>구현 예시</span></div></h1><h2 id="r_bed7c73407f4824d" class="element heading2" data-element-id="bed7c73407f4824d"><div class="r_heading_inner"><span class="heading2_n">4.1</span><span>'importFormatter' 속성 설정</span></div></h2><div id="r_7a219a245f671fbd" class="element step1" data-element-id="7a219a245f671fbd"><p class="step1_n">1</p><p>STEP 1: DataList Column의 속성을 정의합니다.</p></div><ul id="r_47c8fabcf3cdf498" class="element unordered_list step1_indent" data-element-id="47c8fabcf3cdf498"><li><p><span class="r_blue001_span">[필수] importFormatter</span> </p><p>setXML, setJSON과 같은 메소드를 사용하여 데이터 입력 시, 사용할 데이터 변환 formatter 함수입니다.</p><p>파라미터는 rowJson, rowIndex, colIndex 입니다.</p><p>DataList Column 속성을 적용할 때는 '모듈' 바에서 속성을 적용할 컬럼을 선택한 후, 속성 탭에서 확인합니다.</p><p>사용할 함수 명을 지정합니다.</p></li></ul><div id="r_16c6c086cd6e0b91" class="element image step1_indent" data-element-id="16c6c086cd6e0b91"><p class="caption"><span class="image_caption_n">Image 2.</span>웹스퀘어 스튜디오의 Component View - 속성 설정 예시</p><p class="content"><img alt="" src="images/image106.png" width="382" height="515" /></p></div><div id="r_5b90405d5741a666" class="element image step1_indent" data-element-id="5b90405d5741a666"><p class="caption"><span class="image_caption_n">Image 3.</span>웹스퀘어 스튜디오의 Component View - 속성 설정 예시</p><p class="content"><img alt="" src="images/image107.png" width="382" height="525" /></p></div><div id="r_f387e0faea5e2329" class="element step1" data-element-id="f387e0faea5e2329"><p class="step1_n">2</p><p>STEP 2: 'scwin.koreanAgeFormatter' 함수를 정의합니다.</p></div><div id="r_c12abe876b7fbbdb" class="element code support_code_numbering step1_indent" data-element-id="c12abe876b7fbbdb"><p class="caption"><span class="code_caption_n">Example 2.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">//'dlt_userInfo'의 'koreanAge' 컬럼(나이)의 importFormatter 함수</span>
+<span class="digits_10 code_line"></span>scwin.koreanAgeFormatter = <span class="r_h_keyword_span">function</span>(rowJson, rowIndex, colIndex) {    
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> birthDate = String(rowJson.birthDate);  
+<span class="digits_10 code_line"></span>    
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">if</span> (!birthDate || birthDate.length &lt; <span class="r_h_number_span">8</span>) {
+<span class="digits_10 code_line"></span>        <span class="r_h_keyword_span">return</span> <span class="r_h_string_span">""</span>;
+<span class="digits_10 code_line"></span>    }
+<span class="digits_10 code_line"></span>    
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> year = parseInt(birthDate.substring(<span class="r_h_number_span">0</span>, <span class="r_h_number_span">4</span>));  
+<span class="digits_10 code_line"></span>    
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> currentDate = $p.getCurrentServerDate();  
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> currentYear = parseInt(currentDate.substring(<span class="r_h_number_span">0</span>, <span class="r_h_number_span">4</span>));  
+<span class="digits_10 code_line"></span>    
+<span class="digits_10 code_line"></span>    <span class="r_h_comment_span">// 나이 = 현재 연도 - 출생 연도 + 1</span>
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> koreanAge = currentYear - year + <span class="r_h_number_span">1</span>;
+<span class="digits_10 code_line"></span>    
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">return</span> koreanAge; 
+<span class="digits_10 code_line"></span>}</pre></div><div id="r_0b55c15638c1a4d6" class="element step1" data-element-id="0b55c15638c1a4d6"><p class="step1_n">3</p><p>STEP 2: 'scwin.ageFormatter' 함수를 정의합니다.</p></div><div id="r_f1608a7a244b65bf" class="element code support_code_numbering step1_indent" data-element-id="f1608a7a244b65bf"><p class="caption"><span class="code_caption_n">Example 3.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">//'dlt_userInfo'의 'age' 컬럼(만나이)의 importFormatter 함수</span>
+<span class="digits_10 code_line"></span>scwin.ageFormatter = <span class="r_h_keyword_span">function</span>(rowJson, rowIndex, colIndex) {    
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> birthDate = rowJson.birthDate;  
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> year = parseInt(birthDate.substring(<span class="r_h_number_span">0</span>, <span class="r_h_number_span">4</span>));  
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> month = birthDate.substring(<span class="r_h_number_span">4</span>, <span class="r_h_number_span">6</span>);  
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> day = birthDate.substring(<span class="r_h_number_span">6</span>, <span class="r_h_number_span">8</span>);  
+<span class="digits_10 code_line"></span>      
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> fullYear = year;  
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> birthMonthDay = month + day;  
+<span class="digits_10 code_line"></span>      
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> currentDate = $p.getCurrentServerDate();  
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> currentYear = parseInt(currentDate.substring(<span class="r_h_number_span">0</span>, <span class="r_h_number_span">4</span>));  
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> currentMonthDay = currentDate.substring(<span class="r_h_number_span">4</span>, <span class="r_h_number_span">8</span>);  
+<span class="digits_10 code_line"></span>      
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">var</span> age;  
+<span class="digits_10 code_line"></span>      
+<span class="digits_10 code_line"></span>    <span class="r_h_comment_span">// 올해 생일이 지났는지 확인  </span>
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">if</span> (currentMonthDay &gt;= birthMonthDay) {  
+<span class="digits_10 code_line"></span>        age = currentYear - fullYear;  
+<span class="digits_10 code_line"></span>    } <span class="r_h_keyword_span">else</span> {  
+<span class="digits_10 code_line"></span>        age = currentYear - fullYear - <span class="r_h_number_span">1</span>;  
+<span class="digits_10 code_line"></span>    }  
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span>    <span class="r_h_keyword_span">return</span> age;  
+<span class="digits_10 code_line"></span>}</pre></div><h1 id="r_7e36c2f019c66277" class="element heading1" data-element-id="7e36c2f019c66277"><div class="r_heading_inner"><span class="heading1_n">5</span><span>주요 API</span></div></h1><ul id="r_3fec3083e81ab8ff" class="element unordered_list" data-element-id="3fec3083e81ab8ff"><li><p><span class="r_ex_api_property_span">[column] importFormatter</span></p></li><li><p><span class="r_ex_api_method_span">[utility] $p.getCurrentServerDate(pattern)</span></p></li></ul></div></body></html>

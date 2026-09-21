@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] 특정 키들의 동작(기능) 미사용 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221021" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="SelectBox의 'preventKeyList' 속성을 사용하여, SelectBox에 포커스된 상태에서 키가 입력되었을 때, 속성에 설정한 키 코드를 무시하도록 설정된 예제입니다."
+					style="" class="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='(기본) 키 기능 사용' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="SelectBox에 포커스가 된 상태에서 Enter 키 입력 시 목록이 확장됩니다."
+							style="">
+						</w2:textbox>
+						<xf:input adjustMaxLength="false" id="" style="width:80px;min-height:24px;margin-right: 10px;" nextTabByEnter="true"
+							nextTabID="sbx_exam1">
+						</xf:input>
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+							disabledClass="w2selectbox_disabled" id="sbx_exam1" ref="" style="width:130px;min-height:24px;" submenuSize="auto">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[apple]]></xf:label>
+									<xf:value><![CDATA[01]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[banana]]></xf:label>
+									<xf:value><![CDATA[02]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[blueberry]]></xf:label>
+									<xf:value><![CDATA[03]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[grapes]]></xf:label>
+									<xf:value><![CDATA[04]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[strawberry]]></xf:label>
+									<xf:value><![CDATA[05]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="엔터(Enter)키 기능 사용 안함" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="SelectBox에 포커스가 된 상태에서 Enter 키 입력 시 목록이 확장되지 않습니다."
+							style=""></w2:textbox>
+						<xf:input adjustMaxLength="false" id="" style="width:80px;min-height:24px;margin-right: 10px;" nextTabByEnter="true"
+							nextTabID="sbx_exam2">
+						</xf:input>
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+							disabledClass="w2selectbox_disabled" id="sbx_exam2" ref="" style="width:130px;min-height:24px;" submenuSize="auto"
+							preventKeyList="13">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[apple]]></xf:label>
+									<xf:value><![CDATA[01]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[banana]]></xf:label>
+									<xf:value><![CDATA[02]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[blueberry]]></xf:label>
+									<xf:value><![CDATA[03]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[grapes]]></xf:label>
+									<xf:value><![CDATA[04]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[strawberry]]></xf:label>
+									<xf:value><![CDATA[05]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="Status" name="Status"></w2:column>
+        				<w2:column dataType="date" id="Date" name="Date"></w2:column>
+        				<w2:column dataType="number" id="Expense" name="Expense"></w2:column>
+        				<w2:column dataType="number" id="Income" name="Income"></w2:column>
+        				<w2:column dataType="text" id="Hobby" name="Hobby"></w2:column>
+        				<w2:column dataType="text" id="Region" name="Region"></w2:column>
+        				<w2:column dataType="number" id="Frequency" name="Frequency"></w2:column>
+        				<w2:column dataType="number" id="ID" name="ID"></w2:column>
+        				<w2:column dataType="number" id="Age" name="Age"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        		<w2:dataList baseNode="list" id="dataList11" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="Status" name="Status"></w2:column>
+        				<w2:column dataType="date" id="Date" name="Date"></w2:column>
+        				<w2:column dataType="number" id="Expense" name="Expense"></w2:column>
+        				<w2:column dataType="number" id="Income" name="Income"></w2:column>
+        				<w2:column dataType="text" id="Hobby" name="Hobby"></w2:column>
+        				<w2:column dataType="text" id="Region" name="Region"></w2:column>
+        				<w2:column dataType="number" id="Frequency" name="Frequency"></w2:column>
+        				<w2:column dataType="number" id="ID" name="ID"></w2:column>
+        				<w2:column dataType="number" id="Age" name="Age"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        				<w2:row></w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/data.json';
+    $p.executeSubmission("submission1");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="行をドラッグして移動"
+    			escape="false">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    			label='1. 最初の GridView から任意の行を選択します。 &lt;br/&gt;2.同じGridView内でドラッグして移動できることを確認してください。 &amp;nbsp;&lt;br/&gt;3. 2番目のGridViewにドラッグして移動できることを確認してください。 &amp;nbsp;'
+    			escape="false">
+    		</w2:textbox>
+    		<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;dataDragDrop="true"' escape="false">
+    		</w2:textbox>
+    		<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" dataDragDrop="true" selectedRowColor="#FF8040"
+    			useShiftKey="true" useCtrlOnMultisort="" scrollByColumn="false" defaultCellHeight="20" focusMode="both" selectedCellColor="#408080"
+    			dataList="data:dataList1" dataDragSelect="" style="border: solid gray 1px;margin-bottom: 10px;" id="gridView1" autoFit="allColumn"
+    			visibleRowNum="5" useCtrlKey="" visibleRowNumFix="true" rowStatusVisible="true">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="70" inputType="text" style="" id="column9" value="Status" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column8" value="Date" displayMode="label"></w2:column>
+    					<w2:column rowSpan="" colSpan="" width="70" inputType="text" style="" id="column7" value="Expense"
+    						displayMode="label">
+    					</w2:column>
+    					<w2:column hidden="false" width="70" inputType="text" style="" id="column10" value="Income" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column5" value="Hobby" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column4" value="Region" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column3" value="Frequency" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column2" value="ID" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column1" value="Age" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" inputType="text" style="height:20px" id="Status" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Date" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Expense" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Income" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Hobby" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Region" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Frequency" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="ID" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Age" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:gridView sortEvent="" scrollByColumnAdaptive="false" hideHeader="" rowNumVisible="true" showSortableImage=""
+    			dataDragDrop="true" selectedRowColor="#808080" useShiftKey="true" scrollByColumn="false" defaultCellHeight="20" focusMode="both"
+    			selectedCellColor="#8080FF" dataList="data:dataList11" dataDragSelect="" style="border: solid gray 1px;" id="gridView2"
+    			autoFit="allColumn" visibleRowNum="5" visibleRowNumFix="true" rowStatusVisible="true">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column rowSpan="" colSpan="" width="70" inputType="text" style="" id="column9" sortable="" value="Status"
+    						displayMode="label">
+    					</w2:column>
+    					<w2:column hidden="false" width="70" inputType="text" style="" id="column10" value="Date" displayMode="label"></w2:column>
+    					<w2:column rowSpan="" colSpan="" width="70" inputType="text" style="" id="column7" sortable=""
+    						orderByColumn="Income" value="Expense" displayMode="label">
+    					</w2:column>
+    					<w2:column hidden="false" width="70" inputType="text" style="" id="column11" value="Income" displayMode="label"></w2:column>
+    					<w2:column rowSpan="" colSpan="" width="70" inputType="text" style="" id="column5" sortable=""
+    						orderByColumn="Region" value="Hobby" displayMode="label">
+    					</w2:column>
+    					<w2:column hidden="false" width="70" inputType="text" style="" id="column12" value="Region" displayMode="label"></w2:column>
+    					<w2:column hidden="false" width="70" inputType="text" style="" id="column13" value="Frequency"
+    						displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column2" value="ID" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column1" value="Age" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" inputType="text" style="height:20px" id="Status" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Date" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Expense" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Income" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Hobby" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Region" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Frequency" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="ID" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="Age" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+		
+	scwin.autoComplete1_oneditenter = function() {
+		alert("oneditenter - Enter key pressed.");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Event - oneditenter&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Select an item from the list.&lt;br/&gt;2. Enter edit mode.&lt;br/&gt;3. (After editing) Press the Enter key.&lt;br/&gt;4. Confirm that the oneditenter event occurs.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;" id="textbox4" label="Event Description&lt;br/&gt;&lt;br/&gt;oneditenter - Fired when the user presses the Enter key after entering edit mode." escape="false">
+    	</w2:textbox>
+    	<w2:autoComplete submenuSize="auto" chooseOptionLabel="Select a city." caseSensitive="false" chooseOption=""
+    		useKeywordHighlight="true" allOption="" nextTabByEnter="true" searchTarget="label" search="contain" ref=""
+    		ev:oneditenter="scwin.autoComplete1_oneditenter" nextTabID="" editType="select" style="width: 50%;display: block" id="autoComplete1">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Hanoi]]></w2:label>
+    				<w2:value><![CDATA[001]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Danang]]></w2:label>
+    				<w2:value><![CDATA[002]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Taipei]]></w2:label>
+    				<w2:value><![CDATA[003]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Bangkok]]></w2:label>
+    				<w2:value><![CDATA[004]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Hawaii]]></w2:label>
+    				<w2:value><![CDATA[005]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

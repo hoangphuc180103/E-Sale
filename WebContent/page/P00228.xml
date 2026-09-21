@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] Event - onscrollstart (세로 스크롤이 이동하여 최상단에 닿을 때 발생)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230217" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+						<w2:column dataType="text" name="C" id="col_c"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A4]]></col_a>
+							<col_b><![CDATA[B4]]></col_b>
+							<col_c><![CDATA[C4]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A5]]></col_a>
+							<col_b><![CDATA[B5]]></col_b>
+							<col_c><![CDATA[C5]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A6]]></col_a>
+							<col_b><![CDATA[B6]]></col_b>
+							<col_c><![CDATA[C6]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A7]]></col_a>
+							<col_b><![CDATA[B7]]></col_b>
+							<col_c><![CDATA[C7]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A8]]></col_a>
+							<col_b><![CDATA[B8]]></col_b>
+							<col_c><![CDATA[C8]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A9]]></col_a>
+							<col_b><![CDATA[B9]]></col_b>
+							<col_c><![CDATA[C9]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A10]]></col_a>
+							<col_b><![CDATA[B10]]></col_b>
+							<col_c><![CDATA[C10]]></col_c>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+
+/**
+ * GridView grd_exam1의 onscrollstart 이벤트 핸들러
+ */
+scwin.grd_exam1_onscrollstart = function () {
+    let strLog = "";
+
+    strLog += "** scwin.grd_exam1_onscrollstart **";
+
+    //textarea에 log 출력
+    $c.frame.printExampleLog(strLog, txa_log, false);
+
+    console.log("scwin.grd_exam1_onscrollstart");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView의 'onscrollstart' 이벤트를 설정한 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="exam_txt caution" id="" label="컴포넌트의 이벤트 발생 시 영역 [로그 확인]의 textarea 또는 브라우저 개발자도구 콘솔에 로그가 출력됩니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView onscrollstart="scwin.grd_exam1_onscrollstart" rowNumVisible="true" rowNumWidth="40"
+								keepDefaultColumnWidth="true" dataList="data:dlt_exam" ev:onscrollstart="scwin.grd_exam1_onscrollstart" style="height:100px;"
+								autoFit="allColumn" id="grd_exam1" visibleRowNum="3" visibleRowNumFix="true" class="gvw" defaultCellHeight="37"
+								autoFitMinWidth="280">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header id="header1">
+									<w2:row id="row1">
+										<w2:column width="70" inputType="text" id="column1" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" id="column2" value="B" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" id="column3" value="C" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody1">
+									<w2:row id="row2">
+										<w2:column width="70" inputType="text" id="col_a" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" id="col_b" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" id="col_c" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

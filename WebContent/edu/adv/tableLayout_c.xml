@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]tableLayout">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.btn_show_onclick = function (e) {
+    ui_table.show("");
+};
+
+scwin.btn_hide_onclick = function (e) {
+    ui_table.hide();
+};
+
+scwin.btn_tr1_hide_onclick = function (e) {
+    ui_tr1.hide(); 
+};
+
+scwin.btn_tr2_hide_onclick = function (e) { 
+    ui_tr2.hide(); 
+};
+
+scwin.btn_tr3_hide_onclick = function (e) { 
+    ui_tr3.hide(); 
+};
+
+scwin.btn_tr4_hide_onclick = function (e) { 
+    ui_tr4.hide(); 
+};
+
+scwin.btn_tr5_hide_onclick = function (e) { 
+    ui_tr5.hide(); 
+};
+
+scwin.btn_tr1_show_onclick = function (e) {
+    ui_tr1.show("");
+};
+
+scwin.btn_tr2_show_onclick = function (e) { 
+    ui_tr2.show("");
+};
+
+scwin.btn_tr3_show_onclick = function (e) { 
+    ui_tr3.show("");
+};
+
+scwin.btn_tr4_show_onclick = function (e) { 
+    ui_tr4.show("");
+};
+
+scwin.btn_tr5_show_onclick = function (e) { 
+    ui_tr5.show("");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[완성화면] TableLayout 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 완성 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 개요&lt;br/&gt;본 화면은 TableLayout 컴포넌트를 API를 활용하여 &amp;nbsp;&lt;br/&gt;TableLayout &amp;nbsp;보이기/숨기기 &amp;nbsp;행 보이기/숨기기를 학습합니다"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label='1. Design Kit 를 활용하여 TableLayout을 추가합니다.&lt;br/&gt;2. TableLayout 컴포넌트를 편집합니다.&lt;br/&gt;&lt;br/&gt; &amp;nbsp; TableLayout 컴포넌트에 id를을 작성합니다. (id : ui_table)&lt;br/&gt; &amp;nbsp; TableLayout의 행영역(tr)에 id를을 작성합니다. (id : ui_tr1)&lt;br/&gt; &amp;nbsp; TableLayout의 제목영역(th)에 텍스트를 작성합니다. (첫째줄)&lt;br/&gt; &amp;nbsp; TableLayout의 body영역(td)에 컴포넌트를 작성합니다. (inputBox 컴포넌트)&lt;br/&gt; &amp;nbsp; &lt;br/&gt; &amp;nbsp; 웹스퀘어에서는 F2 단축키 선택시 선택영역 기준으로 상위(부모)영역이 선택됩니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp;ex) TableLayout 컴포넌트에서 셀(th, td등) 선택 후 F2 단축키 선택 해당 줄(tr)이 선택됩니다.&lt;br/&gt; &amp;nbsp;&lt;br/&gt;3. 테이블 보여주기 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_table.show("");&lt;br/&gt;4. 테이블 숨기기 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_table.hide(); &amp;nbsp;&lt;br/&gt;5. 첫번째 줄 보임 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_tr1.show("");&lt;br/&gt;6. 첫번째 줄 숨김 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_tr1.hide(); &amp;nbsp;'
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<xf:group class="rt" id="" style="">
+    				<xf:trigger class="btn_cm " id="btn_show" style="" type="button" ev:onclick="scwin.btn_show_onclick">
+    					<xf:label><![CDATA[테이블 보여주기]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm " id="btn_hide" style="" type="button" ev:onclick="scwin.btn_hide_onclick">
+    					<xf:label><![CDATA[테이블 숨기기]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style=""></xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="ui_table" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:150px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    					<xf:group style="width:150px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr" id="ui_tr1">
+    					<xf:group class="w2tb_th" style="" tagname="th">
+    						<w2:textbox class="req" id="" label="첫번째 줄" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" style="" tagname="td">
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="테이블헤더" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr" id="ui_tr2">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="두번재 줄" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<xf:select1 id="" chooseOption="false" style="width: 148px;height: 21px;" submenuSize="auto" allOption="false"
+    							disabled="false" direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled">
+    						</xf:select1>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="테이블헤더" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr" id="ui_tr3">
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="세번째 줄" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox id="" label="AAA" style="width: 150px;height: 23px;"></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="테이블헤더" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr" id="ui_tr4">
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="네번째 줄" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<w2:span label="BBB" style="" id=""></w2:span>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="테이블헤더" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr" id="ui_tr5">
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="다섯번째 줄" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<w2:inputCalendar id="" style="width: 150px;height: 23px;" calendarValueType="yearMonthDate"></w2:inputCalendar>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="테이블헤더" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="btnbox" id="" style="">
+    			<xf:group class="rt" id="" style="">
+    				<w2:textbox class="bar_btndiv" id="" label="" style=""></w2:textbox>
+    				<xf:trigger class="btn_cm" id="btn_tr1_hide" style="" type="button" ev:onclick="scwin.btn_tr1_hide_onclick">
+    					<xf:label><![CDATA[첫번째 줄 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_tr2_hide" style="" type="button" ev:onclick="scwin.btn_tr2_hide_onclick">
+    					<xf:label><![CDATA[두번재 줄 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm " id="btn_tr3_hide" style="" type="button" ev:onclick="scwin.btn_tr3_hide_onclick">
+    					<xf:label><![CDATA[세번째 줄 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_tr4_hide" style="" type="button" ev:onclick="scwin.btn_tr4_hide_onclick">
+    					<xf:label><![CDATA[네번째 줄 숨김]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm " id="btn_tr5_hide" style="" type="button" ev:onclick="scwin.btn_tr5_hide_onclick">
+    					<xf:label><![CDATA[다섯번째 줄 숨김]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="btnbox" id="" style="">
+    			<xf:group class="rt" id="" style="">
+    				<w2:textbox class="bar_btndiv" id="" label="" style=""></w2:textbox>
+    				<xf:trigger class="btn_cm" id="btn_tr1_show" style="" type="button" ev:onclick="scwin.btn_tr1_show_onclick">
+    					<xf:label><![CDATA[첫번째 줄 보임]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_tr2_show" style="" type="button" ev:onclick="scwin.btn_tr2_show_onclick">
+    					<xf:label><![CDATA[두번째 줄 보임]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm " id="btn_tr3_show" style="" type="button" ev:onclick="scwin.btn_tr3_show_onclick">
+    					<xf:label><![CDATA[세번째 줄 보임]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm pt" id="btn_tr4_show" style="" type="button" ev:onclick="scwin.btn_tr4_show_onclick">
+    					<xf:label><![CDATA[네번째 줄 보임]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm " id="btn_tr5_show" style="" type="button" ev:onclick="scwin.btn_tr5_show_onclick">
+    					<xf:label><![CDATA[다섯번째 줄 보임]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+
+
+    </body>
+</html>

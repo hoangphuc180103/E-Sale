@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]editor 완료화면">
+        <w2:historyInfo>
+        	<w2:history meta_no="01" meta_desc="교육 예제 파일 template design으로 모두 변경, 일부 로직 누락된 건 수정 반영" meta_date="2023.12.05" meta_user="InswaveSystems"></w2:history>
+        </w2:historyInfo>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dc_code" repeatNode="map" saveRemovedData="true">
+        			<w2:columnInfo>
+        				<w2:column id="code_cd" name="코드값" dataType="text"></w2:column>
+        				<w2:column id="code_nm" name="코드명" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+        					<code_cd><![CDATA[01]]></code_cd>
+        					<code_nm><![CDATA[개발자]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[02]]></code_cd>
+        					<code_nm><![CDATA[설계자]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[03]]></code_cd>
+        					<code_nm><![CDATA[DBA]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[04]]></code_cd>
+        					<code_nm><![CDATA[PL]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[05]]></code_cd>
+        					<code_nm><![CDATA[PM]]></code_nm>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        		<w2:dataMap baseNode="map" id="dc_reqUserInfo">
+        			<w2:keyInfo>
+        				<w2:key id="EMP_CD" name="사용자 코드" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        		<w2:dataMap baseNode="map" id="bbbbb">
+        			<w2:keyInfo>
+        				<w2:key id="EMP_CD" name="사번" dataType="text"></w2:key>
+        				<w2:key id="EMP_NM" name="성명" dataType="text"></w2:key>
+        				<w2:key id="GENDER_CD" name="성별" dataType="text"></w2:key>
+        				<w2:key id="JOIN_DATE" name="입사일" dataType="text"></w2:key>
+        				<w2:key id="POSITION_CD" name="직급" dataType="text"></w2:key>
+        				<w2:key id="DUTY_CD" name="직책" dataType="text"></w2:key>
+        				<w2:key id="ROLE_CD" name="역할" dataType="text"></w2:key>
+        				<w2:key id="ASSIGNED_TASK" name="담당 업무" dataType="text"></w2:key>
+        				<w2:key id="EMAIL" name="이메일" dataType="text"></w2:key>
+        				<w2:key id="ZIP_CD" name="우편번호" dataType="text"></w2:key>
+        				<w2:key id="ADDRESS1" name="주소1" dataType="text"></w2:key>
+        				<w2:key id="ADDRESS2" name="주소2" dataType="text"></w2:key>
+        				<w2:key id="CREATED_DATE" name="입력일" dataType="text"></w2:key>
+        				<w2:key id="UPDATED_DATE" name="수정일" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission id="sub_select" ref="data:json,dc_reqUserInfo" target='data:json,{"id":"bbbbb","key":"dc_userInfo"}' action="/edu/data/userInfo.json" method="post" mediatype="application/json" encoding="UTF-8"
+        		instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="조회중입니다... " ev:submit="scwin.sub_select_submit" ev:submitdone="scwin.sub_select_submitdone"
+        		ev:submiterror="scwin.sub_select_submiterror" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {  
+    //1.힌트 메세지 입력 setPlaceholder 활용
+    ui_editor1.setPlaceholder("텍스트를 입력하세요 (API로 값넣기)");
+};
+  
+//텍스트설정 버튼 onclick 이벤트  
+scwin.btn_set_onclick = function (e) {
+    //1.textarea에 value 입력 setText(value) 활용
+    ui_editor1.setText("editor\n setText(value) API.");
+};
+
+//텍스트반환 버튼 onclick 이벤트 
+scwin.btn_get_onclick = function (e) {
+    
+    //1.editor의 textarea에서 html태그를 무시하고 
+    //  text와 개행문자를 포함하여 반환합니다. getInnerText() 활용
+    alert(ui_editor1.getInnerText()  );
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[완성화면] Editor 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 완료된 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame style="" id="" src="/edu/adv/editor_desc.xml"></w2:pageFrame>
+
+    		</xf:group>
+    		<xf:group class="schbox" id="" style="">
+    			<xf:group class="schbox_inner" id="" style="">
+    				<xf:group adaptive="layout" adaptiveThreshold="768" class="w2tb tbl " id="" style="" tagname="table">
+    					<w2:attributes>
+    						<w2:summary></w2:summary>
+    					</w2:attributes>
+    					<xf:group tagname="colgroup">
+    						<xf:group style="width:100px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    						<xf:group style="width:100px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    					</xf:group>
+    					<xf:group class="" id="" style="" tagname="tr">
+    						<xf:group class="w2tb_th" style="" tagname="th">
+    							<w2:attributes>
+    								<w2:colspan>4</w2:colspan>
+    								<w2:rowspan>1</w2:rowspan>
+    							</w2:attributes>
+    						</xf:group>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="btn_schbox" id="" style="">
+    				<xf:trigger class="btn_cm sch" disabled="" escape="false" id="btn_set" style="" type="button" tooltip="텍스트를 설정합니다." ev:onclick="scwin.btn_set_onclick">
+    					<xf:label><![CDATA[텍스트설정]]></xf:label>
+    				</xf:trigger><xf:trigger class="btn_cm sch" disabled="" escape="false" id="btn_get" style="" tooltip="텍스트를 반환합니다." type="button" ev:onclick="scwin.btn_get_onclick">
+    					<xf:label><![CDATA[텍스트반환]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    			
+    		</xf:group>
+    		<w2:editor style="height: 300px;" id="ui_editor1" maxCharCount="1000" placeholder="텍스트를 입력하세요 (속성으로 값넣기)" menubar="default"></w2:editor>
+    		<xf:group class="example_div_tb_style_wrap" id="">
+    			<xf:group class="example_div_tr_style" id="" style=""></xf:group>
+    		</xf:group>
+    	</xf:group>
+
+    </body>
+</html>

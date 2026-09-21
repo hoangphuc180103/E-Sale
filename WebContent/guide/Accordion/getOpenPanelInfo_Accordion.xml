@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		var openPanel = accordion1.getOpenPanelInfo(2);
+		var openPanelInfo = JSON.stringify(openPanel);
+		alert(openPanelInfo);
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="특정 패널의 속성 확인" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1. 하단의 getOpenPanelInfo(2) 버튼을 클릭.&lt;br/&gt;2. 인덱스가 2인 패널의 속성이 표시되는 것을 확인." escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[getOpenPanelInfo(2)]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox tagname="" style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;" id="textbox4" label="/// 샘플 코드 &lt;br/&gt;&lt;br/&gt;var openPanel = accordion1.getOpenPanelInfo(2);&lt;br/&gt;var openPanelInfo = JSON.stringify(openPanel);&lt;br/&gt;alert(openPanelInfo);" escape="false">
+    	</w2:textbox>
+    	<w2:accordion collapseAll="" style="border:solid 2px gray;margin-bottom: 10px;" id="accordion1" selectedPanel=""
+    		unCollapseAll="true" collapsible="" class="" panelMoveSpeed="" titleDivTag="">
+    		<w2:panels style="" id="panel1" class="">
+    			<w2:panelTitle style="" id="panelTitle1" label="1" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent1" class="">
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 1">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels style="" id="panel2" class="">
+    			<w2:panelTitle style="" id="panelTitle2" label="2" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent2" class="">
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 2">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels style="" id="panel3" class="">
+    			<w2:panelTitle style="" id="panelTitle3" label="3" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent3" class="">
+    				<xf:select1 appearance="full" style="position: absolute ;left:589px;top:91px;width: 54px;height: 25px;" id="select1"
+    					selectedIndex="-1">
+    				</xf:select1>
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 3">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    	</w2:accordion>
+    </xf:group></body>
+</html>

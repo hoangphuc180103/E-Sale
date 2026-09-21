@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제] dynamic 실습 방법 설명">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() { 
+ 
+}; ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group style="" id="" class="ws_example_grp_desc">
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 목표" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label="동적으로 웹스퀘어 객체(컴포넌트)를 생성&lt;br/&gt;$p.dynamicCreate(id, componentName, options, parent) &amp;nbsp;" class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 방법" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label="1. 'input 동적 생성' 버튼에 onclick 이벤트 생성&lt;br/&gt;&lt;br/&gt;2. '버튼 동적 생성' 버튼에 onclick 이벤트 생성&lt;br/&gt;&lt;br/&gt;동적으로 생성할 컴포넌트는 &lt;b style=&quot;color:red;&quot;&gt;추가될 부모 컴포넌트&lt;/b&gt;가 있어야 합니다. &lt;br/&gt;$p.dynamicCreate API는 부모 컴포넌트 객체를 받기 때문에 body에 추가할 수 없습니다.&lt;br/&gt;&lt;br/&gt;동적으로 생성할 컴포넌트의 ID는 중복이 되어서는 안됩니다.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;생성할 컴포넌트의 pluginName 은&lt;br/&gt;&lt;b style=&quot;color:red;&quot;&gt;객체ID.getPluginName() 로 확인 후 사용하십시요&lt;/b&gt;"
+    				class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="HTML의 &amp;lt;title&amp;gt; &amp;nbsp;태그 지원" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. F12 버튼을 누르고 개발자 도구 열기. &lt;br/&gt;2. 화면에서 Spinner를 선택. &lt;br/&gt;3. 개발자 도구의 Elements 탭 선택으로 이동.&lt;br/&gt;4. Spinner의 &amp;lt;title&amp;gt; 태그의 값이 "Spinner_Test"로 설정된 것을 확인.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;title="Spinner_Test"' escape="false">
+    	</w2:textbox><w2:spinner skin="type1" inputReadOnly="false" style="width: 50%;margin-bottom: 10px;" id="spinner1" title="Spinner_Test" buttonSize="30">
+    	</w2:spinner></xf:group></body>
+</html>

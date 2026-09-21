@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="tooltipHideInputType_GridView">
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate />
+        <xf:model>
+            <xf:instance>
+                <data xmlns="">
+                </data>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList2" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="label" name="name1" dataType="text"></w2:column>
+            			<w2:column id="value" name="name2" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection></w2:workflowCollection>
+        </xf:model>
+
+        <script type="text/javascript" lazy="false"><![CDATA[
+        
+    scwin.onpageload = function() {
+
+        dataList2.setJSON([{label:"overseas", value:"1"},{label:"domestic", value:"0"}])
+
+        var jsonData = [{col1:"a",col2:"ABCDEFGHIJKLMNOPQRSTUVWXYZa1",col3:"false", col4:"overseas"}
+                        ,{col1:"a",col2:"a2ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"true", col4:"domestic"}
+                        ,{col1:"a",col2:"ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"false", col4:"overseas"}
+                        ,{col1:"a",col2:"a4ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"false", col4:"domestic"}
+                        ,{col1:"a",col2:"a5ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"true", col4:"domestic"}
+                        ,{col1:"b",col2:"b1ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"true", col4:"domestic"}
+                        ,{col1:"b",col2:"b3ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"true", col4:"domestic"}
+                        ,{col1:"c",col2:"c1ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"false", col4:"overseas"}
+                        ,{col1:"c",col2:"c2ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"true", col4:"domestic"}
+                        ,{col1:"c",col2:"c3ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"false", col4:"overseas"}
+                        ,{col1:"d",col2:"d1ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"true", col4:"overseas"}
+                        ,{col1:"d",col2:"d2ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"false", col4:"domestic"}
+                        ,{col1:"d",col2:"d3ABCDEFGHIJKLMNOPQRSTUVWXYZ",col3:"false", col4:"domestic"}];
+        dataList1.setJSON(jsonData);
+
+    };
+    
+    ]]></script>
+        <style type="text/css"><![CDATA[
+            
+         ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="" class="" style="margin:10px;" tooltipDisplay="true">
+    		<w2:textbox escape="false" id="textbox1" label="ツールチップを表示しない列の指定" style="color: blue;margin-bottom: 10px;" tabIndex="h1"
+    			tagname="h1">
+    		</w2:textbox>
+    		<w2:textbox id="textbox2" label="サンプルの使い方" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    		<w2:textbox escape="false" id="textbox3"
+    			label='1. GridViewの各セルにマウスカーソルを置くのを待ちます。 &lt;br/&gt;2. inputType="select" の col4 を除く残りの列でツールチップが常に表示されることを確認します。'
+    			style="color: blue;margin-bottom: 30px;">
+    		</w2:textbox>
+    		<w2:textbox escape="false" id="textbox4"
+    			label='プロパティの設定&lt;br/&gt;tooltipHideInputType="select"'
+    			style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    		</w2:textbox>
+    		<w2:gridView tooltipShowAlways="true" accessibility="true" focusMove="false" tooltipHideInputType="select"
+    			scrollByColumn="false" autoResizeEmbeddedInput="true" defaultCellHeight="20" titleAuto="true" applyScopeHeaders="true"
+    			senseReader="true" checkAllType="false" keyMoveEditMode="true" id="gridView1" autoFit="allColumn" tooltipDisplayColumn="" class=""
+    			scrollByColumnAdaptive="false" readOnly="true" scrollFocus="true" tooltipDisplay="true" captionAuto="true" dataList="data:dataList1"
+    			style="border: solid 1px gray;visiblerow" sortHeaderDiv="true" visibleRowNum="10" visibleRowNumFix="true">
+    			<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header2">
+    				<w2:row style="" id="row3">
+    					<w2:column width="70" inputType="text" style="height:20px" id="column7" value="col1 &lt;br/&gt;(text)"
+    						displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column6" value="col2&lt;br/&gt;(text)"
+    						displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column5" value="col3&lt;br/&gt;(text)"
+    						displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="column4" value="col4&lt;br/&gt;(select)"
+    						displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody2">
+    				<w2:row style="" id="row4">
+    					<w2:column width="70" radioLabelColumn="col3" inputType="text" style="height:20px" readOnly="false" id="col1"
+    						value="" displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    					<w2:column ref="" chooseOption="" width="70" inputType="select" style="height:20px" readOnly="false" id="col4"
+    						allOption="" value="false" displayMode="label">
+    						<w2:choices>
+    							<w2:itemset nodeset="data:dataList2">
+    								<w2:label ref="label"></w2:label>
+    								<w2:value ref="value"></w2:value>
+    							</w2:itemset>
+    						</w2:choices>
+    					</w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 할당된 데이터가 없으면, 필터 아이콘 표시하지 않기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231025" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam_1" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_2" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    
+};
+
+/**
+ * 버튼 [1.1 데이터 할당하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // DataList 'dlt_exam_2'에 데이터를 할당합니다.
+    dlt_exam_1.setJSON([
+        { "category": "Software", "product": "SecureGate" },
+        { "category": "Hardware", "product": "FastServe" },
+        { "category": "Services", "product": "CloudFlex" },
+        { "category": "Software", "product": "CodeStream" }
+    ]);
+};
+
+/**
+ * 버튼 [1.2 데이터 제거하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // 데이터 제거 - 데이터 반환이 필요하지 않아 빈 데이터로 할당합니다.
+    dlt_exam_1.setData([]);
+};
+
+
+/**
+ * 버튼 [2.1 데이터 할당하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // DataList 'dlt_exam_1'에 데이터를 할당합니다.
+    dlt_exam_2.setJSON([
+        { "category": "Software", "product": "SecureGate" },
+        { "category": "Hardware", "product": "FastServe" },
+        { "category": "Services", "product": "CloudFlex" },
+        { "category": "Software", "product": "CodeStream" }
+    ]);
+};
+
+/**
+ * 버튼 [2.2 데이터 제거하기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // 데이터 제거 - 데이터 반환이 필요하지 않아 빈 데이터로 할당합니다.
+    dlt_exam_2.setData([]);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'hideFilterIconOnNoData' 속성을 사용하여 출력된 데이터가 없으면, 헤더에 필터 아이콘이 표시되지 않도록 설정한 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox escape="false" id="" label="GridView와 연결된 DataList에 필터가 적용되어 출력된 데이터가 없는 경우에는 필터 아이콘이 표시됩니다." style=""
+					class="exam_txt caution">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'hideFilterIconOnNoData' 속성 사용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA[1.1 데이터 할당하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								style="" type="button">
+								<xf:label><![CDATA[1.2 데이터 제거하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="gvwbox" style="max-width:300px;">
+							<w2:gridView hideFilterIconOnNoData="true" visibleRowNumFix="true" dataList="data:dlt_exam_1" style="height:100px;"
+								autoFit="allColumn" id="" useFilterList="true" visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="200"
+								noResultMessage="No data to display">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="100" inputType="text" id="column2" value="Category" displayMode="label" useFilter="true">
+										</w2:column>
+										<w2:column sortable="true" width="100" inputType="text" id="column3" value="Product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="100" inputType="text" id="category" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="100" inputType="text" id="product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 'hideFilterIconOnNoData' 속성 미사용" style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1"
+								style="" type="button">
+								<xf:label><![CDATA[2.1 데이터 할당하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_2_onclick" id="btn_exam2_2"
+								style="" type="button">
+								<xf:label><![CDATA[2.2 데이터 제거하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="gvwbox" style="max-width:300px;">
+							<w2:gridView autoFit="allColumn" autoFitMinWidth="200" class="gvw" dataList="data:dlt_exam_2" defaultCellHeight="37"
+								hideFilterIconOnNoData="false" id="" style="height:100px;" useFilterList="true" visibleRowNum="4" visibleRowNumFix="true"
+								noResultMessage="No data to display">
+								<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="100" inputType="text" id="column2" value="Category" displayMode="label" useFilter="true">
+										</w2:column>
+										<w2:column sortable="true" width="100" inputType="text" id="column3" value="Product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="100" inputType="text" id="category" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="100" inputType="text" id="product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

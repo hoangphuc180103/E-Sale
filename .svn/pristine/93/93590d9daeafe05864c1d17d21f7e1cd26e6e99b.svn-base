@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="guide">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="C_Code" name="C_Code"></w2:column>
+            			<w2:column id="Airport" name="Airport" dataType="text"></w2:column>
+            			<w2:column dataType="text" id="City" name="City"></w2:column>
+            			<w2:column dataType="text" id="Country" name="Country"></w2:column>
+            			<w2:column dataType="text" id="A_Code" name="A_Code"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+	scwin.onpageload = function() {
+		var json = [{
+			"C_Code" : "PAR",
+			"Airport" : "ORLY",
+			"Country" : "FRANCE",
+			"City" : "PARIS",
+			"A_Code" : "ORY"
+		}, {
+			"C_Code" : "PDX",
+			"Airport" : "PORTLAND INT’L",
+			"Country" : "U.S.A.",
+			"City" : "PORTLAND",
+			"A_Code" : "PDX"
+		}, {
+			"C_Code" : "PEK",
+			"Airport" : "CAPITAL",
+			"Country" : "CHINA",
+			"City" : "BEIJING",
+			"A_Code" : "PEK"
+		}, {
+			"C_Code" : "PER",
+			"Airport" : "PERTH",
+			"Country" : "AUSTRALIA",
+			"City" : "PERTH",
+			"A_Code" : "PER"
+		}, {
+			"C_Code" : "PHL",
+			"Airport" : "PHILADELPHIA INT’L",
+			"Country" : "U.S.A.",
+			"City" : "PHILADELPHIA",
+			"A_Code" : "PHL"
+		}, {
+			"C_Code" : "PHX",
+			"Airport" : "SKY HARBOR ",
+			"Country" : "U.S.A.",
+			"City" : "PHOENIX",
+			"A_Code" : "PHX"
+		}, {
+			"C_Code" : "PIT",
+			"Airport" : "PITTSBURGH INT’L",
+			"Country" : "U.S.A.",
+			"City" : "PITTSBURGH",
+			"A_Code" : "PIT"
+		}, {
+			"C_Code" : "PNH",
+			"Airport" : "POCHENTONG",
+			"Country" : "CAMBODIA",
+			"City" : "PHNOMPENH",
+			"A_Code" : "PNH"
+		}, {
+			"C_Code" : "PUS",
+			"Airport" : "KIMHAE",
+			"Country" : "KOREA",
+			"City" : "PUSAN",
+			"A_Code" : "PUS"
+		}];
+		dataList1.setJSON(json);
+
+	};
+
+	scwin.onpageunload = function() {
+
+	};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Support Multi-column Search when Binding with GridViewItemset"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Click the arrow icon for each AutoComplete.&lt;br/&gt;2. Verify that the GridView table is displayed as a list.&lt;br/&gt;3. Enter a keyword.&lt;br/&gt;&lt;br/&gt;4-1. For the first AutoComplete, verify that search results appear in all columns.&lt;br/&gt;4-2. For the second AutoComplete, verify that search results appear only in the Airport column.&lt;br/&gt;4-3. For the second AutoComplete, verify that search results appear only in the Airport and Country columns.&lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='searchTarget="itemColumns"&lt;br/&gt;searchTargetItemColumns=""' escape="false">
+    	</w2:textbox>
+    	<w2:autoComplete submenuSize="auto" search="contain" ref="" chooseOption="" editType="select" useKeywordHighlight="true"
+    		style="width:500px; margin-bottom:10px; display:block;" id="autoComplete1" allOption="" displayMode="label" useLocale="false"
+    		caseSensitive="true" searchTargetItemColumns="" searchTarget="itemColumns">
+    		<w2:choices>
+    			<w2:gridViewItemset hideHeader="" rowMouseOver="" nodeset="data:dataList1" width="500" selectedRowColor="" label="Airport"
+    				visibleRowNum="" autoFit="" value="A_Code" rowMouseOverColor="" height="">
+    				<w2:item ref="Airport" hidden="" header="Airport" style="" headerStyle=""></w2:item>
+    				<w2:item ref="City" hidden="" header="City" style="" headerStyle=""></w2:item>
+    				<w2:item ref="Country" hidden="" header="Country" style="" headerStyle=""></w2:item>
+    			</w2:gridViewItemset>
+    		</w2:choices>
+    	</w2:autoComplete>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='searchTarget="itemColumns"&lt;br/&gt;searchTargetItemColumns="Airport"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:autoComplete allOption="" caseSensitive="true" chooseOption="" displayMode="label" editType="select" id="autoComplete2" ref=""
+    		search="contain" searchTarget="itemColumns" searchTargetItemColumns="Airport"
+    		style="width:500px; margin-bottom:10px; display:block;" submenuSize="auto" useKeywordHighlight="true" useLocale="false">
+    		<w2:choices>
+    			<w2:gridViewItemset hideHeader="" rowMouseOver="" nodeset="data:dataList1" width="500" selectedRowColor="" label="Airport"
+    				visibleRowNum="" autoFit="" value="A_Code" rowMouseOverColor="" height="">
+    				<w2:item ref="Airport" hidden="" header="Airport" style="" headerStyle=""></w2:item>
+    				<w2:item ref="City" hidden="" header="City" style="" headerStyle=""></w2:item>
+    				<w2:item ref="Country" hidden="" header="Country" style="" headerStyle=""></w2:item>
+    			</w2:gridViewItemset>
+    		</w2:choices>
+    	</w2:autoComplete>
+    	<w2:textbox escape="false" id="textbox8"
+    		label='searchTarget="itemColumns"&lt;br/&gt;searchTargetItemColumns="Airport,Country"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:autoComplete allOption="" caseSensitive="true" chooseOption="" displayMode="label" editType="select" id="autoComplete6" ref=""
+    		search="contain" searchTarget="itemColumns" searchTargetItemColumns="Airport,Country"
+    		style="width:500px; margin-bottom:10px; display:block;" submenuSize="auto" useKeywordHighlight="true" useLocale="false">
+    		<w2:choices>
+    			<w2:gridViewItemset autoFit="" height="" hideHeader="" label="Airport" nodeset="data:dataList1" rowMouseOver=""
+    				rowMouseOverColor="" selectedRowColor="" value="A_Code" visibleRowNum="" width="500">
+    				<w2:item header="Airport" headerStyle="" hidden="" ref="Airport" style=""></w2:item>
+    				<w2:item header="City" headerStyle="" hidden="" ref="City" style=""></w2:item>
+    				<w2:item header="Country" headerStyle="" hidden="" ref="Country" style=""></w2:item>
+    			</w2:gridViewItemset>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko"><head><title>[DataList] 컬럼 데이터에 두 번째 필터 적용 시 합집합 또는 교집합 적용하기</title><link rel="stylesheet" href="css/book.css" type="text/css" /><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" /><meta name="EPB-UUID" content="f1fbcef72ff0a2ec" /></head><body><div class="chapter_content"><h1 id="r_f031728a2afb00cc" class="chapter_title">[DataList] 컬럼 데이터에 두 번째 필터 적용 시 합집합 또는 교집합 적용하기</h1><h1 id="r_b33b4418e76da5c3" class="element heading1" data-element-id="b33b4418e76da5c3"><div class="r_heading_inner"><span class="heading1_n">1</span><span>개요</span></div></h1><p id="r_57703d3d2e9b3e4a" class="element normal" data-element-id="57703d3d2e9b3e4a">DataList의 'setColumnFilter' 메소드를 사용하여 컬럼 데이터에 이미 적용된 필터 데이터와 병합하는 조건을 설정한 예제입니다.</p><pre id="r_62e499c10fba8e63" class="element pre" data-element-id="62e499c10fba8e63">'setColumnFilter' 메소드의 첫 번째 인자의 'condition' 속성의 설정에 따른 결과를 확인할 수 있습니다.</pre><pre id="r_809a4879afae02c5" class="element pre" data-element-id="809a4879afae02c5">'condition' 속성의 설정 값에 따른 동작 방식은 다음과 같습니다.
+- "and" : 교집합으로, 이미 적용된 필터 데이터와 병합하는 조건입니다.
+- "or" : 합집합으로, 이미 적용된 필터 데이터와 병합하는 조건입니다.</pre><p id="r_8e71c5f1b9447ec2" class="element r_example_link_p" data-element-id="8e71c5f1b9447ec2"><a class="link" href="http://example.websquare.kr/link.html?p=P00279">P00279</a></p><h1 id="r_f261ce0da2298ffd" class="element heading1" data-element-id="f261ce0da2298ffd"><div class="r_heading_inner"><span class="heading1_n">2</span><span>구현된 기능</span></div></h1><ul id="r_a94a55cc390ddcc1" class="element unordered_list" data-element-id="a94a55cc390ddcc1"><li><p>두 번째 필터 적용 시 'AND'(교집합) 조건으로 호출</p></li><li><p>두 번째 필터 적용 시 'OR'(합집합) 조건으로 호출</p></li></ul><h1 id="r_ef5c18c76be67d1f" class="element heading1" data-element-id="ef5c18c76be67d1f"><div class="r_heading_inner"><span class="heading1_n">3</span><span>예제 테스트 방법</span></div></h1><h2 id="r_ab24251e7610cfc0" class="element heading2" data-element-id="ab24251e7610cfc0"><div class="r_heading_inner"><span class="heading2_n">3.1</span><span>공통 버튼 설명</span></div></h2><ul id="r_9f1da7edb6d529e8" class="element unordered_list" data-element-id="9f1da7edb6d529e8"><li><p>버튼: '<span class="r_btn_style_span">DataList의 데이터 초기화</span>'</p><p>기능: DataList에 적용된 필터를 모두 해제하고 초기 데이터를 설정합니다.</p></li></ul><h2 id="r_617e7b940dcebf76" class="element heading2" data-element-id="617e7b940dcebf76"><div class="r_heading_inner"><span class="heading2_n">3.2</span><span>두 번째 필터 적용 시 'AND'(교집합) 조건으로 호출</span></div></h2><div id="r_fab80dcca237a05a" class="element step1" data-element-id="fab80dcca237a05a"><p class="step1_n">1</p><p>STEP 1: 초기 상태 확인하기</p></div><pre id="r_9b7ddfcfcfc38d5e" class="element pre step1_indent" data-element-id="9b7ddfcfcfc38d5e">필터를 적용할 DataList와 GridView와 연결되어 있습니다.
+GridView를 통해 필터가 적용된 데이터를 확인할 수 있습니다.
+초기 상태는 필터가 적용되지 않은 상태입니다.
+GridView는 예제 영역 '<span class="r_blue001_span">결과 확인용 GridView</span>' 아래에 구성되어 있습니다.</pre><div id="r_9ad09c3a510ffb94" class="element image step1_indent" data-element-id="9ad09c3a510ffb94"><p class="caption"><span class="image_caption_n">Image 1.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image069.png" width="316" height="195" /></p></div><div id="r_e199df8d7bd4f56a" class="element step1" data-element-id="e199df8d7bd4f56a"><p class="step1_n">2</p><p>STEP 2: 'Product' 컬럼에 첫 번째 필터를 적용합니다.</p></div><pre id="r_915037f17c4ce3e6" class="element pre step1_indent" data-element-id="915037f17c4ce3e6">"<span class="r_exec_btn_style_span">1.1 AND 조건 - 'Product' 컬럼의 값에 'Tech'이 포함된 경우</span>" 버튼을 클릭합니다.</pre><div id="r_50d31cc88822c746" class="element step1" data-element-id="50d31cc88822c746"><p class="step1_n">3</p><p>STEP 3: 실행된 결과를 확인합니다.</p></div><pre id="r_bd4b7d174fd84911" class="element pre step1_indent" data-element-id="bd4b7d174fd84911">'Product' 컬럼의 데이터에 'Tech'이 포함된 데이터가 출력됩니다.</pre><div id="r_18eb6602f2841340" class="element image step1_indent" data-element-id="18eb6602f2841340"><p class="caption"><span class="image_caption_n">Image 2.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image070.png" width="317" height="159" /></p></div><pre id="r_285fc5787837cf63" class="element pre step1_indent" data-element-id="285fc5787837cf63">영역 '로그 확인'에 출력된 로그를 확인합니다.
+(브라우저의 개발자 도구 콘솔에도 로그가 출력되며, 객체 형식으로 확인할 수 있습니다.)
+필터 조건이 담긴 JSON을 확인할 수 있습니다.</pre><div id="r_83d07fac4d6aff76" class="element code support_code_numbering step1_indent" data-element-id="83d07fac4d6aff76"><p class="caption"><span class="code_caption_n">Example 1.</span>Log</p><pre><span class="digits_1 code_line"></span>[10:26:31] # 1.1 AND 조건 - 'Product' 컬럼의 값에 'Tech'이 포함된 경우 | 필터 조건 
+<span class="digits_1 code_line"></span>[10:26:31] {
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"type": "row",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"colIndex": "product",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"key": "Tech",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"exactMatch": false,
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"condition": "and"
+<span class="digits_1 code_line"></span>}</pre></div><div id="r_5fd7b5b93b93f460" class="element step1" data-element-id="5fd7b5b93b93f460"><p class="step1_n">4</p><p>STEP 3: 'Category' 컬럼에 두 번째 필터를 "AND" 조건으로 적용합니다.</p></div><pre id="r_58f508def816ae2e" class="element pre step1_indent" data-element-id="58f508def816ae2e">"<span class="r_exec_btn_style_span">1.2 AND 조건 - 'Category' 컬럼의 값에 'Servers'와 일치하는 경우</span>" 버튼을 클릭합니다.</pre><div id="r_db9e217ec2c46ab6" class="element step1" data-element-id="db9e217ec2c46ab6"><p class="step1_n">5</p><p>STEP 4: 실행된 결과를 확인합니다.</p></div><pre id="r_36b1a44092eff217" class="element pre step1_indent" data-element-id="36b1a44092eff217">이미 적용된 필터 데이터에서 'Category' 컬럼의 데이터가 'Servers'와 일치하는 데이터가 출력됩니다.</pre><div id="r_d772de0e46c07a7a" class="element image step1_indent" data-element-id="d772de0e46c07a7a"><p class="caption"><span class="image_caption_n">Image 3.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image071.png" width="316" height="83" /></p></div><pre id="r_14432c9402992ff7" class="element pre step1_indent" data-element-id="14432c9402992ff7">영역 '로그 확인'에 출력된 로그를 확인합니다.
+(브라우저의 개발자 도구 콘솔에도 로그가 출력되며, 객체 형식으로 확인할 수 있습니다.)
+필터 조건이 담긴 JSON을 확인할 수 있습니다.</pre><div id="r_3dfdb28794251a6f" class="element code support_code_numbering step1_indent" data-element-id="3dfdb28794251a6f"><p class="caption"><span class="code_caption_n">Example 2.</span>Log</p><pre><span class="digits_1 code_line"></span>[10:27:26] # 1.2 AND 조건 - 'Category' 컬럼의 값에 'Servers'와 일치하는 경우 | 필터 조건 
+<span class="digits_1 code_line"></span>[10:27:26] {
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"type": "row",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"colIndex": "category",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"key": "Servers",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"exactMatch": true,
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"condition": "and"
+<span class="digits_1 code_line"></span>}</pre></div><h2 id="r_6b81ae59a0b0ef17" class="element heading2" data-element-id="6b81ae59a0b0ef17"><div class="r_heading_inner"><span class="heading2_n">3.3</span><span>두 번째 필터 적용 시 'OR'(합집합) 조건으로 호출</span></div></h2><div id="r_1f307515364d1f56" class="element step1" data-element-id="1f307515364d1f56"><p class="step1_n">1</p><p>STEP 1: 초기 상태 확인하기</p></div><pre id="r_99f6762a760d434a" class="element pre step1_indent" data-element-id="99f6762a760d434a">필터를 적용할 DataList와 GridView와 연결되어 있습니다.
+GridView를 통해 필터가 적용된 데이터를 확인할 수 있습니다.
+초기 상태는 필터가 적용되지 않은 상태입니다.
+GridView는 예제 영역 '<span class="r_blue001_span">결과 확인용 GridView</span>' 아래에 구성되어 있습니다.</pre><div id="r_f10a430cfdaac1c5" class="element image step1_indent" data-element-id="f10a430cfdaac1c5"><p class="caption"><span class="image_caption_n">Image 4.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image069.png" width="316" height="195" /></p></div><div id="r_d8ab04bfb1d05a05" class="element step1" data-element-id="d8ab04bfb1d05a05"><p class="step1_n">2</p><p>STEP 2: 'Product' 컬럼에 첫 번째 필터를 적용합니다.</p></div><pre id="r_43f5e619c4cec16a" class="element pre step1_indent" data-element-id="43f5e619c4cec16a">"<span class="r_exec_btn_style_span">2.1 AND 조건 - 'Product' 컬럼의 값에 'Tech'이 포함된 경우</span>" 버튼을 클릭합니다.</pre><div id="r_382204336ef91897" class="element step1" data-element-id="382204336ef91897"><p class="step1_n">3</p><p>STEP 3: 실행된 결과를 확인합니다.</p></div><pre id="r_efc4454a6bac109e" class="element pre step1_indent" data-element-id="efc4454a6bac109e">'Product' 컬럼의 데이터에 'Tech'이 포함된 데이터가 출력됩니다.</pre><div id="r_7bba69ea4f9939ef" class="element image step1_indent" data-element-id="7bba69ea4f9939ef"><p class="caption"><span class="image_caption_n">Image 5.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image070.png" width="317" height="159" /></p></div><pre id="r_a1466c1eb789f585" class="element pre step1_indent" data-element-id="a1466c1eb789f585">영역 '로그 확인'에 출력된 로그를 확인합니다.
+(브라우저의 개발자 도구 콘솔에도 로그가 출력되며, 객체 형식으로 확인할 수 있습니다.)
+필터 조건이 담긴 JSON을 확인할 수 있습니다.</pre><div id="r_e424fabd89d0bb88" class="element code support_code_numbering step1_indent" data-element-id="e424fabd89d0bb88"><p class="caption"><span class="code_caption_n">Example 3.</span>Log</p><pre><span class="digits_1 code_line"></span>[10:28:13] # 2.1 AND 조건 - 'Product' 컬럼의 값에 'Tech'이 포함된 경우 | 필터 조건 
+<span class="digits_1 code_line"></span>[10:28:13] {
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"type": "row",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"colIndex": "product",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"key": "Tech",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"exactMatch": false,
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"condition": "and"
+<span class="digits_1 code_line"></span>}</pre></div><div id="r_94c96557114a9a96" class="element step1" data-element-id="94c96557114a9a96"><p class="step1_n">4</p><p>STEP 3: 'Category' 컬럼에 두 번째 필터를 "OR" 조건으로 적용합니다.</p></div><pre id="r_c755ba4ef54f0274" class="element pre step1_indent" data-element-id="c755ba4ef54f0274">"<span class="r_exec_btn_style_span">2.2 OR 조건 - 'Category' 컬럼의 값에 'Servers'와 일치하는 경우</span>" 버튼을 클릭합니다.</pre><div id="r_5439386436686212" class="element step1" data-element-id="5439386436686212"><p class="step1_n">5</p><p>STEP 4: 실행된 결과를 확인합니다.</p></div><pre id="r_a4a0180007f2a88a" class="element pre step1_indent" data-element-id="a4a0180007f2a88a">이미 적용된 필터 데이터와 원본 데이터를 대상으로 'Category' 컬럼의 데이터가 'Servers'와 일치하는 데이터가 출력됩니다.</pre><div id="r_fa704b91e271f038" class="element image step1_indent" data-element-id="fa704b91e271f038"><p class="caption"><span class="image_caption_n">Image 6.</span>브라우저(Chrome) 실행 예시</p><p class="content"><img alt="" src="images/image072.png" width="317" height="196" /></p></div><pre id="r_4b4cd16d33825dc6" class="element pre step1_indent" data-element-id="4b4cd16d33825dc6">영역 '로그 확인'에 출력된 로그를 확인합니다.
+(브라우저의 개발자 도구 콘솔에도 로그가 출력되며, 객체 형식으로 확인할 수 있습니다.)
+필터 조건이 담긴 JSON을 확인할 수 있습니다.</pre><div id="r_825ab6a818d2a0d8" class="element code support_code_numbering step1_indent" data-element-id="825ab6a818d2a0d8"><p class="caption"><span class="code_caption_n">Example 4.</span>Log</p><pre><span class="digits_1 code_line"></span>[10:28:36] # 2.2 OR 조건 - 'Category' 컬럼의 값에 'Servers'와 일치하는 경우 | 필터 조건 
+<span class="digits_1 code_line"></span>[10:28:36] {
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"type": "row",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"colIndex": "category",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"key": "Servers",
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"exactMatch": true,
+<span class="digits_1 code_line"></span>&nbsp;&nbsp;&nbsp;&nbsp;"condition": "or"
+<span class="digits_1 code_line"></span>}</pre></div><h1 id="r_9d3ad8982a184812" class="element heading1" data-element-id="9d3ad8982a184812"><div class="r_heading_inner"><span class="heading1_n">4</span><span>구현 예시</span></div></h1><h2 id="r_e5e39e51394110ba" class="element heading2" data-element-id="e5e39e51394110ba"><div class="r_heading_inner"><span class="heading2_n">4.1</span><span>두 번째 필터 적용 시 'AND'(교집합) 조건으로 호출</span></div></h2><pre id="r_055c735cc3f5ad5f" class="element pre" data-element-id="055c735cc3f5ad5f">DataList의 'setColumnFilter' 메소드를 사용하여 스크립트를 작성합니다.
+'setColumnFilter' 메소드의 첫 번째 인자의 'condition' 속성의 설정 값을 'and'로 지정합니다.
+세부 설정은 아래의 스크립트 예시에 작성되어 있습니다.</pre><div id="r_abbe02bcf42be59a" class="element code support_code_numbering" data-element-id="abbe02bcf42be59a"><p class="caption"><span class="code_caption_n">Example 5.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">//예제 파일에서는 스크립트 scwin.btn_exam1_2_onclick에 작성되어 있습니다.</span>
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 필터 조건이 담긴 JSON</span>
+<span class="digits_10 code_line"></span><span class="r_h_keyword_span">var</span> jsnFilterOptions = {};
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 기 적용된 필터 데이터와의 병합 조건. 적용된 필터 데이터를 대상으로 검색합니다.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.condition = <span class="r_h_string_span">"and"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 검색 방식. 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "===" 또는 메소드 "indexOf"로 검색.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.type = <span class="r_h_string_span">"row"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.colIndex = <span class="r_h_string_span">"category"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 검색 문자열.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.key = <span class="r_h_string_span">"Servers"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 검색 대상 데이터와 검색 문자열과의 완전 일치 여부. 비교 연산 "==="로 검색.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.exactMatch = <span class="r_h_keyword_span">true</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// DataList 'dlt_exam'에 필터를 적용합니다.</span>
+<span class="digits_10 code_line"></span>dlt_exam.setColumnFilter(jsnFilterOptions);</pre></div><h2 id="r_aaf6174c0848dfca" class="element heading2" data-element-id="aaf6174c0848dfca"><div class="r_heading_inner"><span class="heading2_n">4.2</span><span>두 번째 필터 적용 시 'OR'(합집합) 조건으로 호출</span></div></h2><pre id="r_84a17362a4464591" class="element pre" data-element-id="84a17362a4464591">DataList의 'setColumnFilter' 메소드를 사용하여 스크립트를 작성합니다.
+'setColumnFilter' 메소드의 첫 번째 인자의 'condition' 속성의 설정 값을 'or'로 지정합니다.
+세부 설정은 아래의 스크립트 예시에 작성되어 있습니다.</pre><div id="r_8eb88a622e81b278" class="element code support_code_numbering" data-element-id="8eb88a622e81b278"><p class="caption"><span class="code_caption_n">Example 6.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">//예제 파일에서는 스크립트 scwin.btn_exam2_2_onclick에 작성되어 있습니다.</span>
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 필터 조건이 담긴 JSON</span>
+<span class="digits_10 code_line"></span><span class="r_h_keyword_span">var</span> jsnFilterOptions = {};
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 기 적용된 필터 데이터와의 병합 조건으로 합집합 적용. 이미 적용된 필터 데이터와 원본 데이터를 대상으로 검색한 데이터가 포함됩니다.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.condition = <span class="r_h_string_span">"or"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 검색 방식. 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "===" 또는 메소드 "indexOf"로 검색.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.type = <span class="r_h_string_span">"row"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.colIndex = <span class="r_h_string_span">"category"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 검색 문자열.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.key = <span class="r_h_string_span">"Servers"</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 검색 대상 데이터와 검색 문자열과의 완전 일치 여부. 비교 연산 "==="로 검색.</span>
+<span class="digits_10 code_line"></span>jsnFilterOptions.exactMatch = <span class="r_h_keyword_span">true</span>;
+<span class="digits_10 code_line"></span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// DataList 'dlt_exam'에 필터를 적용합니다.</span>
+<span class="digits_10 code_line"></span>dlt_exam.setColumnFilter(jsnFilterOptions);</pre></div><h1 id="r_0742606c216f9dc6" class="element heading1" data-element-id="0742606c216f9dc6"><div class="r_heading_inner"><span class="heading1_n">5</span><span>주요 API</span></div></h1><ul id="r_3a9518b517142086" class="element unordered_list" data-element-id="3a9518b517142086"><li><p><span class="r_ex_api_method_span">setColumnFilter( filterOptions )</span></p><p>filterOptions.condition</p><p>filterOptions.colIndex</p><p>filterOptions.type</p><p>filterOptions.key</p><p>filterOptions.exactMatch</p><p>filterOptions.param</p></li><li><p><span class="r_ex_api_method_span">clearFilter( )</span></p></li></ul></div></body></html>

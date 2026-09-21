@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] Event - oncelldblclick (셀을 더블 클릭할 때 발생)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230224" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+						<w2:column dataType="text" name="C" id="col_c"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    
+};
+
+/**
+ * GridView grd_exam1의 oncelldblclick 이벤트 핸들러
+ */
+scwin.grd_exam1_oncelldblclick = function (row, col, colId) {
+    let strLog = "";
+
+    strLog += "** scwin.grd_exam1_oncelldblclick ** \n";
+    strLog += "row index : " + row + "\n";
+    strLog += "column index : " + col + "\n";
+    strLog += "column id : " + colId;
+
+    //textarea에 log 출력
+    $c.frame.printExampleLog(strLog, txa_log, false);
+
+    //console에 log 출력
+    console.log(strLog);
+
+    //컬럼별 로직 구현 예시 - 'A' 컬럼을 더블 클릭한 경우 현재 행의 데이터를 JSON으로 출력
+    switch (colId) {
+        case "col_a":
+            //연결된 DataList를 모르는 경우
+            //let jsnRowData = $p.getComponentById(this.getDataList()).getRowJSON(row);
+
+            //연결된 DataList를 아는 경우
+            let jsnRowData = dlt_exam.getRowJSON(row);
+
+            //textarea에 log 출력
+            $c.frame.printExampleLog("JSON Data : " + JSON.stringify(jsnRowData), txa_log, false);
+
+            //console에 log 출력
+            console.log(jsnRowData);
+            break;
+        case "col_b":
+            break;
+        case "col_c":
+            break;
+        default:
+            break;
+    }
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView의 'oncelldblclick' 이벤트를 설정한 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="exam_txt caution" id="" label="컴포넌트의 이벤트 발생 시 영역 [로그 확인]의 textarea 또는 브라우저 개발자도구 콘솔에 로그가 출력됩니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="'A' 컬럼의 셀을 더블 클릭하면 행의 JSON 데이터가 출력됩니다." style="">
+						</w2:textbox>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView ev:oncelldblclick="scwin.grd_exam1_oncelldblclick" rowNumVisible="true" rowNumWidth="40"
+								keepDefaultColumnWidth="true" visibleRowNumFix="true" dataList="data:dlt_exam" style="height:100px;" id="grd_exam1"
+								visibleRowNum="3" autoFit="allColumn" class="gvw" defaultCellHeight="37" autoFitMinWidth="272" readOnly="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column3" value="A" displayMode="label" class="wre_txt_blue"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column2" value="B" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="C" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

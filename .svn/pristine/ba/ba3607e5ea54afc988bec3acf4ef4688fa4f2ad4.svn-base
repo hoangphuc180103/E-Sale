@@ -1,0 +1,43 @@
+/*amd /guide_jpn/GridView/Excel/advancedExcelUpload_trim_GridView/advancedExcelUpload_trim_GridView.xml 6415 45ed5176a6b43a21ece4b212966eaf5bc8e19b3e4ca3b9ceb9380d4baa8ea7d7 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var options = {
+    headerExist: 1,
+    trim: 1
+  };
+  gridView1.advancedExcelUpload(options);
+};
+scwin.trigger2_onclick = function (e) {
+  var options = {
+    headerExist: 1,
+    trim: 0
+  };
+  gridView1.advancedExcelUpload(options);
+};
+scwin.trigger3_onclick = function (e) {
+  var tmpSrc = scwin.getfolderPath() + "/advancedExcelUpload_trim_GridView.xls";
+  var name = "advancedExcelUpload_trim_GridView.xls";
+  scwin.downloadFile(tmpSrc, name);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+scwin.downloadFile = function (tmpSrc, name) {
+  const link = document.createElement('a');
+  link.href = tmpSrc;
+  link.download = name;
+  link.click();
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox5',label:'左右のスペースを削除した後にGridViewにアップロード',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox6',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox7',label:'1.セルデータの前後にスペースを含むExcelファイルを準備します。 （下のリンクを介してダウンロード）<br/><br/>(options.trim="1")<br/>2-1.最初のボタンをクリックし、上記のExcelファイルをGridViewにアップロードします。 <br/>2-2.最初の行の各セルをダブルクリックします。 <br/>2-3.セルデータの前後空白が削除された後にGridViewにアップロードされたことを確認してください。 <br/><br/>(options.trim="0")<br/>3-1. 2番目のボタンをクリックし、上記のExcelファイルをGridViewにアップロードします。 <br/>3-2.最初の行の各セルをダブルクリックします。 <br/>3-3.セルデータの前後空白が保持されたままGridViewにアップロードされたことを確認します。',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'advancedExcelUpload(options) - options.trim="1"'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger2',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'advancedExcelUpload(options) - options.trim="0"'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger3',style:'height:42px;line-height:32px;padding:5px;background-color:lightpink;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;display: block','ev:onclick':'scwin.trigger3_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'アップロード用のサンプルExcelファイルをダウンロード'}]}]},{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',dataList:'data:dataList1',style:'border: solid gray 1px;margin-bottom: 10px;',scrollByColumn:'false',id:'gridView1',defaultCellHeight:'20',autoFit:'allColumn',visibleRowNum:'5',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption2',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column9',value:'name1',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column8',value:'name2',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column7',value:'name3',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row4'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col3',value:'',displayMode:'label'}}]}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox8',label:'/// サンプルコード (1)<br/><br/>var options = {<br/> &nbsp; &nbsp;headerExist: 1,<br/> &nbsp; &nbsp;trim: 1<br/>};<br/>gridView1.advancedExcelUpload(options);<br/><br/>/// サンプルコード (2)<br/><br/>var options = {<br/> &nbsp; &nbsp;headerExist: 1,<br/> &nbsp; &nbsp;trim: 0<br/>};<br/>gridView1.advancedExcelUpload(options);',style:'padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;',tagname:''}}]}]}]}]})

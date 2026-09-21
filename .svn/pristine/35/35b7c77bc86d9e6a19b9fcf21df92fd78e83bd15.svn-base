@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	scwin.fn_msg = function(){ 
+    var invalidType = this.getType();  // invalid type
+    switch (invalidType) {
+			case "mandatory" :
+				msg = "Select your favorit city.";
+				break;
+			default :
+				msg = "Enter again.";
+				break;
+		}
+        return msg;
+    }
+	
+
+	
+	scwin.trigger1_onclick = function(e) {
+		select1.validate();
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="입력 검증 및 오류 메시지 표시"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 아무것도 입력하지 않고 validate() 버튼을 클릭. &lt;br/&gt;2. invalidMessageFunc 속성 값으로 지정한 함수가 반환한 오류 메시지가 표시되는 것을 확인.' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;mandatory="true" &lt;br/&gt;displaymessage="true" &lt;br/&gt;invalidMessageFunc="scwin.fn_msg"'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox5" label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.fn_msg = function () {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var invalidType = this.getType(); &amp;nbsp;// invalid type&lt;br/&gt; &amp;nbsp; &amp;nbsp;switch (invalidType) {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;case "mandatory":&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;msg = "Select your favorit city.";&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;break;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;default:&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;msg = "Enter again.";&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;break;&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;return msg;&lt;br/&gt;}' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[select1.validate();]]></xf:label>
+    	</xf:trigger>
+    	<xf:select1 submenuSize="auto" chooseOptionLabel="Select a city." invalidMessage="" chooseOption="true"
+    		invalidMessageFunc="scwin.fn_msg" allOption="" mandatory="true" ref="" appearance="minimal" disabledClass="w2selectbox_disabled"
+    		style="width: 50%;" disabled="false" id="select1" displaymessage="true" direction="auto">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[Seoul]]></xf:label>
+    				<xf:value><![CDATA[1]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[New York]]></xf:label>
+    				<xf:value><![CDATA[2]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Paris]]></xf:label>
+    				<xf:value><![CDATA[3]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[London]]></xf:label>
+    				<xf:value><![CDATA[4]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:select1>
+    </xf:group></body>
+</html>

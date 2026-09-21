@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]checkComboBox">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dc_list" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="type" name="구분"></w2:column>
+            			<w2:column dataType="text" id="code" name="코드"></w2:column>
+            			<w2:column dataType="text" id="name" name="코드명 "></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<code><![CDATA[A01]]></code>
+            				<name><![CDATA[한국_수박]]></name>
+            				<type><![CDATA[A]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[A02]]></code>
+            				<name><![CDATA[한국_포도]]></name>
+            				<type><![CDATA[A]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B01]]></code>
+            				<name><![CDATA[일본_사과]]></name>
+            				<type><![CDATA[B]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B02]]></code>
+            				<name><![CDATA[일본_참외]]></name>
+            				<type><![CDATA[B]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B03]]></code>
+            				<name><![CDATA[일본_배]]></name>
+            				<type><![CDATA[B]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C01]]></code>
+            				<name><![CDATA[미국_멜론]]></name>
+            				<type><![CDATA[C]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C02]]></code>
+            				<name><![CDATA[미국_파인애플]]></name>
+            				<type><![CDATA[C]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[D01]]></code>
+            				<name><![CDATA[태국_망고]]></name>
+            				<type><![CDATA[D]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[D02]]></code>
+            				<name><![CDATA[태국_두리안]]></name>
+            				<type><![CDATA[D]]></type>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dc_list_depth" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column id="depth" name="계층" dataType="text"></w2:column>
+            			<w2:column dataType="text" id="type" name="구분"></w2:column>
+            			<w2:column dataType="text" id="code" name="코드"></w2:column>
+            			<w2:column dataType="text" id="name" name="코드명 "></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<depth><![CDATA[1]]></depth>
+            				<type><![CDATA[A]]></type>
+            				<code><![CDATA[A01]]></code>
+            				<name><![CDATA[한국]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[A0101]]></code>
+            				<name><![CDATA[한국_수박]]></name>
+            				<type><![CDATA[A]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[A0102]]></code>
+            				<name><![CDATA[한국_포도]]></name>
+            				<type><![CDATA[A]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<depth><![CDATA[1]]></depth>
+            				<type><![CDATA[B]]></type>
+            				<code><![CDATA[B01]]></code>
+            				<name><![CDATA[일본]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B01]]></code>
+            				<name><![CDATA[일본_사과]]></name>
+            				<type><![CDATA[B]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B02]]></code>
+            				<name><![CDATA[일본_참외]]></name>
+            				<type><![CDATA[B]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B03]]></code>
+            				<name><![CDATA[일본_배]]></name>
+            				<type><![CDATA[B]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<depth><![CDATA[1]]></depth>
+            				<type><![CDATA[C]]></type>
+            				<code><![CDATA[C01]]></code>
+            				<name><![CDATA[미국]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C01]]></code>
+            				<name><![CDATA[미국_멜론]]></name>
+            				<type><![CDATA[C]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C02]]></code>
+            				<name><![CDATA[미국_파인애플]]></name>
+            				<type><![CDATA[C]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<depth><![CDATA[1]]></depth>
+            				<type><![CDATA[D]]></type>
+            				<code><![CDATA[D01]]></code>
+            				<name><![CDATA[태국]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[D01]]></code>
+            				<name><![CDATA[태국_망고]]></name>
+            				<type><![CDATA[D]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[D02]]></code>
+            				<name><![CDATA[태국_두리안]]></name>
+            				<type><![CDATA[D]]></type>
+            				<depth><![CDATA[2]]></depth>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+};
+ 
+scwin.ui_textbox1_onclick = function (e) {
+
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+
+scwin.btn_setData_onclick = function (e) {
+
+    // "Type" 컬럼의 값이 "B"인 항목을 선택 항목 목록에서 비활성화
+	ui_checkCombo3.setEnableColumn("type", "B");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] CheckComboBox 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style="cursor: pointer;" tagname="h3"
+    					userData1="/edu/adv/checkCombobox_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 개요&lt;br/&gt;본 화면은 CheckComboBox 컴포넌트를 활용하는 실습 화면입니다 &lt;br/&gt;CheckComboBox 컴포넌트 : checkcombobox 컴포넌트는 사용자가 여러 개의 옵션 중에서 하나 이상을 선택할 수 있는 드롭다운 목록을 제공하는 UI 컴포넌트입니다. &amp;nbsp;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 사용자는 checkcombobox를 클릭하면 드롭다운 목록이 펼쳐지고, 여러 개의 옵션 중에서 원하는 옵션을 선택할 수 있습니다.&lt;br/&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label='1. Design Kit 를 활용하여 CheckComboBox를 추가합니다.&lt;br/&gt;2. &lt;b&gt;[속성 활용]&lt;/b&gt;Component View 에서 속성 Tab 에 아래와 같은 속성을 넣습니다.&lt;br/&gt; &amp;nbsp; 1) &lt;b&gt;visibleColNum&lt;/b&gt; : 선택 항목을 표시할 열의 개수를 지정합니다. ex) visibleColNum="5"&lt;br/&gt; &amp;nbsp; 2) &lt;b&gt;useDrag&lt;/b&gt; : 마우스 드래깅을 통해 여러 항목을 한꺼번에 선택합니다. ex) useDrag="true"&lt;br/&gt;3. &lt;b&gt;[API 활용]&lt;/b&gt;스크립트 작성 부분에 아래 API를 활용할 수 있습니다. &lt;br/&gt; &amp;nbsp; 1) 특정항목을 동적으로 비활성화 하려면 &lt;b&gt;[setEnableColumn]&lt;/b&gt; API를 이용합니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp;ex) &lt;b&gt;[checkComboBoxID].setEnableColumn("컬럼명", "항목값");&lt;/b&gt;'
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="속성 [visibleColNum] 선택 항목을 표시할 열의 개수를 지정" style="" tagname="h4" escape="false"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:200px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="열의 개수를 지정" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<xf:checkcombobox id="" chooseOption="" displayMode="label" style="width: 148px;height: 21px;"
+    							submenuSize="auto" allOption="true" disabled="false" direction="auto" ref="" visibleColNum="5">
+    							<xf:choices>
+    								<xf:itemset nodeset="data:dc_list">
+    									<xf:label ref="name"></xf:label>
+    									<xf:value ref="name"></xf:value>
+    								</xf:itemset>
+    							</xf:choices>
+    						</xf:checkcombobox>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap" id="">
+    			<xf:group class="example_div_tr_style" id="" style=""></xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="속성 [useDrag] 마우스 드래깅을 통해 여러 항목을 한꺼번에 선택" style="" tagname="h4" escape="false"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:200px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="마우스 드래깅" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<xf:checkcombobox allOption="" chooseOption="" direction="auto" disabled="false" displayMode="label" id=""
+    							ref="" style="width: 148px;height: 21px;" submenuSize="auto" visibleColNum="5" useDrag="true">
+    							<xf:choices>
+    								<xf:itemset nodeset="data:dc_list">
+    									<xf:label ref="name"></xf:label>
+    									<xf:value ref="name"></xf:value>
+    								</xf:itemset>
+    							</xf:choices>
+    						</xf:checkcombobox>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="API [setEnableColumn] 선택 목록의 특정 항목을 비활성화" style="" tagname="h4" escape="false"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:150px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="type : B 비활성화" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<xf:checkcombobox allOption="" chooseOption="" direction="auto" disabled="false" displayMode="label"
+    							id="ui_checkCombo3" ref="" style="width: 148px;height: 21px;" submenuSize="auto">
+    							<xf:choices>
+    								<xf:itemset nodeset="data:dc_list">
+    									<xf:label ref="name"></xf:label>
+    									<xf:value ref="name"></xf:value>
+    								</xf:itemset>
+    							</xf:choices>
+    						</xf:checkcombobox>
+    						<xf:trigger ev:onclick="scwin.btn_setData_onclick" id="btn_setData" style="width: 80px;height: 23px;"
+    							type="button">
+    							<xf:label><![CDATA[API 적용]]></xf:label>
+    						</xf:trigger>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="selectbox" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<xf:select1 id="" chooseOption="" style="width:148px;height:21px;" submenuSize="auto" allOption=""
+    							disabled="false" direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" depthColumn="depth">
+    							<xf:choices>
+    								<xf:itemset nodeset="data:dc_list_depth">
+    									<xf:label ref="name"></xf:label>
+    									<xf:value ref="name"></xf:value>
+    								</xf:itemset>
+    							</xf:choices>
+    						</xf:select1>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

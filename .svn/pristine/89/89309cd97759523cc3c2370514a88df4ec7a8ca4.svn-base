@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[AutoComplete] 입력창에서 키를 눌렀다 떼었을 때(Key Up)의 이벤트 핸들러 등록하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220803" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * acb_exam 컴포넌트의 oneditkeyup 이벤트 핸들러
+ */
+scwin.acb_exam_oneditkeyup = function (info, e) {
+    var strLog;
+
+    //웹스퀘어 엔진에서 할당한 값
+    var _keyCode = info.keyCode;    //입력된 키의 코드값
+    var _newValue = info.newValue;  //키가 입력된 후의 값
+    var _oldValue = info.oldValue;  //키가 입력되기 이전의 값
+
+    //Key Event 객체
+    var tmpKeyCode = e.keyCode;
+    var tmpWhich = e.which;
+    var tmpCode = e.code;
+    var tmpKey = e.key;
+
+    //이벤트 확인용 로그 출력
+    console.log("scwin.acb_exam_oneditkeyup >>>>>>>> ", info, e);
+
+    $c.frame.printExampleLog("scwin.acb_exam_oneditkeyup", txa_log);
+    $c.frame.printExampleLog("info : \n" + JSON.stringify(info, null, "\t"), txa_log);
+    strLog = "info.keyCode : " + _keyCode + "\n";
+    strLog += "info.newValue : " + _newValue + "\n";
+    strLog += "info.oldValue : " + _oldValue;
+    $c.frame.printExampleLog(strLog, txa_log, false);
+};
+
+/**
+ * 로그 출력용 메소드
+ */
+scwin.printLog = function (argStr) {
+    var strLog;
+    strLog = txa_log.getValue();
+    txa_log.setValue(strLog + "\n" + argStr);
+
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    //textarea value를 빈문자열로 할당.
+    txa_log.setValue("");
+};
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="AutoComplete의 'oneditkeyup' 이벤트의 설정 예제입니다." style=""></w2:textbox>
+				<w2:textbox escape="false" id="" label='검색어 입력 필드에서 키(KEY)를 입력하면 로그 확인 영역에 로그가 출력됩니다.' style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'oneditkeyup' 이벤트 설정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:autoComplete editType="select" style="width: 150px;min-height:24px;" submenuSize="auto" id="acb_exam"
+							nextTabByEnter="true" ev:oneditkeyup="scwin.acb_exam_oneditkeyup">
+							<w2:choices>
+								<w2:item>
+									<w2:label><![CDATA[]]>
+									</w2:label>
+									<w2:value><![CDATA[]]>
+									</w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[apple]]></w2:label>
+									<w2:value><![CDATA[01]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[grapes]]></w2:label>
+									<w2:value><![CDATA[02]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[strawberry]]></w2:label>
+									<w2:value><![CDATA[03]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[blueberry]]></w2:label>
+									<w2:value><![CDATA[04]]></w2:value>
+								</w2:item>
+							</w2:choices>
+						</w2:autoComplete>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group id="" class="example_div_th_style">
+						<w2:span label="로그 확인" style="" id="" class="mr_def txt_blue"></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1000]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[500]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1200]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col1><![CDATA[2000]]></col1>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[90000000000000000000]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[600]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[700]]></col4>
+            				<col1><![CDATA[1990]]></col1>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[200]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2000]]></col1>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2010]]></col1>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[400]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2000]]></col1>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1600]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[1200]]></col4>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[
+	scwin.trigger1_onclick = function(e) {
+		var options = {}; 		
+		options.type = "1";
+		options.fileName = "excelData_header.xls"; 
+		options.bodyFormat = "#,###,0#";
+		options.bodyTextAlign = "right";
+        options.autoSizeColumn = "header";
+        
+		pivot1.pivotExcelDownload(options);
+	};
+
+scwin.trigger2_onclick = function (e) {
+		var options = {}; 		
+		options.type = "1";
+		options.fileName = "excelData_body.xls"; 
+		options.bodyFormat = "#,###,0#";
+		options.bodyTextAlign = "right";
+        options.autoSizeColumn = "body";
+        
+		pivot1.pivotExcelDownload(options);
+
+};
+]]></script>
+    </head>
+    <body>
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="(컬럼 너비 자동 조절한 상태로) Pivot → Excel 다운로드" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 하단의 pivotExcelDownload() 버튼들을 클릭. &lt;br/&gt;2. 화면의 Pivot이 Excel 파일로 다운로드되는 것을 확인.&lt;br/&gt;3. 다운로드된 Excel 파일을 열고, 헤더 혹은 텍스트 길이에 따라 컬럼의 너비가 조절된 것을 확인. &lt;br/&gt;(options.autoSizeColumn="header" 옵션 설정을 적용할 경우, 헤더의 텍스트 길이에 따라 컬럼 너비가 조절됨.)&lt;br/&gt;(options.autoSizeColumn="body" 옵션 설정을 적용할 경우, 바디의 텍스트 길이에 따라 컬럼 너비가 조절됨.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[pivotExcelDownload(options) - options.autoSizeColumn = "header"]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger type="button" id="trigger2"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[pivotExcelDownload(options) - options.autoSizeColumn = "body"]]></xf:label>
+    	</xf:trigger>
+    	<w2:pivot vals="col4" dataList="dataList1" style="height: 400px;margin-bottom: 10px;" id="pivot1" rows="col2,col3" cols="col1" valuesAxis="column">
+    		<w2:fieldInfo>
+    			<w2:field name="Period" style="" id="col1"></w2:field>
+    			<w2:field name="City" style="" id="col2"></w2:field>
+    			<w2:field name="Grade" style="" id="col3"></w2:field>
+    			<w2:field name="Value" style="" id="col4"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='/// 샘플 코드 (1)&lt;br/&gt;&lt;br/&gt;var options = {};&lt;br/&gt;options.type = "1";&lt;br/&gt;options.fileName = "excelData_header.xls";&lt;br/&gt;options.bodyFormat = "#,###,0#";&lt;br/&gt;options.bodyTextAlign = "right";&lt;br/&gt;options.autoSizeColumn = "header";&lt;br/&gt;pivot1.pivotExcelDownload(options);&lt;br/&gt;&lt;br/&gt;/// 샘플 코드 (2)&lt;br/&gt;&lt;br/&gt;var options = {};&lt;br/&gt;options.type = "1";&lt;br/&gt;options.fileName = "excelData_body.xls";&lt;br/&gt;options.bodyFormat = "#,###,0#";&lt;br/&gt;options.bodyTextAlign = "right";&lt;br/&gt;options.autoSizeColumn = "body";&lt;br/&gt;pivot1.pivotExcelDownload(options);'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

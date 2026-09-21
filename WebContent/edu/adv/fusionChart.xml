@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]fusionChart 실습">
+        <w2:historyInfo>
+        	<w2:history meta_no="01" meta_desc="교육 예제 파일 template design으로 모두 변경, 일부 로직 누락된 건 수정 반영" meta_date="2023.12.05" meta_user="InswaveSystems"></w2:history>
+        </w2:historyInfo>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dc_code" repeatNode="map" saveRemovedData="true">
+        			<w2:columnInfo>
+        				<w2:column id="code_cd" name="코드값" dataType="text"></w2:column>
+        				<w2:column id="code_nm" name="코드명" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+        					<code_cd><![CDATA[01]]></code_cd>
+        					<code_nm><![CDATA[개발자]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[02]]></code_cd>
+        					<code_nm><![CDATA[설계자]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[03]]></code_cd>
+        					<code_nm><![CDATA[DBA]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[04]]></code_cd>
+        					<code_nm><![CDATA[PL]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[05]]></code_cd>
+        					<code_nm><![CDATA[PM]]></code_nm>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        		<w2:dataMap baseNode="map" id="dc_reqUserInfo">
+        			<w2:keyInfo>
+        				<w2:key id="EMP_CD" name="사용자 코드" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        		<w2:dataMap baseNode="map" id="bbbbb">
+        			<w2:keyInfo>
+        				<w2:key id="EMP_CD" name="사번" dataType="text"></w2:key>
+        				<w2:key id="EMP_NM" name="성명" dataType="text"></w2:key>
+        				<w2:key id="GENDER_CD" name="성별" dataType="text"></w2:key>
+        				<w2:key id="JOIN_DATE" name="입사일" dataType="text"></w2:key>
+        				<w2:key id="POSITION_CD" name="직급" dataType="text"></w2:key>
+        				<w2:key id="DUTY_CD" name="직책" dataType="text"></w2:key>
+        				<w2:key id="ROLE_CD" name="역할" dataType="text"></w2:key>
+        				<w2:key id="ASSIGNED_TASK" name="담당 업무" dataType="text"></w2:key>
+        				<w2:key id="EMAIL" name="이메일" dataType="text"></w2:key>
+        				<w2:key id="ZIP_CD" name="우편번호" dataType="text"></w2:key>
+        				<w2:key id="ADDRESS1" name="주소1" dataType="text"></w2:key>
+        				<w2:key id="ADDRESS2" name="주소2" dataType="text"></w2:key>
+        				<w2:key id="CREATED_DATE" name="입력일" dataType="text"></w2:key>
+        				<w2:key id="UPDATED_DATE" name="수정일" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        		<w2:dataList baseNode="list" id="dlt_chartData" repeatNode="data" style="" valueAttribute="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="Month" name="Month"></w2:column>
+        				<w2:column dataType="text" id="quarter1" name="quarter1"></w2:column>
+        				<w2:column dataType="text" id="quarter2" name="quarter2"></w2:column>
+        				<w2:column dataType="text" id="quarter3" name="quarter3"></w2:column>
+        				<w2:column dataType="text" id="quarter4" name="quarter4"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true" xmlns="">
+        				<w2:row>
+        					<Month><![CDATA[January]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[10000]]></quarter2>
+        					<quarter3><![CDATA[10800]]></quarter3>
+        					<quarter4><![CDATA[17000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[February]]></Month>
+        					<quarter1><![CDATA[11500]]></quarter1>
+        					<quarter2><![CDATA[28110]]></quarter2>
+        					<quarter3><![CDATA[23990]]></quarter3>
+        					<quarter4><![CDATA[15000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[March]]></Month>
+        					<quarter1><![CDATA[12500]]></quarter1>
+        					<quarter2><![CDATA[29800]]></quarter2>
+        					<quarter3><![CDATA[32700]]></quarter3>
+        					<quarter4><![CDATA[27000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[April]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[10000]]></quarter2>
+        					<quarter3><![CDATA[29000]]></quarter3>
+        					<quarter4><![CDATA[12000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[May]]></Month>
+        					<quarter1><![CDATA[1500]]></quarter1>
+        					<quarter2><![CDATA[10600]]></quarter2>
+        					<quarter3><![CDATA[10000]]></quarter3>
+        					<quarter4><![CDATA[8000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[June]]></Month>
+        					<quarter1><![CDATA[19700]]></quarter1>
+        					<quarter2><![CDATA[32600]]></quarter2>
+        					<quarter3><![CDATA[22600]]></quarter3>
+        					<quarter4><![CDATA[17000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[July]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[29700]]></quarter2>
+        					<quarter3><![CDATA[31900]]></quarter3>
+        					<quarter4><![CDATA[27000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[August]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[10000]]></quarter2>
+        					<quarter3><![CDATA[21800]]></quarter3>
+        					<quarter4><![CDATA[19000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[September]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[31800]]></quarter2>
+        					<quarter3><![CDATA[42800]]></quarter3>
+        					<quarter4><![CDATA[32000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[October]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[15000]]></quarter2>
+        					<quarter3><![CDATA[11000]]></quarter3>
+        					<quarter4><![CDATA[6000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[November]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[9800]]></quarter2>
+        					<quarter3><![CDATA[11800]]></quarter3>
+        					<quarter4><![CDATA[17000]]></quarter4>
+        				</w2:row>
+        				<w2:row>
+        					<Month><![CDATA[December]]></Month>
+        					<quarter1><![CDATA[27400]]></quarter1>
+        					<quarter2><![CDATA[22900]]></quarter2>
+        					<quarter3><![CDATA[20800]]></quarter3>
+        					<quarter4><![CDATA[11000]]></quarter4>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission id="sub_select" ref="data:json,dc_reqUserInfo" target='data:json,{"id":"bbbbb","key":"dc_userInfo"}' action="/edu/data/userInfo.json" method="post" mediatype="application/json" encoding="UTF-8"
+        		instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="조회중입니다... " ev:submit="scwin.sub_select_submit" ev:submitdone="scwin.sub_select_submitdone"
+        		ev:submiterror="scwin.sub_select_submiterror" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {     
+    
+};
+
+//ui_chart1.changeType(info.newValue ); 
+scwin.sbx_chartType1_onchange = function(info) {
+    
+};
+
+
+
+//차트 옵션 적용
+scwin.setChartOpt_line = function () {
+ 
+    // 트렌드라인 속성
+    let options = {};
+    options.startValue = 19000; // [필수] 시작 값.
+    options.displayValue = "19,000"; // 트렌드 라인에 좌측 또는 우측에 표시할 레이블.
+    options.color = "#DC143C"; // 색.
+    options.alpha = 60; // [0-100]투명도. 속성 'displayValue'도 함께 적용.
+    options.showOnTop = 1; // [default:0, 1] 데이터 플롯 위로 표시할 지의 여부.
+    options.thickness = 4; // 선 굵기로 px 단위로 적용. 속성 'isTrendZone'이 적용된 경우 무시.
+    options.toolText = "부가 정보를 표시합니다."; // 트렌드 라인의 툴팁.
+
+    // Fusionchart 'cht_exam1'의 트렌드라인을 추가합니다.
+    ui_chart1.addTrendLine(options);
+
+    // Fusionchart 'cht_exam1'를 브라우저에 그립니다.
+    ui_chart1.draw(); 
+};
+
+
+/**
+ * 버튼 [박스 형식 트렌드라인 추가하기] 클릭 시
+ */
+scwin.setChartOpt_box = function (e) { 
+
+    // 트렌드라인 속성
+    let options = {};
+    options.startValue = 20000; // [필수] 시작 값.
+    options.endValue = 25000; // 종료 값.
+    options.displayValue = "표준<br/>영역"; // 트렌드 라인에 좌측 또는 우측에 표시할 레이블.
+    options.color = "#FFD700"; // 색.
+    options.alpha = 40; // [0-100]투명도. 속성 'displayValue'도 함께 적용.
+    options.showOnTop = 1; // [default:0, 1] 데이터 플롯 위로 표시할 지의 여부.
+    options.valueOnRight = 1; // [default:0, 1] 속성 'displayValue'의 값을 우측에 표시할지의 여부.
+    options.isTrendZone = 1; // [default:0, 1] 속성 'endValue'가 지정된 경우 트렌드 라인을 박스형태로 표시할지의 여부.
+
+    // Fusionchart 'cht_exam2'의 트렌드라인을 추가합니다.
+    ui_chart1.addTrendLine(options);
+
+    // 속성 'displayValue'의 추가 속성
+    let attOptions = {};
+    attOptions.trendValueAlpha = 100; // [0-100] 속성 'displayValue'의 투명도.
+    attOptions.trendValueFontSize = 13; // 속성 'displayValue'의 글자 크기.
+    attOptions.trendValueFontBold = 1; // 속성 'displayValue'의 글자 굵게 적용 여부.
+  
+    // Fusionchart 'cht_exam2'의 속성을 설정합니다.
+    ui_chart1.setChartAttribute(attOptions);
+
+    // Fusionchart 'cht_exam2'를 브라우저에 그립니다.
+    ui_chart1.draw();
+};
+
+/**
+ * 버튼 [다중 트렌드라인 추가하기] 클릭 시
+ */ 
+scwin.setChartOpt_multi = function (e) { 
+    // 선 형식 트렌드라인 속성
+    let trnOptions1 = {};
+    trnOptions1.startValue = 25000; // [필수] 시작 값.
+    trnOptions1.displayValue = "목표"; // 트렌드 라인에 좌측 또는 우측에 표시할 레이블.
+    trnOptions1.color = "#DC143C"; // 색.
+    trnOptions1.alpha = 60; // [1-100]투명도. 속성 'displayValue'도 함께 적용.
+    trnOptions1.showOnTop = 0; // [default:0, 1] 데이터 플롯 위로 표시할 지의 여부.
+    trnOptions1.thickness = 2; // 선 굵기로 px 단위로 적용. 속성 'isTrendZone'이 적용된 경우 무시.
+    trnOptions1.valueOnRight = 1; // [default:0, 1] 속성 'displayValue'의 값을 우측에 표시할지의 여부.
+
+    // Fusionchart 'cht_exam3'의 트렌드라인을 추가합니다.
+    ui_chart1.addTrendLine(trnOptions1);
+
+    // 박스 형식 트렌드라인 속성
+    let trnOptions2 = {};
+    trnOptions2.startValue = 15000; // [필수] 시작 값.
+    trnOptions2.endValue = 20000; // 종료 값.
+    trnOptions2.displayValue = "전월<br/>최대<br/>최소"; // 트렌드 라인에 좌측 또는 우측에 표시할 레이블.
+    trnOptions2.color = "#1E90FF"; // 색.
+    trnOptions2.alpha = 40; // [1-100]투명도. 속성 'displayValue'도 함께 적용.
+    trnOptions2.showOnTop = 0; // [default:0, 1] 데이터 플롯 위로 표시할 지의 여부.
+    trnOptions2.valueOnRight = 1; // [default:0, 1] 속성 'displayValue'의 값을 우측에 표시할지의 여부.
+    trnOptions2.isTrendZone = 1; // [default:0, 1] 속성 'endValue'가 지정된 경우 트렌드 라인을 박스형태로 표시할지의 여부.
+
+    // Fusionchart 'cht_exam3'의 트렌드라인을 추가합니다.
+    ui_chart1.addTrendLine(trnOptions2);
+
+    // 속성 'displayValue'의 추가 속성
+    let attOptions = {};
+    attOptions.trendValueAlpha = 100; // [0-100] 속성 'displayValue'의 투명도.
+
+    // Fusionchart 'cht_exam3'의 속성을 설정합니다.
+    ui_chart1.setChartAttribute(attOptions);
+
+    // Fusionchart 'cht_exam3'를 브라우저에 그립니다.
+    ui_chart1.draw();
+};
+
+
+scwin.btn_chart_onclick = function(e) { 
+   // scwin.setChartOpt_multi(); 
+   //ui_chart1.setChartColumnRef('data:dlt_chartData','Month',"[['quarter4']]");          
+};
+
+
+scwin.setChartOpt_caption = function(e) { 
+    
+ var options = {  caption : "전세계 판매량 요약", 
+                                    subCaption : "2024년", 
+                                    yAxisName : " 금액 ",
+                                    xAxisName : " 월 ", 
+                                    numberPrefix:"$" };
+
+
+    ui_chart1.setChartAttribute(options);
+    
+       // 스타일옵션입니다.
+       var styleOptions = { color : "2a5900",
+                   size : "20", 
+                   bold : "1",
+                   underline : "1"};
+
+        ui_chart1.applyStyle("font", "captionFont", styleOptions, ["Caption"]);
+       
+       
+        ui_chart1.draw();
+};
+scwin.ui_tit_onclick = function(e) {
+    scwin.setChartOpt_caption();
+};
+
+scwin.sbx_chartType2_onchange = function(info) {
+     ui_chart2.changeType(info.newValue );
+};
+
+scwin.ui_textbox1_onclick = function (e) { 
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] FusionChart 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style=""
+    					tagname="strong" userData1="/edu/adv/fusionChart_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame style="" id="" src="/edu/adv/fusionChart_desc.xml"></w2:pageFrame>
+
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" escape="false" id="" label="Chart Data &amp;nbsp;" style="" tagname="h4"></w2:textbox>
+    		</xf:group>
+    		<w2:gridView checkAllType="false" defaultCellHeight="20" id="" style="height: 150px;" dataList="data:dlt_chartData"
+    			autoFit="allColumn" autoFitMinWidth="1000">
+    			<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header2">
+    				<w2:row style="" id="row3">
+    					<w2:column width="70" inputType="text" style="" id="column7" value="Month" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column6" value="quarter1" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column5" value="quarter2" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column4" value="quarter3" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column3" value="quarter4" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody2">
+    				<w2:row style="" id="row4">
+    					<w2:column width="70" inputType="text" style="" id="Month" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="quarter1" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="quarter2" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="quarter3" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="quarter4" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" escape="false" id="" label="Single Series :" style="" tagname="h4"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<xf:select1 id="sbx_chartType1" chooseOption="" style="width: 148px;height: 21px;" submenuSize="auto" allOption=""
+    				disabled="false" direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref=""
+    				ev:onchange="scwin.sbx_chartType1_onchange">
+    				<xf:choices>
+    					<xf:item>
+    						<xf:label><![CDATA[column2d]]></xf:label>
+    						<xf:value><![CDATA[column2d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[column3d]]></xf:label>
+    						<xf:value><![CDATA[column3d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[bar2d]]></xf:label>
+    						<xf:value><![CDATA[bar2d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[bar3d]]></xf:label>
+    						<xf:value><![CDATA[bar3d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[area2d]]></xf:label>
+    						<xf:value><![CDATA[area2d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[line]]></xf:label>
+    						<xf:value><![CDATA[line]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[pareto2d]]></xf:label>
+    						<xf:value><![CDATA[pareto2d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[pareto3d]]></xf:label>
+    						<xf:value><![CDATA[pareto3d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[pie2d]]></xf:label>
+    						<xf:value><![CDATA[pie2d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[pie3d]]></xf:label>
+    						<xf:value><![CDATA[pie3d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[doughnut2d]]></xf:label>
+    						<xf:value><![CDATA[doughnut2d]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[doughnut3d]]></xf:label>
+    						<xf:value><![CDATA[doughnut3d]]></xf:value>
+    					</xf:item>
+    				</xf:choices>
+    			</xf:select1>
+    			<xf:group class="rt" id="" style="">
+    				<xf:trigger class="btn_cm " id="btn_chart" style="" type="button" ev:onclick="scwin.btn_chart_onclick">
+    					<xf:label><![CDATA[API 적용]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm " id="ui_tit" style="" type="button" ev:onclick="scwin.ui_tit_onclick">
+    					<xf:label><![CDATA[제목 적용]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap" id="">
+    			<xf:group class="example_div_tr_style" id="" style=""></xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" escape="false" id="" label="Multi Series :" style="" tagname="h4"></w2:textbox>
+    			<xf:group class="titbox" id="" style="">
+    				<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+    					disabledClass="w2selectbox_disabled" id="sbx_chartType2" ref="" style="width: 148px;height: 21px;" submenuSize="auto"
+    					ev:onchange="scwin.sbx_chartType2_onchange">
+    					<xf:choices>
+    						<xf:item>
+    							<xf:label><![CDATA[MSColumn2D]]></xf:label>
+    							<xf:value><![CDATA[MSColumn2D]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[MSColumn3D]]></xf:label>
+    							<xf:value><![CDATA[MSColumn3D]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[MSLine]]></xf:label>
+    							<xf:value><![CDATA[MSLine]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[ZoomLine]]></xf:label>
+    							<xf:value><![CDATA[ZoomLine]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[MSArea]]></xf:label>
+    							<xf:value><![CDATA[MSArea]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[MSBar2D]]></xf:label>
+    							<xf:value><![CDATA[MSBar2D]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[MSBar3D]]></xf:label>
+    							<xf:value><![CDATA[MSBar3D]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[Marimekko]]></xf:label>
+    							<xf:value><![CDATA[Marimekko]]></xf:value>
+    						</xf:item>
+    					</xf:choices>
+    				</xf:select1>
+    				<xf:group class="rt" id="" style="">
+    					<xf:trigger class="btn_cm " ev:onclick="scwin.btn_chart_onclick" id="trigger1" style="" type="button">
+    						<xf:label><![CDATA[API 적용]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " ev:onclick="scwin.ui_tit_onclick" id="trigger2" style="" type="button">
+    						<xf:label><![CDATA[제목 적용]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+
+    </body>
+</html>

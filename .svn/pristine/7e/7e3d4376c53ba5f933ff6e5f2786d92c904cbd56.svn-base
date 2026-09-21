@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1" style="" ev:onkeyset="scwin.dataMap1_onkeyset">
+            		<w2:keyInfo>
+            			<w2:key dataType="text" id="key1" name="Continent"></w2:key>
+            			<w2:key dataType="text" id="key2" name="Country"></w2:key>
+            			<w2:key dataType="text" id="key3" name="City"></w2:key>
+            		</w2:keyInfo>
+            		<w2:data use="true">
+            			<Asa><![CDATA[ ]]></Asa>
+            			<Asia><![CDATA[ ]]></Asia>
+            			<Korea><![CDATA[ ]]></Korea>
+            			<Seoul><![CDATA[ ]]></Seoul>
+            			<key1><![CDATA[ ]]></key1>
+            			<key2><![CDATA[ ]]></key2>
+            			<key3><![CDATA[ ]]></key3>
+            		</w2:data>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    dataMap1.set("key3", "Busan");
+};
+
+scwin.dataMap1_onkeyset = function(info) {
+    var info = JSON.stringify(info);
+    alert("onkeyset - " + info);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="イベント - onkeyset" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. 下のボタンクリック。 &lt;br/&gt;2. DataMapに新しい値設定され、 onkeyset イベント発生するもの確認。 &lt;br/&gt;3. 新設定済み値は DataMapとバインド下の InputBoxに表示されるもの確認。&lt;br/&gt;（イベントハンドラの詳細スクリプトは Script タブから確認。）&lt;br/&gt;" escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;" id="textbox4" label='イベント説明&lt;br/&gt;onkeyset - set() 関数を使用して特定のキーに値を設定すると発生します。' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[dataMap1.set("key3", "Busan");]]></xf:label>
+    	</xf:trigger><xf:input ref="data:dataMap1.key3" adjustMaxLength="false" style="width: 144px;height:39px;font-size:30px;color: red;font-weight: bolder;" id="input1"></xf:input></xf:group></body>
+</html>

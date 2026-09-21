@@ -1,0 +1,50 @@
+0:00:00.000,0:00:01.931
+Welcome to WebSquare5 Quick Guide.
+
+0:00:02.346,0:00:06.495
+This video describes the onbeforepageunload event of the page.
+
+0:00:07.066,0:00:12.071
+This event is triggered before a page is unloaded an in the body of the page to be unloaded.
+
+0:00:12.598,0:00:13.817
+Usage example.
+
+0:00:14.300,0:00:18.995
+Add the event to the body of the page and the script to be executed upon the event being triggered.
+
+0:00:19.478,0:00:23.805
+Go to Outline view and Design tab, and add the event. 
+
+0:00:24.113,0:00:26.257
+Let's see how it works.
+
+0:00:26.696,0:00:28.122
+Example page.
+
+0:00:28.429,0:00:33.499
+This Trigger has an onclick event, and clicking this Trigger opens a popup.
+
+0:00:33.894,0:00:36.892
+The source page of the popup is "src.xml" file.
+
+0:00:37.595,0:00:40.680
+Go to Outline view and Design tab, and right-click the Body.
+
+0:00:41.207,0:00:45.112
+You can add onpageload and onbeforepageunload events.
+
+0:00:45.815,0:00:49.799
+Upon the onpageload event being triggered, a defined message is alerted, and also,
+
+0:00:50.000,0:00:54.076
+upon the onbeforepageunload event being triggered, a defined message is alerted.
+
+0:00:54.339,0:00:59.747
+The onpageload event of the Body is triggered upon a popup is opened by Trigger being clicked, and
+
+0:01:00.000,0:01:04.977
+the onbeforepageunload event of the Body is triggered upon the popup being unloaded.
+
+0:01:05.460,0:01:08.665
+Thank you for watching.

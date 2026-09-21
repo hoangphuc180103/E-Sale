@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 탭 추가하기 - 탭 옵션 'openAction' 설정 비교하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230801" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = async function () {
+    // 예제 테스트를 위해 2번째 탭 선택
+    await tac_exam2.setSelectedTabIndex(1);
+    await tac_exam3.setSelectedTabIndex(1);
+    await tac_exam4.setSelectedTabIndex(1);
+    await tac_exam1.setSelectedTabIndex(1);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 1-1] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = async function (e) {
+    // TabControl 'tac_exam1'에 탭 추가하기 - "openAction": "select"
+    // 탭 'TAB1'과 동일한 ID로 탭을 추가하는 예시
+    let result = await tac_exam1.addTab(
+        "tac_exam1_1",
+        {
+            "label": "TAB_addTab",
+            "openAction": "select"
+        },
+        {
+            "src": "/page/P00313S03.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam1'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_1, false);
+    console.log(strLog, result);
+};
+
+/**
+ * 버튼 [탭 ID가 없는 경우  1-2] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = async function (e) {
+    // TabControl 'tac_exam1'에 탭 추가하기
+    // 탭의 ID와 동일한 탭이 없는 예시
+    let result = await tac_exam1.addTab(
+        "tac_exam1_new",
+        {
+            "label": "TAB_NEW",
+            "openAction": "select",
+            "closable": "true"
+        },
+        {
+            "src": "/page/P00313S04.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam1'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 [탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 2-1] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = async function (e) {
+    // TabControl 'tac_exam2'에 탭 추가하기 - "openAction": "exist"
+    // 탭 'TAB1'과 동일한 ID로 탭을 추가하는 예시
+    let result = await tac_exam2.addTab(
+        "tac_exam2_1",
+        {
+            "label": "TAB_addTab",
+            "openAction": "exist"
+        },
+        {
+            "src": "/page/P00313S03.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam2'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_2, false);
+    console.log(strLog, result);
+};
+
+/**
+ * 버튼 [탭 ID가 없는 경우  2-2] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = async function (e) {
+    // TabControl 'tac_exam2'에 탭 추가하기
+    // 탭의 ID와 동일한 탭이 없는 예시
+    let result = await tac_exam2.addTab(
+        "tac_exam2_new",
+        {
+            "label": "TAB_NEW",
+            "openAction": "exist",
+            "closable": "true"
+        },
+        {
+            "src": "/page/P00313S04.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam2'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_2, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 [탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 3-1] 클릭 시
+ */
+scwin.btn_exam3_1_onclick = async function (e) {
+    // TabControl 'tac_exam3'에 탭 추가하기 - "openAction": "new"
+    // 탭 'TAB1'과 동일한 ID로 탭을 추가하는 예시
+    let result = await tac_exam3.addTab(
+        "tac_exam3_1",
+        {
+            "label": "TAB_addTab",
+            "openAction": "new"
+        },
+        {
+            "src": "/page/P00313S03.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam3'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_3, false);
+    console.log(strLog, result);
+};
+
+/**
+ * 버튼 [탭 ID가 없는 경우  3-2] 클릭 시
+ */
+scwin.btn_exam3_2_onclick = async function (e) {
+    // TabControl 'tac_exam3'에 탭 추가하기
+    // 탭의 ID와 동일한 탭이 없는 예시
+    let result = await tac_exam3.addTab(
+        "tac_exam3_new",
+        {
+            "label": "TAB_NEW",
+            "openAction": "new",
+            "closable": "true"
+        },
+        {
+            "src": "/page/P00313S04.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam3'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_3, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 [탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 4-1] 클릭 시
+ */
+scwin.btn_exam4_1_onclick = async function (e) {
+    // TabControl 'tac_exam4'에 탭 추가하기 - "openAction": "last"
+    // 탭 'TAB1'과 동일한 ID로 탭을 추가하는 예시
+    let result = await tac_exam4.addTab(
+        "tac_exam4_1",
+        {
+            "label": "TAB_addTab",
+            "openAction": "last"
+        },
+        {
+            "src": "/page/P00313S03.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam4'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_4, false);
+    console.log(strLog, result);
+};
+
+/**
+ * 버튼 [탭 ID가 없는 경우  4-2] 클릭 시
+ */
+scwin.btn_exam4_2_onclick = async function (e) {
+    // TabControl 'tac_exam4'에 탭 추가하기
+    // 탭의 ID와 동일한 탭이 없는 예시
+    let result = await tac_exam4.addTab(
+        "tac_exam4_new",
+        {
+            "label": "TAB_NEW",
+            "openAction": "last",
+            "closable": "true"
+        },
+        {
+            "src": "/page/P00313S04.xml",
+            "wframe": true
+        }
+    );
+
+    // 로그 출력
+    let strLog = "# TabControl 'tac_exam4'의 메소드 'addTab'의 반환 값(탭의 ID): \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_4, false);
+    console.log(strLog);
+    console.log(result);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="TabControl의 'addTab' 메소드를 사용하여 탭을 추가할 때, 두 번째 인자 JSON 객체의 'openAction' 속성 설정 값에 따른 동작을 비교한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" label="'openAction' 설정 값 : select"></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" type="button">
+								<xf:label><![CDATA[탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 1-1]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2" type="button">
+								<xf:label><![CDATA[동일한 ID의 탭이 없는 경우 1-2]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+						<xf:group id="" class="tbcbox"><w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="position: relative;height: 120px;min-width: 340px;" id="tac_exam1" class="tbc">
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam1_1" label="TAB1"></w2:tabs>
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam1_2" label="TAB2"></w2:tabs>
+								<w2:content src="/page/P00313S01.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframe" id="content1_1">
+								</w2:content>
+								<w2:content src="/page/P00313S02.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframePreload" id="content1_2">
+								</w2:content>
+							</w2:tabControl></xf:group></xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 60px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" label="'openAction' 설정 값 : exist"></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1" type="button">
+								<xf:label><![CDATA[탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 2-1]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_2_onclick" id="btn_exam2_2" type="button">
+								<xf:label><![CDATA[동일한 ID의 탭이 없는 경우 2-2]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+						<xf:group id="" class="tbcbox"><w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="position: relative;height: 120px;min-width: 340px;" id="tac_exam2" class="tbc">
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam2_1" label="TAB1"></w2:tabs>
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam2_2" label="TAB2"></w2:tabs>
+								<w2:content src="/page/P00313S01.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframe" id="content2_1">
+								</w2:content>
+								<w2:content src="/page/P00313S02.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframe" id="content2_2">
+								</w2:content>
+							</w2:tabControl></xf:group></xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_2">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_2" spellcheck="false" style="width: 100%;height: 60px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" label="'openAction' 설정 값 : new"></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam3_1_onclick" id="btn_exam3_1" type="button">
+								<xf:label><![CDATA[탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 3-1]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam3_2_onclick" id="btn_exam3_2" type="button">
+								<xf:label><![CDATA[동일한 ID의 탭이 없는 경우 3-2]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+						<xf:group id="" class="tbcbox"><w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="position: relative;height: 120px;min-width: 340px;" id="tac_exam3" class="tbc">
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam3_1" label="TAB1"></w2:tabs>
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam3_2" label="TAB2"></w2:tabs>
+								<w2:content src="/page/P00313S01.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframe" id="content3_1">
+								</w2:content>
+								<w2:content src="/page/P00313S02.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframe" id="content3_2">
+								</w2:content>
+							</w2:tabControl></xf:group></xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_3">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_3" spellcheck="false" style="width: 100%;height: 60px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" label="'openAction' 설정 값 : last"></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam4_1_onclick" id="btn_exam4_1" type="button">
+								<xf:label><![CDATA[탭 'TAB1'과 동일한 ID로 탭을 추가하는 경우 4-1]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam4_2_onclick" id="btn_exam4_2" type="button">
+								<xf:label><![CDATA[동일한 ID의 탭이 없는 경우 4-2]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+						<xf:group id="" class="tbcbox"><w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="position: relative;height: 120px;min-width: 340px;" id="tac_exam4" class="tbc">
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam4_1" label="TAB1"></w2:tabs>
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam4_2" label="TAB2"></w2:tabs>
+								<w2:content src="/page/P00313S01.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframe" id="content4_1">
+								</w2:content>
+								<w2:content src="/page/P00313S02.xml" scope="true" alwaysDraw="false" style="min-height:30px" frameMode="wframe" id="content4_2">
+								</w2:content>
+							</w2:tabControl></xf:group></xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_4">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_4" spellcheck="false" style="width: 100%;height: 60px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

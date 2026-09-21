@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+    				<w2:columnInfo>
+    					<w2:column id="col1" name="name1" dataType="text"></w2:column>
+    					<w2:column id="col2" name="name2" dataType="text"></w2:column>
+    					<w2:column id="col3" name="name3" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+    	<script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var dataJson = [
+        { "col1": "", "col2": "201", "col3": "301" },
+        { "col1": "", "col2": "202", "col3": "302" },
+        { "col1": "", "col2": "203", "col3": "303" },
+        { "col1": "", "col2": "204", "col3": "304" },
+        { "col1": "", "col2": "205", "col3": "305" }
+    ]
+    dataList1.setJSON(dataJson);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.gridView1_onheadermouseout = function (info) {
+    var toshow = JSON.stringify(info);
+    alert("onheadermouseout - moused out from : " + toshow);
+};
+
+scwin.gridView1_onheadermouseover = function (info) {
+    var toshow = JSON.stringify(info);
+    alert("onheadermouseover - mouse over on : "  + toshow);
+};
+]]></script>
+    	<style type="text/css"><![CDATA[
+/*    		input[type="checkbox"]:disabled {background-color: red;}*/
+			
+			input[type="checkbox"]:disabled {background-color: red;}
+			
+			input[type="checkbox"]:disabled {
+				color: red;
+				border: 1px solid red;
+			} 
+			
+    	 ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="이벤트 - onheadmouseover &amp; onheadmouseout" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. GridView 헤더에 마우스를 가져다 대면 onheadmouseover 이벤트가 발생하는 것을 확인. &lt;br/&gt;2. GridView 헤더로 부터 마우스를 빼면 (혹은 다른 헤더로 이동하면) onheadmouseout 이벤트가 발생하는 것을 확인. &lt;br/&gt;(각 이벤트 핸들러의 자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4"
+    		label="이벤트 설명&lt;br/&gt;onheadmouseover - 헤더에 마우스를 댈 때 (마우스 오버) 발생.&lt;br/&gt;onheadmouseout - 헤더로 부터 마우스를 뺄 때 (마우스 아웃) 발생."
+    		escape="false">
+    	</w2:textbox>
+    	<w2:gridView ev:oncellclick="scwin.gridView1_oncellclick" ev:onheadermouseout="scwin.gridView1_onheadermouseout"
+    		scrollByColumnAdaptive="false" ev:onheadermouseover="scwin.gridView1_onheadermouseover" useShiftKey="true" scrollByColumn="false"
+    		defaultCellHeight="20" checkAllType="false" dataList="data:dataList1" ctrlShiftKey="true" useShiftKeyCheck="true"
+    		style="border: gray solid 1px;" id="gridView1" visibleRowNum="5" visibleRowNumFix="true" autoFit="allColumn">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="checkbox" style="height:20px" id="column3" value="name1" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column2" value="name2" displayMode="label"></w2:column>
+    				<w2:column width="120" inputType="text" style="height:20px" id="column1" value="name3" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column readOnlyClass="readonlyClass" valueType="boolean" width="70" inputType="checkbox" style="height:20px"
+    					id="col1" value="" displayMode="label">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.gridView1_onheadermouseout = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var toshow = JSON.stringify(info);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onheadermouseout - moused out from : " + toshow);&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.gridView1_onheadermouseover = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var toshow = JSON.stringify(info);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onheadermouseover - mouse over on : " &amp;nbsp;+ toshow);&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

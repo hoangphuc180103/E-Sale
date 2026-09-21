@@ -1,0 +1,153 @@
+/*amd /guide_jpn/GridView/_General/setColumnEnableColumn_GridView.xml 9566 c0ee3413a20e319bf38ecd2b32a7ae063358f7b07b371c4132862f3092a5a9f5 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'Continent'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'Country'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'Item'}},{T:1,N:'w2:column',A:{dataType:'number',id:'col4',name:'Quantity'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList2',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'value',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'type',name:'name3',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Asia'}]},{T:1,N:'value',E:[{T:4,cdata:'Asia'}]},{T:1,N:'type',E:[{T:4,cdata:'true'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Europe'}]},{T:1,N:'value',E:[{T:4,cdata:'Europe'}]},{T:1,N:'type',E:[{T:4,cdata:'true'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Americas'}]},{T:1,N:'value',E:[{T:4,cdata:'Americas'}]},{T:1,N:'type',E:[{T:4,cdata:'false'}]}]}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList3',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'label',dataType:'text'}},{T:1,N:'w2:column',A:{id:'value',name:'value',dataType:'text'}},{T:1,N:'w2:column',A:{id:'type',name:'type',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'TV'}]},{T:1,N:'value',E:[{T:4,cdata:'TV'}]},{T:1,N:'type',E:[{T:4,cdata:'na'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Freezer'}]},{T:1,N:'value',E:[{T:4,cdata:'Freezer'}]},{T:1,N:'type',E:[{T:4,cdata:'cold'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Washer'}]},{T:1,N:'value',E:[{T:4,cdata:'Washer'}]},{T:1,N:'type',E:[{T:4,cdata:'hot'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Heater'}]},{T:1,N:'value',E:[{T:4,cdata:'Heater'}]},{T:1,N:'type',E:[{T:4,cdata:'hot'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Washer",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Heater",
+    "col4": "250"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Washer",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "Washer",
+    "col4": "200"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  gridView1.setColumnEnableColumn("col1", "type", "false");
+};
+scwin.trigger2_onclick = function (e) {
+  gridView1.setColumnEnableColumn("col3", "type", "hot");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'列の一部を選択項目を無効にする',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Continent 列セルのアイコンクリック。 <br/>2. 選択アイテムとして Asia, Europe, Americas アイテム表示されるもの確認。 <br/>3. Ctrl ボタン押すマウス右クリック。 <br/>4. "dataCollection 見る" メニュー選択。<br/>5 Continent カラムとバインド "dataList2"を確認。 <br/>6. type 列の値 false人選択アイテム Americas人もの確認。 <br/>7. 下の初めて目ボタンクリック。 <br/>8. Continent 列セルのアイコンクリック。 <br/>9. 選択アイテムとして Amercias 選択アイテム無効になる表示されるもの確認。<br/>10. 上と &nbsp;同じ方法で "dataList3"とバインド Item 列(id="col3")にについて二つ目ボタンクリックして結果確認。',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.setColumnEnableColumn("col1", "type", "false");'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger2',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.setColumnEnableColumn("col3", "type", "hot");'}]}]},{T:1,N:'w2:gridView',A:{showSortableUseFilter:'',scrollByColumnAdaptive:'false',rowNumVisible:'',useShiftKey:'true',scrollByColumn:'false',sortable:'',defaultCellHeight:'20',noResultMessageVisible:'',focusMode:'cell',selectedCellColor:'#FF8040',checkAllType:'false',dataList:'data:dataList1',copyType:'native',style:'border: solid 1px gray;',id:'gridView1',autoFit:'allColumn',visibleRowNum:'10',useFilterList:'',useCtrlKey:'',copyOption:'',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'',style:'height:20px',id:'column4',value:'Continent',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column4',value:'Country',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column5',value:'Item',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column6',value:'Quantity',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{ref:'',chooseOption:'',width:'70',inputType:'select',style:'',id:'col1',allOption:'',value:'',displayMode:'label',embeddedInput:'',viewType:'icon'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList2'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'value'}}]}]}]},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'checkcombobox',style:'',id:'col3',value:'',displayMode:'label',allOption:'',chooseOption:'',ref:'',viewType:'icon'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList3'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'value'}}]}]}]},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col4',value:'',displayMode:'label'}}]}]}]}]}]}]}]})

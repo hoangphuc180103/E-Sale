@@ -1,0 +1,83 @@
+/*amd /page/P00269.xml 9602 d4f2f38fc7f055990728984deaf85e407ebf9f3c256e3b1875791b5e87d25f6f */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}},{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'stock',name:'Stock'}}]},{T:1,N:'w2:data',A:{use:'true',xmlns:''},E:[{T:1,N:'w2:row',E:[{T:1,N:'category',E:[{T:4,cdata:'Hardware'}]},{T:1,N:'stock',E:[{T:4,cdata:'98291'}]},{T:1,N:'product',E:[{T:4,cdata:'UltraNet'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'category',E:[{T:4,cdata:'Hardware'}]},{T:1,N:'stock',E:[{T:4,cdata:'528'}]},{T:1,N:'product',E:[{T:4,cdata:'UltraServer'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'category',E:[{T:4,cdata:'Hardware'}]},{T:1,N:'stock',E:[{T:4,cdata:'73928'}]},{T:1,N:'product',E:[{T:4,cdata:'StoreSafe'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'category',E:[{T:4,cdata:'Software'}]},{T:1,N:'stock',E:[{T:4,cdata:'6894'}]},{T:1,N:'product',E:[{T:4,cdata:'IntelliAI'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'category',E:[{T:4,cdata:'Software'}]},{T:1,N:'product',E:[{T:4,cdata:'DeepThink'}]},{T:1,N:'stock',E:[{T:4,cdata:'4536219'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00269_TYPE1.xlsx",
+    // 엑셀의 파일명
+    useSubTotal: "true",
+    // subTotal 표시
+    useSubTotalData: "false",
+    // 기본 설정 값. subTotal에 적용된 표현식은 서버에서 계산한 후 엑셀에 출력. 사용자 정의 메소드를 사용하면 브라우저에 표시된 값과 다르거나 오류가 발생할 수 있습니다.
+    useXHR: "true",
+    // 서버에서 엑셀 생성 중 오류가 발생하여 오류 코드를 전달한 경우 옵션 'onFailureCallback'에서 후처리를 위한 설정.
+    onFailureCallback: scwin.avExcelDownload_error_callback // 서버에서 엑셀 생성 중 오류가 발생한 경우 후처리 메소드. 옵션 'useXHR'이 true로 지정되어야 사용할 수 있습니다.
+  };
+  grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - subTotal의 값을 브라우저에 표시된 값으로 출력하기] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00269_TYPE2.xlsx",
+    // [필수] 엑셀의 파일명
+    useSubTotal: "true",
+    // [필수] subTotal 표시
+    useSubTotalData: "true",
+    // [필수] subTotal의 값을 브라우저에 표시된 값으로 출력하기
+    useXHR: "true",
+    // 서버에서 엑셀 생성 중 오류가 발생하여 오류 코드를 전달한 경우 옵션 'onFailureCallback'에서 후처리를 위한 설정.
+    onFailureCallback: scwin.avExcelDownload_error_callback // 서버에서 엑셀 생성 중 오류가 발생한 경우 후처리 메소드. 옵션 'useXHR'이 true로 지정되어야 사용할 수 있습니다.
+  };
+
+  // GridView "grd_exam1"의 엑셀 다운로드 실행
+  grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * SubTotal의 사용자 정의 메소드 Expression 예시
+ * GridView의 SubTotal 컬럼 'sub_col_2'에서 사용
+ */
+scwin.subTotal_userExpression = function (arg1) {
+  // "Total: " 문자열과 arg1에 "#,###" 포맷을 적용하여 반환
+  return "Total:" + WebSquare.util.setNumber(arg1);
+};
+
+/**
+ * GridView의 메소드 'advancedExcelDownload' 호출 시 서버에서 오류가 발생하면 호출되는 메소드
+ * 메소드 'advancedExcelDownload'의 첫 번째 인자의 'onFailureCallback' 속성에 지정.
+ * @param {string} arg1 Request URL
+ * @param {object} arg2 엑셀 생성 중 오류 정보가 담긴 JSON 객체.
+ * @param {string} arg2.errorCode 오류 코드
+ */
+scwin.avExcelDownload_error_callback = function (arg1, arg2) {
+  let strErrorCode = arg2 && arg2.errorCode || "";
+  let srtErrorMsg = "";
+
+  // arg1 값 예시) '/websquare/xmlToExcel2.wq'
+  // arg2 값 예시) {errorCode: 'D301'}
+
+  // 공통 메소드를 통해 서버에서 전달된 에러 코드를 메시지와 함께 반환 받습니다.
+  srtErrorMsg = $c.frame.getErrorMsg($p, "advancedExcelDownload", strErrorCode, true);
+
+  //로그 출력
+  let strLog = "엑셀 다운로드 오류 발생 : " + srtErrorMsg;
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+  console.log(strLog);
+  console.log(arg1, arg2);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  txa_log.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents'},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc'},E:[{T:1,N:'w2:textbox',A:{class:'',escape:'false',label:'GridView의 \'advancedExcelDownload\' 메소드의 첫 번째 인자인 JSON 객체의 \'useSubTotalData\'를 사용하여, 엑셀 다운로드 시 서브토탈(subTotal) 데이터를 브라우저에 표시된 데이터로 사용하도록 설정한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap'},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom'},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'엑셀 다운로드 - 기본'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',localeRef:'',style:'min-width:30px;height:26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'엑셀 다운로드 - subTotal의 값을 브라우저에 표시된 값으로 출력하기'}]}]}]},{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:'max-width: 400px;'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'266',baseNode:'',class:'gvw',dataList:'data:dlt_exam',defaultCellHeight:'37',focusMode:'row',id:'grd_exam1',readOnly:'true',style:'height:200px;',visibleRowNum:'all'},E:[{T:1,N:'w2:header',A:{id:'header5',style:''},E:[{T:1,N:'w2:row',A:{id:'row35',style:''},E:[{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',hidden:'false',id:'h_col1',inputType:'text',value:'Category',width:'100'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'h_col2',inputType:'text',value:'Product',width:'110'}},{T:1,N:'w2:column',A:{id:'h_col3',inputType:'text',value:'Stock',width:'100'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody5',style:''},E:[{T:1,N:'w2:row',A:{id:'row37',style:''},E:[{T:1,N:'w2:column',A:{blockSelect:'false',colMerge:'true',displayMode:'label',hidden:'false',id:'category',inputType:'text',width:'100'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'product',inputType:'text',textAlign:'left',width:'110'}},{T:1,N:'w2:column',A:{dataType:'number',displayFormat:'#,###',id:'stock',inputType:'text',textAlign:'right',width:'100'}}]}]},{T:1,N:'w2:subTotal',A:{id:'subTotal1',style:'',targetColumnID:'category'},E:[{T:1,N:'w2:row',A:{id:'row42',style:''},E:[{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'column577',inputType:'text',style:'height:30px;',value:'Subtotal',width:'100'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',expression:'targetColValue() + \':  \' +count(\'product\')',id:'column596',inputType:'expression',style:'height:30px;',textAlign:'left',width:'110'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'sub_col_1',inputType:'expression',expression:'scwin.subTotal_userExpression(sum(\'stock\'))',style:'height:30px;',textAlign:'right',width:'100'}}]}]},{T:1,N:'w2:footer',A:{id:'footer1',style:''},E:[{T:1,N:'w2:row',A:{id:'row41',style:''},E:[{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'column580',inputType:'text',style:'height:40px;',value:'Total',width:'100'}},{T:1,N:'w2:column',A:{expression:'\'Products: \'+ count(\'product\')',id:'column597',inputType:'expression',style:'height:40px;',textAlign:'left',width:'110'}},{T:1,N:'w2:column',A:{dataType:'number',displayFormat:'#,###',expression:'sum(\'stock\')',id:'column526',inputType:'expression',style:'height:40px;',textAlign:'right',width:'100'}}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_th_style',id:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_blue',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'btn_clearLog',style:'',title:'로그 삭제',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log',spellcheck:'false',style:'width: 100%;height: 140px;'}}]}]}]}]}]}]}]})

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[AutoComplete] label, value, delimiter를 사용하여 선택 항목을 표시하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230315" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="예제 구성 변경" meta_date="20240312" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="04" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 AutoComplete의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="Label" id="label"></w2:column>
+						<w2:column dataType="text" name="Value" id="code"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<label><![CDATA[A]]></label>
+							<code><![CDATA[01]]></code>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[B]]></label>
+							<code><![CDATA[02]]></code>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[C]]></label>
+							<code><![CDATA[03]]></code>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="AutoComplete의 'displayMode' 속성과 'delimiter' 속성을 사용하여 선택 항목을 'label delimiter value' 형식으로 표시한 예제입니다."
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="선택 항목의 표시 형식을 'Label - Value'로 설정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 15px;">
+							<w2:autoComplete submenuSize="auto" search="start" editType="select" style="width: 150px;" id="" class=""
+								allOption="" ref="" displayMode="label delim value" delimiter=" - ">
+								<w2:choices>
+									<w2:itemset nodeset="data:dlt_exam1">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="code"></w2:value>
+									</w2:itemset>
+								</w2:choices>
+							</w2:autoComplete>
+						</xf:group>
+					</xf:group>
+
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 선택 항목의 표시 형식을 'Label'로 설정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 15px;">
+							<w2:autoComplete allOption="" class="" displayMode="label" editType="select" id="" ref="" search="start"
+								style="width: 150px;" submenuSize="auto">
+								<w2:choices>
+									<w2:itemset nodeset="data:dlt_exam1">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="code"></w2:value>
+									</w2:itemset>
+								</w2:choices>
+							</w2:autoComplete>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="DataList 확인용 GridView" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="AutoComplete 항목의 'lable'에는 'Lable' 컬럼이, 항목의 'value'에는 'Value' 컬럼이 연결되었습니다." style="">
+						</w2:textbox>
+						<xf:group class="gvwbox" id="" style="">
+							<xf:group class="gvwbox" id="">
+								<w2:gridView autoFit="allColumn" autoFitMinWidth="240" class="gvw" dataList="data:dlt_exam1"
+									defaultCellHeight="37" filterBoxvisibleRowNum="3" id="grd_exam1" keepDefaultColumnWidth="true" readOnly="true" rowNumVisible="true"
+									rowNumWidth="40" style="height:100px;" visibleRowNum="3" visibleRowNumFix="true">
+									<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+									<w2:header id="header1" style="">
+										<w2:row id="row1" style="">
+											<w2:column displayMode="label" id="column2" inputType="text" style="" value="Label"
+												width="70">
+											</w2:column>
+											<w2:column displayMode="label" id="column1" inputType="text" style="" value="Value"
+												width="70">
+											</w2:column>
+										</w2:row>
+									</w2:header>
+									<w2:gBody id="gBody1" style="">
+										<w2:row id="row2" style="">
+											<w2:column displayMode="label" id="label" inputType="text" style="" value="" width="70"></w2:column>
+											<w2:column displayMode="label" id="code" inputType="text" style="" value="" width="70"></w2:column>
+										</w2:row>
+									</w2:gBody>
+								</w2:gridView>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

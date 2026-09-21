@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.trigger1_onclick = function(e) {
+var options = {
+    useAlert: "true",
+    returnType: "json"
+}
+var result = WebSquare.date.isValidDate(input1, input1.getValue(), options);
+console.log(result);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Date Validation&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Enter the date to validate.&lt;br/&gt;2. Click the isValidDate() button at the bottom.&lt;br/&gt;3. Verify that an error message appears for invalid dates (e.g., “20253344”).&lt;br/&gt;4. Confirm that the error result is saved as a JSON-formatted log via developer tools.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="Enter the date to verify." escape="false">
+    	</w2:textbox>
+    	<xf:input style="width: 100%;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;"
+    		id="input1" placeholder="Enter the date to verify.">
+    	</xf:input>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[isValidDate() - useAlert="true" & returnType="json"]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='/// Sample Code &lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;useAlert: "true",&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnType: "json"&lt;br/&gt;}&lt;br/&gt;var result = WebSquare.date.isValidDate(input1, input1.getValue(), options);&lt;br/&gt;console.log(result);'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

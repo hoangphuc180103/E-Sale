@@ -1,0 +1,20 @@
+/*amd /guide_eng/WindowContainer/useFixButton_nameLayerRearrange_WindowContainer.xml 3256 55cfd0fcef2f56b019eb900f639a59ac2098ab323630c98249df6d8e394ba9ae */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model'},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  scwin.createWindowTest("aaa");
+  scwin.createWindowTest("bbb");
+  scwin.createWindowTest("ccc");
+};
+scwin.onpageunload = function () {};
+scwin.createWindowTest = function (title) {
+  var winObj = {
+    title: title,
+    src: "a.xml",
+    windowTitle: title + "_windowTitle",
+    windowId: title + "_windowId",
+    frameMode: "wframe",
+    defaultWidth: "400",
+    defaultHeight: "400"
+  };
+  wc1.createWindow(winObj);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Move Fixed Window to the Front of the Name Layer<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Confirm that the pin button for each window appears in the name layer at the bottom of the WindowContainer. (useFixButton=“true”)<br/>2. Click the pin button for any window.<br/>3. Click the button to arrange and display all windows. <br/>4. Confirm that the windows are rearranged, and the window whose pin button was clicked moves to the frontmost position in the name layer. (nameLayerRearrange=“true”)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'useFixButton="true" <br/>nameLayerRearrange="true"',escape:'false'}},{T:1,N:'w2:windowContainer',A:{sequentialArrangeColNum:'3',sequentialArrangeRowNum:'3',fixArrangeFullScreen:'false',frameMode:'wframe',useFixButton:'true',windowAutoResize:'false',verticalArrangeNum:'3',windowMaxNum:'5',useCloseButton:'false',nameLayerMove:'true',controlIconPosition:'left',windowMaximizeAll:'false',stopMinimizeOnNameLayer:'false',toolbarPosition:'bottom',useStatusMsg:'true',id:'wc1',class:'',hideTitleOnMaximize:'false',nameLayerRearrange:'true',stopToggleOnLast:'false',useNameScroll:'true',nameLayerMenu:'false',useNameContainer:'false','ev:onbeforecloseall':'scwin.wc1_onbeforecloseall',horizontalArrangeNum:'3',useCustomMsg:'false',spaAuto:'true',useControlIconTitle:'false',autoArrange:'true',tooltipDisplay:'true',tooltipGroupClass:'false',windowTooltipDisplay:'true',style:'position: relative;height: 300px;border: gray solid 1px;'},E:[{T:1,N:'w2:windowToolbar',E:[{T:1,N:'w2:nameLayer'},{T:1,N:'w2:controlIconLayer',E:[{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'}]},{T:1,N:'w2:selectedNameLayer'}]}]}]}]}]}]})

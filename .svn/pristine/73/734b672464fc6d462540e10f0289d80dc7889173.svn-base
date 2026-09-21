@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제]pageFrame실습 chile_1 화면">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:aliasDataList scope="../dc_userInfoList" id="dc_aliasDataList" studioSrc=""></w2:aliasDataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+//오름차순으로 정렬 버튼  
+scwin.btn_getParent_onclick = function (e) { 
+    //1."EMP_NM" 으로 정렬 [0,1,2] 정렬 옵션 (0: 오름차순, 1: 내림차순, 2: 정렬 취소)
+    dc_aliasDataList.sort("EMP_NM", 0);  
+    
+};
+ 
+//데이터 복원 버튼 
+scwin.btn_setParent_onclick = function (e) {
+    // 1.dc_userInfoList 의 값을 복원 
+    dc_aliasDataList.undoAll();
+    // 2.dc_userInfoList 에 적용된 정렬을 제거 
+    dc_aliasDataList.removeColumnFilterAll(); 
+};
+ ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<w2:textbox tagname="h3" style="" id="" label="해당화면은 AliasDataList 설명을 위한 alias_child_1_c.xml" class="ws_example_txt_desc_info"></w2:textbox>
+    	<xf:group style="" id="" class="ws_example_grp_desc">
+    		<xf:group style="" id="" class="titbox">
+
+    		</xf:group>
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 방법" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label='1. aliasDataList 생성&lt;br/&gt; &amp;nbsp; 참조 하고자 하는 parent 화면의 dataList를 scope 에 넣는다. &lt;br/&gt; &amp;nbsp; scope &amp;nbsp;: &amp;nbsp; ../dc_userInfoList&lt;br/&gt;&lt;br/&gt;2. 오름차순으로 정렬 버튼에 이벤트 함수 추가 &lt;br/&gt; &amp;nbsp; ex) aliasDataList ID.sort("EMP_NM", 0);&lt;br/&gt;3. 데이터 복원 버튼에 이벤트 함수 추가 &lt;br/&gt; &amp;nbsp; &amp;nbsp;ex) aliasDataList ID.undoAll(); &lt;br/&gt; &amp;nbsp; &amp;nbsp;ex) aliasDataList ID.removeColumnFilterAll(); &lt;br/&gt;'
+    				class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group style="" id="" class="titbox">
+    			<w2:span style="margin-right: 10px;font-weight: bold;" id="" label=""></w2:span>
+    			<xf:group style="" id="" class="rt">
+    				<xf:trigger ev:onclick="scwin.btn_getParent_onclick" style="" id="btn_getParent" type="button" class="btn_cm ">
+    					<xf:label><![CDATA[오름차순으로 정렬]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger ev:onclick="scwin.btn_setParent_onclick" style="" id="btn_setParent" type="button" class="btn_cm ">
+    					<xf:label><![CDATA[데이터 복원]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<w2:gridView checkAllType="false" defaultCellHeight="20" id="" style="height: 150px;"
+    			dataList="data:dc_aliasDataList">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="168" inputType="text" style="" id="column1" value="사번" displayMode="label"></w2:column>
+    					<w2:column width="156" inputType="text" style="" id="column2" value="이름" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="168" inputType="text" style="" id="EMP_CD" value="" displayMode="label"></w2:column>
+    					<w2:column width="156" inputType="text" style="" id="EMP_NM" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<xf:group style="" id="" class="tblbox">
+    			<xf:group tagname="td" style="" class="w2tb_td"></xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td"></xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>컴포넌트 공통</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_3478e44a781fa9d3" class="chapter_title">컴포넌트 공통</h1>
+		<h1 id="r_d9fe04fd61a5779a" class="element heading1"
+			data-element-id="d9fe04fd61a5779a">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>페이지</span>
+			</div>
+		</h1>
+		<ul id="r_9e2d722add0d4dd6" class="element unordered_list"
+			data-element-id="9e2d722add0d4dd6">
+			<li><p>
+					프레임이 중첩된 경우 페이지 로딩 순서 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WFrame/onpageload_execution_sequence_WFrame/onpageload_execution_sequence_WFrame.xml">샘플</a>)
+				</p></li>
+			<li><p>이벤트</p>
+				<ul>
+					<li><p>
+							<code>onpageload</code>
+							&amp;
+							<code>onbeforepageunload</code>
+							(<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_Page/onbeforepageunload_body_Page/onbeforepageunload_body_Page.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_d96d54db8dc7b41b" class="element heading1"
+			data-element-id="d96d54db8dc7b41b">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>컴포넌트 공통 기능</span>
+			</div>
+		</h1>
+		<ul id="r_7573962d9bf4118c" class="element unordered_list"
+			data-element-id="7573962d9bf4118c">
+			<li><p>
+					컴포넌트 동적 생성 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00045.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/_General/dynamicCreate_p.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					컴포넌트에 사용자 정의 값을 저장 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00027.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					컴포넌트 표시/숨김 실행 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00271.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					컴포넌트 비활성화 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00272.xml">WRE</a>)
+				</p></li>
+			<li><p>컴포넌트 반환</p>
+				<ul>
+					<li><p>
+							컴포넌트 이름(
+							<code>pluginName</code>
+							) 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00023.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							컴포넌트 ID로 컴포넌트 객체 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00022.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							컴포넌트 자식 또는 자손 컴포넌트 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00024.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					<code>escape</code>
+					설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00326.xml">WRE</a>,
+					<a class="link" href="https://youtu.be/OFpNaqnQBqg">YouTube</a>)
+				</p></li>
+			<li><p>
+					<kbd>Tab</kbd>
+					키 이동용 Tab 인덱스 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00304.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_e36af9670998c513" class="element heading1"
+			data-element-id="e36af9670998c513">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>선택형 컴포넌트 공통 기능</span>
+			</div>
+		</h1>
+		<ul id="r_a9d9be524890129b" class="element unordered_list"
+			data-element-id="a9d9be524890129b">
+			<li><p>
+					속성을 사용하여 선택 항목을 표시하고 항목의
+					<code>label</code>
+					설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00338.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					선택 항목의 목록 너비를 항목의 가장 긴 문자열에 맞춰 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00336.xml">WRE</a>)
+				</p></li>
+			<li><p>다국어 표시</p>
+				<ul>
+					<li><p>
+							선택 항목 목록 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00059.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							툴팁 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00060.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_5c71b13039f79bc0" class="element heading1"
+			data-element-id="5c71b13039f79bc0">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>이벤트 및 스타일 제어 기능</span>
+			</div>
+		</h1>
+		<ul id="r_0741880a34dece7d" class="element unordered_list"
+			data-element-id="0741880a34dece7d">
+			<li><p>이벤트</p>
+				<ul>
+					<li><p>
+							스크립트로 이벤트 발생 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00165.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							스크립트로 이벤트 연결 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00034.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							스크립트로 이벤트 해제 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00164.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					이벤트가 발생한 컴포넌트 정보 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/_General/getEventTarget_p_WebSquare_util.xml">샘플</a>)
+				</p></li>
+			<li><p>스타일</p>
+				<ul>
+					<li><p>
+							스크립트로
+							<code>class</code>
+							제어 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00336.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							스크립트로 스타일 제어 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00028.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_2173ce224ac65dd3" class="element heading1"
+			data-element-id="2173ce224ac65dd3">
+			<div class="r_heading_inner">
+				<span class="heading1_n">5</span><span>다국어</span>
+			</div>
+		</h1>
+		<ul id="r_e854ece5a50a847b" class="element unordered_list"
+			data-element-id="e854ece5a50a847b">
+			<li><p>
+					<code>localeRef</code>
+					속성을 통한 클라이언트 다국어 적용 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00058.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					클라이언트 다국어 KEY가 등록되지 않는 경우
+					<code>label</code>
+					및
+					<code>value</code>
+					출력 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00023.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_7ae2525aa804868b" class="element heading1"
+			data-element-id="7ae2525aa804868b">
+			<div class="r_heading_inner">
+				<span class="heading1_n">6</span><span>디버깅</span>
+			</div>
+		</h1>
+		<ul id="r_e9394a51e5543fdb" class="element unordered_list"
+			data-element-id="e9394a51e5543fdb">
+			<li><p>
+					화면의 Submission 객체 확인 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_Debugging/View_Submission_Debugging/View_Submission_Debugging.xml">샘플</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_071c3e151dd9dedd" class="element heading1"
+			data-element-id="071c3e151dd9dedd">
+			<div class="r_heading_inner">
+				<span class="heading1_n">7</span><span>화면 개발 예제</span>
+			</div>
+		</h1>
+		<ul id="r_9c9f3b076a1b8232" class="element unordered_list"
+			data-element-id="9c9f3b076a1b8232">
+			<li><p>
+					화면 개발 예제 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/__sample/user_info.xml">샘플</a>)
+				</p>
+				<ul>
+					<li><p>GridView 데이터 검색</p></li>
+					<li><p>GridView 행 추가, 삭제, 제거</p></li>
+					<li><p>현재 GridView에 표시된 데이터를 Excel 파일로 다운로드</p></li>
+					<li><p>GridView 행 데이터를 다른 컴포넌트와 바인딩</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

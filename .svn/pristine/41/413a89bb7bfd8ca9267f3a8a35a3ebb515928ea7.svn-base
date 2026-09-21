@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00303 서브 페이지 03">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="" id="" style="">
+    		<xf:group class="stockbox" id="" style="">
+    			<xf:group class="stock_items toptxt" id="" style="">
+    				<xf:group id="">
+    					<w2:textbox class="tit" id="" label="KOSPI" style=""></w2:textbox>
+    					<xf:group class="stock_conbox" id="">
+    						<w2:textbox class="smalltxt arrtxt" id="" label="30.37" style=""></w2:textbox>
+    						<w2:textbox class="smalltxt" id="" label="+1.34%" style=""></w2:textbox>
+    					</xf:group>
+    				</xf:group>
+    				<w2:textbox class="contxt" id="" label="2,987.11" style="font-size: 20px;"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="stock_items" id="" style="">
+    				<xf:group id="">
+    					<w2:textbox class="tit" id="" label="KOSDAQ" style=""></w2:textbox>
+    					<xf:group class="stock_conbox" id="">
+    						<w2:textbox class="smalltxt arrtxt" id="" label="30.37" style=""></w2:textbox>
+    						<w2:textbox class="smalltxt" id="" label="+1.34%" style=""></w2:textbox>
+    					</xf:group>
+    				</xf:group>
+    				<w2:textbox class="contxt" id="" label="997.19" style=""></w2:textbox>
+    			</xf:group>
+    			<xf:group class="stock_items" id="" style="">
+    				<xf:group id="">
+    					<w2:textbox class="tit" id="" label="KOSDAQ" style=""></w2:textbox>
+    					<xf:group class="stock_conbox" id="">
+    						<w2:textbox class="smalltxt arrtxt" id="" label="30.37" style=""></w2:textbox>
+    						<w2:textbox class="smalltxt" id="" label="+1.34%" style=""></w2:textbox>
+    					</xf:group>
+    				</xf:group>
+    				<w2:textbox class="contxt" id="" label="997.19" style=""></w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,128 @@
+/*amd /page/P00282.xml 11768 404ef7647aadb8752be09a89de1601b60c5235414edf741d7b3de20960941a98 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_1',repeatNode:'map',style:'',valueAttribute:'',getMatchedFromAllData:'false'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}},{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_2',repeatNode:'map',style:'',valueAttribute:'',getMatchedFromAllData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}},{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // DataList에 초기 데이터 할당
+  scwin.initData();
+};
+
+/**
+ * DataList 'dlt_exam_1'에 데이터 할당하기
+ */
+scwin.initData = function () {
+  let data = [{
+    "category": "Networking",
+    "product": "SpeedLink"
+  }, {
+    "category": "Servers",
+    "product": "EcoServe"
+  }, {
+    "category": "Networking",
+    "product": "LinkSecure"
+  }, {
+    "category": "Servers",
+    "product": "ServeTech"
+  }];
+
+  // DataList 'dlt_exam_1', 'dlt_exam_2'에 데이터 할당하기
+  dlt_exam_1.setJSON(data);
+  dlt_exam_2.setJSON(data);
+
+  // 테스트를 위해 DataList 'dlt_exam_1', 'dlt_exam_2'에 필터 적용하기 - 'Category' 컬럼의 값이 'Servers'인 데이터 출력
+  dlt_exam_1.setColumnFilter({
+    type: "row",
+    colIndex: "category",
+    key: "Servers",
+    condition: "and",
+    exactMatch: true
+  });
+  dlt_exam_2.setColumnFilter({
+    type: "row",
+    colIndex: "category",
+    key: "Servers",
+    condition: "and",
+    exactMatch: true
+  });
+};
+
+/**
+ * 버튼 [1.1 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 JSON 형식으로 받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // DataList 'dlt_exam_1'의 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 JSON으로 반환받습니다.
+  let result = dlt_exam_1.getMatchedJSON("category", "Networking");
+
+  // 로그 출력
+  let strLog = "# DatList의 'getMatchedFromAllData' 속성의 설정 값: \"false\"";
+  let strLog2 = "메소드 getMatchedJSON 호출 값 : \n";
+  $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+  $c.frame.printExampleLog($p, strLog2 + JSON.stringify(result), txa_log_1, false);
+  console.log(strLog);
+  console.log(strLog2);
+  console.log(result);
+};
+
+/**
+ * 버튼 [1.2 'Category' 컬럼의 값이 'Servers'과 일치하는 Row Index 받기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+  // DataList 'dlt_exam_1'의 'Category' 컬럼의 값이 'Servers'과 일치하는 Row Index를 반환받습니다.
+  let result = dlt_exam_1.getMatchedIndex("category", "Servers");
+
+  // 로그 출력
+  let strLog = "# DatList의 'getMatchedFromAllData' 속성의 설정 값: \"false\"";
+  let strLog2 = "메소드 getMatchedIndex 호출 값 : \n";
+  $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+  $c.frame.printExampleLog($p, strLog2 + JSON.stringify(result), txa_log_1, false);
+  console.log(strLog);
+  console.log(strLog2);
+  console.log(result);
+};
+
+/**
+ * 버튼 [2.1 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 JSON 형식으로 받기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+  // DataList 'dlt_exam_2'의 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 JSON으로 반환받습니다.
+  let result = dlt_exam_2.getMatchedJSON("category", "Networking");
+
+  // 로그 출력
+  let strLog = "# DatList의 'getMatchedFromAllData' 속성의 설정 값: \"true\"";
+  let strLog2 = "메소드 getMatchedJSON 호출 값 : \n";
+  $c.frame.printExampleLog($p, strLog, txa_log_2, false);
+  $c.frame.printExampleLog($p, strLog2 + JSON.stringify(result), txa_log_2, false);
+  console.log(strLog);
+  console.log(strLog2);
+  console.log(result);
+};
+
+/**
+ * 버튼 [2.2 'Category' 컬럼의 값이 'Servers'과 일치하는 Row Index 받기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+  // DataList 'dlt_exam_2'의 'Category' 컬럼의 값이 'Servers'과 일치하는 Row Index를 반환받습니다.
+  let result = dlt_exam_2.getMatchedIndex("category", "Servers");
+
+  // 로그 출력
+  let strLog = "# DatList의 'getMatchedFromAllData' 속성의 설정 값: \"true\"";
+  let strLog2 = "메소드 getMatchedIndex 호출 값 : \n";
+  $c.frame.printExampleLog($p, strLog, txa_log_2, false);
+  $c.frame.printExampleLog($p, strLog2 + JSON.stringify(result), txa_log_2, false);
+  console.log(strLog);
+  console.log(strLog2);
+  console.log(result);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  let strTargetId = this.getUserData("userData1");
+  let cmpTarget;
+  if (strTargetId) {
+    cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+  } else {
+    cmpTarget = txa_log;
+  }
+  //textarea value를 빈문자열로 할당.
+  cmpTarget.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'DataList의 \'getMatchedFromAllData\' 속성을 사용하여 필터가 적용된 데이터에서 데이터를 검색할지, 원본 데이터에서 데이터를 검색할지를 설정한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',id:'',label:'이 예제의 DataList는 컬럼 필터가 적용되어 있으며, \'Category\' 컬럼의 값이 \'Servers\'와 일치하는 조건입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mb_def',id:''},E:[{T:1,N:'xf:group',A:{id:'',style:'',class:'example_div_tr_style'},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 동작) 필터가 적용된 데이터에서 검색하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.1 \'Category\' 컬럼의 값이 \'Networking\'과 일치하는 데이터를 JSON 형식으로 받기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_2_onclick',id:'btn_exam1_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.2 \'Category\' 컬럼의 값이 \'Servers\'과 일치하는 데이터의 Row Index 받기'}]}]}]},{T:1,N:'w2:textbox',A:{class:'wre_txt_caption',escape:'false',id:'',label:'데이터 확인용 GridView',style:''}},{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:'max-width: 340px;'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'220',class:'gvw',dataList:'data:dlt_exam_1',defaultCellHeight:'37',id:'',initFixedHeightByRowNum:'4',noResultMessage:'No data to display',readOnly:'true',rowNumWidth:'34',style:'height:80px;',tooltipDisplay:'true',visibleRowNum:'4'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',style:'',value:'Category',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',style:'',value:'Product',width:'80'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'category',inputType:'text',style:'',textAlign:'left',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'product',inputType:'text',style:'',textAlign:'left',width:'80'}}]}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_bold',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'',style:'',title:'로그 삭제',type:'button',userData1:'txa_log_1'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log_1',spellcheck:'false',style:'width: 100%;height: 90px;'}}]}]},{T:1,N:'xf:group',A:{id:'',style:'',class:'example_div_tr_style'},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'원본 데이터에서 검색하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam2_1_onclick',id:'btn_exam2_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.1 \'Category\' 컬럼의 값이 \'Networking\'과 일치하는 데이터를 JSON 형식으로 받기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam2_2_onclick',id:'btn_exam2_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.2 \'Category\' 컬럼의 값이 \'Servers\'과 일치하는 데이터의 Row Index 받기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_caption',escape:'false',id:'',label:'데이터 확인용 GridView',style:''}}]},{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:'max-width: 340px;'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'220',class:'gvw',dataList:'data:dlt_exam_2',defaultCellHeight:'37',id:'',initFixedHeightByRowNum:'4',noResultMessage:'No data to display',readOnly:'true',rowNumWidth:'34',style:'height:80px;',tooltipDisplay:'true',visibleRowNum:'4'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',style:'',value:'Category',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',style:'',value:'Product',width:'80'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'category',inputType:'text',style:'',textAlign:'left',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'product',inputType:'text',style:'',textAlign:'left',width:'80'}}]}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_bold',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'',style:'',title:'로그 삭제',type:'button',userData1:'txa_log_2'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log_2',spellcheck:'false',style:'width: 100%;height: 90px;'}}]}]}]}]}]}]}]})

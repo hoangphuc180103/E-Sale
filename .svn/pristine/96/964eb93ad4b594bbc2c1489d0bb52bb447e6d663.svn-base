@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Group] 자손 컴포넌트의 메소드를 일괄 호출하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="주석 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="예제명이 변경되었습니다. 변경 전 예제명: [Group] 자손 컴포넌트의 Method 일괄 호출하기" meta_date="20240627" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * [실행1] 클릭 시
+ * [Group 컴포넌트 ID].invoke("setValue","");
+ */
+scwin.btn_ex1_onclick = function (e) {
+
+    //grp_form 컴포넌트 하위의 모든 웹스퀘어 컴포넌트의 setValue 메소드를 실행합니다.
+    //setValue 메소드가 없는 경우 해당 컴포넌트는 제외하고 진행됩니다.
+    grp_form.invoke("setValue", "");
+};
+
+
+/**
+ * [실행2] 클릭 시
+ * [Group 컴포넌트 ID].invoke("setDisabled",true);
+ */
+scwin.btn_ex2_onclick = function (e) {
+
+    //grp_form 컴포넌트 하위의 모든 웹스퀘어 컴포넌트의 setDisabled 메소드를 실행합니다.
+    //setDisabled 메소드가 없는 경우 해당 컴포넌트는 제외하고 진행됩니다.
+    //grp_form 컴포넌트 하위의 컴포넌트가 disabled됩니다.
+    grp_form.invoke("setDisabled", true);
+};
+
+
+/**
+ * [실행3] 클릭 시
+ * [Group 컴포넌트 ID].invoke("setDisabled", false);
+ */
+scwin.btn_ex3_onclick = function (e) {
+
+    //grp_form 컴포넌트 하위의 모든 웹스퀘어 컴포넌트의 setDisabled 메소드를 실행합니다.
+    //setDisabled 메소드가 없는 경우 해당 컴포넌트는 제외하고 진행됩니다.
+    //grp_form 컴포넌트 하위의 컴포넌트가 enabled됩니다.
+    grp_form.invoke("setDisabled", false);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="mb_def" id="" style="" tagname="ul">
+				<xf:group class="wre_heading_btn" id="" style="" tagname="li">
+					<w2:textbox class="wre_heading" id="" label="빈 문자열 할당하기" style=""></w2:textbox>
+					<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style=""
+						type="button">
+						<xf:label><![CDATA[실행1]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group class="wre_heading_btn" id="" style="" tagname="li">
+					<w2:textbox class="wre_heading" id="" label="비활성화 하기" style=""></w2:textbox>
+					<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" style=""
+						type="button">
+						<xf:label><![CDATA[실행2]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group class="wre_heading_btn" id="" style="" tagname="li">
+					<w2:textbox class="wre_heading" id="" label="활성화 하기" style=""></w2:textbox>
+					<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3" style=""
+						type="button">
+						<xf:label><![CDATA[실행3]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+			<xf:group id="" class="tblbox">
+				<xf:group tagname="table" style="width:100%;" id="grp_form" class="w2tb tbl" adaptive="layout" adaptiveThreshold="800">
+					<w2:attributes>
+						<w2:summary></w2:summary>
+						<w2:spellcheck>false</w2:spellcheck>
+					</w2:attributes>
+					<xf:group tagname="caption"></xf:group>
+					<xf:group tagname="colgroup">
+						<xf:group tagname="col" style="width:130px;"></xf:group>
+						<xf:group tagname="col" style=""></xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							InputBox
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<xf:input style="width:140px;" id="" placeholder="" class="" initValue="WebSquare"></xf:input>
+						</xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							Checkbox
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<xf:select ref="" appearance="full" disabled="" style="min-width:140px;" id="" renderType="checkboxgroup" rows=""
+								selectedindex="1" cols="">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[Type1]]></xf:label>
+										<xf:value><![CDATA[1]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[Type2]]></xf:label>
+										<xf:value><![CDATA[2]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select>
+						</xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							InputCalendar
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<w2:inputCalendar footerDiv="false" rightAlign="false" focusOnDateSelect="false" style="width:140px;" id=""
+								renderType="component" renderDiv="true" calendarValueType="yearMonthDate" setCurrentDate="true">
+							</w2:inputCalendar>
+						</xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" class="w2tb_th">
+							TextBox
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" class="w2tb_td">
+							<w2:attributes></w2:attributes>
+							<w2:textbox style="" id="" label="Textbox 컴포넌트입니다."></w2:textbox>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    autoComplete1.changeChooseOption("0", "what is your favorite fruit?");
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="선택 안내 메시지 설정" style="color: blue;margin-bottom: 10px;" tagname="h1"></w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. 하단의 changeChooseOption() 버튼을 클릭. &lt;br/&gt;2. 선택 안내 메시지가 변경되는 것을 확인. '
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;display: block;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[ autoComplete1.changeChooseOption("0", "what is your favorite fruit?");]]></xf:label>
+    	</xf:trigger>
+    	<w2:autoComplete submenuSize="auto" search="start" chooseOptionLabel="Select a fruit." ref="" chooseOptionValue="1"
+    		chooseOption="true" editType="select" useKeywordHighlight="false" style="width: 50%;display: block;"
+    		id="autoComplete1" allOption="" useLocale="false">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Apple]]></w2:label>
+    				<w2:value><![CDATA[11]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Banana]]></w2:label>
+    				<w2:value><![CDATA[22]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Orange]]></w2:label>
+    				<w2:value><![CDATA[33]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

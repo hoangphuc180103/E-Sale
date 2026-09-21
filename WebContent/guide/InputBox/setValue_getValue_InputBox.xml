@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		var value = input1.getValue();
+		alert(value);
+	};
+	
+	scwin.trigger2_onclick = function(e) {
+		input1.setValue("Hello!");
+	};
+	
+	scwin.trigger3_onclick = function(e) {
+		input1.setValue(111);
+	};
+	
+	scwin.trigger4_onclick = function(e) {
+		input1.setValue("WebSquare5");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox style="color: blue;margin-bottom: 10px;" id="textbox1" label="값 설정 및 반환" escape="false" tagname="h1"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox2"
+    		label="1. setValue() 버튼을 클릭하여 값을 설정.&lt;br/&gt;2. getValue() 버튼을 클릭하면 위에서 설정한 값이 반환되는 것을 확인." escape="false">
+    	</w2:textbox>
+    	<xf:input adjustMaxLength="false"
+    		style="width: 100%;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: red;"
+    		id="input1">
+    	</xf:input>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[getValue()]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;"
+    		id="trigger2" type="button" ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[input1.setValue("Hello!");]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;"
+    		id="trigger3" type="button" ev:onclick="scwin.trigger3_onclick">
+    		<xf:label><![CDATA[input1.setValue(111);]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;"
+    		id="trigger4" type="button" ev:onclick="scwin.trigger4_onclick">
+    		<xf:label><![CDATA[input1.setValue("WebSquare5");]]></xf:label>
+    	</xf:trigger>
+    </xf:group></body>
+</html>

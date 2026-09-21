@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_programName="통산유지율" meta_screenId="UI006M01" meta_screenName="통산유지율" meta_author="Inswave Systems" meta_type="메인">
+    	<w2:type>COMPONENT</w2:type>
+    	<w2:buildDate />
+    	<w2:MSA />
+    	<xf:model>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+    				<w2:columnInfo>
+    					<w2:column id="col01" name="name1" dataType="text"></w2:column>
+    					<w2:column id="col02" name="name6" dataType="text"></w2:column>
+    					<w2:column id="col03" name="name11" dataType="text"></w2:column>
+    					<w2:column id="col04" name="name16" dataType="text"></w2:column>
+    					<w2:column id="col14" name="name66" dataType="text"></w2:column>
+    					<w2:column id="col15" name="name71" dataType="text"></w2:column>
+    					<w2:column id="col16" name="name76" dataType="text"></w2:column>
+    					<w2:column id="col17" name="name81" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    				<w2:data use="false">
+    					<w2:row>
+    						<col01><![CDATA[총계]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[76.78]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[81.58]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[80.98]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[82.35]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[81.58]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[80.98]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[82.35]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    					<w2:row>
+    						<col01><![CDATA[PA부문총괄]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[60.46]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[87.11]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[76.37]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[87.88]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[87.11]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[76.37]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[87.88]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    					<w2:row>
+    						<col01><![CDATA[다이렉트부문총괄]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[78.09]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[79.59]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[85.74]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[80.02]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[79.59]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[85.74]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[80.02]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    					<w2:row>
+    						<col01><![CDATA[영업부문총괄]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[77.5]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[81.62]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[80.39]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[82.33]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[81.62]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[80.39]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[82.33]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    				</w2:data>
+    			</w2:dataList>
+    			<w2:dataList baseNode="list" id="dataList2" repeatNode="map" saveRemovedData="true" style="">
+    				<w2:columnInfo>
+    					<w2:column dataType="text" id="col01" name="name1"></w2:column>
+    					<w2:column dataType="text" id="col02" name="name6"></w2:column>
+    					<w2:column dataType="text" id="col03" name="name11"></w2:column>
+    					<w2:column dataType="text" id="col04" name="name16"></w2:column>
+    					<w2:column dataType="text" id="col14" name="name66"></w2:column>
+    					<w2:column dataType="text" id="col15" name="name71"></w2:column>
+    					<w2:column dataType="text" id="col16" name="name76"></w2:column>
+    					<w2:column dataType="text" id="col17" name="name81"></w2:column>
+    				</w2:columnInfo>
+    				<w2:data use="true">
+    					<w2:row>
+    						<col01><![CDATA[총계]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[76.78]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[81.58]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[80.98]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[82.35]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[81.58]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[80.98]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[82.35]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    					<w2:row>
+    						<col01><![CDATA[PA부문총괄]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[60.46]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[87.11]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[76.37]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[87.88]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[87.11]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[76.37]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[87.88]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    					<w2:row>
+    						<col01><![CDATA[다이렉트부문총괄]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[78.09]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[79.59]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[85.74]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[80.02]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[79.59]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[85.74]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[80.02]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    					<w2:row>
+    						<col01><![CDATA[영업부문총괄]]></col01>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col14><![CDATA[77.5]]></col14>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col02><![CDATA[81.62]]></col02>
+    						
+    						
+    						
+    						
+    						<col03><![CDATA[80.39]]></col03>
+    						
+    						
+    						
+    						
+    						<col04><![CDATA[82.33]]></col04>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						<col15><![CDATA[81.62]]></col15>
+    						
+    						
+    						
+    						
+    						<col16><![CDATA[80.39]]></col16>
+    						
+    						
+    						
+    						
+    						<col17><![CDATA[82.33]]></col17>
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    						
+    					</w2:row>
+    				</w2:data>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection />
+    	</xf:model>
+    	<w2:layoutInfo />
+    	<w2:publicInfo method="" />
+    	<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    scwin.search();
+};
+
+scwin.chk1_onchange = function(info) {
+    scwin.chk("1");    
+};
+
+scwin.chk2_onchange = function(info) {
+    scwin.chk("2");    
+};
+
+scwin.chk =function (type) {
+    var chkValue = "";
+    var chkItem = [];
+    if ( type == "1" ) {
+        chkItem = chk1.getItemArray();
+        // [{"label":"1회","value":"02"},{"label":"2회","value":"03"},{"label":"3회","value":"04"}]
+        chkValue = chk1.getValue();     // "02;03;04"
+
+    } else if ( type == "2") {
+        chkItem = chk2.getItemArray();
+        chkValue = chk2.getValue();
+
+    }
+
+    for (var i = 0; i < chkItem.length ; i++){
+        var flag = false;
+        if ( chkValue.indexOf(chkItem[i].value) > -1 ) {
+            flag = true;
+
+        } 
+        grd_Exam.setColumnVisible("col"+chkItem[i].value, flag);
+    }
+
+};
+
+scwin.chkA_onchange = function(info) {
+
+    if ( chk1.getDisabled()){
+
+        return;
+    }
+
+    if (info.newValue == "") {
+        chk1.checkAll(false);
+        chk2.checkAll(false);
+    } else {
+        chk1.checkAll(true);
+        chk2.checkAll(true);
+    }
+    scwin.chk("1");    
+    scwin.chk("2");    
+
+};
+
+scwin.search = function(e) {
+
+    dataList1.removeColumnFilterAll();
+
+    for (var i = 1; i <= 5 ; i++){
+        grd_Exam.setColumnVisible("col_"+i, false);
+    }
+    chk1.setDisabled(false);
+    chk2.setDisabled(false);
+    scwin.chk("1");
+    scwin.chk("2");
+
+    dataList1.setJSON(dataList2.getAllJSON());
+
+};
+
+]]></script>
+    	<style type="text/css"><![CDATA[
+    	
+    		.A4M2 .w2checkbox_item { width:50px;}
+    		.w2checkbox { height: auto; }
+    		.w2grid_textImage_image { padding-right:5px !important}
+    		
+
+    	
+    	 ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<w2:textbox escape="false" id="" label="Checkbox와 GridView를 연동하여 조회하는 예제입니다." style=""></w2:textbox>
+    		</xf:group>
+    		<xf:group id="" class="msgbox info">
+    			<xf:group style="" id="" class="titbox tmp_chk_mo">
+    				<xf:group id="" class="full_checkbox lt">
+    					<xf:select ref="" appearance="full" ev:onchange="scwin.chkA_onchange" disabled="" style="margin-right: 16px;"
+    						id="chkA" renderType="checkboxgroup" rows="" selectedindex="" class="" cols="" separator=";">
+    						<xf:choices>
+    							<xf:item>
+    								<xf:label><![CDATA[전체]]></xf:label>
+    								<xf:value><![CDATA[all]]></xf:value>
+    							</xf:item>
+    						</xf:choices>
+    					</xf:select>
+    					<xf:select ref="" appearance="full" ev:onchange="scwin.chk1_onchange" disabled="" style="" id="chk1"
+    						renderType="checkboxgroup" rows="" selectedindex="" class="" separator=";" cols="">
+    						<xf:choices>
+    							<xf:item>
+    								<xf:label><![CDATA[1회]]></xf:label>
+    								<xf:value><![CDATA[02]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[2회]]></xf:label>
+    								<xf:value><![CDATA[03]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[3회]]></xf:label>
+    								<xf:value><![CDATA[04]]></xf:value>
+    							</xf:item>
+    						</xf:choices>
+    					</xf:select>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group style="margin-bottom:0;" id="" class="titbox tmp_chk_mo">
+    				<xf:group id="" class="lt">
+    					<xf:select ref="" appearance="full" ev:onchange="scwin.chk2_onchange" disabled="" style="" id="chk2"
+    						renderType="checkboxgroup" rows="" selectedindex="" class="" separator=";" cols="">
+    						<xf:choices>
+    							<xf:item>
+    								<xf:label><![CDATA[4회]]></xf:label>
+    								<xf:value><![CDATA[14]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[5회]]></xf:label>
+    								<xf:value><![CDATA[15]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[6회]]></xf:label>
+    								<xf:value><![CDATA[16]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[7회]]></xf:label>
+    								<xf:value><![CDATA[17]]></xf:value>
+    							</xf:item>
+    						</xf:choices>
+    					</xf:select>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group adaptiveThreshold="" class="gvwbox" id="" style="">
+    			<w2:gridView checkReadOnlyOnPasteEnable="" class="" dataList="data:dataList1" focusMode="row" id="grd_Exam"
+    				scrollByColumn="false" scrollByColumnAdaptive="false" style="height: 260px;" ev:oncelldblclick="scwin.grd_Exam_oncelldblclick" readOnly="true">
+    				<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    				<w2:header id="header2" style="">
+    					<w2:row id="row3" style="">
+    						<w2:column blockSelect="false" displayMode="label" id="column12" inputType="text" removeBorderStyle="false"
+    							value="구분" width="130" rowSpan="3">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="header2" inputType="text" removeBorderStyle="false"
+    							value="1회차" width="80">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="header3" inputType="text" removeBorderStyle="false"
+    							value="2회차" width="80">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="header4" inputType="text" removeBorderStyle="false"
+    							value="3회차" width="80">
+    						</w2:column>
+    						<w2:column width="80" inputType="text" id="header14" value="4회차" displayMode="label"></w2:column>
+    						<w2:column width="80" inputType="text" id="header15" value="5회차" displayMode="label"></w2:column>
+    						<w2:column width="80" inputType="text" id="header16" value="6회차" displayMode="label"></w2:column>
+    						<w2:column width="80" inputType="text" id="header17" value="7회차" displayMode="label"></w2:column>
+    					</w2:row>
+    					<w2:row style="" id="row5">
+    						<w2:column width="80" inputType="text" id="column21" value="유지율" displayMode="label" rowSpan="2"></w2:column>
+    						<w2:column width="80" inputType="text" id="column20" value="유지율" displayMode="label" rowSpan="2"></w2:column>
+    						<w2:column width="80" inputType="text" id="column19" value="유지율" displayMode="label" rowSpan="2"></w2:column>
+    						<w2:column width="80" inputType="text" id="column33" value="유지율" displayMode="label" rowSpan="2"></w2:column>
+    						<w2:column width="80" inputType="text" id="column36" value="유지율" displayMode="label" rowSpan="2"></w2:column>
+    						<w2:column width="80" inputType="text" id="column39" value="유지율" displayMode="label" rowSpan="2"></w2:column>
+    						<w2:column width="80" inputType="text" id="column42" value="유지율" displayMode="label" rowSpan="2"></w2:column>
+    					</w2:row>
+    					<w2:row style="" id="row6"></w2:row>
+    				</w2:header>
+    				<w2:gBody id="gBody2" style="" class="">
+    					<w2:row id="row4" style="">
+    						<w2:column blockSelect="false" displayMode="label" id="col01" inputType="text" removeBorderStyle="false"
+    							width="130">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="col02" inputType="text" removeBorderStyle="false"
+    							width="80">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="col03" inputType="text" removeBorderStyle="false"
+    							width="80">
+    						</w2:column>
+    						<w2:column blockSelect="false" displayMode="label" id="col04" inputType="text" removeBorderStyle="false"
+    							width="80">
+    						</w2:column>
+    						<w2:column width="80" inputType="text" id="col14" displayMode="label"></w2:column>
+    						<w2:column width="80" inputType="text" id="col15" displayMode="label"></w2:column>
+    						<w2:column width="80" inputType="text" id="col16" displayMode="label"></w2:column>
+    						<w2:column width="80" inputType="text" id="col17" displayMode="label"></w2:column>
+    					</w2:row>
+    				</w2:gBody>
+    			</w2:gridView>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var tabOptions = {};
+		for (var i = 0; i < 3; i++) {
+			var addCount = i + 2;
+			var tabOptions = {
+				label : "Tab - " + addCount,
+				openAction: "new",
+				closable: "true"
+			}
+			var contentsOptions = {
+                    frameMode : "wframe",
+                    alwaysDraw : false
+                }
+			tabControl1.addTab(i, tabOptions, contentsOptions);
+			tabControl2.addTab(i, tabOptions, contentsOptions); 
+		}
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="タブ選択状態をツールチップとして表示" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1-1. 初めて目 TabControlから現在選択タブにマウスカース持参待機。 &lt;br/&gt;1-2. "タブラベル" + "選択済み" テキスト表示されるもの確認。 (useTabTitleSelected="true")&lt;br/&gt;&lt;br/&gt;2-1. 二つ目 TabControlから現在選択タブにマウスカース持参待機。 &lt;br/&gt;2-2. "タブラベル" &amp;nbsp;テキストのみ表示されるもの確認。 (useTabTitleSelected="false")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;useTabTitleSelected="true"' escape="false">
+    	</w2:textbox>
+    	<w2:tabControl confirmTrueAction="exist" useTabKeyOnly="true" confirmFalseAction="new" useMoveNextTabFocus="false" tabScrollAuto=""
+    		useConfirmMessage="false" alwaysDraw="false" style="border: gray solid 1px;height: 200px;margin-bottom: 10px;" tabPosition="top" id="tabControl1"
+    		ev:onscrollleftbtnclick="scwin.tabControl1_onscrollleftbtnclick" ev:onscrollrightbtnclick="scwin.tabControl1_onscrollrightbtnclick"
+    		ev:onsubmenubtnclick="scwin.tabControl1_onsubmenubtnclick" useTabTitleSelected="true">
+    		<w2:tabs disabled="false" style="width:128px;height:30px;" id="tabs1" label="Tab 1"></w2:tabs>
+    		<w2:content alwaysDraw="false" style="height:170px;" id="content1"></w2:content>
+    	</w2:tabControl>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;useTabTitleSelected="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:tabControl alwaysDraw="false" confirmFalseAction="new" confirmTrueAction="exist"
+    		ev:onscrollleftbtnclick="scwin.tabControl1_onscrollleftbtnclick" ev:onscrollrightbtnclick="scwin.tabControl1_onscrollrightbtnclick"
+    		ev:onsubmenubtnclick="scwin.tabControl1_onsubmenubtnclick" id="tabControl2" style="border: gray solid 1px;height: 200px;"
+    		tabPosition="top" tabScrollAuto="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true"
+    		useTabTitleSelected="false">
+    		<w2:tabs disabled="false" id="tabs2" label="Tab 1" style="width:128px;height:30px;"></w2:tabs>
+    		<w2:content alwaysDraw="false" id="content2" style="height:170px"></w2:content>
+    	</w2:tabControl>
+    </xf:group></body>
+</html>

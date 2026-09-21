@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] PageFrame 완료">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	scwin.btn_setData_onclick();
+};
+
+//완성 화면 보기 
+scwin.ui_textbox1_onclick = function (e) {  
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+
+
+//부모값 자동 넣기
+scwin.btn_setData_onclick = function (e) {
+    ui_ipt1.setValue("parent_Value1");
+    ui_ipt2.setValue("parent_Value2");
+};
+
+//setSrc적용
+//async await 문법 사용 안 할경우 발생    
+//getWindow() : pageFrame 화면 안의 객체를 접근하려면 이 함수를 호출함
+scwin.btn_setSrc_onclick =function (e) {  
+    pageFrame2.setSrc("/edu/adv/pageFrame_child_2.xml"); //1
+
+    pageFrame2.getWindow().scwin.setData(); //2
+};
+
+
+//setSrc적용(async)
+//async await 문법 사용하기 
+//getWindow() : pageFrame 화면 안의 객체를 접근하려면 이 함수를 호출함
+scwin.btn_setSrc_async_onclick = async function (e) { 
+    
+     var rowJSON = { 
+        "data1" : ui_ipt1.getValue(),
+        "data2" : ui_ipt2.getValue() 
+     }; 
+
+     var obj = { 
+        "dataObject": {
+            "type" : "json",
+            "name" : "pageParam",  
+            "data" : rowJSON 
+         }
+     };
+
+    await pageFrame2.setSrc("/edu/adv/pageFrame_child_2.xml", obj); //1
+
+    pageFrame2.getWindow().scwin.setData(); //2
+
+};
+ 
+//자식값 가져오기
+//getWindow() : pageFrame 화면 안의 객체를 접근하려면 이 함수를 호출함
+//ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+scwin.btn_getChild_onclick = function (e) {  
+    ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+
+    
+};  
+
+//부모값 보내기
+//pageFrame1.getWindow().ui_ipt1.setValue(ui_ipt1.getValue());
+scwin.btn_setChild_onclick = function (e) { 
+    pageFrame1.getWindow().ui_ipt1.setValue(ui_ipt1.getValue());
+};
+
+
+//자식1 -> 자식2
+//pageFrame2.getWindow().ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+scwin.btn_bro_onclick = function (e) {  
+ pageFrame2.getWindow().ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+};
+ ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[완성화면] PageFrame 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 완료된 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame style="" id="" src="/edu/adv/pageFrame_desc.xml"></w2:pageFrame>
+    			<xf:group class="tblbox" id="" style="">
+    				<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    					<w2:attributes>
+    						<w2:summary></w2:summary>
+    					</w2:attributes>
+    					<xf:group tagname="colgroup">
+    						<xf:group style="width:150px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    						<xf:group style="width:150px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    					</xf:group>
+    					<xf:group style="" tagname="tr">
+    						<xf:group class="w2tb_th" style="" tagname="th">
+    							<w2:textbox class="req" id="" label="부모 헤더1" ref="" style="" userData2=""></w2:textbox>
+
+    						</xf:group>
+    						<xf:group class="w2tb_td" style="" tagname="td">
+    							<xf:input id="ui_ipt1" style="width: 144px;height: 21px;"></xf:input>
+    						</xf:group>
+    						<xf:group class="w2tb_th " tagname="th">
+    							<w2:attributes></w2:attributes>
+    							<w2:textbox class="" id="" label="부모 헤더2" ref="" style="" userData2=""></w2:textbox>
+    						</xf:group>
+    						<xf:group class="w2tb_td" tagname="td">
+    							<w2:attributes></w2:attributes>
+    							<xf:input id="ui_ipt2" style="width: 144px;height: 21px;"></xf:input>
+
+    							<xf:trigger type="button" id="btn_setData" style="width: 80px;height: 23px;" class=""
+    								ev:onclick="scwin.btn_setData_onclick">
+    								<xf:label><![CDATA[값 자동 넣기]]></xf:label>
+    							</xf:trigger>
+    						</xf:group>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="아래에는 pageFrame이 존재합니다.(id:pageFrame1)" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style="">
+    					<xf:trigger class="btn_cm " id="btn_getChild" style="" type="button" ev:onclick="scwin.btn_getChild_onclick">
+    						<xf:label><![CDATA[자식값 가져오기]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " id="btn_setChild" style="" type="button" ev:onclick="scwin.btn_setChild_onclick">
+    						<xf:label><![CDATA[부모값 보내기]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<w2:pageFrame style="border: 2px solid green;padding: 10px;margin-bottom: 10px;" id="pageFrame1"
+    				src="/edu/adv/pageFrame_child_1_c.xml">
+    			</w2:pageFrame>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="async, await 문법 사용하기" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style="">
+    					<xf:trigger class="btn_cm " id="btn_setSrc_async" style="" type="button"
+    						ev:onclick="scwin.btn_setSrc_async_onclick">
+    						<xf:label><![CDATA[setSrc적용(async)]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " ev:onclick="scwin.btn_setSrc_onclick" id="btn_setSrc" style="" type="button">
+    						<xf:label><![CDATA[setSrc적용]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="아래에는 pageFrame이 존재합니다.(id:pageFrame2)" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style="">
+    					<xf:trigger class="btn_cm " ev:onclick="scwin.btn_bro_onclick" id="btn_bro" style="" type="button">
+    						<xf:label><![CDATA[자식1 - > 자식2]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<w2:pageFrame style="border: 2px solid green;padding: 10px;margin-bottom: 10px;" id="pageFrame2"></w2:pageFrame>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

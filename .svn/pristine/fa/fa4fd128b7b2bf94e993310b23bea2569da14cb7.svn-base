@@ -1,0 +1,34 @@
+/*amd /guide_jpn/_p/PopUp/isWFramePopUp_p/isWFramePopUp_p.xml 3136 4c62fb13663bcfc8cf581d1cc822eb74a658a3dd38a1d10363227316d2463fd8 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  requires("uiplugin.popup");
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var tmpSrc = scwin.getfolderPath() + "/popup_src.xml";
+  var opts = {
+    "id": "popup2",
+    "type": "wframePopup",
+    "popupName": "WFrame Popup",
+    "width": "500px",
+    "height": "500px",
+    "top": 100,
+    "left": 300,
+    "modal": true
+  };
+  $p.openPopup(tmpSrc, opts);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'WFrame ポップアップかどうかを確認',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 下部のボタンをクリックします。 <br/>2. WFrameポップアップが生成されることを確認してください。 <br/>3. WFrameポップアップのソース(src)画面にWFrameが含まれていることを確認してください。 <br/>4. ポップアップのWFrame内の最初のボタンをクリックします。 <br/>5.自分が属する画面がWFrameなので、falseが返されることを確認。 &nbsp;<br/>6. ポップアップのWFrame内の2番目のボタンをクリックします。 <br/>7. 自分の親がWFrameポップアップなので、trueが返されることを確認してください。 <br/>（詳細なスクリプトは wframe_src.xml ファイルを確認します。）',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup()'}]}]}]}]}]}]})

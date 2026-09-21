@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+            			<w2:column dataType="text" id="col2" name="Country"></w2:column>
+            			<w2:column dataType="text" id="col3" name="Item"></w2:column>
+            			<w2:column dataType="number" id="col4" name="Quantity"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList2" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[Asia]]></col1>
+            				<col2><![CDATA[01]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Europe]]></col1>
+            				<col2><![CDATA[02]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Americas]]></col1>
+            				<col2><![CDATA[03]]></col2>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList3">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Continent" dataType="text"></w2:column>
+            			<w2:column id="col2" name="Country" dataType="text"></w2:column>
+            			<w2:column id="col3" name="Item" dataType="text"></w2:column>
+            			<w2:column id="col4" name="Quantity" dataType="number"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var json = [
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "13452", "col4" : "37.2"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "20392", "col4" : "40.3"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "45993", "col4" : "35.0"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "19034", "col4" : "39.8"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "58922", "col4" : "41.2"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "43267", "col4" : "38.7"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "32012", "col4" : "36.9"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "18290", "col4" : "38.1"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "34102", "col4" : "39.5"}
+			];
+		dataList1.setJSON(json);
+		dataList3.setJSON(json);
+	};
+	
+	scwin.onpageunload = function() {		
+			
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="선택 항목 목록 즉시 펼치기" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(첫 번째 GridView에서)&lt;br/&gt;1. Continent 컬럼의 아이콘을 클릭. &lt;br/&gt;2. 선택 항목 목록이 바로 표시되는 것을 클릭. (directOpen="false")&lt;br/&gt;&lt;br/&gt;(두 번째 GridView에서)&lt;br/&gt;1. Continent 컬럼의 아이콘을 클릭. &lt;br/&gt;2. 선택 항목 목록이 바로 표시되지 않고, 더블 클릭해야 선택 항목 목록이 표시되는 것을 클릭. (directOpen="true")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='속성 설정 (Continent 컬럼)&lt;br/&gt;directOpen="true"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView showSortableUseFilter="" scrollByColumnAdaptive="false" rowNumVisible="" useShiftKey="true" scrollByColumn="false"
+    		sortable="" defaultCellHeight="20" noResultMessageVisible="" focusMode="cell" selectedCellColor="#FF8040" checkAllType="false"
+    		dataList="data:dataList1" copyType="native" style="border: solid gray 1px;margin-bottom: 10px;" id="gridView1" autoFit="allColumn" visibleRowNum="5"
+    		useFilterList="" useCtrlKey="" copyOption="" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="height:20px" id="column4" value="Continent" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Country" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column2" value="Item" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column1" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column ref="" directOpen="true" chooseOption="" width="70" viewType="icon" inputType="autoComplete"
+    					style="height:20px" id="col1" allOption="" value="" displayMode="value delim label" viewTypeIconImage="true">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList2">
+    							<w2:label ref="col2"></w2:label>
+    							<w2:value ref="col1"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='속성 설정 (Continent 컬럼)&lt;br/&gt;directOpen="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" checkAllType="false" copyOption="" copyType="native" dataList="data:dataList3"
+    		defaultCellHeight="20" focusMode="cell" id="gridView2" noResultMessageVisible="" rowNumVisible="" scrollByColumn="false"
+    		scrollByColumnAdaptive="false" selectedCellColor="#FF8040" showSortableUseFilter="" sortable="" style="border: solid gray 1px;"
+    		useCtrlKey="" useFilterList="" useShiftKey="true" visibleRowNum="5" visibleRowNumFix="true">
+    		<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column displayMode="label" id="column4" inputType="text" style="height:20px" value="Continent" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column3" inputType="text" style="height:20px" value="Country" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column2" inputType="text" style="height:20px" value="Item" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column1" inputType="text" style="height:20px" value="Quantity" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column allOption="" chooseOption="" displayMode="label delim value" id="col1" inputType="autoComplete" ref=""
+    					style="height:20px" value="" viewType="icon" viewTypeIconImage="true" width="70">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList2">
+    							<w2:label ref="col2"></w2:label>
+    							<w2:value ref="col1"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column displayMode="label" id="col2" inputType="text" style="height:20px" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col3" inputType="text" style="height:20px" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col4" inputType="text" style="height:20px" value="" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

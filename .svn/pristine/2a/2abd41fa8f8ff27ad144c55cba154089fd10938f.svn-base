@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+        			<w2:columnInfo>
+        				<w2:column id="checkbox" name="checkbox" dataType="text"></w2:column>
+        				<w2:column id="radio" name="radio" dataType="text"></w2:column>
+        				<w2:column id="Status" name="Status" dataType="text"></w2:column>
+        				<w2:column id="Date" name="Date" dataType="date"></w2:column>
+        				<w2:column id="Expense" name="Expense" dataType="number"></w2:column>
+        				<w2:column id="Income" name="Income" dataType="number"></w2:column>
+        				<w2:column id="Hobby" name="Hobby" dataType="text"></w2:column>
+        				<w2:column id="Region" name="Region" dataType="text"></w2:column>
+        				<w2:column id="Frequency" name="Frequency" dataType="number"></w2:column>
+        				<w2:column id="ID" name="ID" dataType="number"></w2:column>
+        				<w2:column id="Age" name="Age" dataType="number"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="" style="width: 90%;height: 300px;margin-left: 30px;">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/data.json';
+    $p.executeSubmission("submission1");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Combine Other Column Values for Label&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='(First Checkbox Column)&lt;br/&gt;Confirm that values from the Status and Hobby columns are combined and displayed according to the checkboxLabelColumn property setting.&lt;br/&gt;&lt;br/&gt;(Second Radio Column)&lt;br/&gt;Confirm that values from the Hobby, Region, and Frequency columns are combined and displayed according to the radioLabelColumn property setting.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='(Checkbox Column)&lt;br/&gt;inputType="checkbox" &lt;br/&gt;checkboxLabelColumn="Status,Hobby"&lt;br/&gt;&lt;br/&gt;(Radio Column)&lt;br/&gt;inputType="radio" &lt;br/&gt;radioLabelColumn="Hobby,Region,Frequency"' escape="false">
+    	</w2:textbox><w2:gridView scrollByColumnAdaptive="false" dataList="data:dataList1" style="border: solid gray 1px;" scrollByColumn="false" id="gridView1" autoFit="allColumn" defaultCellHeight="" visibleRowNum="10" visibleRowNumFix="true" rowNumVisible="true" rowNumStatusUniqueId="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="120" inputType="text" style="height:20px;" id="column9" value='Checkbox' displayMode="label">
+    				</w2:column>
+    				<w2:column width="120" inputType="text" style="height:20px" id="column8" value='Radio' displayMode="label">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column7" value="Status" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Hobby" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column2" value="Region" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column1" value="Frequency" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column textAlign="left" width="120" radioLabelColumn="" inputType="checkbox" style="height:20px;" checkboxLabelColumn="Status,Hobby" checkboxLabel="" id="checkbox" value="" displayMode="label" viewType="icon">
+    				</w2:column>
+    				<w2:column textAlign="left" width="120" radioLabelColumn="Hobby,Region,Frequency" inputType="radio" style="height:20px;" id="radio" value="" displayMode="label" viewType="icon">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Status" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Hobby" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Region" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="Frequency" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView></xf:group></body>
+</html>

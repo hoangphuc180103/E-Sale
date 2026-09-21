@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		requires("uiplugin.popup");	
+		var parent = $p.parent().text1.getValue();	
+		var triggerName = parent;
+		trigger1.setLabel(triggerName + " - pageFrame - (options.frameModal : top)");
+		text1.hide();
+		
+		
+		var parent2 = $p.parent().text2.getValue();	
+		var triggerName2 = parent2;
+		trigger2.setLabel(triggerName2 + " - wframe - (options.frameModal : frame)");
+		text2.hide();
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {	
+		var options = {  		 
+		        id : "pageFramePopup - top", 
+		        type : "pageFramePopup", // "iframePopup", "browserPopup"
+		        width: "300px", 
+		        height: "200px", 
+		        popupName :"pageFramePopup - top",       
+		        modal : "true",		     
+		        frameModal : "top"
+		    }; 
+	 
+	    $p.openPopup("",  options );
+	};
+	
+	scwin.trigger2_onclick = function(e) {
+		var options = {  		 
+		        id : "wframePopup - frame", 
+		        type : "wframePopup", // "iframePopup", "browserPopup"
+		        width: "300px", 
+		        height: "200px", 
+		        popupName :"wframePopup - frame",	  
+		        resizable: true,	             
+		        modal : "true",		     
+		        frameModal : "frame"
+		    }; 
+	 
+	    $p.openPopup("",  options );
+		   
+	};
+	
+	scwin.trigger3_onclick = function(e) {
+		var options = {  		 
+		        id : "iframePopup - frame", 
+		        type : "iframePopup", // "iframePopup", "browserPopup"
+		        width: "300px", 
+		        height: "200px", 
+		        top: "200", 
+		        left: "200", 
+		        popupName : "iframePopup - frame",	
+		        resizable: true,	            
+		        modal : "true",		     
+		        frameModal : "frame" 
+		    }; 
+	 
+	    $p.openPopup("",  options );
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;margin-top: 100px;margin-bottom: 100px;">
+    		<w2:textbox style="margin-bottom:10px;font-size:20px;font-weight:bolder;font-style:italic;text-align:left;" id="textbox1" label="02_openPopUp_tab.xml">
+    	</w2:textbox>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color: lightblue;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;"
+    			id="trigger2" type="button">
+    			<xf:label><![CDATA[]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger ev:onclick="scwin.trigger3_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color: lightpink;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;"
+    			id="trigger3" type="button">
+    			<xf:label><![CDATA[Main C - iframe &nbsp;- (options.frameModal : frame)]]></xf:label>
+    		</xf:trigger>
+    		<w2:textbox style="width: 150px;height: 23px;" id="text1" label=""></w2:textbox>
+    		<w2:textbox style="width: 150px;height: 23px;" id="text2" label=""></w2:textbox>
+    	</xf:group>
+    </body>
+</html>

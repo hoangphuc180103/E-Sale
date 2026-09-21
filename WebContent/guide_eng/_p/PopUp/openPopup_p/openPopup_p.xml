@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count=0;
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/for_pageFrame.xml";
+
+    var options = {
+
+        id: scwin.count,
+        type: "wframePopup",
+        width: "400px",
+        height: "250px",
+        top: "130px",
+        left: "200px",
+        popupName: "PageFrame Popup",
+        modal: true,
+        resizable: true
+    };
+
+    $p.openPopup(tmpSrc, options);
+
+};
+
+scwin.trigger2_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/for_wframe.xml";
+
+    var options = {
+
+        id: scwin.count,
+        type: "wframePopup",
+        width: "400px",
+        height: "250px",
+        top: "130px",
+        left: "200px",
+        popupName: "WFrame Popup",
+        modal: true,
+        resizable: true
+    };
+
+    $p.openPopup(tmpSrc, options);
+};
+
+scwin.trigger3_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/for_iframe.xml";
+    var options = {
+
+        id: scwin.count,
+        type: "iframePopup",
+        width: "400px",
+        height: "250px",
+        top: "130px",
+        left: "200px",
+        popupName: "IFrame Popup",
+        modal: true,
+        resizable: true
+    };
+
+    $p.openPopup(tmpSrc, options);
+};
+
+
+
+scwin.trigger4_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/for_browser.xml";
+    var options = {
+
+        id: scwin.count,
+        type: "browserPopup",
+        width: "400px",
+        height: "250px",
+        top: "130px",
+        left: "200px",
+        popupName: "Browser Popup",
+        modal: true,
+        resizable: true
+    };
+
+    $p.openPopup(tmpSrc, options);
+
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Create Popup (PageFrame, WFrame, IFrame, Browser Popup)&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='Click each button below to verify that a popup of the specified type is generated.&lt;br/&gt;(See the Script tab for detailed script information.)' escape="false">
+    	</w2:textbox>
+    	<xf:trigger type="button" id="trigger1" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" ev:onclick="scwin.trigger1_onclick">
+    		<xf:label><![CDATA[$p.openPopup pageFramePopup]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[$p.openPopup wframePopup]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger3_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger3" type="button">
+    		<xf:label><![CDATA[$p.openPopup iframePopup]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger4_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger4" type="button">
+    		<xf:label><![CDATA[$p.openPopup browserPopup]]></xf:label>
+    	</xf:trigger>
+    </xf:group></body>
+</html>

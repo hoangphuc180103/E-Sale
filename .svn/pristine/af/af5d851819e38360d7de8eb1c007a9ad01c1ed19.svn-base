@@ -1,0 +1,60 @@
+/*amd /guide_jpn/SelectBox/setEnableColumn_SelectBox.xml 4124 d9f80aeca4b8e857866c207073055e39119787f0f95bcd80dfc311e7f09d44fb */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:'margin: 100px;'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'Code',name:'name1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'City',name:'name2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Country',name:'name3'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Type',name:'name4'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "Code": "SEL",
+    "City": "Seoul",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "BSN",
+    "City": "Busan",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "ICN",
+    "City": "Incheon",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "DJN",
+    "City": "Daejeon",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "DGU",
+    "City": "Daegu",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "OTW",
+    "City": "Ottawa",
+    "Country": "Canada",
+    "Type": "Overseas"
+  }, {
+    "Code": "LDN",
+    "City": "Toronto",
+    "Country": "Canada",
+    "Type": "Overseas"
+  }, {
+    "Code": "BRN",
+    "City": "Berlin",
+    "Country": "Germany",
+    "Type": "Overseas"
+  }, {
+    "Code": "BJG",
+    "City": "Beijing",
+    "Country": "China",
+    "Type": "Overseas"
+  }, {
+    "Code": "LDN",
+    "City": "London",
+    "Country": "UK",
+    "Type": "Overseas"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  select1.setEnableColumn("Country", "China,Canada");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'一部選択項目（動的）無効',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Ctrl ボタンを押しながらマウスを右クリックします。 <br/>2. 「dataCollection View」メニューを選択します。 <br/>3. SelectBox とバインディングされた dataList1 を確認します。 <br/>4. SelectBoxの選択リストにdataList1のデータが表示されていることを確認してください。<br/>5. 下部の setEnableColumn() ボタンをクリックします。 <br/>6. dataList1のデータのうち、Country列の値が「China」または「Canada」の選択項目が選択リストで無効になることを確認。',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'select1.setEnableColumn("Country", "China,Canada");'}]}]},{T:1,N:'xf:select1',A:{enableColumn:'',tooltipShowAlways:'false',submenuSize:'auto',labelWidthAuto:'',chooseOption:'',tooltip:'',allOption:'',itemTooltipDisplay:'',ref:'',appearance:'minimal',enableColumnFalseValue:'',tooltipDisplay:'',disabledClass:'w2selectbox_disabled',style:'width: 50%;',disabled:'false',id:'select1',class:'',direction:'auto'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'xf:label',A:{ref:'City'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]}]}]})

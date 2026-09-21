@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] label, value, delimiter를 사용하여 선택 항목을 표시하는 방법을 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230321" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_dataList1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="Label" name="name1" dataType="text"></w2:column>
+						<w2:column id="Code" name="name2" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<Code><![CDATA[01]]></Code>
+							<Label><![CDATA[Apple]]></Label>
+						</w2:row>
+						<w2:row>
+							<Code><![CDATA[02]]></Code>
+							<Label><![CDATA[Banana]]></Label>
+						</w2:row>
+						<w2:row>
+							<Code><![CDATA[03]]></Code>
+							<Label><![CDATA[Cherry]]></Label>
+						</w2:row>
+						<w2:row>
+							<Code><![CDATA[04]]></Code>
+							<Label><![CDATA[Dragon fruit]]></Label>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="SelectBox의 'displayMode' 속성과 'delimiter' 속성을 사용하여 선택 항목을 표시한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="항목을 'label'로 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 id="sbx_exam1" chooseOption="" style="width: 148px;" submenuSize="auto" allOption="" disabled="false"
+							direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" displayMode="label">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="Label"></xf:label>
+									<xf:value ref="Code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="항목을 'value'로 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+							disabledClass="w2selectbox_disabled" displayMode="value" id="sbx_exam2" ref="" style="width: 148px;" submenuSize="auto">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="Label"></xf:label>
+									<xf:value ref="Code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="항목을 ' label 구분자 value' 형식으로 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" delimiter=" - " direction="auto" disabled="false"
+							disabledClass="w2selectbox_disabled" displayMode="label delim value" id="sbx_exam3" ref="" style="width: 148px;"
+							submenuSize="auto">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="Label"></xf:label>
+									<xf:value ref="Code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="항목을 'value 구분자 label' 형식으로 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin: 10px 0px 10px 0px;"></xf:group>
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" delimiter=" - " direction="auto" disabled="false"
+							disabledClass="w2selectbox_disabled" displayMode="value delim label" id="sbx_exam4" ref="" style="width: 148px;"
+							submenuSize="auto">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="Label"></xf:label>
+									<xf:value ref="Code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+/*amd /page/P00099.xml 9726 d92f1df2dfadb755eb3d359fc4f25eff914728a6f570ceb2ad7e0d5bbcc7b9e1 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_1',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_2',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_3',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_4',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  var arrData = [{
+    "category": "Security",
+    "product": "SecureGate"
+  }, {
+    "category": "Servers",
+    "product": "FastServe"
+  }, {
+    "category": "Cloud Services",
+    "product": "CloudFlex"
+  }, {
+    "category": "Code Editors",
+    "product": "CodeStream"
+  }, {
+    "category": "Networking",
+    "product": "NetMax"
+  }, {
+    "category": "Support Services",
+    "product": "TechAssist"
+  }, {
+    "category": "AI Software",
+    "product": "IntelliAI"
+  }, {
+    "category": "Storage Solutions",
+    "product": "StoreSafe"
+  }, {
+    "category": "Managed Services",
+    "product": "ManageIT"
+  }, {
+    "category": "Web Dev Frameworks",
+    "product": "WebBuilder"
+  }, {
+    "category": "Servers",
+    "product": "EcoServe"
+  }, {
+    "category": "IT Consulting",
+    "product": "SmartConsult"
+  }, {
+    "category": "Apps",
+    "product": "MobileMagic"
+  }, {
+    "category": "Networking",
+    "product": "SpeedLink"
+  }, {
+    "category": "Security",
+    "product": "VirusGuard"
+  }, {
+    "category": "Storage Solutions",
+    "product": "DataVault"
+  }, {
+    "category": "Support Services",
+    "product": "GlobalSupport"
+  }, {
+    "category": "Database",
+    "product": "DataAnalyzer"
+  }, {
+    "category": "Web Dev Frameworks",
+    "product": "FrameworkPro"
+  }, {
+    "category": "Servers",
+    "product": "ServeAll"
+  }, {
+    "category": "Cloud Services",
+    "product": "CloudPro"
+  }, {
+    "category": "Apps",
+    "product": "AppMagic"
+  }, {
+    "category": "Networking",
+    "product": "LinkSecure"
+  }, {
+    "category": "Support Services",
+    "product": "HelpDesk"
+  }, {
+    "category": "Security",
+    "product": "SafeWeb"
+  }, {
+    "category": "Storage Solutions",
+    "product": "SmartStorage"
+  }, {
+    "category": "Managed Services",
+    "product": "BizManage"
+  }, {
+    "category": "AI Software",
+    "product": "DeepThink"
+  }];
+  dlt_exam_1.setJSON(arrData);
+  dlt_exam_2.setJSON(arrData);
+  dlt_exam_3.setJSON(arrData);
+  dlt_exam_4.setJSON(arrData);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView에서 사용자가 직접 필터를 설정할 때, 사용하는 UI 유형을 비교한 예제입니다.<br/>각 GridView의 헤더 [Category]에 있는 필터 아이콘을 클릭하여 필터 기능을 비교합니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) 필터 설정 없음',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'34',visibleRowNumFix:'true',rowNumVisible:'true',dataList:'data:dlt_exam_1',style:'height:100px;',autoFit:'lastColumn',id:'',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'120',inputType:'text',id:'column2',value:'Category',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'120',inputType:'text',id:'category',value:'',displayMode:'label',textAlign:'left'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'팝업형 필터 설정',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'34',rowNumVisible:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam_2',style:'height:100px;',autoFit:'lastColumn',id:'',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'120',inputType:'text',id:'column2',value:'Category',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'120',inputType:'text',id:'category',value:'',displayMode:'label',textAlign:'left'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'콤보 박스형 필터 설정',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'34',rowNumVisible:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam_3',style:'height:100px;',autoFit:'lastColumn',id:'',visibleRowNum:'4',useFilterList:'true',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{autoFitFilterList:'true',width:'120',inputType:'text',id:'column2',value:'Category',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'120',inputType:'text',id:'category',value:'',displayMode:'label',textAlign:'left'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'콤보 박스형 필터 + 필터 검색 설정',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumVisible:'true',defaultCellHeight:'37',useFilterSearch:'true',rowNumWidth:'34',visibleRowNumFix:'true',dataList:'data:dlt_exam_4',style:'height:100px;',autoFit:'lastColumn',id:'',useFilterList:'true',visibleRowNum:'4',class:'gvw',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{autoFitFilterList:'true',width:'120',inputType:'text',id:'column2',value:'Category',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'120',inputType:'text',id:'category',value:'',displayMode:'label',textAlign:'left'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label'}}]}]}]}]}]}]}]}]}]}]}]})

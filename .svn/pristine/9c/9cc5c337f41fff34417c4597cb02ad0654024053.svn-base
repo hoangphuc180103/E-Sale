@@ -1,0 +1,61 @@
+/*amd /guide_eng/SelectBox/itemTooltipFormatter_SelectBox.xml 4342 c1c11e7f9c00039a4403aee28c89f1c68213eb1e15a2aea2b6bb0aa03c2818e1 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:'margin: 100px;'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'Code',name:'name1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'City',name:'name2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Country',name:'name3'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Type',name:'name4'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "Code": "SEL",
+    "City": "Seoul, the largest city in Korea",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "BSN",
+    "City": "Busan, the second largest city in Korea",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "ICN",
+    "City": "Incheon, the gateway to Korea",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "DJN",
+    "City": "Daejeon, the government city of Korea",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "DGU",
+    "City": "Jeju, the largest island in Korea",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "OTW",
+    "City": "Ottawa in Canada",
+    "Country": "Canada",
+    "Type": "Overseas"
+  }, {
+    "Code": "LDN",
+    "City": "Toronto in Canada",
+    "Country": "Canada",
+    "Type": "Overseas"
+  }, {
+    "Code": "BRN",
+    "City": "Berlin in Germany",
+    "Country": "Germany",
+    "Type": "Overseas"
+  }, {
+    "Code": "BJG",
+    "City": "Beijing in China",
+    "Country": "China",
+    "Type": "Overseas"
+  }, {
+    "Code": "LDN",
+    "City": "London in GB",
+    "Country": "UK",
+    "Type": "Overseas"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.selectBoxTooltip = function (label, index) {
+  var row = index + 1;
+  return row + " row tooltip customizable.";
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox1',label:'Tooltip Customization<br/>',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',tagname:'h1'}},{T:1,N:'w2:textbox',A:{id:'textbox2',label:'How to Use',style:'height: 23px;margin-bottom: 10px;color: blue;',tagname:'h2'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox3',label:'1. Open the SelectBox.<br/>2. Move the mouse cursor over an item in the list.<br/>3. Confirm that the value returned by the function specified as the itemTooltipFormatter property is displayed as a tooltip.',style:'color: blue;margin-bottom: 30px;'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox4',label:'itemTooltipFormatter="scwin.selectBoxTooltip"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:textbox',A:{id:'textbox5',label:'/// Sample Code<br/><br/>scwin.selectBoxTooltip = function (label, index) {<br/> &nbsp; &nbsp;var row = index + 1;<br/> &nbsp; &nbsp;return row + " row tooltip customizable.";<br/>};',style:'padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;',escape:'false'}},{T:1,N:'xf:select1',A:{enableColumn:'',tooltipShowAlways:'',submenuSize:'auto',useItemLocale:'',labelWidthAuto:'',chooseOption:'',tooltip:'',allOption:'',itemTooltipDisplay:'true',tooltipLocaleRef:'',ref:'',appearance:'minimal',enableColumnFalseValue:'',tooltipDisplay:'',disabledClass:'w2selectbox_disabled',itemTooltipFormatter:'scwin.selectBoxTooltip',style:'width: 50%;',disabled:'false',id:'select1',class:'',direction:'auto'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'xf:label',A:{ref:'City'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]}]}]})

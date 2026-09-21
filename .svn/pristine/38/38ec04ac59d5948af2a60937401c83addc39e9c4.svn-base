@@ -1,0 +1,104 @@
+/*amd /page/P00198.xml 11624 46b9e5f464e4f3926f5f5bbf0b09954638e50e6acf4005599b0a7edbe98df305 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}},{T:1,N:'w2:column',A:{dataType:'text',name:'C',id:'col_c'}},{T:1,N:'w2:column',A:{dataType:'text',name:'D',id:'col_d'}},{T:1,N:'w2:column',A:{dataType:'text',name:'E',id:'col_e'}},{T:1,N:'w2:column',A:{dataType:'text',name:'F',id:'col_f'}},{T:1,N:'w2:column',A:{dataType:'text',name:'G',id:'col_g'}},{T:1,N:'w2:column',A:{dataType:'text',name:'H',id:'col_h'}},{T:1,N:'w2:column',A:{dataType:'text',name:'I',id:'col_i'}},{T:1,N:'w2:column',A:{dataType:'text',name:'J',id:'col_j'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A1'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B1'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C1'}]},{T:1,N:'col_d',E:[{T:4,cdata:'D1'}]},{T:1,N:'col_e',E:[{T:4,cdata:'E1'}]},{T:1,N:'col_f',E:[{T:4,cdata:'F1'}]},{T:1,N:'col_g',E:[{T:4,cdata:'G1'}]},{T:1,N:'col_h',E:[{T:4,cdata:'H1'}]},{T:1,N:'col_i',E:[{T:4,cdata:'I1'}]},{T:1,N:'col_j',E:[{T:4,cdata:'J1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A2'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B2'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C2'}]},{T:1,N:'col_d',E:[{T:4,cdata:'D2'}]},{T:1,N:'col_e',E:[{T:4,cdata:'E2'}]},{T:1,N:'col_f',E:[{T:4,cdata:'F2'}]},{T:1,N:'col_g',E:[{T:4,cdata:'G2'}]},{T:1,N:'col_h',E:[{T:4,cdata:'H2'}]},{T:1,N:'col_i',E:[{T:4,cdata:'I2'}]},{T:1,N:'col_j',E:[{T:4,cdata:'J2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A3'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B3'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C3'}]},{T:1,N:'col_d',E:[{T:4,cdata:'D3'}]},{T:1,N:'col_e',E:[{T:4,cdata:'E3'}]},{T:1,N:'col_f',E:[{T:4,cdata:'F3'}]},{T:1,N:'col_g',E:[{T:4,cdata:'G3'}]},{T:1,N:'col_h',E:[{T:4,cdata:'H3'}]},{T:1,N:'col_i',E:[{T:4,cdata:'I3'}]},{T:1,N:'col_j',E:[{T:4,cdata:'J3'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A4'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B4'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C4'}]},{T:1,N:'col_d',E:[{T:4,cdata:'D4'}]},{T:1,N:'col_e',E:[{T:4,cdata:'E4'}]},{T:1,N:'col_f',E:[{T:4,cdata:'F4'}]},{T:1,N:'col_g',E:[{T:4,cdata:'G4'}]},{T:1,N:'col_h',E:[{T:4,cdata:'H4'}]},{T:1,N:'col_i',E:[{T:4,cdata:'I4'}]},{T:1,N:'col_j',E:[{T:4,cdata:'J4'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  //GridView의 초기 개인화 스타일 저장하기
+  $p.local.setItem("P00198_init_grid", grd_main.getCurrentGridStyle());
+
+  // 기존에 저장된 GridView의 스타일을 저장.
+  let gridStyle = $p.local.getItem("P00198_grd_style");
+  if (gridStyle) {
+    grd_main.setGridStyle(gridStyle);
+
+    //로그 출력
+    $c.frame.printExampleLog($p, "저장된 GridView의 개인화 스타일이 적용되었습니다.", txa_log, false);
+  } else {
+    //로그 출력
+    $c.frame.printExampleLog($p, "저장된 GridView의 개인화 스타일이 없습니다.", txa_log, false);
+  }
+};
+
+/**
+ * 버튼 [저장] 클릭 시
+ * Trigger 'btn_save' 의 onclick 이벤트 핸들러
+ */
+scwin.btn_save_onclick = function (e) {
+  // 현재 gridView 스타일 정보 가져오기
+  var grd_style = grd_main.getCurrentGridStyle();
+
+  // localStorage에 gridView의 style 저장
+  $p.local.setItem("P00198_grd_style", grd_style);
+
+  //로그 출력
+  var strLog = "GridView 개인화 스타일 저장 완료";
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+};
+
+/**
+ * 버튼 [불러오기] 클릭 시
+ * Trigger 'btn_load' 의 onclick 이벤트 핸들러
+ */
+scwin.btn_load_onclick = function (e) {
+  // localStorage에 저장한 gridView 스타일 정보 가져오기
+  var grd_style = $p.local.getItem("P00198_grd_style");
+  var strLog;
+  if (!grd_style) {
+    strLog = "저장된 GridView의 개인화 스타일이 없습니다.";
+  } else {
+    // 현재 gridView의 개인화 스타일 적용
+    grd_main.setGridStyle(grd_style);
+    strLog = "GridView에 저장된 개인화 스타일이 적용되었습니다.";
+  }
+
+  //로그 출력
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+};
+
+/**
+ * 버튼 [삭제] 클릭 시
+ * Trigger 'btn_clear' 의 onclick 이벤트 핸들러
+ */
+scwin.btn_clear_onclick = function (e) {
+  // 저장된 스타일 정보 제거
+  $p.local.removeItem("P00198_grd_style");
+
+  // 화면 파일의 GridView 개인화 스타일을 적용합니다.
+  grd_main.setGridStyle($p.local.getItem("P00198_init_grid"));
+
+  //로그 출력
+  var strLog = "저장된 GridView의 개인화 스타일이 삭제되었습니다.\nGridView의 개인화 스타일이 초기화되었습니다.";
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+};
+
+/**
+ * 버튼 [초기화] 클릭 시
+ * Trigger 'btn_init' 의 onclick 이벤트 핸들러
+ */
+scwin.btn_init_onclick = function (e) {
+  // 화면 파일의 GridView 개인화 스타일을 적용합니다.
+  grd_main.setGridStyle($p.local.getItem("P00198_init_grid"));
+
+  //로그 출력
+  var strLog = "GridView의 개인화 스타일이 초기화되었습니다.(저장된 개인화 스타일은 삭제되지 않습니다.)";
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  let strTargetId = this.getUserData("userData1");
+  let cmpTarget;
+  if (strTargetId) {
+    cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+  } else {
+    cmpTarget = txa_log;
+  }
+  //textarea value를 빈문자열로 할당.
+  cmpTarget.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 스타일을 개인화하는 예제입니다.',style:'margin-bottom: 10px;'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mb_def',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ofh nobottom',id:'',style:'max-width: 700px;'},E:[{T:1,N:'xf:group',A:{class:'fl mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_init_onclick',id:'btn_init',style:'',tooltip:'개인화 스타일을 초기화합니다. 저장된 개인화 스타일은 삭제하지 않습니다.',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'GridView 초기화'}]}]}]},{T:1,N:'xf:group',A:{class:'fr mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btn_save',style:'margin-right:6px;',type:'button',tooltip:'GridView의 개인화 스타일을 저장합니다.','ev:onclick':'scwin.btn_save_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'저장'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btn_load',style:'',tooltip:'저장된 GridView 개인화 스타일을 적용합니다.',type:'button','ev:onclick':'scwin.btn_load_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'불러오기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btn_clear',style:'',tooltip:'GridView 개인화 스타일을 삭제하고 GridView의 스타일을 초기화합니다.',type:'button','ev:onclick':'scwin.btn_clear_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'삭제'}]}]}]}]},{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:''},E:[{T:1,N:'w2:gridView',A:{autoFit:'none',autoFitMinWidth:'660',class:'gvw',dataList:'data:dlt_exam',defaultCellHeight:'37',id:'grd_main',style:'height: 100px;',visibleRowNum:'5',contextMenu:'true',columnMove:'true',useFilterList:'false',useHeaderContextMenu:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column10',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column9',value:'B',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column8',value:'C',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column7',value:'D',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column6',value:'E',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column5',value:'F',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column4',value:'G',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'H',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'I',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'J',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_a',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_b',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_c',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_d',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_e',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_f',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_g',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_h',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_i',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_j',value:'',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_th_style',id:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_blue',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'btn_clearLog',style:'',title:'로그 삭제',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log',spellcheck:'false',style:'width: 100%;height: 140px;'}}]}]}]}]}]}]}]}]})

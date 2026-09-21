@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Textarea] CSS로 리사이즈 기능 적용하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231102" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Textarea의 CSS 'resize' 속성을 사용하여 크기를 조절할 수 있도록 설정한 예제입니다.">
+				</w2:textbox>
+				<w2:textbox escape="false" id=""
+					label="이 기능은 웹스퀘어에서 제공하는 기능이 아니며 브라우저의 지원 여부에 따라 동작됩니다." style="" class="ws_example_txt_desc_info">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="리사이즈 미적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea id="" style="width: 200px;height: 100px;" class="P00407_resize_none"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="리사이즈 상하, 좌우 적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="P00407_resize_both" id="" style="width: 200px;height: 100px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="리사이즈 좌우 적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="P00407_resize_horizontal" id="" style="width: 200px;height: 100px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="리사이즈 상하 적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="P00407_resize_vertical" id="" style="width: 200px;height: 100px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+		
+	scwin.select11_onselected = function() {
+		alert("onselected - event occurred!");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="イベント - onselected"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. リストから任意の項目を選択します。 &lt;br/&gt;2. onselected イベントが発生していることを確認してください。'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;" id="textbox5" label="イベント説明&lt;br/&gt;onselected - マウスクリックまたはEnterキーで項目を選択した場合に発生します。" escape="false">
+    	</w2:textbox>
+    	<xf:select1 submenuSize="auto" ref="" appearance="minimal" disabledClass="w2selectbox_disabled" chooseOption="" style="width: 50%;"
+    		disabled="false" ev:onselected="scwin.select11_onselected" id="select11" allOption="" direction="auto">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[Afghanistan]]></xf:label>
+    				<xf:value><![CDATA[93]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Albania]]></xf:label>
+    				<xf:value><![CDATA[355]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Algeria]]></xf:label>
+    				<xf:value><![CDATA[213]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[American Samoa]]></xf:label>
+    				<xf:value><![CDATA[1-684]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Andorra]]></xf:label>
+    				<xf:value><![CDATA[376]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Angola]]></xf:label>
+    				<xf:value><![CDATA[244]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:select1>
+    </xf:group></body>
+</html>

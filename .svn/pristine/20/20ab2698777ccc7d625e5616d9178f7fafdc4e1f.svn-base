@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="month" name="Month" dataType="text"></w2:column>
+            			<w2:column id="type" name="Type" dataType="text"></w2:column>
+            			<w2:column id="leaves" name="Leaves" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<month><![CDATA[Jan]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[1]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Feb]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[2]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Mar]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[2]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Apr]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[1]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[May]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[3]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Jun]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[1]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Jul]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[0]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Aug]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[1]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Sep]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[2]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Oct]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[2]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Nov]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[1]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Dec]]></month>
+            				<type><![CDATA[Sick Leaves]]></type>
+            				<leaves><![CDATA[0]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Jan]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[10]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Feb]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[9]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Mar]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[13]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Apr]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[15]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[May]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[9]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Jun]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[20]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Jul]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[24]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Aug]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[8]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Sep]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[7]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Oct]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[6]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Nov]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[10]]></leaves>
+            			</w2:row>
+            			<w2:row>
+            				<month><![CDATA[Dec]]></month>
+            				<type><![CDATA[Regular Leaves]]></type>
+            				<leaves><![CDATA[19]]></leaves>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="필터 목록 표시" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(첫 번째 GridView)&lt;br/&gt;1-1. 헤더에 있는 필터 아이콘을 클릭. &amp;nbsp;&lt;br/&gt;1-2. 필터가 목록 형태로 표시되는 것을 확인. (useFilterList="true")&lt;br/&gt;&lt;br/&gt;(두 번째 GridView) &lt;br/&gt;1-1. 헤더에 있는 필터 아이콘을 클릭. &amp;nbsp;&lt;br/&gt;1-2. 필터를 직접 설정해야 하는 사용자 지정 필터 상자가 표시되는 것을 확인. (useFilterList="false")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;useFilterList="true" (GridView) &lt;br/&gt;useFilter="true" (GridView 헤더의 각 컬럼)' escape="false">
+    	</w2:textbox>
+    	<w2:gridView scrollByColumnAdaptive="false" dataList="data:dataList1" style="border: solid gray 1px;margin-bottom:10px;" scrollByColumn="false"
+    		id="gridView1" autoFit="allColumn" useFilterList="true" defaultCellHeight="20" visibleRowNum="7" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column2" value="Month"
+    					blockSelect="false" displayMode="label" useFilter="true">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column1" value="Type"
+    					blockSelect="false" displayMode="label" useFilter="true">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column5" value="Leaves"
+    					blockSelect="false" displayMode="label" useFilter="true">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column autoFitFilterList="" removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="month"
+    					value="" blockSelect="false" displayMode="label" useFilter="">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="type" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="leaves" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    		<w2:footer style="" id="footer1">
+    			<w2:row style="" id="row3">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column8" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column7" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="expression" style="height:20px" id="column6" value=""
+    					blockSelect="false" displayMode="label" expression='SUM("leaves")'>
+    				</w2:column>
+    			</w2:row>
+    		</w2:footer>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='속성 설정&lt;br/&gt;useFilterList="false" (GridView) &lt;br/&gt;useFilter="true" (GridView 헤더의 각 컬럼)'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" dataList="data:dataList1" defaultCellHeight="20" id="gridView2" scrollByColumn="false"
+    		scrollByColumnAdaptive="false" style="border: solid gray 1px;" visibleRowNum="7" visibleRowNumFix="true">
+    		<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column blockSelect="false" displayMode="label" id="column2" inputType="text" removeBorderStyle="false"
+    					style="height:20px" useFilter="true" value="Month" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column1" inputType="text" removeBorderStyle="false"
+    					style="height:20px" useFilter="true" value="Type" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column5" inputType="text" removeBorderStyle="false"
+    					style="height:20px" useFilter="true" value="Leaves" width="70">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column autoFitFilterList="" blockSelect="false" displayMode="label" id="month" inputType="text"
+    					removeBorderStyle="false" style="height:20px" useFilter="" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="type" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="leaves" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    		<w2:footer id="footer1" style="">
+    			<w2:row id="row3" style="">
+    				<w2:column blockSelect="false" displayMode="label" id="column8" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column7" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" expression='SUM("leaves")' id="column6" inputType="expression"
+    					removeBorderStyle="false" style="height:20px" value="" width="70">
+    				</w2:column>
+    			</w2:row>
+    		</w2:footer>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

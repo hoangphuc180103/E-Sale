@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 공통] 스크립트로 이벤트 해제(제거)하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221109" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="예제 설명부의 문구가 수정되었습니다." meta_date="20231129" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+    //예제 테스트를 위해 버튼 [테스트 버튼 3]에 onclick 핸들러를 연결합니다.
+    btn_exam_test3.bind("onclick", scwin.btn_example_test_onclick_user);
+
+    //예제 테스트를 위해 버튼 [테스트 버튼 4]에 onclick 핸들러를 연결합니다.
+    btn_exam_test4.bind("onclick", scwin.btn_example_test_onclick_user);
+
+};
+
+
+/**
+ * 예제 테스트를 위한 공용 onclick 핸들러
+ */
+scwin.btn_example_test_onclick_user = function (e) {
+    var strLog;
+
+    //로그 출력
+    strLog = "[공용] onclick 이벤트 핸들러 - 메소드 scwin.btn_example_test_onclick_user";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+
+};
+
+/**
+ * 영역 [모든 이벤트의 모든 핸들러 제거하기]의
+ * 버튼 [모든 이벤트의 모든 핸들러 제거하기 - unbind] 클릭 시
+ * [컴포넌트 ID].unbind();
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var strLog;
+
+    //로그 출력
+    strLog = "** 메소드 scwin.btn_ex2_onclick **";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+    strLog = 'btn_exam_test2.unbind();';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+
+    //버튼 [테스트 버튼 2]의 모든 이벤트의 모든 핸들러 모두 제거
+    btn_exam_test2.unbind();
+};
+
+/**
+ * 영역 [모든 이벤트의 모든 핸들러 제거하기]의
+ * 버튼 [테스트 버튼 2]의 onclick 핸들러
+ */
+scwin.btn_exam_test2_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("[테스트 버튼 2] - onclick 발생 - 메소드 scwin.btn_exam_test2_onclick", txa_log, false);
+};
+
+/**
+ * 영역 [모든 이벤트의 모든 핸들러 제거하기]의
+ * 버튼 [테스트 버튼 2]의 onmouseup 핸들러
+ */
+scwin.btn_exam_test2_onmouseup = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("[테스트 버튼 2] - onmouseup 발생 - 메소드 scwin.btn_exam_test2_onmouseup", txa_log, false);
+};
+
+/**
+ * 영역 [특정 이벤트의 모든 핸들러 제거하기]의
+ * 버튼 [특정 이벤트의 모든 핸들러 제거하기 - unbind] 클릭 시
+ * [컴포넌트 ID].unbind( type );
+ */
+scwin.btn_ex3_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** 메소드 scwin.btn_ex3_onclick **", txa_log, false);
+    $c.frame.printExampleLog('btn_exam_test3.unbind("onclick");', txa_log, false);
+
+    //버튼 [테스트 버튼 3]의 onclick 이벤트 핸들러 모두 제거
+    btn_exam_test3.unbind("onclick");
+};
+
+/**
+ * 영역 [특정 이벤트의 모든 핸들러 제거하기]의
+ * 버튼 [테스트 버튼 3]의 onclick 핸들러
+ */
+scwin.btn_exam_test3_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("[테스트 버튼 3] - onclick 발생 - 메소드 scwin.btn_exam_test3_onclick", txa_log, false);
+};
+
+/**
+ * 영역 [특정 이벤트의 모든 핸들러 제거하기]의
+ * 버튼 [테스트 버튼 3]의 onmouseup 핸들러
+ */
+scwin.btn_exam_test3_onmousedown = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("[테스트 버튼 3] - onmouseup 발생 - 메소드 scwin.btn_exam_test3_onmouseup", txa_log, false);
+};
+
+/**
+ * 영역 [특정 이벤트의 특정 핸들러 제거하기]의
+ * 버튼 [특정 이벤트의 특정 핸들러 제거하기 - unbind] 클릭 시
+ * [컴포넌트 ID].unbind( type, function );
+ */
+scwin.btn_ex4_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** 메소드 scwin.btn_ex4_onclick **", txa_log, false);
+    $c.frame.printExampleLog('btn_exam_test4.unbind("onclick", scwin.btn_example_test_onclick_user);', txa_log, false);
+
+    //컴포넌트의 onclick 이벤트의 'scwin.btn_example_test_onclick_user' 핸들러 제거
+    btn_exam_test4.unbind("onclick", scwin.btn_example_test_onclick_user);
+};
+
+/**
+ * 영역 [특정 이벤트의 특정 핸들러 제거하기]의
+ * 버튼 [테스트 버튼 4]의 onclick 핸들러
+ */
+scwin.btn_exam_test4_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("[테스트 버튼 4] - onclick 발생 - 메소드 scwin.btn_exam_test4_onclick", txa_log, false);
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+
+
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc mb_def_box" id="" style="">
+				<w2:textbox class="" escape="false" id="" label="컴포넌트의 'unbind' 메소드를 사용하여, 컴포넌트에 등록된 이벤트 핸들러를 제거한 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox id="" label="컴포넌트의 이벤트 발생 시 영역 '로그 확인'의 textarea에 로그가 출력됩니다." style="" class="exam_txt caution"></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="모든 이벤트의 모든 핸들러 제거하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="Trigger에 모든 이벤트 핸들러를 제거합니다.&lt;br/&gt;[테스트 버튼2]에는 onclick 핸들러 1개, onmouseup 핸들러 1개가 등록되어있습니다." style=""></w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2"
+								style="" type="button">
+								<xf:label><![CDATA[모든 이벤트의 모든 핸들러 제거하기 - unbind]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:trigger class="btn_cm" id="btn_exam_test2" style="width: 100px;" type="button"
+							ev:onclick="scwin.btn_exam_test2_onclick" ev:onmouseup="scwin.btn_exam_test2_onmouseup">
+							<xf:label><![CDATA[테스트 버튼 2]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="특정 이벤트의 모든 핸들러 제거하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="Trigger의 onclick 이벤트의 모든 핸들러를 제거합니다.&lt;br/&gt;[테스트 버튼3]에는 onclick 핸들러 2개, onmouseup 핸들러 1개가 등록되어있습니다." style=""></w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3"
+								style="" type="button">
+								<xf:label><![CDATA[특정 이벤트의 모든 핸들러 제거하기 - unbind]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:trigger class="btn_cm" id="btn_exam_test3" style="width: 100px;" type="button"
+							ev:onclick="scwin.btn_exam_test3_onclick" ev:onmousedown="scwin.btn_exam_test3_onmousedown">
+							<xf:label><![CDATA[테스트 버튼 3]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="특정 이벤트의 특정 핸들러 제거하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="Trigger의 onclick 이벤트의 핸들러 [scwin.btn_example_test_onclick_user]를 제거합니다.&lt;br/&gt;[테스트 버튼4]에는 onclick 핸들러 2개가 등록되어있습니다."
+							style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex4_onclick" id="btn_ex4"
+								style="" type="button">
+								<xf:label><![CDATA[특정 이벤트의 특정 핸들러 제거하기 - unbind]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:trigger class="btn_cm" id="btn_exam_test4" style="width: 100px;" type="button"
+							ev:onclick="scwin.btn_exam_test4_onclick">
+							<xf:label><![CDATA[테스트 버튼 4]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

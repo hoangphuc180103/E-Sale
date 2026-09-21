@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제] dynamic 실습화면">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() { 
+ 
+};
+
+scwin.ui_textbox1_onclick = function (e) {
+
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+//input 동적 생성 이벤트
+scwin.btn_set_onclick = function (e) {
+
+    //1. 필요한 변수 선언
+    //2. 중복되지 않는 ID 생성을 위한 스크립트
+    //3. input 생성 $p.dynamicCreate() 
+    //4. 생성된 input의 더 필요한 속성 있을경우 기재
+    
+    var _comp;
+		var compXml = [];
+        var strID;
+        var objDate;
+         objDate = new Date();
+         strID = "ipt_ex_" + objDate.getDate() + "_" + objDate.getTime();
+
+        
+		compXml.push('<xf:input xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms" style="width: 144px;height: 31px; margin-right:10px;">');
+        compXml.push('</xf:input>');
+  
+        //ui_ipt1.getPluginName(); 
+		_comp = $p.dynamicCreate(strID, "input", compXml.join(""), grp1);
+         
+        _comp.setPlaceholder("입력하세요");
+};
+
+//버튼 동적 생성 이벤트
+scwin.btn_triggerDy_onclick = function (e) {
+    //1. 필요한 변수 선언
+    //2. 중복되지 않는 ID 생성을 위한 스크립트
+    //3. 버튼(trigger) 생성 $p.dynamicCreate() 
+    //4. 생성된 trigger의 더 필요한 속성 있을경우 기재
+    var _comp;
+    var strID;
+    var objDate;
+
+    objDate = new Date();
+    strID = "btn_ex_" + objDate.getDate() + "_" + objDate.getTime();
+
+    _comp = $p.dynamicCreate(
+        strID,
+        "trigger", //생성할 컴포넌트의 pluginName
+        {
+              style: ""
+            , className: "btn_cm pt"
+        },
+        grp1  //추가될 부모 컴포넌트 객체 ID
+    );
+
+     _comp.setValue("버튼");
+ 
+    
+}; 
+ 
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] 스크립트에서 동적으로 컴포넌트 생성" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style="cursor: pointer;" tagname="h3"
+    					userData1="/edu/adv/dynamic_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame style="" id="" src="/edu/adv/dynamic_desc.xml"></w2:pageFrame>
+    		</xf:group>
+    		<xf:group class="schbox" id="" style="">
+    			<xf:group class="schbox_inner" id="" style="">
+    				<xf:group adaptive="layout" adaptiveThreshold="768" class="w2tb tbl " id="" style="" tagname="table">
+    					<w2:attributes>
+    						<w2:summary></w2:summary>
+    					</w2:attributes>
+    					<xf:group tagname="colgroup">
+    						<xf:group style="width:100px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    						<xf:group style="width:100px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    					</xf:group>
+    					<xf:group class="" id="" style="" tagname="tr">
+    						<xf:group class="w2tb_th" style="" tagname="th">
+    							<w2:attributes>
+    								<w2:colspan>4</w2:colspan>
+    								<w2:rowspan>1</w2:rowspan>
+    							</w2:attributes>
+    						</xf:group>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="btn_schbox" id="" style="">
+    				<xf:trigger class="btn_cm sch" disabled="" escape="false" ev:onclick="scwin.btn_set_onclick" id="btn_set" style=""
+    					tooltip="텍스트를 설정합니다." type="button">
+    					<xf:label><![CDATA[input 동적 생성]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_cm sch" disabled="" escape="false" id="btn_triggerDy" style="" tooltip="텍스트를 반환합니다."
+    					type="button" ev:onclick="scwin.btn_triggerDy_onclick">
+    					<xf:label><![CDATA[버튼 동적 생성]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<w2:textbox class="ws_example_txt_desc_info" id="" label="아래 Group ( ID : grp1 ) 컴포넌트에 동적으로 생성됩니다." style="background-color: #eee;padding:10px 10px;margin-bottom: 10px;"></w2:textbox>
+    		<xf:group id="grp1" style="height:200px;border:2px solid green;" class="btnbox"></xf:group>
+    		<xf:group class="example_div_tb_style_wrap" id="">
+    			<xf:group class="example_div_tr_style" id="" style=""></xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

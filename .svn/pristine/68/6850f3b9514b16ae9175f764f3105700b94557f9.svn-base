@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] iFrame VS pageFrame">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[완성화면] iFrame Vs PageFrame 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="F12 실행 후 개발자도구에서 두 컴포넌트 구조를 비교해보세요" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="tblbox" id="" style=""></xf:group>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="iFrame component" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style=""></xf:group>
+    			</xf:group>
+    			<xf:group class="msgbox error" id="" style="">
+    				<w2:textbox class="txt_msg" for="" id="" label="삽입된 객체가 현재 페이지와 무관한 독립적인 객체로 표현" style="" tagname=""></w2:textbox>
+    				<w2:textbox class="txt_con" for="" id=""
+    					label="웹페이지의 일부분을 독립적으로 로드하고 표시하기 때문에 웹페이지의 일부분을 독립적으로 제어"
+    					style="" tagname="">
+    				</w2:textbox>
+    				<w2:textbox class="txt_con" for="" id=""
+    					label="메모리를 많이 차지하고 속도가 느리다는 단점"
+    					style="" tagname="">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:iframe src="/edu/adv/iframe_sub.xml"
+    				style="border:2px solid green;padding:10px;margin-bottom:10px;height:40px;width: 500px;" id="">
+    			</w2:iframe>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="pageFrame component" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style=""></xf:group>
+    			</xf:group>
+    			<xf:group class="msgbox error" id="" style="">
+    				<w2:textbox class="txt_msg" for="" id="" label="삽입된 객체가 현재 페이지에 포함되어 하나의 소스로 구성" style="" tagname=""></w2:textbox>
+    				<w2:textbox class="txt_con" for="" id="" label="JSP의 include처럼 웹스퀘어 페이지 화면 파일을 현재 화면에 포함하여 출력하는 컴포넌트입니다."
+    					style="" tagname="">
+    				</w2:textbox>
+    				<w2:textbox class="txt_con" for="" id=""
+    					label="메모리를 적게 차지하고 속도가 빠릅니다" style="" tagname="">
+    				</w2:textbox>
+    				<w2:textbox class="txt_con" for="" id=""
+    					label="웹스퀘어에서 다른 페이지를 참조해서 사용할때는 pageframe 을 권장합니다." style="" tagname="">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:pageFrame id="pageFrame2" style="border:2px solid green;padding:10px;margin-bottom:10px;height:40px;width: 500px;"
+    				src="/edu/adv/iframe_sub.xml">
+    			</w2:pageFrame>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="F12 실행 후 개발자도구에서 inputBox의 id 를 비교해보세요" style=""
+    					tagname="h3">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="화면의 inputBox 의 id(ipt1) 비교" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style=""></xf:group>
+
+    			</xf:group>
+    		</xf:group>
+    		<w2:span label="id:ipt1" style="" id=""></w2:span>
+    		<xf:input id="ipt1" style="width: 144px;height: 21px;" ></xf:input>
+    	</xf:group>
+    </body>
+</html>

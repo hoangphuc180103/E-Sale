@@ -1,0 +1,18 @@
+
+/* training0_desc.xml 교육 설명 페이지에서 동영상 링크 이미지 관련 css */
+.edu_video {
+	display:inline-block;
+	width:30px;
+	height:30px;
+	margin-left:5px;
+	background:url(/edu/img/ico_edu_video.svg) no-repeat;background-size:100% auto;
+	font-size:0px;
+	text-indent:-9999px;
+};
+
+.detailsbox details{border:1px solid #ccc;border-radius:6px;box-sizing:border-box;}
+.detailsbox details summary{overflow: hidden;display: block;height: 44px;padding:0 30px 0 12px;background: url(/cm/images/contents/ico_details.svg) no-repeat center right 12px;font-size:14px;font-weight:700;line-height:44px;text-overflow: ellipsis;white-space: nowrap;}
+.detailsbox details[open]{overflow:hidden;box-shadow: 0 0 0 1px inset #09AB81;border-color: #09AB81;} 
+.detailsbox details[open] summary{background:#09AB81 url(/cm/images/contents/ico_details_open.svg) no-repeat center right 12px;color:#fff;}
+.detailsbox details[open] div{margin:0;padding:12px;border:1px solid #09AB81;border-radius:0 0 6px 6px;background:#E5F7F2;color:#007957;font-size:13px;box-sizing:border-box;}
+.detailsbox details + details{margin-top:12px;}

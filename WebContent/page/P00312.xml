@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[FusionChart] 차트 타입과 Alias 목록">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230801" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="order" name="order" dataType="number"></w2:column>
+						<w2:column id="category" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="type" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="alias" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<type><![CDATA[Column 2D]]></type>
+							<alias><![CDATA[column2d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Column 3D]]></type>
+							<alias><![CDATA[column3d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Line 2D]]></type>
+							<alias><![CDATA[line]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Area 2D]]></type>
+							<alias><![CDATA[area2d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Bar 2D]]></type>
+							<alias><![CDATA[bar2d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Bar 3D]]></type>
+							<alias><![CDATA[bar3d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Pie 2D]]></type>
+							<alias><![CDATA[pie2d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Pie 3D]]></type>
+							<alias><![CDATA[pie3d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Doughnut 2D]]></type>
+							<alias><![CDATA[doughnut2d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Doughnut 3D]]></type>
+							<alias><![CDATA[doughnut3d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Pareto 2D]]></type>
+							<alias><![CDATA[pareto2d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Pareto 3D]]></type>
+							<alias><![CDATA[pareto3d]]></alias>
+							<category><![CDATA[Single Series Charts]]></category>
+							<order><![CDATA[1]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Column 2D]]></type>
+							<alias><![CDATA[mscolumn2d]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Column 3D]]></type>
+							<alias><![CDATA[mscolumn3d]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Line 2D]]></type>
+							<alias><![CDATA[msline]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Bar 2D]]></type>
+							<alias><![CDATA[msbar2d]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Bar 3D]]></type>
+							<alias><![CDATA[msbar3d]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Overlapped Column 2D]]></type>
+							<alias><![CDATA[overlappedcolumn2d]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Overlapped Bar 2D]]></type>
+							<alias><![CDATA[overlappedbar2d]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Area 2D]]></type>
+							<alias><![CDATA[msarea]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Marimekko]]></type>
+							<alias><![CDATA[marimekko]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Zoom Line]]></type>
+							<alias><![CDATA[zoomline]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Zoom Line DY]]></type>
+							<alias><![CDATA[zoomlinedy]]></alias>
+							<category><![CDATA[Multi-series Charts]]></category>
+							<order><![CDATA[2]]></order>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Stacked Charts]]></category>
+							<type><![CDATA[Stacked Column 2D]]></type>
+							<alias><![CDATA[stackedcolumn2d]]></alias>
+							<order><![CDATA[3]]></order>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Stacked Charts]]></category>
+							<type><![CDATA[Stacked Column 3D]]></type>
+							<alias><![CDATA[stackedcolumn3d]]></alias>
+							<order><![CDATA[3]]></order>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Stacked Charts]]></category>
+							<type><![CDATA[Stacked Bar 2D]]></type>
+							<alias><![CDATA[stackedbar2d]]></alias>
+							<order><![CDATA[3]]></order>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Stacked Charts]]></category>
+							<type><![CDATA[Stacked Bar 3D]]></type>
+							<alias><![CDATA[stackedbar3d]]></alias>
+							<order><![CDATA[3]]></order>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Stacked Charts]]></category>
+							<type><![CDATA[Stacked Area 2D]]></type>
+							<alias><![CDATA[stackedarea2d]]></alias>
+							<order><![CDATA[3]]></order>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Stacked Charts]]></category>
+							<type><![CDATA[Multi-series Stacked Bar 2D]]></type>
+							<alias><![CDATA[msstackedbar2d]]></alias>
+							<order><![CDATA[3]]></order>
+						</w2:row>
+						<w2:row>
+							<category><![CDATA[Stacked Charts]]></category>
+							<type><![CDATA[Multi-series Stacked Column 2D]]></type>
+							<alias><![CDATA[msstackedcolumn2d]]></alias>
+							<order><![CDATA[3]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series 2D Single Y Combination Chart (Column + Line + Area)]]></type>
+							<alias><![CDATA[mscombi2d]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series 3D Single Y Combination Chart (Column + Line + Area)]]></type>
+							<alias><![CDATA[mscombi3d]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Column 3D + Line - Single Y Axis]]></type>
+							<alias><![CDATA[mscolumnline3d]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Stacked Column2D + Line single Y Axis]]></type>
+							<alias><![CDATA[stackedcolumn2dline]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Stacked Column3D + Line single Y Axis]]></type>
+							<alias><![CDATA[stackedcolumn3dline]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Stacked Column2D + Line Dual Y Axis]]></type>
+							<alias><![CDATA[stackedcolumn2dlinedy]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Stacked Area + Line Dual Y Axis]]></type>
+							<alias><![CDATA[stackedarea2dlinedy]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series 2D Dual Y Combination Chart (Column + Line + Area)]]></type>
+							<alias><![CDATA[mscombidy2d]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series 3D Dual Y Combination Chart (Column + Line + Area)]]></type>
+							<alias><![CDATA[mscombidy3d]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Column 3D + Line - Dual Y Axis]]></type>
+							<alias><![CDATA[mscolumn3dlinedy]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Stacked Column 3D + Line Dual Y Axis]]></type>
+							<alias><![CDATA[stackedcolumn3dlinedy]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Multi-series Stacked Column 2D + Line Dual Y Axis]]></type>
+							<alias><![CDATA[msstackedcolumn2dlinedy]]></alias>
+							<category><![CDATA[Combination Charts]]></category>
+							<order><![CDATA[4]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scatter Chart]]></type>
+							<alias><![CDATA[scatter]]></alias>
+							<category><![CDATA[XY Plot Charts]]></category>
+							<order><![CDATA[5]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Zoom Scatter Chart]]></type>
+							<alias><![CDATA[zoomscatter]]></alias>
+							<category><![CDATA[XY Plot Charts]]></category>
+							<order><![CDATA[5]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Bubble Chart]]></type>
+							<alias><![CDATA[bubble]]></alias>
+							<category><![CDATA[XY Plot Charts]]></category>
+							<order><![CDATA[5]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Column 2D]]></type>
+							<alias><![CDATA[scrollcolumn2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Bar 2D]]></type>
+							<alias><![CDATA[scrollbar2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Line 2D]]></type>
+							<alias><![CDATA[scrollline2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Area 2D]]></type>
+							<alias><![CDATA[scrollarea2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Stacked Column 2D]]></type>
+							<alias><![CDATA[scrollstackedcolumn2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Stacked Bar 2D]]></type>
+							<alias><![CDATA[scrollstackedbar2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Combination 2D (Single Y)]]></type>
+							<alias><![CDATA[scrollcombi2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[Scroll Combination 2D (Dual Y)]]></type>
+							<alias><![CDATA[scrollcombidy2d]]></alias>
+							<category><![CDATA[Scroll Charts]]></category>
+							<order><![CDATA[6]]></order>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 데이터 정렬
+    dlt_chartType.multisort({
+        "sortIndex": "order",
+        "sortOrder": "1"
+    });
+
+    // UI 생성
+    scwin.dispGenerator();
+};
+
+scwin.dispGenerator = function () {
+    let arrData = dlt_chartType.getAllJSON();
+    let _cmpGenCatetory = gen_category;
+    let _cmpGen;
+    let numCateIndex;
+    let numGenIndex;
+    let preCategory;
+    let strTbxValue = "";
+
+    for (let i = 0, i_max = arrData.length; i < i_max; i++) {
+        let item = arrData[i];
+
+        if (preCategory != item.category) {
+            numCateIndex = _cmpGenCatetory.getLength();
+            _cmpGenCatetory.insertChild();
+            _cmpGenCatetory.getChild(numCateIndex, "tbx_category").setValue(item.category);
+            _cmpGen = _cmpGenCatetory.getChild(numCateIndex, "gen_exam1");
+            preCategory = item.category;
+
+            _cmpGen.insertChild();
+            _cmpGen.getChild(0, "tbx_type").setValue("Chart Type");
+            _cmpGen.getChild(0, "tbx_alias").setValue("Chart Alias");
+
+            numGenIndex = 1;
+
+            strTbxValue += "// " + item.category + "\n";
+        }
+        
+        _cmpGen.insertChild();
+        _cmpGen.getChild(numGenIndex, "tbx_type").setValue(item.type);
+        _cmpGen.getChild(numGenIndex, "tbx_alias").setValue(item.alias);
+
+        strTbxValue += item.type + " : " + item.alias + "\n";
+
+        numGenIndex++;
+    };
+
+    txa_result.setValue(strTbxValue);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Fusion Chart의 차트 타입별 Alias입니다. &lt;br/&gt;Alias는 Fusion Chart의 'chartType' 속성에 지정하거나 'changeType' 메소드의 첫 번째 인자로 사용됩니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="Fusion Chart 버전은 '3.19'를 기준으로 작성되었습니다." style=""></w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 예제 가이드 문서가 포함되어 있지 않습니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="tbcbox" id="" style="">
+				<w2:tabControl alwaysDraw="true" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="" style=""
+					tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+					<w2:tabs disabled="false" id="tabs1" label="표로 보기" style="" closable="false"></w2:tabs>
+					<w2:tabs disabled="false" id="tabs2" label="TextArea로 보기" style="" closable="false"></w2:tabs>
+					<w2:content alwaysDraw="true" id="content1" style="padding-left: 4px;">
+						<w2:generator style="" id="gen_category">
+							<xf:group class="titbox" id="" style="">
+								<w2:textbox class="" id="tbx_category" label="분류" style="" tagname="h2"></w2:textbox>
+							</xf:group>
+							<w2:generator class="example_div_tb_st_tp3 fd_col" id="gen_exam1" style="">
+								<xf:group class="" id="" style="">
+									<xf:group class="" id="">
+										<w2:textbox class="" escape="false" id="tbx_type" label="label" style=""></w2:textbox>
+									</xf:group>
+									<xf:group class="" id="" style="">
+										<w2:textbox class="" escape="false" id="tbx_alias" label="text" style="word-break: break-all;"></w2:textbox>
+									</xf:group>
+								</xf:group>
+							</w2:generator>
+						</w2:generator>
+						
+					</w2:content>
+					<w2:content alwaysDraw="true" id="content2" style="">
+						<xf:textarea class="" id="txa_result" style="width: 100%;max-width:500px;height: 300px;line-height:1.8em;"></xf:textarea>
+					</w2:content>
+				</w2:tabControl>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

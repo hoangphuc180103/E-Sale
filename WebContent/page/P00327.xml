@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Anchor] 'href' 속성의 설정 값 비교하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230814" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="예제 설명의 주의 사항 문구 수정" meta_date="20240312" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false" label="Anchor의 'href' 속성을 설정별로 비교할 수 있는 예제입니다." style="" class=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'href' 속성을 지정하지 않은 경우" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="기본 설정 값은 'javascript:void(null);'입니다." style=""></w2:textbox>
+						<xf:group id="" class="">
+							<w2:anchor ref="" outerDiv="false"
+								style="text-decoration: underline;display: inline-block;line-height:1.2em;min-height: 12px;min-width: 205px;"
+								label="속성 href 미지정 - 기본 설정 값 확인">
+							</w2:anchor>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="도메인이 동일한 URL을 지정한 경우" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="" id="">
+							<w2:anchor href="/websquare/websquare.html?w2xPath=/page/P00327.xml" id="" label="새 창으로 동일한 도메인의 웹스퀘어 파일 열기"
+								outerDiv="false" ref=""
+								style="text-decoration: underline;display: inline-block;line-height:1.2em;min-height: 12px;min-width: 205px;" target="_blank">
+							</w2:anchor>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="도메인이 다른 URL을 지정한 경우" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="" id="">
+							<w2:anchor href="https://example.websquare.kr/" id="" label="새 창으로 'https://example.websquare.kr/' 열기" outerDiv="false"
+								ref="" style="text-decoration: underline;display: inline-block;line-height:1.2em;min-height: 12px;min-width: 205px;" target="_blank">
+							</w2:anchor>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+/*amd /guide_jpn/_p/Submission/getSubmissionList_p/getSubmissionList_p.xml 6960 5e41b520cca6935c9a84063ad01068ffbb1cb72cdaf778b25ccb80b36b33d334 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList4',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col5',name:'name5',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col6',name:'name6',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'},{T:1,N:'xf:submission',A:{id:'submission1',ref:'',target:'data:json,dataList1',action:'testdata.json',method:'post',mediatype:'application/json',encoding:'UTF-8',instance:'',replace:'',errorHandler:'',customHandler:'',mode:'asynchronous',processMsg:'','ev:submit':'','ev:submitdone':'','ev:submiterror':'',abortTrigger:''}},{T:1,N:'xf:submission',A:{id:'submission4',ref:'',target:'data:json,dataList4',action:'testdata4.json',method:'post',mediatype:'application/json',encoding:'UTF-8',instance:'',replace:'',errorHandler:'',customHandler:'',mode:'asynchronous',processMsg:'','ev:submit':'','ev:submitdone':'','ev:submiterror':'',abortTrigger:''}}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  const tmpSrc1 = scwin.getfolderPath() + "/source2.xml";
+  wframe1.setSrc(tmpSrc1);
+  const tmpSrc2 = scwin.getfolderPath() + "/source3.xml";
+  wframe2.setSrc(tmpSrc2);
+  var objSubmission1 = $p.getSubmission("submission1");
+  objSubmission1.action = scwin.getfolderPath() + '/testdata.json';
+  $p.executeSubmission("submission1");
+  var objSubmission4 = $p.getSubmission("submission4");
+  objSubmission4.action = scwin.getfolderPath() + '/testdata4.json';
+  $p.executeSubmission("submission4");
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var list = $p.getSubmissionList({
+    "returnType": "json",
+    "all": true
+  });
+  alert(JSON.stringify(list));
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'完全なSubmissionオブジェクトを返す',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'（メイン画面 - "submission1" & "submission4", 初めて目フレーム - "submission2", 二つ目フレーム - "submission3"）<br/><br/>1-1. 初めて目ボタンクリック。 <br/>1-2. 全体画面上含まれる Submissionの情報表示されるもの確認。 <br/><br/>2-1. 画面の初めて目フレームに含まれるボタンクリック。 <br/>2-2. 該当フレーム内部 Submisisonの情報のみ表示されるもの確認。 <br/><br/>3-1. 画面の二つ目フレームに含まれるボタンクリック。 <br/>3-3. 該当フレーム含む親画面全体に含まれる Submisisonの情報表示されるもの確認。<br/><br/>（詳細スクリプトは Script タブから確認。）',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'getSubmissionList({ "returnType": "json", "all": true })'}]}]},{T:1,N:'w2:gridView',A:{rowNumVisible:'true',visibleRowNumFix:'true',checkAllType:'false',dataList:'data:dataList1',style:'border: solid 1px gray;margin-bottom: 10px;',id:'gridView1',visibleRowNum:'5',autoFit:'allColumn',defaultCellHeight:'20'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'name1',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'name2',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'name3',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col3',value:'',displayMode:'label'}}]}]}]},{T:1,N:'w2:gridView',A:{rowNumVisible:'true',visibleRowNumFix:'true',checkAllType:'false',dataList:'data:dataList4',style:'border: solid 1px gray;margin-bottom: 20px;',id:'gridView2',visibleRowNum:'5',autoFit:'allColumn',defaultCellHeight:'20'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption2',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column11',value:'name5',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column10',value:'name6',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row4'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col5',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col6',value:'',displayMode:'label'}}]}]}]},{T:1,N:'w2:wframe',A:{scope:'true',style:'border:solid 2px magenta;margin-bottom: 20px;',id:'wframe1',processMsgFrame:'true'}},{T:1,N:'w2:wframe',A:{style:'border:solid 2px blue',id:'wframe2'}}]}]}]}]})

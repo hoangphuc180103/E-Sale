@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[tabControl]tab main sample">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.btnCall_onclick = async function (e) {
+    
+    var rowJSON = { 
+        "Personal Info" : { "Name": "Lee", "Age": 50, "Married" : false},
+        "Region": "Seoul",  
+        "Carrier": true 
+    }; 
+ 
+    var obj = { 
+        "dataObject": {
+            "type" : "json",
+            "name" : "pageFrameParam",  
+            "data" : rowJSON 
+         }
+    };
+    
+    await pageFrame1.setSrc("/edu/adv/sub.xml", obj); // 1
+
+    pageFrame1.getWindow().scwin.setDate();  //2 
+    
+};
+
+scwin.btnCallTab_onclick = async function (e) {
+        
+     var newTabId = await tab1.addTab("cmcm011",  
+        {   
+            "label": "New", 
+            "title": "dataObject",
+            "openAction": "exist",
+            "closable": "true"
+        }, 
+        {   
+            "src": "/edu/adv/sub2.xml",
+            "frameMode" : "wframePreload",
+            "scope" : true, 
+            "alwaysDraw": "true"
+        }
+     );
+     await tab1.setSelectedTabIndex("cmcm011");
+
+     tab1.getWindow(tab1.getSelectedTabIndex()).iptTab2.setValue("mmmmmmmm");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="Main " style="" tagname="h4"></w2:textbox>
+    		</xf:group>
+    		<xf:group id="" style="margin-bottom: 10px;overflow: hidden;">
+    			<xf:trigger style="float:right;clear:none;" id="btnCall" type="button" class="btn_cm" ev:onclick="scwin.btnCall_onclick">
+    				<xf:label><![CDATA[call]]></xf:label>
+    			</xf:trigger>
+    			<xf:trigger class="call Tab" id="btnCallTab" style="float:right;clear:none;" type="button" ev:onclick="scwin.btnCallTab_onclick">
+    				<xf:label><![CDATA[Tab call]]></xf:label>
+    			</xf:trigger>
+    		</xf:group>
+    		<w2:pageFrame style="border: 1px solid black;padding: 10px;margin-bottom: 10px;" id="pageFrame1"></w2:pageFrame>
+    		<w2:pageFrame style="border: 1px solid black;padding: 10px;margin-bottom: 10px;" id="pageFrame2" src="/edu/adv/sub2.xml"></w2:pageFrame>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:150px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th" style="" tagname="th">
+    						<w2:textbox class="" id="" label="테이블 헤더" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" style="" tagname="td">
+    						<xf:input class="" id="iptParent" placeholder="" style="width:150px;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="테이블 헤더" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="tbcbox" id="" style="">
+    			<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="tab1" style="" tabScroll=""
+    				useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+    				<w2:tabs disabled="false" id="tabs1" label="TAB1" style=""></w2:tabs>
+    				<w2:content alwaysDraw="false" id="content1" style="" src="/edu/adv/sub.xml">
+    				</w2:content>
+    			</w2:tabControl>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

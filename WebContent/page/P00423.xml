@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[AutoComplete] 최초 로딩 시  또는 스크립트로 항목 선택하지 않기(빈 항목 표시하기)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231122" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataMap baseNode="map" id="dma_exam1">
+					<w2:keyInfo>
+						<w2:key id="type1" name="예시유형1" dataType="text"></w2:key>
+						<w2:key id="type2" name="예시유형2" dataType="text"></w2:key>
+					</w2:keyInfo>
+				</w2:dataMap>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 최초 선택 값 로그 출력
+    scwin.printInitLog();
+};
+
+scwin.printInitLog = function () {
+    // 로그 출력
+    let strLog = '# 최초 선택 값 확인\n';
+    strLog += "선택된 값 : " + acb_exam1.getValue();
+    strLog += "\n";
+    strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * [공통] 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [1.1 선택된 값과 인덱스 확인하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // 로그 출력
+    let strLog = '# 버튼 [' + this.getValue() + '] 클릭\n';
+    strLog += "선택된 값 : " + acb_exam1.getValue();
+    strLog += "\n";
+    strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [2.2 메소드 setValue("") 실행하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    acb_exam1.setValue("");
+
+    // 로그 출력
+    let strLog = '# 버튼 [' + this.getValue() + '] 클릭\n';
+    strLog += "선택된 값 : " + acb_exam1.getValue();
+    strLog += "\n";
+    strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [1.3 목록에 없는 항목 설정하기 - 메소드 setValue("NONE") 실행] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+    acb_exam1.setValue("NONE");
+
+    // 로그 출력
+    let strLog = '# 버튼 [' + this.getValue() + '] 클릭\n';
+    strLog += "선택된 값 : " + acb_exam1.getValue();
+    strLog += "\n";
+    strLog += "선택된 인덱스 : " + acb_exam1.getSelectedIndex();
+
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="AutoComplete의 'emptyItem' 속성과 'emptyIndex' 속성을 사용하여 화면 로딩 시 항목이 선택되지 않도록 설정한 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" label="항목을 선택하고 버튼을 클릭하여 실행 결과를 비교합니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA[1.1 선택된 값과 인덱스 확인하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" id="btn_exam1_2" style="" type="button"
+								ev:onclick="scwin.btn_exam1_2_onclick">
+								<xf:label><![CDATA[1.2 메소드 setValue("") 실행하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" id="btn_exam1_3" style="" type="button"
+								ev:onclick="scwin.btn_exam1_3_onclick">
+								<xf:label><![CDATA[1.3 목록에 없는 항목 설정하기 - 메소드 setValue("NONE") 실행]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="mb_def_box nobottom">
+							<w2:autoComplete emptyIndex="-1" emptyItem="true" id="acb_exam1" ref="" style="width: 130px;min-height:26px;"
+								submenuSize="auto">
+								<w2:choices>
+									<w2:item>
+										<w2:label><![CDATA[Apple]]></w2:label>
+										<w2:value><![CDATA[Apple]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[Banana]]></w2:label>
+										<w2:value><![CDATA[Banana]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[Cat]]></w2:label>
+										<w2:value><![CDATA[Cat]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[Dog]]></w2:label>
+										<w2:value><![CDATA[Dog]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[Happy]]></w2:label>
+										<w2:value><![CDATA[Happy]]></w2:value>
+									</w2:item>
+								</w2:choices>
+							</w2:autoComplete>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 120px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

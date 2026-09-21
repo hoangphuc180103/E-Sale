@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+
+scwin.onpageload = function () {
+    var tmpSrc1 = scwin.getfolderPath() + "/source1.xml";
+    tabControl1.addTab(scwin.count,
+        {
+            label: "Tab " + scwin.count,
+            title: "Tab " + scwin.count,
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc1,
+            "frameMode": "wframe"
+        }
+    );
+    tabControl1.setSelectedTabIndex(scwin.count);
+
+    var tmpSrc2 = scwin.getfolderPath() + "/source2.xml";
+    tabControl2.addTab(scwin.count,
+        {
+            label: "Tab " + scwin.count,
+            title: "Tab " + scwin.count,
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc2,
+            "frameMode": "wframe"
+        }
+    );
+    tabControl2.setSelectedTabIndex(scwin.count);
+    scwin.count++;
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    if (tabControl1.tabArr[0].disabled === false) {
+        tabControl1.disableTab(0);
+    } else {
+        tabControl1.enableTab(0);
+    }
+
+
+    if (tabControl2.tabArr[0].disabled === false) {
+        tabControl2.disableTab(0);
+    } else {
+        tabControl2.enableTab(0);
+    }
+};
+
+scwin.trigger2_onclick = function (e) {
+    if (tabControl2.tabArr[0].disabled === false) {
+        tabControl2.disableTab(0);
+    } else {
+        tabControl2.enableTab(0);
+    }
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="자식 탭의 비활성화 상태 유지" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. 첫 번째 TabControl에 포함된 tabContro11.disableTab(0) 버튼을 클릭. &lt;br/&gt;2. tabControl11의 첫 번째 탭이 비활성화되는 것을 확인. &lt;br/&gt;3. 두 번째 TabControl에 포함된 tabContro22.disableTab(0) 버튼을 클릭. &lt;br/&gt;4. tabControl22의 첫 번째 탭이 비활성화되는 것을 확인.&lt;br/&gt;5. 제일 상단의 disableTab() &amp; enableTab() 버튼을 클릭. &lt;br/&gt;6. 두 TabControl의 "Tab 0"이 모두 비활성화되는 것을 확인. &lt;br/&gt;7. 제일 상단의 disableTab() &amp; enableTab() 버튼을 다시 클릭. &lt;br/&gt;8-1. tabControl11의 비활성화되었던 탭은 비활성화 상태를 유지하고 나머지 탭만 활성화되는 것을 확인. (자식 TabControl의 keepDisabledTab 속성 값: "true")&lt;br/&gt;8-2. tabControl22의 모든 탭이 활성화되는 것을 확인. (자식 TabControl의 keepDisabledTab 속성 값: "false")' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="display: block;height:42px;line-height:32px;margn-bottom: 10px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[disableTab() & enableTab()]]></xf:label>
+    	</xf:trigger><w2:tabControl confirmTrueAction="exist" useTabKeyOnly="true" confirmFalseAction="new" useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="border: gray solid 1px;margin-bottom: 10px;height: 300px;" id="tabControl1" keepDisabledTab="false">
+    	</w2:tabControl><w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="border: gray solid 1px;height: 300px;" id="tabControl2" keepDisabledTab="false">
+    	</w2:tabControl></xf:group></body>
+</html>

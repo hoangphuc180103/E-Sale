@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] renderType에 따른 비교">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230718" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection>
+				<w2:workflow id="workflow1" resolveCallback="" rejectCallback="" processMsg="" description="">
+					<w2:step type="submit" action="sbm_1"></w2:step>
+					<w2:step type="submitDone" action="sbm_1"></w2:step>
+					<w2:step type="submit" action="sbm_2"></w2:step>
+					<w2:step type="submitDone" action="sbm_2"></w2:step>
+					<w2:step type="submit" action="sbm_3"></w2:step>
+					<w2:step type="submitDone" action="sbm_3"></w2:step>
+				</w2:workflow>
+				<w2:workflow id="workflow2" resolveCallback="" rejectCallback="" processMsg="" description="">
+					<w2:step type="submit" action="sbm_3"></w2:step>
+					<w2:step type="submit" action="sbm_1"></w2:step>
+					<w2:step type="submit" action="sbm_2"></w2:step>
+					<w2:step type="submitDone" action="sbm_1"></w2:step>
+					<w2:step type="submitDone" action="sbm_2"></w2:step>
+					<w2:step type="submitDone" action="sbm_3"></w2:step>
+				</w2:workflow>
+			</w2:workflowCollection>
+			<xf:submission id="sbm_1" ref="" target="" action="/data/sampleData/sampleData.xml" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="scwin.sbm_1_submit" ev:submitdone="scwin.sbm_1_submitdone"
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+			<xf:submission id="sbm_2" ref="" target="" action="/data/sampleData/sampleData.xml" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="scwin.sbm_2_submit" ev:submitdone="scwin.sbm_2_submitdone"
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+			<xf:submission id="sbm_3" ref="" target="" action="/data/sampleData/sampleData.xml" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="scwin.sbm_3_submit" ev:submitdone="scwin.sbm_3_submitdone"
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="'renderType' 속성의 설정에 따른 비교 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group id="" style="" class="example_div_tr_style">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+						<xf:group id=""><xf:group id="" style="" class="mb_def_box">
+								<w2:span style="display: inline-block;width:190px;" id="" label='renderType = "component"'></w2:span>
+								<xf:select1 submenuSize="auto" chooseOptionLabel="- 선택 - " chooseOption="true" allOption="" ref="" appearance="minimal" disabledClass="w2selectbox_disabled" disabled="false" style="width: 148px;" id="" renderType="component" class="" direction="auto">
+									<xf:choices>
+										<xf:item>
+											<xf:label><![CDATA[선택 1]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 2]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 3]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 4]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 5]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+									</xf:choices>
+								</xf:select1>
+							</xf:group><xf:group style="" id="" class="mb_def_box">
+								<w2:span style="display: inline-block;width:190px;" id="" label='renderType = "native"'></w2:span>
+								<xf:select1 chooseOptionLabel="- 선택 - " submenuSize="auto" chooseOption="true" allOption="" ref="" appearance="minimal" disabledClass="w2selectbox_disabled" disabled="false" style="width: 148px;" id="" renderType="native" class="" direction="auto" title="renderType native">
+									<xf:choices>
+										<xf:item>
+											<xf:label><![CDATA[선택 1]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 2]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 3]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 4]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 5]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+									</xf:choices>
+								</xf:select1>
+							</xf:group><xf:group style="" id="" class="mb_def_box">
+								<w2:span style="display: inline-block;width:190px;" id="" label='renderType = "select"'></w2:span>
+								<xf:select1 chooseOptionLabel="- 선택 - " submenuSize="auto" chooseOption="true" allOption="" ref="" appearance="minimal" disabledClass="w2selectbox_disabled" disabled="false" style="width: 148px;" id="" renderType="select" class="" direction="auto">
+									<xf:choices>
+										<xf:item>
+											<xf:label><![CDATA[선택 1]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 2]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 3]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 4]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[선택 5]]></xf:label>
+											<xf:value><![CDATA[]]></xf:value>
+										</xf:item>
+									</xf:choices>
+								</xf:select1>
+							</xf:group></xf:group></xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

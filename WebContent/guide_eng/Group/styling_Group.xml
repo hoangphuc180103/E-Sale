@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Group Styling Tips&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='Example of screen layout using Groups.' escape="false">
+    	</w2:textbox>
+    	<xf:group style="padding: 20px;border: solid teal 2px;font-size: 30px;color: teal;" id="group1">
+    		<xf:group style="border: solid gray 1px;padding: 5px;margin-bottom: 5px;" id="group11" text="Group">
+    			<xf:input adjustMaxLength="false" style="width: 20%;border: solid red 2px;margin-right: 10px;" id="input1"></xf:input>
+    			<xf:input id="input2" style="width: 20%;border: solid blue 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input3" style="width: 20%;border: solid green 1px;margin-right: 10px;"></xf:input>
+    		</xf:group>
+    		<xf:group id="group2" style="border: solid gray 1px;padding: 5px;margin-bottom: 5px;" text="Group">
+    			<xf:input adjustMaxLength="false" id="input6" style="width: 20%;border: solid red 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input7" style="width: 20%;border: solid blue 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input8" style="width: 20%;border: solid green 1px;margin-right: 10px;"></xf:input>
+    		</xf:group>
+    		<xf:group id="group6" style="border: solid gray 1px;padding: 5px;margin-bottom: 5px;" text="Group">
+    			<xf:input adjustMaxLength="false" id="input18" style="width: 20%;border: solid red 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input19" style="width: 20%;border: solid blue 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input20" style="width: 20%;border: solid green 1px;margin-right: 10px;"></xf:input>
+    		</xf:group>
+    		<xf:group id="group7" style="border: solid gray 1px;padding: 5px;margin-bottom: 5px;" text="Group">
+    			<xf:input adjustMaxLength="false" id="input21" style="width: 20%;border: solid red 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input22" style="width: 20%;border: solid blue 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input23" style="width: 20%;border: solid green 1px;margin-right: 10px;"></xf:input>
+    		</xf:group>
+    		<xf:group id="group8" style="border: solid gray 1px;padding: 5px;margin-bottom: 5px;" text="Group">
+    			<xf:input adjustMaxLength="false" id="input24" style="width: 20%;border: solid red 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input25" style="width: 20%;border: solid blue 2px;margin-right: 10px;"></xf:input>
+    			<xf:input id="input26" style="width: 20%;border: solid green 1px;margin-right: 10px;"></xf:input>
+    		</xf:group>
+    	</xf:group></xf:group></body>
+</html>

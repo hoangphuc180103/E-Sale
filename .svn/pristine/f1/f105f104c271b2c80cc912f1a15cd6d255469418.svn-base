@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="source">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:aliasDataMap scope="../dataMap1" id="aliasDataMap1"></w2:aliasDataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<w2:textbox style="margin:30px;color: gray;font-weight:bolder;font-size:30px;margin-top:50px;font-style:italic;" id="textbox2" label="자식 (aliasDataMap1)">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin: 30px;"
+    		id="textbox1" label='속성 설정&lt;br/&gt;scope="dataMap1" (aliastDataMa1)' escape="false">
+    	</w2:textbox>
+    	<xf:input ref="data:aliasDataMap1.key1"
+    		style="margin-left:30px;padding:5px;color:purple;font-weight:bolder;width:140px;font-size:20px;font-family:consolas;font-style:normal;height:30px;text-align:left;"
+    		id="input1">
+    	</xf:input>
+    </body>
+</html>

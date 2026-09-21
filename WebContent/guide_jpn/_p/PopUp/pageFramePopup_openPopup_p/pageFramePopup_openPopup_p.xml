@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="main" meta_vertical_guides="" meta_horizontal_guides="">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    const tmpSrc = scwin.getfolderPath() + "/openPopup_p.xml";
+    pageFrame1.setSrc(tmpSrc);
+};
+
+scwin.trigger1_onclick = function (e) {
+    var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+    popObj.scwin.borderFirst();
+};
+
+scwin.trigger2_onclick = function (e) {
+    var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+    popObj.scwin.borderSecond();
+};
+
+scwin.trigger3_onclick = function (e) {
+    var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+    popObj.scwin.setBrown();
+};
+
+scwin.trigger4_onclick = function (e) {
+    var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+    popObj.scwin.showAll();
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="PageFrame ポップアップ活用" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. ポップアップ画面のソース (src) として使用する Page Component ファイルを確認します。 &lt;br/&gt; &amp;nbsp; &amp;nbsp; （この例ではpage_component.xmlファイルを使用してください。）&lt;br/&gt;2.そのPage Componentに追加されたメソッドを確認してください。 &amp;nbsp;&lt;br/&gt;3.下部の PageFrame 内に含まれる $p.openPopup() ボタンをクリックします。 &lt;br/&gt;4. PageFrame ポップアップが生成されることを確認します。 &lt;br/&gt;5.下部のボタン 4つをそれぞれクリック。 &lt;br/&gt;6.メイン画面でポップアップに含まれているPage Componentのメソッドを直接実行できることを確認。 &lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:pageFrame style="border: solid magenta 2px;margin-bottom: 10px;" id="pageFrame1"></w2:pageFrame>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[popObj.scwin.setFirst();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[popObj.scwin.setSecond();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger3_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger3" type="button">
+    		<xf:label><![CDATA[popObj.scwin.setBrown();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger4_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger4" type="button">
+    		<xf:label><![CDATA[popObj.scwin.showAll();]]></xf:label>
+    	</xf:trigger>
+    </xf:group></body>
+</html>

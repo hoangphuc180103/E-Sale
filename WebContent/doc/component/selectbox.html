@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>SelectBox</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_c892f6af68eb0982" class="chapter_title">SelectBox</h1>
+		<h1 id="r_a8cf4e3785c8b0e9" class="element heading1"
+			data-element-id="a8cf4e3785c8b0e9">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_aba46f48a5879954" class="element normal"
+			data-element-id="aba46f48a5879954">SelectBox 컴포넌트는 사용자가 미리 정해진 항목
+			중에서 하나를 선택할 수 있도록 목록 형태로 제공하는 UI 요소입니다. 웹 화면에서 SelectBox의 화살표 버튼을
+			클릭하면 선택 가능한 항목 목록이 표시되며, 사용자는 원하는 항목을 선택할 수 있습니다. 일반적으로 콤보 박스라고도 불리며,
+			사용자가 버튼을 클릭하면 선택 가능한 항목 목록이 펼쳐지고, 이 중 하나를 선택하면 해당 항목이 입력란에 표시됩니다. 이
+			컴포넌트는 단일 선택만 허용하며, 드롭다운 리스트 형태로 구성됩니다.</p>
+		<dl id="r_dd712bbc06ea4979" class="element definition_list"
+			data-element-id="dd712bbc06ea4979">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3iiIZREIS7CzsjwtFW4S6h">SelectBox
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb23uYA3N77-iGBUEyFDN3Q4">SelectBox
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_4381d673bb458ee3" class="element heading1"
+			data-element-id="4381d673bb458ee3">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_7b0ada7d3350e33a" class="element normal"
+			data-element-id="7b0ada7d3350e33a">SelectBox 컴포넌트는 다음과 같은 상황에서 특히
+			유용합니다:</p>
+		<dl id="r_11399808352dd8ff" class="element definition_list renumbered"
+			data-element-id="11399808352dd8ff">
+			<dt>
+				<strong>제한된 선택지 제공</strong>
+			</dt>
+			<dd>
+				<p>사용자가 미리 정의된 옵션 중 하나를 선택해야 하는 경우 유용합니다. (예: 국가 선택, 카테고리 선택)</p>
+			</dd>
+			<dt>
+				<strong>데이터 검증 필요</strong>
+			</dt>
+			<dd>
+				<p>사용자 입력을 제한하여 유효한 값만 선택되록 할 때 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>연관된 필드 제어</strong>
+			</dt>
+			<dd>
+				<p>한 필드의 선택에 따라 다른 필드의 옵션이 변경되어야 할 때 (예: 대륙 → 국가 → 도시) 사용할 수
+					있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_1843342f7316a277" class="element heading1"
+			data-element-id="1843342f7316a277">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_668bf242e5b5815b" class="element unordered_list"
+			data-element-id="668bf242e5b5815b">
+			<li><p>선택 항목 설정</p>
+				<ul>
+					<li><p>
+							직접 입력 (<a class="link" href="https://youtu.be/x40RQUFAS3c">YouTube</a>)
+						</p></li>
+					<li><p>
+							DataList와 바인딩 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00252.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/BindItemSet_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/GlYQxaAXA2k">YouTube</a>)
+						</p></li>
+					<li><p>
+							컴포넌트의 값(
+							<code>value</code>
+							)과 데이터 객체(DataMap, DataList) 연결 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00382.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					계층 구조의 선택 항목 표시 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00253.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							데이터 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/depthColumn_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/K7FZqdsSXro">YouTube</a>)
+						</p></li>
+					<li><p>
+							상위 항목 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/depthColumnShowPath_depthColumnPathDelimiter_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/e9pyaRENWO0">YouTube</a>)
+						</p></li>
+					<li><p>
+							목록의 높이 및 너비 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/depthColumnHeight_depthColumnWidth_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/AAwd4cM5MmY">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>선택 항목</p>
+				<ul>
+					<li><p>
+							선택 항목 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00255.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							표시할 행의 개수 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/visibleRowNum_setVisibleRowNum_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/g4y3ooh8nxA">YouTube</a>)
+						</p></li>
+					<li><p>
+							목록 너비 자동 조절 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00148.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/labelWidthAuto_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/7DGZtipfrf0">YouTube</a>)
+						</p></li>
+					<li><p>
+							일부 선택 항목 숨기기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00150.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/visibleColumn_visibleColumnFalseValue_setVisibleColumn_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/by4_ET5kX0A">YouTube</a>)
+						</p></li>
+					<li><p>
+							일부 선택 항목 비활성화 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00147.xml">WRE</a>)
+						</p>
+						<ul>
+							<li><p>
+									정적 설정 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/enableColumn_enableColumnFalseValue_SelectBox.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/zZMB4xD6anc">YouTube</a>)
+								</p></li>
+							<li><p>
+									동적 설정 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/setEnableColumn_SelectBox.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/xkCOJdnZXVo">YouTube</a>)
+								</p></li>
+						</ul></li>
+				</ul></li>
+			<li><p>label 및 value 표시 설정</p>
+				<ul>
+					<li><p>
+							정적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/displayMode_delimiter_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtube.com/embed/o8HblbrCE7Q">YouTube</a>)
+						</p></li>
+					<li><p>
+							동적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/setEnableColumn_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtube.com/embed/5pOQlObZNfU">YouTube</a>)
+						</p></li>
+					<li><p>
+							구분자 동적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/setDelimiter_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtube.com/embed/SlqpP7L47ig">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>마우스 휠 스크롤링</p>
+				<ul>
+					<li><p>
+							선택 목록 상에서 스크롤링 방지 1 (<a class="link"
+								href="https://youtu.be/Fk_COS9_dOk">YouTube</a>)
+						</p></li>
+					<li><p>
+							선택 목록 상에서 스크롤링 방지 2 (<a class="link"
+								href="https://youtube.com/embed/KXhjWiPzx-k">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					입력 검증 및 오류 메시지 표시 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00258.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/validate_displaymessage_invalidMessage_invalidMessageFunc_SelectBox.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/3Awh08yofj4">YouTube</a>)
+				</p></li>
+			<li><p>툴팁</p>
+				<ul>
+					<li><p>
+							선택 목록 혹은 항목 위에 툴팁 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00257.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/tooltipDisplay_itemToolTipDisplay_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/qbWFtdeni_s">YouTube</a>)
+						</p></li>
+					<li><p>
+							툴팁 커스터마이징 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/itemTooltipFormatter_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/dxBR0tn6hs0">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							특정 키 동작 방지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00151.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/preventKeyList_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/f55tYpVFWxc">YouTube</a>)
+						</p></li>
+					<li><p>
+							목록에 없는 값의 처리 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00259.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/valueNotInList_emptyItem_SelectBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/muK8LuJO2rk">YouTube</a>)
+						</p></li>
+					<li><p>
+							<code>disabled</code>
+							상태일 때 적용할 CSS
+							<code>class</code>
+							설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00335.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							<code>optionOrder</code>
+							속성을 사용하여 선택 항목과 전체 항목의 표시 순서 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00337.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							renderType에 따른 비교 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00301.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							속성을 사용하여 전체 항목 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00339.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_9e2383bb0205e1e7" class="element heading1"
+			data-element-id="9e2383bb0205e1e7">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_a0dae56ee2a7b821" class="element unordered_list"
+			data-element-id="a0dae56ee2a7b821">
+			<li><p>
+					<code>onbeforeselect</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/onbeforeselect_SelectBox.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					<code>onselected</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00149.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/SelectBox/onselected_SelectBox.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/BA_jfVX_whE">YouTube</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_1da37d421c4aafbd" class="element heading1"
+			data-element-id="1da37d421c4aafbd">
+			<div class="r_heading_inner">
+				<span class="heading1_n">5</span><span>AutoComplete vs.
+					SelectBox</span>
+			</div>
+		</h1>
+		<p id="r_5dde9aa782bb9b65" class="element normal"
+			data-element-id="5dde9aa782bb9b65">
+			AutoComplete와 SelectBox는 모두 선택 항목을 목록 형태로 제공하는 컴포넌트이지만, 몇 가지 주요 차이점이
+			있습니다. (<a class="link" href="https://youtu.be/j7CPUsTpO-c">YouTube</a>)
+		</p>
+		<dl id="r_c70882068cec4430" class="element definition_list"
+			data-element-id="c70882068cec4430">
+			<dt>
+				<strong>공통점</strong>
+			</dt>
+			<dd>
+				<p>콤보 박스 형태로 선택 항목을 표시합니다.</p>
+				<p>사용자는 단일 항목만 선택할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<dl id="r_2712f45522c3f9db" class="element definition_list"
+			data-element-id="2712f45522c3f9db">
+			<dt>차이점</dt>
+			<dd>
+				<p>AutoComplete는 검색 기능을 제공합니다.</p>
+				<p>사용자가 키워드 입력 시 해당 키워드를 포함하는 항목만 필터링하여 표시합니다.</p>
+				<p>대소문자 구분, 키워드 강조 등의 추가 기능을 제공합니다.</p>
+			</dd>
+		</dl>
+	</div>
+</body>
+</html>

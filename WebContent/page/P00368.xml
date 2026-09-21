@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Checkbox] Event - onlabelclick (label이 클릭될 때 발생)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230907" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+/**
+ * Checkbox의 onlabelclick 이벤트
+ */
+scwin.cbx_main_onlabelclick = function (index, checked, value) {
+    let itemIndex = index; // 항목의 인덱스
+    let itemChecked = checked; // 항목의 체크 여부
+    let itemValue = value; // 항목의 값
+
+    // 로그 출력
+    let strLog = "# onlabelclick event\n";
+    strLog += "인덱스: " + itemIndex + "\n";
+    strLog += "체크 여부: " + itemChecked + "\n";
+    strLog += "항목의 값: " + itemValue + "\n";
+
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Checkbox에 'onlabelclick' 이벤트를 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="">
+							<xf:select appearance="full" cols="4" id="cbx_main" ref="" rows="" selectedindex="-1" style=""
+								ev:onlabelclick="scwin.cbx_main_onlabelclick">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[A]]></xf:label>
+										<xf:value><![CDATA[A]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[B]]></xf:label>
+										<xf:value><![CDATA[B]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[C]]></xf:label>
+										<xf:value><![CDATA[C]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[D]]></xf:label>
+										<xf:value><![CDATA[D]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[E]]></xf:label>
+										<xf:value><![CDATA[E]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[F]]></xf:label>
+										<xf:value><![CDATA[F]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[G]]></xf:label>
+										<xf:value><![CDATA[G]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[H]]></xf:label>
+										<xf:value><![CDATA[H]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+
+	</body>
+</html>

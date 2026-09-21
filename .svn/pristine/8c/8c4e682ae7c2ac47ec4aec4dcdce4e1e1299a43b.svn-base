@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 엑셀 다운로드 시 데이터의 타입(유형) 지정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220930" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_excel" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="number_1" name="number_1"></w2:column>
+						<w2:column dataType="text" id="number_2" name="number_2"></w2:column>
+						<w2:column id="date_1" name="date_1" dataType="text"></w2:column>
+						<w2:column id="date_2" name="date_2" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    scwin.initPage();
+};
+
+/**
+ * 화면 초기화
+ */
+scwin.initPage = function () {
+    var strCurDate;
+
+    strCurDate = $p.getCurrentServerDate("yyyyMMdd");
+
+    dlt_excel.setJSON([
+        { "number_1": "2345600", "number_2": "2345600", "date_1": strCurDate, "date_2": strCurDate },
+        { "number_1": "78900", "number_2": "78900", "date_1": strCurDate, "date_2": strCurDate }
+    ]);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00110_default.xlsx"
+    };
+
+    //GridView의 엑셀다운로드 API를 호출합니다.
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - useDataFormat 설정] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00110_useDataFormat.xlsx",
+        useDataFormat: true //[default: 없음] "true"인 경우 dataType에 따라 Excel 파일에 표시 형식을 출력. dataType="text"인 셀은 Excel의 표시형식에 '텍스트' 출력, dataType="number" 혹은 "bigDecimal" 셀은 "숫자" 출력.
+    };
+
+    //GridView의 엑셀다운로드 API를 호출합니다. 
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'advancedExcelDownload' 메소드의 첫 번째 인자인 JSON 객체의 'useDataFormat'을 사용하여, 엑셀 다운로드 시 데이터의 타입을 설정한 예제입니다."
+					style="" class="mb10">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="" class="example_div_tb_style_wrap">
+				<xf:group class="mb_def_box nobottom" id="" style="">
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+						style="min-width: 30px; height: 26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 기본 동작]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_ex2" localeRef="" style="min-width: 30px; height: 26px;" type=""
+						useDefaultLabel="true" ev:onclick="scwin.btn_ex2_onclick">
+						<xf:label><![CDATA[엑셀 다운로드 - useDataFormat 사용]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			<xf:group id="" class="gvwbox"><w2:gridView rowNumWidth="34" visibleRowNumFix="true" dataList="data:dlt_excel" style="height:80px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="2" class="gvw" defaultCellHeight="37" autoFitMinWidth="450">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="140" inputType="text" style="height:50px;" id="column6" value="number 1&lt;br/&gt;no excelCellType" displayMode="label">
+							</w2:column>
+							<w2:column width="100" inputType="text" style="height:50px;" id="column5" value="number 2" displayMode="label"></w2:column>
+							<w2:column width="140" inputType="text" style="height:50px;" id="column4" value="date 1&lt;br/&gt;no excelCellType" displayMode="label">
+							</w2:column>
+							<w2:column width="100" inputType="text" style="height:50px;" id="column3" value="date 2" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column dataType="number" width="140" inputType="text" id="number_1" displayMode="label"></w2:column>
+							<w2:column dataType="number" width="100" excelCellType="number" inputType="text" id="number_2" displayMode="label">
+							</w2:column>
+							<w2:column dataType="date" width="140" inputType="text" id="date_1" displayMode="label"></w2:column>
+							<w2:column dataType="date" width="100" excelCellType="date" inputType="text" id="date_2" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView></xf:group></xf:group>
+		</xf:group>
+	</body>
+</html>

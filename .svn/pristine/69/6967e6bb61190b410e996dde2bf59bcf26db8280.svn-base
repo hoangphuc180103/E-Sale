@@ -1,0 +1,88 @@
+/*amd /page/P00054.xml 7833 76e7e13a5cd2f1272c0b39a13eb586bf3b156f04f6b4272869341a1faa2ff055 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{id:'dlt_member',baseNode:'list',saveRemovedData:'true',repeatNode:'map','ev:ondataload':'scwin.dlt_member_ondataload','ev:oninsertrow':'','ev:onremoverow':''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'USER_PK',name:'고유키',dataType:'text'}},{T:1,N:'w2:column',A:{id:'USER_ID',name:'아이디',dataType:'text'}},{T:1,N:'w2:column',A:{id:'NAME',name:'이름',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_A',name:'그룹 A',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_B',name:'그룹 B',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_C',name:'그룹 C',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_D',name:'그룹 D',dataType:'text'}},{T:1,N:'w2:column',A:{id:'EMAIL',name:'이메일',dataType:'text'}}]}]},{T:1,N:'w2:dataMap',A:{baseNode:'map',id:'dma_search'},E:[{T:1,N:'w2:keyInfo',E:[{T:1,N:'w2:key',A:{id:'TOTAL_YN',name:'총건수 조회여부',dataType:'text'}},{T:1,N:'w2:key',A:{id:'startNum',name:'시작 순번',dataType:'text'}},{T:1,N:'w2:key',A:{id:'endNum',name:'끝 순번',dataType:'text'}},{T:1,N:'w2:key',A:{id:'count',name:'화면 행수',dataType:'text'}},{T:1,N:'w2:key',A:{id:'searchParam',name:'검색 파라메터',dataType:'text'}},{T:1,N:'w2:key',A:{id:'searchType',name:'검색 타입',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'},{T:1,N:'xf:submission',A:{id:'sbm_select',ref:'data:json,dma_search',target:'',action:'/data/sampleData/dlt_member_append_40_0.json',method:'post',mediatype:'application/json',encoding:'UTF-8',instance:'',replace:'',errorHandler:'',customHandler:'',mode:'asynchronous',processMsg:'','ev:submit':'','ev:submitdone':'scwin.sbm_select_submitdone','ev:submiterror':'',abortTrigger:''}}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.gVar = {
+  append: false,
+  totalCnt: 0,
+  pageNum: 0
+};
+scwin.onpageload = function () {
+  //'GridView 초기화' 버튼 click 이벤트 발생
+  btn_Search.trigger("onclick");
+};
+
+//[GridView 초기화] 버튼 클릭 시
+scwin.btn_Search_onclick = function () {
+  scwin.gVar.append = false;
+  scwin.gVar.totalCnt = 0;
+  scwin.gVar.pageNum = 0;
+  spn_curCount.setValue(0);
+  spn_totCount.setValue(0);
+  scwin.searchMain(0, "Y");
+};
+
+/**
+* 조회 (현재 샘플은 100개씩 조회할 경우 기준) 
+* idx - 조회 시작 순번
+* strYn - 총 건수 조회 여부 
+*/
+scwin.searchMain = function (idx, strYn) {
+  dma_search.set("TOTAL_YN", strYn);
+  dma_search.set("startNum", idx);
+  dma_search.set("endNum", 40);
+  dma_search.set("count", 20);
+
+  //이 예제는 DB 연계가 되어 있지 않기 때문에 40건씩 나뉘어진 json 파일을 호출하도록 되어있습니다.
+  scwin.setActionURL();
+  scwin.gVar.pageNum++;
+  $p.executeSubmission("sbm_select");
+};
+
+/**
+ * json 파일 URL 설정
+ */
+scwin.setActionURL = function (idx) {
+  var _cmpSubmission;
+  _cmpSubmission = $p.getSubmission("sbm_select");
+  console.log($p.getSubmissionList());
+  console.log($p.getSubmission("sbm_select"));
+  _cmpSubmission.action = '/data/sampleData/dlt_member_append_40_' + scwin.gVar.pageNum + '.json';
+};
+
+/**
+ * sbm_select의 submitdone 핸들러
+ */
+scwin.sbm_select_submitdone = function (e) {
+  if (e.responseJSON.msgCode == "S") {
+    var firstYn = dma_search.get("TOTAL_YN");
+
+    // 최초 조회일 경우에만 전체 건수를 구하여 전역변수에 담는다.
+    if (firstYn == "Y") {
+      let totCount = e.responseJSON.TOTAL_CNT;
+      scwin.gVar.totalCnt = totCount;
+      spn_totCount.setValue(totCount);
+    }
+    dlt_member.setJSON(e.responseJSON.dlt_member, scwin.gVar.append);
+  }
+};
+
+/**
+ * grd_member의 onscrollend 핸들러
+ * 데이터를 추가합니다.
+ */
+scwin.grd_member_onscrollend = function () {
+  var startRow = dlt_member.getRowCount();
+
+  // 전체 건수보다 조회된 건수가 작을 경우에만 추가 조회를 한다.
+  if (scwin.gVar.totalCnt > startRow) {
+    scwin.gVar.append = true;
+    scwin.searchMain(startRow, "N");
+  }
+};
+
+/**
+ * dlt_member의 ondataload 이벤트 핸들러
+ */
+scwin.dlt_member_ondataload = function () {
+  //게시물 수 출력
+  spn_curCount.setValue(dlt_member.getRowCount());
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 \'onscrollend\' 이벤트를 사용하여 데이터를 마지막 행에 추가하는 예제입니다.<br/>',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ofh def_box',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'fl wre_txt_bold',id:'',style:'line-height: 30px;'},E:[{T:1,N:'w2:span',A:{class:'mr_def',dataType:'text',displayFormat:'',id:'',label:'총',style:''}},{T:1,N:'w2:span',A:{class:'',dataType:'number',displayFormat:'#,##0',id:'spn_curCount',label:'0',ref:'',style:''}},{T:1,N:'w2:span',A:{class:'',dataType:'text',displayFormat:'',id:'',label:' / ',style:''}},{T:1,N:'w2:span',A:{class:'',dataType:'number',displayFormat:'#,##0',id:'spn_totCount',label:'0',ref:'',style:''}},{T:1,N:'w2:span',A:{class:'',dataType:'text',displayFormat:'',id:'',label:'건',style:''}}]},{T:1,N:'xf:trigger',A:{class:'btn_cm fr','ev:onclick':'scwin.btn_Search_onclick',id:'btn_Search',style:'width:120px;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'GridView 초기화'}]}]}]},{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:''},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitFilterList:'true',class:'gvw mb_def',dataList:'dlt_member',defaultCellHeight:'37','ev:onscrollend':'scwin.grd_member_onscrollend',focusMode:'row',id:'grd_member',ignoreCellClick:'false',ignoreToggleOnDisabled:'false',initFixedHeightByRowNum:'10',loadCount:'10',readOnly:'true',rowNumHeaderValue:'번호',rowNumVisible:'true',rowNumWidth:'36',rowStatusHeaderValue:'상태',rowStatusVisible:'false',rowStatusWidth:'40',style:'height: 280px;',summaryAuto:'false',tooltipDisplay:'true',tooltipShowAlways:'',useCtrlKey:'false',useFilterList:'true',useShiftKey:'true',visibleRowNum:'10',visibleRowNumFix:'true',autoFitMinWidth:'380'},E:[{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'column29',inputType:'text',value:'고유키',width:'80'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'column27',inputType:'text',value:'아이디',width:'90'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'column13',inputType:'text',value:'이메일',width:'190'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'USER_PK',inputType:'text',width:'80'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'USER_ID',inputType:'text',width:'90'}},{T:1,N:'w2:column',A:{blockSelect:'false',displayMode:'label',id:'EMAIL',inputType:'text',width:'190'}}]}]}]}]}]}]}]}]}]}]}]})

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[FusionChart] 차트 타입 예제 - FwPyramidChart_simple">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="label" name="표시 값" dataType="text"></w2:column>
+            			<w2:column id="value" name="코드 값" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<label><![CDATA[apple]]></label>
+            				<value><![CDATA[val1]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[banana]]></label>
+            				<value><![CDATA[val2]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[grapes]]></label>
+            				<value><![CDATA[val3]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[lemone]]></label>
+            				<value><![CDATA[val4]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[lime]]></label>
+            				<value><![CDATA[val5]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[pear]]></label>
+            				<value><![CDATA[val6]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[orange]]></label>
+            				<value><![CDATA[val7]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[melon]]></label>
+            				<value><![CDATA[val8]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[strawberry]]></label>
+            				<value><![CDATA[val9]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[avocado]]></label>
+            				<value><![CDATA[val10]]></value>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    // 'rangeSeparator' 설정 값 : 기본
+    chkcom1.setSelectedInfo(
+        [
+            {index:0,checked:true},
+            {index:1,checked:true},
+            {index:3,checked:true},
+            {index:4,checked:true},
+            {index:5,checked:true},
+            {index:7,checked:true},
+            {index:8,checked:true},
+            {index:9,checked:true}
+        ]
+    );
+};
+
+// 항목들의 정보를 반환한다.
+scwin.btn_rtn_onclick = function (e) {
+    const infoArr = chkcom1.getInfoArray();
+    // 로그 출력
+    let strLog = "# 반환된 정보 값\n" + "####################################" + "\n";
+
+    for (var i = 0; i < infoArr.length; i++){
+        strLog = strLog + "index : " + infoArr[i].index +"\n"+ "label : " + 
+        infoArr[i].label +"\n"+ "value : " + infoArr[i].value +"\n"+ "checked : " + infoArr[i].checked + "\n"
+        + "####################################" + "\n";
+    }
+
+    $c.frame.printExampleLog(strLog, txa_log, false);
+};
+
+// textarea의 로그 삭제
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<w2:textbox escape="false" id="" label="CheckCombobox의 'getInfoArray' API를 사용하여, 항목의 정보를 반환하는 예제입니다." style="">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap" style="">
+    			<xf:group class="example_div_tr_style">
+    				<w2:textbox class="example_div_th_style" escape="false" label="항목들의 정보 반환하기"></w2:textbox>
+    				<xf:group class="example_div_td_style">
+    					<xf:group id="">
+    						<xf:checkcombobox submenuSize="auto" ref="" chooseOption="" style="width: 200px;height: 30px;" disabled="false"
+    							id="chkcom1" allOption="" separator="," displayMode="label" direction="auto">
+    							<xf:choices>
+    								<xf:itemset nodeset="data:dataList1">
+    									<xf:label ref="label"></xf:label>
+    									<xf:value ref="value"></xf:value>
+    								</xf:itemset>
+    							</xf:choices>
+    						</xf:checkcombobox>
+    						<xf:trigger style="margin-left: 5px;" id="btn_rtn" type="button" class="btn_exam_exec btn_txt_of"
+    							ev:onclick="scwin.btn_rtn_onclick">
+    							<xf:label><![CDATA[반환]]></xf:label>
+    						</xf:trigger>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    				<xf:group class="example_div_tr_style" id="" style="">
+    					<xf:group class="example_div_th_style" id="" style="">
+    						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+    						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+    							title="로그 삭제" type="button">
+    							<xf:label><![CDATA[로그 삭제]]></xf:label>
+    						</xf:trigger>
+    					</xf:group>
+    					<xf:group class="example_div_td_style" id="" style="">
+    						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 160px;"></xf:textarea>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group></xf:group>
+    	
+    </body>
+</html>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="guide_sample">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:mfeSubmission/>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    autoComplete1.setValue("09")
+
+};
+
+scwin.trigger2_onclick = function (e) {
+    autoComplete2.setValue("10")
+
+};
+
+scwin.trigger3_onclick = function (e) {
+    autoComplete3.setValue("11");
+    var index = autoComplete3.getSelectedIndex();
+    var value = autoComplete3.getValue();
+    alert("index : " + index + " & value : " + value);
+
+};
+
+scwin.trigger4_onclick = function (e) {
+    autoComplete4.setValue("12");
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin:10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Handling of Values Not in the List" escape="false">
+    	</w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Verify the selection items for each AutoComplete.&lt;br/&gt;2. Click the button at the bottom of each AutoComplete to set a value not currently in the list.&lt;br/&gt;&lt;br/&gt;(First AutoComplete)&lt;br/&gt;3. Verify that an empty value is displayed.&lt;br/&gt;&lt;br/&gt;(Second AutoComplete)&lt;br/&gt;4. Verify that the first item in the existing list is selected. &lt;br/&gt;&lt;br/&gt;(Third AutoComplete)&lt;br/&gt;5-1. Verify the set value appears as an item, its index is “-1”, and the set value can be retrieved using the getValue() method.&lt;br/&gt;5-2. Select another value from the list.&lt;br/&gt;5-3. Expand the list again and verify the selected item disappears after using the setValue() method. &lt;br/&gt;&lt;br/&gt;(Fourth AutoComplete)&lt;br/&gt;6-1. Verify that the set value is added and displayed in the list.&lt;br/&gt;6-2. Select another value from the list.&lt;br/&gt;6-3. Expand the list again and verify that the item set via the setValue() method remains in the list. &lt;br/&gt;' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='valueNotInList="default"&lt;br/&gt;emptyItem="true"' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[autoComplete1.setValue("09");]]></xf:label>
+    	</xf:trigger><w2:autoComplete valueNotInList="default" submenuSize="auto" caseSensitive="true" chooseOption="" useKeywordHighlight="true" ev:onselected="" allOption="" ref="" search="contain" editType="select" style="width: 50%;display: block;margin-bottom: 10px;" id="autoComplete1" ev:onitemclick="" useLocale="false" emptyItem="true" emptyIndex="3" displayMode="value delim label">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Seoul]]></w2:label>
+    				<w2:value><![CDATA[01]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Osong]]></w2:label>
+    				<w2:value><![CDATA[02]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Daejeon]]></w2:label>
+    				<w2:value><![CDATA[03]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Kimcheon]]></w2:label>
+    				<w2:value><![CDATA[04]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Incheon]]></w2:label>
+    				<w2:value><![CDATA[05]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Hadong]]></w2:label>
+    				<w2:value><![CDATA[06]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Ilsan]]></w2:label>
+    				<w2:value><![CDATA[07]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Gwangju]]></w2:label>
+    				<w2:value><![CDATA[08]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox5" label='valueNotInList="default"&lt;br/&gt;emptyItem="false"' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[autoComplete2.setValue("10");]]></xf:label>
+    	</xf:trigger><w2:autoComplete valueNotInList="default" submenuSize="auto" caseSensitive="true" chooseOption="" useKeywordHighlight="true" ev:onselected="" allOption="" ref="" search="contain" editType="select" style="width: 50%;display: block;margin-bottom: 10px;" id="autoComplete2" ev:onitemclick="" useLocale="false" emptyItem="false" emptyIndex="3" displayMode="value delim label">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Seoul]]></w2:label>
+    				<w2:value><![CDATA[01]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Osong]]></w2:label>
+    				<w2:value><![CDATA[02]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Daejeon]]></w2:label>
+    				<w2:value><![CDATA[03]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Kimcheon]]></w2:label>
+    				<w2:value><![CDATA[04]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Incheon]]></w2:label>
+    				<w2:value><![CDATA[05]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Hadong]]></w2:label>
+    				<w2:value><![CDATA[06]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Ilsan]]></w2:label>
+    				<w2:value><![CDATA[07]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Gwangju]]></w2:label>
+    				<w2:value><![CDATA[08]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox6" label='valueNotInList="keepValue"' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger3_onclick" style="height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;" id="trigger3" type="button">
+    		<xf:label><![CDATA[autoComplete3.setValue("11");]]></xf:label>
+    	</xf:trigger><w2:autoComplete valueNotInList="keepValue" submenuSize="auto" caseSensitive="true" chooseOption="" useKeywordHighlight="true" ev:onselected="" allOption="" ref="" search="contain" editType="select" style="width: 50%;display: block;margin-bottom: 10px;" id="autoComplete3" ev:onitemclick="" useLocale="false" emptyIndex="3" displayMode="value delim label">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Seoul]]></w2:label>
+    				<w2:value><![CDATA[01]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Osong]]></w2:label>
+    				<w2:value><![CDATA[02]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Daejeon]]></w2:label>
+    				<w2:value><![CDATA[03]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Kimcheon]]></w2:label>
+    				<w2:value><![CDATA[04]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Incheon]]></w2:label>
+    				<w2:value><![CDATA[05]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Hadong]]></w2:label>
+    				<w2:value><![CDATA[06]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Ilsan]]></w2:label>
+    				<w2:value><![CDATA[07]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Gwangju]]></w2:label>
+    				<w2:value><![CDATA[08]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox7" label='valueNotInList="addItem"' escape="false">
+    	</w2:textbox><xf:trigger ev:onfocus="scwin.trigger4_onfocus" ev:onclick="scwin.trigger4_onclick" style="height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;" id="trigger4" type="button">
+    		<xf:label><![CDATA[autoComplete4.setValue("12");]]></xf:label>
+    	</xf:trigger><w2:autoComplete valueNotInList="addItem" submenuSize="auto" caseSensitive="true" chooseOption="" useKeywordHighlight="true" ev:onselected="" allOption="" ref="" search="contain" editType="select" style="width: 50%;display: block;margin-bottom: 10px;" id="autoComplete4" ev:onitemclick="" useLocale="false" emptyIndex="3" displayMode="value delim label">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Seoul]]></w2:label>
+    				<w2:value><![CDATA[01]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Osong]]></w2:label>
+    				<w2:value><![CDATA[02]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Daejeon]]></w2:label>
+    				<w2:value><![CDATA[03]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Kimcheon]]></w2:label>
+    				<w2:value><![CDATA[04]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Incheon]]></w2:label>
+    				<w2:value><![CDATA[05]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Hadong]]></w2:label>
+    				<w2:value><![CDATA[06]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Ilsan]]></w2:label>
+    				<w2:value><![CDATA[07]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Gwangju]]></w2:label>
+    				<w2:value><![CDATA[08]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete></xf:group></body>
+</html>

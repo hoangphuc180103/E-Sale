@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin:10px;">
+    	<w2:textbox style="color: blue;margin-bottom: 10px;" id="textbox1" label="Number and Alphabet Masking&lt;br/&gt;" escape="false" tagname="h1" tabIndex="h1">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="Enter a number or letter, and confirm that masking takes place." escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox2" label='displayFormat="#-##-###" &lt;br/&gt;allowChar="0-9, aA-zZ"&lt;br/&gt;maskFormat="default"' escape="false">
+    	</w2:textbox>
+    	<xf:input dataType="" maskFormat="default" adjustMaxLength="" applyFormat="all"
+    		style="width: 300px;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: red;"
+    		allowChar="0-9, aA-zZ" id="input1" displayFormat="#-##-###">
+    	</xf:input>
+    </xf:group></body>
+</html>

@@ -1,0 +1,87 @@
+/*amd /page/P00050.xml 13871 7757f28bf588d268ab25c310d0259cb2a395c55bc4dfdd989cdc1d816a674c71 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{id:'dlt_member',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'USER_PK',name:'고유키',dataType:'text'}},{T:1,N:'w2:column',A:{id:'USER_ID',name:'아이디',dataType:'text'}},{T:1,N:'w2:column',A:{id:'NAME',name:'이름',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_A',name:'그룹 A',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_B',name:'그룹 B',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_C',name:'그룹 C',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GROUP_D',name:'그룹 D',dataType:'text'}},{T:1,N:'w2:column',A:{id:'EMAIL',name:'이메일',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'},{T:1,N:'xf:submission',A:{id:'sbm_getUserData',ref:'',target:'data:array',action:'/data/sampleData/largeData/dlt_member_8X2000_array.json',method:'post',mediatype:'application/json',encoding:'UTF-8',instance:'',replace:'',errorHandler:'',customHandler:'',mode:'asynchronous',processMsg:'','ev:submitdone':'scwin.sbm_getUserData_submitdone','ev:submit':'','ev:submiterror':'',abortTrigger:''}}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  $p.executeSubmission("sbm_getUserData");
+};
+scwin.sbm_getUserData_submitdone = function (e) {};
+
+/**
+ * grd_example의 NAME 컬럼의 customFormatter
+ */
+scwin.grd_example_NAME = function (data, formattedData, rowIndex, colIndex) {
+  if (formattedData.indexOf("2") > 0) {
+    grd_example.setCellColor(rowIndex, colIndex, "red");
+  }
+  return formattedData;
+};
+
+/**
+ * grd_example의 GROUP_B 컬럼의 customFormatter
+ */
+scwin.grd_example_GROUP_B = function (data, formattedData, rowIndex, colIndex) {
+  if (data === "GROUP B01") {
+    grd_example.setCellBackgroundColor(rowIndex, colIndex, "blue");
+    grd_example.setCellColor(rowIndex, colIndex, "#fff");
+  }
+  return formattedData;
+};
+
+/**
+ * grd_example의 GROUP_D 컬럼의 customFormatter
+ */
+scwin.grd_example_GROUP_D = function (data, formattedData, rowIndex, colIndex) {
+  if (data === "GROUP D01") {
+    grd_example.setCellColor(rowIndex, colIndex, "orange");
+  }
+  return formattedData;
+};
+
+/**
+ * grd_example의 EMAIL 컬럼의 customFormatter
+ */
+scwin.grd_example_EMAIL = function (data, formattedData, rowIndex, colIndex) {
+  if (data.indexOf("inswave03.com") > 0) {
+    grd_example.setCellColor(rowIndex, colIndex, "blue");
+  }
+  return formattedData;
+};
+
+/**
+ * grd_example2의 NAME 컬럼의 customFormatter
+ */
+scwin.grd_example2_NAME = function (data, formattedData, rowIndex, colIndex) {
+  if (formattedData.indexOf("2") > 0) {
+    return "<span style='color:red'>" + formattedData + "</span>";
+  }
+  return data;
+};
+
+/**
+ * grd_exampl2e의 GROUP_B 컬럼의 customFormatter
+ */
+scwin.grd_example2_GROUP_B = function (data, formattedData, rowIndex, colIndex) {
+  if (data === "GROUP B01") {
+    return "<div style='display:inline-block;background-color:blue;line-height:38px;color:#fff;width:100%;box-sizing:border-box;position:relative;left:-4px;'>" + formattedData + "</div>";
+  }
+  return formattedData;
+};
+
+/**
+ * grd_example2의 GROUP_D 컬럼의 customFormatter
+ */
+scwin.grd_example2_GROUP_D = function (data, formattedData, rowIndex, colIndex) {
+  if (data === "GROUP D01") {
+    return "<span style='color:orange'>" + formattedData + "</span>";
+  }
+  return formattedData;
+};
+
+/**
+ * grd_exampl2e의 EMAIL 컬럼의 customFormatter
+ */
+scwin.grd_example2_EMAIL = function (data, formattedData) {
+  if (data.indexOf("inswave03.com") > 0) {
+    return "<span style='color:blue'>" + formattedData + "</span>";
+  }
+  return formattedData;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'그리드뷰에 데이터를 customFormatter속성을 사용하여 style을 변경 할 때, 구현 방식에 따른 렌더링 속도를 비교하기 위해 작성된 화면입니다.',style:''}},{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'각 GridView의 세로 스크롤을 이동시켜 렌더링 속도를 비교합니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',id:'',label:'이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다.',style:''}}]},{T:1,N:'w2:textbox',A:{class:'wre_heading',id:'',label:'customformatter 미적용',style:'',tagname:'h3'}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',rowNumVisible:'true',summaryAuto:'false',useShiftKey:'true',readOnly:'true',scrollByColumn:'false',summaryOnlyAuto:'false',defaultCellHeight:'37',applyAllColumnStyle:'false',backgroundColorMode:'always',senseReader:'false',dataList:'data:dlt_member','ev:onviewchange':'',ignoreCellClick:'false',style:'height: 506px;',autoFit:'allColumn',id:'',visibleRowNum:'20',fastScroll:'false',class:'gvw ',ignoreToggleOnDisabled:'false',autoFitMinWidth:'900'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column29',value:'고유키',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column27',value:'아이디',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column25',value:'이름',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column23',value:'그룹 A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column21',value:'그룹 B',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column19',value:'그룹 C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column17',value:'그룹 D',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'175',inputType:'text',id:'column13',value:'이메일',blockSelect:'false',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_PK',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_ID',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'NAME',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_B',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_D',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'175',inputType:'text',id:'EMAIL',blockSelect:'false',displayMode:'label'}}]}]}]}]},{T:1,N:'w2:textbox',A:{class:'wre_heading',id:'',label:'customformatter 적용 - setCellBackgroundColor, setCellColor 메소드 사용',style:'',tagname:'h3'}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',rowNumVisible:'true',summaryAuto:'false',useShiftKey:'true',readOnly:'true',scrollByColumn:'false',summaryOnlyAuto:'false',defaultCellHeight:'37',applyAllColumnStyle:'false',backgroundColorMode:'always',senseReader:'false',dataList:'data:dlt_member','ev:onviewchange':'',ignoreCellClick:'false',style:'height: 506px;',autoFit:'allColumn',id:'grd_example',visibleRowNum:'20',fastScroll:'false',class:'gvw ',ignoreToggleOnDisabled:'false',autoFitMinWidth:'900'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column29',value:'고유키',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column27',value:'아이디',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column25',value:'이름',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column23',value:'그룹 A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column21',value:'그룹 B',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column19',value:'그룹 C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column17',value:'그룹 D',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}},{T:1,N:'w2:column',A:{width:'175',inputType:'text',id:'column13',value:'이메일',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_PK',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_ID',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'NAME',customFormatter:'scwin.grd_example_NAME',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_B',customFormatter:'scwin.grd_example_GROUP_B',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_D',customFormatter:'scwin.grd_example_GROUP_D',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'175',inputType:'text',id:'EMAIL',customFormatter:'scwin.grd_example_EMAIL',blockSelect:'false',displayMode:'label'}}]}]}]}]},{T:1,N:'w2:textbox',A:{class:'wre_heading',id:'',label:'customformatterr 적용 - innerHTML 사용',style:'',tagname:'h3'}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',rowNumVisible:'true',summaryAuto:'false',useShiftKey:'true',readOnly:'true',scrollByColumn:'false',summaryOnlyAuto:'false',defaultCellHeight:'37',applyAllColumnStyle:'false',senseReader:'false',dataList:'data:dlt_member','ev:onviewchange':'',ignoreCellClick:'false',style:'height: 506px;',autoFit:'allColumn',id:'grd_example2',visibleRowNum:'20',fastScroll:'false',class:'gvw',ignoreToggleOnDisabled:'false',autoFitMinWidth:'900'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column29',value:'고유키',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column27',value:'아이디',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column25',value:'이름',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column23',value:'그룹 A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column21',value:'그룹 B',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column19',value:'그룹 C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column17',value:'그룹 D',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}},{T:1,N:'w2:column',A:{width:'175',inputType:'text',id:'column13',value:'이메일',blockSelect:'false',displayMode:'label',class:'wre_txt_blue'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_PK',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'USER_ID',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'NAME',customFormatter:'scwin.grd_example2_NAME',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_A',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_B',customFormatter:'scwin.grd_example2_GROUP_B',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_C',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'GROUP_D',customFormatter:'scwin.grd_example2_GROUP_D',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'175',inputType:'text',id:'EMAIL',customFormatter:'scwin.grd_example2_EMAIL',blockSelect:'false',displayMode:'label'}}]}]}]}]}]}]}]}]})

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		var fileInfos = multiUpload1.getFileInfos();
+			var paramJSON = {};
+			for (var i = 0; i < fileInfos.length; i++) {
+				var fileName = fileInfos[i].name;
+				var fileSize = fileInfos[i].size;
+				paramJSON[fileName] = {
+					"index": i,
+					"name" :  fileName,
+					"value": fileSize
+				}
+			}
+			multiUpload1.setParamJSON(paramJSON);				
+			alert(JSON.stringify(paramJSON));
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;margin-bottom: 100px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="업로드 대상 파일 정보 확인 후 각 파일의 파라미터로 설정" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. MultiUpload 컴포트넌트를 클릭.&lt;br/&gt;2. 5개 이하의 파일을 선택. (maxcount 기본 값 : &amp;nbsp;"5")&lt;br/&gt;3. 상단의 버튼을 클릭.&lt;br/&gt;4. 각 파일 별로 파일의 인덱스, 이름, 크기가 파라미터로 설정되어 반환되는 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox4" label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.trigger1_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var fileInfos = multiUpload1.getFileInfos();&lt;br/&gt; &amp;nbsp; &amp;nbsp;var paramJSON = {};&lt;br/&gt; &amp;nbsp; &amp;nbsp;for (var i = 0; i &lt; fileInfos.length; i++) {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;var fileName = fileInfos[i].name;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;var fileSize = fileInfos[i].size;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;paramJSON[fileName] = {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"index": i,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"name": fileName,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"value": fileSize&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;multiUpload1.setParamJSON(paramJSON);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert(JSON.stringify(paramJSON));&lt;br/&gt;};&lt;br/&gt;' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[getFileInfos() for setParamJSON()]]></xf:label>
+    	</xf:trigger>
+    	<w2:multiupload filter="*:*.*" mode="html5_transparent" maxcount="5" action=""
+    		style="width: 300px;height: 50px;border: solid gray 1px;" wmode="false" id="multiUpload1" maxsize="" userData1="" uploadButton="">
+    	</w2:multiupload>
+    </xf:group></body>
+</html>

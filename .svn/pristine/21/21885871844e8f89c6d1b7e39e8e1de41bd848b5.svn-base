@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>MapChart</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_e8a8155a18249080" class="chapter_title">MapChart</h1>
+		<h1 id="r_c20d4f68c172a28d" class="element heading1"
+			data-element-id="c20d4f68c172a28d">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_be99499f42e91ce2" class="element normal"
+			data-element-id="be99499f42e91ce2">MapChart 컴포넌트는 지도 시각화 컴포넌트입니다.
+			D3.js 데이터를 기반으로 대한민국의 전국 지도를 다양한 형태로 시각화하여 표현할 수 있으며, 사용자 친화적인 인터페이스와
+			높은 커스터마이징 가능성을 제공합니다. 각 지역별 위치 위에 마커를 표시하거나, 마커에 대해 다양한 스타일을 지정할 수
+			있으며, 사용자 정의 함수와 스타일 클래스를 통해 고도로 커스터마이징된 지도 UI를 구성할 수 있습니다.</p>
+		<dl id="r_fc147fe98aa46141" class="element definition_list"
+			data-element-id="fc147fe98aa46141">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb0kc2GAWbX_jT0zE_wWhec6">MapChart
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2pJmbXYNxPjDLA9LlN_z00">MapChart
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_e8290198fdcf18d6" class="element heading1"
+			data-element-id="e8290198fdcf18d6">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_a60cb0d7b0f8098e" class="element normal"
+			data-element-id="a60cb0d7b0f8098e">MapChart 컴포넌트는 다음과 같은 다양한
+			시나리오에서 활용하실 수 있습니다.</p>
+		<dl id="r_63df304c7225639f" class="element definition_list"
+			data-element-id="63df304c7225639f">
+			<dt>
+				<strong>비즈니스 대시보드</strong>
+			</dt>
+			<dd>
+				<p>지역별 매출, 고객 분포, 마케팅 성과 등을 시각적으로 표현하여 의사결정을 지원합니다. 각 지역의 데이터를
+					색상이나 마커를 통해 구분하여 표시할 수 있어, 한눈에 전국적인 비즈니스 현황을 파악할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>정부 및 공공 서비스</strong>
+			</dt>
+			<dd>
+				<p>인구 통계, 행정 구역별 정책 시행 현황, 공공시설 분포 등을 효과적으로 시각화합니다. 시민들이 쉽게 이해할
+					수 있는 형태로 정보를 제공하여 투명성과 접근성을 높일 수 있습니다.</p>
+			</dd>
+			<dt>리포트 및 분석 도구</dt>
+			<dd>
+				<p>지역별 데이터 분석 리포트에 인터랙티브 지도를 적용하여 데이터의 가독성과 이해도를 높입니다.</p>
+			</dd>
+			<dt>
+				<strong>물류 및 배송 관리</strong>
+			</dt>
+			<dd>
+				<p>배송 네트워크, 창고 위치, 배송 현황을 실시간으로 모니터링하고 관리할 수 있습니다. 효율적인 물류 경로
+					계획과 자원 배치를 위한 시각적 도구로 활용됩니다.</p>
+			</dd>
+			<dt>
+				<strong>교육 및 연구</strong>
+			</dt>
+			<dd>
+				<p>지리적 데이터 분석, 역사적 사건의 위치별 분포, 연구 결과의 지역별 특성 등을 학습자나 연구자에게 직관적으로
+					전달할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>부동산 및 지역 개발</strong>
+			</dt>
+			<dd>
+				<p>부동산 시장 동향, 개발 계획, 지역별 투자 현황 등을 시각화하여 투자자와 개발자에게 유용한 정보를
+					제공합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_c6651a4b805df6fb" class="element heading1"
+			data-element-id="c6651a4b805df6fb">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_d03da6520610e27e" class="element unordered_list"
+			data-element-id="d03da6520610e27e">
+			<li><p>
+					지도 데이터 시각화 –
+					<code>dataMapPath</code>
+					&amp;
+					<code>changeMapPath()</code>
+				</p></li>
+			<li><p>
+					지도에 마커를 표시 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/MapChart/useMarker_contextFormatter_MapChart.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/FU52N0D18mo">YouTube</a>)
+				</p></li>
+			<li><p>
+					마커 스타일 정의 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/MapChart/markerDefiner_markerClass_markerClassDefiner_MapChart.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/tWLwvlwZW5Q">YouTube</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿[실습] DataCollection 과 GridView 연동 & GridView의 다양한 기능
+
+실습 대상 화면  : /edu/training1_gridView.xml  
+
+======================================================
+성별 코드 조회 Submission 정보
+------------------------------------------------------
+Reference : dc_reqCode  
+Target  : dc_code101
+URL Action : /edu/data/codeList.json  
+
+======================================================
+Reference DataCollection 정보 DataMap type
+------------------------------------------------------
+dc_reqCode
+
+GRP_CD	그룹 코드
+
+======================================================
+response DataCollection 정보 DataList type
+------------------------------------------------------
+dc_code02
+
+GRP_CD	그룹 코드
+CODE_CD	코드
+CODE_NM	코드명
+------------------------------------------------------
+dc_code101
+
+GRP_CD	그룹 코드
+CODE_CD	코드
+CODE_NM	코드명

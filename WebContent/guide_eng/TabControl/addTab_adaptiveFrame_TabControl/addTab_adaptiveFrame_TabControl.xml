@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="addTab_adaptiveFrame_TabControl">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[scwin.count=0;
+
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+    
+};
+
+
+scwin.trigger2_onclick = function (e) {
+    scwin.count++;
+var tmpSrc = scwin.getfolderPath() + "/adaptive_adaptiveThreshold_TableLayout.xml";
+
+    tabControl1.addTab(scwin.count,
+        {
+            label: "adaptiveFrame : true",
+            title: "Adaptive Tab",
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc,
+            "frameMode": "wframe",
+            "adaptiveFrame": "true"
+        }
+    );
+    tabControl1.setSelectedTabIndex(scwin.count);
+    
+    tabControl2.addTab(scwin.count,
+        {
+            label: "adaptiveFrame : false",
+            title: "Not Adaptive Tab",
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc,
+            "frameMode": "wframe"
+         // ,  "adaptiveFrame": "true"
+        }
+    );
+    tabControl2.setSelectedTabIndex(scwin.count);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="Apply Adaptive Design&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Click the addTab() button below.&lt;br/&gt;2. Confirm that a new tab is created in each of the two TabControls.&lt;br/&gt;3. Confirm that adaptive design is applied based on the adaptiveFrame option setting.&lt;br/&gt; &amp;nbsp; &amp;nbsp;“true”: Adaptive design is applied.&lt;br/&gt; &amp;nbsp; &amp;nbsp;“false”: Adaptive design is not applied.' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="display: block;height: eight:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;margin-bottom: 10px;"
+    		id="trigger2" type="button" class="">
+    		<xf:label><![CDATA[addTab()]]></xf:label>
+    	</xf:trigger>
+    	<xf:group tagname="table" style="height: 400px;" id="" class="w2tb">
+    		<w2:attributes>
+    			<w2:summary></w2:summary>
+    		</w2:attributes>
+    		<xf:group tagname="caption"></xf:group>
+    		<xf:group tagname="colgroup">
+    			<xf:group tagname="col" style="width:50.00%;"></xf:group>
+    			<xf:group tagname="col" style="width:50.00%"></xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="td" class="w2tb_td" style="padding:30px;">
+    				<w2:attributes></w2:attributes>
+    				<w2:tabControl id="tabControl1" alwaysDraw="false" style="">
+    					<w2:tabs disabled="false" style="width:70px;height:30px;" id="tabs6"></w2:tabs>
+    					<w2:content alwaysDraw="false" style="" id="content6"></w2:content>
+    				</w2:tabControl>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<w2:tabControl id="tabControl2" alwaysDraw="false" style="padding:30px;">
+    					<w2:tabs disabled="false" style="width:70px;height:30px;" id="tabs7"></w2:tabs>
+    					<w2:content alwaysDraw="false" style="" id="content7"></w2:content>
+    				</w2:tabControl>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </xf:group></body>
+</html>

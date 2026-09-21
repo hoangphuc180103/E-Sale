@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate />
+        <xf:model>
+            <xf:instance>
+                <data xmlns="" />
+            </xf:instance>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+    scwin.onpageload = function() {
+        scwin.createWindowTest("aaa");
+        scwin.createWindowTest("bbb");
+        scwin.createWindowTest("ccc");
+        
+    };
+
+    scwin.onpageunload = function() {
+        
+    };
+    
+    scwin.createWindowTest = function(title)
+    {
+        var winObj = {
+            title : title,
+            src : "a.xml",
+            windowTitle : title+"_windowTitle",
+            windowId : title+"_windowId",
+            frameMode : "wframe",
+            defaultWidth : "400",
+            defaultHeight : "400"
+        }
+        wc1.createWindow( winObj );
+    };
+        
+    ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Move Fixed Window to the Front of the Name Layer&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Confirm that the pin button for each window appears in the name layer at the bottom of the WindowContainer. (useFixButton=“true”)&lt;br/&gt;2. Click the pin button for any window.&lt;br/&gt;3. Click the button to arrange and display all windows. &lt;br/&gt;4. Confirm that the windows are rearranged, and the window whose pin button was clicked moves to the frontmost position in the name layer. (nameLayerRearrange=“true”)' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='useFixButton="true" &lt;br/&gt;nameLayerRearrange="true"' escape="false">
+    	</w2:textbox><w2:windowContainer sequentialArrangeColNum="3" sequentialArrangeRowNum="3" fixArrangeFullScreen="false" frameMode="wframe" useFixButton="true" windowAutoResize="false" verticalArrangeNum="3" windowMaxNum="5" useCloseButton="false" nameLayerMove="true" controlIconPosition="left" windowMaximizeAll="false" stopMinimizeOnNameLayer="false" toolbarPosition="bottom" useStatusMsg="true" id="wc1" class="" hideTitleOnMaximize="false" nameLayerRearrange="true" stopToggleOnLast="false" useNameScroll="true" nameLayerMenu="false" useNameContainer="false" ev:onbeforecloseall="scwin.wc1_onbeforecloseall" horizontalArrangeNum="3" useCustomMsg="false" spaAuto="true" useControlIconTitle="false" autoArrange="true" tooltipDisplay="true" tooltipGroupClass="false" windowTooltipDisplay="true" style="position: relative;height: 300px;border: gray solid 1px;">
+    		<w2:windowToolbar>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer></xf:group></body>
+</html>

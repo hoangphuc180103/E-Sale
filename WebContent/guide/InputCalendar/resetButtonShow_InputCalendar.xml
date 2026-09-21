@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox5" label="날짜 초기화 버튼 표시하기/숨기기" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox6" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox7"
+    		label='1. 첫 번째 InputCalendar의 달력 아이콘을 클릭. &lt;br/&gt;2. 날짜 초기화 버튼이 달력 위에 표시되는 것을 확인. (resetButtonShow="true")&lt;br/&gt;3. 두 번째 InputCalendar의 달력 아이콘을 클릭. &lt;br/&gt;4. 날짜 초기화 버튼이 달력 위에 표시되지 않는 것을 확인. (resetButtonShow="false")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox8" label='속성 설정&lt;br/&gt;resetButtonShow="true" &lt;br/&gt;cancelButtonShow="true"' escape="false">
+    	</w2:textbox>
+    	<w2:inputCalendar resetButtonShow="true" style="margin-bottom: 10px;" id="inputCalendar1" calendarValueType="yearMonthDate" cancelButtonShow="true"></w2:inputCalendar>
+    	<w2:textbox escape="false" id="textbox9" label='속성 설정&lt;br/&gt;resetButtonShow="false" &amp;nbsp;&lt;br/&gt;cancelButtonShow="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:inputCalendar calendarValueType="yearMonthDate" cancelButtonShow="true" id="inputCalendar2" style=""></w2:inputCalendar>
+    </xf:group></body>
+</html>

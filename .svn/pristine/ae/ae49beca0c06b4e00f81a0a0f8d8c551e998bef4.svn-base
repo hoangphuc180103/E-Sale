@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 소계, 합계">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="DataList 'dlt_gridData'의 데이터가 변경되고, 이에 따른 GridView 설정이 수정되었습니다." meta_date="20240624" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_gridData" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category1" name="category1"></w2:column>
+						<w2:column dataType="text" id="category2" name="category2"></w2:column>
+						<w2:column dataType="text" id="title" name="title"></w2:column>
+						<w2:column dataType="text" id="row3_1" name="row3_1"></w2:column>
+						<w2:column dataType="text" id="row3_2" name="row3_2"></w2:column>
+						<w2:column dataType="text" id="row3_3" name="row3_3"></w2:column>
+						<w2:column dataType="text" id="row3_4" name="row3_4"></w2:column>
+						<w2:column dataType="text" id="row3_5" name="row3_5"></w2:column>
+						<w2:column dataType="text" id="row3_6" name="row3_6"></w2:column>
+						<w2:column dataType="text" id="row3_7" name="row3_7"></w2:column>
+						<w2:column dataType="text" id="row3_8" name="row3_8"></w2:column>
+						<w2:column dataType="text" id="row3_9" name="row3_9"></w2:column>
+						<w2:column dataType="text" id="row3_10" name="row3_10"></w2:column>
+						<w2:column dataType="text" id="row3_11" name="row3_11"></w2:column>
+						<w2:column dataType="text" id="row3_12" name="row3_12"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Networking]]></category2>
+							<row3_1><![CDATA[100]]></row3_1>
+							<row3_2><![CDATA[400]]></row3_2>
+							<row3_3><![CDATA[700]]></row3_3>
+							<row3_4><![CDATA[100]]></row3_4>
+							<row3_5><![CDATA[100]]></row3_5>
+							<row3_6><![CDATA[100]]></row3_6>
+							<row3_7><![CDATA[100]]></row3_7>
+							<row3_8><![CDATA[100]]></row3_8>
+							<row3_9><![CDATA[100]]></row3_9>
+							<row3_10><![CDATA[300]]></row3_10>
+							<row3_11><![CDATA[800]]></row3_11>
+							<row3_12><![CDATA[100]]></row3_12>
+							<title><![CDATA[UltraNet]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Networking]]></category2>
+							<row3_1><![CDATA[200]]></row3_1>
+							<row3_2><![CDATA[300]]></row3_2>
+							<row3_3><![CDATA[800]]></row3_3>
+							<row3_4><![CDATA[200]]></row3_4>
+							<row3_5><![CDATA[200]]></row3_5>
+							<row3_6><![CDATA[200]]></row3_6>
+							<row3_7><![CDATA[400]]></row3_7>
+							<row3_8><![CDATA[700]]></row3_8>
+							<row3_9><![CDATA[200]]></row3_9>
+							<row3_10><![CDATA[400]]></row3_10>
+							<row3_11><![CDATA[700]]></row3_11>
+							<row3_12><![CDATA[200]]></row3_12>
+							<title><![CDATA[DataStream]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Networking]]></category2>
+							<row3_1><![CDATA[300]]></row3_1>
+							<row3_2><![CDATA[300]]></row3_2>
+							<row3_3><![CDATA[300]]></row3_3>
+							<row3_4><![CDATA[300]]></row3_4>
+							<row3_5><![CDATA[300]]></row3_5>
+							<row3_6><![CDATA[300]]></row3_6>
+							<row3_7><![CDATA[100]]></row3_7>
+							<row3_8><![CDATA[800]]></row3_8>
+							<row3_9><![CDATA[300]]></row3_9>
+							<row3_10><![CDATA[300]]></row3_10>
+							<row3_11><![CDATA[300]]></row3_11>
+							<row3_12><![CDATA[300]]></row3_12>
+							<title><![CDATA[LinkPro]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Servers]]></category2>
+							<row3_1><![CDATA[400]]></row3_1>
+							<row3_2><![CDATA[200]]></row3_2>
+							<row3_3><![CDATA[200]]></row3_3>
+							<row3_4><![CDATA[400]]></row3_4>
+							<row3_5><![CDATA[700]]></row3_5>
+							<row3_6><![CDATA[100]]></row3_6>
+							<row3_7><![CDATA[400]]></row3_7>
+							<row3_8><![CDATA[400]]></row3_8>
+							<row3_9><![CDATA[100]]></row3_9>
+							<row3_10><![CDATA[400]]></row3_10>
+							<row3_11><![CDATA[100]]></row3_11>
+							<row3_12><![CDATA[400]]></row3_12>
+							<title><![CDATA[UltraServer]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Servers]]></category2>
+							<row3_1><![CDATA[600]]></row3_1>
+							<row3_2><![CDATA[600]]></row3_2>
+							<row3_3><![CDATA[100]]></row3_3>
+							<row3_4><![CDATA[300]]></row3_4>
+							<row3_5><![CDATA[800]]></row3_5>
+							<row3_6><![CDATA[400]]></row3_6>
+							<row3_7><![CDATA[100]]></row3_7>
+							<row3_8><![CDATA[700]]></row3_8>
+							<row3_9><![CDATA[200]]></row3_9>
+							<row3_10><![CDATA[600]]></row3_10>
+							<row3_11><![CDATA[300]]></row3_11>
+							<row3_12><![CDATA[500]]></row3_12>
+							<title><![CDATA[PowerServer]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Storage Solutions]]></category2>
+							<title><![CDATA[StoreSafe]]></title>
+							<row3_3><![CDATA[200]]></row3_3>
+							<row3_4><![CDATA[100]]></row3_4>
+							<row3_1><![CDATA[700]]></row3_1>
+							<row3_2><![CDATA[700]]></row3_2>
+							<row3_5><![CDATA[700]]></row3_5>
+							<row3_7><![CDATA[600]]></row3_7>
+							<row3_8><![CDATA[300]]></row3_8>
+							<row3_10><![CDATA[700]]></row3_10>
+							<row3_9><![CDATA[300]]></row3_9>
+							<row3_6><![CDATA[700]]></row3_6>
+							<row3_11><![CDATA[400]]></row3_11>
+							<row3_12><![CDATA[100]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Storage Solutions]]></category2>
+							<row3_1><![CDATA[600]]></row3_1>
+							<row3_2><![CDATA[600]]></row3_2>
+							<row3_3><![CDATA[600]]></row3_3>
+							<row3_4><![CDATA[600]]></row3_4>
+							<row3_5><![CDATA[300]]></row3_5>
+							<row3_6><![CDATA[800]]></row3_6>
+							<row3_7><![CDATA[700]]></row3_7>
+							<row3_8><![CDATA[400]]></row3_8>
+							<row3_9><![CDATA[100]]></row3_9>
+							<row3_10><![CDATA[800]]></row3_10>
+							<row3_11><![CDATA[800]]></row3_11>
+							<row3_12><![CDATA[600]]></row3_12>
+							<title><![CDATA[DataVault]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[AI Software]]></category2>
+							<row3_1><![CDATA[700]]></row3_1>
+							<row3_2><![CDATA[700]]></row3_2>
+							<row3_3><![CDATA[700]]></row3_3>
+							<row3_4><![CDATA[700]]></row3_4>
+							<row3_5><![CDATA[400]]></row3_5>
+							<row3_6><![CDATA[400]]></row3_6>
+							<row3_7><![CDATA[700]]></row3_7>
+							<row3_8><![CDATA[700]]></row3_8>
+							<row3_9><![CDATA[300]]></row3_9>
+							<row3_10><![CDATA[700]]></row3_10>
+							<row3_11><![CDATA[700]]></row3_11>
+							<row3_12><![CDATA[700]]></row3_12>
+							<title><![CDATA[IntelliAI]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[AI Software]]></category2>
+							<row3_1><![CDATA[300]]></row3_1>
+							<row3_2><![CDATA[700]]></row3_2>
+							<row3_3><![CDATA[400]]></row3_3>
+							<row3_4><![CDATA[800]]></row3_4>
+							<row3_5><![CDATA[100]]></row3_5>
+							<row3_6><![CDATA[800]]></row3_6>
+							<row3_7><![CDATA[300]]></row3_7>
+							<row3_8><![CDATA[300]]></row3_8>
+							<row3_9><![CDATA[800]]></row3_9>
+							<row3_10><![CDATA[100]]></row3_10>
+							<row3_11><![CDATA[800]]></row3_11>
+							<row3_12><![CDATA[800]]></row3_12>
+							<title><![CDATA[DeepThink]]></title>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Code Editors]]></category2>
+							<title><![CDATA[CodeStream]]></title>
+							<row3_2><![CDATA[800]]></row3_2>
+							<row3_3><![CDATA[100]]></row3_3>
+							<row3_1><![CDATA[200]]></row3_1>
+							<row3_4><![CDATA[700]]></row3_4>
+							<row3_5><![CDATA[200]]></row3_5>
+							<row3_6><![CDATA[800]]></row3_6>
+							<row3_7><![CDATA[400]]></row3_7>
+							<row3_8><![CDATA[400]]></row3_8>
+							<row3_9><![CDATA[700]]></row3_9>
+							<row3_10><![CDATA[200]]></row3_10>
+							<row3_11><![CDATA[600]]></row3_11>
+							<row3_12><![CDATA[300]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Code Editors]]></category2>
+							<title><![CDATA[DevTools]]></title>
+							<row3_1><![CDATA[600]]></row3_1>
+							<row3_2><![CDATA[400]]></row3_2>
+							<row3_3><![CDATA[300]]></row3_3>
+							<row3_4><![CDATA[100]]></row3_4>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    if (WebSquare.util.isMobile()) {
+        grd_exam1.setFixedColumn(1);
+    }
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 소계(subtotal)과 합계(footer)영역을 표현한 예시입니다.&lt;br/&gt;컬럼의 inputType속성을 expression으로 적용하여 컬럼간 데이터 또는 행간 집합 데이터를 연산하여 출력할 수 있습니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView oddEvenColorDisplay="false" repeatNode="" rowNumVisible="" readOnly="true" scrollByColumn="true"
+					defaultCellHeight="37" baseNode="" focusMode="row" rowNumWidth="" fixedColumn="3" dataList="data:dlt_gridData"
+					style="position: relative ;height:400px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="all" readOnlyBackgroundColor="" class="gvw"
+					autoFitMinWidth="1000">
+					<w2:header style="" id="header5">
+						<w2:row style="" id="row35">
+							<w2:column hidden="false" width="100" inputType="text" id="column572" value="대분류" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column hidden="false" width="110" inputType="text" id="column573" value="중분류" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column width="120" inputType="text" id="column575" value="제품" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="60" inputType="text" id="column468" value="1월"></w2:column>
+							<w2:column width="60" inputType="text" id="column467" value="2월"></w2:column>
+							<w2:column width="60" inputType="text" id="column466" value="3월"></w2:column>
+							<w2:column width="60" inputType="text" id="column465" value="4월"></w2:column>
+							<w2:column width="60" inputType="text" id="column464" value="5월"></w2:column>
+							<w2:column width="60" inputType="text" id="column463" value="6월"></w2:column>
+							<w2:column width="60" inputType="text" id="column462" value="7월"></w2:column>
+							<w2:column width="60" inputType="text" id="column461" value="8월"></w2:column>
+							<w2:column width="60" inputType="text" id="column460" value="9월"></w2:column>
+							<w2:column width="60" inputType="text" id="column459" value="10월"></w2:column>
+							<w2:column width="60" inputType="text" id="column458" value="11월"></w2:column>
+							<w2:column width="60" inputType="text" id="column457" value="12월"></w2:column>
+							<w2:column hidden="false" width="70" inputType="text" id="column574" value="합계" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody5">
+						<w2:row style="" id="row37">
+							<w2:column hidden="false" colMerge="true" width="100" inputType="text" id="category1" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column hidden="false" colMerge="true" width="110" inputType="text" id="category2" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column width="120" inputType="text" id="title" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_1"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_2"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_3"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_4"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_5"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_6"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_7"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_8"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_9"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_10"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_11"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="row3_12"></w2:column>
+							<w2:column
+								expression="sum('row3_1','row3_2','row3_3','row3_4','row3_5','row3_6','row3_7','row3_8','row3_9','row3_10','row3_11','row3_12')"
+								hidden="false" textAlign="right" dataType="number" width="70" displayFormat="#,###" inputType="expression" id="row_total"
+								blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+					<w2:subTotal targetColumnID="category2" style="" id="subTotal1">
+						<w2:row style="" id="row42">
+							<w2:column width="100" inputType="text" id="column577" value="소계" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column expression="targetColValue() + ': ' +count('row_total') + '건'" colSpan="2" width="226"
+								inputType="expression" style="height:32px;padding-left:10px;" id="column555" blockSelect="false" displayMode="label" textAlign="left">
+							</w2:column>
+							<w2:column expression="sum('row3_1')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column553" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_2')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column552" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_3')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column551" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_4')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column550" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_5')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column549" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_6')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column548" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_7')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column547" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_8')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column546" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_9')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column545" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_10')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column544" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_11')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column543" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_12')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column542" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row_total')" textAlign="right" dataType="number" width="70" displayFormat="#,###"
+								inputType="expression" id="column541" blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:subTotal>
+					<w2:footer style="" id="footer1">
+						<w2:row style="" id="row41">
+							<w2:column width="100" inputType="text" id="column580" value="합계" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="'총 건수: '+count('row_total') +'건'" colSpan="2" width="226" inputType="expression"
+								id="column528" class="foBg" textAlign="left" style="padding-left: 10px;">
+							</w2:column>
+							<w2:column expression="sum('row3_1')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="column526">
+							</w2:column>
+							<w2:column expression="sum('row3_2')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column584" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_3')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column585" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_4')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column586" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_5')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column587" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_6')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column588" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_7')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column589" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_8')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column590" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_9')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column591" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_10')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column592" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_11')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column593" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row3_12')" hidden="false" textAlign="right" dataType="number" width="60"
+								displayFormat="#,###" inputType="expression" id="column594" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('row_total')" hidden="false" textAlign="right" dataType="number" width="70"
+								displayFormat="#,###" inputType="expression" id="column595" blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:footer>
+				</w2:gridView>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

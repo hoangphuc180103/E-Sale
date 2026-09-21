@@ -1,0 +1,28 @@
+/*amd /edu/adv/pageFrame_child_2_c.xml 4409 88ccae90706d22c4b94ed81984a580682604a2f3c0da1eef317b2e3b7da50d98 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var obj = $p.getParameter("pageParam");
+  ui_ipt1.setValue(obj.data1);
+  //ui_ipt2.setValue(obj.data2);
+};
+
+//parent 에서 호출할 함수 
+scwin.setData = function () {
+  ui_ipt2.setValue("functionValue");
+};
+
+//값 자동 넣기 
+scwin.btn_setData_onclick = function (e) {
+  ui_ipt1.setValue("child2_Value1");
+  ui_ipt2.setValue("child2_Value2");
+};
+
+//자식1값 가져오기
+scwin.btn_getChild_onclick = function (e) {
+  ui_ipt1.setValue($p.parent().pageFrame1.getWindow().ui_ipt1.getValue());
+};
+
+//자식1로 값 보내기
+scwin.btn_setChild_onclick = function (e) {
+  $p.parent().pageFrame1.getWindow().ui_ipt1.setValue(ui_ipt1.getValue());
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'w2:textbox',A:{tagname:'h3',style:'',id:'',label:'해당화면은 pageFrame 설명을 위한 pageFrame_child_2_c.xml',class:'ws_example_txt_desc_info'}},{T:1,N:'xf:group',A:{style:'',id:'',class:'ws_example_grp_desc'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'titbox'}},{T:1,N:'xf:group',A:{tagname:'details',style:'',id:'',class:''},E:[{T:1,N:'w2:textbox',A:{tagname:'summary',style:'',id:'',label:'실습 방법',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'',id:'',label:'1. 자식1 Frame 값을 자식2 Frame 으로 값 가져오기<br/> &nbsp;1) 자식1값 가져오기 컴포넌트에 이벤트 생성<br/> &nbsp;2) 이벤트 함수에 아래 명령어 작성<br/> &nbsp; 객체명.setValue($p.parent().자식1frameID.getWindow().객체명.getValue());<br/><br/>2. 자식2 Frame 의 값을 자식1Frame 으로 값 보내기 <br/> &nbsp;1) 자식1 값 보내기 컴포넌트에 이벤트 생성<br/> &nbsp;2) 이벤트 함수에 아래 명령어 작성<br/> &nbsp; $p.parent().자식1frameID.getWindow().객체명.setValue(객체명.getValue());<br/> ',class:'',escape:'false'}}]},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:span',A:{id:'',label:'자식화면 간의 참조',style:'margin-right: 10px;font-weight: bold;'}},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm ',id:'btn_getChild',style:'',type:'button','ev:onclick':'scwin.btn_getChild_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'자식1값 가져오기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm ',id:'btn_setChild',style:'',type:'button','ev:onclick':'scwin.btn_setChild_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'자식1 값 보내기'}]}]}]}]},{T:1,N:'xf:group',A:{style:'',id:'',class:'tblbox'},E:[{T:1,N:'xf:group',A:{adaptive:'layout',adaptiveThreshold:'600',tagname:'table',style:'',id:'',class:'w2tb tbl'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:summary'}]},{T:1,N:'xf:group',A:{tagname:'colgroup'},E:[{T:1,N:'xf:group',A:{tagname:'col',style:'width:150px;'}},{T:1,N:'xf:group',A:{tagname:'col',style:''}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:150px;'}},{T:1,N:'xf:group',A:{tagname:'col',style:''}}]},{T:1,N:'xf:group',A:{tagname:'tr',style:''},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:textbox',A:{ref:'',style:'',userData2:'',id:'',label:'child2_헤더1',class:'req'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'xf:input',A:{style:'width:195px;height:21px;',id:'ui_inp1'}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th '},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:textbox',A:{ref:'',style:'',userData2:'',id:'',label:'child2_헤더2',class:''}}]},{T:1,N:'xf:group',A:{tagname:'td',class:'w2tb_td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'xf:input',A:{style:'width:206px;height:21px;',id:'ui_inp2'}},{T:1,N:'xf:trigger',A:{type:'button',id:'btn_setData',style:'width: 80px;height: 23px;','ev:onclick':'scwin.btn_setData_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'값 자동 넣기'}]}]}]}]}]}]}]}]}]}]})

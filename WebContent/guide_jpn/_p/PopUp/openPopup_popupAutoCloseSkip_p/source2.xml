@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="source">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:aliasDataList scope="" id="aliasDataList1" userData1="../dataList1"></w2:aliasDataList>
+            	<w2:aliasDataMap scope="../dataMap1" id="aliasDataMap1"></w2:aliasDataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<w2:textbox id="" label="Child"
+    		style="width:313px;height:94px;margin:50px;font-size:50px;font-style:italic;font-weight:bolder;color: gray;">
+    	</w2:textbox>
+    </body>
+</html>

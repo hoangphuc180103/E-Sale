@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		var strDate = $p.getCurrentServerDate("yyyyMMdd");
+        var addDate = WebSquare.date.dateAdd( strDate, 1 );
+        inputCalendar1.disableDate(addDate);
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="padding: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="특정 날짜 비활성화" style="color: blue;margin-bottom: 10px;" tabIndex="h1" tagname="h1"></w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. InpuCalendar의 달력 아이콘을 클릭.&lt;br/&gt;2. 현재 날짜 다음 날이 비활성화되지 않은 것을 확인. &lt;br/&gt;3. 하단의 disableDate() 버튼을 클릭. &lt;br/&gt;4. InpuCalendar 열기.&lt;br/&gt;5. 현재 날짜 다음 날이 비활성화되어 회색으로 표시되는 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox4" label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.trigger1_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var strDate = $p.getCurrentServerDate("yyyyMMdd");&lt;br/&gt; &amp;nbsp; &amp;nbsp;var addDate = WebSquare.date.dateAdd(strDate, 1);&lt;br/&gt; &amp;nbsp; &amp;nbsp;inputCalendar1.disableDate(addDate);&lt;br/&gt;};' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[disableDate()]]></xf:label>
+    	</xf:trigger>
+    	<w2:inputCalendar footerDiv="false" rightAlign="false" monthNamesForYearMonthType="1,2,3,4,5,6,7,8,9,10,11,12"
+    		focusOnDateSelect="false" style="" id="inputCalendar1" renderDiv="true" calendarValueType="yearMonthDate"
+    		monthNames="1,2,3,4,5,6,7,8,9,10,11,12" yearSuffix="Y" setCurrentDate="true">
+    	</w2:inputCalendar>
+    </xf:group></body>
+</html>

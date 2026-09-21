@@ -1,0 +1,33 @@
+/*amd /page/P00244.xml 5607 5bc8ad0fb2151e9ae1f3fa32f07bcdb1da45d5ced0b35c02923fe5051002d536 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'stock',name:'Stock'}},{T:1,N:'w2:column',A:{id:'category_code',name:'Category',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'SecureGate'}]},{T:1,N:'stock',E:[{T:4,cdata:'98291'}]},{T:1,N:'category_code',E:[{T:4,cdata:'0001'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'FastServe'}]},{T:1,N:'stock',E:[{T:4,cdata:'528'}]},{T:1,N:'category_code',E:[{T:4,cdata:'0002'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'CloudFlex'}]},{T:1,N:'stock',E:[{T:4,cdata:'73928'}]},{T:1,N:'category_code',E:[{T:4,cdata:'0003'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'product',E:[{T:4,cdata:'CodeStream'}]},{T:1,N:'stock',E:[{T:4,cdata:'6894'}]},{T:1,N:'category_code',E:[{T:4,cdata:'0001'}]}]}]}]},{T:1,N:'w2:dataList',A:{id:'dlt_code',baseNode:'list',saveRemovedData:'true',repeatNode:'map'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'화면에 출력될 값',dataType:'text'}},{T:1,N:'w2:column',A:{id:'code',name:'코드값',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Software'}]},{T:1,N:'code',E:[{T:4,cdata:'0001'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Hardware'}]},{T:1,N:'code',E:[{T:4,cdata:'0002'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'Services'}]},{T:1,N:'code',E:[{T:4,cdata:'0003'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [(기본 설정) 화면의 표시 값으로 CSV 다운로드] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00244_TYPE1.csv",
+    //파일명
+    type: "1" //다운로드할 데이터 - 화면의 표시 값
+  };
+
+  //GridView 'grd_exam1'의 데이터를 CSV 형식으로 다운로드합니다.
+  grd_exam1.saveCSV(jsnOptions);
+};
+
+/**
+ * 버튼 [value로 CSV 다운로드] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  var jsnOptions;
+  jsnOptions = {
+    fileName: "EXAMPLE_P00244_TYPE2.csv",
+    //파일명
+    type: "0" //다운로드할 데이터 - value
+  };
+
+  //GridView 'grd_exam1'의 데이터를 CSV 형식으로 다운로드합니다.
+  grd_exam1.saveCSV(jsnOptions);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'',escape:'false',id:'',label:'GridView의 \'saveCSV\' 메소드를 사용하여, CSV 형식으로 다운로드할 데이터를 설정한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',localeRef:'',style:'min-width: 30px; height: 26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'(기본 설정) 화면의 표시 값으로 CSV 다운로드'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',localeRef:'',style:'min-width:30px;height:26px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'value로 CSV 다운로드'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'365',class:'gvw',dataList:'data:dlt_exam',defaultCellHeight:'37',id:'grd_exam1',rowNumVisible:'true',rowNumWidth:'34',style:'height:100px;',visibleRowNum:'4',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column4',inputType:'text',value:'Category',width:'90'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',value:'Product',width:'140'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',value:'Stock',width:'70'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'category_code',inputType:'select',viewType:'icon',width:'90'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_code'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'code'}}]}]}]},{T:1,N:'w2:column',A:{displayMode:'label',id:'product',inputType:'text',textAlign:'left',width:'140'}},{T:1,N:'w2:column',A:{dataType:'number',displayFormat:'#,###',displayMode:'label',id:'stock',inputType:'text',textAlign:'right',width:'70'}}]}]}]}]}]}]}]}]}]})

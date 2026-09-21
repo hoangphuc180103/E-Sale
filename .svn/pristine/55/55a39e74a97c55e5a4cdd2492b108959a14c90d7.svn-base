@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Year" dataType="text"></w2:column>
+            			<w2:column id="col2" name="City" dataType="text"></w2:column>
+            			<w2:column id="col3" name="Continent" dataType="text"></w2:column>
+            			<w2:column id="col4" name="Expense" dataType="number"></w2:column>
+            			<w2:column id="col5" name="Saving" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList2">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Year" dataType="text"></w2:column>
+            			<w2:column id="col2" name="City" dataType="text"></w2:column>
+            			<w2:column id="col3" name="Continent" dataType="text"></w2:column>
+            			<w2:column id="col4" name="Expense" dataType="number"></w2:column>
+            			<w2:column id="col5" name="Saving" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList3">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Year" dataType="text"></w2:column>
+            			<w2:column id="col2" name="City" dataType="text"></w2:column>
+            			<w2:column id="col3" name="Continent" dataType="text"></w2:column>
+            			<w2:column id="col4" name="Expense" dataType="number"></w2:column>
+            			<w2:column id="col5" name="Saving" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {				
+				var jsonData1 = [
+				{"col1":"2017","col2":"Seoul","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Paris","col3":"Europe","col4":"223","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Beijing","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Seoul","col3":"Asia","col4":"209","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Paris","col3":"Europe","col4":"223","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Beijing","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Seoul","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Paris","col3":"Europe","col4":"213","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Beijing","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}]; 
+				dataList1.setJSON(jsonData1);
+                			
+				var jsonData2 = [
+				{"col1":"2017","col2":"Seoul","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Paris","col3":"Europe","col4":"223","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Beijing","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Seoul","col3":"Asia","col4":"209","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Paris","col3":"Europe","col4":"223","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Beijing","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Seoul","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Paris","col3":"Europe","col4":"213","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Beijing","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}]; 
+				dataList2.setJSON(jsonData2);
+
+                			
+				var jsonData3 = [
+				{"col1":"2017","col2":"Seoul","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Paris","col3":"Europe","col4":"223","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Beijing","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2017","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Seoul","col3":"Asia","col4":"209","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Paris","col3":"Europe","col4":"223","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Beijing","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2018","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Seoul","col3":"Asia","col4":"250","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Paris","col3":"Europe","col4":"213","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Beijing","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"Bangkok","col3":"Asia","col4":"245","col5": "100","rowStatus":"R"}
+				,{"col1":"2019","col2":"London","col3":"Europe","col4":"245","col5": "100","rowStatus":"R"}]; 
+				dataList3.setJSON(jsonData3);
+		
+	}; 
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="총 합계 표시 위치 설정"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(첫 번째 Pivot)&lt;br/&gt;우측에 "총합계" 컬럼과 하단에 각 컬럼의 합계를 모두 표시하는 것을 확인. (grandTotalDisplayType="both")&lt;br/&gt;&lt;br/&gt;(두 번째 Pivot)&lt;br/&gt;우측에 "총합계" 컬럼만 표시하는 것을 확인. &amp;nbsp;(grandTotalDisplayType="vertical")&lt;br/&gt;&lt;br/&gt;(세 번째 Pivot)&lt;br/&gt;하단에 각 컬럼의 합계만 표시하는 것을 확인. &amp;nbsp;(grandTotalDisplayType="horizontal")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;grandTotalDisplayType="both" &lt;br/&gt;showGrandTotal="true"' escape="false">
+    	</w2:textbox>
+    	<w2:pivot grandTotalDisplayType="both" grandTotalName="" allTotalName="" vals="col4,col5" noColumnMove="true" rows="col1"
+    		valuesAxis="" showGrandTotal="true" headerListOrder="col,row,val,hidden" totalTextAlign="" dataList="data:dataList1"
+    		style="height: 450px;margin-bottom: 10px;" autoFit="" id="pivot1" cols="col2" autoFitMinWidth="100">
+    		<w2:fieldInfo style="padding: 10px;">
+    			<w2:field name="Year" id="col1"></w2:field>
+    			<w2:field name="City" id="col2"></w2:field>
+    			<w2:field name="Continent" id="col3"></w2:field>
+    			<w2:field name="Expense" id="col4"></w2:field>
+    			<w2:field name="Saving" id="col5"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    	<w2:textbox escape="false" id="textbox5" label='속성 설정&lt;br/&gt;grandTotalDisplayType="vertical" &lt;br/&gt;showGrandTotal="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:pivot grandTotalDisplayType="vertical" allTotalName="" grandTotalName="" vals="col4,col5" noColumnMove="true" rows="col1"
+    		valuesAxis="" showGrandTotal="true" totalTextAlign="" dataList="data:dataList2" style="height: 450px;margin-bottom: 10px" autoFit="" id="pivot2"
+    		cols="col2" autoFitMinWidth="100" headerListOrder="col,row,val,hidden">
+    		<w2:fieldInfo style="padding: 10px;">
+    			<w2:field name="Year" id="col1"></w2:field>
+    			<w2:field name="City" id="col2"></w2:field>
+    			<w2:field name="Continent" id="col3"></w2:field>
+    			<w2:field name="Expense" id="col4"></w2:field>
+    			<w2:field name="Saving" id="col5"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    	<w2:textbox escape="false" id="textbox6" label='속성 설정&lt;br/&gt;grandTotalDisplayType="horizontal" &lt;br/&gt;showGrandTotal="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:pivot allTotalName="" autoFit="" autoFitMinWidth="100" cols="col2" dataList="data:dataList3" grandTotalDisplayType="horizontal"
+    		grandTotalName="" id="pivot3" noColumnMove="true" rows="col1" showGrandTotal="true" style="height: 450px;" totalTextAlign=""
+    		vals="col4,col5" valuesAxis="" headerListOrder="col,row,val,hidden">
+    		<w2:fieldInfo style="padding: 10px;">
+    			<w2:field id="col1" name="Year"></w2:field>
+    			<w2:field id="col2" name="City"></w2:field>
+    			<w2:field id="col3" name="Continent"></w2:field>
+    			<w2:field id="col4" name="Expense"></w2:field>
+    			<w2:field id="col5" name="Saving"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    </xf:group></body>
+</html>

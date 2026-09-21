@@ -1,0 +1,26 @@
+{
+    "mcpServers": {
+      "websquare-mcp": {
+        "type": "http",
+        "url": "/InswaveAdmin/mcp/websquare",
+        "headers": {
+          "Proworks-Lang": "ko",
+          "Proworks-Body": "Y",
+          "Proworks-tKey": ""
+        }
+      },
+      "validate-mcp": {
+        "command": "./node",
+        "args": ["./no_data/dist/validate-mcp.mjs"]
+      },
+      "proworks-mcp": {
+        "type": "http",
+        "url": "/InswaveAdmin/mcp/proworks",
+        "headers": {
+          "Proworks-Lang": "ko",
+          "Proworks-Body": "Y",
+          "Proworks-tKey": ""
+        }
+      }
+    }
+  }

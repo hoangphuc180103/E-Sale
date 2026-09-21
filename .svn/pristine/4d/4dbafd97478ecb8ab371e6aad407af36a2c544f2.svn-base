@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="addWidgets_buttonFormatter_WidgetContainer">
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+scwin.onpageload = function () {
+};
+
+
+scwin.onpageunload = function () {
+
+};
+scwin.widgetContainer_onclickcustombtn = function (widgetId, btnId) {
+    alert("Custom Button ID : " + btnId);
+};
+scwin.trigger1_onclick = function (e) {
+    scwin.count++;
+    widgetContainer1.addWidgets({
+        id: "widget" + scwin.count,
+        title: "Widget_" + scwin.count + "_",
+        src: null,
+        scope: true,
+        x: 0,
+        y: scwin.count - 1,
+        unitWidth: 1,
+        unitHeight: 2
+    });
+};
+
+scwin.trigger2_onclick = function (e) {
+
+    bFormatter = function () {
+        return [
+            {
+                'id': 'customBtn_1',
+                'className': 'w2widget_btnCustom',
+                'isCustom': true,
+                'isCustomDirection': 'left'
+            },
+            {
+                'id': 'customBtn_2',
+                'isCustom': true,
+                'className': 'w2widget_btnCustom1',
+                'isCustomDirection': 'left'
+            },
+            {
+                'id': 'customBtn_3',
+                'className': 'w2widget_btnCustom w2widget_btnCustom2',
+                'isCustom': true,
+                'isCustomDirection': 'right'
+            },
+            {
+                'id': 'customBtn_4',
+                'className': 'w2widget_btnCustom w2widget_btnCustom3',
+                'isCustom': true,
+                'isCustomDirection': 'right'
+            },
+            { 'useDefault': 'fix' },
+            { 'useDefault': 'minimize' },
+            { 'useDefault': 'maximize' },
+            { 'useDefault': 'close' }
+        ];
+    };
+    scwin.count++;
+    widgetContainer1.addWidgets({
+        id: "widget" + scwin.count,
+        title: "Widget_" + scwin.count + "_",
+        src: null,
+        scope: true,
+        x: 1,
+        y: scwin.count-1,
+        unitWidth: 1,
+        unitHeight: 2,
+        buttonFormatter: bFormatter,
+    });
+
+};
+]]></script>
+    	<style type="text/css"><![CDATA[.w2widget_btnCustom1 {
+    width: 15px;
+    height: 15px;
+    background-color: skyblue;
+}
+
+.w2widget_btnCustom2 {
+    width: 15px;
+    height: 15px;
+    background-color: coral;
+}
+
+.w2widget_btnCustom3 {
+    width: 15px;
+    height: 15px;
+    background-color: gray;
+    display: inline-block;
+    margin-left: 3px;
+    margin-right: 3px;
+}]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Add Custom Button to Widget&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Click the first addWidgets() button.&lt;br/&gt;2. Confirm that the default widget is created.&lt;br/&gt;3. Click the second addWidgets() button.&lt;br/&gt;4. Confirm that a widget containing the button added via the buttonFormatter option is created.&lt;br/&gt;5. Click each added button to verify that the configured action executes.&lt;br/&gt;(Detailed script available in the Script tab.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[addWidgets();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[addWidgets( options.buttonFormatter );]]></xf:label>
+    	</xf:trigger>
+    	<w2:widgetContainer unitHeightPixel="100" accessibility="true" minUnitWidth="1" verticalMargin="5" threshold="500" rows="3"
+    		unfixedTitleButtons="true" params="false" processMsgFrame="true" widgetResize="true" mode="switch" preventMaximizeByTitle="false"
+    		widgetMove="true" style="height: 400px;border:1px solid black;margin-bottom: 10px;" id="widgetContainer1" horizontalMargin="14" cols="3"
+    		ev:onclickcustombtn="scwin.widgetContainer_onclickcustombtn">
+    	</w2:widgetContainer>
+    	<w2:textbox escape="false" id="textbox4"
+    		label="/// Sample Code (1)&lt;br/&gt;&lt;br/&gt;scwin.count++;&lt;br/&gt;widgetContainer1.addWidgets({&lt;br/&gt; &amp;nbsp; &amp;nbsp;id: &quot;widget&quot; + scwin.count,&lt;br/&gt; &amp;nbsp; &amp;nbsp;title: &quot;Widget_&quot; + scwin.count + &quot;_&quot;,&lt;br/&gt; &amp;nbsp; &amp;nbsp;src: null,&lt;br/&gt; &amp;nbsp; &amp;nbsp;scope: true,&lt;br/&gt; &amp;nbsp; &amp;nbsp;x: 0,&lt;br/&gt; &amp;nbsp; &amp;nbsp;y: scwin.count - 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp;unitWidth: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp;unitHeight: 2&lt;br/&gt;});&lt;br/&gt;&lt;br/&gt;/// Sample Code (2)&lt;br/&gt;&lt;br/&gt;bFormatter = function() {&lt;br/&gt; &amp;nbsp; &amp;nbsp;return [{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'id': 'customBtn_1',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'className': 'w2widget_btnCustom',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustom': true,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustomDirection': 'left'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'id': 'customBtn_2',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustom': true,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'className': 'w2widget_btnCustom1',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustomDirection': 'left'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'id': 'customBtn_3',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'className': 'w2widget_btnCustom w2widget_btnCustom2',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustom': true,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustomDirection': 'right'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'id': 'customBtn_4',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'className': 'w2widget_btnCustom w2widget_btnCustom3',&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustom': true,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'isCustomDirection': 'right'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'useDefault': 'fix'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'useDefault': 'minimize'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'useDefault': 'maximize'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;'useDefault': 'close'&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;];&lt;br/&gt;};&lt;br/&gt;scwin.count++;&lt;br/&gt;widgetContainer1.addWidgets({&lt;br/&gt; &amp;nbsp; &amp;nbsp;id: &quot;widget&quot; + scwin.count,&lt;br/&gt; &amp;nbsp; &amp;nbsp;title: &quot;Widget_&quot; + scwin.count + &quot;_&quot;,&lt;br/&gt; &amp;nbsp; &amp;nbsp;src: null,&lt;br/&gt; &amp;nbsp; &amp;nbsp;scope: true,&lt;br/&gt; &amp;nbsp; &amp;nbsp;x: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp;y: scwin.count - 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp;unitWidth: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp;unitHeight: 2,&lt;br/&gt; &amp;nbsp; &amp;nbsp;buttonFormatter: bFormatter&lt;br/&gt;});"
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

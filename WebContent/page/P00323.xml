@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[WidgetContainer] 추가된 위젯의 화면(src) 변경하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230809" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // WidgetContainer 'wgc_exam1'에 위젯 1개를 추가합니다.
+    wgc_exam1.addWidgets({
+        id: "wg_exam1",
+        src: "/page/P00323S01.xml",
+        scope: true,
+        unitWidth: 1,
+        unitHeight: 5,
+        title: "src 변경",
+        x: 0,
+        y: 0,
+        buttonFormatter: function (argWidgetID) {
+            // 테스트를 위해 우측 상단의 기능 버튼 제거 - 'fix': 고정, 'minimize': 최소화, 'maximize': 최대화, 'close': 닫기
+            return [];
+        }
+    });
+};
+
+
+/**
+ * 버튼 [위젯의 화면을 'P00323S02.xml'로 변경하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // WidgetContainer에 추가된 위젯의 ID가 'wgc_exam1'인 위젯 객체를 반환받습니다.
+    let objWidget = wgc_exam1.getWidgetById("wg_exam1");
+
+    // 위젯의 파일 경로를 "/page/P00323S02.xml"로 변경합니다.
+    objWidget.setSrc("/page/P00323S02.xml");
+};
+
+/**
+ * 버튼 [위젯의 화면을 'P00323S01.xml'로 변경하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // WidgetContainer에 추가된 위젯의 ID가 'wgc_exam1'인 위젯 객체를 반환받습니다.
+    let objWidget = wgc_exam1.getWidgetById("wg_exam1");
+
+    // 위젯의 파일 경로를 "/page/P00323S01.xml"로 변경합니다.
+    objWidget.setSrc("/page/P00323S01.xml");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="WidgetContainer의 'getWidgetById' 메소드를 사용하여 위젯 객체를 반환받아 화면의 경로를 변경하는 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" type="button">
+								<xf:label><![CDATA[위젯의 화면을 'P00323S02.xml'로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1" type="button">
+								<xf:label><![CDATA[위젯의 화면을 'P00323S01.xml'로 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<w2:widgetContainer verticalMargin="0" threshold="null" params="false" mode="pushpull" style="height: 130px;"
+								id="wgc_exam1" cols="1" unitHeightPixel="20" class="wre_comm" horizontalMargin="8" preventMaximizeByTitle="true">
+							</w2:widgetContainer>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[공통 WFrame] 프로젝트 릴리즈 노트 메인">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.wfm_history_onwframeload = function() {
+    this.getWindow().scwin.toggleExpandAll(true);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents exam_subbox" id="" style="display: flex;flex-direction: column;">
+    		<xf:group class="pgtbox" id="" style="margin-bottom: 0px;">
+    			<w2:textbox class="pgt_tit" id="tbx_pageTitle" label="WRE 릴리즈 노트" style="margin-right:24px" tagname=""></w2:textbox>
+    		</xf:group>
+    		<w2:wframe class="" id="wfm_history" src="/frame/page/history_w.xml" style="flex: 1;overflow-y: auto;" userData1="PAGE"></w2:wframe>
+    	</xf:group>
+    </body>
+</html>

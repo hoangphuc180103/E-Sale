@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="guide_sample">
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true" userData1="Default userData1" userData2="12345" userData3="67890">
+    				<w2:columnInfo>
+    					<w2:column id="col1" name="name1" dataType="text"></w2:column>
+    					<w2:column id="col2" name="name2" dataType="text"></w2:column>
+    					<w2:column id="col3" name="name3" dataType="text"></w2:column>
+    					<w2:column id="col4" name="name4" dataType="text"></w2:column>
+    					<w2:column id="col5" name="name5" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+    	<script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var json1 = [
+	            {"col1": "1", "col2": "3", "col3": "8", "col4": "2", "col5": "4"},
+	            {"col1": "3", "col2": "5", "col3": "7", "col4": "3", "col5": "5"},
+	            {"col1": "2", "col2": "7", "col3": "6", "col4": "2", "col5": "1"},
+	            {"col1": "4", "col2": "9", "col3": "5", "col4": "3", "col5": "5"},
+	            {"col1": "5", "col2": "1", "col3": "4", "col4": "4", "col5": "5"},
+	            {"col1": "6", "col2": "2", "col3": "3", "col4": "5", "col5": "1"}
+	            ];
+	     dataList1.setJSON( json1 );
+	   };
+	
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		alert(dataList1.getUserData("userData1"));		
+	};
+	
+	scwin.trigger2_onclick = function(e) {	
+		 dataList1.setUserData("userData1", "This is userData1 newly set.");
+	};
+	]]></script>
+    	<style type="text/css"><![CDATA[
+    	
+    	.gridBodyDefault button {
+           width: 50px !important;
+        }
+    	 ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox3" label="DataListのuserDataプロパティ値の設定と確認" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox5" label="1. 初めて目ボタンクリックして現在設定 userData1 値確認。 &lt;br/&gt;2. 二つ目ボタンクリックして userData1 値新設定。 &lt;br/&gt;3. &amp;nbsp;初めて目ボタン再びクリックして新設定した userData1 値確認。&lt;br/&gt;（userData1, userData2, userData3 だまし同じ方法で設定と確認可能。）" escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox6" label='プロパティの設定&lt;br/&gt;userData1="Default userData1" &lt;br/&gt;userData2="12345" &lt;br/&gt;userData3="67890"' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[dataList1.getUserData("userData1");]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[dataList1.setUserData("userData1", "This is userData1 newly set.");]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

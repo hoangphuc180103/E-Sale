@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/Guide/GridView/color.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true" ev:oncelldatachange="scwin.dataList1_oncelldatachange">
+        			<w2:columnInfo>
+        				<w2:column id="Status" name="Status" dataType="text"></w2:column>
+        				<w2:column id="Date" name="Date" dataType="text"></w2:column>
+        				<w2:column id="Expense" name="Expense" dataType="text"></w2:column>
+        				<w2:column id="Income" name="Income" dataType="text"></w2:column>
+        				<w2:column id="Hobby" name="Hobby" dataType="text"></w2:column>
+        				<w2:column id="Region" name="Region" dataType="text"></w2:column>
+        				<w2:column id="Frequency" name="Frequency" dataType="text"></w2:column>
+        				<w2:column id="ID" name="ID" dataType="text"></w2:column>
+        				<w2:column id="Age" name="Age" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/data.json';
+    $p.executeSubmission("submission1");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    var options = {
+        type: "allColumn",
+        minWidth: 480
+    }
+    gridView1.setAutoFit(options);
+};
+
+scwin.trigger2_onclick = function (e) {
+    gridView1.clearAutoFit();
+};
+
+scwin.gridView1_oncellclick = function (row, col, colId) {
+    if (colId == "Expense") {
+        var income = dataList1.getCellData(row, "Income");
+        alert("The monthly income is " + income + " KRW.");
+    }
+};
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="컬럼 폭 자동 맞춤 설정 및 취소"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. setAutoFit() 버튼을 클릭. &lt;br/&gt;2. GridView 컬럼의 폭이 조절되는 것을 확인. &lt;br/&gt;3. clearAutoFit() 버튼을 클릭. &lt;br/&gt;4. 컬럼 폭 조절이 취소되는 것을 확인. &lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button" class="">
+    		<xf:label><![CDATA[setAutoFit()]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button" class="">
+    		<xf:label><![CDATA[clearAutoFit()]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView ev:oncellclick="scwin.gridView1_oncellclick" scrollByColumnAdaptive="false" rowNumVisible="true" scrollByColumn="false"
+    		groupbyFilterBox="" defaultCellHeight="20" groupbyZone="" contextMenu="true" dataList="data:dataList1" style="border: solid gray 1px;"
+    		id="gridView1" visibleRowNum="10" autoFit="" ev:oncelldblclick="scwin.gridView1_oncelldblclick" useFilterList="true"
+    		autoFitMinWidth="0" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column9" value="Status"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column8" value="Date"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column7" value="Expense"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column6" value="Income"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Status" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Date" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Expense" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Income" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='/// 샘플 코드 &lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;type: "allColumn",&lt;br/&gt; &amp;nbsp; &amp;nbsp;minWidth: 480&lt;br/&gt;}&lt;br/&gt;gridView1.setAutoFit(options);'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

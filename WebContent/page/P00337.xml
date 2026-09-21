@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] 'optionOrder' 속성을 사용하여 선택 항목과 전체 항목의 표시 순서 설정하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230816" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="미사용 Internal Style이 제거되었습니다." meta_date="20231110" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="SelectBox의 'optionOrder' 속성을 사용하여 '전체' 항목과 '선택' 항목의 순서를 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) '선택' 항목을 '전체' 항목보다 위에 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 allOption="true" appearance="minimal" chooseOption="true" direction="auto" disabled="false"
+							id="sbx_main1" optionOrder="choose" ref="" style="width: 148px;margin-right: 15px;" submenuSize="auto" textAlign="left">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[Label 1]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Label 2]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Label 3]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Lable 4]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'전체' 항목을 '선택' 항목보다 위에 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 allOption="true" appearance="minimal" chooseOption="true" direction="auto" disabled="false"
+							id="sbx_main2" optionOrder="all" ref="" style="width: 148px;margin-right: 15px;" submenuSize="auto" textAlign="left">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[Label 1]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Label 2]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Label 3]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[Lable 4]]></xf:label>
+									<xf:value></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+
+	</body>
+</html>

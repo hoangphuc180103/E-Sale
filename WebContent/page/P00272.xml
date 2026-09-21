@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 공통] 컴포넌트 비활성화하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230620" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="예제의 구성이 변경되었습니다." meta_date="20240712" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [Group 비활성화하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // Group 'grp_exam1'을 비활성화합니다.
+    grp_exam1.setDisabled(true);
+};
+
+/**
+ * 버튼 [Group 활성화하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // Group 'grp_exam1'을 활성화합니다.
+    grp_exam1.setDisabled(false);
+};
+
+/**
+ * 버튼 [버튼 '임시 버튼' 비활성화하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // Trigger 'btn_temp'을 비활성화합니다.
+    btn_temp.setDisabled(true);
+};
+
+/**
+ * 버튼 [버튼 '임시 버튼' 활성화하기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // Trigger 'btn_temp'을 활성화합니다.
+    btn_temp.setDisabled(false);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="컴포넌트에 공통으로 제공하는 'setDisabled' 메소드를 사용한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style no_padding" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" id="btn_exam1_1" style="" type="button"
+								ev:onclick="scwin.btn_exam1_1_onclick">
+								<xf:label><![CDATA[Group 비활성화하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam1_2_onclick"
+								id="btn_exam1_2" style="" type="button">
+								<xf:label><![CDATA[Group 활성화하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam2_1_onclick"
+								id="btn_exam2_1" style="" type="button">
+								<xf:label><![CDATA['임시 버튼' 비활성화하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam2_2_onclick"
+								id="btn_exam2_2" style="" type="button">
+								<xf:label><![CDATA['임시 버튼' 활성화하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:textbox class="wre_heading mb10" id="" label="* 아래의 Table은 Group 컴포넌트를 사용하여 구성되었습니다." style=""></w2:textbox>
+						<xf:group class="tblbox no_padding no_margin" id="grp_exam1" style="">
+							<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl no_padding P00271" id="" style=""
+								tagname="table">
+								<w2:attributes>
+									<w2:summary></w2:summary>
+								</w2:attributes>
+								<xf:group tagname="colgroup">
+									<xf:group style="width:90px;" tagname="col"></xf:group>
+									<xf:group style="" tagname="col"></xf:group>
+								</xf:group>
+								<xf:group style="" tagname="tr">
+									<xf:group class="w2tb_th" style="" tagname="th">
+										<w2:textbox class="" id="" label="도서명" ref="" style="" userData2=""></w2:textbox>
+									</xf:group>
+									<xf:group class="w2tb_td" style="" tagname="td">
+										<xf:input class="" id="" initValue="신규 도서" placeholder="" ref="" style="width:100%;"></xf:input>
+									</xf:group>
+								</xf:group>
+								<xf:group id="grp_tr" tagname="tr">
+									<xf:group class="w2tb_th" tagname="th">
+										<w2:attributes>
+											<w2:scope>row</w2:scope>
+										</w2:attributes>
+										<w2:textbox class="" id="" label="저자" ref="" style="" userData2=""></w2:textbox>
+									</xf:group>
+									<xf:group class="w2tb_td" tagname="td">
+										<w2:attributes></w2:attributes>
+										<xf:input class="" id="" initValue="무명" placeholder="" ref="" style="width:96px;"></xf:input>
+										<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_temp" style="" type="button">
+											<xf:label><![CDATA[임시 버튼]]></xf:label>
+										</xf:trigger>
+									</xf:group>
+								</xf:group>
+								<xf:group tagname="tr">
+									<xf:group class="w2tb_th " tagname="th">
+										<w2:attributes>
+											<w2:scope>row</w2:scope>
+										</w2:attributes>
+										<w2:textbox class="" id="" label="비고" ref="" style="" userData2=""></w2:textbox>
+									</xf:group>
+									<xf:group class="w2tb_td" tagname="td">
+										<w2:attributes></w2:attributes>
+										<xf:input class="" id="" placeholder="" ref="" style="width:100%;"></xf:input>
+									</xf:group>
+								</xf:group>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

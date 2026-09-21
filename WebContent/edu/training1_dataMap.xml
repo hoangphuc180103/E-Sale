@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="단건데이터통신_샘플">
+        <w2:historyInfo>
+        	<w2:history meta_no="01" meta_desc="교육 예제 파일 template design으로 모두 변경, 일부 로직 누락된 건 수정 반영" meta_date="2023.12.05" meta_user="InswaveSystems"></w2:history>
+        </w2:historyInfo>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() { 
+ 
+
+};
+ ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습] 목록성 컴포넌트 적용 &amp; DataCollection 과 Submission 처리" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="디버깅하기" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label='1. 브라우저에서 [Ctrl+마우스 오른쪽 버튼을 클릭]하면 컨텍스트 메뉴 팝업 제공 &lt;br/&gt;2. 주요 디버깅 메뉴&lt;br/&gt;2-1.로그보기 : Script 오류 확인 및 Script에서 출력 로그 확인&lt;br/&gt;2-2.dataCollection보기 : 데이터 객체의 현재 값 확인 &lt;br/&gt;2-3.소스보기 WebSquare화면 소스 &amp;nbsp;확인 &lt;br/&gt;2-4. 현재 화면 디버그 실행 : &amp;nbsp;Submission을 이용한 통신의 Input, Output, Header정보 확인 &lt;br/&gt;3. 브라우저 실행 후 [F12] &amp;nbsp;개발자 도구 실행 기존 디버깅 수행 가능 &lt;br/&gt;&lt;br/&gt;'
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="목록성 컴포넌트 적용 하기" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label='1. Hard Coding : 직급항목 적용 &lt;br/&gt; &amp;nbsp;1-1. 직급 selectbox 컴포넌트를 더블클릭&lt;br/&gt; &amp;nbsp;1-2. 제공되는 팝업에 itemSet 항목을 선택&lt;br/&gt; &amp;nbsp;1-3. 그리드의 행추가&lt;br/&gt; &amp;nbsp;1-4. Label : 이사, 부장, 차장, 과장 기재&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Value : 01, 02, 03, 04, 05 기재&lt;br/&gt; &amp;nbsp;1-5. 전체 : All Option &amp;nbsp;체크&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 선택 : Choose Option 체크&lt;br/&gt;2. script 처리 : 성별항목 적용 &lt;br/&gt; &amp;nbsp;2-1. Script Tab에 항목을 API로 추가하기&lt;br/&gt; &amp;nbsp; &amp;nbsp;ui_gender.addItem( "M", "남성" );&lt;br/&gt; &amp;nbsp; &amp;nbsp;ui_gender.addItem( "F", "여성" );&lt;br/&gt;3.DataCollection 처리 : 역할항목 적용&lt;br/&gt;3-1. Outline View에서 dataList Type으로 DataCollection을 만든다&lt;br/&gt;3-2. keyID, name을 작성 &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;(CODE_CD : 코드값, CODE_NM : 코드명)&lt;br/&gt;3-3.컴포넌트와 연결&lt;br/&gt;'
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="DataCollection 과 Submission 처리 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label='참조 문서(edu/training1_info.txt)를 활용하여 DataCollection 을 만든다 &lt;br/&gt;1. Request용 &amp; Response 용 &amp;nbsp;DataCollection 생성&lt;br/&gt; &amp;nbsp; &amp;nbsp;1-1. Outline View에서 dc_reqUserInfo ID로 DataMap type으로 생성&lt;br/&gt; &amp;nbsp; &amp;nbsp;1-1. Outline View에서 dc_userInfo ID로 DataMap type으로 생성&lt;br/&gt;2. Submission 을 만든다.&lt;br/&gt; &amp;nbsp; &amp;nbsp;2-1. Submission 의 ID를 생성 &lt;br/&gt; &amp;nbsp; &amp;nbsp;2-2. 생성한 Request용 &amp; Response 용 &amp;nbsp;DataCollection을 각각 연결 &lt;br/&gt; &amp;nbsp; &amp;nbsp;2-3. URL Action : /edu/data/userInfo.json&lt;br/&gt;3. 생성한 Submission을 조회 버튼에 onclick 이벤트 추가&lt;br/&gt; &amp;nbsp; &amp;nbsp;3-1. &amp;nbsp;$p.executeSubmission("sub_select");//생성한 Submission ID 기재&lt;br/&gt;4. 통신완료 후 dc_userInfo 의 데이터를 컴포넌트에 표현&lt;br/&gt; &amp;nbsp; 4-1. Outline View 의 Head Tab에서 각 KeyID를 드래그 하여 해당 컴포넌트에 드랍해서 표현&lt;br/&gt; &amp;nbsp; &amp;nbsp;'
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+
+    		</xf:group>
+    		<xf:group class="schbox" id="" style="">
+    			<xf:group class="schbox_inner" id="" style="">
+    				<xf:group adaptive="layout" adaptiveThreshold="768" class="w2tb tbl " id="" style="" tagname="table">
+    					<w2:attributes>
+    						<w2:summary></w2:summary>
+    					</w2:attributes>
+    					<xf:group tagname="colgroup">
+    						<xf:group style="width:100px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    						<xf:group style="width:100px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    					</xf:group>
+    					<xf:group class="" id="" style="" tagname="tr">
+    						<xf:group class="w2tb_th" style="" tagname="th">
+    							<w2:attributes>
+    								<w2:colspan>4</w2:colspan>
+    								<w2:rowspan>1</w2:rowspan>
+    							</w2:attributes>
+    						</xf:group>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="btn_schbox" id="" style="">
+    				<xf:trigger class="btn_cm sch" disabled="" escape="false" id="btn_select" style="" type="button"
+    					tooltip="데이터를 조회합니다.">
+    					<xf:label><![CDATA[조회]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap" id="">
+    			<xf:group class="example_div_tr_style" id="" style=""></xf:group>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:100px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    					<xf:group style="width:100px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th" style="" tagname="th">
+    						<w2:textbox class="" id="" label="이름" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" style="" tagname="td">
+    						<xf:input id="" initValue="" ref="" style="width: 144px;"></xf:input>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th"><w2:attributes></w2:attributes><w2:textbox class="" id="" label="직급" ref="" style="" userData2=""></w2:textbox></xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+    							disabledClass="w2selectbox_disabled" displayMode="label" id="" optionOrder="false" ref="" selectedData="true"
+    							style="width: 148px;height: 21px;" submenuSize="auto">
+    							<xf:choices></xf:choices>
+    						</xf:select1>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr">
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="가입일" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" footerDiv="false" id="" ref=""
+    							renderDiv="true" renderType="component" rightAlign="false" style="width: 150px;height: 24px;" weekStartsOn="0">
+    						</w2:inputCalendar>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="성별" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<xf:select1 appearance="full" cols="" id="ui_gender" ref="" renderType="radiogroup" rows="" selectedIndex="-1"
+    							style="min-width: 150px;min-height: 12px;">
+    							<xf:choices></xf:choices>
+    						</xf:select1>
+    					</xf:group></xf:group><xf:group tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="이메일" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<xf:input id="" ref="" style="width: 100%;"></xf:input>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="역할" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<xf:select appearance="full" cols="" id="" ref="" renderType="checkboxgroup" rows="" selectedindex="-1"
+    							style="min-width: 150px;min-height: 12px;">
+    							<xf:choices>
+    								<xf:itemset nodeset="">
+    									<xf:label ref=""></xf:label>
+    									<xf:value ref=""></xf:value>
+    								</xf:itemset>
+    							</xf:choices>
+    						</xf:select>
+    					</xf:group>
+</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+
+    </body>
+</html>

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제]AutoComplete 완성화면">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dc_list" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" name="코드" id="code"></w2:column>
+            			<w2:column dataType="text" name="코드명 " id="name"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<code><![CDATA[A01]]></code>
+            				<name><![CDATA[한국_수박]]></name>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[A02]]></code>
+            				<name><![CDATA[한국_포도]]></name>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B01]]></code>
+            				<name><![CDATA[일본_사과]]></name>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B02]]></code>
+            				<name><![CDATA[일본_참외]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B03]]></code>
+            				<name><![CDATA[일본_배]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C01]]></code>
+            				<name><![CDATA[미국_멜론]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C02]]></code>
+            				<name><![CDATA[미국_파인애플]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[D01]]></code>
+            				<name><![CDATA[태국_망고]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[D02]]></code>
+            				<name><![CDATA[태국_두리안]]></name>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dc_list2" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="code" name="코드"></w2:column>
+            			<w2:column dataType="text" id="name" name="코드명 "></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<code><![CDATA[A01]]></code>
+            				<name><![CDATA[apple]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[A02]]></code>
+            				<name><![CDATA[grape]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B01]]></code>
+            				<name><![CDATA[APPLE]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B02]]></code>
+            				<name><![CDATA[GRAPE]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B03]]></code>
+            				<name><![CDATA[MELON]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C01]]></code>
+            				<name><![CDATA[Apple]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[C02]]></code>
+            				<name><![CDATA[Grape]]></name>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dc_list3" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="code" name="코드"></w2:column>
+            			<w2:column dataType="text" id="name" name="코드명 "></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<code><![CDATA[A01]]></code>
+            				<name><![CDATA[apple]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[A02]]></code>
+            				<name><![CDATA[grape]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B01]]></code>
+            				<name><![CDATA[melon]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B02]]></code>
+            				<name><![CDATA[pear]]></name>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[B03]]></code>
+            				<name><![CDATA[strawberry]]></name>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[완성화면] AutoComplete 컴포넌트" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 완료된 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 개요&lt;br/&gt;본 화면은 AutoComplete 컴포넌트를 활용하는 실습 화면입니다. &lt;br/&gt;AutoComplete 컴포넌트 : autoComplete 컴포넌트는 사용자가 입력한 내용을 기반으로 목록을 검색하여 출력하는 UI 컴포넌트입니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;사용자 경험을 향상시키고 입력 오류를 줄일 수 있는 기능을 제공합니다.&lt;br/&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. Design Kit 를 활용하여 AutoComplete를 추가합니다.&lt;br/&gt;2. &lt;b&gt;[속성 활용]&lt;/b&gt;Component View 에서 속성 Tab 에 아래와 같은 속성을 넣습니다.&lt;br/&gt; &amp;nbsp; 1) &lt;b&gt;useKeywordHighlight&lt;/b&gt; =&gt; 검색어를 강조 &amp;nbsp;ex) useKeywordHighlight=&quot;true&quot;&lt;br/&gt; &amp;nbsp; 2) &lt;b&gt;caseSensitive&lt;/b&gt; =&gt; 대소문자를 구분하여 검색 &amp;nbsp;ex) caseSensitive=&quot;false&quot;&lt;br/&gt; &amp;nbsp; 3) search : 검색어의 일치 조건 지정하기&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; - &lt;b&gt;start&lt;/b&gt; =&gt; 초성 검색 &amp;nbsp;ex) search=&quot;start&quot;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; - &lt;b&gt;contain&lt;/b&gt; =&gt; 단어 포함 여부로 검색 &amp;nbsp;ex) search=&quot;contain&quot;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; - &lt;b&gt;none&lt;/b&gt; =&gt; 정확히 동일한 경우 검색 &amp;nbsp; ex) search=&quot;none&quot;&lt;br/&gt;3. &lt;a href=&quot;/_iws/dev_kit/document/api/html/WebSquare.uiplugin.autoComplete.html&quot; target='_blank'&gt;사용자 가이드&lt;/a&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="속성 [useKeywordHighlight] 검색어 강조" style="" tagname="h4"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:200px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    					<xf:group style="width:200px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="검색어 강조 안함" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<w2:autoComplete allOption="" chooseOption="true" chooseOptionLabel="전체" editType="select" id="" ref=""
+    							search="start" style="width:90%;height:21px;" submenuSize="auto">
+    							<w2:choices>
+    								<w2:itemset nodeset="data:dc_list">
+    									<w2:label ref="name"></w2:label>
+    									<w2:value ref="name"></w2:value>
+    								</w2:itemset>
+    							</w2:choices>
+    						</w2:autoComplete>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="검색어 강조" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<w2:autoComplete allOption="" chooseOption="true" chooseOptionLabel="전체" editType="select" id="" ref=""
+    							search="start" style="width:90%;height:21px;" submenuSize="auto" useKeywordHighlight="true">
+    							<w2:choices>
+    								<w2:itemset nodeset="data:dc_list">
+    									<w2:label ref="name"></w2:label>
+    									<w2:value ref="name"></w2:value>
+    								</w2:itemset>
+    							</w2:choices>
+    						</w2:autoComplete>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap" id="">
+    			<xf:group class="example_div_tr_style" id="" style=""></xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="속성 [caseSensitive] 대소문자 구분 " style="" tagname="h4"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:200px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    					<xf:group style="width:200px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="대소문자 구분하여 검색" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<w2:autoComplete allOption="" chooseOption="true" chooseOptionLabel="전체" editType="select" id="" ref=""
+    							search="start" style="width:90%;height:21px;" submenuSize="auto" useKeywordHighlight="true">
+    							<w2:choices>
+    								<w2:itemset nodeset="data:dc_list2">
+    									<w2:label ref="name"></w2:label>
+    									<w2:value ref="name"></w2:value>
+    								</w2:itemset>
+    							</w2:choices>
+    						</w2:autoComplete>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="대소문자 구분하지 않고 검색" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<w2:autoComplete allOption="" caseSensitive="false" chooseOption="true" chooseOptionLabel="전체" editType="select"
+    							id="" ref="" search="start" style="width:90%;height:21px;" submenuSize="auto" useKeywordHighlight="true">
+    							<w2:choices>
+    								<w2:itemset nodeset="data:dc_list2">
+    									<w2:label ref="name"></w2:label>
+    									<w2:value ref="name"></w2:value>
+    								</w2:itemset>
+    							</w2:choices>
+    						</w2:autoComplete>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:textbox class="" id="" label="속성 [search] 검색어의 일치 조건 지정하기" style="" tagname="h4"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:150px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    					<xf:group style="width:230px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    					<xf:group style="width:220px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="초성 검색&lt;br/&gt;(search:start)" ref="" style="" userData2="" escape="false"></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<w2:autoComplete allOption="" chooseOption="true" chooseOptionLabel="전체" editType="select" id="" ref=""
+    							search="start" style="width:90%;height:21px;" submenuSize="auto" useKeywordHighlight="true">
+    							<w2:choices>
+    								<w2:itemset nodeset="data:dc_list3">
+    									<w2:label ref="name"></w2:label>
+    									<w2:value ref="name"></w2:value>
+    								</w2:itemset>
+    							</w2:choices>
+    						</w2:autoComplete>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="단어 포함 여부로 검색&lt;br/&gt;(search:contain)" ref="" style="" userData2="" escape="false"></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<w2:autoComplete allOption="" chooseOption="true" chooseOptionLabel="전체" editType="select" id="" ref=""
+    							search="contain" style="width:90%;height:21px;" submenuSize="auto" useKeywordHighlight="true">
+    							<w2:choices>
+    								<w2:itemset nodeset="data:dc_list3">
+    									<w2:label ref="name"></w2:label>
+    									<w2:value ref="name"></w2:value>
+    								</w2:itemset>
+    							</w2:choices>
+    						</w2:autoComplete>
+    					</xf:group>
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="정확히 동일한 경우 검색&lt;br/&gt;(search:none)" ref="" style="" userData2="" escape="false"></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<w2:autoComplete allOption="" chooseOption="true" chooseOptionLabel="전체" editType="select" id="" ref=""
+    							search="none" style="width:90%;height:21px;" submenuSize="auto" useKeywordHighlight="true">
+    							<w2:choices>
+    								<w2:itemset nodeset="data:dc_list3">
+    									<w2:label ref="name"></w2:label>
+    									<w2:value ref="name"></w2:value>
+    								</w2:itemset>
+    							</w2:choices>
+    						</w2:autoComplete>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

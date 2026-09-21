@@ -1,0 +1,44 @@
+/*amd /page/P00209.xml 6428 d1650a07cb48d0565358d648571319782e946c359b1d203d3c8821e1fea5d2ea */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam_1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}},{T:1,N:'w2:column',A:{dataType:'text',name:'C',id:'col_c'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam_2',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}},{T:1,N:'w2:column',A:{dataType:'text',name:'C',id:'col_c'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 데이터 반환
+ */
+scwin.getData = function () {
+  return [{
+    "col_a": "A1",
+    "col_b": "B1",
+    "col_c": "C1"
+  }, {
+    "col_a": "A2",
+    "col_b": "B2",
+    "col_c": "C2"
+  }, {
+    "col_a": "A3",
+    "col_b": "B3",
+    "col_c": "C3"
+  }, {
+    "col_a": "A4",
+    "col_b": "B4",
+    "col_c": "C4"
+  }, {
+    "col_a": "A5",
+    "col_b": "B5",
+    "col_c": "C5"
+  }];
+};
+
+/**
+ * 버튼 [GridView에 Data 할당하기] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  dlt_exam_1.setJSON(scwin.getData());
+};
+
+/**
+ * 버튼 [GridView에 Data 할당하기] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  dlt_exam_2.setJSON(scwin.getData());
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 \'visibleRowNumFix\' 속성을 사용하여, 초기 높이를 \'visibleRowNum\' 속성에 설정된 행의 개수를 바탕으로 설정한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'각 GridView에 설정된 높이는 70px입니다. 높이를 확인하기 위해 배경색이 설정되어 있습니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'visibleRowNum 속성에 설정한 행의 수 만큼 초기 높이 설정하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'GridView에 Data 할당하기1'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'40',keepDefaultColumnWidth:'true',rowNumVisible:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam_1',readOnly:'true',style:'height:70px;background-color: #eee;',autoFit:'allColumn',id:'',visibleRowNum:'3',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'B',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'C',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_a',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_b',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_c',value:'',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) visibleRowNumFix 속성 사용 안함',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'GridView에 Data 할당하기2'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'40',keepDefaultColumnWidth:'true',rowNumVisible:'true',visibleRowNumFix:'false',dataList:'data:dlt_exam_2',style:'height:70px;background-color: #eee;',readOnly:'true',autoFit:'allColumn',id:'',visibleRowNum:'3',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'B',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'C',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_a',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_b',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_c',value:'',displayMode:'label'}}]}]}]}]}]}]}]}]}]}]}]})

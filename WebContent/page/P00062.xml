@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Accordion] 패널의 확장/축소 초기 상태 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220803" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="설명 문구가 수정되었습니다." meta_date="20240627" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents P00062" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="Accordion의 'collapseAll' 속성과 'unCollapseAll' 속성을 사용하여 패널의 열림 상태를 설정한 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본) 첫번째 패널만 열림" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="acdbox" id="">
+							<w2:accordion class="acd" id="" style="">
+								<w2:panels class="" id="panels1" style="">
+									<w2:panelTitle class="" id="panelTitle1" label="Panel 1" style=""></w2:panelTitle>
+									<w2:panelContent class="" id="panelContent1" style="">
+										<w2:textbox id="" label="Panel 1 - Content" style="" tagname="span"></w2:textbox>
+									</w2:panelContent>
+								</w2:panels>
+								<w2:panels class="" id="panels2" style="">
+									<w2:panelTitle id="panelTitle2" label="Panel 2" style=""></w2:panelTitle>
+									<w2:panelContent id="panelContent2" style="">
+										<w2:textbox id="" label="Panel 2 - Content" style="" tagname="span"></w2:textbox>
+									</w2:panelContent>
+								</w2:panels>
+							</w2:accordion>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='모든 패널 닫힘&lt;br/&gt;collapseAll="true"'
+						style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:accordion class="acd" id="" style="" collapseAll="true">
+							<w2:panels class="" id="panels1" style="">
+								<w2:panelTitle class="" id="panelTitle1" label="Panel 1" style=""></w2:panelTitle>
+								<w2:panelContent class="" id="panelContent1" style="">
+									<w2:textbox id="" label="Panel 1 - Content" style="" tagname="span"></w2:textbox>
+								</w2:panelContent>
+							</w2:panels>
+							<w2:panels class="" id="panels2" style="">
+								<w2:panelTitle id="panelTitle2" label="Panel 2" style=""></w2:panelTitle>
+								<w2:panelContent id="panelContent2" style="">
+									<w2:textbox id="" label="Panel 2 - Content" style="" tagname="span"></w2:textbox>
+								</w2:panelContent>
+							</w2:panels>
+						</w2:accordion>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id=""
+						label='모든 패널 열림&lt;br/&gt;unCollapseAll="true"' style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:accordion class="acd" id="" style="" unCollapseAll="true">
+							<w2:panels class="" id="panels1" style="">
+								<w2:panelTitle class="" id="panelTitle1" label="Panel 1" style=""></w2:panelTitle>
+								<w2:panelContent class="" id="panelContent1" style="">
+									<w2:textbox id="" label="Panel 1 - Content" style="" tagname="span"></w2:textbox>
+								</w2:panelContent>
+							</w2:panels>
+							<w2:panels class="" id="panels2" style="">
+								<w2:panelTitle id="panelTitle2" label="Panel 2" style=""></w2:panelTitle>
+								<w2:panelContent id="panelContent2" style="">
+									<w2:textbox id="" label="Panel 2 - Content" style="" tagname="span"></w2:textbox>
+								</w2:panelContent>
+							</w2:panels>
+						</w2:accordion>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Input] 최대 입력 길이 제한하기 - maxLength, maxByteLength">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221007" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Input의 'maxLength' 속성과 'maxByteLength' 속성을 사용하여, 입력 값의 최대 길이를 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="입력 값을 최대 4글자로 제한" style=""></w2:textbox>
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="숫자, 영문, 한글 상관없이 최대 4글자를 입력할 수 있습니다.&lt;br/&gt;한글의 경우 입력 커서가 벗어날 때 적용됩니다." style="">
+						</w2:textbox>
+						<xf:input class="" id="" style="min-width:120px;" maxlength="4" placeholder="maxlength : 4"></xf:input>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='입력 값을 최대 4byte로 제한' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label='client 설정 파일의 속성 byteCheckEncoding의 값은 "utf-8"입니다.&lt;br/&gt;숫자, 영문은 최대 4글자를 입력할 수 있습니다.&lt;br/&gt;한글은 최대 1글자를 입력할 수 있습니다.'
+							style="">
+						</w2:textbox>
+						<xf:input class="" id="" style="min-width:120px;" maxByteLength="4" placeholder="maxByteLength : 4"></xf:input>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 입력 제한 없음" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:input class="" id="" style="min-width:120px;"></xf:input>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

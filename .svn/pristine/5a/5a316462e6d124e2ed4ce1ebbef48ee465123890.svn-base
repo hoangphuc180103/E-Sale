@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<WebSquare>
+<component>
+<Information>
+<componentID value="_frame_page_frameCommon"/>
+<buildName value=""/>
+<componentType value="ProjectPageComponent"/>
+<componentDesc value=""/>
+<displaySrc value="/frame/page/frameCommon.xml"/>
+</Information>
+<methods>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="log"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>console에 로그를 출력한다. 인자가 3개인 경우 : 함수명, 로그, 레벨.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="console에 로그를 출력한다"/>
+<params index="2">
+<param description="출력할 로그" index="0" name="argStr" necessary="Y" type="string"/>
+<param description="[default:log,error,info,debug]로그 레벨." index="1" name="argLogLevel" necessary="Y" type="string"/>
+</params>
+<returns index="0"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getSrc"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>context를 포함한 URL을 반환한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="context를 포함한 URL을 반환한다"/>
+<params index="1">
+<param description="Src 경로 문자열" index="0" name="argSrc" necessary="Y" type="string"/>
+</params>
+<returns index="1">
+<return description="context를 포함한 URL." index="0" name="returnValue" type="string"/>
+</returns>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="scrollToBottom"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>웹스퀘어 컴포넌트의 세로 스크롤의 위치를 바닥으로 옮긴다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="웹스퀘어 컴포넌트의 세로 스크롤의 위치를 바닥으로 옮긴다"/>
+<params index="1">
+<param description="웹스퀘어 컴포넌트 객체" index="0" name="argCmp" necessary="Y" type="object"/>
+</params>
+<returns index="0"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getWidgetParam"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>부모 컴포넌트에 class를 toggle한다. 컴포넌트의 userData1에 class명을, userData2에는 value값을 할당한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="부모 컴포넌트에 class를 toggle한다"/>
+</method>
+<method>
+<samples index="1">
+<sample index="0">${example}</sample>
+</samples>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getBasePageURL"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>웹스퀘어 엔진이 실행되는 URL을 반환한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="웹스퀘어 엔진이 실행되는 URL을 반환한다"/>
+<params index="0"/>
+<returns index="0"/>
+</method>
+<method>
+<samples index="1">
+<sample index="0">ex1) $c.frame.openExamPage("P00123");
+ ex2) 컴포넌트의 userData1 속성에 파일명을 지정하고, 이벤트 핸들러에 $c.frame.openExamPage를 등록합니다.</sample>
+</samples>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="openExamPage"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>파일명에 해당하는 예제 파일을 엽니다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="파일명에 해당하는 예제 파일을 엽니다"/>
+<params index="1">
+<param description="예제 파일명 ex)P00123" index="0" name="argPageName" necessary="Y" type="string"/>
+</params>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="printExampleLog"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>예제에 사용되는 로그 출력용 textarea 컴포넌트에 문자열을 출력한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="예제에 사용되는 로그 출력용 textarea 컴포넌트에 문자열을 출력한다"/>
+<params index="3">
+<param description="출력할 문자열" index="0" name="argStrLog" necessary="Y" type="string"/>
+<param description="웹스퀘어 textarea 컴포넌트" index="1" name="argCmp" necessary="Y" type="object"/>
+<param description="[default:true, false]문자열 사이 구분자 추가 여부." index="2" name="argNoDelimiter" necessary="Y" type="boolean"/>
+</params>
+<returns index="0"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getRandomString"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>무작위 문자열을 반환합니다. 서버에 URL에 활용합니다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="무작위 문자열을 반환합니다"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="downloadSource"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>XML화면 파일을 다운로드 한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="XML화면 파일을 다운로드 한다"/>
+<params index="2">
+<param description="xml 파일 경로" index="0" name="xmlFilePath" necessary="Y" type="string"/>
+<param description="context 경로 없이 반환" index="1" name="withoutContext" necessary="Y" type="string"/>
+</params>
+<returns index="0"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getExampleDocumentPath"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>예제 설명부 문서 경로를 반환한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="예제 설명부 문서 경로를 반환한다"/>
+<params index="1">
+<param description="메뉴 JSON" index="0" name="argJsnMenu" necessary="Y" type="object"/>
+</params>
+<returns index="1">
+<return description="문자열" index="0" name="경로" type="문서"/>
+</returns>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getPopupPosition"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>팝업 시 진입 경로에 따라 너비와 위치가 조절된 JSON을 반환합니다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="팝업 시 진입 경로에 따라 너비와 위치가 조절된 JSON을 반환합니다"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getText_globalCSS"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>정의된 css 파일을 TEXT로 반환한다</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="정의된 css 파일을 TEXT로 반환한다"/>
+<params index="0"/>
+<returns index="0"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getContextPath"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>context 경로를 반환한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="context 경로를 반환한다"/>
+<returns index="1">
+<return description="context 경로." index="0" name="returnValue" type="string"/>
+</returns>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="getHtml_keyword"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>키워드 문자열을 받아 화면에 출력할 HTML을 반환한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="키워드 문자열을 받아 화면에 출력할 HTML을 반환한다"/>
+<params index="2">
+<param description="키워드 문자열" index="0" name="argStr" necessary="Y" type="string"/>
+<param description="[default:sitemap, leftmenu] 출력할 대상" index="1" name="argTarget" necessary="Y" type="string"/>
+</params>
+<returns index="0"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="showExamDescBox"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>com_example_descBox_title class를 가진 요소의 형제 요소 중 com_example_descBox class를 가진 요소를 show/hide 한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="com_example_descBox_title class를 가진 요소의 형제 요소 중 com_example_descBox class를 가진 요소를 show/hide 한다"/>
+<params index="1">
+<param description="버튼 컴포넌트" index="0" name="argCmpBtn" necessary="Y" type="object"/>
+</params>
+<returns index="0"/>
+</method>
+<method>
+<samples index="0"/>
+<componentID value="_frame_page_frameCommon"/>
+<LineNo value="-1"/>
+<name value="alert"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>경고 메세지를 팝업한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="경고 메세지를 팝업한다"/>
+<params index="2">
+<param description="$p 객체" index="0" name="_$p" necessary="Y" type="object"/>
+<param description="출력할 메세지" index="1" name="argMsg" necessary="Y" type="string"/>
+</params>
+<returns index="0"/>
+</method>
+</methods>
+<children/>
+</component>
+</WebSquare>

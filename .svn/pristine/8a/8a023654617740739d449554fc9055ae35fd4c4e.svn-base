@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 공통] 속성을 사용하여 선택 항목을 표시하고 항목의 레이블 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230817" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="AutoComplete과 SelectBox의 'chooseOption' 속성과 'chooseOptionLabel' 속성을 사용하여 선택 항목을 표시하고 항목에 표시되는 문자열을 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+
+				<xf:group class="example_div_tr_style" id="" style="">
+
+					<xf:group class="example_div_th_style" id="" style="">
+						<w2:span class="mr_def txt_blue" id="" label="AutoComplete 예제" style=""></w2:span>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="" class="mb_def_box">
+							<w2:autoComplete allOption="" chooseOption="" editType="select" id="" ref="" search="start"
+								style="width: 164px;margin-right: 5px;" submenuSize="auto" useKeywordHighlight="false">
+								<w2:choices>
+									<w2:item>
+										<w2:label><![CDATA[A]]></w2:label>
+										<w2:value><![CDATA[A]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[AB]]></w2:label>
+										<w2:value><![CDATA[AB]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[ABC]]></w2:label>
+										<w2:value><![CDATA[ABC]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[ABCD]]></w2:label>
+										<w2:value><![CDATA[ABCD]]></w2:value>
+									</w2:item>
+								</w2:choices>
+							</w2:autoComplete>
+							<w2:span id="" label="(기본 설정) chooseOption 미적용" style=""></w2:span>
+						</xf:group>
+						<xf:group id="" style="" class="mb_def_box">
+							<w2:autoComplete allOption="" chooseOption="true" editType="select" id="" ref="" search="start"
+								style="width: 164px;margin-right: 5px;" submenuSize="auto" useKeywordHighlight="false">
+								<w2:choices>
+									<w2:item>
+										<w2:label><![CDATA[A]]></w2:label>
+										<w2:value><![CDATA[A]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[AB]]></w2:label>
+										<w2:value><![CDATA[AB]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[ABC]]></w2:label>
+										<w2:value><![CDATA[ABC]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[ABCD]]></w2:label>
+										<w2:value><![CDATA[ABCD]]></w2:value>
+									</w2:item>
+								</w2:choices>
+							</w2:autoComplete>
+							<w2:span id="" label="chooseOption 적용" style=""></w2:span>
+						</xf:group>
+						<xf:group id="" style="" class="mb_def_box">
+							<w2:autoComplete allOption="" chooseOption="true" editType="select" id="" ref="" search="start"
+								style="width: 164px;margin-right: 5px;" submenuSize="auto" useKeywordHighlight="false" chooseOptionLabel="Please select">
+								<w2:choices>
+									<w2:item>
+										<w2:label><![CDATA[A]]></w2:label>
+										<w2:value><![CDATA[A]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[AB]]></w2:label>
+										<w2:value><![CDATA[AB]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[ABC]]></w2:label>
+										<w2:value><![CDATA[ABC]]></w2:value>
+									</w2:item>
+									<w2:item>
+										<w2:label><![CDATA[ABCD]]></w2:label>
+										<w2:value><![CDATA[ABCD]]></w2:value>
+									</w2:item>
+								</w2:choices>
+							</w2:autoComplete>
+							<w2:span id="" label="chooseOption, chooseOptionLabel 적용" style=""></w2:span>
+						</xf:group>
+					</xf:group>
+
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="" style="">
+						<w2:span class="mr_def txt_blue" id="" label="SelectBox 예제" style=""></w2:span>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="" class="mb_def_box">
+							<xf:select1 allOption="" appearance="minimal" chooseOption="" class="" disabled="false"
+								disabledClass="w2selectbox_disabled" id="" ref="" renderType="" style="width: 164px;margin-right: 5px;">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[A]]></xf:label>
+										<xf:value><![CDATA[A]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[AB]]></xf:label>
+										<xf:value><![CDATA[AB]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[ABC]]></xf:label>
+										<xf:value><![CDATA[ABC]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[ABCD]]></xf:label>
+										<xf:value><![CDATA[ABCD]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select1>
+							<w2:span id="" label="(기본 설정) chooseOption 미적용" style=""></w2:span>
+						</xf:group>
+						<xf:group id="" style="" class="mb_def_box">
+							<xf:select1 appearance="minimal" chooseOption="true" class="" disabled="false"
+								disabledClass="w2selectbox_disabled" id="" ref="" renderType="" style="width: 164px;margin-right: 5px;">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[A]]></xf:label>
+										<xf:value><![CDATA[A]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[AB]]></xf:label>
+										<xf:value><![CDATA[AB]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[ABC]]></xf:label>
+										<xf:value><![CDATA[ABC]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[ABCD]]></xf:label>
+										<xf:value><![CDATA[ABCD]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select1>
+							<w2:span id="" label="chooseOption 적용" style=""></w2:span>
+						</xf:group>
+						<xf:group id="" style="" class="mb_def_box">
+							<xf:select1 appearance="minimal" chooseOption="true" class="" disabled="false"
+								disabledClass="w2selectbox_disabled" id="" ref="" renderType="" style="width: 164px;margin-right: 5px;"
+								chooseOptionLabel="Please select">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[A]]></xf:label>
+										<xf:value><![CDATA[A]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[AB]]></xf:label>
+										<xf:value><![CDATA[AB]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[ABC]]></xf:label>
+										<xf:value><![CDATA[ABC]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[ABCD]]></xf:label>
+										<xf:value><![CDATA[ABCD]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select1>
+							<w2:span id="" label="chooseOption, chooseOptionLabel 적용" style=""></w2:span>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+
+	</body>
+</html>

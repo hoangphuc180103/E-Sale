@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="컴포넌트의 ID로 컴포넌트 객체 반환받기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * [컴포넌트 ID 문자열로 컴포넌트 객체를 받아 value 할당하기] 버튼 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var strCmpID;
+    var objCmp;
+
+    //컴포넌트 ID 받아오기 - input에 입력된 값.
+    strCmpID = ibx_comp_id.getValue();
+
+    //문자열 좌우 공백 제거.
+    strCmpID = strCmpID.trim();
+
+    //ID로 컴포넌트 반환받기.- 반환된 객체가 없는 경우 undefined 이 반환됩니다.
+    objCmp = $p.getComponentById(strCmpID);
+
+    //반환된 객체가 없는 경우. - 메시지 처리 및 로직 중단.
+    if (!objCmp) {
+        alert("[" + strCmpID + "]로 정의된 컴포넌트를 찾을 수 없습니다.");
+        return;
+    }
+
+    //[컴포넌트 Value]영역에 할당된 문자열 셋팅
+    objCmp.setValue(ibx_comp_value.getValue());
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="def_box" id="" style="">
+				<w2:textbox class="" id="" label="예제 테스트를 위한 입력값" style="" tagname="h3"></w2:textbox>
+			</xf:group>
+			<xf:group id="" class="tblbox">
+				<xf:group tagname="table" style="width:100%;" id="" class="w2tb tbl" adaptive="layout" adaptiveThreshold="800">
+					<w2:attributes>
+						<w2:summary></w2:summary>
+						<w2:spellcheck>false</w2:spellcheck>
+					</w2:attributes>
+					<xf:group tagname="caption"></xf:group>
+					<xf:group tagname="colgroup">
+						<xf:group tagname="col" style="width:130px;"></xf:group>
+						<xf:group tagname="col" style=""></xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							컴포넌트&amp;nbsp;ID
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<xf:input style="width:148px;" id="ibx_comp_id" placeholder="" class="mr_def" initValue="ibx_ex1"></xf:input>
+							<w2:span style="" label="ibx_ex1 또는 ibx_ex2를 입력하세요." id=""></w2:span>
+						</xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							컴포넌트&amp;nbsp;Value
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<xf:input style="width:148px;" id="ibx_comp_value" placeholder="" class="mr_def" initValue="WebSquare"></xf:input>
+							<w2:span style="" id="" label="input에 출력할 value를 입력하세요."></w2:span>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="titbox" id="" style="">
+				<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" id="btn_ex1" style="" type="button"
+					ev:onclick="scwin.btn_ex1_onclick">
+					<xf:label><![CDATA[컴포넌트 ID 문자열로 컴포넌트의 value 할당하기]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+			<xf:group class="def_box" id="" style="">
+				<w2:textbox class="" id="" label="실행 결과 확인" style="" tagname="h3"></w2:textbox>
+			</xf:group>
+			<xf:group id="" class="tblbox">
+				<xf:group tagname="table" style="width:100%;" id="" class="w2tb tbl" adaptive="layout" adaptiveThreshold="800">
+					<w2:attributes>
+						<w2:summary></w2:summary>
+						<w2:spellcheck>false</w2:spellcheck>
+					</w2:attributes>
+					<xf:group tagname="caption"></xf:group>
+					<xf:group tagname="colgroup">
+						<xf:group tagname="col" style="width:130px;"></xf:group>
+						<xf:group tagname="col" style=""></xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							ID&amp;nbsp;:&amp;nbsp;ibx_ex1
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<xf:input style="width:148px;" id="ibx_ex1" placeholder="" class=""></xf:input>
+						</xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							ID&amp;nbsp;:&amp;nbsp;ibx_ex2
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<xf:input style="width:148px;" id="ibx_ex2" placeholder="" class=""></xf:input>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

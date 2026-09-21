@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] PageFrame 완료">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    
+};
+
+ 
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="pop_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="학습목표" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group id="" class="detailsbox">
+    				<xf:group tagname="details" style="" id="" class="">
+    					<w2:textbox tagname="summary" style="" id="" label="IFrame VS PageFrame 의 차이" escape="false"></w2:textbox>
+    					<w2:textbox style="" id=""
+    						label="IFrame : 다른 웹페이지를 현재 페이지에 삽입할 수 있는 컴포넌트&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 웹페이지의 일부분을 독립적으로 로드하고 표시하기 때문에 웹페이지의 일부분을 독립적으로 제어&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 메모리를 많이 차지하고 속도가 느리다는 &amp;nbsp;단점&lt;br/&gt;PageFrame : 다른 웹페이지를 현재 페이지에 삽입할수 있는 컴포넌트&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;JSP의 include처럼 웹스퀘어 페이지 화면 파일을 현재 화면에 포함하여 출력하는 컴포넌트입니다. &amp;nbsp;&lt;br/&gt;메모리를 적게 차지하고 속도가 빠릅니다 &lt;br/&gt;웹스퀘어에서 다른 페이지를 참조해서 사용할때는 pageframe 을 권장합니다. &lt;br/&gt;&lt;br/&gt;"
+    						class="" escape="false">
+    					</w2:textbox>
+    				</xf:group>
+    				<xf:group tagname="details" style="" id="" class="">
+    					<w2:textbox tagname="summary" style="" id="" label="ID 중복 사용 가능" escape="false"></w2:textbox>
+    					<w2:textbox style="" id=""
+    						label="웹스퀘어는 화면내에 ID를 중복으로 사용할수 없습니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 하지만 PageFrame 의 경우 화면에 포함된 컴포넌트의 ID가 변경되어 각 화면에 포함된 동일한 ID는 내부적으로는 서로 다른 ID로 변환됩니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 그 결과 개발자는 ID 중복 걱정 없이 &amp;nbsp;PageFrame을 이용하여 화면을 구성할 수 있습니다."
+    						class="" escape="false">
+    					</w2:textbox>
+    				</xf:group>
+    				<xf:group tagname="details" style="" id="" class="">
+    					<w2:textbox tagname="summary" style="" id="" label="async, await 문법 사용하기" escape="false"></w2:textbox>
+    					<w2:textbox style="" id=""
+    						label="pageFrame 에서 다른 화면을 호출 할때 사용하는 &lt;br/&gt;setSrc는 비동기 함수이므로 이 함수의 호출을 포함하는 함수 또한 async function이 되어야 한다.&lt;br/&gt;&lt;br/&gt;setSrc 는 Promise 객체를 return하므로 await 키워드를 붙여야 &lt;br/&gt;setSrc호출 이후의 동작이 정상적인 순서로 동작하게 된다.&lt;br/&gt; "
+    						class="" escape="false">
+    					</w2:textbox>
+    				</xf:group>
+    				<xf:group tagname="details" style="" id="" class="">
+    					<w2:textbox tagname="summary" style="" id="" label="pageFrame 간의 화면 참조" escape="false"></w2:textbox>
+    					<w2:textbox style="" id=""
+    						label=" &amp;nbsp; 1) 부모 &amp;nbsp; -&gt; 자식 : pageFrame1.getWindow();&lt;br/&gt; &amp;nbsp; 2) 자식 &amp;nbsp; -&gt; 부모 : $p.parent();&lt;br/&gt; &amp;nbsp; 3) 자식1 -&gt; 자식2"
+    						class="" escape="false">
+    					</w2:textbox>
+    				</xf:group>
+    				<xf:group class="" id="" style="" tagname="details">
+    					<w2:textbox escape="false" id="" label="TabControl 활용" style="" tagname="summary"></w2:textbox>
+    					<w2:textbox class="" escape="false" id=""
+    						label="1) async, await 문법 사용하기&lt;br/&gt;2) 데이터 참조하는 방법&lt;br/&gt;3) alwaysDraw 속성 알기"
+    						style="">
+    					</w2:textbox>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

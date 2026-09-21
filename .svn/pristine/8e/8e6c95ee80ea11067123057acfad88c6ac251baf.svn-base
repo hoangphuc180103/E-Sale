@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="d1_col1" name="AAA" dataType="text"></w2:column>
+            			<w2:column id="d1_col2" name="BBB" dataType="text"></w2:column>
+            			<w2:column id="d1_col3" name="CCC" dataType="text"></w2:column>
+            			<w2:column id="d1_col4" name="DDD" dataType="text"></w2:column>
+            			<w2:column id="do1_col5" name="EEE" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList id="dataList2" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="d2_col1" name="111" dataType="text"></w2:column>
+            			<w2:column id="d2_col2" name="222" dataType="text"></w2:column>
+            			<w2:column id="d3_col3" name="333" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        var num = 10000
+		var arr = [];
+		for( var i=0;i<num;i++ ) {
+			for(var j=0;j<5;j++) {
+				arr[i*5+j] = "dataList1_" + i+j;
+			}
+		}
+		
+		var arr1 = [];
+		for( var i=0;i<num;i++ ) {
+			for(var j=0;j<3;j++) {
+				arr1[i*3+j] = "dataList2_" + i+j;
+			}
+		}
+		
+		dataList1.setData(arr);
+		dataList2.setData(arr1);
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	scwin.trigger1_onclick = function(e) {
+		var scId = "";
+		
+        var options = { 
+		    common: { 
+		        fileName : "dataList.xlsx",
+		        multipleSheet: "true",
+		        showProcess : true,
+                processMsg : "Downloading as an Excel file..." 
+		    }, 
+		    excelInfo: [ 
+		        { 
+		            dataListId : "dataList1", 
+		            sheetName : "dataList1", 
+		            removeColumns : "" ,
+		            wframeId: scId
+		        }, 
+		        { 
+		            dataListId : "dataList2", 
+		            sheetName : "dataList2", 
+		            removeColumns : "",
+		            wframeId: scId 
+		        } 
+		    ]
+		};
+		WebSquare.util.multipleDataListDownload( options ); 
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="다운로드 상태 메시지 표시"
+    			escape="false">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    			label="1. multipleDataListDownload() 버튼을 클릭. &lt;br/&gt;2. 아래 두 개의 DataList를 다운로드하는 동안 상태 메시지가 표시되는 것을 확인. &lt;br/&gt;3. 다운로드된 Excel 파일 열기. &lt;br/&gt;4. 화면에 표시된 두 개의 DataList가 Excel 파일에 다운로드된 것을 확인. "
+    			escape="false">
+    		</w2:textbox>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[multipleDataListDownload() - showProcess : true, processMsg : "Downloading as an Excel file..." ]]></xf:label>
+    		</xf:trigger>
+    		<w2:gridView scrollByColumnAdaptive="false" syncScroll="false" summaryAuto="false" useShiftKey="true" scrollByColumn="false"
+    			summaryOnlyAuto="false" defaultCellHeight="20" applyAllColumnStyle="false" visibleRowNumFix="true" dataList="data:dataList1"
+    			style="margin-bottom: 10px;border: solid gray 1px;" ignoreCellClick="false" columnMove="true" id="gridView1" autoFit="allColumn" visibleRowNum="10"
+    			ignoreToggleOnDisabled="false">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="70" style="" inputType="text" id="column9" value="AAA" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column7" value="BBB" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column5" value="CCC" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column3" value="DDD" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column1" value="EEE" blockSelect="false" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" colMerge="false" style="" inputType="text" id="d1_col1" value="" blockSelect="false"
+    						displayMode="label">
+    					</w2:column>
+    					<w2:column width="70" style="" inputType="text" id="d1_col2" value="" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="d1_col3" value="" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="d1_col4" value="" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="do1_col5" value="" blockSelect="false" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:gridView scrollByColumnAdaptive="false" syncScroll="false" summaryAuto="false" useShiftKey="true" scrollByColumn="false"
+    			summaryOnlyAuto="false" defaultCellHeight="20" applyAllColumnStyle="false" visibleRowNumFix="true" dataList="data:dataList2" style="margin-bottom: 10px;border: solid gray 1px;"
+    			ignoreCellClick="false" id="gridView2" autoFit="allColumn" visibleRowNum="10" ignoreToggleOnDisabled="false">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column width="70" style="" inputType="text" id="column5" value="111" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column3" value="222" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column1" value="333" blockSelect="false" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column width="70" style="" inputType="text" id="d2_col1" value="" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="d2_col2" value="" blockSelect="false" displayMode="label"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="d3_col3" value="" blockSelect="false" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:textbox escape="false" id="textbox4"
+    			label='/// 샘플 코드 &lt;br/&gt;&lt;br/&gt;var scId = "";&lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;common: {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;fileName: "dataList.xlsx",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;multipleSheet: "true",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;showProcess: true,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;processMsg: "Downloading as an Excel file..."&lt;br/&gt; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp;excelInfo: [{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;dataListId: "dataList1",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;sheetName: "dataList1",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;removeColumns: "",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;wframeId: scId&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;dataListId: "dataList2",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;sheetName: "dataList2",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;removeColumns: "",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;wframeId: scId&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;]&lt;br/&gt;};&lt;br/&gt;WebSquare.util.multipleDataListDownload(options);'
+    			style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    			tagname="">
+    		</w2:textbox>
+    	</xf:group>
+    </body>
+</html>

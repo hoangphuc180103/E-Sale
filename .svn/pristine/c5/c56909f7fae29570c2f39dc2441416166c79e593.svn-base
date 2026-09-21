@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+
+scwin.onpageload = function () {
+	var i;
+	for (i = 0; i < 3; i++) {
+		var num = JSON.stringify(i);
+		var title = "Title_" + num;
+		var windowId = num;
+		var windowName = "Name_" + num;
+		windowContainer1.createWindow(title, "", "", windowName, windowId, "newWindow");
+		windowContainer1.setArrangeWindows("vertical");
+	}
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+	windowContainer1.setWindowTabOrder([1, 2, 0]);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group style="margin: 10px;" id="">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Change Window Order on Name Layer&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Confirm that the current windows are created in the order [0, 1, 2].&lt;br/&gt;2. Click the setWindowTabOrder([1, 2, 0]) button at the bottom.&lt;br/&gt;3. Confirm that the windows are rearranged in the order [1, 2, 0] based on their indices on the Name Layer.&lt;br/&gt;(See the Script tab for the detailed script.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[windowContainer1.setWindowTabOrder([1, 2, 0]);]]></xf:label>
+    	</xf:trigger>
+    	<w2:windowContainer sequentialArrangeColNum="" sequentialArrangeRowNum="" fixArrangeFullScreen="false" useFixButton="false"
+    		windowAutoResize="false" useWindowScrollButton="" verticalArrangeNum="" windowMaxNum="20" useCloseButton="false"
+    		controlIconPosition="allright" stopMinimizeOnNameLayer="false" toolbarPosition="top" windowMaximizeAll="true" id="windowContainer1"
+    		useStatusMsg="true" hideTitleOnMaximize="false" spaInitCount="0" windowScrollVisibleRowNum="" stopToggleOnLast="false"
+    		useNameContainer="true" horizontalArrangeNum="" useCustomMsg="false" useControlIconTitle="" tooltipDisplay="true"
+    		tooltipGroupClass="false" windowTooltipDisplay="true" style="position: relative;height: 400px;border: gray solid 1px;">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer>
+    </xf:group></body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+var tmpSrc = scwin.getfolderPath() + "/11_wframe_01.xml";
+
+    windowContainer1.createWindow({
+        "title": "frameModal",
+        "windowTitle": "frameModal",
+        "src": tmpSrc,
+        "windowId": "window01",
+        "frameMode": "wframe",
+        "frameModal": "true"
+    });
+
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ウィンドウ内でフレームベースのモーダルポップアップを作成する"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. createWindow() ボタンをクリックします。 &lt;br/&gt;2. ウィンドウ内で openPopup() メソッドの frameModal オプションを選択。 ("frame", "parent", "top", WindowContainer ID)&lt;br/&gt;3. ウィンドウ内の $p.openPopup() ボタンをクリックします。 &lt;br/&gt;4. オプション設定に応じてポップアップの動作範囲を確認してください。 &lt;br/&gt; &amp;nbsp; &amp;nbsp; "frame"：対応するフレーム内でのみ動作。 &lt;br/&gt; &amp;nbsp; &amp;nbsp; "parent"：親フレーム内でのみ動作。 &lt;br/&gt; &amp;nbsp; &amp;nbsp; 「top」：ブラウザ内部の全画面での動作。 &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;WindowContainer ID: WindowContainer 内部でのみ動作。 （他の例では、 $p.getFrame().getParentFrame().getParentFrame().id で WindowContainer ID を取得します。)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger type="button" id="trigger1" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" ev:onclick="scwin.trigger1_onclick">
+    		<xf:label><![CDATA[createWindow()]]></xf:label>
+    	</xf:trigger>
+    	<w2:windowContainer sequentialArrangeColNum="2" sequentialArrangeRowNum="2" fixArrangeFullScreen="false" useFixButton="false"
+    		windowAutoResize="false" verticalArrangeNum="2" windowMaxNum="5" useCloseButton="false" controlIconPosition="left"
+    		windowMaximizeAll="false" stopMinimizeOnNameLayer="false" toolbarPosition="bottom" id="windowContainer1" useStatusMsg="true"
+    		hideTitleOnMaximize="false" spaInitCount="0" stopToggleOnLast="false" useNameContainer="false" horizontalArrangeNum="2"
+    		useCustomMsg="false" useControlIconTitle="false" tooltipDisplay="true" tooltipGroupClass="false" windowTooltipDisplay="true"
+    		style="position: relative;height: 500px;border: gray solid 1px;">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer>
+    </xf:group></body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.trigger1_onclick = function(e) {
+    var text = editor1.getText();
+    alert(text);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="改行なしでテキストのみを返す" style="color: blue;margin-bottom: 10px;" tabIndex="h1"
+    		tagname="h1">
+    	</w2:textbox>
+    	<w2:textbox id="textbox2" label="サンプルの使い方" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. 改行と書式を適用したテキストをエディタに入力します。 &lt;br/&gt;2. getText() ボタンをクリックします。 &lt;br/&gt;3. 改行以外のテキストのみが返されることを確認してください。'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[editor1.getText();]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox4" label="/// サンプルコード &lt;br/&gt;&lt;br/&gt; var text = editor1.getText();&lt;br/&gt; alert(text);" escape="false">
+    	</w2:textbox>
+    	<w2:editor style="height: 300px;" id="editor1"></w2:editor>
+    </xf:group></body>
+</html>

@@ -1,0 +1,13 @@
+/*amd /guide_eng/WFrame/processMsgFrameURL_config_processMsgFrame_WFrame/processMsg_new.xml 1470 93036f784cbdb8dccff86a7882d413308894ab5d341c9a4f37901dd234a04a14 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'style',E:[{T:3,text:'\n            .wrapper {\n                position : relative;\n                padding : 20px 0 0 13px; \n                width : 280px; \n                height : 81px; \n                border : 3px solid red; \n            }\n        '}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.btn_hide_onclick = function () {
+  $p.getFrame().hideProcessMessage();
+};
+scwin.btn_cancel_onclick = function () {
+  var submissionList = $p.getFrame()._processMsgQueue;
+  while (submissionList.length > 0) {
+    WebSquare.ModelUtil.abort(submissionList.shift().id);
+  }
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{class:'wrapper',id:'group_wrapper',style:''},E:[{T:1,N:'w2:textbox',A:{class:'',label:'Submission Status Message<br/>(processMsg_new.xml)',id:'text_msg',style:'',escape:'false'}}]}]}]}]})

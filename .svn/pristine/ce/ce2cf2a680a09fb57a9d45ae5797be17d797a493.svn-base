@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 공통] 컴포넌트의 이름(pluginName) 반환받기">
+		<w2:historyInfo>
+			<w2:history meta_no="02" meta_desc="[페이지 열기] 실행 메소드 수정" meta_date="20221223" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정 및 화면 구성 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+/**
+ * InputBox
+ * [실행1] 버튼 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var strCmpType;
+
+    //InputBox 컴포넌트의 plugin name 반환받기
+    strCmpType = ibx_ex1.getPluginName();
+
+    //반환값 alert
+    alert(strCmpType);
+};
+
+/**
+ * InputCalendar
+ * [실행2] 버튼 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var strCmpType;
+
+    //InputCalendar 컴포넌트의 plugin name 반환받기
+    strCmpType = ica_ex1.getPluginName();
+
+    //반환값 alert
+    alert(strCmpType);
+};
+
+/**
+ * Checkbox
+ * [실행3] 버튼 클릭 시
+ */
+scwin.btn_ex3_onclick = function (e) {
+    var strCmpType;
+
+    //Checkbox 컴포넌트의 plugin name 반환받기
+    strCmpType = cbx_ex1.getPluginName();
+
+    //반환값 alert
+    alert(strCmpType);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="ws_example_grp_desc" id="" style="">
+					<w2:textbox escape="false" id="" label="컴포넌트의 메소드 'getPluginName'을 사용하여 컴포넌트명을 확인하는 예제입니다." style="">
+					</w2:textbox>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="InputBox - 컴포넌트명 반환받기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:input adjustMaxLength="false" class="mr_def" id="ibx_ex1" style="width: 140px;"></xf:input>
+						<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style=""
+							type="button">
+							<xf:label><![CDATA[실행1]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="InputCalendar - 컴포넌트명 반환받기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" class="mr_def" focusOnDateSelect="false" footerDiv="false"
+							id="ica_ex1" renderDiv="true" renderType="component" rightAlign="false" style="width: 140px;">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" style=""
+							type="button">
+							<xf:label><![CDATA[실행2]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Checkbox - 컴포넌트명 반환받기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select appearance="full" class="mr_def" cols="" id="cbx_ex1" ref="" rows="1" selectedindex="-1"
+							style="min-width: 140px;">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[type1]]></xf:label>
+									<xf:value><![CDATA[01]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[type2]]></xf:label>
+									<xf:value><![CDATA[02]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select>
+						<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3" style=""
+							type="button">
+							<xf:label><![CDATA[실행3]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

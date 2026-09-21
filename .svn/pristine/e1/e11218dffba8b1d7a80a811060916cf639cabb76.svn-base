@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_vertical_guides="" meta_horizontal_guides="938" meta_author="InswaveSystems" meta_screenName="[Generator] Generator를 이용한 Accordion">
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map" />
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20250108" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    scwin.idx = 0;
+    gen1.insertChild(scwin.idx);
+    gen1.getChild(scwin.idx, "grpTitle").bind("onclick", scwin.toggleAccordion);
+
+    gen1.getChild(scwin.idx, "txtTitle").setValue("Title" + scwin.idx);
+
+};
+
+scwin.toggleAccordion = function () {
+    // li 태그에 on class를 toggle
+    this.getParent().toggleClass("on");
+
+};
+
+scwin.btnInsert_onclick = function (e) {
+    scwin.idx++;
+    gen1.insertChild(scwin.idx);
+
+    gen1.getChild(scwin.idx, "txtTitle").setValue("Title" + scwin.idx);
+    // 추가된 객체에 onclick 이벤트 동적으로 추가 
+    gen1.getChild(scwin.idx, "grpTitle").bind("onclick", scwin.toggleAccordion);
+};
+]]></script>
+		<style type="text/css"><![CDATA[.accordion {
+  background-color: #99999930;
+}
+
+.accordion ul > li {
+  overflow: hidden;
+  max-height: 40px;
+  transition: 0.3s;
+}
+.accordion ul > li.on {
+  max-height: 600px;
+}
+.accordion ul > li .title {
+  background-color: antiquewhite;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  margin-bottom: 10px;
+}
+.accordion ul > li .desc {
+  padding: 0.5rem;
+}]]></style>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="Generator 컴포넌트를 활용하여 구성한 화면입니다.&lt;br/&gt;Generator 내의 Group을 이용하여 Accordion 형태로 표현하였습니다."
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_td_style" id="" style="">
+				<xf:group class="" id="" style="margin-bottom: 10px">
+					<xf:trigger class="btn_cm event" ev:onclick="scwin.btnInsert_onclick" id="btnInsert" style="" type="button">
+						<xf:label><![CDATA[Add Item]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group class="accordion" id="" style="border: 1px solid black;padding: 10px;">
+					<w2:generator id="gen1" style="padding: 5px;" tagname="ul">
+						<xf:group id="grpLi" style="padding: 10px;" tagname="li">
+							<xf:group class="title" id="grpTitle" style="">
+								<w2:textbox id="txtTitle" label="Title" style="" tagname="h3"></w2:textbox>
+							</xf:group>
+							<xf:group class="desc" id="grpDesc" style="">
+								<xf:group class="tblbox" id="" style="">
+									<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+										<w2:attributes>
+											<w2:summary></w2:summary>
+										</w2:attributes>
+										<xf:group tagname="colgroup">
+											<xf:group style="width:150px;" tagname="col"></xf:group>
+											<xf:group style="" tagname="col"></xf:group>
+										</xf:group>
+										<xf:group style="" tagname="tr">
+											<xf:group class="w2tb_th" style="" tagname="th">
+												<w2:textbox class="" id="" label="input" ref="" style="" userData2=""></w2:textbox>
+											</xf:group>
+											<xf:group class="w2tb_td" style="" tagname="td">
+												<xf:input id="" style="width: 148px;height: 21px;"></xf:input>
+											</xf:group>
+										</xf:group>
+										<xf:group tagname="tr">
+											<xf:group class="w2tb_th " tagname="th">
+												<w2:attributes>
+													<w2:scope>row</w2:scope>
+												</w2:attributes>
+												<w2:textbox class="" id="" label="select" ref="" style="" userData2=""></w2:textbox>
+											</xf:group>
+											<xf:group class="w2tb_td" tagname="td">
+												<w2:attributes>
+													<w2:colspan>1</w2:colspan>
+													<w2:rowspan>1</w2:rowspan>
+												</w2:attributes>
+												<xf:select1 allOption="" appearance="minimal" chooseOption="true" chooseOptionLabel="$blank"
+													direction="auto" disabled="false" disabledClass="w2selectbox_disabled" id="" ref="" style="width: 148px;height: 21px;"
+													submenuSize="auto">
+													<xf:choices>
+														<xf:item>
+															<xf:label><![CDATA[a]]></xf:label>
+															<xf:value><![CDATA[1]]></xf:value>
+														</xf:item>
+														<xf:item>
+															<xf:label><![CDATA[b]]></xf:label>
+															<xf:value><![CDATA[2]]></xf:value>
+														</xf:item>
+														<xf:item>
+															<xf:label><![CDATA[c]]></xf:label>
+															<xf:value><![CDATA[3]]></xf:value>
+														</xf:item>
+														<xf:item>
+															<xf:label><![CDATA[d]]></xf:label>
+															<xf:value><![CDATA[4]]></xf:value>
+														</xf:item>
+													</xf:choices>
+												</xf:select1>
+											</xf:group>
+										</xf:group>
+									</xf:group>
+								</xf:group>
+							</xf:group>
+						</xf:group>
+					</w2:generator>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

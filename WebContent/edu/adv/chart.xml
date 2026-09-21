@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제]chart">
+    	<w2:type>COMPONENT</w2:type>
+    	<w2:buildDate />
+    	<w2:MSA />
+    	<xf:model>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" id="dlt_chartData" repeatNode="data" style="" valueAttribute="">
+    				<w2:columnInfo>
+    					<w2:column dataType="text" id="Month" name="Month"></w2:column>
+    					<w2:column dataType="text" id="quarter1" name="quarter1"></w2:column>
+    					<w2:column dataType="text" id="quarter2" name="quarter2"></w2:column>
+    					<w2:column dataType="text" id="quarter3" name="quarter3"></w2:column>
+    					<w2:column dataType="text" id="quarter4" name="quarter4"></w2:column>
+    				</w2:columnInfo>
+    				<w2:data use="true" xmlns="">
+    					<w2:row>
+    						<Month><![CDATA[January]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[10000]]></quarter2>
+    						<quarter3><![CDATA[10800]]></quarter3>
+    						<quarter4><![CDATA[17000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[February]]></Month>
+    						<quarter1><![CDATA[11500]]></quarter1>
+    						<quarter2><![CDATA[28110]]></quarter2>
+    						<quarter3><![CDATA[23990]]></quarter3>
+    						<quarter4><![CDATA[15000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[March]]></Month>
+    						<quarter1><![CDATA[12500]]></quarter1>
+    						<quarter2><![CDATA[29800]]></quarter2>
+    						<quarter3><![CDATA[32700]]></quarter3>
+    						<quarter4><![CDATA[27000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[April]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[10000]]></quarter2>
+    						<quarter3><![CDATA[29000]]></quarter3>
+    						<quarter4><![CDATA[12000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[May]]></Month>
+    						<quarter1><![CDATA[1500]]></quarter1>
+    						<quarter2><![CDATA[10600]]></quarter2>
+    						<quarter3><![CDATA[10000]]></quarter3>
+    						<quarter4><![CDATA[8000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[June]]></Month>
+    						<quarter1><![CDATA[19700]]></quarter1>
+    						<quarter2><![CDATA[32600]]></quarter2>
+    						<quarter3><![CDATA[22600]]></quarter3>
+    						<quarter4><![CDATA[17000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[July]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[29700]]></quarter2>
+    						<quarter3><![CDATA[31900]]></quarter3>
+    						<quarter4><![CDATA[27000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[August]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[10000]]></quarter2>
+    						<quarter3><![CDATA[21800]]></quarter3>
+    						<quarter4><![CDATA[19000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[September]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[31800]]></quarter2>
+    						<quarter3><![CDATA[42800]]></quarter3>
+    						<quarter4><![CDATA[32000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[October]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[15000]]></quarter2>
+    						<quarter3><![CDATA[11000]]></quarter3>
+    						<quarter4><![CDATA[6000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[November]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[9800]]></quarter2>
+    						<quarter3><![CDATA[11800]]></quarter3>
+    						<quarter4><![CDATA[17000]]></quarter4>
+    					</w2:row>
+    					<w2:row>
+    						<Month><![CDATA[December]]></Month>
+    						<quarter1><![CDATA[27400]]></quarter1>
+    						<quarter2><![CDATA[22900]]></quarter2>
+    						<quarter3><![CDATA[20800]]></quarter3>
+    						<quarter4><![CDATA[11000]]></quarter4>
+    					</w2:row>
+    				</w2:data>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection />
+    	</xf:model>
+    	<w2:layoutInfo />
+    	<w2:publicInfo method="" />
+    	<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() { 
+};
+
+/**
+ * selectbox에 chart type 할당하기
+ */
+scwin.setSelectBox = function (chartType) {
+
+    var selectData = [];
+    if( chartType == 1){
+        selectData = ["column2d", "column3d", "bar2d", "bar3d", "area2d",
+            "line", "pareto2d", "pareto3d"];  
+    } else if (chartType == 2) {
+        selectData = [ "pie2d", "pie3d", "doughnut2d",
+            "doughnut3d"]; 
+    } else if (chartType == 3) {
+        selectData = ["MSColumn2D", "MSColumn3D", "MSLine", "ZoomLine",
+            "MSArea", "MSBar2D", "MSBar3D", "Marimekko", "StackedColumn2D",
+            "StackedColumn3D", "StackedArea2D", "StackedBar2D",
+            "StackedBar3D"]; 
+    } else {
+    }
+
+	scwin.setItemList("sbx_chartType", selectData); 
+};
+
+
+/**
+ * selectbox 에 data 할당. 공통 스크립트
+ */
+scwin.setItemList = function (objName, arrData) {
+	var tmpVal;
+	var curComp = $p.getComponentById(objName);
+    curComp.removeAll("true");
+
+	for (var i = 0; i < arrData.length; i++) {
+		tmpVal = arrData[i];
+		curComp.addItem(tmpVal, tmpVal);
+	}
+
+	curComp.setSelectedIndex(0);
+};
+//API를 활용해 차트 각종 옵션 적용
+scwin.ui_chartBt1_onclick = function(e) {
+ 
+udc_ca.udc_api();
+
+console.log("1.x   ==>" + x); // undefined
+var x = 10;
+var z = 10;
+
+//console.log("2.y   ==>" + y); // ReferenceError: y is not defined
+let y = 10;
+
+var x = 100;
+var z; 
+console.log("5.y   ==>" + y);  
+console.log("3.x   ==>" + x);  
+console.log("4.z   ==>" + z);  
+ 
+
+    var trnOptions = {};
+    trnOptions.startValue = 20000;   // [필수] 시작 값.
+    trnOptions.endValue = 25000;     // 종료 값.
+    trnOptions.displayValue = "기준선"; // 트렌드라인에 좌측 또는 우측에 표시할 레이블.
+    trnOptions.color = "#FF0030";    // 색.
+
+    //FusionChart의 TrendLine를 추가합니다. 
+	ui_chart.addTrendLine(trnOptions); 
+ 
+    
+    // 속성 'displayValue'의 추가 속성
+    let attOptions = {};    
+    attOptions.caption = "월별 차트 제목 변경";
+    attOptions.subCaption = "월별 차트 소제목 추가"; 
+    
+    attOptions.trendValueAlpha = 200;           // [0-100] 속성 'displayValue'의 투명도.
+    attOptions.trendValueFontSize = 15;     // 속성 'displayValue'의 글자 크기.    // [0-100] 속성 'displayValue'의 투명도.
+    attOptions.yAxisPosition = "right";     //Y 축 오른쪽으로 변경
+    attOptions.yAxisName = "가격 {br}(원)";  //Y 축 설명 추가
+    attOptions.xAxisName = "월";  //X 축 설명 추가
+    
+           
+
+	ui_chart.setChartAttribute(attOptions);
+
+    //FusionChart를 화면에 출력합니다
+	ui_chart.draw();
+};
+
+scwin.ui_chType_onchange = function(info) { 
+    scwin.setSelectBox(info.newValue);  
+
+};
+
+scwin.sbx_chartType_onchange = function(info) {
+ 
+    let ref = 'data:dlt_chartData'; 
+    let labelNode = 'Month';
+    let seriesColumns = '';
+    if(ui_chType.getValue()==3){
+
+        seriesColumns = "[['quarter1','quarter2','quarter3','quarter4' ]]";
+         
+    } else { 
+        seriesColumns = "[['quarter2']]"; 
+
+    } 
+    
+	ui_chart.changeType(info.newValue);
+	ui_chart.setChartColumnRef(ref, labelNode, seriesColumns)
+
+    //FusionChart를 화면에 출력합니다
+	ui_chart.draw();
+};
+]]></script>
+    	<w2:require as="udc_udc" type="page" variableClone="true" src="/frame/udc/udc.xml"></w2:require>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="titbox" id="" style="">
+    		<w2:textbox class="" id="" label="Fusionchart 실습 예제 파일" style="" tagname="h4"></w2:textbox>
+    	</xf:group>
+
+    	<xf:group class="lybox" id="" style="">
+    		<xf:group adaptiveThreshold="" class="ly_column col_5" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+
+    				<w2:textbox class="" id="" label="차트타입" style="" tagname="h3"></w2:textbox>
+    				<xf:group class="rt" id="" style="">
+    					<xf:trigger type="button" id="ui_chartBt1" style="width: 80px;height: 23px;"
+    						ev:onclick="scwin.ui_chartBt1_onclick">
+    						<xf:label><![CDATA[차트옵션변경]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    				<xf:select1 allOption="" appearance="minimal" chooseOption="true" class="" direction="auto" disabled="false"
+    					disabledClass="w2selectbox_disabled" id="ui_chType" ref="" renderType="" style="width:150px;" submenuSize="auto"
+    					chooseOptionLabel="차트의 유형을 선택하시요" ev:onchange="scwin.ui_chType_onchange">
+    					<xf:choices>
+    						<xf:item>
+    							<xf:label><![CDATA[선형,기둥형 차트]]></xf:label>
+    							<xf:value><![CDATA[1]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[원형,도넛 차트]]></xf:label>
+    							<xf:value><![CDATA[2]]></xf:value>
+    						</xf:item>
+    						<xf:item>
+    							<xf:label><![CDATA[다중계열 차트]]></xf:label>
+    							<xf:value><![CDATA[3]]></xf:value>
+    						</xf:item>
+    					</xf:choices>
+    				</xf:select1>
+    				<xf:select1 id="sbx_chartType" chooseOption="false" style="width: 148px;height: 21px;" submenuSize="auto"
+    					allOption="false" disabled="false" direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled"
+    					ev:onchange="scwin.sbx_chartType_onchange">
+    				</xf:select1>
+    			</xf:group>
+    			<w2:udc_udc style="" id="udc_ca"></w2:udc_udc>
+    			<w2:fusionchart drawType="javascript" runflashAt="IE6,IE7,IE8" chartType="Column2D" style="height: 300px;" id="ui_chart"
+    				ref="data:dlt_chartData" labelNode="Month" title="차트의 제목영역" seriesColumns="[['quarter2']]">
+    			</w2:fusionchart>
+    		</xf:group>
+    	</xf:group>
+    	
+
+    </body>
+</html>

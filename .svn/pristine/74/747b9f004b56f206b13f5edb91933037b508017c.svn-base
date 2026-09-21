@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko"><head><title>[TabControl] 탭의 정보 반환받기</title><link rel="stylesheet" href="css/book.css" type="text/css" /><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" /><meta name="EPB-UUID" content="f1fbcef72ff0a2ec" /></head><body><div class="chapter_content"><h1 id="r_78edf82ff61bdf5f" class="chapter_title">[TabControl] 탭의 정보 반환받기</h1><h1 id="r_96489a3cb292a379" class="element heading1" data-element-id="96489a3cb292a379"><div class="r_heading_inner"><span class="heading1_n">1</span><span>개요</span></div></h1><pre id="r_ed4d5a607976b8ae" class="element pre" data-element-id="ed4d5a607976b8ae">TabControl의 'getTabInfo' 메소드를 사용하여 각 탭의 정보를 반환받는 예제입니다.
+각 탭의 정보를 JSON으로 구성하여 Array로 반환합니다.</pre><p id="r_7919b9a7e0336246" class="element r_example_link_p" data-element-id="7919b9a7e0336246"><a class="link" href="http://example.websquare.kr/link.html?p=P00294">P00294</a></p><h1 id="r_f7289082072c07cf" class="element heading1" data-element-id="f7289082072c07cf"><div class="r_heading_inner"><span class="heading1_n">2</span><span>구현된 기능</span></div></h1><ul id="r_33f6fdf5d77bea61" class="element unordered_list" data-element-id="33f6fdf5d77bea61"><li><p>모든 탭의 정보 반환받기</p></li></ul><h1 id="r_36c71ca1fe31cbe1" class="element heading1" data-element-id="36c71ca1fe31cbe1"><div class="r_heading_inner"><span class="heading1_n">3</span><span>예제 테스트 방법</span></div></h1><h2 id="r_1a3214e8abe44804" class="element heading2" data-element-id="1a3214e8abe44804"><div class="r_heading_inner"><span class="heading2_n">3.1</span><span>모든 탭의 정보 반환받기</span></div></h2><div id="r_d2ca08b1133a7f48" class="element step1" data-element-id="d2ca08b1133a7f48"><p class="step1_n">1</p><p>STEP 1: 초기 상태를 확인합니다.</p></div><p id="r_d4eafeb47e867ffc" class="element normal step1_indent" data-element-id="d4eafeb47e867ffc">TabControl에 2개의 탭이 구성되어 있고, 탭 'TAB1'이 선택된 상태입니다. 각 탭의 콘텐츠는 다음과 같이 지정되어있습니다.</p><ul id="r_144afa59ac3da7b8" class="element unordered_list step1_indent" data-element-id="144afa59ac3da7b8"><li><p>탭 'TAB1' : 화면 내 직접 구성.</p></li><li><p>탭 'TAB2' : TabControl의 'addTab' 메소드를 사용하여 WFrame으로 파일 'P00294S01.xml'을 지정.</p></li></ul><div id="r_2e1cb2c9765416fa" class="element image step1_indent" data-element-id="2e1cb2c9765416fa"><p class="caption"><span class="image_caption_n">Image 1.</span>브라우저(Chrome) 실행 예시 - 탭 'TAB1'이 선택된 상태</p><p class="content"><img alt="" src="images/image1458.png" width="343" height="127" /></p></div><div id="r_8b6ba49f10eec164" class="element image step1_indent" data-element-id="8b6ba49f10eec164"><p class="caption"><span class="image_caption_n">Image 2.</span>브라우저(Chrome) 실행 예시 - 탭 'TAB2'가 선택된 상태</p><p class="content"><img alt="" src="images/image1459.png" width="341" height="124" /></p></div><div id="r_ecdf35b6d5e7e356" class="element step1" data-element-id="ecdf35b6d5e7e356"><p class="step1_n">2</p><p>STEP 2: 탭의 정보를 확인합니다.</p></div><pre id="r_186ce9a466dbbd47" class="element pre step1_indent" data-element-id="186ce9a466dbbd47">'<span class="r_exec_btn_style_span">탭의 정보 반환받기</span>' 버튼을 클릭합니다.</pre><div id="r_7c3f1a1b443def74" class="element step1" data-element-id="7c3f1a1b443def74"><p class="step1_n">3</p><p>STEP 3: 실행된 결과를 확인합니다.</p></div><pre id="r_0ff59e2cd1e5a6ad" class="element pre step1_indent" data-element-id="0ff59e2cd1e5a6ad">화면의 로그 확인 textarea 또는 브라우저의 개발자 도구의 콘솔(console)탭에 출력된 로그를 확인합니다.</pre><div id="r_eac56de7b61b09ff" class="element code support_code_numbering step1_indent" data-element-id="eac56de7b61b09ff"><p class="caption"><span class="code_caption_n">Example 1.</span>Log</p><pre><span class="digits_10 code_line"></span>[04:56:05] # TabControl의 'getTabInfo' 메소드의 반환 값: 
+<span class="digits_10 code_line"></span>[
+<span class="digits_10 code_line"></span>  {
+<span class="digits_10 code_line"></span>    "id": "tabs1",
+<span class="digits_10 code_line"></span>    "label": "TAB1",
+<span class="digits_10 code_line"></span>    "defaultTabIndex": 0,
+<span class="digits_10 code_line"></span>    "currentTabIndex": 0,
+<span class="digits_10 code_line"></span>    "src": "",
+<span class="digits_10 code_line"></span>    "alwaysDraw": false
+<span class="digits_10 code_line"></span>  },
+<span class="digits_10 code_line"></span>  {
+<span class="digits_10 code_line"></span>    "id": "tab_exam",
+<span class="digits_10 code_line"></span>    "label": "TAB2",
+<span class="digits_10 code_line"></span>    "defaultTabIndex": 1,
+<span class="digits_10 code_line"></span>    "currentTabIndex": 1,
+<span class="digits_10 code_line"></span>    "src": "/page/P00294S01.xml",
+<span class="digits_10 code_line"></span>    "alwaysDraw": false
+<span class="digits_10 code_line"></span>  }
+<span class="digits_10 code_line"></span>]</pre></div><h1 id="r_9f22198250e4a1b3" class="element heading1" data-element-id="9f22198250e4a1b3"><div class="r_heading_inner"><span class="heading1_n">4</span><span>구현 예시</span></div></h1><h2 id="r_e619a19fa3e9e9a4" class="element heading2" data-element-id="e619a19fa3e9e9a4"><div class="r_heading_inner"><span class="heading2_n">4.1</span><span>모든 탭의 정보 반환받기</span></div></h2><pre id="r_a93c9ca9079579e7" class="element pre" data-element-id="a93c9ca9079579e7">TabControl의 'getTabInfo' 메소드를 사용하여 스크립트를 작성합니다.
+세부 설정은 아래의 스크립트 예시에 작성되어 있습니다.</pre><div id="r_2301c23916bbf5ef" class="element code support_code_numbering" data-element-id="2301c23916bbf5ef"><p class="caption"><span class="code_caption_n">Example 2.</span>Script</p><pre><span class="digits_10 code_line"></span><span class="r_h_comment_span">// TabControl 'tac_exam1'의 탭 정보를 반환받습니다.</span>
+<span class="digits_10 code_line"></span><span class="r_h_keyword_span">var</span> result = tac_exam1.getTabInfo();
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// 반환 값 예시)</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// [</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//   {</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "id": "tabs1",</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "label": "TAB1",</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "defaultTabIndex": 0,</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "currentTabIndex": 0,</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "src": "",</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "alwaysDraw": false</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//   },</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//   {</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "id": "tab_exam",</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "label": "TAB2",</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "defaultTabIndex": 1,</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "currentTabIndex": 1,</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "src": "/page/P00294S01.xml",</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//     "alwaysDraw": false</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">//   }</span>
+<span class="digits_10 code_line"></span><span class="r_h_comment_span">// ]</span></pre></div><h1 id="r_bc47b40fc8240c02" class="element heading1" data-element-id="bc47b40fc8240c02"><div class="r_heading_inner"><span class="heading1_n">5</span><span>주요 API</span></div></h1><ul id="r_01e5dd83f82142f5" class="element unordered_list" data-element-id="01e5dd83f82142f5"><li><p><span class="r_ex_api_method_span">getTabInfo( )</span></p></li></ul></div></body></html>

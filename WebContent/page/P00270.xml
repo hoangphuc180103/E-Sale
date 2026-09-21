@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="브라우저의 LocalStorage에 값을 저장, 삭제, 반환받기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230613" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 예제 테스트를 위해 기 저장된 LocalStorage의 키 "EXAMPLE_P00270"를 삭제합니다.
+    $p.local.removeItem("EXAMPLE_P00270");
+};
+
+/**
+ * 버튼 [$p.local.setItem] 클릭 시
+ */
+scwin.btn_exam1_onclick = function (e) {
+    // LocalStorage의 키 "EXAMPLE_P00270"에 "한글_Abc_一二三"을 할당합니다.
+    $p.local.setItem("EXAMPLE_P00270", "한글_Abc_一二三");
+
+    // 로그 출력
+    let strLog = '# LocalStorage의 키 "EXAMPLE_P00270"에 "한글_Abc_一二三"을 할당합니다.';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [$p.local.getItem] 클릭 시
+ */
+scwin.btn_exam2_onclick = function (e) {
+    // LocalStorage의 키 "EXAMPLE_P00270"의 값을 반환받습니다.
+    let strItem = $p.local.getItem("EXAMPLE_P00270");
+
+    // 로그 출력
+    let strLog = '# LocalStorage의 키 "EXAMPLE_P00270"의 값은 ' + '"' + strItem + '" 입니다.';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+    console.log(strItem);
+};
+
+/**
+ * 버튼 [$p.local.removeItem] 클릭 시
+ */
+scwin.btn_exam3_onclick = function (e) {
+    // LocalStorage의 키 "EXAMPLE_P00270"를 삭제합니다.
+    $p.local.removeItem("EXAMPLE_P00270");
+
+    // 로그 출력
+    let strLog = '# LocalStorage의 키 "EXAMPLE_P00270"를 삭제합니다.';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [페이지 열기] 클릭 시
+ */
+scwin.btn_openPage_onclick = function (e) {
+    let strPage = $c.frame.getBasePageURL(true) + "?w2xPath=/page/P00270P01.xml";
+    window.open(strPage, "_blank");
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="'$p.local' 객체의 메소드를 사용하여 브라우저의 LocalStorage에 값을 저장, 삭제, 반환받는 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style no_padding" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_openPage" style="" type="button" ev:onclick="scwin.btn_openPage_onclick">
+								<xf:label><![CDATA[페이지 열기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam1_onclick"
+								id="btn_exam1" style="" type="button">
+								<xf:label><![CDATA[$p.local.setItem]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam2_onclick"
+								id="btn_exam2" style="" type="button">
+								<xf:label><![CDATA[$p.local.getItem]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" id="btn_exam3" style="" type="button" ev:onclick="scwin.btn_exam3_onclick">
+								<xf:label><![CDATA[$p.local.removeItem]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

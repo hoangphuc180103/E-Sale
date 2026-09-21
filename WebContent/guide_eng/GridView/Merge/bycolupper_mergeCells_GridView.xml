@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="merge" meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="col1" name="col1"></w2:column>
+        				<w2:column dataType="text" id="col2" name="col2"></w2:column>
+        				<w2:column dataType="text" id="col3" name="col3"></w2:column>
+        				<w2:column dataType="text" id="col4" name="col4"></w2:column>
+        				<w2:column dataType="text" id="col5" name="col5"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var json = [
+        { "col1": "AAA", "col2": "Korea", "col3": "Type 1", "col4": "TV", "col5": "1" },
+        { "col1": "AAA", "col2": "Korea", "col3": "Type 1", "col4": "Washer", "col5": "1" },
+        { "col1": "AAA", "col2": "Korea", "col3": "Type 1", "col4": "Washer", "col5": "1" },
+        { "col1": "BBB", "col2": "Korea", "col3": "Type 1", "col4": "Washer", "col5": "4" },
+        { "col1": "BBB", "col2": "China", "col3": "Type 1", "col4": "TV", "col5": "4" },
+        { "col1": "BBB", "col2": "China", "col3": "Type 2", "col4": "TV", "col5": "5" },
+        { "col1": "BBB", "col2": "China", "col3": "Type 2", "col4": "Freezer", "col5": "5" },
+        { "col1": "CCC", "col2": "Japan", "col3": "Type 2", "col4": "Washer", "col5": "5" },
+        { "col1": "CCC", "col2": "Japan", "col3": "Type 2", "col4": "Washer", "col5": "5" },
+        { "col1": "CCC", "col2": "Japan", "col3": "Type 3", "col4": "Washer", "col5": "6" },
+        { "col1": "DDD", "col2": "Unknown", "col3": "Type 3", "col4": "Unknown", "col5": "6" },
+        { "col1": "DDD", "col2": "Unknown", "col3": "Type 3", "col4": "Unknown", "col5": "6" },
+        { "col1": "DDD", "col2": "Unknown", "col3": "Type 3", "col4": "TBD", "col5": "6" },
+        { "col1": "DDD", "col2": "Unknown", "col3": "Type 3", "col4": "TBD", "col5": "6" }
+    ];
+    dataList1.setJSON(json);
+    gridView1.setFocusedCell(0, "col1", false);
+    gridView2.setFocusedCell(0, "col1", false);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Merge Based Only on Specified Left Columns" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="(First GridView) - Merge based only on the specified left column&lt;br/&gt;1. Verify that the GridView's mergeCells property value is “bycolupper” and that the “upperColumn” property is defined for each column.&lt;br/&gt;2. Verify that the cells in the column(s) specified by the column's “upperColumn” property are merged based on the merge state of those columns. &lt;br/&gt;&lt;br/&gt;(Second GridView) - Merge based on all left columns&lt;br/&gt;1. Verify the GridView's mergeCells property value is “byrestriccol”.&lt;br/&gt;2. Verify the cells in the column are merged based on the merge state of all left columns.&lt;br/&gt;3. Verify the difference in cell merge state compared to the first GridView." escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4"
+    		label='mergeCells="bycolupper" (gridView1)&lt;br/&gt;mergeCol="col2,col3,col4,col5" (gridView1)&lt;br/&gt;upperColumn="col2" (id="col3" gridView.column)&lt;br/&gt;upperColumn="col2,col3" (id="col5" gridView.column)&lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:gridView scrollByColumnAdaptive="false" hammerEnabled="true" dataDragDrop="true" selectedRowColor="pink" useShiftKey="true"
+    		useCtrlOnMultisort="" scrollByColumn="false" dataDragDropStatus="true" focusFlow="linear" defaultCellHeight="20"
+    		selectedCellColor="" focusMode="row" contextMenu="true" visibleRowNumFix="true" dataList="data:dataList1" dataDragSelect=""
+    		style="border:solid 1px gray; margin-bottom:10px;" cellStatusIconPosition="left" id="gridView1" autoFit="allColumn" useCtrlKey=""
+    		cellStatusVisible="true" visibleRowNum="14" mergeCells="bycolupper" mergeCol="col2,col3,col4,col5">
+    		<w2:caption style="" id="caption3" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header3">
+    			<w2:row style="" id="row5">
+    				<w2:column width="70" inputType="text" id="column17" value="col1" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column16" value="col2" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column15" value="col3" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column14" value="col4" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="column22" value="col5" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody3">
+    			<w2:row style="" id="row6">
+    				<w2:column width="70" inputType="text" id="col1" displayMode="label"></w2:column>
+    				<w2:column upperColumn="" width="70" inputType="text" id="col2" displayMode="label"></w2:column>
+    				<w2:column upperColumn="col2" width="70" inputType="text" id="col3" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" id="col4" displayMode="label" upperColumn=""></w2:column>
+    				<w2:column width="70" inputType="text" id="col5" displayMode="label" upperColumn="col2,col3"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox7"
+    		label='mergeCells="byrestriccol" (gridView2)&lt;br/&gt;mergeCol="col2,col3,col4,col5" (gridView2)'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView checkAllType="false" id="gridView2" style="border:solid 1px gray; margin-bottom:10px;" dataList="data:dataList1" visibleRowNum="15" visibleRowNumFix="true" autoFit="allColumn" mergeCells="byrestriccol" focusMode="row" mergeCol="col2,col3,col4,col5" defaultCellHeight="20">
+    		<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header2">
+    			<w2:row style="" id="row3">
+    				<w2:column width="70" style="" inputType="text" id="column7" value="col1"></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="column6" value="col2"></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="column5" value="col3"></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="column4" value="col4"></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="column3" value="col5"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody2">
+    			<w2:row style="" id="row4">
+    				<w2:column width="70" style="" inputType="text" id="col1" value=""></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="col2" value=""></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="col3" value=""></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="col4" value=""></w2:column>
+    				<w2:column width="70" style="" inputType="text" id="col5" value=""></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

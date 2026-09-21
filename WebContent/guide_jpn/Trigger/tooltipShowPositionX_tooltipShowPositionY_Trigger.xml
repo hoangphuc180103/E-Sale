@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ツールチップ表示位置の指定" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Triggerの上にマウスカーソルを移動します。 &lt;br/&gt;2. tooltipShowPositionX="100" および tooltipShowPositionY="50" プロパティで設定した位置にツールチップが表示されることを確認。' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;tooltipShowPositionX="100" &lt;br/&gt;tooltipShowPositionY="50" &lt;br/&gt;tooltip="This is trigger tooltip."' escape="false">
+    	</w2:textbox><xf:trigger tooltipShowPositionY="100" tooltip="This is trigger tooltip." style="width: 100px;height:50px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;" tooltipShowPositionX="100" id="trigger1" type="button" tooltipPositionX="100" tooltipLocaleRef="0" tooltipPositionY="50">
+    		<xf:label><![CDATA[Trigger]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name='col1' dataType="text"></w2:column>
+            			<w2:column id="col2" name='col2' dataType="text"></w2:column>
+            			<w2:column id="col3" name='col3' dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var jsonData = [{ "col1": "1111", "col2": "2222", "col3": "3333" }
+        , { "col1": "2222", "col2": "4444", "col3": "6666" }
+        , { "col1": "1111", "col2": "2222", "col3": "3333" }
+        , { "col1": "2222", "col2": "4444", "col3": "6666" }
+        , { "col1": "1111", "col2": "2222", "col3": "3333" }
+        , { "col1": "2222", "col2": "4444", "col3": "6666" }];
+    dataList1.setJSON(jsonData);
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    gridView1.setDataType("col1", "float");
+};
+
+scwin.trigger3_onclick = function (e) {
+    gridView1.setDataType("col2", "number");
+};
+
+scwin.trigger2_onclick = function (e) {
+    var first = gridView1.getDataType("col1");
+    var second = gridView1.getDataType("col2");
+    var third = gridView1.getDataType("col3");
+    alert("col1 : " + first + " , col2 : " + second + " , col3 : " + third + " ");
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="各列の dataType 設定"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 3番目のgetDataType()ボタンをクリックして、各列のdataTypeを確認します。 &lt;br/&gt;2. 最初と2番目のsetDataType()ボタンをクリックして各列のdataTypeを設定します。 &amp;nbsp;&lt;br/&gt;3. もう一度3番目のgetDataType()ボタンをクリックして、各列のdataTypeを確認します。 &lt;br/&gt;（詳細なスクリプトは Script タブで確認。）'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;margin-right: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[gridView1.setDataType("col1", "float");]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;margin-right: 10px;"
+    		id="trigger3" type="button" ev:onclick="scwin.trigger3_onclick">
+    		<xf:label><![CDATA[gridView1.setDataType("col2", "number");]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[getDataType()]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView scrollByColumnAdaptive="false" rowStatusVisible="false" rowNumVisible="true" dataList="data:dataList1"
+    		style="border: solid 1px gray;visiblerow" scrollByColumn="false" id="gridView1" defaultCellHeight="20" visibleRowNum="6"
+    		visibleRowNumFix="true" autoFit="allColumn">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header columnClass="" width="" style="" id="header1" class="">
+    			<w2:row style="" id="row1">
+    				<w2:column removeBorderStyle="false" width="150" inputType="text" style="height:40px;color:blue;" id="column3"
+    					value="col1" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="150" inputType="text" style="height:40px;color:blue;" id="column2"
+    					value="col2" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="150" inputType="text" style="height:40px;color:blue;" id="column1"
+    					value="col3" blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column removeBorderStyle="false" dataType="text" width="70" inputType="text" style="height:20px" id="col1" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" dataType="text" width="70" inputType="text" style="height:20px" id="col2" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" dataType="text" width="70" inputType="text" style="height:20px" id="col3" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

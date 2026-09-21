@@ -1,0 +1,60 @@
+/*amd /guide_eng/CheckComboBox/setEnableColumn_CheckComboBox.xml 3865 9860a2d1a1cfad4be47bc38315cf2f693c4fdf06d35f010ab225568b00ed7b8d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'Code',name:'name1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'City',name:'name2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Country',name:'name3'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Type',name:'name4'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "Code": "SEL",
+    "City": "Seoul",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "BSN",
+    "City": "Busan",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "ICN",
+    "City": "Incheon",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "DJN",
+    "City": "Daejeon",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "DGU",
+    "City": "Daegu",
+    "Country": "Korea",
+    "Type": "Domestic"
+  }, {
+    "Code": "OTW",
+    "City": "Ottawa",
+    "Country": "Canada",
+    "Type": "Overseas"
+  }, {
+    "Code": "LDN",
+    "City": "Toronto",
+    "Country": "Canada",
+    "Type": "Overseas"
+  }, {
+    "Code": "BRN",
+    "City": "Berlin",
+    "Country": "Germany",
+    "Type": "Overseas"
+  }, {
+    "Code": "BJG",
+    "City": "Beijing",
+    "Country": "China",
+    "Type": "Overseas"
+  }, {
+    "Code": "LDN",
+    "City": "London",
+    "Country": "UK",
+    "Type": "Overseas"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  checkcombobox1.setEnableColumn("Type", "Overseas");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Disable Some Selection Items (Dynamically)<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Hold down the Ctrl key and right-click the mouse.<br/>2. Confirm the dataList1 bound to the CheckComboBox.<br/>3. Confirm that the dataList1 data appears in the CheckComboBox\'s selection list.<br/>3. Click the setEnableColumn() button at the bottom.<br/>3. Confirm that the selection items in the dropdown list where the Type column value in dataList1 is “Overseas” become disabled.',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:30px;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'checkcombobox1.setEnableColumn("Type", "Overseas");'}]}]},{T:1,N:'xf:checkcombobox',A:{enableColumn:'',displayAllOptionLabel:'false',submenuSize:'auto',chooseOption:'',allOption:'',displayMode:'label',ref:'',appearance:'minimal',enableColumnFalseValue:'',style:'width: 50%;',disabled:'false',id:'checkcombobox1',class:'',direction:'auto'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'xf:label',A:{ref:'City'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]}]}]})

@@ -1,0 +1,78 @@
+/*amd /guide/GridView/_General/tooltipHideInputType_GridView.xml 6014 f2ab91c4615ccf6f3f7a8215f5f99bf9400274e83f272d206ece679121c87e86 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'xf:instance',_xml:'<xf:instance xmlns:xf="http://www.w3.org/2002/xforms">\n                <data xmlns="">\n                </data>\n            </xf:instance>'},{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col4',name:'name4',dataType:'text'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList2',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'value',name:'name2',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  dataList2.setJSON([{
+    label: "overseas",
+    value: "1"
+  }, {
+    label: "domestic",
+    value: "0"
+  }]);
+  var jsonData = [{
+    col1: "a",
+    col2: "ABCDEFGHIJKLMNOPQRSTUVWXYZa1",
+    col3: "false",
+    col4: "overseas"
+  }, {
+    col1: "a",
+    col2: "a2ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "true",
+    col4: "domestic"
+  }, {
+    col1: "a",
+    col2: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "false",
+    col4: "overseas"
+  }, {
+    col1: "a",
+    col2: "a4ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "false",
+    col4: "domestic"
+  }, {
+    col1: "a",
+    col2: "a5ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "true",
+    col4: "domestic"
+  }, {
+    col1: "b",
+    col2: "b1ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "true",
+    col4: "domestic"
+  }, {
+    col1: "b",
+    col2: "b3ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "true",
+    col4: "domestic"
+  }, {
+    col1: "c",
+    col2: "c1ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "false",
+    col4: "overseas"
+  }, {
+    col1: "c",
+    col2: "c2ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "true",
+    col4: "domestic"
+  }, {
+    col1: "c",
+    col2: "c3ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "false",
+    col4: "overseas"
+  }, {
+    col1: "d",
+    col2: "d1ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "true",
+    col4: "overseas"
+  }, {
+    col1: "d",
+    col2: "d2ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "false",
+    col4: "domestic"
+  }, {
+    col1: "d",
+    col2: "d3ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    col3: "false",
+    col4: "domestic"
+  }];
+  dataList1.setJSON(jsonData);
+};
+}}}]},{T:1,N:'style',A:{type:'text/css'}}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',class:'',style:'margin:10px;',tooltipDisplay:'true'},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox1',label:'툴팁을 표시하지 않을 컬럼 지정',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',tagname:'h1'}},{T:1,N:'w2:textbox',A:{id:'textbox2',label:'샘플 사용 방법',style:'height: 23px;margin-bottom: 10px;color: blue;',tagname:'h2'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox3',label:'1. GridView의 각 셀에 마우스 커서를 가져다 대기. <br/>2. inputType="select"인 col4를 제외한 나머지 컬럼에서 툴팁이 항상 표시되는 것을 확인. ',style:'color: blue;margin-bottom: 30px;'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox4',label:'속성 설정<br/>tooltipHideInputType="select"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:gridView',A:{tooltipShowAlways:'true',accessibility:'true',focusMove:'false',tooltipHideInputType:'select',scrollByColumn:'false',autoResizeEmbeddedInput:'true',defaultCellHeight:'20',titleAuto:'true',applyScopeHeaders:'true',senseReader:'true',checkAllType:'false',keyMoveEditMode:'true',id:'gridView1',autoFit:'allColumn',tooltipDisplayColumn:'',class:'',scrollByColumnAdaptive:'false',readOnly:'true',scrollFocus:'true',tooltipDisplay:'true',captionAuto:'true',dataList:'data:dataList1',style:'border: solid 1px gray;visiblerow',sortHeaderDiv:'true',visibleRowNum:'10',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption2',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column7',value:'col1 <br/>(text)',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column6',value:'col2<br/>(text)',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column5',value:'col3<br/>(text)',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column4',value:'col4<br/>(select)',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row4'},E:[{T:1,N:'w2:column',A:{width:'70',radioLabelColumn:'col3',inputType:'text',style:'height:20px',readOnly:'false',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'',style:'height:20px',id:'col3',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{ref:'',chooseOption:'',width:'70',inputType:'select',style:'height:20px',readOnly:'false',id:'col4',allOption:'',value:'false',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList2'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'value'}}]}]}]}]}]}]}]}]}]}]})

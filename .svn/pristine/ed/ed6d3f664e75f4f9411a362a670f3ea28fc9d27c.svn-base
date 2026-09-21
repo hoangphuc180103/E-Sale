@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<WebSquare>
+    
+
+
+<components>
+        
+    
+    <component category="/frame/udc" company="" componentType="pageComponent" description="" developer="" disableIcon="" display="udc_example_viewer" displaySrc="/frame/udc/example_viewer.xml" height="200px" htmlRender="" icon="" id="udc_example_viewer" namespaceURI="http://www.inswave.com/websquare" notSupportBrowser="" project="EXAMPLE" realType="udc_example_viewer" ternId="_frame_udc_example_viewer" udc2Component="true" variableClone="true" version="" visible="true" width="200px">
+            <properties>
+                <property bindparent="" default="" description="desc" maincategory="Basic &amp; ETC" maincategoryorder="01" name="style" necessary="no" type="string"/>
+                <property bindparent="" default="" description="desc" maincategory="Basic &amp; ETC" maincategoryorder="01" name="class" necessary="no" type="string"/>
+                <property bindparent="" default="udc_exampleViewer" description="컴포넌트의 ID" maincategory="Basic &amp; ETC" maincategoryorder="01" name="id" necessary="no" type="string"/>
+                <property bindparent="" default="" description="[default:true,false] 실행된 예제를 확장 또는 축소한다. true: 확장 상태, false:축소 상태." maincategory="Basic &amp; ETC" maincategoryorder="01" name="openExampleView" necessary="no" type="combobox">
+                    <option name="true" value="true"/>
+                    <option name="false" value="false"/>
+                </property>
+                <property bindparent="" default="" description="[default:true,false] 소스보기를 확장 또는 축소한다. true: 확장 상태, false:축소 상태." maincategory="Basic &amp; ETC" maincategoryorder="01" name="openSourceView" necessary="no" type="combobox">
+                    <option name="true" value="true"/>
+                    <option name="false" value="false"/>
+                </property>
+            </properties>
+        </component>
+    <component category="/frame/udc" company="" componentType="pageComponent" description="" developer="na" disableIcon="" display="udc_example_refresh" displaySrc="/frame/udc/example_refresh.xml" height="200px" htmlRender="" icon="" id="udc_example_refresh" namespaceURI="http://www.inswave.com/websquare" notSupportBrowser="" project="EXAMPLE" realType="udc_example_refresh" ternId="_frame_udc_example_refresh" udc2Component="true" variableClone="true" version="" visible="true" width="200px">
+            <properties>
+                <property bindparent="" default="" description="desc" maincategory="Basic &amp; ETC" maincategoryorder="01" name="style" necessary="no" type="string"/>
+                <property bindparent="" default="" description="desc" maincategory="Basic &amp; ETC" maincategoryorder="01" name="class" necessary="no" type="string"/>
+                <property bindparent="" default="udc_example_refresh" description="desc" maincategory="Basic &amp; ETC" maincategoryorder="01" name="id" necessary="no" type="string"/>
+            </properties>
+        </component>
+    </components>
+</WebSquare>

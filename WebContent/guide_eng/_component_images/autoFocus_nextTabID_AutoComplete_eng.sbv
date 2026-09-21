@@ -1,0 +1,47 @@
+0:00:00.000,0:00:01.802
+Welcome to WebSquare5 Quick Guide.
+
+0:00:02.370,0:00:07.557
+This video describes AutoComplete, and its properties - autoFocus and nextTabID.
+
+0:00:08.409,0:00:16.736
+Using this property, you can move the focus to the nextTabID component upon user's selection an item.
+
+0:00:21.167,0:00:26.023
+Set the nextTabID as the ID of the component to move the focus to, and 
+
+0:00:26.705,0:00:29.433
+set autoFocus="true".
+
+0:00:30.399,0:00:32.099
+Let's see how it works.
+
+0:00:33.008,0:00:36.068
+There are an AutoComplete and two InputBoxes.
+
+0:00:37.147,0:00:44.154
+AutoComplete has autoFocus="true" and nextTabID="input2".
+
+0:00:44.836,0:00:46.921
+Let's check on the browser.
+
+0:00:47.660,0:00:55.709
+Upon selecting "Hanoi", the focus move to the second InputBox of which ID is "input2".
+
+0:00:56.561,0:01:03.965
+Selecting "Danang" also moves the focus to the second InputBox.
+
+0:01:04.760,0:01:08.794
+Let's change the property setting to nextTabID="input1".
+
+0:01:10.896,0:01:12.041
+Save.
+
+0:01:13.120,0:01:14.536
+Reload the page.
+
+0:01:15.559,0:01:23.949
+Upon entering the selection item, the focus moves to the first InputBox of which ID is "input1".
+
+0:01:25.767,0:01:28.738
+Thank you for watching.

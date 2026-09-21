@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[FusionChart] 속성 변경하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230705" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_chartData_1" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="type" name="type"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<type><![CDATA[TYPE 1]]></type>
+							<value><![CDATA[17600]]></value>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[TYPE 2]]></type>
+							<value><![CDATA[28110]]></value>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[TYPE 3]]></type>
+							<value><![CDATA[29800]]></value>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[TYPE 4]]></type>
+							<value><![CDATA[21500]]></value>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[TYPE 5]]></type>
+							<value><![CDATA[15300]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [차트 속성 변경하고 브라우저에 그리기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    let options = {};
+    options.caption = "- caption -"; // 캡션 표시
+    options.subCaption = "- subcaption -"; // 보조 캡션 표시
+    options.xAxisName = "- xAxisName -"; // x축 명칭 표시
+    options.yAxisName = "- yAxisName -"; // y축 명칭 표시
+    options.showBorder = 0; // 외각 선 미표시
+    options.showValues = 1; // data plot에 value를 표시
+    options.rotateValues = 1; // data plot에 value를 세로로 표시
+
+    // Fusionchart 'cht_exam1'의 속성을 설정합니다.
+    cht_exam1.setChartAttribute(options);
+
+    // Fusionchart 'cht_exam1'를 브라우저에 그립니다.
+    cht_exam1.draw();
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="FusionChart의 'setChartAttribute' 메소드를 사용하여 속성을 설정한 예제입니다."
+					style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA[차트 속성 변경하고 브라우저에 그리기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="mb_def_box nobottom">
+							<w2:fusionchart labelNode="type" ref="data:dlt_chartData_1" seriesColumns="[['value']]" chartType="Column2D"
+								drawType="javascript" style="height: 300px;min-width:200px;" id="cht_exam1">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

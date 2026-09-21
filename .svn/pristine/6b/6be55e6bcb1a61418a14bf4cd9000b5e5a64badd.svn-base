@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Always Show Tooltip&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Move the mouse cursor over the first TextBox.&lt;br/&gt;2. The text is fully displayed on the screen, but the tooltip appears. (tooltipsShowAlways=“true”)&lt;br/&gt;3. Move the mouse cursor over the second TextBox.&lt;br/&gt;2. The text is fully displayed on the screen, so the tooltip does not appear. (tooltipsShowAlways=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='tooltipDisplay="true" &lt;br/&gt;tooltipShowAlways="true"' escape="false">
+    	</w2:textbox>
+    	<w2:textbox tooltipShowAlways="true" tooltipPositionY="2" tooltipPositionX="60" tooltipDisplay="true" tooltipTime="0" toolTip=""
+    		style="margin-bottom: 10px;"
+    		label="Once upon a time, there was a Kingdom. The king there only had one leg and one eye, but he was very intelligent and kind. Everyone in his kingdom lived a happy and a healthy life because of their king. One day the king was walking through the palace hallway and saw the portraits of his ancestors."
+    		id="textbox5">
+    	</w2:textbox>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox15" label='tooltipDisplay="true" &lt;br/&gt;tooltipShowAlways="false"' escape="false">
+    	</w2:textbox>
+    	<w2:textbox tooltipPositionY="2" tooltipShowAlways="false" tooltipPositionX="60" tooltipDisplay="true" toolTip="" style=""
+    		id="textbox6"
+    		label="Once upon a time, there was a Kingdom. The king there only had one leg and one eye, but he was very intelligent and kind. Everyone in his kingdom lived a happy and a healthy life because of their king. One day the king was walking through the palace hallway and saw the portraits of his ancestors.">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

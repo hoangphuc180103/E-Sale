@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[FusionChart] 차트 타입 예제 - FwPyramidChart_simple">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="" ev:oncelldatachange="scwin.dataList1_oncelldatachange">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="col1" dataType="text"></w2:column>
+            			<w2:column dataType="text" id="col2" name="col2"></w2:column>
+            			<w2:column dataType="text" id="col3" name="col3"></w2:column>
+
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col2><![CDATA[a2]]></col2>
+            				<col3><![CDATA[a3]]></col3>
+            				<col1><![CDATA[a1]]></col1>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[b2]]></col2>
+            				<col3><![CDATA[b3]]></col3>
+            				<col1><![CDATA[b1]]></col1>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[c2]]></col2>
+            				<col3><![CDATA[c3]]></col3>
+            				<col1><![CDATA[c1]]></col1>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[d2]]></col2>
+            				<col3><![CDATA[d3]]></col3>
+            				<col1><![CDATA[d1]]></col1>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dataList2" removeDummyRowStatus="false" removedDataMatch="true" repeatNode="map"
+            		saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="chk" name="chk" ignoreStatus="true"></w2:column>
+            			<w2:column dataType="text" id="col1" name="col1" ignoreStatus="true"></w2:column>
+            			<w2:column dataType="text" id="col2" name="col2" ignoreStatus="true"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<chk><![CDATA[]]></chk>
+            				<col1><![CDATA[a1]]></col1>
+            				<col2><![CDATA[a2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<chk><![CDATA[]]></chk>
+            				<col1><![CDATA[b1]]></col1>
+            				<col2><![CDATA[b2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<chk><![CDATA[]]></chk>
+            				<col1><![CDATA[c1]]></col1>
+            				<col2><![CDATA[c2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[d1]]></col1>
+            				<col2><![CDATA[d2]]></col2>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+/**
+ * DataList의 oncelldatachange 이벤트 핸들러
+ */
+scwin.dataList1_oncelldatachange = function (info) {
+    // info : oldValue, newValue, rowIndex, colID
+    var rowIndex = info.rowIndex
+    var columnId = info.colID
+    gridView1.setCellColor(rowIndex, columnId, "blue");
+
+    
+    // 로그 출력
+    let strLog = "# oncelldatachange event\n";
+    strLog += "이전 값 : " + info.oldValue + "\n";
+    strLog += "현재 값 : " + info.newValue;
+
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+    console.log(info);
+
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<w2:textbox escape="false" id=""
+    				label="DataList의 'oncelldatachange' 이벤트를 설정한 예제입니다." style="">
+    			</w2:textbox>
+    			<w2:textbox class="exam_txt caution" id="" label="컴포넌트의 이벤트 발생 시 영역 [로그 확인]의 textarea 또는 브라우저 개발자도구 콘솔에 로그가 출력됩니다."
+    				style="">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<xf:group class="example_div_td_style" id="" style="">
+    					<xf:group style="" id="" class="gvwbox">
+    						<w2:gridView autoFit="allColumn" autoFitMinWidth="280" class="gvw" dataList="data:dataList1"
+    							defaultCellHeight="37" id="gridView1" keepDefaultColumnWidth="true" readOnly="false" rowNumVisible="true" rowNumWidth="40"
+    							rowStatusVisible="true" rowStatusWidth="40" style="height:100px;" visibleRowNum="all" visibleRowNumFix="true" focusMode="none"
+    							rowStatusHeaderValue="상태" editModeEvent="onclick" keyMoveEditMode="true" focusFlow="linear">
+    							<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    							<w2:header style="" id="header1">
+    								<w2:row style="" id="row1">
+    									<w2:column width="70" inputType="text" style="" id="column3" value="col1" displayMode="label"></w2:column>
+    									<w2:column width="70" inputType="text" style="" id="column2" value="col2" displayMode="label"></w2:column>
+    									<w2:column width="70" inputType="text" style="" id="column1" value="col3" displayMode="label"></w2:column>
+    								</w2:row>
+    							</w2:header>
+    							<w2:gBody style="" id="gBody1">
+    								<w2:row style="" id="row2">
+    									<w2:column width="70" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+    									<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    									<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+    								</w2:row>
+    							</w2:gBody>
+    						</w2:gridView>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<xf:group style="" id="" class="example_div_th_style">
+    					<w2:span style="" id="" label="로그 확인" class="mr_def txt_blue"></w2:span>
+    					<xf:trigger ev:onclick="scwin.btn_clearLog_onclick" style="" id="btn_clearLog" title="로그 삭제" type="button"
+    						class="wre_btn_log_clear">
+    						<xf:label><![CDATA[로그 삭제]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    				<xf:group class="example_div_td_style" id="" style="">
+    					<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

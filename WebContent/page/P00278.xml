@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[DataList] 컬럼 데이터에 필터 적용하기 - 메소드 사용 검색">
+		<w2:historyInfo>
+			<w2:history meta_desc="최초작성" meta_no="01" meta_date="20230627" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" name="Stock" id="stock"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // DataList에 초기 데이터 할당
+    scwin.initData();
+};
+
+/**
+ * DataList 'dlt_exam'에 데이터 할당하기
+ */
+scwin.initData = function () {
+    // DataList 'dlt_exam'에 데이터 할당하기
+    let data = [
+        { "category": "Networking", "product": "SpeedLink", "stock": "15800" },
+        { "category": "Cloud Services", "product": "CloudFlex", "stock": "17800" },
+        { "category": "Support Services", "product": "TechAssist", "stock": "15800" },
+        { "category": "Servers", "product": "EcoServe", "stock": "17200" },
+        { "category": "Cloud Services", "product": "CloudPro", "stock": "18000" },
+        { "category": "Networking", "product": "NetMax", "stock": "16000" },
+        { "category": "Support Services", "product": "TechTeam", "stock": "17800" },
+        { "category": "Security", "product": "SecureGate", "stock": "28900" },
+        { "category": "Networking", "product": "LinkSecure", "stock": "12500" }
+    ];
+    dlt_exam.setJSON(data);
+
+    // DataList 'dlt_exam'의 모든 필터 해제하기
+    dlt_exam.clearFilter();
+};
+
+/**
+ * 버튼 [DataList의 데이터 초기화] 클릭 시
+ */
+scwin.btn_initData_onclick = function (e) {
+    scwin.initData();
+};
+
+/**
+ * 버튼 [DataList의 필터 전체 해제] 클릭 시
+ */
+scwin.btn_clearFilter_onclick = function (e) {
+    // DataList 'dlt_exam'의 모든 필터 해제하기
+    dlt_exam.clearFilter();
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터가 'Networking'과 일치] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "func"; // 검색 방식. 'key' 속성에 정의된 메소드로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = scwin.userColumnFilter_type1; // 사용자 정의 메소드 객체
+    jsnFilterOptions.param = "type1"; // 메소드에 전달할 인자 객체. 사용자 정의 메소드의 두 번째 인자에 할당됩니다.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당.     
+
+    // 검색 대상 데이터 : ID가 "category"인 컬럼
+    // 검색 방법 : 사용자 정의 메소드 - scwin.userColumnFilter_type1
+    // 기 적용된 필터 데이터와의 병합 조건 : 교집합
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터가 'Networking' | 필터 조건 ";
+    let logOptions = '\n' +
+        '{' + '\n' +
+        '	"type": "func",' + '\n' +
+        '	"colIndex": "category",' + '\n' +
+        '	"key": scwin.userColumnFilter_type1,' + '\n' +
+        '	"param": "type1",' + '\n' +
+        '	"condition": "and"' + '\n' +
+        '}';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(logOptions, txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 사용자 정의 필터 메소드
+ * 메소드 'scwin.btn_exam1_1_onclick'에서 호출
+ * @param {string} argCellData 검색 대상 데이터.
+ * @param {object} argUserParam 사용자가 할당한 인자.
+ * @param {number} argRowIndex 행의 인덱스.
+ * @returns {boolean} 데이터 추출(포함) 여부.
+ */
+scwin.userColumnFilter_type1 = function (argCellData, argUserParam, argRowIndex) {
+    let returnValue = false;    // 반환 값.
+
+    // 데이터가 'Networking'과 동일하면 추출
+    if (argCellData === "Networking") {
+        returnValue = true;
+    }
+    return returnValue;
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터 중 'Services'가 포함] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "func"; // 검색 방식. 'key' 속성에 정의된 메소드로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = scwin.userColumnFilter_type2; // 사용자 정의 메소드 객체
+    jsnFilterOptions.param = "type2"; // 메소드에 전달할 인자 객체. 사용자 정의 메소드의 두 번째 인자에 할당됩니다.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // 검색 대상 데이터 : ID가 "category"인 컬럼
+    // 검색 방법 : 사용자 정의 메소드 - scwin.userColumnFilter_type2
+    // 기 적용된 필터 데이터와의 병합 조건 : 교집합
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터 중 'Services'가 포함 | 필터 조건 ";
+    let logOptions = '\n' +
+        '{' + '\n' +
+        '	"type": "func",' + '\n' +
+        '	"colIndex": "category",' + '\n' +
+        '	"key": scwin.userColumnFilter_type2,' + '\n' +
+        '	"param": "type2",' + '\n' +
+        '	"condition": "and"' + '\n' +
+        '}';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(logOptions, txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 사용자 정의 필터 메소드
+ * 메소드 'scwin.btn_exam1_2_onclick'에서 호출
+ * @param {string} argCellData 검색 대상 데이터.
+ * @param {object} argUserParam 사용자가 할당한 인자.
+ * @param {number} argRowIndex 행의 인덱스.
+ * @returns {boolean} 데이터 추출(포함) 여부.
+ */
+scwin.userColumnFilter_type2 = function (argCellData, argUserParam, argRowIndex) {
+    let returnValue = false;    // 반환 값.
+
+    // 데이터 중 'Services'가 포함되어 있으면 추출
+    if (typeof argCellData === "string" && argCellData.indexOf("Services") > -1) {
+        returnValue = true;
+    }
+    return returnValue;
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터가 'Services'와 일치] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "func"; // 검색 방식. 'key' 속성에 정의된 메소드로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = scwin.userColumnFilter_type3; // 사용자 정의 메소드 객체
+    jsnFilterOptions.param = "type3"; // 메소드에 전달할 인자 객체. 사용자 정의 메소드의 두 번째 인자에 할당됩니다.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // 검색 대상 데이터 : ID가 "category"인 컬럼
+    // 검색 방법 : 사용자 정의 메소드 - scwin.userColumnFilter_type3
+    // 기 적용된 필터 데이터와의 병합 조건 : 교집합
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터가 'Services'와 일치 | 필터 조건 ";
+    let logOptions = '\n' +
+        '{' + '\n' +
+        '	"type": "func",' + '\n' +
+        '	"colIndex": "category",' + '\n' +
+        '	"key": scwin.userColumnFilter_type3,' + '\n' +
+        '	"param": "type3",' + '\n' +
+        '	"condition": "and"' + '\n' +
+        '}';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(logOptions, txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 사용자 정의 필터 메소드
+ * 메소드 'scwin.btn_exam1_3_onclick'에서 호출
+ * @param {string} argCellData 검색 대상 데이터.
+ * @param {object} argUserParam 사용자가 할당한 인자.
+ * @param {number} argRowIndex 행의 인덱스.
+ * @returns {boolean} 데이터 추출(포함) 여부.
+ */
+scwin.userColumnFilter_type3 = function (argCellData, argUserParam, argRowIndex) {
+    let returnValue = false;    // 반환 값.
+
+    // 데이터가 'Services'와 일치하면 추출
+    if (argCellData === "Services") {
+        returnValue = true;
+    }
+    return returnValue;
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터가 'Servers'와 일치하거나 'Services'가 포함] 클릭 시
+ */
+scwin.btn_exam1_4_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "func"; // 검색 방식. 'key' 속성에 정의된 메소드로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = scwin.userColumnFilter_type4; // 사용자 정의 메소드 객체
+    jsnFilterOptions.param = "type4"; // 메소드에 전달할 인자 객체. 사용자 정의 메소드의 두 번째 인자에 할당됩니다.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터가 'Servers'와 일치하거나 'Services'가 포함";
+    let logOptions = '\n' +
+        '{' + '\n' +
+        '	"type": "func",' + '\n' +
+        '	"colIndex": "category",' + '\n' +
+        '	"key": scwin.userColumnFilter_type4,' + '\n' +
+        '	"param": "type4",' + '\n' +
+        '	"condition": "and"' + '\n' +
+        '}';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(logOptions, txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 사용자 정의 필터 메소드
+ * 메소드 'scwin.btn_exam1_4_onclick'에서 호출
+ * @param {string} argCellData 검색 대상 데이터.
+ * @param {object} argUserParam 사용자가 할당한 인자.
+ * @param {number} argRowIndex 행의 인덱스.
+ * @returns {boolean} 데이터 추출(포함) 여부.
+ */
+scwin.userColumnFilter_type4 = function (argCellData, argUserParam, argRowIndex) {
+    let returnValue = false;    // 반환 값.
+
+    // 데이터가 'Servers'와 일치하거나 'Services'가 포함되어 있으면 추출
+    if (argCellData.search(new RegExp("^Servers$|Services")) > -1) {
+        returnValue = true;
+    }
+    return returnValue;
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 데이터가 'Networking'과 일치하고 'Stock' 컬럼의 데이터가 '15000' 이상] 클릭 시
+ */
+scwin.btn_exam1_5_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "func"; // 검색 방식. 'key' 속성에 정의된 메소드로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = scwin.userColumnFilter_type5; // 사용자 정의 메소드 객체
+    jsnFilterOptions.param = "type5"; // 메소드에 전달할 인자 객체. 사용자 정의 메소드의 두 번째 인자에 할당됩니다.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 데이터가 'Networking'과 일치하고 'Stock' 컬럼의 데이터가 '15000' 이상";
+    let logOptions = '\n' +
+        '{' + '\n' +
+        '	"type": "func",' + '\n' +
+        '	"colIndex": "category",' + '\n' +
+        '	"key": scwin.userColumnFilter_type5,' + '\n' +
+        '	"param": "type5",' + '\n' +
+        '	"condition": "and"' + '\n' +
+        '}';
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(logOptions, txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 사용자 정의 필터 메소드
+ * 메소드 'scwin.btn_exam1_5_onclick'에서 호출
+ * @param {string} argCellData 검색 대상 데이터.
+ * @param {object} argUserParam 사용자가 할당한 인자.
+ * @param {number} argRowIndex 행의 인덱스.
+ * @returns {boolean} 데이터 추출(포함) 여부.
+ */
+scwin.userColumnFilter_type5 = function (argCellData, argUserParam, argRowIndex) {
+    let returnValue = false;    // 반환 값.
+
+    // 'Category' 컬럼의 데이터가 'Networking'과 일치하고 'Stock' 컬럼의 데이터가 '15000' 이상이면 추출
+    if (argCellData === "Networking") {
+        // 컬럼 'stock'의 값을 추출하여 숫자형으로 변환
+        let numstock = Number(dlt_exam.getCellData(argRowIndex, "stock"));
+
+        if (typeof numstock === "number" && numstock >= 15000) {
+            returnValue = true;
+        }
+    }
+
+    return returnValue;
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    //textarea value를 빈문자열로 할당.
+    txa_log.setValue("");
+};
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="DataList의 'setColumnFilter' 메소드를 사용하여 사용자가 정의한 메소드로 컬럼 데이터에 필터를 적용한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style no_padding" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_initData" style="" type="button"
+								ev:onclick="scwin.btn_initData_onclick">
+								<xf:label><![CDATA[DataList의 데이터 초기화]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_clearFilter" style="" type="button"
+								ev:onclick="scwin.btn_clearFilter_onclick">
+								<xf:label><![CDATA[DataList의 필터 전체 해제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터가 'Networking'과 일치]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터 중 'Services'가 포함]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_3_onclick" id="btn_exam1_3"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터가 'Services'와 일치]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_4_onclick" id="btn_exam1_4"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터가 'Servers'와 일치하거나 'Services'가 포함]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_5_onclick" id="btn_exam1_5"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 데이터가 'Networking'과 일치하고 'Stock' 컬럼의 데이터가 '15000' 이상]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="[ 결과 확인용 GridView ]" style=""></w2:textbox>
+						<xf:group class="gvwbox" id="" style="max-width: 400px;">
+							<w2:gridView autoFit="allColumn" autoFitMinWidth="220" class="gvw" dataList="data:dlt_exam" defaultCellHeight="37" id=""
+								initFixedHeightByRowNum="4" noResultMessage="No data to display" readOnly="true" rowNumWidth="34" style="height:80px;"
+								tooltipDisplay="true" visibleRowNum="4">
+								<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+								<w2:header id="header1" style="">
+									<w2:row id="row1" style="">
+										<w2:column displayMode="label" id="column3" inputType="text" style="" value="Category" width="100">
+										</w2:column>
+										<w2:column displayMode="label" id="column2" inputType="text" style="" value="Product" width="80"></w2:column>
+										<w2:column displayMode="label" id="column1" inputType="text" style="" value="Stock" width="60"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody1" style="">
+									<w2:row id="row2" style="">
+										<w2:column displayMode="label" id="category" inputType="text" style="" textAlign="left" width="100">
+										</w2:column>
+										<w2:column displayMode="label" id="product" inputType="text" style="" textAlign="left" width="80"></w2:column>
+										<w2:column dataType="number" displayFormatter="#,###" displayMode="label" id="stock" inputType="text" style=""
+											textAlign="right" width="60">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group id="" class="example_div_th_style">
+						<w2:span label="로그 확인" style="" id="" class="mr_def txt_blue"></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

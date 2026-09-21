@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="scope_aliasDataMap">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1" preserveType="true">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="name1" dataType="text"></w2:key>
+            			<w2:key id="key2" name="name2" dataType="number"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    var tmpSrc = scwin.getfolderPath() + "/source2_dataMap.xml";
+pageFrame1.setSrc(tmpSrc);
+
+    dataMap1.set("key1", 333);
+    dataMap1.set("key2", 555);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="AliasDataMap 생성" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 부모 페이지에서 Ctrl + 마우스 우클릭 후, "dataCollection 보기" 메뉴를 선택.&lt;br/&gt;2. "dataMap1"이 있고 데이터가 설정된 것을 확인. &lt;br/&gt;3. 자식 페이지에서 Ctrl + 마우스 우클릭 후, "dataCollection 보기" 메뉴를 선택.&lt;br/&gt;2. "aliasDataMap1"이 있고 부모의 "dataMap1"과 동일한 데이터가 설정된 것을 확인.&lt;br/&gt;("aliasDataMap1"은 "dataMap1"과 연결되어 "dataMap1"의 데이터를 사용.)' escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="color: gray;font-weight:bolder;font-size:30px;margin-top:50px;font-style:italic;margin-bottom: 10px;" id="textbox5" label="부모 (dataMap1)">
+    	</w2:textbox>
+    	<xf:group id="" style="margin-bottom: 10px;">
+    		<xf:input ref="data:dataMap1.key1"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;color: purple;"
+    			id="input1">
+    		</xf:input>
+    		<xf:input ref="data:dataMap1.key2"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;color: purple;"
+    			id="input2">
+    		</xf:input>
+    	</xf:group>
+    	<w2:pageFrame src="/source2_dataMap.xml" style="height: 400px;border: solid 1px gray" id="pageFrame1"></w2:pageFrame>
+    </xf:group></body>
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.date_validate = function () {
+    var tmpSrc = scwin.getfolderPath() + "/messagePopup.xml";
+
+    var opts = {
+        "id": "popup2",
+        "type": "wframePopup",
+        "width": "440px",
+        "height": "200px",
+        "top": 100,
+        "left": 300,
+        "popupName": "date_validation_error",
+        "modal": true,
+        "title": "date validation error",
+        "dataObject": {
+            "type": "string",
+            "data": this.callerId,
+            "name": "callerId"
+        }
+    };
+    if (!$p.getPopup("popup2")) {
+        $p.openPopup(tmpSrc, opts);
+    }
+}
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin:10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="日付検証のためのユーザー定義関数の使用"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 無効な日付を入力し、Enter キーを選択します。 &lt;br/&gt;2. invalidMessageFunc 属性値に設定した関数が実行されることを確認。 &lt;br/&gt;（この例では、エラーメッセージをポップアップと表示します。）&lt;br/&gt;（詳細なスクリプトは Script タブで確認）'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;invalidMessageFunc="scwin.date_validate" &lt;br/&gt;dateValidSetCustom="true"' escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox5" label='/// サンプルコード&lt;br/&gt;&lt;br/&gt;scwin.date_validate = function() {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var tmpSrc = scwin.getfolderPath() + "/messagePopup.xml";&lt;br/&gt;&lt;br/&gt; &amp;nbsp; &amp;nbsp;var opts = {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"id": "popup2",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"type": "wframePopup",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"width": "440px",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"height": "200px",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"top": 100,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"left": 300,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"popupName": "date_validation_error",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"modal": true,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"title": "date validation error",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"dataObject": {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"type": "string",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"data": this.callerId,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;"name": "callerId"&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;};&lt;br/&gt; &amp;nbsp; &amp;nbsp;if (!$p.getPopup("popup2")) {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;$p.openPopup(tmpSrc, opts);&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt;}' escape="false">
+    	</w2:textbox>
+    	<w2:inputCalendar dateValidSet="true" footerDiv="false" focusOnDateSelect="false" invalidMessageFunc="scwin.date_validate"
+    		dateValidSetCustom="true" calendarValueType="yearMonthDate" dateValidCheck="true" rightAlign="false"
+    		monthNamesForYearMonthType="1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12" validCheck="true" style="" id="inputCalendar1"
+    		displaymessage="false" renderType="component" renderDiv="true" monthNames="1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12" yearSuffix="Y"
+    		setCurrentDate="true">
+    	</w2:inputCalendar>
+    </xf:group></body>
+</html>

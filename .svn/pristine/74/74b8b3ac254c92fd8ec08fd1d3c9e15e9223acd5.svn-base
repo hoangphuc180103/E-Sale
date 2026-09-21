@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="guide_sample">
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+    				<w2:columnInfo>
+    					<w2:column id="col1" name="name1" dataType="text"></w2:column>
+    					<w2:column id="col2" name="name2" dataType="text"></w2:column>
+    					<w2:column id="col3" name="name3" dataType="text"></w2:column>
+    					<w2:column id="col4" name="name4" dataType="text"></w2:column>
+    					<w2:column id="col5" name="name5" dataType="text"></w2:column>
+    					<w2:column id="col6" name="name6" dataType="text"></w2:column>
+    					<w2:column id="col7" name="name7" dataType="text"></w2:column>
+    					<w2:column id="col8" name="name8" dataType="text"></w2:column>
+    					<w2:column id="col9" name="name9" dataType="text"></w2:column>
+    					<w2:column id="col10" name="name10" dataType="text"></w2:column>
+    					<w2:column id="col11" name="name11" dataType="text"></w2:column>
+    					<w2:column id="col12" name="name12" dataType="text"></w2:column>
+    					<w2:column id="col13" name="name13" dataType="text"></w2:column>
+    					<w2:column id="col14" name="name14" dataType="text"></w2:column>
+    					<w2:column id="col15" name="name15" dataType="text"></w2:column>
+    					<w2:column id="col16" name="name16" dataType="text"></w2:column>
+    					<w2:column id="col17" name="name17" dataType="text"></w2:column>
+    					<w2:column id="col18" name="name18" dataType="text"></w2:column>
+    					<w2:column id="col19" name="name19" dataType="text"></w2:column>
+    					<w2:column id="col20" name="name20" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    				<w2:data use="false"></w2:data>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+    	<script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {     
+        var data = [];
+        for (var i = 0; i < 30; i++) {
+            for (var j = 0; j < 20; j++){
+                data.push(i);
+            }
+        }
+        dataList1.setData(data);
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+scwin.trigger1_onclick = function (e) {
+    var footerCell = gridView1.getFocusedFooterCell();
+    var showResult = JSON.stringify(footerCell);
+    alert(showResult);
+};
+]]></script>
+    	<style type="text/css"><![CDATA[.blue{background-color: pink;}]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Focus Footer Cell(s) and Check Cell Information"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Click any single cell in the GridView footer, or select multiple cells by dragging the mouse. &amp;nbsp;&lt;br/&gt;2. Verify that focus is on the cell(s) in the footer. (footerFocus=“true”) &amp;nbsp;&lt;br/&gt;3. Click the getFocusedFooterCell() button. &lt;br/&gt;4. Verify that the following footer cell information for the currently focused footer cell(s) is displayed:&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;(1) Column ID of the footer cell (relative to the footer)&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;(2) Column index of the footer cell (relative to the footer)&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;(3) Row index of the footer cell (relative to the GridView)&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;(4) Column index of the footer cell (relative to the GridView)&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;(5) DOM object of the footer cell&lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='focusFooter="true"' escape="false">
+    	</w2:textbox>
+    	<xf:trigger type="button" id="trigger1"
+    		style="height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;"
+    		ev:onclick="scwin.trigger1_onclick">
+    		<xf:label><![CDATA[getFocusedFooterCell()]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView dataDragSelectAutoScroll="true" scrollByColumnAdaptive="false" rowNumVisible="" useShiftKey="true"
+    		scrollByColumn="false" defaultCellHeight="20" footerDragEndFunction="" focusDefaultColumn="" focusFooter="true" focusMode="cell"
+    		rowStatusVisible="false" selectedCellColor="#a6e0ec" visibleRowNumFix="true" dataList="data:dataList1" dataDragSelect="true"
+    		columnMove="true" style="border:solid gray 1px; margin-bottom:10px;" autoFit="allColumn" id="gridView1" visibleRowNum="10"
+    		fastScroll="false" useCtrlKey="true">
+    		<w2:caption style="" id="caption4" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header2">
+    			<w2:row style="" id="row3">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="column41" value="name1"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="column39" value="name2"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="column37" value="name3"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="column35" value="name4"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="column33" value="name5"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody2">
+    			<w2:row style="" id="row4">
+    				<w2:column colspan="" customFormatter="scwin.gridView1_col1" removeBorderStyle="false" width="70" inputType="text"
+    					style="" id="col1" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column customFormatter="scwin.gridView1_col2" removeBorderStyle="false" width="70" inputType="text" style=""
+    					id="col2" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="col3" value="" blockSelect="false"
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="col4" value="" blockSelect="false"
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="col5" value="" blockSelect="false"
+    					displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    		<w2:footer style="" id="footer2">
+    			<w2:row style="" id="row5">
+    				<w2:column expression='min("col1")' width="70" inputType="expression" style="" id="column5" value=""
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column expression='max("col2")' width="70" inputType="expression" style="" id="column4" value=""
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column expression='sum("col3")' width="70" inputType="expression" style="" id="column3" value=""
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column expression='avg("col4")' width="70" inputType="expression" style="" id="column2" value=""
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column expression='count("col5")' width="70" inputType="expression" style="" id="column1" value=""
+    					displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    			<w2:row style="" id="row6">
+    				<w2:column rowSpan="" colSpan="" removeBorderStyle="false" width="70" inputType="text" style="height:20px;"
+    					id="column55" value='min("col1")' blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column hidden="false" width="70" inputType="text" style="height:20px;" id="column100" value='max("col2")'></w2:column>
+    				<w2:column expression="" width="70" inputType="text" style="height:20px;" id="column13" value='sum("col3")'
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column rowSpan="" expression="" colSpan="" width="70" inputType="text" style="height:20px;" id="column12"
+    					value='avg("col4")' displayMode="label">
+    				</w2:column>
+    				<w2:column expression="" width="70" inputType="text" style="height:20px;" id="column11" value='count("col5")'
+    					displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    			<w2:row style="" id="row8">
+    				<w2:column rowSpan="" expression='sum("col1") + sum("col2") + sum("col3") + sum("col4") + sum("col5")' colSpan="5"
+    					width="350" inputType="expression" style="height:20px;" id="column25" value="" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    			<w2:row style="" id="row7">
+    				<w2:column rowSpan="" colSpan="5" removeBorderStyle="false" width="350" inputType="text" style="height:20px;"
+    					id="column99" value='sum("col1") + sum("col2") + sum("col3") + sum("col4") + sum("col5")' blockSelect="false"
+    					displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:footer>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox6"
+    		label="/// Sample Code&lt;br/&gt;&lt;br/&gt;var footerCell = gridView1.getFocusedFooterCell();&lt;br/&gt;var showResult = JSON.stringify(footerCell);&lt;br/&gt;alert(showResult);&lt;br/&gt;"
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

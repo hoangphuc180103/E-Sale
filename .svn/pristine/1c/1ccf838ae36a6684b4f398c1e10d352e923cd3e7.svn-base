@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00303 서브 페이지 02">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="widget07_grp" id="" style="">
+    		<xf:group class="widget07_listbox" id="" style="" tagname="ul">
+    			<xf:group id="" style="" tagname="li">
+    				<w2:anchor class="imgtype type1" id="" outerDiv="false" style="margin: 0 auto;display: block;">
+    					<xf:label><![CDATA[공과금]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    			<xf:group id="" style="" tagname="li">
+    				<w2:anchor class="imgtype type2" id="" outerDiv="false" style="">
+    					<xf:label><![CDATA[환율]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    			<xf:group id="" style="" tagname="li">
+    				<w2:anchor class="imgtype type3" id="" outerDiv="false" style="">
+    					<xf:label><![CDATA[오픈뱅킹]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    			<xf:group id="" style="" tagname="li">
+    				<w2:anchor class="imgtype type4" id="" outerDiv="false" style="">
+    					<xf:label><![CDATA[인증센터]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    			<xf:group id="" style="" tagname="li">
+    				<w2:anchor class="imgtype type5" id="" outerDiv="false" style="">
+    					<xf:label><![CDATA[빠른조회]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    			<xf:group id="" style="" tagname="li">
+    				<w2:anchor class="imgtype type6" id="" outerDiv="false" style="">
+    					<xf:label><![CDATA[채팅상담]]></xf:label>
+    				</w2:anchor>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="widget07_bottombox" id="" style="">
+    			<w2:span id="" label="고객님, 상담이 필요하신가요?" style=""></w2:span>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

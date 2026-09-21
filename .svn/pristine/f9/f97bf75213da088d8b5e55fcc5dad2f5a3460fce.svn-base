@@ -1,0 +1,556 @@
+/*amd /edu/adv/generator_table_c.xml 32218 87f304108be1d0d41be7f913fe2f89e6f8a370d4a45318583e27901b0072e593 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true','ev:ondataload':'scwin.dataList1_ondataload'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'name',name:'이름',dataType:'text'}},{T:1,N:'w2:column',A:{id:'totalCount',name:'totalCount',dataType:'text'}},{T:1,N:'w2:column',A:{id:'periodicInspection',name:'periodicInspection',dataType:'text'}},{T:1,N:'w2:column',A:{id:'individualInquiry',name:'individualInquiry',dataType:'text'}},{T:1,N:'w2:column',A:{id:'serviceDesk',name:'serviceDesk',dataType:'text'}},{T:1,N:'w2:column',A:{id:'installationSupport',name:'installationSupport',dataType:'text'}},{T:1,N:'w2:column',A:{id:'errorResponse',name:'errorResponse',dataType:'text'}},{T:1,N:'w2:column',A:{id:'license',name:'license',dataType:'text'}},{T:1,N:'w2:column',A:{id:'fixedLengthVo',name:'fixedLengthVo',dataType:'text'}},{T:1,N:'w2:column',A:{id:'totalPageCount',name:'totalPageCount',dataType:'text'}}]}]},{T:1,N:'w2:dataMap',A:{baseNode:'map',id:'dma_request',style:''},E:[{T:1,N:'w2:keyInfo',E:[{T:1,N:'w2:key',A:{dataType:'text',id:'req',name:'요청'}}]}]}]},{T:1,N:'w2:workflowCollection'},{T:1,N:'xf:submission',A:{abortTrigger:'',action:'/util/genExcel.do',customHandler:'',encoding:'UTF-8',errorHandler:'','ev:submit':'','ev:submitdone':'scwin.sbm_genExcel_submitdone','ev:submiterror':'',id:'sbm_genExcel',instance:'',mediatype:'application/json',method:'post',mode:'asynchronous',processMsg:'Down...',ref:'data:json,dma_request',replace:'',target:'',style:''}}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "name": "사용자1",
+    "totalCount": 0,
+    "periodicInspection": 1,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자1",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자1",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자1",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자1",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자2",
+    "totalCount": 0,
+    "periodicInspection": 1,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자2",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자2",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자2",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자2",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자3",
+    "totalCount": 0,
+    "periodicInspection": 3,
+    "individualInquiry": 2,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자3",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 1,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자3",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자3",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자3",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자4",
+    "totalCount": 0,
+    "periodicInspection": 4,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자4",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자4",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자4",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자4",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자5",
+    "totalCount": 0,
+    "periodicInspection": 5,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자5",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자5",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자5",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자5",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자6",
+    "totalCount": 0,
+    "periodicInspection": 6,
+    "individualInquiry": 3,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 1,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자6",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 2,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자6",
+    "totalCount": 0,
+    "periodicInspection": 2,
+    "individualInquiry": 1,
+    "serviceDesk": 2,
+    "installationSupport": 1,
+    "errorResponse": 1,
+    "license": 1,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자6",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자6",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자7",
+    "totalCount": 0,
+    "periodicInspection": 7,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자7",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 2,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자7",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자7",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자7",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자8",
+    "totalCount": 0,
+    "periodicInspection": 8,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자8",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자8",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자8",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자8",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자9",
+    "totalCount": 0,
+    "periodicInspection": 9,
+    "individualInquiry": 1,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 1,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자9",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자9",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자9",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }, {
+    "name": "사용자9",
+    "totalCount": 0,
+    "periodicInspection": 0,
+    "individualInquiry": 0,
+    "serviceDesk": 0,
+    "installationSupport": 0,
+    "errorResponse": 0,
+    "license": 0,
+    "fixedLengthVo": false,
+    "totalPageCount": 1
+  }];
+  dataList1.setJSON(json);
+
+  // 전역 변수 선언 
+  scwin._nameStr = "";
+};
+
+// 초기화 
+scwin.btnInit_onclick = function (e) {
+  scwin._nameStr = "";
+  gen1.removeAll();
+};
+
+//  기존 내용 지우고 재 생성 
+scwin.btnAdd1_onclick = function (e) {
+  gen1.removeAll();
+  var _nameStr = chk1.getValue();
+  if (_nameStr == "") {
+    alert("조건을 선택 하세요");
+  } else {
+    var _nameArr = _nameStr.split(",");
+    var _nameLen = _nameArr.length;
+    for (var i = 0; i < _nameLen; i++) {
+      gen1.insertChild(i);
+      gen1.getChild(i, "spn_name").setValue(_nameArr[i]);
+      var obj = dataList1.getMatchedJSON("name", _nameArr[i], true);
+      for (var j = 0; j < 5; j++) {
+        // 정기 점검
+        var obj_periodicInspection = gen1.getChild(i, "spn_periodicInspection" + j);
+        obj_periodicInspection.setValue(obj[j].periodicInspection);
+
+        // 개별 문의
+        var obj_individualInquiry = gen1.getChild(i, "spn_individualInquiry" + j);
+        obj_individualInquiry.setValue(obj[j].individualInquiry);
+
+        // 서비스데스크
+        var obj_serviceDesk = gen1.getChild(i, "spn_serviceDesk" + j);
+        obj_serviceDesk.setValue(obj[j].serviceDesk);
+
+        // 설치 지원 
+        var obj_installationSupport = gen1.getChild(i, "spn_installationSupport" + j);
+        obj_installationSupport.setValue(obj[j].installationSupport);
+
+        // 패치 지원원
+        var obj_fixedLengthVo = gen1.getChild(i, "spn_fixedLengthVo" + j);
+        obj_fixedLengthVo.setValue(obj[j].fixedLengthVo);
+
+        // 장애 대응
+        var obj_errorResponse = gen1.getChild(i, "spn_errorResponse" + j);
+        obj_errorResponse.setValue(obj[j].errorResponse);
+
+        // 라이선스
+        var obj_license = gen1.getChild(i, "spn_license" + j);
+        obj_license.setValue(obj[j].license);
+      }
+    }
+  }
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'pgtbox',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_fav',id:'',style:'',type:'button'},E:[{T:1,N:'xf:label'}]},{T:1,N:'w2:textbox',A:{class:'pgt_tit',id:'',label:'Generator를 활용한 Table 형태의 구성화면',style:'',tagname:''}}]},{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',id:'',label:'해당화면은 코딩이 완료된 화면',style:'',tagname:'h3'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:'',tagname:'details'},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'실습 목표',style:'',tagname:'summary'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false',id:'',label:'1. 개요<br/>본 화면은 generator 컴포넌트를 활용하여 Table 형태의 반복 기능의 화면을 구성한 예제 입니다.<br/>generator 컴포넌트 : generator 컴포넌트는 특정 컴포넌트를 반복적으로 추가/삭제가 가능한 컴포넌트 입니다. <br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;generator 컴포넌트의 하위에 정의된 영역이 반복되며 script를 통해 제어 가능합니다. <br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;generator로 생성된 컴포넌트를 제어할 수 있는 함수도 지원하고 있습니다. <br/>',style:''}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:'',tagname:'details'},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'실습 방법',style:'',tagname:'summary'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false',id:'',label:'1. 구성된 화면을 웹 브라우저를 통해 실행합니다. <br/>2. 실행된 화면에서 조건 선택을 통해 다수의 사용자를 지정 후 추가 버튼을 클릭합니다. <br/>3. 선택된 사용자에 맞게 테이블 형태가 반복 되며, 초기화 버튼을 클릭하면, 반복된 영역이 사라집니다.',style:''}}]}]},{T:1,N:'xf:group',A:{class:'schbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'schbox_inner',id:'',style:''},E:[{T:1,N:'xf:group',A:{adaptive:'layout',adaptiveThreshold:'768',class:'w2tb tbl ',id:'',style:'',tagname:'table'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:summary'}]},{T:1,N:'xf:group',A:{tagname:'colgroup'},E:[{T:1,N:'xf:group',A:{style:'width:100px;',tagname:'col'}},{T:1,N:'xf:group',A:{style:'',tagname:'col'}},{T:1,N:'xf:group',A:{style:'width:170px;',tagname:'col'}},{T:1,N:'xf:group',A:{style:'',tagname:'col'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:'',tagname:'tr'},E:[{T:1,N:'xf:group',A:{class:'w2tb_th',style:'',tagname:'th'},E:[{T:1,N:'w2:span',A:{label:'조건 선택',style:'',id:''}}]},{T:1,N:'xf:group',A:{class:'w2tb_td',style:'',tagname:'td'},E:[{T:1,N:'xf:checkcombobox',A:{allOption:'true',chooseOption:'',direction:'auto',disabled:'false',displayMode:'label',id:'chk1',style:'width:300px;height:21px;',submenuSize:'auto',chooseOptionLabel:'',ref:'',separator:','},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자1'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자1'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자2'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자2'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자3'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자3'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자4'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자4'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자5'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자5'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자6'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자6'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자7'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자7'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자8'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자8'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사용자9'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'사용자9'}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'w2tb_th',style:'',tagname:'th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:colspan',E:[{T:3,text:'2'}]},{T:1,N:'w2:rowspan',E:[{T:3,text:'1'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm',id:'btnInit',style:'',type:'button','ev:onclick':'scwin.btnInit_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'초기화'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm',id:'btnAdd',style:'display: none;',type:'button','ev:onclick':'scwin.btnAdd_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'추가'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm',id:'btnAdd1',style:'',type:'button','ev:onclick':'scwin.btnAdd1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'추가'}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'btn_schbox',id:'',style:''}}]},{T:1,N:'xf:group',A:{adaptiveThreshold:'',class:'gvwbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{tagname:'table',style:'width:100%;',id:'grp_table',class:'w2tb'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:summary'}]},{T:1,N:'xf:group',A:{tagname:'caption'}},{T:1,N:'xf:group',A:{tagname:'colgroup'},E:[{T:1,N:'xf:group',A:{tagname:'col',style:'width:7%;'}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:7%;'}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:14.29%'}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:14.29%'}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:14.29%'}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:14.29%'}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:14.29%'}}]},{T:1,N:'w2:generator',A:{style:'',id:'gen1',tagname:'tbody'},E:[{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]},{T:1,N:'w2:colspan',E:[{T:3,text:'2'}]},{T:1,N:'w2:rowspan',E:[{T:3,text:'3'}]}]},{T:1,N:'w2:span',A:{style:'',label:'구분',id:''}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]},{T:1,N:'w2:colspan',E:[{T:3,text:'5'}]},{T:1,N:'w2:rowspan',E:[{T:3,text:'1'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'주간 공수 합계 (m/d) / 업무별 지원 횟수 통계'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'1주차'}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'2주차'}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'3주차'}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'4주차'}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'5주차'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'col'}]}]}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'col'}]}]}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'col'}]}]}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'col'}]}]}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'col'}]}]}]}]},{T:1,N:'xf:group',A:{tagname:'tr',style:''},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'이름'}}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:span',A:{id:'spn_name',label:'이름',style:''}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'정기점검'}}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'}},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_periodicInspection0',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_periodicInspection1',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_periodicInspection2',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_periodicInspection3',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_periodicInspection4',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]},{T:1,N:'w2:colspan',E:[{T:3,text:'1'}]},{T:1,N:'w2:rowspan',E:[{T:3,text:'2'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'기술문의'}}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'개별문의'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_individualInquiry0',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_individualInquiry1',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_individualInquiry2',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_individualInquiry3',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_individualInquiry4',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'서비스데스크'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_serviceDesk0',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_serviceDesk1',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_serviceDesk2',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_serviceDesk3',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_serviceDesk4',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'설치지원'}}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'}},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_installationSupport0',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_installationSupport1',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_installationSupport2',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_installationSupport3',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_installationSupport4',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'패치지원'}}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'}},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_fixedLengthVo0',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_fixedLengthVo1',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_fixedLengthVo2',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_fixedLengthVo3',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_fixedLengthVo4',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'장애대응'}}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'}},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_errorResponse0',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_errorResponse1',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_errorResponse2',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_errorResponse3',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'spn_errorResponse4',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'지라등록'}}]},{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'}},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'#'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:span',A:{style:'',id:'',label:'라이선스'}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]}]},{T:1,N:'xf:group',A:{tagname:'td',class:'w2tb_td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:span',A:{style:'',id:'spn_license0',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',class:'w2tb_td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:span',A:{style:'',id:'spn_license1',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',class:'w2tb_td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:span',A:{style:'',id:'spn_license2',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',class:'w2tb_td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:span',A:{style:'',id:'spn_license3',label:'#'}}]},{T:1,N:'xf:group',A:{tagname:'td',class:'w2tb_td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:span',A:{style:'',id:'spn_license4',label:'#'}}]}]}]}]}]}]}]}]}]})

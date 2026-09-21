@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+
+            	<w2:dataList id="dataList2" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="종류" dataType="text"></w2:column>
+            			<w2:column id="col2" name="국가" dataType="text"></w2:column>
+            			<w2:column id="col3" name="주문번호" dataType="text"></w2:column>
+            			<w2:column id="col4" name="수량" dataType="text"></w2:column>
+            			<w2:column id="col5" name="사이즈" dataType="text"></w2:column>
+            			<w2:column id="col6" name="사이즈2" dataType="text"></w2:column>
+            			<w2:column id="col7" name="사이즈3" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList3">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="종류" dataType="text"></w2:column>
+            			<w2:column id="col2" name="국가" dataType="text"></w2:column>
+            			<w2:column id="col3" name="주문번호" dataType="text"></w2:column>
+            			<w2:column id="col4" name="수량" dataType="text"></w2:column>
+            			<w2:column id="col5" name="사이즈" dataType="text"></w2:column>
+            			<w2:column id="col6" name="사이즈2" dataType="text"></w2:column>
+            			<w2:column id="col7" name="사이즈3" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript"><![CDATA[
+
+scwin.onpageload = function () {
+    var jsonData = [{ "col1": "TV", "col2": "Korea", "col3": "1st", "col4": "1000", "col5": "M", "col6": "M", "col7": "M" }
+        , { "col1": "TV", "col2": "Korea", "col3": "2nd", "col4": "500", "col5": "M", "col6": "M", "col7": "M" }
+        , { "col1": "TV", "col2": "Korea", "col3": "3rd", "col4": "700", "col5": "L", "col6": "L", "col7": "M" }
+        , { "col1": "TV", "col2": "USA", "col3": "1st", "col4": "2500", "col5": "L", "col6": "L", "col7": "M" }
+        , { "col1": "TV", "col2": "USA", "col3": "2nd", "col4": "1500", "col5": "S", "col6": "S", "col7": "S" }
+        , { "col1": "TV", "col2": "France", "col3": "3rd", "col4": "9700", "col5": "S", "col6": "S", "col7": "S" }
+        , { "col1": "Washer", "col2": "USA", "col3": "1st", "col4": "2500", "col5": "S", "col6": "S", "col7": "S" }
+        , { "col1": "Washer", "col2": "France", "col3": "1st", "col4": "1500", "col5": "S", "col6": "S", "col7": "S" }
+        , { "col1": "TV", "col2": "Korea", "col3": "1st", "col4": "11000", "col5": "L", "col6": "L", "col7": "XXXL" }
+        , { "col1": "TV", "col2": "Korea", "col3": "2nd", "col4": "1500", "col5": "L", "col6": "L", "col7": "XL" }
+        , { "col1": "TV", "col2": "Korea", "col3": "3rd", "col4": "1700", "col5": "L", "col6": "L", "col7": "XL" }
+        , { "col1": "TV", "col2": "USA", "col3": "1st", "col4": "12500", "col5": "L", "col6": "L", "col7": "XL" }
+        , { "col1": "TV", "col2": "USA", "col3": "2nd", "col4": "11500", "col5": "L", "col6": "L", "col7": "XXL" }
+        , { "col1": "TV", "col2": "France", "col3": "2nd", "col4": "19700", "col5": "L", "col6": "L", "col7": "XXL" }
+        , { "col1": "Washer", "col2": "USA", "col3": "1st", "col4": "12500", "col5": "L", "col6": "L", "col7": "XXL" }
+        , { "col1": "Washer", "col2": "France", "col3": "1st", "col4": "11500", "col5": "XL", "col6": "XL", "col7": "XL" }];
+    dataList2.setJSON(jsonData);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.onpageload();]]></script>
+    </head>
+    <body>
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Merge Header Columns&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(First Pivot)&lt;br/&gt;Confirm that the left header column is not merged. (headerYMerge=“false”)&lt;br/&gt;&lt;br/&gt;(Second Pivot)&lt;br/&gt;Confirm that the left header column is merged. (headerYMerge=“true”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='headerYMerge="false"' escape="false">
+    	</w2:textbox>
+    	<w2:pivot grandTotalDisplayType="vertical" digitsAfterDecimal="1" vals="col4" prefix="!" headerListMouseOverColor="#FF0000"
+    		suffix="$" rows="col5,col6,col7" hiddenHeaderList="" valuesAxis="col" decimalSep="." showGrandTotal="true"
+    		headerListOrder="col,row,val,hidden" scaler="1" dataList="dataList2" excludeHiddenList="" style="height:500px;margin-bottom: 10px;"
+    		id="pivot1" thousandsSep="," cols="col1,col2,col3" userNumberFormat="true" headerYMerge="false">
+    		<w2:fieldInfo>
+    			<w2:field name="Type" id="col1"></w2:field>
+    			<w2:field sortOrder="한국,미국,중국,일본,영국,total" name="Country" id="col2"></w2:field>
+    			<w2:field name="Order" id="col3"></w2:field>
+    			<w2:field name="Quantity" id="col4"></w2:field>
+    			<w2:field sortOrder="S,M,X,XL,XXL,XXXL" name="Size 1" id="col5"></w2:field>
+    			<w2:field sortOrder="S,M,X,XL,XXL,XXXL" name="Size 2" id="col6"></w2:field>
+    			<w2:field sortOrder="S,M,X,XL,XXL,XXXL" name="Size 3" id="col7"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    	<w2:textbox escape="false" id="textbox5" label='headerYMerge="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:pivot cols="col1,col2,col3" dataList="dataList2" decimalSep="." digitsAfterDecimal="1" excludeHiddenList=""
+    		grandTotalDisplayType="vertical" headerListMouseOverColor="#FF0000" headerListOrder="col,row,val,hidden" headerYMerge="true"
+    		hiddenHeaderList="" id="pivot2" prefix="!" rows="col5,col6,col7" scaler="1" showGrandTotal="true"
+    		style="height:500px;margin-bottom: 10px;" suffix="$" thousandsSep="," userNumberFormat="true" vals="col4" valuesAxis="col">
+    		<w2:fieldInfo>
+    			<w2:field id="col1" name="Type"></w2:field>
+    			<w2:field id="col2" name="Country" sortOrder="한국,미국,중국,일본,영국,total"></w2:field>
+    			<w2:field id="col3" name="Order"></w2:field>
+    			<w2:field id="col4" name="Quantity"></w2:field>
+    			<w2:field id="col5" name="Size 1" sortOrder="S,M,X,XL,XXL,XXXL"></w2:field>
+    			<w2:field id="col6" name="Size 2" sortOrder="S,M,X,XL,XXL,XXXL"></w2:field>
+    			<w2:field id="col7" name="Size 3" sortOrder="S,M,X,XL,XXL,XXXL"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    </xf:group></body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="마스킹 방향 설정" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox2" label="각 InputBox에 숫자를 입력하고 마스킹이 지정한 방향으로 적용되는지 확인."
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;maskFormat="default" (앞쪽부터 적용)&lt;br/&gt;displayFormat="#-##-###"' escape="false">
+    	</w2:textbox>
+    	<xf:input dataType="" displayFormat="#-##-###" maskFormat="default" adjustMaxLength="false" applyFormat="all"
+    		style="width:300px;height:40px;padding: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;"
+    		allowChar="0-9, aA-zZ" id="input1">
+    	</xf:input>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox5" label='속성 설정&lt;br/&gt;maskFormat="reverse" (뒤쪽부터 적용)&lt;br/&gt;displayFormat="#-##-###"' escape="false">
+    	</w2:textbox>
+    	<xf:input dataType="" displayFormat="#-##-###" maskFormat="reverse" adjustMaxLength="false" applyFormat="all"
+    		style="width:300px;height:40px;padding: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;" allowChar="0-9, aA-zZ"
+    		id="input2">
+    	</xf:input>
+    	<w2:textbox escape="false" id="textbox6" label='속성 설정&lt;br/&gt;maskFormat="none" (입력하는 동안 적용되지 않음)&lt;br/&gt;displayFormat="#-##-###"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<xf:input adjustMaxLength="false" allowChar="0-9, aA-zZ" applyFormat="all" dataType="" displayFormat="#-##-###" id="input3"
+    		maskFormat="none" style="width:300px;height:40px;padding: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;">
+    	</xf:input>
+    </xf:group></body>
+</html>

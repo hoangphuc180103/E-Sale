@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[scwin.count=0;
+        
+	scwin.onpageload = function() {
+		requires("uiplugin.popup");
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+        scwin.count++;
+        var tmpSrc = scwin.getfolderPath() + "/pop1.xml";
+		var options = { 
+		  id : scwin.count,		
+		  type : "wframePopup", 
+		  popupName : "PopUp ID : " + scwin.count,
+		  width: "300px",
+		  height: "200px",
+		  top: "50px",
+		  left: "300px"
+		}; 
+		
+		$p.openPopup(tmpSrc,  options);
+	};
+	
+	scwin.trigger2_onclick = function(e) {
+        scwin.count++;
+        var tmpSrc = scwin.getfolderPath() + "/pop2.xml";
+		var options = { 
+		  id : scwin.count,		
+		  type : "wframePopup", 	 
+		  popupName : "PopUp ID : " + scwin.count,
+		  width: "300px",
+		  height: "200px",
+		  top: "50px",
+		  left: "600px"
+		}; 
+		
+		$p.openPopup(tmpSrc,  options);
+		
+	};
+	
+	scwin.trigger3_onclick = function(e) {
+        scwin.count++;
+        var tmpSrc = scwin.getfolderPath() + "/pop3.xml";
+		var options = { 
+		  id : scwin.count,		
+		  type : "wframePopup", 	 
+		  popupName : "PopUp ID : " + scwin.count,
+		  width: "300px",
+		  height: "200px",
+		  top: "250px",
+		  left: "300px"
+		}; 
+		
+		$p.openPopup(tmpSrc,  options);
+		
+	};
+	
+	scwin.trigger4_onclick = function(e) {
+		var window = $p.getPopupWindow(scwin.count);
+		var value = window.text1.getValue();
+		alert(value);
+	};
+	
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Return and Access Individual Popup Windows&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Click the PopUp1, PopUp2, and PopUp3 buttons on the example screen to create the popups.&lt;br/&gt;2. Click the $p.getPopupWindow() button on the example screen. &lt;br/&gt;3-1. Access the last created popup window and verify that the value of the TextBox contained within that popup window is displayed.&lt;br/&gt;3-2. If you close all popups except one, verify that the value of the TextBox contained within the open popup window is displayed.&lt;br/&gt;(See the Script tab for detailed script.)' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="width:80px;height:32px;font-weight:bolder;color:white;background-color:blue;font-family:sans-serif;border-style:none;" id="trigger1" type="button">
+    		<xf:label><![CDATA[PopUp1]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="width:80px;height:32px;margin-left:40px;font-weight:bolder;color:white;background-color:green;font-family:sans-serif;border-style:none;" id="trigger2" type="button">
+    		<xf:label><![CDATA[PopUp2]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger3_onclick" style="width:80px;height:32px;margin-left:40px;font-weight:bolder;color:white;background-color:orange;font-family:sans-serif;font-style:normal;border-style:none;" id="trigger3" type="button">
+    		<xf:label><![CDATA[PopUp3]]></xf:label>
+    	</xf:trigger><xf:trigger nextTabID="" ev:onclick="scwin.trigger4_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;margin-top:10px;text-align: left;" tabIndex="" id="trigger4" type="button">
+    		<xf:label><![CDATA[$p.getPopupWindow()]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

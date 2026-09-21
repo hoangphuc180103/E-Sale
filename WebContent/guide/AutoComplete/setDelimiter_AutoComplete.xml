@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    autoComplete1.openTable();
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    autoComplete1.setDelimiter(" --- ");
+    autoComplete1.openTable();
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="구분자 동적 설정" style="color: blue;margin-bottom: 10px;" tagname="h1"></w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. 현재 AutoComplete 선택 목록의 구분자가 " : "인 것을 확인. &lt;br/&gt;2. 하단의 setDelimiter() 버튼을 클릭. &lt;br/&gt;3. AutoComplete 선택 목록의 구분자가 "---"로 변경되는 것을 확인.'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox id="textbox4" label='속성 설정&lt;br/&gt;delimiter=" : "' style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;" escape="false"></w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;display: block;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[autoComplete1.setDelimiter(" --- ");]]></xf:label>
+    	</xf:trigger>
+    	<w2:autoComplete submenuSize="auto" search="start" ref="" delimiter=" : " chooseOption="" editType="select"
+    		useKeywordHighlight="false" style="width: 50%;display: block" id="autoComplete1" allOption="" displayMode="label delim value" useLocale="false">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Seoul]]></w2:label>
+    				<w2:value><![CDATA[SE]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Busan]]></w2:label>
+    				<w2:value><![CDATA[BU]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Jeju]]></w2:label>
+    				<w2:value><![CDATA[JE]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Daegu]]></w2:label>
+    				<w2:value><![CDATA[DG]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Incheon]]></w2:label>
+    				<w2:value><![CDATA[IN]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

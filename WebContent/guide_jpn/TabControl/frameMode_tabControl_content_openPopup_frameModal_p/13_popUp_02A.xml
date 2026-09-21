@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[scwin.count = 0;
+
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+    var parentFrameId = $p.getFrame().getParentFrame().getParentFrame().id;
+    radio1.addItem(parentFrameId, parentFrameId, 3);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+
+    var frameId = radio1.getValue();
+
+    var options = {
+        id: "top",
+        type: "wframePopup", // "iframePopup", "browserPopup"
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: frameId,
+        modal: "true",
+        frameModal: frameId
+    };
+
+    $p.openPopup("", options);
+};
+
+scwin.trigger2_onclick = function (e) {
+
+    var options = {
+        id: "parent",
+        type: "wframePopup", // "iframePopup", "browserPopup"
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: "parent",
+        modal: "true",
+        frameModal: "parent" // "frame" "parent" "top"  framdId
+    };
+
+    $p.openPopup("", options);
+
+};
+
+scwin.trigger3_onclick = function (e) {
+
+    var options = {
+        id: "frame",
+        type: "wframePopup", // "iframePopup", "browserPopup"
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: "frame",
+        modal: "true",
+        frameModal: "frame" // "frame" "parent" "top"  framdId
+    };
+
+    $p.openPopup("", options);
+};
+
+scwin.trigger4_onclick = function (e) {
+frameId = $p.getFrame().getParentFrame().getParentFrame().id;
+    var options = {
+        id: 'frameId',
+        type: "wframePopup", // "iframePopup", "browserPopup"
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: "frameId",
+        modal: "true",
+        frameModal: frameId // "frame" "parent" "top"  framdId
+    };
+
+    $p.openPopup("", options);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<w2:textbox style="margin-bottom:10px;font-size:20px;font-weight:bolder;font-style:italic;text-align:left;margin: 10px;" id="textbox1" label="13_popUp_02A.xml">
+    	</w2:textbox>
+    	<xf:group id="" style="margin-left: 20px;padding: 10px;">
+    		<xf:select1 ref="" appearance="full" style="margin-bottom: 10px;" id="radio1" rows="" cols="1" selectedIndex="-1">
+    			<xf:choices>
+    				<xf:item>
+    					<xf:label><![CDATA[frame]]></xf:label>
+    					<xf:value><![CDATA[frame]]></xf:value>
+    				</xf:item>
+    				<xf:item>
+    					<xf:label><![CDATA[parent]]></xf:label>
+    					<xf:value><![CDATA[parent]]></xf:value>
+    				</xf:item>
+    				<xf:item>
+    					<xf:label><![CDATA[top]]></xf:label>
+    					<xf:value><![CDATA[top]]></xf:value>
+    				</xf:item>
+    			</xf:choices>
+    		</xf:select1>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-top: 0px;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[$p.openPopup(options) - options.frameModal]]></xf:label>
+    		</xf:trigger>
+    	</xf:group>
+    </body>
+</html>

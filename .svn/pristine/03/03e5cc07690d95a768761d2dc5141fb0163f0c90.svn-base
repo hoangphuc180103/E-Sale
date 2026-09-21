@@ -1,0 +1,150 @@
+/*amd /page/P00014.xml 10962 e81c3d4c41576a32dbc019c55afe53463d6c563d01361779cfa4d84e7ddd73d9 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'inputType',name:'입력 유형'}},{T:1,N:'w2:column',A:{dataType:'text',id:'customType',name:'동적 유형'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'autoComplete'}]},{T:1,N:'customType',E:[{T:4,cdata:'03'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'button'}]},{T:1,N:'customType',E:[{T:4,cdata:'button'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'calendar'}]},{T:1,N:'customType',E:[{T:4,cdata:'20241231'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'checkbox'}]},{T:1,N:'customType',E:[{T:4,cdata:'Y'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'checkcombobox'}]},{T:1,N:'customType',E:[{T:4,cdata:'03'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'image'}]},{T:1,N:'customType',E:[{T:4,cdata:'/img/btn_sub_setting.png'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'link'}]},{T:1,N:'customType',E:[{T:4,cdata:'link'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'secret'}]},{T:1,N:'customType',E:[{T:4,cdata:'secret'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'select'}]},{T:1,N:'customType',E:[{T:4,cdata:'03'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'text'}]},{T:1,N:'customType',E:[{T:4,cdata:'text'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'textarea'}]},{T:1,N:'customType',E:[{T:4,cdata:'textarea'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'inputType',E:[{T:4,cdata:'textImage'}]},{T:1,N:'customType',E:[{T:4,cdata:'textImage'}]}]}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_code',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'code',name:'코드'}},{T:1,N:'w2:column',A:{dataType:'text',id:'codeName',name:'코드명'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'01'}]},{T:1,N:'codeName',E:[{T:4,cdata:'Apple'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'02'}]},{T:1,N:'codeName',E:[{T:4,cdata:'Apricot'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'03'}]},{T:1,N:'codeName',E:[{T:4,cdata:'Banana'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'code',E:[{T:4,cdata:'04'}]},{T:1,N:'codeName',E:[{T:4,cdata:'Blueberry'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'codeName',E:[{T:4,cdata:'Blackberry'}]},{T:1,N:'code',E:[{T:4,cdata:'05'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * GridView 'grd_exam1'의 'customType' 컬럼의 'typeGetter' 속성에 설정된 메소드
+ * 동적으로 셀의 'inputType'을 설정
+ */
+scwin.getCustomType = function (info) {
+  // console.log(info);
+  let rowIndex = info.rowIndex;
+  let colIndex = info.colIndex;
+  let returnInfo = {
+    options: {
+      readOnly: "false",
+      viewType: "default",
+      chooseOption: "false",
+      textAlign: "center"
+    }
+  };
+  let _inputType = dlt_exam.getCellData(rowIndex, "inputType");
+  switch (_inputType) {
+    case "autoComplete":
+      returnInfo.itemSet = {
+        nodeset: "data:dlt_code",
+        label: "codeName",
+        value: "code"
+      };
+      returnInfo.options.viewType = "icon";
+      returnInfo.options.chooseOption = "true";
+      break;
+    case "button":
+      break;
+    case "calendar":
+      returnInfo.options.viewType = "icon";
+      break;
+    case "checkbox":
+      returnInfo.options.checkboxLabel = "checkbox";
+      returnInfo.options.valueType = "other";
+      returnInfo.options.trueValue = "Y";
+      returnInfo.options.falseValue = "N";
+      break;
+    case "checkcombobox":
+      returnInfo.itemSet = {
+        nodeset: "data:dlt_code",
+        label: "codeName",
+        value: "code"
+      };
+      returnInfo.options.viewType = "icon";
+      returnInfo.options.chooseOption = "true";
+      break;
+    case "image":
+      break;
+    case "link":
+      break;
+    case "radio":
+      returnInfo.options.checkboxLabel = "radio";
+      returnInfo.options.valueType = "other";
+      returnInfo.options.trueValue = "Y";
+      returnInfo.options.falseValue = "N";
+      break;
+    case "secret":
+      break;
+    case "select":
+      returnInfo.itemSet = {
+        nodeset: "data:dlt_code",
+        label: "codeName",
+        value: "code"
+      };
+      returnInfo.options.viewType = "icon";
+      returnInfo.options.chooseOption = "true";
+      break;
+    case "spinner":
+      returnInfo.options.viewType = "icon";
+      break;
+    case "textarea":
+      break;
+    case "textImage":
+      returnInfo.options.viewType = "icon";
+      returnInfo.options.imageSrc = "/img/icons_search_type2.png";
+      returnInfo.options.imageHeight = "20";
+      returnInfo.options.readOnly = "true";
+      break;
+    case "text":
+    default:
+      break;
+  }
+  returnInfo.id = "dynamic_" + _inputType + "_" + rowIndex + "_" + colIndex;
+  returnInfo.inputType = _inputType;
+  return returnInfo;
+};
+
+/**
+ * 사용자가 셀 수정 후 이벤트
+ */
+scwin.grd_ex01_onafteredit = function (row, col, value) {
+  let colId = this.getColumnID(col);
+  if (colId != "inputType") {
+    return;
+  }
+  let cellData = "";
+  switch (value) {
+    case "autoComplete":
+      cellData = "03";
+      break;
+    case "button":
+      cellData = "button";
+      break;
+    case "calendar":
+      cellData = "20241231";
+      break;
+    case "checkbox":
+      cellData = "Y";
+      break;
+    case "checkcombobox":
+      cellData = "03";
+      break;
+    case "image":
+      cellData = "/img/btn_sub_setting.png";
+      break;
+    case "link":
+      cellData = "link";
+      break;
+    case "radio":
+      cellData = "N";
+      break;
+    case "secret":
+      cellData = "secret";
+      break;
+    case "select":
+      cellData = "03";
+      break;
+    case "spinner":
+      cellData = "12";
+      break;
+    case "textarea":
+      cellData = "textarea";
+      break;
+    case "textImage":
+      cellData = "textImage";
+      break;
+    case "text":
+    default:
+      cellData = "text";
+      break;
+  }
+
+  // 셀에 데이터를 설정하면 'customType' 컬럼의 'typeGetter'에 설정된 메소드가 호출됩니다.
+  dlt_exam.setCellData(row, "customType", cellData);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'그리드뷰의 inputType을 동적으로 변경한 예시입니다.<br/>\'InputType\' 컬럼의 값에 따라 \'CustomType\' 컬럼의 \'inputType\' 속성이 변경됩니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',escape:'false',id:'',label:'이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다.',style:''}}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox',style:'max-width: 400px;'},E:[{T:1,N:'w2:gridView',A:{'ev:oneditend':'',oddEvenColorDisplay:'false',rowNumVisible:'true',rowNumHeaderValue:'No',scrollByColumn:'false','ev:onrightbuttonclick':'',defaultCellHeight:'37',adaptive:'',focusMode:'row',rowNumWidth:'',senseReader:'',keyMoveEditMode:'true',autoFit:'allColumn',id:'grd_ex01',tooltipDisplayColumn:'INFO',mergeCells:'',class:'gvw',ignoreToggleOnDisabled:'false',adaptiveThreshold:'','ev:oncellclick':'',editModeEvent:'onclick',scrollByColumnAdaptive:'false',rowNumStatusUniqueId:'true','ev:onbeforeedit':'',summaryAuto:'false',useCtrlOnMultisort:'',useShiftKey:'true',readOnly:'','ev:onscrolly':'',rowStatusVisible:'',tooltipDisplay:'true',fixedColumnWithHidden:'true',dataList:'data:dlt_exam','ev:onviewchange':'',columnMove:'true',ignoreCellClick:'false',style:'height:150px;','ev:onafteredit':'scwin.grd_ex01_onafteredit',visibleRowNum:'all',autoFitMinWidth:'300'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'150',inputType:'text',style:'',id:'column7',value:'InputType',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'120',inputType:'text',style:'',id:'column5',value:'CustomType',blockSelect:'false',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{viewType:'icon',width:'150',inputType:'select',style:'',allOption:'',id:'inputType',value:'',blockSelect:'false',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'autoComplete'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'autoComplete'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'button'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'button'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'calendar'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'calendar'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'checkbox'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'checkbox'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'checkcombobox'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'checkcombobox'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'image'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'image'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'link'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'link'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'radio'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'radio'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'secret'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'secret'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'select'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'select'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'text'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'text'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'textarea'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'textarea'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'textImage'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'textImage'}]}]}]}]},{T:1,N:'w2:column',A:{falseValue:'0',typeGetter:'scwin.getCustomType',trueValue:'$blank',valueType:'other',width:'120',checkboxLabel:'',inputType:'custom',style:'',id:'customType',value:'',blockSelect:'false',displayMode:'label'}}]}]}]}]}]}]}]}]})

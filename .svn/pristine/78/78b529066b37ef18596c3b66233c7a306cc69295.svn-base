@@ -1,0 +1,106 @@
+/*amd /page/P00455.xml 6115 4f877acacd688b321de5fad45cf9652976362dae86423bd6ea9f8816d77ce129 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList_format',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'날짜2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'날짜3'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'숫자1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col4',name:'주민등록번호2'}}]},{T:1,N:'w2:data',A:{use:'false'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'1234567890'}]},{T:1,N:'col2',E:[{T:4,cdata:'1234567890'}]},{T:1,N:'col3',E:[{T:4,cdata:'1234567890'}]}]},{T:1,N:'w2:row'},{T:1,N:'w2:row'},{T:1,N:'w2:row'},{T:1,N:'w2:row'},{T:1,N:'w2:row'},{T:1,N:'w2:row'},{T:1,N:'w2:row'},{T:1,N:'w2:row'},{T:1,N:'w2:row'}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "20170104",
+    "col2": "20170104",
+    "col3": "123456789",
+    "col4": "1234561234567"
+  }, {
+    "col1": "20170205",
+    "col2": "20170205",
+    "col3": "223456789",
+    "col4": "1234561234567"
+  }, {
+    "col1": "20170306",
+    "col2": "20170306",
+    "col3": "323456789",
+    "col4": "1234561234567"
+  }, {
+    "col1": "20170407",
+    "col2": "20170407",
+    "col3": "423456789",
+    "col4": "1234561234567"
+  }, {
+    "col1": "20170508",
+    "col2": "20170508",
+    "col3": "523456789",
+    "col4": "1234561234567"
+  }, {
+    "col1": "20170104",
+    "col2": "20170104",
+    "col3": "123456789",
+    "col4": "1234561234567"
+  }, {
+    "col1": "20170205",
+    "col2": "20170205",
+    "col3": "223456789",
+    "col4": "1234561234567"
+  }, {
+    "col1": "20170306",
+    "col2": "20170306",
+    "col3": "323456789",
+    "col4": "1234561234567"
+  }];
+  dataList_format.setJSON(json);
+};
+
+// 날짜1
+scwin.dateFormat_A2Format = function (data) {
+  var dd = data.substr(6, 2);
+  var MM = data.substr(4, 2);
+  var yy = data.substr(2, 2);
+  var result = dd + "-" + MM + "-" + yy;
+  return result;
+};
+
+// 날짜2
+scwin.dateFormat2_A2Format = function (data) {
+  var dd = data.substr(6, 2);
+  var MM = data.substr(4, 2);
+  var yy = data.substr(0, 4);
+  if (MM == "01") {
+    MM = "January";
+  } else if (MM == "02") {
+    MM = "February";
+  } else if (MM == "03") {
+    MM = "March";
+  } else if (MM == "04") {
+    MM = "April";
+  } else if (MM == "05") {
+    MM = "May";
+  } else if (MM == "06") {
+    MM = "June";
+  } else if (MM == "07") {
+    MM = "July";
+  } else if (MM == "08") {
+    MM = "August";
+  } else if (MM == "09") {
+    MM = "September";
+  } else if (MM == "10") {
+    MM = "October";
+  } else if (MM == "11") {
+    MM = "November";
+  } else if (MM == "12") {
+    MM = "December";
+  }
+  var result = MM + " " + dd + ". " + yy;
+  return result;
+};
+
+// 주민등록번호
+scwin.marsking_format = function (data) {
+  var ssn = data.replace("-", "");
+  var res = data;
+  if (ssn.length == 13) {
+    res = ssn.slice(0, 6) + "-" + ssn.slice(6, 7) + "******";
+  }
+  return res;
+};
+scwin.btn_reset_onclick = function (e) {
+  for (var idx = 0; idx < grd_Main.getColumnOrder().length; idx++) {
+    grd_Main.setDisplayFormat(idx, "");
+    grd_Main.setCustomFormatter(idx, "");
+    grd_Main.setDisplayFormatter(idx, "");
+  }
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'sub_contents'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'ws_example_grp_desc'},E:[{T:1,N:'w2:textbox',A:{style:'',id:'',label:'GridView의 포맷을 메소드로 전체 초기화하는 예제입니다.',escape:'false'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mb_def',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_reset_onclick',id:'btn_reset',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'전체 포맷 초기화'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'gvwbox',id:''},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'252',class:'gvw',dataList:'data:dataList_format',defaultCellHeight:'37',editModeEvent:'onclick',focusMode:'none',id:'grd_Main',readOnlyBackgroundColor:'#eee',style:'height: 100px;',visibleRowNum:'all'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'59',inputType:'text',id:'column7',value:'날짜1',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column6',value:'날짜2',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column5',value:'숫자',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'column1',value:'주민등록번호',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'59',inputType:'text',id:'col1',displayMode:'label',displayFormatter:'scwin.dateFormat_A2Format'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'col2',displayMode:'label',displayFormatter:'scwin.dateFormat2_A2Format'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col3',displayMode:'label',dataType:'number',displayFormat:'#,###'}},{T:1,N:'w2:column',A:{width:'80',inputType:'text',id:'col4',displayMode:'label',customFormatter:'scwin.marsking_format'}}]}]}]}]}]}]}]}]}]}]}]})

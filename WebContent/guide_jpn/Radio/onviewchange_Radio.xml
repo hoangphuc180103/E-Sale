@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="Code" name="name1"></w2:column>
+            			<w2:column dataType="text" id="City" name="name2"></w2:column>
+            			<w2:column dataType="text" id="Country" name="name3"></w2:column>
+            			<w2:column dataType="text" id="Type" name="name4"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var json = [
+			{"Code" : "SEL", "City" : "Seoul", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "BSN", "City" : "Busan", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "ICN", "City" : "Incheon", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "DJN", "City" : "Daejeon", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "DGU", "City" : "Daegu", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "OTW", "City" : "Ottawa", "Country" : "Canada", "Type" : "Overseas"},
+			{"Code" : "TRT", "City" : "Toronto", "Country" : "Canada", "Type" : "Overseas"},
+			{"Code" : "BRN", "City" : "Berlin", "Country" : "Germany", "Type" : "Overseas"},
+			{"Code" : "BJG", "City" : "Beijing", "Country" : "China", "Type" : "Overseas"},
+			{"Code" : "LDN", "City" : "London", "Country" : "UK", "Type" : "Overseas"},
+			];
+		dataList1.setJSON(json);	
+		radio1.setValue("SEL");	
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	scwin.radio1_onviewchange = function(info) {
+		var itemIndex = info.index; // 새로 선택항 항목의 index
+		var itemValue = info.value; // 새로 선택한 항목의 value
+		var oldIndex = info.oldIndex; // 이전 항목의 index
+		var oldValue = info.oldValue; // 이전 항목의 value
+		
+		alert("New : " + itemIndex + " " + itemValue + " ///// " + "Old : " + oldIndex + " " + oldValue);
+};
+	
+scwin.trigger2_onclick = function (e) {
+		radio1.setValue("BSN");	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="イベント - onviewchange"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. マウスで項目を選択すると、onviewchangeイベントが発生することを確認。 &lt;br/&gt;2.キーボードで項目を選択すると、&amp;nbsp;onviewchangeイベントが発生することを確認してください。 &lt;br/&gt;3.下部の setValue() ボタンをクリックして動的に項目を選択すると、 onviewchange イベントが発生しない「ない」ことを確認。'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="イベント説明&lt;br/&gt;onviewchange - キーボードまたはマウス操作で値が変更になると発生します。 （JavaScriptコードによる変更は該当しません。）" escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox5" label='/// Sample Code&lt;br/&gt;&lt;br/&gt;scwin.radio1_onviewchange = function(info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var itemIndex = info.index; //新しいオプション項目のindex&lt;br/&gt; &amp;nbsp; &amp;nbsp;var itemValue = info.value; //新しく選択した項目のvalue&lt;br/&gt; &amp;nbsp; &amp;nbsp;var oldIndex = info.oldIndex; //前の項目のindex&lt;br/&gt; &amp;nbsp; &amp;nbsp;var oldValue = info.oldValue; //前の項目のvalue&lt;br/&gt;&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("New :" + itemIndex + " " + itemValue + " ///// " + "Old : " + oldIndex + " " + oldValue);&lt;br/&gt;};' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[setValue("Busan")]]></xf:label>
+    	</xf:trigger>
+    	<xf:select1 enableColumn="" ref="" appearance="full" enableColumnFalseValue="" ev:onviewchange="scwin.radio1_onviewchange" style=""
+    		id="radio1" rows="" cols="2" selectedIndex="-1">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="City"></xf:label>
+    				<xf:value ref="Code"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1>
+    </xf:group></body>
+</html>

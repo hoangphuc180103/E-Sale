@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Spinner] 데이터 타입이 날짜(Date)일 때 잘못된 날짜가 입력되었을 때 기본 경고창 사용하지 않기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221104" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Spinner의 'useAlert' 속성을 설정하여, 잘못된 날짜가 입력되었을 때 경고창을 사용하지 않도록 설정한 예제입니다."
+					style="" class="mb10">
+				</w2:textbox>
+				<w2:textbox escape="false" id="" label='입력 필드(Input)에 "20999999"를 입력하고 컴포넌트에서 포커스 제거했을 때 설정별 동작을 비교합니다.' style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='(기본) 경고창 사용' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:spinner skin="type1" buttonSize="30" inputReadOnly="false" id="spi_exam1"
+							style="position: relative;width:130px;min-height:24px;" dataType="date">
+						</w2:spinner>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='경고창 사용 안함' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:spinner buttonSize="30" id="spi_exam2" inputReadOnly="false" skin="type1"
+							style="position: relative;width:130px;min-height:24px;" dataType="date" useAlert="false">
+						</w2:spinner>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

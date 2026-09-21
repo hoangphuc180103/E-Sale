@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[InputCalendar] 캘린더의 날짜 비활성화 하기 - 지정한 날짜">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221014" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    scwin.setInitPage();
+};
+
+/**
+ * 화면 초기화
+ */
+scwin.setInitPage = function () {
+    var strYear;
+
+    //서버에서 올해 반환 받기.
+    strYear = $p.getCurrentServerDate("yyyy");
+
+    //inputCalendar에 올해 7월 1일 할당하기
+    ica_exam_1.setValue(strYear + "0701");
+    ica_exam_2.setValue(strYear + "0701");
+};
+
+/**
+ * 버튼 [올해의 7월 7일 비활성화] 클릭 시 호출
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var strYear;
+
+    //서버에서 올해 반환 받기.
+    strYear = $p.getCurrentServerDate("yyyy");
+
+    //inputCalendar "ica_exam_1"에 올해의 7월 7일 비활성화 하기
+    ica_exam_1.disableDate(strYear + "0707");
+};
+
+/**
+ * 버튼 [올해의 7월 14, 16일 비활성화] 클릭 시 호출
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var strYear;
+
+    //서버에서 올해 반환 받기.
+    strYear = $p.getCurrentServerDate("yyyy");
+
+    //inputCalendar "ica_exam_2"에 올해의 7월 14, 16일 비활성화 하기
+    ica_exam_2.disableDate(strYear + "0714 " + strYear + "0716"); //날짜는 공백으로 구분
+    //ex) ica_exam_2.disableDate("20240714 20240716")
+
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="InputCalendar의 캘린더에 지정한 날짜를 비활성화하는 예제입니다." style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="캘린더의 날짜 비활성화화기 - &amp;nbsp;지정일" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" id="ica_exam_1" renderDiv="true"
+							rightAlign="false" style="width:110px;min-height: 24px;" class="mr_def">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style="" type="button">
+							<xf:label><![CDATA[올해의 7월 7일 비활성화]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="캘린더의 날짜 비활성화화기 - &amp;nbsp;지정일(다중)" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" id="ica_exam_2" renderDiv="true"
+							rightAlign="false" style="width:110px;min-height: 24px;" class="mr_def">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" style="" type="button">
+							<xf:label><![CDATA[올해의 7월 14, 16일 비활성화]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

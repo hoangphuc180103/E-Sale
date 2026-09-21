@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_desc="udc2.0 활용예제" meta_process="이름, 연락처, 담당업무 등을 공통으로 관리하는 sub 화면" meta_screenId="udc_sub" meta_screenName="샘플용 udc" meta_subsystem="sample" meta_author="inswave" meta_type="서브">
+        <w2:type palette="support">COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method="scwin.setName,scwin.setContact,scwin.setTask,scwin.getName,scwin.getContact,scwin.getTask"/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+
+/**
+ * @component
+ * @componentName udc_sub
+ * @pluginName 
+ * @company 
+ * @developer user
+ * @category /frame/udc
+ * @variableClone true
+ * @notSupportBrowser 
+ * @version 
+ * @htmlRender 
+ * @icon 
+ * @disableIcon 
+ * @width 
+ * @height 
+ * @description 
+ */ 
+
+/**
+ * @property
+ * @name style
+ * @category 01.Basic & ETC
+ * @type string
+ * @option 
+ * @default 
+ * @necessary N
+ * @description desc
+ */ 
+
+/**
+ * @property
+ * @name class
+ * @category 01.Basic & ETC
+ * @type string
+ * @option 
+ * @default 
+ * @necessary N
+ * @description desc
+ */ 
+
+/**
+ * @property
+ * @name id
+ * @category 01.Basic & ETC
+ * @type string
+ * @option 
+ * @default 
+ * @necessary N
+ * @description desc
+ */ 
+
+
+
+/**
+ * @property
+ * @name color
+ * @category 01.Basic & ETC
+ * @type string
+ * @option 
+ * @default 
+ * @necessary N
+ * @description udc의 바탕색을 지정합니다.
+ */ 
+
+scwin.onpageload = function() {
+	// color 속성이 적용되도록 정의합니다.
+    var options = $p.getOptions();
+    var backgroundColor = options.color;
+    grpSub.setStyle("background-color", backgroundColor);
+};
+
+
+
+
+
+
+
+/**
+ * @method
+ * @name setName
+ * @description 이름을 입력합니다.
+ * @param {string} arg arg 적용된 값이 이름에 입력됩니다. 
+ * @returns 
+ * @hidden N
+ * @exception 
+ * @example 
+ */ 
+scwin.setName = function(arg) {
+    ipt_name.setValue(arg);
+    $p.emit("onNameSet");
+}
+
+
+
+
+/**
+ * @method
+ * @name setContact
+ * @description 연락처를 입력합니다.
+ * @param {string} arg arg 적용된 값이 연락처에 입력됩니다. 
+ * @returns 
+ * @hidden N
+ * @exception 
+ * @example 
+ */ 
+scwin.setContact = function(arg) {
+    ipt_contact.setValue(arg);
+}
+
+
+
+
+/**
+ * @method
+ * @name setTask
+ * @description 담당업무를 입력합니다.
+ * @param {string} arg arg 적용된 값이 담당업무에 입력됩니다. 
+ * @returns 
+ * @hidden N
+ * @exception 
+ * @example 
+ */ 
+scwin.setTask = function(arg) {
+    ipt_task.setValue(arg);
+}
+
+
+
+
+
+
+
+
+/**
+ * @method
+ * @name getName
+ * @description 이름에 적용된 값을 반환합니다.
+ * @param 
+ * @returns {string} name 이름을 반환합니다. 
+ * @hidden N
+ * @exception 
+ * @example 
+ */ 
+scwin.getName = function() {
+    return ipt_name.getValue();
+}
+
+
+
+
+
+
+/**
+ * @method
+ * @name getContact
+ * @description 연락처에 적용된 값을 반환합니다.
+ * @param 
+ * @returns {string} contact desc 
+ * @hidden N
+ * @exception 
+ * @example 
+ */ 
+scwin.getContact = function() {
+    return ipt_contact.getValue();
+}
+
+
+
+
+
+
+/**
+ * @method
+ * @name getTask
+ * @description 담당업무에 적용된 값을 반환합니다.
+ * @param 
+ * @returns {string} task desc 
+ * @hidden N
+ * @exception 
+ * @example 
+ */ 
+scwin.getTask = function() {
+    return ipt_task.getValue();
+}
+
+
+
+/**
+ * @event
+ * @name onNameSet
+ * @description 이름이 입력될 때 발생합니다.
+ * @param 
+ * @example 
+ */ 
+scwin.emit_onNameSet = function() {
+	$p.emit("onNameSet");
+}
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="" id="grpSub" style="padding: 5px;border: 2px solid olive;">
+    		<xf:group class="tbbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tb" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:150px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th req" style="" tagname="th">
+    						<w2:textbox class="" id="" label="이름" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" style="" tagname="td">
+    						<xf:input class="" id="ipt_name" placeholder="" style="width:100%;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr">
+    					<xf:group class="w2tb_th req" tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="담당 업무" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<xf:input class="" id="ipt_task" placeholder="" style="width:100%;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr">
+    					<xf:group class="w2tb_th req" tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="연락처" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input class="" id="ipt_contact" placeholder="" style="width:100%;"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

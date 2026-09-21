@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            			<w2:column id="col5" name="name5" dataType="text"></w2:column>
+            			<w2:column id="col6" name="name6" dataType="text"></w2:column>
+            			<w2:column id="col7" name="name7" dataType="text"></w2:column>
+            			<w2:column id="col8" name="name8" dataType="text"></w2:column>
+            			<w2:column id="col9" name="name9" dataType="text"></w2:column>
+            			<w2:column id="col10" name="name10" dataType="text"></w2:column>
+            			<w2:column id="col11" name="name11" dataType="text"></w2:column>
+            			<w2:column id="col12" name="name12" dataType="text"></w2:column>
+            			<w2:column id="col13" name="name13" dataType="text"></w2:column>
+            			<w2:column id="col14" name="name14" dataType="text"></w2:column>
+            			<w2:column id="col15" name="name15" dataType="text"></w2:column>
+            			<w2:column id="col16" name="name16" dataType="text"></w2:column>
+            			<w2:column id="col17" name="name17" dataType="text"></w2:column>
+            			<w2:column id="col18" name="name18" dataType="text"></w2:column>
+            			<w2:column id="col19" name="name19" dataType="text"></w2:column>
+            			<w2:column id="col20" name="name20" dataType="text"></w2:column>
+            			<w2:column id="col21" name="name21" dataType="text"></w2:column>
+            			<w2:column id="col22" name="name22" dataType="text"></w2:column>
+            			<w2:column id="col23" name="name23" dataType="text"></w2:column>
+            			<w2:column id="col24" name="name24" dataType="text"></w2:column>
+            			<w2:column id="col25" name="name25" dataType="text"></w2:column>
+            			<w2:column id="col26" name="name26" dataType="text"></w2:column>
+            			<w2:column id="col27" name="name27" dataType="text"></w2:column>
+            			<w2:column id="col28" name="name28" dataType="text"></w2:column>
+            			<w2:column id="col29" name="name29" dataType="text"></w2:column>
+            			<w2:column id="col30" name="name30" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        
+        var data = [];
+        for (var i = 0; i < 1000; i++) {
+            for (var j = 0; j < 30; j++){
+                data.push(i);
+            }
+        }
+        dataList1.setData(data);
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Auto-scroll when Dragging&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(First GridView)&lt;br/&gt;Confirm that automatic scrolling occurs when the mouse moves outside the GridView.&lt;br/&gt;&lt;br/&gt;(Second GridView)&lt;br/&gt;Confirm that scrolling does not occur even when the mouse moves outside the GridView.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='dataDragSelectAutoScroll="true" &lt;br/&gt;dataDragSelect="true"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView scrollByColumnAdaptive="false" dataDragSelectAutoScroll="true" dataList="data:dataList1" dataDragSelect="true"
+    		useShiftKey="true" style="border: solid gray 1px;margin-bottom: 10px;" scrollByColumn="false" id="gridView1" defaultCellHeight="20" visibleRowNum="7"
+    		visibleRowNumFix="true">
+    		<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header2">
+    			<w2:row style="" id="row3">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column148" value="name1"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column145" value="name2"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column142" value="name3"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column139" value="name4"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column136" value="name5"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column133" value="name6"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column130" value="name7"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column127" value="name8"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column124" value="name9"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column121" value="name10"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column118" value="name11"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column115" value="name12"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column112" value="name13"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column109" value="name14"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column106" value="name15"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column103" value="name16"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column100" value="name17"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column97" value="name18"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column94" value="name19"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column91" value="name20"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column88" value="name21"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column85" value="name22"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column82" value="name23"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column79" value="name24"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column76" value="name25"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column73" value="name26"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column70" value="name27"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column67" value="name28"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column64" value="name29"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column61" value="name30"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody2">
+    			<w2:row style="" id="row4">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col1" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col2" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col3" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col4" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col5" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col6" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col7" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col8" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col9" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col10" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col11" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col12" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col13" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col14" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col15" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col16" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col17" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col18" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col19" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col20" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col21" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col22" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col23" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col24" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col25" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col26" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col27" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col28" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col29" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="col30" value=""
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    		<w2:subTotal targetColumnID="" style="" id="subTotal1"></w2:subTotal>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='dataDragSelectAutoScroll="false" &lt;br/&gt;dataDragSelect="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView dataDragSelect="true" dataDragSelectAutoScroll="false" dataList="data:dataList1" defaultCellHeight="20" id="gridView2"
+    		scrollByColumn="false" scrollByColumnAdaptive="false" style="border: solid gray 1px;" useShiftKey="true" visibleRowNum="7"
+    		visibleRowNumFix="true">
+    		<w2:caption id="caption3" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header2" style="">
+    			<w2:row id="row3" style="">
+    				<w2:column blockSelect="false" displayMode="label" id="column148" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name1" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column145" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name2" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column142" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name3" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column139" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name4" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column136" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name5" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column133" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name6" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column130" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name7" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column127" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name8" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column124" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name9" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column121" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name10" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column118" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name11" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column115" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name12" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column112" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name13" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column109" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name14" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column106" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name15" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column103" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name16" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column100" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name17" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column97" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name18" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column94" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name19" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column91" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name20" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column88" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name21" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column85" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name22" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column82" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name23" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column79" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name24" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column76" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name25" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column73" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name26" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column70" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name27" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column67" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name28" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column64" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name29" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="column61" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="name30" width="70">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody2" style="">
+    			<w2:row id="row4" style="">
+    				<w2:column blockSelect="false" displayMode="label" id="col1" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col2" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col3" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col4" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col5" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col6" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col7" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col8" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col9" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col10" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col11" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col12" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col13" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col14" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col15" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col16" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col17" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col18" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col19" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col20" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col21" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col22" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col23" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col24" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col25" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col26" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col27" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col28" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col29" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    				<w2:column blockSelect="false" displayMode="label" id="col30" inputType="text" removeBorderStyle="false"
+    					style="height:20px" value="" width="70">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    		<w2:subTotal id="subTotal1" style="" targetColumnID=""></w2:subTotal>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

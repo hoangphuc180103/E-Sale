@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[InputCalendar] 캘린더의 날짜 비활성화 하기 - 지정한 날짜">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221014" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+    // 서버의 현재 날짜로 초기값 세팅하기
+    var serverDate = $p.getCurrentServerDate();
+    ica_exam_1.setValue(serverDate);
+    ica_exam_2.setValue(serverDate);
+};
+
+/**
+ * displayFormat = "yyyy-MM-dd"에서 
+ * 버튼 [format이 적용된 값 반환 받기] 클릭 시 호출
+ */
+scwin.btn_ex1_onclick = function (e) {
+
+    //format이 적용된 값을 넘기는 경우
+    var returnValue = ica_exam_1.getDisplayValue();
+
+    // 로그 출력
+    let strLog = "getDisplayValue : ' " + returnValue + " '";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+/**
+ * displayFormat = "yyyy-MM-dd"에서 
+ * 버튼 [format 없이 값 반환 받기] 클릭 시 호출
+ */
+scwin.btn_ex3_onclick = function (e) {
+
+    //format 없이 값을 넘기는 경우
+    var returnValue = ica_exam_1.getValue();
+
+    // 로그 출력
+    let strLog = "getValue : ' " + returnValue + " '";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    console.log(strLog);
+};
+
+
+/**
+ * displayFormat = "yyyy : MM : dd"에서 
+ * 버튼 [format이 적용된 값 반환 받기] 클릭 시 호출
+ */
+scwin.btn_ex2_onclick = function (e) {
+
+    //format이 적용된 값을 넘기는 경우
+    var returnValue = ica_exam_2.getDisplayValue();
+
+    // 로그 출력
+    let strLog = "getDisplayValue : ' " + returnValue + " '";
+    $c.frame.printExampleLog(strLog, txa_log_2, false);
+    console.log(strLog);
+};
+
+/**
+ * displayFormat = "yyyy : MM : dd"에서 
+ * 버튼 [format 없이 값 반환 받기] 클릭 시 호출
+ */
+scwin.btn_ex4_onclick = function (e) {
+
+    //format 없이 값을 넘기는 경우
+    var returnValue = ica_exam_2.getValue();
+
+    // 로그 출력
+    let strLog = "getValue : ' " + returnValue + " '";
+    $c.frame.printExampleLog(strLog, txa_log_2, false);
+    console.log(strLog);
+};
+
+/**
+ * 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="InputCalendar에 설정한 displayFormat이 적용된 값을 메소드로 반환받는 예제입니다." style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='(기본 설정) displayFormat = "yyyy-MM-dd"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" id="ica_exam_1" renderDiv="true"
+							rightAlign="false" style="width:130px;min-height:24px;" class="mr_def">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style="" type="button">
+							<xf:label><![CDATA[format이 적용된 값 반환 받기]]></xf:label>
+						</xf:trigger>
+						<xf:trigger type="button" id="btn_ex3" style="" ev:onclick="scwin.btn_ex3_onclick" class="btn_exam_exec">
+							<xf:label><![CDATA[format 없이 값 반환 받기]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="mb_def_box nobottom" id="" style="">
+						<w2:span class="mr_def txt_bold" id="" label="로그 확인" style="margin-left: 4px;"></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="trigger3" style="" title="로그 삭제"
+							type="button" userData1="txa_log_1">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 100px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='displayFormat = "yyyy : MM : dd"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" id="ica_exam_2" renderDiv="true"
+							rightAlign="false" style="width:130px;min-height:24px;" class="mr_def" displayFormat="yyyy : MM : dd">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" style="" type="button">
+							<xf:label><![CDATA[format이 적용된 값 반환 받기]]></xf:label>
+						</xf:trigger>
+						<xf:trigger class="btn_exam_exec" id="btn_ex4" style="" type="button" ev:onclick="scwin.btn_ex4_onclick">
+							<xf:label><![CDATA[format 없이 값 반환 받기]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="mb_def_box nobottom" id="" style="">
+						<w2:span class="mr_def txt_bold" id="" label="로그 확인" style="margin-left: 4px;"></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="trigger4" style="" title="로그 삭제"
+							type="button" userData1="txa_log_2">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log_2" spellcheck="false" style="width: 100%;height: 100px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/2019-09/Components/WebSquare.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};	
+
+	scwin.trigger1_onclick = function(e) {		
+		inputCalendar1.validate();
+	};
+    
+	scwin.fn_msg = function(){ 
+		var msg = "";
+		var invalidType = this.getType(); 
+		if (invalidType == "mandatory") {
+			msg = "Enter a date. 날짜를 입력하세요. ";
+		} else {
+			msg = "Invalid date. 날짜 형식을 확인하세요.";
+		}
+		alert(msg);	
+	};	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="입력 검증 및 오류 메시지 표시"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 아무것도 입력하지 않고 validate() 버튼을 클릭. &lt;br/&gt;2. invalidMessageFunc 속성 값으로 지정한 함수가 반환한 오류 메시지가 표시되는 것을 확인.&lt;br/&gt;3. 잘못된 형식의 날짜를 입력하고 validate() 버튼을 클릭. &lt;br/&gt;4. invalidMessageFunc 속성 값으로 지정한 함수가 반환한 오류 메시지가 표시되는 것을 확인.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox5" label='속성 설정&lt;br/&gt;mandatory="true" &lt;br/&gt;displaymessage="true" &lt;br/&gt;invalidMessageFunc="scwin.fn_msg"'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox6" label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.fn_msg = function () {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var msg = "";&lt;br/&gt; &amp;nbsp; &amp;nbsp;var invalidType = this.getType();&lt;br/&gt; &amp;nbsp; &amp;nbsp;if (invalidType == "mandatory") {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;msg = "Enter a date. 날짜를 입력하세요. ";&lt;br/&gt; &amp;nbsp; &amp;nbsp;} else {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;msg = "Invalid date. 날짜 형식을 확인하세요.";&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert(msg);&lt;br/&gt;};' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[inputCalendar1.validate();]]></xf:label>
+    	</xf:trigger>
+    	<w2:inputCalendar defaultDate="20180101" footerDiv="false" focusOnDateSelect="false" calendarValueType="yearMonthDate"
+    		rightAlign="false" style="" id="inputCalendar1" renderType="component" renderDiv="true" displaymessage="true"
+    		invalidMessageFunc="scwin.fn_msg" mandatory="true" dateValidCheck="true">
+    	</w2:inputCalendar>
+    </xf:group></body>
+</html>

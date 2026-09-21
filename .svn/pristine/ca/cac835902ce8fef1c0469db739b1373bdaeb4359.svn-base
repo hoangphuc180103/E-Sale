@@ -1,0 +1,29 @@
+/*amd /guide_eng/_p/PopUp/openPopup_popupAutoCloseSkip_p/source.xml 2239 7e9cae828014c34a5e9791cc21a90caca46c9175ec5b33717f3e2127186cf8da */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:aliasDataList',A:{scope:'',id:'aliasDataList1',userData1:'../dataList1'}},{T:1,N:'w2:aliasDataMap',A:{scope:'../dataMap1',id:'aliasDataMap1'}}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.trigger1_onclick = function (e) {
+  const tmpSrc = scwin.getfolderPath() + "/source2.xml";
+  var options = {
+    id: "popup1",
+    type: "wframePopup",
+    height: "300px",
+    width: "300px",
+    left: "650px",
+    popupName: "Child Popup"
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{style:'width:313px;height:94px;font-size:50px;font-style:italic;font-weight:bolder;color: gray;',id:'',label:'Parent'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:teal;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup()'}]}]}]}]}]}]})

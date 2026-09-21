@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    var option = {
+        "id": "dataList1",
+        "type": "dataList",
+        "option": {
+            "baseNode": "list",
+            "repeatNode": "map"
+        },
+        "columnInfo": [
+            {
+                "id": "JSON_Code",
+                "name": "JSON_Code",
+                "dataType": "text"
+            }, {
+                "id": "JSON_CodeName",
+                "name": "JSON_CodeName",
+                "dataType": "text"
+            }
+        ]
+    };
+    $p.data.create(option);
+};
+
+scwin.trigger2_onclick = function (e) {
+    var arr1 = [];
+    for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 4; j++) {
+            arr1[i * 4 + j] = "JSON_" + i + j;
+        }
+    }
+    dataList1.setData(arr1);
+};
+
+scwin.trigger3_onclick = function (e) {
+    var dcStr = '<w2:dataList id="dataList2" baseNode="list" repeatNode="map" valueNode=""> ' +
+        '<w2:columnInfo>' +
+        '<w2:column id="XML_OrderID" name="XML_Client ID" dataType="text"></w2:column>' +
+        '<w2:column id="XML_CustomerID" name="XML_Client Name" dataType="text"></w2:column>' +
+        '<w2:column id="XML_EmployeeID" name="XML_Employee" dataType="text"></w2:column>' +
+        '<w2:column id="XML_OrderDate" name="XML_Date" dataType="text"></w2:column>' +
+        '</w2:columnInfo>' +
+        '</w2:dataList>';
+    $p.data.create(dcStr);
+};
+
+scwin.trigger4_onclick = function (e) {
+    var arr3 = [];
+    for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 4; j++) {
+            arr3[i * 4 + j] = "XML_" + i + j;
+        }
+    }
+
+    dataList2.setData(arr3);
+};
+
+scwin.trigger5_onclick = function (e) {
+    var scId = "";
+    var options = {
+        common: {
+            fileName: "dataList.xlsx",
+            multipleSheet: "true",
+            showProcess: false
+        },
+        excelInfo: [
+            {
+                dataListId: "dataList1",
+                sheetName: "JSON",
+                removeColumns: "",
+                wframeId: scId
+            },
+            {
+                dataListId: "dataList2",
+                sheetName: "XML",
+                removeColumns: "",
+                wframeId: scId
+            }
+        ]
+    };
+    WebSquare.util.multipleDataListDownload(options);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="DataList 動的生成と Excel ファイルとしてダウンロード" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='（Ctrl + マウス右クリックデバッグメニューマーク後, dataCollection 見るメニュー選択して現在画面上定義された DataList秋ないもの確認。）&lt;br/&gt;1. (1) 回ボタンクリックして dataList1を作成。 （作成後, デバッグメニューへ DataList 生成確認。）&lt;br/&gt;2. (2) 回 &amp;nbsp;ボタンクリックして dataList1にデータ設定。 （設定後, デバッグメニューへデータ設定確認。）&lt;br/&gt;3. (3) 回ボタンクリックして dataList2を作成。 &amp;nbsp;（作成後, デバッグメニューへ dataList2 生成確認。）&lt;br/&gt;4. (4) 回 &amp;nbsp;ボタンクリックして dataList2にデータ設定。 &amp;nbsp;（設定後, デバッグメニューへデータ設定確認。） &lt;br/&gt;5. (5) 回 &amp;nbsp;ボタンクリックして dataList1と dataList2を Excel ファイルとしてダウンロード。 &lt;br/&gt;6. ダウンロードした Excel ファイル開く。 &lt;br/&gt;7. dataList1と dataList2のデータ Excel ファイルとしてダウンロードもの確認。 &lt;br/&gt;（詳細スクリプトは Script タブから確認。）&lt;br/&gt;' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger1" type="button">
+    		<xf:label><![CDATA[(1) $p.data.create(); / "dataList"]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger2" type="button">
+    		<xf:label><![CDATA[(2) dataList1.setData();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger3_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger3" type="button">
+    		<xf:label><![CDATA[(3) $p.data.create(); / "dataList2"]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger4_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger4" type="button">
+    		<xf:label><![CDATA[(4) dataList2.setData();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onfocus="" ev:onclick="scwin.trigger5_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger5" type="button">
+    		<xf:label><![CDATA[(5) multipleDataListDownload();]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

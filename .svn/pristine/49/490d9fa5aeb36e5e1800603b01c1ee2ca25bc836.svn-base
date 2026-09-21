@@ -1,0 +1,19 @@
+/*amd /page/P00329.xml 3897 f61d58a18c3f67261cb70b75e1b2e38694115849847a26e6106a4d15fce9f2d5 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}},{T:1,N:'w2:column',A:{dataType:'text',name:'C',id:'col_c'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A1'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B1'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A2'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B2'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A3'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B3'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C3'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo'},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [DataList의 컬럼 수 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // DataList 'dlt_exam'의 컬럼 수를 반환받습니다.
+  let result = dlt_exam.getTotalCol();
+
+  // 반환 값 예시) 3
+
+  alert("getTotalCol(): " + result);
+
+  // 로그 출력
+  console.log('# 메소드 getTotalCol():');
+  console.log(result);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents'},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc'},E:[{T:1,N:'w2:textbox',A:{escape:'false',label:'DataList의 \'getTotalCol\' 메소드를 사용하여 컬럼의 수를 반환받는 예제입니다.',style:'',class:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap'},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style'},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style'},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'DataList의 컬럼 수 반환받기'}]}]}]},{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'아래의 GridView는 DataList의 데이터의 구조를 확인하기 위해 구성되었습니다.',style:''}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{initFixedHeightByRowNum:'3',dataList:'data:dlt_exam',readOnly:'true',style:'height:120px;',autoFit:'allColumn',id:'',visibleRowNum:'3',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'220'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1'},E:[{T:1,N:'w2:row',A:{id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'h_col_a',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'h_col_b',value:'B',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'h_col_c',value:'C',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1'},E:[{T:1,N:'w2:row',A:{id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_a',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_b',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_c',displayMode:'label'}}]}]}]}]}]}]}]}]}]}]}]})

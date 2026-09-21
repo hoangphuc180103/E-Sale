@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="HTML 태그 지원" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='tagname 속성 값에 따라 TextBox가 표시되는 것을 확인. ' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;tagname' escape="false">
+    	</w2:textbox><xf:group tagname="table" style="" id="" class="w2tb">
+    		<w2:attributes>
+    			<w2:summary></w2:summary>
+    		</w2:attributes>
+    		<xf:group tagname="caption"></xf:group>
+    		<xf:group tagname="colgroup">
+    			<xf:group tagname="col" style="width:50.00%;"></xf:group>
+    			<xf:group tagname="col" style="width:50.00%"></xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">tagname=&quot;h1&quot;<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes></xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<w2:textbox tagname="h1" style="" id="textbox5" label="TextBox"></w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">tagname=&quot;h3&quot;<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes></xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<w2:textbox tagname="h3" style="" id="textbox6" label="TextBox"></w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">tagname=&quot;q&quot;<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes></xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<w2:textbox tagname="q" style="" id="textbox7" label="TextBox"></w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">tagname=&quot;code&quot;<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes></xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<w2:textbox tagname="code" style="" id="textbox8" label="TextBox"></w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group></xf:group></body>
+</html>

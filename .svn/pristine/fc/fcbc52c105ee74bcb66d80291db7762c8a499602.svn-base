@@ -1,0 +1,54 @@
+/*amd /page/P00037.xml 4130 07f52d46cd25d98ea69bc29ab97fdf00b81eca354bc2055909d096805f094edc */
+define({E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * [실행1] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  var jsonObj = {
+    "no": "2",
+    "name": "WebSquare"
+  };
+  var jsonStrWithTab = JSON.stringify(jsonObj, null, "\t");
+
+  //웹스퀘어 API를 사용하여 로그 출력
+  $p.log("===========$p.log===========");
+  $p.log(jsonObj);
+  $p.log(jsonObj.name);
+  $p.log(jsonStrWithTab);
+  $p.log("========================");
+
+  //로그 출력
+  $c.frame.printExampleLog($p, "** [실행1] scwin.btn_ex1_onclick 실행 **", txa_log, false);
+  $c.frame.printExampleLog($p, "브라우저에서 [ctrl]키를 누른채 [마우스 오른쪽 버튼]을 클릭한 뒤 [로그보기]를 클릭합니다.", txa_log, false);
+};
+
+/**
+ * [실행2] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  var jsonObj = {
+    "no": "2",
+    "name": "WebSquare"
+  };
+  var jsonStrWithTab = JSON.stringify(jsonObj, null, "\t");
+
+  //console 객체를 사용하여 로그 출력
+  console.log("===========console===========");
+  console.log(jsonObj);
+  console.log(jsonObj.name);
+  console.log(jsonStrWithTab);
+  console.log("========================");
+
+  //로그 출력
+  $c.frame.printExampleLog($p, "** [실행2] scwin.btn_ex2_onclick 실행 **", txa_log, false);
+  $c.frame.printExampleLog($p, "브라우저의 [개발자도구]의 [콘솔(console)]탭에서 로그를 확인합니다.", txa_log, false);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  txa_log.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'mb_def',escape:'false',id:'',label:'웹스퀘어에서 제공하는 로그 출력 메소드과 브라우저에서 제공하는 로그 출력 메소드를 사용한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'mb_def',id:'',style:'',tagname:'ul'},E:[{T:1,N:'xf:group',A:{class:'wre_heading_btn',id:'',style:'',tagname:'li'},E:[{T:1,N:'w2:textbox',A:{class:'wre_heading',id:'',label:'$p.log - 웹스퀘어 로그 출력 메소드',style:''}},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'실행1'}]}]}]},{T:1,N:'xf:group',A:{class:'wre_heading_btn',id:'',style:'',tagname:'li'},E:[{T:1,N:'w2:textbox',A:{class:'wre_heading',id:'',label:'console.log - 브라우저 로그 출력 메소드',style:''}},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'실행2'}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_th_style',id:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_blue',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'btn_clearLog',style:'',title:'로그 삭제',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log',spellcheck:'false',style:'width: 100%;height: 140px;'}}]}]}]}]}]}]}]})

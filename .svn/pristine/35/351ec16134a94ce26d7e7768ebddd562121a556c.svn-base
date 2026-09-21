@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[DataList] 행의 상태값(rowStatus)이 'R'인 데이터를 JSON 형식으로 추출하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230609" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정이 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true" removedDataMatch="true"
+					removeDummyRowStatus="false">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+						<w2:column dataType="text" name="C" id="col_c"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[삭제 예정]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 예제 테스트를 위한 데이터 상태 변경 로직
+    dlt_exam.setCellData(2, "col_a", "수정");
+    dlt_exam.deleteRow(1);
+    dlt_exam.insertJSON(0, [{ col_a: "신규", col_b: "B0", col_c: "C0" }]);
+};
+
+/**
+ * 버튼 [Index 추출하기] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    // DataList 'dlt_exam'의'rowStatus'의 값이 'R'인 Row Index를 배열로 추출합니다.
+    let arrResult = dlt_exam.getRowIndexByStatus("R");
+
+    // 로그 출력
+    $c.frame.printExampleLog("버튼 [Index 추출하기] 클릭", txa_log);
+    $c.frame.printExampleLog("# 'rowStatus'의 값이 'R'인 Row Index - return 예시)", txa_log, false);
+    $c.frame.printExampleLog(JSON.stringify(arrResult), txa_log, false);
+    console.log("# 'rowStatus'의 값이 'R'인 Row Index - return 예시)", "\n", arrResult);
+};
+
+//
+/**
+ * 버튼 [JSON 형식으로 데이터 추출하기] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    // DataList 'dlt_exam'의'rowStatus'의 값이 'R'인 Row Index를 배열로 추출합니다.
+    let arrRowIndex = dlt_exam.getRowIndexByStatus("R");
+
+    // 변수 'arrRowIndex'의 길이를 추출합니다.
+    let numArrRowIdxLen = arrRowIndex.length;
+
+    // 결과를 담을 배열을 선언합니다.
+    let arrResult = [];
+
+    // 변수 'arrRowIndex'의 길이만큼 'for' 구문을 실행합니다.
+    for (let i = 0; i < numArrRowIdxLen; i++) {
+        let numRowIndex = arrRowIndex[i]; // 행의 Index
+        let jsnRowData = dlt_exam.getRowJSON(numRowIndex); // 행의 데이터를 JSON 형식으로 추출
+
+        // 추출한 JSON 형식의 데이터를 배열에 추가
+        arrResult.push(jsnRowData);
+    }
+
+    // 로그 출력
+    $c.frame.printExampleLog("버튼 [JSON 형식으로 데이터 추출하기] 클릭", txa_log);
+    $c.frame.printExampleLog("# 'rowStatus'의 값이 'R'인 행의 데이터를 JSON 형식으로 추출하기 - return 예시)", txa_log, false);
+    $c.frame.printExampleLog(JSON.stringify(arrResult, "", "\t"), txa_log, false);
+    console.log("# 'rowStatus'의 값이 'R'인 행의 데이터를 JSON 형식으로 추출하기 - return 예시)", "\n", arrResult);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="DataList의 'rowStatus'(행 상태)의 값이 'R'인 데이터를 JSON 형식으로 반환받는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style no_padding" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1"
+								style="" type="button">
+								<xf:label><![CDATA[Index 추출하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2"
+								style="" type="button">
+								<xf:label><![CDATA[JSON 형식으로 데이터 추출하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView rowNumVisible="true" rowStatusWidth="40" readOnly="true" keepDefaultColumnWidth="true"
+								defaultCellHeight="37" rowStatusVisible="true" rowNumWidth="40" visibleRowNumFix="true" dataList="data:dlt_exam"
+								style="height:100px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="all" class="gvw" autoFitMinWidth="280">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column3" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column2" value="B" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="C" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

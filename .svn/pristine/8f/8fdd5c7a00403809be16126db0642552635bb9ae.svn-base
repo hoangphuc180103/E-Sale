@@ -1,0 +1,12 @@
+/*amd /page/P00201.xml 2447 d24396534dfb14e3619d1a85839860ed1ec8c3bcb9ec643e9d4f226e009641ef */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 현재 날짜를 yyyyMMdd 형태로 가져옵니다.
+  let sysDate = $p.getCurrentServerDate("yyyyMMdd");
+
+  //InputCalendar 'ica_exam_1'에 현재 날짜를 설정합니다.
+  ica_exam_1.setValue(sysDate);
+
+  //InputCalendar 'ica_exam_2'에 현재 날짜를 설정합니다.
+  ica_exam_2.setValue(sysDate);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'[InputCalendar] 달력 상단의 버튼을 사용하여 월이나 연도가 변경되었을 때, 선택된 일을 유지하기'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'example_div_tr_style'},E:[{T:1,N:'w2:textbox',A:{style:'',id:'',label:'dayMoveFixed - true 적용',class:'example_div_th_style',escape:'false'}},{T:1,N:'xf:group',A:{style:'',id:'',class:'example_div_td_style'},E:[{T:1,N:'w2:inputCalendar',A:{rightAlign:'false',focusOnDateSelect:'false',dayMoveFixed:'true',style:'width:110px;min-height: 24px;',id:'ica_exam_1',renderDiv:'true',class:'mr_def',calendarValueType:'yearMonthDate'}}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) dayMoveFixed - false',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:inputCalendar',A:{calendarValueType:'yearMonthDate',focusOnDateSelect:'false',id:'ica_exam_2',rightAlign:'false',style:'width:110px;min-height: 24px;',renderDiv:'true',class:'mr_def'}}]}]}]}]}]}]}]})

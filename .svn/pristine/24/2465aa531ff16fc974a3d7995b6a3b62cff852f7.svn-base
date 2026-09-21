@@ -1,0 +1,597 @@
+/*amd /frame/page/sitemap.xml 29395 fe67f10b001ab55e764f72824e2db9bfa92d7c493bfbbb797b1f4916bf55212a */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.gVar = {
+  strArrOrgMenu: null,
+  arrOrgMenu: [],
+  _gen_top_category_render: null,
+  _gen_exam_top_category_render: null,
+  strArrCompData: null,
+  arrFullpathMenu: []
+};
+scwin.onpageload = function () {
+  scwin.displayMenu(scwin.getMenuData());
+  scwin.displayExam(scwin.gVar.arrFullpathMenu);
+  scwin.displayKeyword();
+  scwin.gVar._gen_top_category_render = gen_top_category.render;
+  scwin.gVar._gen_exam_top_category_render = gen_exam_top_category.render;
+  ibx_search_input.focus();
+  debugger;
+};
+scwin.getMenuData = function () {
+  var winObjMain;
+  var arrAllMenuData;
+  var getFullPathData; // **
+
+  /*
+  winObjMain = opener ? opener.$p.main() : $p.main();
+  console.log(winObjMain);
+  console.log( $p.getParameter("popupParam"));
+  */
+
+  arrAllMenuData = $p.getParameter("popupParam");
+  getFullPathData = $p.getParentWindow().scwin.compent_path.getAllFullpathDataString(); // ** fullpath.json
+
+  if (!$.isArray(arrAllMenuData)) {
+    console.log("메뉴 데이터가 없습니다. popupParam : ", arrAllMenuData);
+    return false;
+  }
+
+  // **
+  if (!getFullPathData) {
+    console.log("메뉴 데이터가 없습니다. ", getFullPathData);
+    return false;
+  }
+  getFullPathData = JSON.parse(getFullPathData); // **
+
+  scwin.gVar.arrOrgMenu = arrAllMenuData;
+  scwin.gVar.strArrOrgMenu = JSON.stringify(arrAllMenuData);
+  scwin.gVar.arrFullpathMenu = getFullPathData;
+  scwin.gVar.strArrCompData = JSON.stringify(getFullPathData);
+  return arrAllMenuData;
+};
+scwin.setMenuTitle = function (argComp, argLabel, argPath, argMenuID) {
+  argComp.setValue(argLabel);
+  argComp.setUserData("menu_path", argPath);
+  argComp.setUserData("menu_id", argMenuID);
+  argComp.bind("onclick", scwin.lblMenu_onclick);
+};
+
+//메뉴 출력
+scwin.displayMenu = function (argArrMenu) {
+  var i, i_max, i_item;
+  var compGen1, numGen1, compGen2, numGen2, strDynamicGenID2, compGen3, numGen3, strKeyGen1, strKeyGen2;
+  var cmpGenTopCategory, numGenTopCategory, cmpTopCategory;
+  var refFnc_setMenuTitle = scwin.setMenuTitle;
+  var refFnc_getHTML_keyword = $c.frame.getHtml_keyword;
+  var innFnc_setMenuCategory = function (argComp, argLabel) {
+    argComp.addClass("wre_sitemap_category"); //카테고리 class 추가
+    argComp.setValue(argLabel);
+    argComp.bind("onclick", scwin.lblMenuCategory_onclick);
+  };
+  var innFnc_setMenuKeyword = function (argStrCompID, argCompParent, argStrKeyword) {
+    if (!argStrKeyword) return;
+    //태그 동적 생성.
+    let compTmp = $p.dynamicCreate(argStrCompID, "textbox", {
+      "escape": "false"
+    }, argCompParent);
+    compTmp.addClass("wre_sitemap_grd_keyword");
+    compTmp.setValue(refFnc_getHTML_keyword($p, argStrKeyword));
+  };
+  cmpGenTopCategory = gen_top_category;
+  numGenTopCategory = 0;
+  numGen1 = 0; //depth1 반복수
+  numGen2 = 0;
+  numGen3 = 0;
+  for (i = 0, i_max = argArrMenu.length; i < i_max; i++) {
+    let jsnMenu = argArrMenu[i];
+    let strMenuDepth = jsnMenu.DEPTH;
+    let strMenuType = jsnMenu.TYPE;
+    let strMenuTitle = jsnMenu.TITLE;
+    let strMenuPath = jsnMenu.PATH;
+    let strMenuKeyword = jsnMenu.ALL_KEYWORD;
+    let strMenuID = jsnMenu.ID;
+    let isUnsorted = false; //미분류
+
+    switch (strMenuDepth) {
+      case "1":
+        //대분류
+        if (strMenuType == "C") {
+          compGen1 = $p.getComponentById("gen_depth1");
+          compGen1.insertChild(numGen1);
+          let tmpCmpDepth1CategoryBox = compGen1.getChild(numGen1, "gen_depth1_li");
+
+          //컴포넌트 소개의 경우 class 추가.
+          if (strMenuTitle == "컴포넌트 소개") {
+            tmpCmpDepth1CategoryBox.addClass("row");
+          }
+
+          //title
+          compGen1.getChild(numGen1, "tbx_title_depth1").setValue(strMenuTitle);
+          strKeyGen1 = jsnMenu.ID;
+
+          //시작 상단 카테고리
+          cmpGenTopCategory.insertChild(numGenTopCategory);
+          cmpTopCategory = cmpGenTopCategory.getChild(numGenTopCategory, "btn_top_category");
+          cmpTopCategory.setValue(strMenuTitle);
+          cmpTopCategory.setHref("#" + tmpCmpDepth1CategoryBox.getID());
+          numGenTopCategory++;
+          //종료 상단 카테고리
+
+          compGen2 = compGen1.getChild(numGen1, "gen_depth2");
+          numGen1++;
+          numGen2 = 0;
+          numGen3 = 0;
+          strKeyGen2 = null;
+          compGen3 = null;
+        } else {
+          isUnsorted = true;
+        }
+        break;
+      case "2":
+        if (jsnMenu.PARENT_ID === strKeyGen1) {
+          compGen1 = gen_depth1;
+
+          //메뉴 출력.
+          compGen2.insertChild(numGen2);
+          let compTitle_depth2 = compGen2.getChild(numGen2, "lbl_menu_depth2");
+
+          //메뉴 타입이 분류인 경우
+          if (strMenuType == "C") {
+            compTitle_depth2.setDisabled(true);
+            innFnc_setMenuCategory(compTitle_depth2, strMenuTitle);
+            strDynamicGenID2 = compGen1.getOriginalID() + "_" + numGen1 + "_" + "gen_depth2" + "_" + numGen2;
+            compGen3 = $p.dynamicCreate(strDynamicGenID2, "group", {
+              "tagname": "ul"
+            }, compGen2.getChild(numGen2, "grp_list_depth2"));
+            strKeyGen2 = jsnMenu.ID;
+            numGen3 = 0;
+          } else {
+            refFnc_setMenuTitle(compTitle_depth2, strMenuTitle, strMenuPath, strMenuID);
+            if (strMenuKeyword) {
+              //태그 동적 생성.
+              innFnc_setMenuKeyword(compGen1.getOriginalID() + "_" + numGen1 + "_" + "tbx_keyword_depth2" + "_" + numGen2, compGen2.getChild(numGen2, "grp_list_depth2"), strMenuKeyword);
+            }
+          }
+          numGen2++;
+        } else {
+          isUnsorted = true;
+        }
+        break;
+      case "3":
+        if (jsnMenu.PARENT_ID === strKeyGen2) {
+          let strTmpID_li = compGen3.getOriginalID() + "_" + "grp_menu_li_depth3" + "_" + numGen3;
+          let strTmpID_anchor = compGen3.getOriginalID() + "_" + "lbl_menu_depth3" + "_" + numGen3;
+          let strTmpID_keyword = compGen3.getOriginalID() + "_" + "tbx_keyword_depth3" + "_" + numGen3;
+          let tmpComp_li = $p.dynamicCreate(strTmpID_li, "group", {
+            "tagname": "li"
+          }, compGen3);
+          let tmpComp_lbl = $p.dynamicCreate(strTmpID_anchor, "anchor", {
+            "outerDiv": "false"
+          }, tmpComp_li);
+          tmpComp_lbl.addClass("wre_sitemap_menu_lbl");
+          refFnc_setMenuTitle(tmpComp_lbl, strMenuTitle, strMenuPath, strMenuID);
+          if (strMenuKeyword) {
+            //태그 동적 생성.
+            innFnc_setMenuKeyword(strTmpID_keyword, tmpComp_li, strMenuKeyword);
+          }
+          numGen3++;
+        }
+        break;
+      default:
+        isUnsorted = true;
+        break;
+    }
+    if (isUnsorted === true) {
+      console.log("분류 없음!!! >> ", JSON.stringify(jsnMenu));
+    }
+  } //for
+
+  //컴포넌트 소개 class 추가.
+  //gen_depth1.getChild(0, "gen_depth1_li").addClass("row");
+};
+
+// 예제 목록 출력
+scwin.displayExam = function (examMenu) {
+  var cmpGenTopCategory, numGenTopCategory, cmpTopCategory;
+  cmpGenTopCategory = gen_exam_top_category;
+  numGenTopCategory = 0;
+
+  // 예제 탭 템플릿 가져오기
+  var compGen1 = $p.getComponentById("gen_exam_depth1");
+  let tmpCmpDepth1CategoryBox;
+
+  // 예제 목록 출력
+  for (let i = 0; i < examMenu.length; i++) {
+    let item = examMenu[i];
+    let depth1Box, depth1Title, depth2Area;
+
+    // 가장 첫번째
+    if (i == 0) {
+      // depth1 하나 생성
+      compGen1.insertChild(0);
+      depth1Box = compGen1.getChild(0, "gen_exam_depth1_li");
+      depth1Title = compGen1.getChild(0, "tbx_exam_title_depth1");
+      depth2Area = compGen1.getChild(0, "gen_exam_depth2");
+      tmpCmpDepth1CategoryBox = compGen1.getChild(0, "gen_exam_depth1_li");
+
+      // depth1 제목 설정
+      depth1Title.setValue(item.NAME);
+
+      // depth2 li 생성
+      depth2Area.insertChild(i);
+
+      // 템플릿 컴포넌트 가져오기
+      let compTitle = depth2Area.getChild(i, "lbl_exam_menu_depth2");
+
+      // 예제 path 표시 필요 시 주석 삭제
+      // let compListArea = depth2Area.getChild(i, "grp_exam_list_depth2");
+
+      // title 설정
+      compTitle.setValue(item.TITLE);
+      compTitle.setUserData("menu_path", item.PATH);
+      // 예제에는 menu_id가 없음...
+      compTitle.setUserData("menu_id", "");
+      compTitle.bind("onclick", scwin.lblMenu_onclick);
+
+      //시작 상단 카테고리
+      cmpGenTopCategory.insertChild(numGenTopCategory);
+      cmpTopCategory = cmpGenTopCategory.getChild(numGenTopCategory, "btn_exam_top_category");
+      cmpTopCategory.setValue(item.NAME);
+      cmpTopCategory.setHref("#" + tmpCmpDepth1CategoryBox.getID());
+      numGenTopCategory++;
+      //종료 상단 카테고리
+    } else {
+      // 그전의 index와 비교해서 타이틀 세팅
+      let beforeTitle = compGen1.getChild(compGen1.getLength() - 1, "tbx_exam_title_depth1");
+      let nowTitle = item.NAME;
+      beforeTitle = beforeTitle.getValue();
+
+      // 타이틀이 다른 경우 > 새로운 챕터로 넘어간 경우
+      if (beforeTitle != nowTitle) {
+        compGen1.insertChild(compGen1.getLength());
+        depth1Box = compGen1.getChild(compGen1.getLength() - 1, "gen_exam_depth1_li");
+        depth1Title = compGen1.getChild(compGen1.getLength() - 1, "tbx_exam_title_depth1");
+        depth2Area = compGen1.getChild(compGen1.getLength() - 1, "gen_exam_depth2");
+        tmpCmpDepth1CategoryBox = compGen1.getChild(compGen1.getLength() - 1, "gen_exam_depth1_li");
+
+        // depth1 제목 설정
+        depth1Title.setValue(item.NAME);
+
+        // depth2 li 생성
+        depth2Area.insertChild(depth2Area.getLength());
+
+        // 템플릿 컴포넌트 가져오기
+        let compTitle = depth2Area.getChild(depth2Area.getLength() - 1, "lbl_exam_menu_depth2");
+
+        // 예제 path 표시 필요 시 주석 삭제
+        // let compListArea = depth2Area.getChild(i, "grp_exam_list_depth2");
+
+        // title 설정
+        compTitle.setValue(item.TITLE);
+        compTitle.setUserData("menu_path", item.PATH);
+        // 예제에는 menu_id가 없음...
+        compTitle.setUserData("menu_id", "");
+        compTitle.bind("onclick", scwin.lblMenu_onclick);
+
+        //시작 상단 카테고리
+        cmpGenTopCategory.insertChild(numGenTopCategory);
+        cmpTopCategory = cmpGenTopCategory.getChild(numGenTopCategory, "btn_exam_top_category");
+        cmpTopCategory.setValue(item.NAME);
+        cmpTopCategory.setHref("#" + tmpCmpDepth1CategoryBox.getID());
+        numGenTopCategory++;
+        //종료 상단 카테고리
+      } else {
+        depth2Area = compGen1.getChild(compGen1.getLength() - 1, "gen_exam_depth2");
+        // depth2 li 생성
+        depth2Area.insertChild(i);
+        // 템플릿 컴포넌트 가져오기
+        let compTitle = depth2Area.getChild(depth2Area.getLength() - 1, "lbl_exam_menu_depth2");
+        // title 설정
+        compTitle.setValue(item.TITLE);
+        compTitle.setUserData("menu_path", item.PATH);
+        // 예제에는 menu_id가 없음...
+        compTitle.setUserData("menu_id", "");
+        compTitle.bind("onclick", scwin.lblMenu_onclick);
+      }
+    }
+
+    // 예제 path 표시 필요 시 주석 삭제
+    /*
+    let keywordID = "exam_path_" + i;
+    let compPath = $p.dynamicCreate(
+        keywordID,
+        "textbox",
+        {escape : "false"},
+        compListArea
+    );
+    compPath.addClass("wre_sitemap_grd_keyword");
+    compPath.setValue(item.PATH);*/
+  }
+};
+//메뉴 click
+scwin.lblMenu_onclick = function () {
+  var menuID = this.getUserData("menu_id");
+  var objMain;
+  objMain = $p.getParentWindow();
+  if (!menuID) {
+    // fullpath.json
+    var strPage = this.getUserData("menu_path");
+    var strLink = "https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide";
+    objMain.scwin.dispPage3("", "샘플", strLink + strPage, true);
+  } else {
+    objMain = (opener || parent).$p.main();
+    objMain.scwin.dispPage(menuID, true);
+    //$p.closePopup($p.getPopupId());
+  }
+};
+
+//분류 label click
+scwin.lblMenuCategory_onclick = function () {
+  var strClass = "isCollapsed";
+  if (this.hasClass(strClass)) {
+    this.removeClass(strClass);
+  } else {
+    this.addClass(strClass);
+  }
+};
+
+//키워드 보기 checkbox 
+scwin.cbx_show_keyword_onchange = function (info) {
+  scwin.displayKeyword();
+};
+
+//키워드 출력
+scwin.displayKeyword = function () {
+  var strValue;
+  strValue = cbx_show_keyword.getValue();
+  if (strValue === "Y") {
+    grp_sitemap_list.removeClass("hide_keyword");
+    grp_sitemap_result.removeClass("hide_keyword");
+  } else {
+    grp_sitemap_list.addClass("hide_keyword");
+    grp_sitemap_result.addClass("hide_keyword");
+  }
+};
+scwin.ibx_search_input_oneditkeyup = function (e) {
+  if (e.keyCode == 13) {
+    scwin.searchMenu();
+  } else {
+    if (this.getValue() == "" && grp_pop_main.hasClass("status_result")) {
+      scwin.switchView("default");
+    }
+    ;
+  }
+};
+scwin.btn_search_input_onclick = function (e) {
+  scwin.searchMenu();
+};
+scwin.switchView = function (argType) {
+  switch (argType) {
+    case "result":
+      if (grp_sitemap_result.hasClass("hide")) {
+        //grp_sitemap_list.addClass("hide");
+        grp_sitemap_result.removeClass("hide");
+        grp_pop_main.addClass("status_result");
+      }
+      tab_results.setSelectedTabIndex(2);
+      break;
+    case "default":
+    default:
+      if (grp_sitemap_list.hasClass("hide")) {
+        grp_sitemap_result.addClass("hide");
+        grp_sitemap_list.removeClass("hide");
+        grp_pop_main.removeClass("status_result");
+      }
+      break;
+  }
+};
+scwin.searchMenu = function () {
+  var strKeyword;
+  var arrOrgMenu;
+  var arrResult;
+  var _WRE_CONTEXT_PATH = $c.frame.getConst($p, "WRE_CONTEXT_PATH");
+  var strOrgKeyword;
+  strOrgKeyword = ibx_search_input.getValue().trim();
+  strKeyword = strOrgKeyword.toLowerCase();
+  if (!strKeyword) {
+    scwin.switchView("default");
+    ibx_search_input.focus();
+    return;
+  }
+  arrOrgMenu = JSON.parse(scwin.gVar.strArrOrgMenu);
+  arrFullpathMenu = JSON.parse(scwin.gVar.strArrCompData); // fullpath.json
+
+  arrResult = arrOrgMenu.filter(item => {
+    let retValue = false;
+    let strTitle;
+    //파일이 아닌 경우 
+    if (item.TYPE != "F") return false;
+
+    //메뉴명
+    strTitle = item["TITLE"];
+    let strFilter_TITLE = strTitle.toLowerCase();
+    if (strFilter_TITLE.indexOf(strKeyword) > -1) {
+      //강조
+      strTitle = strTitle.replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+      retValue = true;
+    }
+    item["DISP_TITLE"] = strTitle;
+
+    //키워드
+    let strFilter_ALL_KEYWORD = "|" + item["ALL_KEYWORD"] + "|";
+    //let strFilter_KEYWORD = "|" + strKeyword + "|";   //keyword와 동일한 경우만 출력
+    let strFilter_KEYWORD = strKeyword;
+
+    /*
+    if (strFilter_ALL_KEYWORD.toLowerCase().indexOf(strFilter_KEYWORD) > -1) {
+        //item["ALL_KEYWORD"] = strFilter_ALL_KEYWORD.replace(new RegExp(strFilter_KEYWORD,"ig"), '|<span class="highlight">'+strKeyword+'</span>|').replace(/^[|]/,"").replace(/[|]$/,""); //keyword와 동일한 경우만 출력
+        item["ALL_KEYWORD"] = strFilter_ALL_KEYWORD.replace(new RegExp("("+strFilter_KEYWORD+")","ig"), '<span class="highlight">$1</span>').replace(/^[|]/,"").replace(/[|]$/,"");
+        
+        retValue = true;
+    }
+    */
+
+    if (strFilter_ALL_KEYWORD.toLowerCase().indexOf(strFilter_KEYWORD) > -1) {
+      //item["ALL_KEYWORD"] = strFilter_ALL_KEYWORD.replace(new RegExp(strFilter_KEYWORD,"ig"), '|<span class="highlight">'+strKeyword+'</span>|').replace(/^[|]/,"").replace(/[|]$/,""); //keyword와 동일한 경우만 출력
+      item["ALL_KEYWORD"] = strFilter_ALL_KEYWORD.replace(new RegExp("(" + strFilter_KEYWORD + ")", "ig"), '<span class="highlight">$1</span>').replace(/^[|]/, "").replace(/[|]$/, "");
+      let arrSearchedKeyword = item["ALL_KEYWORD"].split("|").filter(function (argItem) {
+        if (argItem.indexOf('<span class="highlight">') > -1) return true;
+        return false;
+      });
+      item["SEARCHED_KEYWORD"] = arrSearchedKeyword.join("|");
+      retValue = true;
+    }
+
+    //파일명
+    item["DISP_PATH"] = _WRE_CONTEXT_PATH + item["PATH"];
+    let strFilter_PATH = item["DISP_PATH"].toLowerCase();
+    if (strFilter_PATH.indexOf(strKeyword) > -1) {
+      item["DISP_PATH"] = item["DISP_PATH"].replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+      //강조
+      retValue = true;
+    }
+    return retValue;
+  });
+
+  // fullpath.json 처리 함수
+  arrResult2 = arrFullpathMenu.filter(item => {
+    // .xml 이 아닌 파일은 검색 제외
+    if (!item["PATH"].endsWith(".xml")) {
+      return false;
+    }
+    let retValue = false;
+
+    //메뉴명
+    let strFilter_TITLE = item["TITLE"].toLowerCase();
+    if (strFilter_TITLE.indexOf(strKeyword) > -1) {
+      //강조
+      item["DISP_TITLE"] = item["TITLE"].replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+      retValue = true;
+    } else {
+      item["DISP_TITLE"] = item["TITLE"];
+    }
+
+    //파일명
+    item["DISP_PATH"] = _WRE_CONTEXT_PATH + item["PATH"];
+    let strFilter_PATH = item["DISP_PATH"].toLowerCase();
+    if (strFilter_PATH.indexOf(strKeyword) > -1) {
+      item["DISP_PATH"] = item["DISP_PATH"].replace(new RegExp("(" + strKeyword + ")", "i"), '<span class="highlight">$1</span>');
+      //강조
+      retValue = true;
+    }
+    return retValue;
+  });
+
+  // menu.json과 fullpath.json 결과 합치기
+  arrResult = arrResult.concat(arrResult2);
+  scwin.displayResult(arrResult, strKeyword, strOrgKeyword);
+  scwin.switchView("result");
+};
+
+//검색 결과 출력
+scwin.displayResult = function (argArrMenu, argKeyword, argOrgKeyword) {
+  var numArrLength;
+  var i, i_max, i_item;
+  var compGen1;
+  var refFnc_setMenuTitle = scwin.setMenuTitle;
+  var refFnc_getHTML_keyword = $c.frame.getHtml_keyword;
+  compGen1 = gen_result_ul;
+  i_max = argArrMenu.length;
+  compGen1.removeAll();
+
+  //tbx_result_title.setValue("검색 결과 (" + i_max + "건)");
+  tbx_result_title.setValue('<span class="highlight">' + argOrgKeyword + '</span>으(로) <span class="highlight">' + i_max + '</span>건이 검색되었습니다.');
+  for (i = 0; i < i_max; i++) {
+    let compTmp;
+    let strKeyword;
+    let tmpStr;
+    i_item = argArrMenu[i];
+    compGen1.insertChild(i);
+    compTmp = compGen1.getChild(i, "lbl_result_menu");
+
+    //브래드크럼 출력
+    tmpStr = i_item["MENU_BREADCRUMBS"];
+    tmpStr = tmpStr ? "[" + tmpStr.split("%||%").join(" > ") + "] " : "";
+    if (i_item["TITLE"].toLowerCase().indexOf(tmpStr.toLowerCase()) == 0) {
+      tmpStr = "";
+    }
+    refFnc_setMenuTitle(compTmp, i + 1 + ". " + tmpStr + i_item["DISP_TITLE"], i_item["PATH"], i_item["ID"]);
+
+    // strKeyword = i_item["ALL_KEYWORD"]; // 키워드 출력 - 전체
+    strKeyword = i_item["SEARCHED_KEYWORD"] || ""; // 검색된 키워드 출력
+
+    compTmp = compGen1.getChild(i, "tbx_result_keyword");
+    if (strKeyword) {
+      compTmp.setValue(refFnc_getHTML_keyword($p, strKeyword));
+    } else {
+      compTmp.remove(true);
+    }
+
+    //파일 경로 출력
+    compTmp = compGen1.getChild(i, "tbx_result_path");
+    compTmp.setValue("파일 경로 : " + i_item["DISP_PATH"]);
+  }
+};
+scwin.btn_top_category_onclick = function () {
+  var strTargetID;
+  strTargetID = this.getUserData("exam_target");
+  if (!strTargetID) {
+    strTargetID = gen_depth1.getChild(this.getGeneratedIndex(), "gen_depth2").getChild(0, "lbl_menu_depth2").getID();
+    this.setUserData("exam_target", strTargetID);
+  }
+  $p.getComponentById(strTargetID).focus();
+};
+scwin.ibx_search_input_onchange = function () {
+  var strValue;
+  strValue = this.getValue();
+  if (strValue == "" && grp_pop_main.hasClass("status_result")) {
+    scwin.switchView("default");
+  }
+  ;
+};
+btn_move_category_onclick = function () {
+  var _gen_top_category_render = scwin.gVar._gen_top_category_render;
+  if (!_gen_top_category_render) {
+    return;
+  }
+  switch (this.getUserData("userData1")) {
+    case "left":
+      _gen_top_category_render.scrollBy({
+        left: -100,
+        behavior: 'smooth'
+      });
+      break;
+    case "right":
+      _gen_top_category_render.scrollBy({
+        left: 100,
+        behavior: 'smooth'
+      });
+      break;
+    default:
+      break;
+  }
+};
+
+// 예제목록 헤더 추가
+btn_exam_move_category_onclick = function () {
+  var _gen_exam_top_category_render = scwin.gVar._gen_exam_top_category_render;
+  if (!_gen_exam_top_category_render) {
+    return;
+  }
+  switch (this.getUserData("userData1")) {
+    case "left":
+      _gen_exam_top_category_render.scrollBy({
+        left: -100,
+        behavior: 'smooth'
+      });
+      break;
+    case "right":
+      _gen_exam_top_category_render.scrollBy({
+        left: 100,
+        behavior: 'smooth'
+      });
+      break;
+    default:
+      break;
+  }
+};
+}}}]},{T:1,N:'style',A:{type:'text/css'},E:[{T:4,cdata:'.tbcbox.example{position:absolute;top:70px;left:0;right:0;bottom:0}.tbcbox.example>.tbc{height:100%;clip-path:initial;-webkit-clip-path:initial}.tbcbox.example>.tbc::before{display:none}.tbcbox.example>.tbc.w2tabcontrol>.w2tabcontrol_container{border:1px solid var(--ws-gray-300)}.tbcbox.example>.tbc.w2tabcontrol>.w2tabcontrol_container>.w2tabcontrol_contents>.w2tabcontrol_contents_wrapper{padding:0}.wre_sitemap>.box_search{position:static;height:auto}.wre_sitemap>.box_list,.wre_sitemap>.box_result{top:150px}.wre_sitemap .box_sitemap_top_category{display:flex;align-items:center;gap:10px;position:sticky;top:0;left:0;height:50px;padding:0 200px;background-color:#efefef80;backdrop-filter:blur(2px)}.wre_sitemap .gen_top_category{display:flex;align-items:center;gap:10px}.wre_sitemap .gen_top_category .btn_top_category{padding:5px 15px;border-radius:10px;background:#fff;font-size:13px;box-shadow:1px 1px 5px rgba(0,0,0,.3)}.wre_sitemap .box_sitemap_top_category .btn_top_category.on,.wre_sitemap .box_sitemap_top_category .btn_top_category:hover{background:#56a6f8;color:#fff;box-shadow:1px 3px 5px rgba(21,93,252,.3);text-decoration:none}.wre_sitemap .box_sitemap_top_category>div{position:relative;height:100%;padding:0}.wre_sitemap .box_sitemap_top_category>div>span{display:none}.wre_sitemap .box_sitemap_top_category>.btn_move_left,.wre_sitemap .box_sitemap_top_category>.btn_move_right{position:relative;width:18px;height:18px;margin-top:0;padding:3px;border-radius:5px;background:#fff;font-size:11px;text-align:center;box-shadow:1px 1px 5px rgba(0,0,0,.3)}.wre_sitemap .box_sitemap_top_category>.btn_move_left{background:#fff url(../../cm/images/base/ico_tab_left.svg) center no-repeat;background-size:10px;text-indent:-9999px}.wre_sitemap .box_sitemap_top_category>.btn_move_right{background:#fff url(../../cm/images/base/ico_tab_right.svg) center no-repeat;background-size:10px;text-indent:-9999px}'}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'pop_contents wre_sitemap',id:'grp_pop_main',style:'padding:0;'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'box_search'},E:[{T:1,N:'xf:group',A:{id:'',class:'box_search_input'},E:[{T:1,N:'xf:group',A:{id:'',class:'box_input'},E:[{T:1,N:'w2:searchbox',A:{id:'ibx_search_input',placeholder:'메뉴명, 파일명, 키워드로 검색 가능합니다.',enterBlur:'false',style:'height: 30px;','ev:onkeyup':'scwin.ibx_search_input_oneditkeyup','ev:onchange':'scwin.ibx_search_input_onchange'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.btn_search_input_onclick',style:'',id:'btn_search_input',type:'button',class:'btn_exam_search_white type02',title:'검색'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Search'}]}]}]},{T:1,N:'xf:select',A:{appearance:'full',class:'',cols:'',disabled:'','ev:onchange':'scwin.cbx_show_keyword_onchange',id:'cbx_show_keyword',ref:'',renderType:'checkboxgroup',rows:'',selectedindex:'',style:''},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'키워드 보기'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'Y'}]}]}]}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'tbcbox example'},E:[{T:1,N:'w2:tabControl',A:{confirmTrueAction:'exist',confirmFalseAction:'new',useTabKeyOnly:'true',tabScroll:'',useMoveNextTabFocus:'false',useConfirmMessage:'false',alwaysDraw:'true',style:'',id:'tab_results',class:'tbc'},E:[{T:1,N:'w2:tabs',A:{disabled:'false',style:'',id:'tabs1',label:'컴포넌트'}},{T:1,N:'w2:tabs',A:{disabled:'false',style:'',id:'tabs2',label:'예제목록'}},{T:1,N:'w2:tabs',A:{disabled:'false',style:'',id:'tabs3',label:'검색결과'}},{T:1,N:'w2:content',A:{alwaysDraw:'true',style:'',id:'content1'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'box_sitemap_top_category'},E:[{T:1,N:'w2:anchor',A:{outerDiv:'false','ev:onclick':'btn_exam_move_category_onclick',id:'',userData1:'left',class:'btn_move_left'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'<'}]}]},{T:1,N:'w2:generator',A:{style:'',id:'gen_exam_top_category',class:'gen_top_category'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'|',class:''}},{T:1,N:'w2:anchor',A:{outerDiv:'false',style:'',id:'btn_exam_top_category',class:'btn_top_category'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'-'}]}]}]},{T:1,N:'w2:anchor',A:{outerDiv:'false','ev:onclick':'btn_exam_move_category_onclick',id:'',userData1:'right',class:'btn_move_right'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'>'}]}]}]},{T:1,N:'xf:group',A:{id:'grp_exam_sitemap_list',class:'box_list'},E:[{T:1,N:'w2:generator',A:{tagname:'ul',style:'',id:'gen_exam_depth1',class:'minH wre_grp_margin_1depth wre_sitemap_depth1'},E:[{T:1,N:'xf:group',A:{tagname:'li',id:'gen_exam_depth1_li',class:'gen_depth1_list'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'gen_depth1_tit'},E:[{T:1,N:'w2:textbox',A:{tagname:'h3',style:'',id:'tbx_exam_title_depth1',label:'서브타이틀',class:'lbl_title_depth1'}}]},{T:1,N:'w2:generator',A:{tagname:'ul',style:'',id:'gen_exam_depth2',class:'gen_depth2'},E:[{T:1,N:'xf:group',A:{tagname:'li',id:'grp_exam_list_depth2'},E:[{T:1,N:'w2:anchor',A:{outerDiv:'false',style:'',id:'lbl_exam_menu_depth2',class:'wre_sitemap_menu_lbl'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'depth2 label'}]}]}]}]}]}]}]}]},{T:1,N:'w2:content',A:{alwaysDraw:'true',style:'',id:'content2'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'box_sitemap_top_category'},E:[{T:1,N:'w2:anchor',A:{outerDiv:'false','ev:onclick':'btn_move_category_onclick',id:'',userData1:'left',class:'btn_move_left'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'<'}]}]},{T:1,N:'w2:generator',A:{style:'',id:'gen_top_category',class:'gen_top_category'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'|',class:''}},{T:1,N:'w2:anchor',A:{outerDiv:'false',style:'',id:'btn_top_category',class:'btn_top_category'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'-'}]}]}]},{T:1,N:'w2:anchor',A:{outerDiv:'false','ev:onclick':'btn_move_category_onclick',id:'',userData1:'right',class:'btn_move_right'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'>'}]}]}]},{T:1,N:'xf:group',A:{id:'grp_sitemap_list',class:'box_list'},E:[{T:1,N:'w2:generator',A:{tagname:'ul',style:'',id:'gen_depth1',class:'minH wre_grp_margin_1depth wre_sitemap_depth1'},E:[{T:1,N:'xf:group',A:{tagname:'li',id:'gen_depth1_li',class:'gen_depth1_list'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'gen_depth1_tit'},E:[{T:1,N:'w2:textbox',A:{tagname:'h3',style:'',id:'tbx_title_depth1',label:'서브타이틀',class:'lbl_title_depth1'}}]},{T:1,N:'w2:generator',A:{tagname:'ul',style:'',id:'gen_depth2',class:'gen_depth2'},E:[{T:1,N:'xf:group',A:{tagname:'li',id:'grp_list_depth2'},E:[{T:1,N:'w2:anchor',A:{outerDiv:'false',style:'',id:'lbl_menu_depth2',class:'wre_sitemap_menu_lbl'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'depth2 label'}]}]}]}]}]}]}]}]},{T:1,N:'w2:content',A:{alwaysDraw:'true',style:'',id:'content3'},E:[{T:1,N:'xf:group',A:{style:'',id:'grp_sitemap_result',class:'box_result hide'},E:[{T:1,N:'xf:group',A:{tagname:'ul',style:'',id:'',class:'minH wre_grp_margin_1depth wre_sitemap_depth1'},E:[{T:1,N:'xf:group',A:{tagname:'li',style:'',id:'',class:'gen_depth1_list'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'gen_depth1_tit'},E:[{T:1,N:'w2:textbox',A:{tagname:'h3',style:'',id:'tbx_result_title',label:'서브타이틀',class:'lbl_title_depth1',escape:'false'}}]},{T:1,N:'w2:generator',A:{tagname:'ul',style:'',id:'gen_result_ul',class:'gen_depth2'},E:[{T:1,N:'xf:group',A:{tagname:'li',style:'',id:'grp_result_li'},E:[{T:1,N:'w2:anchor',A:{outerDiv:'false',style:'',id:'lbl_result_menu',class:'wre_sitemap_menu_lbl',escape:'false'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'depth2 label'}]}]},{T:1,N:'w2:textbox',A:{id:'tbx_result_path',class:'wre_sitemap_result_path',escape:'false'}},{T:1,N:'w2:textbox',A:{id:'tbx_result_keyword',class:'wre_sitemap_grd_keyword',escape:'false'}}]}]}]}]}]}]}]}]}]}]}]}]})

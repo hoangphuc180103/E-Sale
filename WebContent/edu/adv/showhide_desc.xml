@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제] show/hide tableLayout 동적표현 설명">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"></w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+ ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+
+    	<xf:group class="ws_example_grp_desc" id="" style="">
+    		<xf:group class="" id="" style="" tagname="details">
+    			<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    			<w2:textbox class="" escape="false" id=""
+    				label="API를 활용하여 영역을 보이기/숨기기 처리"
+    				style="">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group class="" id="" style="" tagname="details">
+    			<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    			<w2:textbox class="" escape="false" id=""
+    				label='1. Design Kit 를 활용하여 TableLayout을 추가합니다.&lt;br/&gt;2. TableLayout 컴포넌트를 편집합니다.&lt;br/&gt;&lt;br/&gt; &amp;nbsp; TableLayout 컴포넌트에 id를을 작성합니다. (id : ui_table)&lt;br/&gt; &amp;nbsp; TableLayout의 행영역(tr)에 id를을 작성합니다. (id : ui_tr1)&lt;br/&gt; &amp;nbsp; TableLayout의 제목영역(th)에 텍스트를 작성합니다. (첫째줄)&lt;br/&gt; &amp;nbsp; TableLayout의 body영역(td)에 컴포넌트를 작성합니다. (inputBox 컴포넌트)&lt;br/&gt; &amp;nbsp; &lt;br/&gt; &amp;nbsp; 웹스퀘어에서는 F2 단축키 선택시 선택영역 기준으로 상위(부모)영역이 선택됩니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp;ex) TableLayout 컴포넌트에서 셀(th, td등) 선택 후 F2 단축키 선택 해당 줄(tr)이 선택됩니다.&lt;br/&gt; &amp;nbsp;&lt;br/&gt;3. 테이블 보여주기 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_table.show("");&lt;br/&gt;4. 테이블 숨기기 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_table.hide(); &amp;nbsp;&lt;br/&gt;5. 첫번째 줄 보임 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_tr1.show("");&lt;br/&gt;6. 첫번째 줄 숨김 버튼에 onClick 이벤트&lt;br/&gt; &amp;nbsp; ui_tr1.hide(); &amp;nbsp;'
+    				style="">
+    			</w2:textbox>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

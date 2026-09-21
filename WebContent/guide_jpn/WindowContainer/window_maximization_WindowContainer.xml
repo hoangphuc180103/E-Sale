@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {		
+        windowContainer1.createWindow( "_Window 01_", null, null);
+        windowContainer1.createWindow( "_Window 02_", null, null);
+        windowContainer1.createWindow( "_Window 03_", null, null);
+        windowContainer1.setArrangeWindows("vertical");
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ウィンドウの最大化" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='（方法 1）&lt;br/&gt;1-1. Windows 右上の最大化ボタンクリック。&lt;br/&gt;1-2. Windows 最大化されるもの確認。&lt;br/&gt;&lt;br/&gt;（方法 2）&lt;br/&gt;2-1. 各 Windows 上の Windows タイルダブルクリック。&lt;br/&gt;2-2. 該当 Windows 最大化されるもの確認。' escape="false">
+    	</w2:textbox><w2:windowContainer sequentialArrangeColNum="" sequentialArrangeRowNum="" fixArrangeFullScreen="false" useFixButton="false" windowAutoResize="false" verticalArrangeNum="2" windowMaxNum="5" useCloseButton="false" controlIconPosition="left" stopMinimizeOnNameLayer="false" toolbarPosition="bottom" windowMaximizeAll="false" id="windowContainer1" useStatusMsg="true" hideTitleOnMaximize="false" spaInitCount="0" stopToggleOnLast="false" useNameContainer="false" horizontalArrangeNum="2" useCustomMsg="false" autoArrange="true" useControlIconTitle="false" tooltipDisplay="true" tooltipGroupClass="false" windowTooltipDisplay="true" style="position: relative;height: 300px;border: gray solid 1px;">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer></xf:group></body>
+</html>

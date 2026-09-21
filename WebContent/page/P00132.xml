@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[InputCalendar] 캘린더의 날짜 비활성화 하기 - 지정한 날짜 이전/이후">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221014" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    scwin.setInitPage();
+};
+
+/**
+ * 화면 초기화
+ */
+scwin.setInitPage = function () {
+    var strDate;
+
+    //서버에서 오늘 날짜 반환 받기.
+    strDate = $p.getCurrentServerDate("yyyyMMdd");
+
+    //inputCalendar에 오늘 날짜 할당.
+    ica_exam_1.setValue(strDate);
+    ica_exam_2.setValue(strDate);
+};
+
+/**
+ * 버튼 [오늘 이전 날짜 비활성화] 클릭 시 호출
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var strDate;
+
+    //서버에서 오늘 날짜 반환 받기.
+    strDate = $p.getCurrentServerDate("yyyyMMdd");
+
+    //inputCalendar "ica_exam_1"에 지정일 이전 날짜 비활성화하기
+    ica_exam_1.disableBeforeDate(strDate);
+};
+
+/**
+ * 버튼 [오늘 이후 날짜 비활성화] 클릭 시 호출
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var strDate;
+
+    //서버에서 오늘 날짜 반환 받기.
+    strDate = $p.getCurrentServerDate("yyyyMMdd");
+
+    //inputCalendar "ica_exam_2"에 지정일 이후 날짜 비활성화하기
+    ica_exam_2.disableAfterDate(strDate);
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label='InputCalendar의 캘린더에 특정 날짜의 이전 또는 이후 날짜들을 비활성화하는 예제입니다.'
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="캘린더의 날짜 비활성화화기 - &amp;nbsp;지정일 이전" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" id="ica_exam_1" renderDiv="true"
+							rightAlign="false" style="width:110px;min-height: 24px;" class="mr_def">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style="" type="button">
+							<xf:label><![CDATA[오늘 이전 날짜 비활성화]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="캘린더의 날짜 비활성화화기 - &amp;nbsp;지정일 이후" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" id="ica_exam_2" renderDiv="true"
+							rightAlign="false" style="width:110px;min-height: 24px;" class="mr_def">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" style="" type="button">
+							<xf:label><![CDATA[오늘 이후 날짜 비활성화]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

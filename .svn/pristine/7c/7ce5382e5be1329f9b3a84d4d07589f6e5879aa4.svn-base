@@ -1,0 +1,43 @@
+/*amd /guide_jpn/GridView/_General/setDataType_getDataType_GridView.xml 5413 33053cdcce5f2d4b42344224e0d0eac7596b15b06d8d6ae427e11c9420f0a977 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'col1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'col2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'col3',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var jsonData = [{
+    "col1": "1111",
+    "col2": "2222",
+    "col3": "3333"
+  }, {
+    "col1": "2222",
+    "col2": "4444",
+    "col3": "6666"
+  }, {
+    "col1": "1111",
+    "col2": "2222",
+    "col3": "3333"
+  }, {
+    "col1": "2222",
+    "col2": "4444",
+    "col3": "6666"
+  }, {
+    "col1": "1111",
+    "col2": "2222",
+    "col3": "3333"
+  }, {
+    "col1": "2222",
+    "col2": "4444",
+    "col3": "6666"
+  }];
+  dataList1.setJSON(jsonData);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  gridView1.setDataType("col1", "float");
+};
+scwin.trigger3_onclick = function (e) {
+  gridView1.setDataType("col2", "number");
+};
+scwin.trigger2_onclick = function (e) {
+  var first = gridView1.getDataType("col1");
+  var second = gridView1.getDataType("col2");
+  var third = gridView1.getDataType("col3");
+  alert("col1 : " + first + " , col2 : " + second + " , col3 : " + third + " ");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'各列の dataType 設定',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 3番目のgetDataType()ボタンをクリックして、各列のdataTypeを確認します。 <br/>2. 最初と2番目のsetDataType()ボタンをクリックして各列のdataTypeを設定します。 &nbsp;<br/>3. もう一度3番目のgetDataType()ボタンをクリックして、各列のdataTypeを確認します。 <br/>（詳細なスクリプトは Script タブで確認。）',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;margin-right: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.setDataType("col1", "float");'}]}]},{T:1,N:'xf:trigger',A:{style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;margin-right: 10px;',id:'trigger3',type:'button','ev:onclick':'scwin.trigger3_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.setDataType("col2", "number");'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'getDataType()'}]}]},{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',rowStatusVisible:'false',rowNumVisible:'true',dataList:'data:dataList1',style:'border: solid 1px gray;visiblerow',scrollByColumn:'false',id:'gridView1',defaultCellHeight:'20',visibleRowNum:'6',visibleRowNumFix:'true',autoFit:'allColumn'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{columnClass:'',width:'',style:'',id:'header1',class:''},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{removeBorderStyle:'false',width:'150',inputType:'text',style:'height:40px;color:blue;',id:'column3',value:'col1',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{removeBorderStyle:'false',width:'150',inputType:'text',style:'height:40px;color:blue;',id:'column2',value:'col2',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{removeBorderStyle:'false',width:'150',inputType:'text',style:'height:40px;color:blue;',id:'column1',value:'col3',blockSelect:'false',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{removeBorderStyle:'false',dataType:'text',width:'70',inputType:'text',style:'height:20px',id:'col1',value:'',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{removeBorderStyle:'false',dataType:'text',width:'70',inputType:'text',style:'height:20px',id:'col2',value:'',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{removeBorderStyle:'false',dataType:'text',width:'70',inputType:'text',style:'height:20px',id:'col3',value:'',blockSelect:'false',displayMode:'label'}}]}]}]}]}]}]}]})

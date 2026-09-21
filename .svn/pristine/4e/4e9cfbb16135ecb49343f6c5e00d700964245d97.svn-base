@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<WebSquare>
+<component>
+<Information>
+<componentID value="_frame_udc_example_viewer"/>
+<buildName value=""/>
+<componentType value="pageComponent"/>
+<componentDesc value=""/>
+<displaySrc value="/frame/udc/example_viewer.xml"/>
+</Information>
+<properties>
+<property>
+<componentID value="_frame_udc_example_viewer"/>
+<LineNo value="-1"/>
+<name value="style"/>
+<propertyType value="string"/>
+<bindparent value=""/>
+<description>desc</description>
+<options value=""/>
+<necessary value="N"/>
+<descSummary value="desc"/>
+</property>
+<property>
+<componentID value="_frame_udc_example_viewer"/>
+<LineNo value="-1"/>
+<name value="class"/>
+<propertyType value="string"/>
+<bindparent value=""/>
+<description>desc</description>
+<options value=""/>
+<necessary value="N"/>
+<descSummary value="desc"/>
+</property>
+<property>
+<componentID value="_frame_udc_example_viewer"/>
+<LineNo value="-1"/>
+<name value="id"/>
+<propertyType value="string"/>
+<bindparent value=""/>
+<description>컴포넌트의 ID</description>
+<options value=""/>
+<necessary value="N"/>
+<descSummary value="컴포넌트의 ID"/>
+</property>
+<property>
+<componentID value="_frame_udc_example_viewer"/>
+<LineNo value="-1"/>
+<name value="openExampleView"/>
+<propertyType value="combobox"/>
+<bindparent value=""/>
+<description>[default:true,false] 실행된 예제를 확장 또는 축소한다. true: 확장 상태, false:축소 상태.</description>
+<options value="[true,false]"/>
+<necessary value="N"/>
+<descSummary value="[default:true,false] 실행된 예제를 확장 또는 축소한다"/>
+</property>
+<property>
+<componentID value="_frame_udc_example_viewer"/>
+<LineNo value="-1"/>
+<name value="openSourceView"/>
+<propertyType value="combobox"/>
+<bindparent value=""/>
+<description>[default:true,false] 소스보기를 확장 또는 축소한다. true: 확장 상태, false:축소 상태.</description>
+<options value="[true,false]"/>
+<necessary value="N"/>
+<descSummary value="[default:true,false] 소스보기를 확장 또는 축소한다"/>
+</property>
+</properties>
+<methods>
+<method>
+<samples index="0"/>
+<componentID value="_frame_udc_example_viewer"/>
+<LineNo value="-1"/>
+<name value="init"/>
+<cdate/>
+<version value=""/>
+<author value=""/>
+<description>메뉴 데이터를 기반으로 예제 미리보기, 소스보기를 초기화한다.</description>
+<exception value=""/>
+<skinAttr value=""/>
+<hidden value="N"/>
+<deprecated/>
+<descSummary value="메뉴 데이터를 기반으로 예제 미리보기, 소스보기를 초기화한다"/>
+<params index="1">
+<param description="메뉴 데이터" index="0" name="argMenuData" necessary="Y" type="string|json"/>
+</params>
+<returns index="0"/>
+</method>
+</methods>
+<children/>
+</component>
+</WebSquare>

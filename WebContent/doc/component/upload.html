@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>Upload</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_f642a05313d1eae2" class="chapter_title">Upload</h1>
+		<h1 id="r_989ff707ea7ab704" class="element heading1"
+			data-element-id="989ff707ea7ab704">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_54ca48f1d2b12f95" class="element normal"
+			data-element-id="54ca48f1d2b12f95">Upload 컴포넌트는 사용자가 로컬 시스템에서 서버로
+			단일 파일을 업로드할 수 있는 기능을 제공합니다. 단일 파일 업로드에 최적화된 구조를 가지고 있으며, MultiUpload
+			컴포넌트와는 다르게 한 번에 하나의 파일만 업로드할 수 있도록 설계되었습니다. 직관적인 인터페이스를 통해 사용자는 쉽게
+			파일을 선택하고 업로드할 수 있으며, 개발자는 다양한 속성과 이벤트를 활용하여 업로드 프로세스를 세밀하게 제어할 수
+			있습니다.</p>
+		<p id="r_99d0a0ac8eb06b80" class="element normal"
+			data-element-id="99d0a0ac8eb06b80">Upload 컴포넌트는 사용자 인터페이스가 간결하고
+			직관적이어야 하는 상황에서 특히 유용합니다. 여러 파일을 동시에 업로드해야 하는 복잡한 시나리오에서는 MultiUpload
+			컴포넌트를 대신 사용하는 것이 좋습니다.</p>
+		<dl id="r_feef73fd19811584" class="element definition_list"
+			data-element-id="feef73fd19811584">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2Cko8W5beHHOi79JJGWSmz">Upload
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_e23d1903518954c5" class="element heading1"
+			data-element-id="e23d1903518954c5">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_fbc8d7a3bcfbd464" class="element normal"
+			data-element-id="fbc8d7a3bcfbd464">Upload 컴포넌트는 다음과 같은 용도로 활용될 수
+			있습니다:</p>
+		<dl id="r_11f2534a5e921979" class="element definition_list"
+			data-element-id="11f2534a5e921979">
+			<dt>
+				<strong>단일 파일 업로드</strong>
+			</dt>
+			<dd>
+				<p>MultiUpload 컴포넌트와 달리 한 번에 하나의 파일만 업로드할 수 있는 상황에 적합합니다.</p>
+			</dd>
+			<dt>
+				<strong>사용자 프로필 이미지 업로드</strong>
+			</dt>
+			<dd>
+				<p>사용자가 프로필 사진을 변경할 때 사용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>게시판 파일 첨부</strong>
+			</dt>
+			<dd>
+				<p>게시물 작성 시 이미지, 문서 등 다양한 파일을 첨부할 때 사용됩니다.</p>
+			</dd>
+			<dt>
+				<strong>문서 제출 시스템</strong>
+			</dt>
+			<dd>
+				<p>이력서, 신청서 등의 단일 문서를 제출하는 경우에 활용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>단순한 파일 공유</strong>
+			</dt>
+			<dd>
+				<p>복잡한 다중 파일 업로드 기능이 필요하지 않은 간단한 파일 공유 기능에 적합합니다.</p>
+			</dd>
+			<dt>
+				<strong>포맷 제한 업로드</strong>
+			</dt>
+			<dd>
+				<p>특정 파일 형식만 업로드를 허용해야 하는 경우 사용됩니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_57553d200c5315c0" class="element heading1"
+			data-element-id="57553d200c5315c0">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_c6209abee448c31f" class="element unordered_list"
+			data-element-id="c6209abee448c31f">
+			<li><p>
+					최대 업로드 용량 제한 –
+					<code>subSize</code>
+				</p></li>
+			<li><p>파일 탐색창 열기</p>
+				<ul>
+					<li><p>
+							입력창을 클릭해서 파일 탐색기 열기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Upload/clickOpenFileDialog_Upload.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/D3PiExLa9X4">YouTube</a>)
+						</p></li>
+					<li><p>
+							함수를 사용하여 파일 탐색기 열기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Upload/openFileDialog_Upload.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Hqf9A7mc2JQ">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

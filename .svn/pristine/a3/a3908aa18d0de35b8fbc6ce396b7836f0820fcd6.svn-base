@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>AutoComplete</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_2f6d11b68f027453" class="chapter_title">AutoComplete</h1>
+		<h1 id="r_aa836ff9da822139" class="element heading1"
+			data-element-id="aa836ff9da822139">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_704e840d4c6bf06f" class="element normal"
+			data-element-id="704e840d4c6bf06f">AutoComplete 컴포넌트는 웹스퀘어 AI에서
+			제공하는 입력 보조형 UI 컴포넌트입니다. 기본적으로 SelectBox의 기능을 확장한 형태이며, 사용자가 텍스트를 입력하면
+			해당 키워드를 기반으로 관련된 항목을 자동으로 검색하고 추천 목록을 표시합니다. 이를 통해 입력의 편의성과 정확도를 높일 수
+			있으며, 특히 대규모 데이터 항목 중에서 빠르게 원하는 값을 선택할 수 있는 환경을 제공합니다.</p>
+		<dl id="r_22a4e13fc534b858" class="element definition_list"
+			data-element-id="22a4e13fc534b858">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb001wZO87T-kbHItJ3lkIbn">AutoComplete
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb0wJ0b_Y7e4BMrzcOGT-fTl">AutoComplete
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_b0099c7f9490947e" class="element heading1"
+			data-element-id="b0099c7f9490947e">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_8c13b643a4a49909" class="element normal"
+			data-element-id="8c13b643a4a49909">AutoComplete 컴포넌트는 다음과 같은 상황에서
+			유용하게 사용됩니다.</p>
+		<dl id="r_c4d0b7c1516aff4b" class="element definition_list"
+			data-element-id="c4d0b7c1516aff4b">
+			<dt>
+				<strong>검색 기능</strong>
+			</dt>
+			<dd>
+				<p>사용자가 검색어를 입력할 때 관련 검색어나 추천 검색어를 실시간으로 제공하고자 할 때 사용합니다. 포털
+					사이트의 검색창과 같이 사용자가 몇 글자만 입력해도 연관 검색어를 즉시 제안받을 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>대용량 데이터 선택</strong>
+			</dt>
+			<dd>
+				<p>수백 개 이상의 항목 중에서 선택해야 하는 경우, 모든 항목을 나열하는 대신 사용자가 입력한 텍스트와 관련된
+					항목만 필터링하여 보여줌으로써 선택 과정을 간소화합니다.</p>
+			</dd>
+			<dt>
+				<strong>주소 입력</strong>
+			</dt>
+			<dd>
+				<p>도시명, 도로명, 우편번호 등 주소 정보를 입력할 때 사용자가 일부만 입력해도 관련된 주소 정보를 자동으로
+					제안받을 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>코드 입력</strong>
+			</dt>
+			<dd>
+				<p>제품 코드, 참조 번호 등 정확한 코드를 입력해야 하는 경우, 사용자의 부분 입력을 바탕으로 일치하는 코드
+					목록을 제공하여 정확성을 높입니다.</p>
+			</dd>
+			<dt>
+				<strong>다국어 지원</strong>
+			</dt>
+			<dd>
+				<p>다양한 언어로 된 데이터를 처리할 때 사용자의 입력에 맞춰 관련 항목을 표시함으로써 언어 장벽을 줄이는 데
+					도움이 됩니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_1f0c7caeb5093851" class="element heading1"
+			data-element-id="1f0c7caeb5093851">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_b7af8f4ea819a78f" class="element unordered_list"
+			data-element-id="b7af8f4ea819a78f">
+			<li><p>선택 항목 설정</p>
+				<ul>
+					<li><p>
+							직접 입력 (<a class="link" href="https://youtu.be/x40RQUFAS3c">YouTube</a>)
+						</p></li>
+					<li><p>
+							DataList와 바인딩 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00249.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/BindItemSet_allOption_chooseOption_chooseOptionLabel_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/ErLyI5k1OGs">YouTube</a>)
+						</p></li>
+					<li><p>
+							최초 로딩 시 또는 스크립트로 빈 항목 표시하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00423.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							선택 안내 메시지 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/showChooseOption_changeChooseOption_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Hz_tUrOeOsY">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					Label 및 Value 표시 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00250.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							Label 및 Value 표시 방법 정적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/displayMode_delimiter_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/lM0VvDGoYHI">YouTube</a>)
+						</p></li>
+					<li><p>
+							Label 및 Value 표시 방법 동적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/setDisplayMode_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/S0G_wQvhRNI">YouTube</a>)
+						</p></li>
+					<li><p>
+							편집 모드에서 displayMode 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/displayModeSync_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/T8EQL5WLlT8">YouTube</a>)
+						</p></li>
+					<li><p>
+							구분자 동적 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/setDelimiter_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/BT4_i12AfvQ">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>검색</p>
+				<ul>
+					<li><p>
+							대소문자 구분 검색 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00064.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/caseSensitive_search_useKeywordHighlight_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/C1t_972BIrU">YouTube</a>)
+						</p></li>
+					<li><p>
+							대소문자를 구분하지 않고 검색하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00063.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							검색어의 일치 조건 지정하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00066.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							GridViewItemset과 바인딩 시 여러 컬럼의 검색 지원 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/searchTargetItemColumns_AutoComplete.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>편집 모드</p>
+				<ul>
+					<li><p>
+							편집 모드 전환 시 입력 필드의 문자열 편집 유형 설정하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00422.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							편집 모드 전환 이벤트 설정하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00421.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							편집 모드 진입 시 목록 표시하지 않기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00424.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>항목 제어하기</p>
+				<ul>
+					<li><p>
+							일부 선택 항목 숨기기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00071.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/visibleColumn_visibleColumnFalseValue_setVisibleColumn_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/tw5OYIVIRHQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							일부 선택 항목을 비활성화하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00065.xml">WRE</a>)
+						</p>
+						<ul>
+							<li><p>
+									정적으로 비활성화하기 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/enableColumn_enableColumnFalseValue_AutoComplete.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/7jwLEOi3GY4">YouTube</a>)
+								</p></li>
+							<li><p>
+									동적으로 비활성화하기 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/setEnableColumn_AutoComplete.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/XjwoYsUlGLs">YouTube</a>)
+								</p></li>
+						</ul></li>
+				</ul></li>
+			<li><p>입력 검증</p>
+				<ul>
+					<li><p>
+							데이터 입력 여부 검증 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00263.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/validate_mandatory_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/xYWDzyqORV8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>포커스 이동</p>
+				<ul>
+					<li><p>
+							포커스 자동 이동 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00197.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/autoFocus_nextTabID_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/hlmFVdkh060">YouTube</a>)
+						</p></li>
+					<li><p>
+							Enter 키를 통한 자동 포커스 이동 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/nextTabByEnter_nextTabID_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/r3KLpDW8US0">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							선택된 항목의 정보 반환받기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00273.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							선택 항목 목록의 화살표 표시/숨김 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/appearance_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/j2cmkGw-rUE">YouTube</a>)
+						</p></li>
+					<li><p>
+							마우스 휠 스크롤링 제어 (<a class="link"
+								href="https://youtu.be/Fk_COS9_dOk">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 키 동작 방지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00070.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/preventKeyList_AutoComplete.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/r3KLpDW8US0">YouTube</a>)
+						</p></li>
+					<li><p>
+							목록에 없는 값의 처리 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/valueNotInList_AutoComplete.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_c0539140f6cf1004" class="element heading1"
+			data-element-id="c0539140f6cf1004">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_756ab1290fec9fcd" class="element unordered_list"
+			data-element-id="756ab1290fec9fcd">
+			<li><p>
+					<code>onbeforeselect</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/onbeforeselect_AutoComplete.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/ClwsiP_mhyU">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>onchange</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00251.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/onchange_AutoComplete.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/5DPn3dtn-vw">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>oneditenter</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00067.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/oneditenter_AutoComplete.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/kgEMTm3MJG8">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>oneditkeyup</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00068.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/oneditkeyup_AutoComplete.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/jS5FuFdu7eo">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>onitemclick</code>
+					&amp;
+					<code>onselected</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/onselected_AutoComplete.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/VHDKqxpuCzk">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>onviewechange</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00251.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/AutoComplete/onviewchange_AutoComplete.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/PTQJSjjumi4">YouTube</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_c8506ad59413feb3" class="element heading1"
+			data-element-id="c8506ad59413feb3">
+			<div class="r_heading_inner">
+				<span class="heading1_n">5</span><span>AutoComplete vs.
+					SelectBox</span>
+			</div>
+		</h1>
+		<p id="r_5a40808c7183b76e" class="element normal"
+			data-element-id="5a40808c7183b76e">
+			AutoComplete와 SelectBox는 모두 선택 항목을 목록 형태로 제공하는 컴포넌트이지만, 몇 가지 주요 차이점이
+			있습니다. (<a class="link" href="https://youtu.be/j7CPUsTpO-c">YouTube</a>)
+		</p>
+		<dl id="r_ed70ada71c833a26" class="element definition_list"
+			data-element-id="ed70ada71c833a26">
+			<dt>
+				<strong>공통점</strong>
+			</dt>
+			<dd>
+				<p>콤보 박스 형태로 선택 항목을 표시합니다.</p>
+				<p>사용자는 단일 항목만 선택할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<dl id="r_1ec70c77feb9ff5b" class="element definition_list"
+			data-element-id="1ec70c77feb9ff5b">
+			<dt>차이점</dt>
+			<dd>
+				<p>AutoComplete는 검색 기능을 제공합니다.</p>
+				<p>사용자가 키워드 입력 시 해당 키워드를 포함하는 항목만 필터링하여 표시합니다.</p>
+				<p>대소문자 구분, 키워드 강조 등의 추가 기능을 제공합니다.</p>
+			</dd>
+		</dl>
+	</div>
+</body>
+</html>

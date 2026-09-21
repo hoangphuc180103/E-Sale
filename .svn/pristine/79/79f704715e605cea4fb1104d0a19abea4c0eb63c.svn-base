@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 동적 셀 병합 비교 - 방식과 성능 비교">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220706" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="DataList 'dlt_member'의 데이터가 변경되고, 이에 따른 스크립트와 GridView 설정이 수정되었습니다." meta_date="20240627" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_member" saveRemovedData="true" ev:ondataload="scwin.dlt_member_ondataload">
+					<w2:columnInfo>
+						<w2:column id="EMP_CD" name="사번" dataType="text"></w2:column>
+						<w2:column id="EMP_NM" name="성명" dataType="text"></w2:column>
+						<w2:column id="TYPE_A" name="타입 A" dataType="text"></w2:column>
+						<w2:column id="TYPE_B" name="타입 B" dataType="text"></w2:column>
+						<w2:column id="TYPE_C" name="타입 C" dataType="text"></w2:column>
+						<w2:column id="TYPE_D" name="타입 D" dataType="text"></w2:column>
+						<w2:column id="EMAIL" name="이메일" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_statistic" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category1" name="대분류"></w2:column>
+						<w2:column dataType="text" id="category2" name="중분류"></w2:column>
+						<w2:column dataType="text" id="row3_1" name="1월"></w2:column>
+						<w2:column dataType="text" id="row3_2" name="2월"></w2:column>
+						<w2:column dataType="text" id="row3_3" name="3월"></w2:column>
+						<w2:column dataType="text" id="row3_4" name="4월"></w2:column>
+						<w2:column dataType="text" id="row3_5" name="5월"></w2:column>
+						<w2:column dataType="text" id="row3_6" name="6월"></w2:column>
+						<w2:column dataType="text" id="row3_7" name="7월"></w2:column>
+						<w2:column dataType="text" id="row3_8" name="8월"></w2:column>
+						<w2:column dataType="text" id="row3_9" name="9월"></w2:column>
+						<w2:column dataType="text" id="row3_10" name="10월"></w2:column>
+						<w2:column dataType="text" id="row3_11" name="11월"></w2:column>
+						<w2:column dataType="text" id="row3_12" name="12월"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<category1><![CDATA[GROUP 1]]></category1>
+							<category2><![CDATA[GROUP 1-1]]></category2>
+							<row3_1><![CDATA[100]]></row3_1>
+							<row3_2><![CDATA[100]]></row3_2>
+							<row3_3><![CDATA[200]]></row3_3>
+							<row3_4><![CDATA[100]]></row3_4>
+							<row3_5><![CDATA[300]]></row3_5>
+							<row3_6><![CDATA[300]]></row3_6>
+							<row3_7><![CDATA[100]]></row3_7>
+							<row3_8><![CDATA[100]]></row3_8>
+							<row3_9><![CDATA[400]]></row3_9>
+							<row3_10><![CDATA[400]]></row3_10>
+							<row3_11><![CDATA[400]]></row3_11>
+							<row3_12><![CDATA[100]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 1]]></category1>
+							<category2><![CDATA[GROUP 1-1]]></category2>
+							<row3_1><![CDATA[300]]></row3_1>
+							<row3_2><![CDATA[200]]></row3_2>
+							<row3_3><![CDATA[200]]></row3_3>
+							<row3_4><![CDATA[100]]></row3_4>
+							<row3_5><![CDATA[100]]></row3_5>
+							<row3_6><![CDATA[200]]></row3_6>
+							<row3_7><![CDATA[200]]></row3_7>
+							<row3_8><![CDATA[200]]></row3_8>
+							<row3_9><![CDATA[100]]></row3_9>
+							<row3_10><![CDATA[200]]></row3_10>
+							<row3_11><![CDATA[100]]></row3_11>
+							<row3_12><![CDATA[300]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 1]]></category1>
+							<category2><![CDATA[GROUP 1-1]]></category2>
+							<row3_1><![CDATA[300]]></row3_1>
+							<row3_2><![CDATA[300]]></row3_2>
+							<row3_3><![CDATA[300]]></row3_3>
+							<row3_4><![CDATA[200]]></row3_4>
+							<row3_5><![CDATA[100]]></row3_5>
+							<row3_6><![CDATA[200]]></row3_6>
+							<row3_7><![CDATA[300]]></row3_7>
+							<row3_8><![CDATA[300]]></row3_8>
+							<row3_9><![CDATA[300]]></row3_9>
+							<row3_10><![CDATA[300]]></row3_10>
+							<row3_11><![CDATA[300]]></row3_11>
+							<row3_12><![CDATA[300]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 1]]></category1>
+							<category2><![CDATA[GROUP 1-2]]></category2>
+							<row3_1><![CDATA[400]]></row3_1>
+							<row3_2><![CDATA[100]]></row3_2>
+							<row3_3><![CDATA[200]]></row3_3>
+							<row3_4><![CDATA[100]]></row3_4>
+							<row3_5><![CDATA[300]]></row3_5>
+							<row3_6><![CDATA[400]]></row3_6>
+							<row3_7><![CDATA[400]]></row3_7>
+							<row3_8><![CDATA[400]]></row3_8>
+							<row3_9><![CDATA[400]]></row3_9>
+							<row3_10><![CDATA[400]]></row3_10>
+							<row3_11><![CDATA[400]]></row3_11>
+							<row3_12><![CDATA[400]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 1]]></category1>
+							<category2><![CDATA[GROUP 1-2]]></category2>
+							<row3_1><![CDATA[500]]></row3_1>
+							<row3_2><![CDATA[200]]></row3_2>
+							<row3_3><![CDATA[200]]></row3_3>
+							<row3_4><![CDATA[500]]></row3_4>
+							<row3_5><![CDATA[500]]></row3_5>
+							<row3_6><![CDATA[500]]></row3_6>
+							<row3_7><![CDATA[500]]></row3_7>
+							<row3_8><![CDATA[500]]></row3_8>
+							<row3_9><![CDATA[500]]></row3_9>
+							<row3_10><![CDATA[500]]></row3_10>
+							<row3_11><![CDATA[500]]></row3_11>
+							<row3_12><![CDATA[500]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 2]]></category1>
+							<category2><![CDATA[GROUP 2-1]]></category2>
+							<row3_1><![CDATA[600]]></row3_1>
+							<row3_2><![CDATA[600]]></row3_2>
+							<row3_3><![CDATA[100]]></row3_3>
+							<row3_4><![CDATA[700]]></row3_4>
+							<row3_5><![CDATA[600]]></row3_5>
+							<row3_6><![CDATA[300]]></row3_6>
+							<row3_7><![CDATA[300]]></row3_7>
+							<row3_8><![CDATA[300]]></row3_8>
+							<row3_9><![CDATA[600]]></row3_9>
+							<row3_10><![CDATA[400]]></row3_10>
+							<row3_11><![CDATA[100]]></row3_11>
+							<row3_12><![CDATA[600]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 2]]></category1>
+							<category2><![CDATA[GROUP 2-1]]></category2>
+							<row3_1><![CDATA[100]]></row3_1>
+							<row3_2><![CDATA[200]]></row3_2>
+							<row3_3><![CDATA[100]]></row3_3>
+							<row3_4><![CDATA[800]]></row3_4>
+							<row3_5><![CDATA[700]]></row3_5>
+							<row3_6><![CDATA[100]]></row3_6>
+							<row3_7><![CDATA[200]]></row3_7>
+							<row3_8><![CDATA[100]]></row3_8>
+							<row3_9><![CDATA[700]]></row3_9>
+							<row3_10><![CDATA[100]]></row3_10>
+							<row3_11><![CDATA[300]]></row3_11>
+							<row3_12><![CDATA[700]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 2]]></category1>
+							<category2><![CDATA[GROUP 2-2]]></category2>
+							<row3_1><![CDATA[300]]></row3_1>
+							<row3_2><![CDATA[300]]></row3_2>
+							<row3_3><![CDATA[300]]></row3_3>
+							<row3_4><![CDATA[800]]></row3_4>
+							<row3_5><![CDATA[800]]></row3_5>
+							<row3_6><![CDATA[500]]></row3_6>
+							<row3_7><![CDATA[500]]></row3_7>
+							<row3_8><![CDATA[800]]></row3_8>
+							<row3_9><![CDATA[900]]></row3_9>
+							<row3_10><![CDATA[900]]></row3_10>
+							<row3_11><![CDATA[800]]></row3_11>
+							<row3_12><![CDATA[800]]></row3_12>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[GROUP 2]]></category1>
+							<category2><![CDATA[GROUP 2-2]]></category2>
+							<row3_1><![CDATA[300]]></row3_1>
+							<row3_2><![CDATA[500]]></row3_2>
+							<row3_3><![CDATA[200]]></row3_3>
+							<row3_4><![CDATA[800]]></row3_4>
+							<row3_5><![CDATA[300]]></row3_5>
+							<row3_6><![CDATA[300]]></row3_6>
+							<row3_7><![CDATA[600]]></row3_7>
+							<row3_8><![CDATA[400]]></row3_8>
+							<row3_9><![CDATA[900]]></row3_9>
+							<row3_10><![CDATA[200]]></row3_10>
+							<row3_11><![CDATA[200]]></row3_11>
+							<row3_12><![CDATA[100]]></row3_12>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_getUserData" target='data:array,{"id":"dlt_member","key":"dlt_Member"}'
+				action="/data/sampleData/P00048_1995.json" method="post" mediatype="application/json" encoding="UTF-8" mode="asynchronous">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    $p.executeSubmission("sbm_getUserData");
+};
+
+scwin.dlt_member_ondataload = function () {
+    this.multisort({ "sortIndex": "TYPE_A TYPE_B TYPE_C TYPE_D", "sortOrder": "1 1 1 1" });
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="그리드뷰에서 제공하는 동적 병합 기능을 표현한 예시입니다.&lt;br/&gt;이 예제는 기능별 브라우저에 표현되는 방식과 성능을 비교하기 위해 만들어졌습니다.&lt;br/&gt;그리드뷰를 스크롤링을 할 때 데이터가 출력되는 속도를 비교하시면 됩니다.&lt;br/&gt;브라우저의 표현 속도를 기준으로 권장하는 기능은 body column의 colMerge속성입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label='GridView의 body column의 colMerge="true" 속성을 사용한 예시' style="" tagname="h3"
+				toolTip="이 기능은 컬럼이 실제로 병합되지 않은 각 tr간의 선을 보이지 않게 구현한 기능입니다. 병합 데이터는 화면에 보여지는 첫번(top)째 행에 표현됩니다.세로 스크롤이 이동될 때 데이터만 변경되는 구조입니다.">
+			</w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="37" applyAllColumnStyle="false" senseReader="false"
+					dataList="data:dlt_member" ignoreCellClick="false" style="height: 280px;" autoFit="allColumn" id="" visibleRowNum="15" class="gvw"
+					ignoreToggleOnDisabled="false" autoFitMinWidth="800">
+					<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header2">
+						<w2:row style="" id="row3">
+							<w2:column width="70" inputType="text" id="column25" value="사번" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="column23" value="성명" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="166" inputType="text" id="column26" value="이메일" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="column21" value="타입 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="71" inputType="text" id="column17" value="타입 B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="94" inputType="text" id="column15" value="타입 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="81" inputType="text" id="column13" value="타입 D" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody2">
+						<w2:row style="" id="row4">
+							<w2:column width="70" inputType="text" id="EMP_CD" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="EMP_NM" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="166" inputType="text" id="EMAIL" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column colMerge="true" width="70" inputType="text" id="TYPE_A" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column colMerge="true" width="71" inputType="text" id="TYPE_B" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column colMerge="true" width="94" inputType="text" id="TYPE_C" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column colMerge="true" width="81" inputType="text" id="TYPE_D" blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label='GridView의 mergeCells="bycol" 속성을 사용한 예시' style="" tagname="h3"
+				toolTip="이 기능은 컬럼이 실제로 병합된 기능입니다. 병합 데이터는 화면에 병합된 행의 중앙(middle)에 표현됩니다. 세로 스크롤이 이동될 때 레이아웃과 데이터가 변경되는 구조입니다.">
+			</w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="37" applyAllColumnStyle="false" senseReader="false"
+					dataList="data:dlt_member" ignoreCellClick="false" style="height: 280px;" autoFit="allColumn" id="" visibleRowNum="15"
+					mergeCells="bycol" class="gvw" ignoreToggleOnDisabled="false" autoFitMinWidth="800">
+					<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header2">
+						<w2:row style="" id="row3">
+							<w2:column width="70" inputType="text" id="column25" value="사번" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="column23" value="성명" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="166" inputType="text" id="column26" value="이메일" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="column21" value="타입 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="71" inputType="text" id="column17" value="타입 B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="94" inputType="text" id="column15" value="타입 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="81" inputType="text" id="column13" value="타입 D" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody2">
+						<w2:row style="" id="row4">
+							<w2:column width="70" inputType="text" id="EMP_CD" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="EMP_NM" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="166" inputType="text" id="EMAIL" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="TYPE_A" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="71" inputType="text" id="TYPE_B" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="94" inputType="text" id="TYPE_C" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="81" inputType="text" id="TYPE_D" blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label='GridView의 mergeCells="byrowrec" 속성을 사용한 예시' style="" tagname="h3"
+				toolTip="동일한 데이터가 좌우/상하로 존재할 때 해당 셀을 동적으로 병합해주는 기능에 대한 예시입니다.">
+			</w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="37" applyAllColumnStyle="false" dataList="data:dlt_statistic"
+					ignoreCellClick="false" style="height: 250px;" autoFit="allColumn" id="" mergeCells="byrowrec" class="gvw vline"
+					ignoreToggleOnDisabled="false" autoFitMinWidth="1060" visibleRowNum="all">
+					<w2:caption style="" id="caption3" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header3">
+						<w2:row style="" id="row5">
+							<w2:column width="99" inputType="text" style="" id="column59" value="대분류" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="115" inputType="text" style="" id="column57" value="중분류" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="70" inputType="text" style="" id="column55" value="1월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column53" value="2월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column51" value="3월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column49" value="4월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column47" value="5월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column45" value="6월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column43" value="7월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column41" value="8월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column39" value="9월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column37" value="10월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column35" value="11월" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column33" value="12월" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody3">
+						<w2:row style="" id="row6">
+							<w2:column width="99" inputType="text" style="" id="category1" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="115" inputType="text" style="" id="category2" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_1" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_2" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_3" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_4" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_5" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_6" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_7" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_8" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_9" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_10" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_11" value="" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="row3_12" value="" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

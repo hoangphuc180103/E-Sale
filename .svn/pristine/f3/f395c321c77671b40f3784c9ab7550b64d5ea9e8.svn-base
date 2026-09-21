@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="scopeInherit_WFrame">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    const tmpSrc = scwin.getfolderPath() + "/wframe1.xml";
+    wframe1.setSrc(tmpSrc);
+	
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="" style="margin: 10px;"><w2:textbox style="width: 500px;height: 30px;margin: 10px;font-weight: bolder;color: blue;" id="textbox1" label="textbox1 - main"></w2:textbox><w2:textbox style="width: 500px;height: 30px;margin: 10px;font-weight: bolder;color: blue;" id="textbox4" label="textbox4">
+    		</w2:textbox>
+    		<w2:wframe scopeInherit="all" style="border:2px solid magenta;padding: 10px;background-color: pink;" id="wframe1">
+    		</w2:wframe></xf:group>
+    </body>
+</html>

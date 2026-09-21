@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[DataList] 지정한 컬럼의 데이터와 주어진 값이 일치하는 행 데이터 반환받기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230628" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // DataList에 초기 데이터 할당
+    scwin.initData();
+};
+
+/**
+ * DataList 'dlt_exam'에 데이터 할당하기
+ */
+scwin.initData = function () {
+    // DataList 'dlt_exam'에 데이터 할당하기
+    let data = [
+        { "category": "Networking", "product": "SpeedLink" },
+        { "category": "Cloud Services", "product": "CloudFlex" },
+        { "category": "Support Services", "product": "TechAssist" },
+        { "category": "Servers", "product": "EcoServe" },
+        { "category": "Cloud Services", "product": "CloudPro" },
+        { "category": "Support Services", "product": "TechTeam" },
+        { "category": "Security", "product": "SecureGate" },
+        { "category": "Networking", "product": "LinkSecure" },
+        { "category": "Servers", "product": "ServeTech" }
+    ];
+    dlt_exam.setJSON(data);
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - JSON 형식] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 JSON으로 반환받습니다.
+    let result = dlt_exam.getMatchedJSON("category", "Networking");
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - JSON 형식 | 메소드 getMatchedJSON 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - 1차원 Array 형식 + 컬럼 정보] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 '1차원 Array 형식 + 컬럼 정보'으로 반환받습니다.
+    let result = dlt_exam.getMatchedArray("category", "Networking");
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - 1차원 Array 형식 + 컬럼 정보 | 메소드 getMatchedArray 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - 2차원 Array 형식] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 '2차원 Array 형식'으로 반환받습니다.
+    let result = dlt_exam.getMatchedData("category", "Networking");
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - 1차원 Array 형식 | 메소드 getMatchedData 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - XML 형식] 클릭 시
+ */
+scwin.btn_exam1_4_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터를 'XML' 형식으로 반환받습니다.
+    let result = dlt_exam.getMatchedXML("category", "Networking");
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - XML 형식 | 메소드 getMatchedXML 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    $c.frame.printExampleLog(WebSquare.xml.serialize(result), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 값이 'Networking'과 일치하는 Row Index 받기 - 1차원 Array 형식] 클릭 시
+ */
+scwin.btn_exam1_5_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼의 값이 'Networking'과 일치하는 Row Index를 '1차원 Array'로 반환받습니다.
+    let result = dlt_exam.getMatchedIndex("category", "Networking");
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 값이 'Networking'과 일치하는 Row Index 받기 - 1차원 Array 형식 | 메소드 getMatchedIndex 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_1, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 값이 'Services'와 일치하는 데이터 받기 - JSON 형식] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼의 값이 'Services'와 일치하는 데이터를 JSON으로 반환받습니다.
+    let result = dlt_exam.getMatchedJSON("category", "Services", true);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 값이 'Services'와 일치하는 데이터 받기 - JSON 형식 | 메소드 getMatchedJSON 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_2, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_2, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 ['Category' 컬럼의 값에 'Services'가 포함된 데이터 받기 - JSON 형식] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼의 값에 'Services'가 포함된 데이터를 JSON으로 반환받습니다.
+    let result = dlt_exam.getMatchedJSON("category", "Services", false);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼의 값에 'Services'가 포함된 데이터 받기 - JSON 형식 | 메소드 getMatchedJSON 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_2, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_2, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+
+
+/**
+ * 버튼 [전체 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터 받기 - JSON 형식]
+ */
+scwin.btn_exam3_1_onclick = function (e) {
+    // DataList 'dlt_exam'의 전체 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터를 JSON으로 반환받습니다.
+    let result = dlt_exam.getMatchedJSON("category", "Cloud Services", true);
+
+    // 로그 출력
+    let strLog = "# 전체 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터 받기 - JSON 형식 | 메소드 getMatchedJSON 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_3, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_3, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+/**
+ * 버튼 [0~2번째 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터 받기 - JSON 형식]
+ */
+scwin.btn_exam3_2_onclick = function (e) {
+    // DataList 'dlt_exam'의  0~2번째 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터를 JSON으로 반환받습니다.
+    let result = dlt_exam.getMatchedJSON("category", "Cloud Services", true, 0, 2);
+
+    // 로그 출력
+    let strLog = "# 0~2번째 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터 받기 - JSON 형식 | 메소드 getMatchedJSON 호출 값";
+    $c.frame.printExampleLog(strLog, txa_log_3, false);
+    $c.frame.printExampleLog(JSON.stringify(result), txa_log_3, false);
+    console.log(strLog);
+    console.log(result);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="DataList의 메소드를 사용하여 지정한 컬럼의 데이터와 주어진 문자열이 일치하는 행의 데이터를 반환받는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="원본 데이터 확인용 GridView" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="gvwbox" id="" style="max-width: 340px;">
+							<w2:gridView autoFit="allColumn" autoFitMinWidth="220" class="gvw" dataList="data:dlt_exam" defaultCellHeight="37" id=""
+								initFixedHeightByRowNum="4" noResultMessage="No data to display" readOnly="true" rowNumWidth="34" style="height:80px;"
+								tooltipDisplay="true" visibleRowNum="4">
+								<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+								<w2:header id="header1" style="">
+									<w2:row id="row1" style="">
+										<w2:column displayMode="label" id="column3" inputType="text" style="" value="Category" width="100">
+										</w2:column>
+										<w2:column displayMode="label" id="column2" inputType="text" style="" value="Product" width="80"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody1" style="">
+									<w2:row id="row2" style="">
+										<w2:column displayMode="label" id="category" inputType="text" style="" textAlign="left" width="100">
+										</w2:column>
+										<w2:column displayMode="label" id="product" inputType="text" style="" textAlign="left" width="80"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group id="" style="" class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="메소드별 반환 데이터 형식 비교하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - JSON 형식]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - 1차원 Array 형식 + 컬럼 정보]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_3_onclick" id="btn_exam1_3"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - 2차원 Array 형식]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_4_onclick" id="btn_exam1_4"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 값이 'Networking'과 일치하는 데이터 받기 - XML 형식]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_5_onclick" id="btn_exam1_5"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 값이 'Networking'과 일치하는 Row Index 받기 - 1차원 Array 형식]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:span class="mr_def txt_bold" id="" label="로그 확인" style=""></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="" style="" title="로그 삭제" type="button"
+								userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 90px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group id="" style="" class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="데이터 일치 여부 설정 비교하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 값이 'Services'와 일치하는 데이터 받기 - JSON 형식]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_2_onclick" id="btn_exam2_2"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼의 값에 'Services'가 포함된 데이터 받기 - JSON 형식]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:span class="mr_def txt_bold" id="" label="로그 확인" style=""></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="" style="" title="로그 삭제" type="button"
+								userData1="txa_log_2">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_2" spellcheck="false" style="width: 100%;height: 90px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+				<xf:group id="" style="" class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="검색할 행의 범위 설정 비교하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" id="btn_exam3_1" style="" type="button"
+								ev:onclick="scwin.btn_exam3_1_onclick">
+								<xf:label><![CDATA[전체 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터 받기 - JSON 형식]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" id="btn_exam3_2" style="" type="button"
+								ev:onclick="scwin.btn_exam3_2_onclick">
+								<xf:label><![CDATA[0~2번째 행을 대상으로 'Category' 컬럼의 값이 'Cloud Services'와 일치하는 데이터 받기 - JSON 형식]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:span class="mr_def txt_bold" id="" label="로그 확인" style=""></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="" style="" title="로그 삭제" type="button"
+								userData1="txa_log_3">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_3" spellcheck="false" style="width: 100%;height: 90px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

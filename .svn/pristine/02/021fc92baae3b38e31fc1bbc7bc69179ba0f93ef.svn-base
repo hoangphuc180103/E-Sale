@@ -1,0 +1,36 @@
+/*amd /guide_jpn/_p/PopUp/pageFramePopup_openPopup_p/pageFramePopup_openPopup_p.xml 4474 8776f6144fa1207addb56627282139ee48fcbc6a73526d8cc233bba00f39a25c */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  const tmpSrc = scwin.getfolderPath() + "/openPopup_p.xml";
+  pageFrame1.setSrc(tmpSrc);
+};
+scwin.trigger1_onclick = function (e) {
+  var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+  popObj.scwin.borderFirst();
+};
+scwin.trigger2_onclick = function (e) {
+  var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+  popObj.scwin.borderSecond();
+};
+scwin.trigger3_onclick = function (e) {
+  var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+  popObj.scwin.setBrown();
+};
+scwin.trigger4_onclick = function (e) {
+  var popObj = pageFrame1.getWindow().$p.getPopupWindow("pop1");
+  popObj.scwin.showAll();
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'PageFrame ポップアップ活用',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. ポップアップ画面のソース (src) として使用する Page Component ファイルを確認します。 <br/> &nbsp; &nbsp; （この例ではpage_component.xmlファイルを使用してください。）<br/>2.そのPage Componentに追加されたメソッドを確認してください。 &nbsp;<br/>3.下部の PageFrame 内に含まれる $p.openPopup() ボタンをクリックします。 <br/>4. PageFrame ポップアップが生成されることを確認します。 <br/>5.下部のボタン 4つをそれぞれクリック。 <br/>6.メイン画面でポップアップに含まれているPage Componentのメソッドを直接実行できることを確認。 <br/>',escape:'false'}},{T:1,N:'w2:pageFrame',A:{style:'border: solid magenta 2px;margin-bottom: 10px;',id:'pageFrame1'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'popObj.scwin.setFirst();'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'popObj.scwin.setSecond();'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'popObj.scwin.setBrown();'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger4_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'popObj.scwin.showAll();'}]}]}]}]}]}]})

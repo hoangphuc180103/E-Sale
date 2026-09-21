@@ -1,0 +1,22 @@
+/*amd /guide_eng/_DataCollection/DataMap/scope_aliasDataMap/scope_aliasDataMap.xml 3319 34f5fa2a036afa4d3c67d4497f10f439c8527c67455b5daa2eafa9cf21133c0d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataMap',A:{baseNode:'map',id:'dataMap1',preserveType:'true'},E:[{T:1,N:'w2:keyInfo',E:[{T:1,N:'w2:key',A:{id:'key1',name:'name1',dataType:'text'}},{T:1,N:'w2:key',A:{id:'key2',name:'name2',dataType:'number'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var tmpSrc = scwin.getfolderPath() + "/source2_dataMap.xml";
+  pageFrame1.setSrc(tmpSrc);
+  dataMap1.set("key1", 333);
+  dataMap1.set("key2", 555);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Create AliasDataMap<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. On the parent page, press Ctrl + right-click, then select the “View dataCollection” menu.<br/>2. Verify that “dataMap1” exists and has data configured. <br/>3. On the child page, press Ctrl + right-click and select the “View dataCollection” menu.<br/>2. Verify that “aliasDataMap1” exists and has the same data set as the parent\'s “dataMap1”.<br/>(“aliasDataMap1” is linked to “dataMap1” and uses its data.)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'color: gray;font-weight:bolder;font-size:30px;margin-top:50px;font-style:italic;margin-bottom: 10px;',id:'textbox5',label:'Parent (dataMap1)'}},{T:1,N:'xf:group',A:{id:'',style:'margin-bottom: 10px;'},E:[{T:1,N:'xf:input',A:{ref:'data:dataMap1.key1',style:'width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;color: purple;',id:'input1'}},{T:1,N:'xf:input',A:{ref:'data:dataMap1.key2',style:'width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;color: purple;',id:'input2'}}]},{T:1,N:'w2:pageFrame',A:{src:'/source2_dataMap.xml',style:'height: 400px;border: solid 1px gray',id:'pageFrame1'}}]}]}]}]})

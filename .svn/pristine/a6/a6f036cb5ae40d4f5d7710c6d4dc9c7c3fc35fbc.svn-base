@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dataList1" baseNode="list" style="" saveRemovedData="true" repeatNode="map">
+					<w2:columnInfo>
+						<w2:column id="id" name="id" dataType="text"></w2:column>
+						<w2:column id="title" name="title" dataType="text"></w2:column>
+						<w2:column id="start" name="start" dataType="text"></w2:column>
+						<w2:column id="end" name="end" dataType="text"></w2:column>
+
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<title><![CDATA[(Jul-08 11:00 ~ Jul-10 11:00)]]></title>
+							<start><![CDATA[20190708090000]]></start>
+							<end><![CDATA[20190710110000]]></end>
+
+							<id><![CDATA[Event 002]]></id>
+						</w2:row>
+						<w2:row>
+							<id><![CDATA[Evnt 001]]></id>
+							<title><![CDATA[(Jul-15 12:00 ~ Jul-17 16:00)]]></title>
+							<start><![CDATA[20190715120000]]></start>
+							<end><![CDATA[20190717160000]]></end>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<script type="javascript" lazy="false"><![CDATA[
+			scwin.onpageload = function() {
+			}
+				
+		]]></script>
+		<style type="text/css">
+
+		    
+		    .fc-day-number.fc-sat.fc-past { color:#0000FF; }
+		    .fc-day-number.fc-sun.fc-past { color:#FF0000; }
+		</style>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+	<xf:group id="" style='margin:10px;'><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="スケジュール終了基準の設定" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Ctrl + マウス右クリック後, "dataCollection 見る" メニュー選択。&lt;br/&gt;2. 初めて目スケジュールは 7月 10仕事 （12市以前の人） 11:00 シエ終わり, 二つ目スケジュールは 7月 17仕事 （12市以来） &amp;nbsp;16:00 シエ終わるもの確認。 &amp;nbsp;&lt;br/&gt;（ボン例の nextDayThreshold プロパティ値は "12:00:00"によって設定済み。）&lt;br/&gt;3. 初めて目スケジュールはカレンダーに 7月 9仕事に終わるとして表示され、, 二つ目スケジュール 7月 17仕事に終わるとして表示されるもの確認。 &amp;nbsp;' escape="false">
+		</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;nextDayThreshold="12:00:00"' escape="false">
+		</w2:textbox><w2:scheduleCalendar defaultDate="2019-07" endColumn="end" editable="true" selectable="true" headerRightBtn="" locale="en" version="3.6" themeColumn="theme" defaultView="month" titleColumn="title" eventOrderColumn="num" startColumn="start" dataList="data:dataList1" ev:onclick="scwin.schdule1_onclick" nextDayThreshold="12:00:00" style="width: 400px;height: 500px;" eventLimit="true" eventOrderDefaultValue="0" id="schedule1" headerLeftBtn="" lang="en" ev:onheaderbtnclick="scwin.schdule1_onheaderbtnclick" idColumn="id">
+		</w2:scheduleCalendar></xf:group></body>
+</html>

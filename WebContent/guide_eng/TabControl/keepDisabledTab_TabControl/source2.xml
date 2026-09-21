@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var tabOptions = {};
+
+    for (var i = 0; i < 3; i++) {
+        var addCount = i ;
+        var tabOptions = {
+            label: "Tab " + addCount,
+            openAction: "new",
+            closable: "true"
+        }
+
+
+        var contentsOptions = {
+            frameMode: "wframe",
+            alwaysDraw: false,
+        }
+        tabControl22.addTab(i, tabOptions, contentsOptions);
+    }
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    tabControl22.disableTab(0);
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<w2:textbox tagname="h3" style="margin-bottom: 10px;color: green;" id="" label='keepDisabledTab="false" (tabControl22)'></w2:textbox>
+    	<xf:trigger type="button"
+    		style="display: block;height:42px;line-height:32px;margn-bottom: 10px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;margin-top:10px;text-align: left;margin-bottom: 10px;"
+    		id="trigger1" ev:onclick="scwin.trigger1_onclick">
+    		<xf:label><![CDATA[tabControl22.disableTab(0);]]></xf:label>
+    	</xf:trigger>
+    	<w2:tabControl useTabKeyOnly="true" id="tabControl22" useMoveNextTabFocus="false" useConfirmMessage="false" confirmTrueAction="exist"
+    		confirmFalseAction="new" alwaysDraw="false" style="border: gray solid 1px;height: 150px;" keepDisabledTab="false">
+    	</w2:tabControl>
+    </body>
+</html>

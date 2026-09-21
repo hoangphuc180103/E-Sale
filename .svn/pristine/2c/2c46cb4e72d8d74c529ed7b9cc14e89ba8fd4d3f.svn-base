@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenId="example_refresh" meta_screenName="화면 새로 고침" meta_subsystem="예제 공통" meta_author="인스웨이브시스템즈" meta_type="서브">
+		<w2:type palette="support">COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map" />
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+/**
+ * @component
+ * @componentName udc_example_refresh
+ * @pluginName 
+ * @company 
+ * @developer na
+ * @category /frame/udc
+ * @variableClone true
+ * @notSupportBrowser 
+ * @version 
+ * @htmlRender 
+ * @icon 
+ * @disableIcon 
+ * @width 
+ * @height 
+ * @description 
+ */ 
+
+/**
+ * @property
+ * @name style
+ * @category 01.Basic & ETC
+ * @type string
+ * @option 
+ * @default 
+ * @necessary N
+ * @description desc
+ */ 
+
+/**
+ * @property
+ * @name class
+ * @category 01.Basic & ETC
+ * @type string
+ * @option 
+ * @default 
+ * @necessary N
+ * @description desc
+ */ 
+
+/**
+ * @property
+ * @name id
+ * @category 01.Basic & ETC
+ * @type string
+ * @option 
+ * @default udc_example_refresh
+ * @necessary N
+ * @description desc
+ */ 
+
+scwin.onpageload = function() {
+	
+};
+
+scwin.btn_refresh_onclick = function(e) {
+    $p.parent().$p.reinitialize();
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_refresh" style="" type="button"
+			ev:onclick="scwin.btn_refresh_onclick">
+			<xf:label><![CDATA[새로고침]]></xf:label>
+		</xf:trigger>
+	</body>
+</html>

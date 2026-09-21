@@ -1,0 +1,51 @@
+/*amd /edu/adv/accordion_dynamic.xml 4376 dadb86749d21086f18489944986048604963cb426a5fb3004420bf646c4844a8 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'test1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'test2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'test3'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  scwin.make_component();
+};
+scwin.trigger2_onclick = function (e) {
+  // setPanelTitle : 패널의 Title을 설정
+  accordion1.setPanelTitle("panels1", "PanelTitle 변경 1");
+  accordion1.setPanelTitle("panels2", "PanelTitle 변경 2");
+  accordion1.setPanelTitle("panels3", "PanelTitle 변경 3");
+  input1.setValue("TEST");
+};
+scwin.make_component = function (e) {
+  var dl1 = dataList1.getAllJSON();
+  var compXml = [];
+  compXml.push('<w2:accordion xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms" style="width:400px;height:400px;" id="accordion1">');
+  compXml.push('<w2:panels style="" id="panels1" class="">');
+  compXml.push('<w2:panelTitle style="" id="panelTitle1" label="' + dl1[0].col1 + '"></w2:panelTitle>');
+  compXml.push('<w2:panelContent style="height:300px;" id="panelContent1"><xf:input adjustMaxLength="false" id="input1" style="width: 144px;height: 21px;"></xf:input></w2:panelContent>');
+  compXml.push('</w2:panels>');
+  compXml.push('<w2:panels style="" id="panels2" class="">');
+  compXml.push('<w2:panelTitle style="" id="panelTitle2" label="' + dl1[1].col1 + '"></w2:panelTitle>');
+  compXml.push('<w2:panelContent style="height:300px;" id="panelContent2">');
+  var selectboxStr = "";
+  selectboxStr += '<xf:select1 id="" chooseOption="" style="width: 148px;height: 21px;" submenuSize="auto" allOption="" disabled="false"';
+  selectboxStr += '	direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="">';
+  selectboxStr += '	<xf:choices>';
+  selectboxStr += '		<xf:item>';
+  selectboxStr += '			<xf:label>test1</xf:label>';
+  selectboxStr += '			<xf:value>1</xf:value>';
+  selectboxStr += '		</xf:item>';
+  selectboxStr += '		<xf:item>';
+  selectboxStr += '			<xf:label>test2</xf:label>';
+  selectboxStr += '			<xf:value>2</xf:value>';
+  selectboxStr += '		</xf:item>';
+  selectboxStr += '	</xf:choices>';
+  selectboxStr += '</xf:select1>';
+  compXml.push(selectboxStr);
+  compXml.push('</w2:panelContent>');
+  compXml.push('</w2:panels>');
+  compXml.push('<w2:panels style="" id="panels3" class="">');
+  compXml.push('<w2:panelTitle style="" id="panelTitle3" label="' + dl1[2].col1 + '"></w2:panelTitle>');
+  compXml.push('<w2:panelContent style="height:300px;" id="panelContent3">');
+  compXml.push('<w2:calendar footerDiv="false" id="" style="width: 100px;height: 100px;"></w2:calendar>');
+  compXml.push('</w2:panelContent>');
+  compXml.push('</w2:panels>');
+  compXml.push('</w2:accordion>');
+  $p.dynamicCreate("accordion1", "accordion", compXml.join(""), grp1);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{style:'width:515px;height:429px;',id:'grp1'}},{T:1,N:'xf:trigger',A:{type:'button',style:'width:82px;height:36px;',id:'trigger1','ev:onclick':'scwin.trigger1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'아코디언생성'}]}]},{T:1,N:'xf:trigger',A:{id:'trigger2',style:'width:82px;height:36px;',type:'button','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'타이틀변경'}]}]}]}]}]})

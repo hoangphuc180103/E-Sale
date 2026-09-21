@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		select1.setDisplayMode("value");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="Label 및 Value 표시 방법 설정 (동적)" style="color: blue;margin-bottom: 10px;" tabIndex="h1" tagname="h1"></w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. 현재 SelectBox 선택 목록에 표시된 항목이 "label delim value" 순서로 표시되는 것을 확인. &lt;br/&gt;2. 하단의 setDisplayMode() 버튼을 클릭. &lt;br/&gt;3. SelectBox 선택 목록에 표시된 항목이 "value"로만 표시되는 것을 확인.'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox escape="false" id="textbox4" label='속성 설정&lt;br/&gt;displayMode="label delim value"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[select1.setDisplayMode("value");]]></xf:label>
+    	</xf:trigger>
+    	<xf:select1 ref="" submenuSize="auto" appearance="minimal" disabledClass="w2selectbox_disabled" delimiter=" - " chooseOption=""
+    		disabled="false" style="width: 50%;" allOption="" id="select1" displayMode="label delim value" direction="auto">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[Twenties]]></xf:label>
+    				<xf:value><![CDATA[20]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Thirties]]></xf:label>
+    				<xf:value><![CDATA[30]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Fourties]]></xf:label>
+    				<xf:value><![CDATA[40]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Fifties]]></xf:label>
+    				<xf:value><![CDATA[50]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Sixties]]></xf:label>
+    				<xf:value><![CDATA[60]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:select1>
+    </xf:group></body>
+</html>

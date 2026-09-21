@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[DataList] Broadcast(데이터 전파) 기능 비활성화하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230609" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    // 최초 설정한 데이터로 재할당 합니다.
+    dlt_exam.setJSON([
+        { "col_a": "A1", "col_b": "B1"},
+        { "col_a": "A2", "col_b": "B2"},
+        { "col_a": "A3", "col_b": "B3"}
+    ]);
+
+    // GridView 'grd_exam1'의 첫 번째 행, 첫 번째 열에 포커스를 지정합니다.
+    grd_exam1.setFocusedCell(0, 0, false);
+
+    // DataList 'dlt_exam'의 broadcast를 활성화 시킵니다.
+    dlt_exam.setBroadcast(true, true);
+};
+
+
+
+/**
+ * 버튼 [DataList 초기화] 클릭 시
+ */
+scwin.btn_initData_onclick = function (e) {
+    scwin.initializeExample();
+};
+
+/**
+ * 버튼 [Broadcast 비활성화하기] 클릭 시
+ */
+scwin.btn_exam1_onclick = function (e) {
+    // DataList 'dlt_exam'의 broadcast 기능을 비활성화합니다.
+    dlt_exam.setBroadcast(false);
+
+    // 로그 출력
+    let strLog = "# 'dlt_exam'의 Broadcast 기능을 비활성화합니다.";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog("DataList와 연결된 컴포넌트의 데이터가 갱신되지 않습니다.", txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [데이터 수정 스크립트 실행하기] 클릭 시
+ */
+scwin.btn_exam2_onclick = function (e) {
+    dlt_exam.setCellData(0, "col_a", "수정");
+    dlt_exam.setCellData(0, "col_b", "수정");
+
+    // 로그 출력
+    let strLog = "# 'dlt_exam'의 0번째 행의 데이터를 수정합니다.";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [Broadcast 활성화하기] 클릭 시
+ */
+scwin.btn_exam3_onclick = function (e) {
+    // DataList 'dlt_exam'의 broadcast 기능을 활성화하고 연결된 컴포넌트들을 즉시 갱신합니다.
+    dlt_exam.setBroadcast(true, true);
+
+    // 로그 출력
+    let strLog = "# 'dlt_exam'의 Broadcast 기능을 활성화합니다.";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog("DataList와 연결된 컴포넌트의 데이터가 갱신됩니다.", txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 버튼 [Broadcast 상태 확인하기] 클릭 시
+ */
+scwin.btn_exam4_onclick = function (e) {
+    // DataList 'dlt_exam'의 broadcast 기능의 활성화 여부를 반환 받습니다.
+    let blnResult = dlt_exam.getBroadcast();
+
+    // 로그 출력
+    let strLog = "# 'dlt_exam'의 Broadcast 기능의 활성화 여부 : ";
+    $c.frame.printExampleLog(strLog + blnResult, txa_log, false);
+    console.log(strLog, blnResult);
+
+    if (blnResult) {
+        strLog = "연결된 컴포넌트가 즉시 갱신됩니다.";
+    } else {
+        strLog = "연결된 컴포넌트가 갱신되지 않습니다.";
+    }
+
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="DataList의 'setBroadcast' 메소드를 사용하여 Broadcast 기능의 사용 여부를 설정한 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style no_padding" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_initData" style="" type="button"
+								ev:onclick="scwin.btn_initData_onclick">
+								<xf:label><![CDATA[DataList 초기화]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_cm" disabled="" escape="false" ev:onclick="scwin.btn_exam2_onclick" id="btn_exam2" style=""
+								type="button">
+								<xf:label><![CDATA[데이터 수정 스크립트 실행하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam4_onclick"
+								id="btn_exam4" style="" type="button">
+								<xf:label><![CDATA[Broadcast 상태 확인하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam1_onclick"
+								id="btn_exam1" style="" type="button">
+								<xf:label><![CDATA[Broadcast 비활성화하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_exam3_onclick"
+								id="btn_exam3" style="" type="button">
+								<xf:label><![CDATA[Broadcast 활성화하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox" style="max-width: 300px;">
+							<w2:gridView rowNumVisible="true" rowStatusWidth="30" keepDefaultColumnWidth="true" readOnly="true"
+								defaultCellHeight="37" rowStatusVisible="true" rowNumWidth="34" visibleRowNumFix="true" dataList="data:dlt_exam"
+								style="height:100px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="all" class="gvw mb10" autoFitMinWidth="280">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column2" value="A" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="B" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+						<w2:textbox class="wre_heading mb10" id="" label="선택된 GridView의 행" style=""></w2:textbox>
+						<xf:group class="tblbox" id="" style="max-width: 300px;">
+							<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl no_padding" id="" style="" tagname="table">
+								<w2:attributes>
+									<w2:summary></w2:summary>
+								</w2:attributes>
+								<xf:group tagname="colgroup">
+									<xf:group style="width:90px;" tagname="col"></xf:group>
+									<xf:group style="" tagname="col"></xf:group>
+								</xf:group>
+								<xf:group style="" tagname="tr">
+									<xf:group class="w2tb_th" style="" tagname="th">
+										<w2:textbox class="" id="" label="A 컬럼" ref="" style="" userData2=""></w2:textbox>
+									</xf:group>
+									<xf:group class="w2tb_td" style="" tagname="td">
+										<xf:input class="" id="" placeholder="" ref="data:dlt_exam.col_a" style="width:100%;"></xf:input>
+									</xf:group>
+								</xf:group>
+								<xf:group tagname="tr">
+									<xf:group class="w2tb_th " tagname="th">
+										<w2:attributes>
+											<w2:scope>row</w2:scope>
+										</w2:attributes>
+										<w2:textbox class="" id="" label="B 컬럼" ref="" style="" userData2=""></w2:textbox>
+									</xf:group>
+									<xf:group class="w2tb_td" tagname="td">
+										<w2:attributes>
+											<w2:colspan>1</w2:colspan>
+											<w2:rowspan>1</w2:rowspan>
+										</w2:attributes>
+										<xf:input class="" id="" placeholder="" ref="data:dlt_exam.col_b" style="width:100%;"></xf:input>
+									</xf:group>
+								</xf:group>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

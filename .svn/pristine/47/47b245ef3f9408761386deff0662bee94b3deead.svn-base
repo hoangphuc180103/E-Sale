@@ -1,0 +1,59 @@
+/*amd /page/P00401.xml 7086 7168fc8a09ad29867a08be8a99ccaf3890c241a0d8b606bef3176ae313e65f3e */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_1',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_2',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [1.1 데이터 할당하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // DataList 'dlt_exam_2'에 데이터를 할당합니다.
+  dlt_exam_1.setJSON([{
+    "category": "Software",
+    "product": "SecureGate"
+  }, {
+    "category": "Hardware",
+    "product": "FastServe"
+  }, {
+    "category": "Services",
+    "product": "CloudFlex"
+  }, {
+    "category": "Software",
+    "product": "CodeStream"
+  }]);
+};
+
+/**
+ * 버튼 [1.2 데이터 제거하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+  // 데이터 제거 - 데이터 반환이 필요하지 않아 빈 데이터로 할당합니다.
+  dlt_exam_1.setData([]);
+};
+
+/**
+ * 버튼 [2.1 데이터 할당하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+  // DataList 'dlt_exam_1'에 데이터를 할당합니다.
+  dlt_exam_2.setJSON([{
+    "category": "Software",
+    "product": "SecureGate"
+  }, {
+    "category": "Hardware",
+    "product": "FastServe"
+  }, {
+    "category": "Services",
+    "product": "CloudFlex"
+  }, {
+    "category": "Software",
+    "product": "CodeStream"
+  }]);
+};
+
+/**
+ * 버튼 [2.2 데이터 제거하기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+  // 데이터 제거 - 데이터 반환이 필요하지 않아 빈 데이터로 할당합니다.
+  dlt_exam_2.setData([]);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 \'hideFilterIconOnNoData\' 속성을 사용하여 출력된 데이터가 없으면, 헤더에 필터 아이콘이 표시되지 않도록 설정한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView와 연결된 DataList에 필터가 적용되어 출력된 데이터가 없는 경우에는 필터 아이콘이 표시됩니다.',style:'',class:'exam_txt caution'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'\'hideFilterIconOnNoData\' 속성 사용',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.1 데이터 할당하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_2_onclick',id:'btn_exam1_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.2 데이터 제거하기'}]}]}]},{T:1,N:'xf:group',A:{class:'gvwbox',style:'max-width:300px;'},E:[{T:1,N:'w2:gridView',A:{hideFilterIconOnNoData:'true',visibleRowNumFix:'true',dataList:'data:dlt_exam_1',style:'height:100px;',autoFit:'allColumn',id:'',useFilterList:'true',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'200',noResultMessage:'No data to display'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column2',value:'Category',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{sortable:'true',width:'100',inputType:'text',id:'column3',value:'Product',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'category',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'100',inputType:'text',id:'product',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) \'hideFilterIconOnNoData\' 속성 미사용',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam2_1_onclick',id:'btn_exam2_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.1 데이터 할당하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam2_2_onclick',id:'btn_exam2_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.2 데이터 제거하기'}]}]}]},{T:1,N:'xf:group',A:{class:'gvwbox',style:'max-width:300px;'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'200',class:'gvw',dataList:'data:dlt_exam_2',defaultCellHeight:'37',hideFilterIconOnNoData:'false',id:'',style:'height:100px;',useFilterList:'true',visibleRowNum:'4',visibleRowNumFix:'true',noResultMessage:'No data to display'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column2',value:'Category',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{sortable:'true',width:'100',inputType:'text',id:'column3',value:'Product',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'category',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'100',inputType:'text',id:'product',displayMode:'label'}}]}]}]}]}]}]}]}]}]}]}]})

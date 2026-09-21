@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	
+	scwin.trigger1_onclick = function(e) {
+        inputCalendar1.setDefaultDate("20131231");
+	};
+	
+	scwin.trigger2_onclick = function(e) {		
+		var date = inputCalendar1.getDefaultDate();
+		alert(date);
+	};
+	
+	scwin.trigger3_onclick = function(e) {
+		inputCalendar1.setValue("19910101");
+	};
+	
+	scwin.trigger4_onclick = function(e) {
+		var date = inputCalendar1.getValue();
+		alert(date);
+		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Set Date to Display upon Calendar Being Opened&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. Click the calendar icon in InputCalendar.&lt;br/&gt;2. Confirm that the date set as the defaultDate property value is displayed.&lt;br/&gt;3. Click the setDefaultDate() button at the bottom to dynamically set a new defaultDate property value. &lt;br/&gt;4. Click the getDefaultDate() button at the bottom to check the currently set defaultDate property value.&lt;br/&gt;5. Click the setValue() button at the bottom to set a date.&lt;br/&gt;6. Confirm that the set date appears in the InputCalendar's input box.&lt;br/&gt;7. Click the getValue() button at the bottom to check the currently set date." escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='defaultDate="20020415"' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[inputCalendar1.setDefaultDate("20131231");]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[inputCalendar1.getDefaultDate();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger3_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger3" type="button">
+    		<xf:label><![CDATA[inputCalendar1.setValue("19910101");]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger4_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger4" type="button">
+    		<xf:label><![CDATA[inputCalendar1.getValue();]]></xf:label>
+    	</xf:trigger><w2:inputCalendar defaultDate="20020415" footerDiv="false" rightAlign="false" focusOnDateSelect="false" style="" id="inputCalendar1" renderType="component" renderDiv="true" calendarValueType="yearMonthDate" monthNames="01,02,03,04,05,06,07,08,09,10,11,12" yearSuffix=" Y">
+    		</w2:inputCalendar></xf:group></body>
+</html>

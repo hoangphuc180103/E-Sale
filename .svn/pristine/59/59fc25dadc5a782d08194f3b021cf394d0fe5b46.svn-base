@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 바디 컬럼의 inputType 속성이 radio일 때 label 표시하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230210" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam_1" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="rad" name="Radio"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_2" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="rad" name="Radio"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_3" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="rad" name="Radio"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exam_4" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="rad" name="Radio"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    let arrData = [
+        { "category": "Software", "product": "SecureGate" },
+        { "category": "Hardware", "product": "FastServe" },
+        { "category": "Services", "product": "CloudFlex" },
+        { "category": "Software", "product": "CodeStream" }
+    ];
+
+    // 데이터 할당
+    dlt_exam_1.setJSON(arrData);
+    dlt_exam_2.setJSON(arrData);
+    dlt_exam_3.setJSON(arrData);
+    dlt_exam_4.setJSON(arrData);
+};
+
+
+/**
+ * 영역 [radio의 label 적용 - 사용자 메소드 적용]의 radioLabelFormatter
+ */
+scwin.grd_exam4_radioLabelFormatter = function (row, col, label) {
+    let jsnRow = dlt_exam_4.getRowJSON(row);   //현재 행의 json 데이터 추출
+
+    //데이터 조합
+    let returnValue = "[" + jsnRow.category + "] " + jsnRow.product;
+
+    return returnValue;
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView 바디 컬럼의 'inputType' 속성이 'radio'일 때, 'label'을 함께 표시하는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본설정) label 설정 없음" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView visibleRowNumFix="true" dataList="data:dlt_exam_1" style="height:100px;" autoFit="lastColumn" id=""
+								visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="251">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" style="" id="column4" value="Radio" displayMode="label"></w2:column>
+										<w2:column width="90" inputType="text" id="column2" value="Category" displayMode="label"></w2:column>
+										<w2:column width="110" inputType="text" id="column3" sortable="true" value="Product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="70" inputType="radio" style="" id="rad" value="" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="90" inputType="text" id="category" value="" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="110" inputType="text" id="product" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="radio의 label - 고정 문자" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView visibleRowNumFix="true" dataList="data:dlt_exam_2" style="height:100px;" autoFit="lastColumn" id=""
+								visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="266">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" id="column4" value="Radio" displayMode="label"></w2:column>
+										<w2:column width="90" inputType="text" id="column2" value="Category" displayMode="label"></w2:column>
+										<w2:column width="110" inputType="text" id="column3" sortable="true" value="Product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column radioLabel="Radio" textAlign="left" width="70" inputType="radio" id="rad" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="90" inputType="text" id="category" value="" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="110" inputType="text" id="product" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="radio의 label 적용 - 컬럼 조합" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView visibleRowNumFix="true" dataList="data:dlt_exam_3" style="height:100px;" autoFit="lastColumn" id=""
+								visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="460">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="190" inputType="text" id="column4" value="Category - Product" displayMode="label"></w2:column>
+										<w2:column width="90" inputType="text" id="column2" value="Category" displayMode="label"></w2:column>
+										<w2:column width="110" inputType="text" id="column3" sortable="true" value="Product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column textAlign="left" width="190" radioLabelColumn="category,product" inputType="radio" id="rad"
+											displayMode="label" radioLabelDelimiter=" - ">
+										</w2:column>
+										<w2:column textAlign="left" width="90" inputType="text" id="category" value="" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="110" inputType="text" id="product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="radio의 label 적용 - 사용자 메소드 적용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView visibleRowNumFix="true" dataList="data:dlt_exam_4" style="height:100px;" autoFit="lastColumn" id="grd_exam4"
+								visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="250">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="250" inputType="text" id="column4" value="[Category] Product" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column textAlign="left" width="250" radioLabelFormatter="scwin.grd_exam4_radioLabelFormatter" inputType="radio"
+											id="rad" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.autoComplete1_onchange = function(info) {
+		var oldValue = info.oldValue;
+		var newValue = info.newValue;
+		alert("onchange - " + oldValue + " changed to " + newValue + "." );
+	};
+	
+	scwin.trigger1_onclick = function(e) {
+		autoComplete1.setValue("Daegu");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="이벤트 - onchange" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. AutoComplete의 선택 항목 목록에서 다른 항목을 선택. &lt;br/&gt;2. onchange 이벤트가 발생하는 것을 확인. &lt;br/&gt;3. 하단의 setValue() 버튼을 클릭하여 동적으로 선택 항목을 변경. &lt;br/&gt;4. onchange 이벤트가 발생하는 것을 확인. '
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="이벤트 설명&lt;br/&gt;onchange - 선택 항목을 변경할 때 발생." escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox5" label='/// 샘플 코드&lt;br/&gt;&lt;br/&gt;scwin.autoComplete1_onchange = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var oldValue = info.oldValue;&lt;br/&gt; &amp;nbsp; &amp;nbsp;var newValue = info.newValue;&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onchange - " + oldValue + " changed to " + newValue + ".");&lt;br/&gt;};&lt;br/&gt;' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[autoComplete1.setValue("Daegu");]]></xf:label>
+    	</xf:trigger>
+    	<w2:autoComplete chooseOptionLabel="Select a city." submenuSize="auto" ev:onchange="scwin.autoComplete1_onchange"
+    		caseSensitive="false" chooseOption="true" useKeywordHighlight="false" allOption="" autoFocus="" mandatory="true" ref="" search="start"
+    		nextTabID="" editType="select" style="width: 50%;display: block;" id="autoComplete1" placeholder="Select a city." class="">
+    		<w2:choices>
+    			<w2:item>
+    				<w2:label><![CDATA[Seoul]]></w2:label>
+    				<w2:value><![CDATA[Seoul]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Busan]]></w2:label>
+    				<w2:value><![CDATA[Busan]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Daegu]]></w2:label>
+    				<w2:value><![CDATA[Daegu]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Jeju]]></w2:label>
+    				<w2:value><![CDATA[Jeju]]></w2:value>
+    			</w2:item>
+    			<w2:item>
+    				<w2:label><![CDATA[Jeonju]]></w2:label>
+    				<w2:value><![CDATA[Jeonju]]></w2:value>
+    			</w2:item>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

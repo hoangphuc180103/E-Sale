@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count=0;
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+    var options = {
+        id: scwin.count,
+        type: "browserPopup",
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: "Modal Popup - browser",
+        modal: "true",
+        resizable: true
+    };
+    $p.openPopup(tmpSrc, options);
+};
+
+scwin.trigger2_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+    var options = {
+        id: scwin.count,
+        type: "browserPopup",
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: "Modaless - browser",
+        modal: "false",
+        resizable: true
+    };
+    $p.openPopup(tmpSrc, options);
+
+};
+
+scwin.trigger3_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+    var options = {
+        id: scwin.count,
+        type: "pageFramePopup", 
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: "Modal Popup - pageFrame",
+        modal: "true",
+        resizable: true
+    };
+    $p.openPopup(tmpSrc, options);
+
+};
+
+scwin.trigger4_onclick = function (e) {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/popUp_content.xml";
+    var options = {
+        id: scwin.count,
+        type: "pageFramePopup",
+        width: "400px",
+        height: "200px",
+        top: "100px",
+        left: "200px",
+        popupName: "Modaless Popup - pageFrame",
+        modal: "false",
+        resizable: true
+    };
+    $p.openPopup(tmpSrc, options);
+
+};
+
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 30px;"><xf:trigger ev:onclick="scwin.trigger1_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger1" type="button">
+    		<xf:label><![CDATA[modal : "true", type : "browserPopup"]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger2" type="button">
+    		<xf:label><![CDATA[modal : "false", type : "browserPopup"]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger3_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger3" type="button">
+    		<xf:label><![CDATA[modal : "true", type : "pageFramePopup"]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger4_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger4" type="button">
+    		<xf:label><![CDATA[modal : "false", type : "pageFramePopup"]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

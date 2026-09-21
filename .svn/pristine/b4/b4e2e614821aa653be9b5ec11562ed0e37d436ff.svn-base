@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 항목, 값 선택">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="AutoComplete의 'search' 속성을 'contain'으로 변경." meta_date="20240527" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="데이터 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="04" meta_desc="AutoComplete의 'caseSensitive' 속성을 'true'로 설정." meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_autoCompleteData" baseNode="list" style="" repeatNode="map" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="label" name="label" dataType="text"></w2:column>
+						<w2:column id="value" name="value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data xmlns="" use="true">
+						<w2:row>
+							<label><![CDATA[Apple]]></label>
+							<value><![CDATA[01]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Apricot]]></label>
+							<value><![CDATA[02]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Banana]]></label>
+							<value><![CDATA[03]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Blueberry]]></label>
+							<value><![CDATA[04]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Blackberry]]></label>
+							<value><![CDATA[05]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList id="dlt_selectBoxData" baseNode="list" style="" repeatNode="map" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="disp" name="label" dataType="text"></w2:column>
+						<w2:column id="value" name="value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data xmlns="" use="true">
+						<w2:row>
+							<disp><![CDATA[Apple]]></disp>
+							<value><![CDATA[01]]></value>
+						</w2:row>
+						<w2:row>
+							<disp><![CDATA[Banana]]></disp>
+							<value><![CDATA[02]]></value>
+						</w2:row>
+						<w2:row>
+							<disp><![CDATA[Cherry]]></disp>
+							<value><![CDATA[03]]></value>
+						</w2:row>
+						<w2:row>
+							<disp><![CDATA[Durian]]></disp>
+							<value><![CDATA[04]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList id="dlt_schedule" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="dateKind" name="dateKind" dataType="text"></w2:column>
+						<w2:column id="dateName" name="dateName" dataType="text"></w2:column>
+						<w2:column id="isHoliday" name="isHoliday" dataType="text"></w2:column>
+						<w2:column id="sDate" name="sDate" dataType="text"></w2:column>
+						<w2:column id="eDate" name="eDate" dataType="text"></w2:column>
+						<w2:column id="remarks" name="remarks" dataType="text"></w2:column>
+						<w2:column id="seq" name="seq" dataType="text"></w2:column>
+						<w2:column id="key" name="key" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data xmlns="" use="true">
+						<w2:row>
+							<dateName><![CDATA[Day Off]]></dateName>
+							<sDate><![CDATA[20241231]]></sDate>
+							<eDate><![CDATA[20241231]]></eDate>
+							<dateKind><![CDATA[01]]></dateKind>
+							<isHoliday><![CDATA[Y]]></isHoliday>
+							<seq><![CDATA[1]]></seq>
+							<key><![CDATA[24_01]]></key>
+						</w2:row>
+						<w2:row>
+							<dateName><![CDATA[Day Off]]></dateName>
+							<sDate><![CDATA[20251231]]></sDate>
+							<eDate><![CDATA[20251231]]></eDate>
+							<dateKind><![CDATA[01]]></dateKind>
+							<isHoliday><![CDATA[Y]]></isHoliday>
+							<seq><![CDATA[2]]></seq>
+							<key><![CDATA[25_01]]></key>
+						</w2:row>
+						<w2:row>
+							<dateName><![CDATA[Day Off]]></dateName>
+							<sDate><![CDATA[20261231]]></sDate>
+							<eDate><![CDATA[20261231]]></eDate>
+							<dateKind><![CDATA[01]]></dateKind>
+							<isHoliday><![CDATA[Y]]></isHoliday>
+							<seq><![CDATA[3]]></seq>
+							<key><![CDATA[26_01]]></key>
+						</w2:row>
+						<w2:row>
+							<dateName><![CDATA[Day Off]]></dateName>
+							<sDate><![CDATA[20271231]]></sDate>
+							<eDate><![CDATA[20271231]]></eDate>
+							<dateKind><![CDATA[01]]></dateKind>
+							<isHoliday><![CDATA[Y]]></isHoliday>
+							<seq><![CDATA[4]]></seq>
+							<key><![CDATA[27_01]]></key>
+						</w2:row>
+						<w2:row>
+							<dateName><![CDATA[Day Off]]></dateName>
+							<sDate><![CDATA[20281231]]></sDate>
+							<eDate><![CDATA[20281231]]></eDate>
+							<dateKind><![CDATA[01]]></dateKind>
+							<isHoliday><![CDATA[Y]]></isHoliday>
+							<seq><![CDATA[5]]></seq>
+							<key><![CDATA[28_01]]></key>
+						</w2:row>
+						<w2:row>
+							<dateKind><![CDATA[01]]></dateKind>
+							<dateName><![CDATA[Day Off]]></dateName>
+							<isHoliday><![CDATA[Y]]></isHoliday>
+							<sDate><![CDATA[20291231]]></sDate>
+							<eDate><![CDATA[20291231]]></eDate>
+							<seq><![CDATA[6]]></seq>
+							<key><![CDATA[29_01]]></key>
+						</w2:row>
+						<w2:row>
+							<dateKind><![CDATA[01]]></dateKind>
+							<dateName><![CDATA[Day Off]]></dateName>
+							<isHoliday><![CDATA[Y]]></isHoliday>
+							<sDate><![CDATA[20301231]]></sDate>
+							<eDate><![CDATA[20301231]]></eDate>
+							<seq><![CDATA[7]]></seq>
+							<key><![CDATA[30_01]]></key>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //PageList의 페이지 수 할당.
+    pgl_ex01.setCount(24);
+    //PageList의 페이지 수 할당.
+    pgl_ex02.setCount(24);
+
+    cbx_ex01.focus();
+};
+
+scwin.sbx_calendarClass_onchange = function (info) {
+    //Calendar의 skin을 변경합니다.
+    cal_ex01.setSkin(this.getValue());
+};
+]]></script>
+
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="폼을 구성하는 컴포넌트로, 항목이나 특정 값 선택이 가능한 컴포넌트 예시입니다.&lt;br/&gt;Checkbox, Radio, SelectBox, MultiSelect, CheckCombobox, AutoComplete, Slider, Calendar, PageList, ScheduleCalendar가 해당됩니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Checkbox" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select appearance="full" cols="2" id="cbx_ex01" ref="" rows="" selectedindex="" style="width: 100%;">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_selectBoxData">
+									<xf:label ref="disp"></xf:label>
+									<xf:value ref="value"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select>
+						<w2:tag class="wre_hr" id="" style="" tagname="hr"></w2:tag>
+						<xf:select appearance="full" class="" cols="" id="cbx_ex02" rows="1" selectedindex="" style="width: 100%;">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_selectBoxData">
+									<xf:label ref="disp"></xf:label>
+									<xf:value ref="value"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="MultiSelect" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select appearance="minimal" class="" id="" style="width: 150px;">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_selectBoxData">
+									<xf:label ref="disp"></xf:label>
+									<xf:value ref="value"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Radio" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 appearance="full" class="" cols="2" id="" selectedIndex="-1" style="width: 100%;">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_selectBoxData">
+									<xf:label ref="disp"></xf:label>
+									<xf:value ref="value"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+						<w2:tag class="wre_hr" id="" style="" tagname="hr"></w2:tag>
+						<xf:select1 appearance="full" class="" id="" rows="1" selectedIndex="-1" style="width: 100%;">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_selectBoxData">
+									<xf:label ref="disp"></xf:label>
+									<xf:value ref="value"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="SelectBox" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" class="" direction="auto" disabled="false"
+							displayMode="label" id="" style="width: 150px;" submenuSize="auto">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_selectBoxData">
+									<xf:label ref="disp"></xf:label>
+									<xf:value ref="value"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="CheckCombobox" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:checkcombobox allOption="" appearance="minimal" chooseOption="" class="" delimiter="" direction="auto"
+							disabled="false" displayMode="label" id="" separator="," style="width: 150px;" submenuSize="auto">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_selectBoxData">
+									<xf:label ref="disp"></xf:label>
+									<xf:value ref="value"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:checkcombobox>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="AutoComplete" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:autoComplete class="" displayMode="label" editType="select" id="" search="contain" style="width: 150px;"
+							submenuSize="auto" useKeywordHighlight="true" caseSensitive="true">
+							<w2:choices>
+								<w2:itemset nodeset="data:dlt_autoCompleteData">
+									<w2:label ref="label"></w2:label>
+									<w2:value ref="value"></w2:value>
+								</w2:itemset>
+							</w2:choices>
+						</w2:autoComplete>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="PageList" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:pageList class="pgl" displayFormat="#" id="pgl_ex01" pageSize="10" style=""></w2:pageList>
+						<w2:tag class="wre_hr" id="" style="" tagname="hr"></w2:tag>
+						<w2:pageList class="pgl" displayFormat="#" displaySearchbox="true" displaySelectedIndex="true" id="pgl_ex02" pageSize="10"
+							style="">
+						</w2:pageList>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Slider" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:slider class="" id="" increment="10" maxValue="100" minValue="0" setBackground="true" showScale="true"
+							style="position: relative ;height: 30px;width:250px;margin:20px" value="10">
+						</w2:slider>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Calendar" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="titbox" id="" style="">
+							<w2:textbox class="mr_def" id="" label="calendarClass : " style="" tagname="span"></w2:textbox>
+							<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+								disabledClass="w2selectbox_disabled" displayMode="label" emptyItem="true" ev:onchange="scwin.sbx_calendarClass_onchange"
+								id="sbx_calendarClass" style="min-height:1.5em;width:120px;" submenuSize="auto" textAlign="center">
+								<xf:choices>
+									<xf:item>
+										<xf:label><![CDATA[class1]]></xf:label>
+										<xf:value><![CDATA[class1]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[class2]]></xf:label>
+										<xf:value><![CDATA[class2]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[class3]]></xf:label>
+										<xf:value><![CDATA[class3]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[class4]]></xf:label>
+										<xf:value><![CDATA[class4]]></xf:value>
+									</xf:item>
+									<xf:item>
+										<xf:label><![CDATA[class5]]></xf:label>
+										<xf:value><![CDATA[class5]]></xf:value>
+									</xf:item>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<w2:calendar calendarClass="" id="cal_ex01" style="margin-bottom: 6px;"></w2:calendar>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="min-width: 100% !important;">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="ScheduleCalendar" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="2024년부터 2030년까지 매년 12월 31일이 휴일로 지정되었습니다."
+							style="">
+						</w2:textbox>
+						<xf:group id="" style="padding:5px 0px;">
+							<w2:scheduleCalendar dataList="data:dlt_schedule" defaultDate="" editable="" endColumn="eDate" ev:onclick=""
+								headerLeftBtn="true" headerRightBtn="true" headerTitle="true" id="shc_ex01" idColumn="key" ioFormat="yyyyMMdd" lang="ko"
+								selectable="" startColumn="sDate" style="height: 500px;max-width: 900px;" titleColumn="dateName" version="">
+							</w2:scheduleCalendar>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

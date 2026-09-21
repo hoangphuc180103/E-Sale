@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="Depth" name="Depth"></w2:column>
+        				<w2:column dataType="text" id="Region" name="Region"></w2:column>
+        				<w2:column dataType="text" id="Population" name="Population" valueType=""></w2:column>
+        				<w2:column dataType="text" id="Area" name="Area"></w2:column>
+        				<w2:column dataType="text" id="GDP" name="GDP"></w2:column>
+        				<w2:column dataType="text" id="Literacy" name="Literacy"></w2:column>
+        				<w2:column dataType="text" id="Phones" name="Phones"></w2:column>
+        				<w2:column dataType="text" id="Birthrate" name="Birthrate"></w2:column>
+        				<w2:column dataType="text" id="Deathrate" name="Deathrate"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="population.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/population.json';
+    $p.executeSubmission("submission1");
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Show Context Menu via Alt + Left-clicking&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='(First Gridview)&lt;br/&gt;Press the Alt key and left-click, and confirm that the context menu appears. (contextMenuAltClick=“true”)&lt;br/&gt;&lt;br/&gt;(Second Gridview)&lt;br/&gt;Press the Alt key and left-click, and confirm that the context menu does not appear. (contextMenuAltClick=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='contextMenuAltClick="true"&lt;br/&gt;contextMenu="true"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" filterBoxvisibleRowNum="0" scrollByColumn="false"
+    		defaultCellHeight="20" contextMenuAltClick="true" contextMenu="true" visibleRowNumFix="true" dataList="data:dataList1"
+    		style="border: solid gray 1px;margin-bottom: 10px;" id="gridView1" autoFit="allColumn" visibleRowNum="10">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" id="column19" value="Depth"></w2:column>
+    				<w2:column width="70" id="column20" value="Region"></w2:column>
+    				<w2:column width="70" id="column21" value="Population"></w2:column>
+    				<w2:column width="70" id="column22" value="Area"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" id="Depth"></w2:column>
+    				<w2:column depthType="none" width="70" inputType="drilldown" style="text-align: left;" id="Region" showDepth="3"
+    					depthColumn="Depth">
+    				</w2:column>
+    				<w2:column width="70" id="Population"></w2:column>
+    				<w2:column width="70" id="Area"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='contextMenuAltClick="false"&lt;br/&gt;contextMenu="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" contextMenu="true" dataList="data:dataList1" defaultCellHeight="20"
+    		filterBoxvisibleRowNum="0" id="gridView2" rowNumVisible="true" scrollByColumn="false" scrollByColumnAdaptive="false"
+    		style="border: solid gray 1px;" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column id="column19" value="Depth" width="70"></w2:column>
+    				<w2:column id="column20" value="Region" width="70"></w2:column>
+    				<w2:column id="column21" value="Population" width="70"></w2:column>
+    				<w2:column id="column22" value="Area" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column id="Depth" width="70"></w2:column>
+    				<w2:column depthColumn="Depth" depthType="none" id="Region" inputType="drilldown" showDepth="3"
+    					style="text-align: left;" width="70">
+    				</w2:column>
+    				<w2:column id="Population" width="70"></w2:column>
+    				<w2:column id="Area" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

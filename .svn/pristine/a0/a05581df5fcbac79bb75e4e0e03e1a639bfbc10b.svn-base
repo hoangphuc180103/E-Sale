@@ -1,0 +1,19 @@
+/*amd /guide/SelectBox/validate_displaymessage_invalidMessage_invalidMessageFunc_SelectBox.xml 3925 b66de260aec4bbfcdb0e7077256a7b88be9cfada018fdd9b415ee707b9454fc8 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.fn_msg = function () {
+  var invalidType = this.getType(); // invalid type
+  switch (invalidType) {
+    case "mandatory":
+      msg = "Select your favorit city.";
+      break;
+    default:
+      msg = "Enter again.";
+      break;
+  }
+  return msg;
+};
+scwin.trigger1_onclick = function (e) {
+  select1.validate();
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'입력 검증 및 오류 메시지 표시',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 아무것도 입력하지 않고 validate() 버튼을 클릭. <br/>2. invalidMessageFunc 속성 값으로 지정한 함수가 반환한 오류 메시지가 표시되는 것을 확인.',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'속성 설정<br/>mandatory="true" <br/>displaymessage="true" <br/>invalidMessageFunc="scwin.fn_msg"',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;',id:'textbox5',label:'/// 샘플 코드<br/><br/>scwin.fn_msg = function () {<br/> &nbsp; &nbsp;var invalidType = this.getType(); &nbsp;// invalid type<br/> &nbsp; &nbsp;switch (invalidType) {<br/> &nbsp; &nbsp; &nbsp; &nbsp;case "mandatory":<br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;msg = "Select your favorit city.";<br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;<br/> &nbsp; &nbsp; &nbsp; &nbsp;default:<br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;msg = "Enter again.";<br/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;<br/> &nbsp; &nbsp;}<br/> &nbsp; &nbsp;return msg;<br/>}',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'select1.validate();'}]}]},{T:1,N:'xf:select1',A:{submenuSize:'auto',chooseOptionLabel:'Select a city.',invalidMessage:'',chooseOption:'true',invalidMessageFunc:'scwin.fn_msg',allOption:'',mandatory:'true',ref:'',appearance:'minimal',disabledClass:'w2selectbox_disabled',style:'width: 50%;',disabled:'false',id:'select1',displaymessage:'true',direction:'auto'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Seoul'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'1'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'New York'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'2'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Paris'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'3'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'London'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'4'}]}]}]}]}]}]}]}]})

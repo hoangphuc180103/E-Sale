@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]generator를 이용한 Table 형태 구성 화면">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true"
+        			ev:ondataload="scwin.dataList1_ondataload">
+        			<w2:columnInfo>
+        				<w2:column id="name" name="이름" dataType="text"></w2:column>
+        				<w2:column id="totalCount" name="totalCount" dataType="text"></w2:column>
+        				<w2:column id="periodicInspection" name="periodicInspection" dataType="text"></w2:column>
+        				<w2:column id="individualInquiry" name="individualInquiry" dataType="text"></w2:column>
+        				<w2:column id="serviceDesk" name="serviceDesk" dataType="text"></w2:column>
+        				<w2:column id="installationSupport" name="installationSupport" dataType="text"></w2:column>
+        				<w2:column id="errorResponse" name="errorResponse" dataType="text"></w2:column>
+        				<w2:column id="license" name="license" dataType="text"></w2:column>
+        				<w2:column id="fixedLengthVo" name="fixedLengthVo" dataType="text"></w2:column>
+        				<w2:column id="totalPageCount" name="totalPageCount" dataType="text"></w2:column>
+
+        			</w2:columnInfo>
+        		</w2:dataList>
+        		<w2:dataMap baseNode="map" id="dma_request" style="">
+        			<w2:keyInfo>
+        				<w2:key dataType="text" id="req" name="요청"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission abortTrigger="" action="/util/genExcel.do" customHandler="" encoding="UTF-8" errorHandler="" ev:submit=""
+				ev:submitdone="scwin.sbm_genExcel_submitdone" ev:submiterror="" id="sbm_genExcel" instance="" mediatype="application/json" method="post"
+				mode="asynchronous" processMsg="Down..." ref="data:json,dma_request" replace="" target='' style="">
+			</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 1개의 아이템을 추가하는 함수를 호출합니다.
+    scwin.generator_insertChild(1);
+};
+
+/**
+ * 버튼 [insertChild] click 시 발생.
+*/
+scwin.btn_insertChild_onclick = function (e) {
+    // 1개의 아이템을 추가하는 함수를 호출합니다.
+    scwin.generator_insertChild(1);
+};
+
+/**
+ * Generator 컴포넌트에 자식 추가.
+ * argNumLoop 만큼 자식 컴포넌트를 추가합니다.
+*/
+scwin.generator_insertChild = function (argNumLoop) {
+    argNumLoop = argNumLoop || 1; // 최소 값을 할당합니다.
+
+    // Generator 'gen_exam'의 항목 수를 반환받습니다.
+    let numLastIndex = gen_exam.getLength();
+
+    // Generator 'gen_exam'의 userData에 아이템을 추가했던 횟수를 가져옵니다.
+    let numItemIndex = gen_exam.getUserData("exam_itemIndex") || 1;
+
+    for (let i = 0; i < argNumLoop; i++) {
+        // Generator 'gen_exam'에 자식 컴포넌트들(TR 영역)을 추가합니다.
+        gen_exam.insertChild();
+
+        let cmpTmp; // 추가된 컴포넌트의 임시 할당 변수
+
+        // TH 영역의 TextBox 'tbx_gen_label' 제어
+        cmpTmp = gen_exam.getChild(numLastIndex, "tbx_gen_label");
+        cmpTmp.setValue("항목 " + numItemIndex); // Label의 값을 할당합니다.
+
+        // TD 영역의 InputBox 'ibx_gen_exam' 제어
+        cmpTmp = gen_exam.getChild(numLastIndex, "ibx_gen_exam");
+        cmpTmp.setValue("초기 값: " + numItemIndex); // 값을 할당합니다.
+
+        numLastIndex++;
+        numItemIndex++;
+    }
+
+    // Generator 'gen_exam'의 userData에 아이템을 추가했던 횟수를 할당합니다.
+    gen_exam.setUserData("exam_itemIndex", numItemIndex);
+};
+
+/**
+ * 버튼 [getValue] click 시 발생.
+ * inputbox의 value를 alert합니다.
+*/
+scwin.btn_gen_exam_onclick = function (e) {
+    // 반복된 행의 컴포넌트 'ibx_gen_exam'를 반환받습니다.
+    var cmpInput = this.getGeneratedComponent("ibx_gen_exam");
+    alert(cmpInput.getValue());
+};
+
+/**
+ * 버튼 [removeAll] click 시 발생.
+ * 반복된 자식 컴포넌트 전체를 삭제.
+ */
+scwin.btn_removeAll_onclick = function (e) {
+    // 반복된 자식 컴포넌트 전체를 삭제합니다.
+    gen_exam.removeAll();
+};
+
+/**
+ * 버튼 [remove] click 시 발생
+ * 내 행의 아이템 삭제하기.
+*/
+scwin.btn_gen_remove_onclick = function (e) {
+    // Generator 컴포넌트를 반환합니다. Generator의 ID를 알고 있는 경우 직접 접근할 수 있습니다. - gen_exam
+    let cmpGenerator = this.getGenerator();
+
+    // 자신의 반복부 index를 반환합니다.
+    let numIndex = this.getGeneratedIndex();
+
+    // index에 해당하는 반복부 아이템을 삭제합니다.
+    cmpGenerator.removeChild(numIndex);
+};
+
+/**
+ * 버튼 [getIndex] 클릭 시
+ * 반복된 Index 반환받기.
+ */
+scwin.btn_gen_index_onclick = function (e) {
+    // 반복된 Index 반환받기
+    let numIndex = this.getGeneratedIndex();
+
+    alert("index: " + numIndex);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[완성화면] Generator 컴포넌트로 동적처리" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 완료된 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 개요&lt;br/&gt;본 화면은 generator 컴포넌트를 활용하여 Table 형태의 반복 기능의 화면을 구성한 예제 입니다.&lt;br/&gt;generator 컴포넌트 : generator 컴포넌트는 특정 컴포넌트를 반복적으로 추가/삭제가 가능한 컴포넌트 입니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator 컴포넌트의 하위에 정의된 영역이 반복되며 script를 통해 제어 가능합니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator로 생성된 컴포넌트를 제어할 수 있는 함수도 지원하고 있습니다. &lt;br/&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 구성된 화면을 웹 브라우저를 통해 실행합니다. &lt;br/&gt;2. 실행된 화면에서 아이템 추가하기 버튼을 누를 때 마다 테이블 아이템이 반복되어 나타납니다.&lt;br/&gt;3. 아이템 삭제 버튼을 누르면 해당 행이 사라지고, 전체 아이템 삭제하기 버튼을 누르면 전체 아이템이 사라집니다."
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    				<xf:group class="example_div_tr_style" id="" style="">
+    					<xf:group class="example_div_td_style" id="" style="">
+    						<xf:group class="mb_def_box nobottom" id="" style="">
+    							<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_insertChild_onclick" id="btn_insertChild" style=""
+    								type="button">
+    								<xf:label><![CDATA[아이템 추가하기]]></xf:label>
+    							</xf:trigger>
+    							<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_removeAll_onclick" id="btn_removeAll" style=""
+    								type="button">
+    								<xf:label><![CDATA[전체 아이템 삭제하기]]></xf:label>
+    							</xf:trigger>
+    						</xf:group>
+    						<w2:textbox class="ws5_example_txt_normal" escape="false" id="" label="아래의 영역에 아이템이 추가(생성)됩니다." style=""></w2:textbox>
+    						<xf:group class="mb_def_box nobottom" id="" style="">
+    							<xf:group class="w2tb" id="" style="width: 100%;background-color: #fff;" tagname="table">
+    								<w2:attributes>
+    									<w2:summary></w2:summary>
+    								</w2:attributes>
+    								<xf:group tagname="colgroup">
+    									<xf:group style="width:66px;" tagname="col"></xf:group>
+    									<xf:group style="" tagname="col"></xf:group>
+    								</xf:group>
+    								<w2:generator id="gen_exam" style="" tagname="tbody">
+    									<xf:group id="" tagname="tr">
+    										<xf:group class="w2tb_th" style="" tagname="th">
+    											<w2:textbox class="" id="tbx_gen_label" label="label" ref="" style="" userData2=""></w2:textbox>
+    										</xf:group>
+    										<xf:group class="w2tb_td" style="" tagname="td">
+    											<xf:input adjustMaxLength="false" id="ibx_gen_exam"
+    												style="width: 90px;margin-right: 5px;display: block;">
+    											</xf:input>
+    											<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_gen_exam_onclick" id="btn_gen_exam"
+    												style="" type="button">
+    												<xf:label><![CDATA[Input 값 반환]]></xf:label>
+    											</xf:trigger>
+    											<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_gen_index_onclick"
+    												id="btn_gen_index" style="" type="button">
+    												<xf:label><![CDATA[인덱스 반환]]></xf:label>
+    											</xf:trigger>
+    											<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_gen_remove_onclick"
+    												id="btn_gen_remove" style="" type="button">
+    												<xf:label><![CDATA[아이템 삭제]]></xf:label>
+    											</xf:trigger>
+    										</xf:group>
+    									</xf:group>
+    								</w2:generator>
+    							</xf:group>
+    						</xf:group>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+
+    	</xf:group>
+    </body>
+</html>

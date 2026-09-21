@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>TreeView</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_f209787a1d424d9e" class="chapter_title">TreeView</h1>
+		<h1 id="r_982b0e053dec0a21" class="element heading1"
+			data-element-id="982b0e053dec0a21">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_6dbabb48e067cb8d" class="element normal"
+			data-element-id="6dbabb48e067cb8d">TreeView 컴포넌트는 계층적인 데이터를 트리
+			구조로 시각화하여 사용자에게 직관적인 정보 탐색 환경을 제공합니다. 파일 시스템의 폴더 구조, 조직도, 메뉴 시스템과 같이
+			부모-자식 관계를 가진 데이터를 직관적으로 표현할 수 있습니다. 드래그 앤 드롭을 통한 동적 편집, 일반 데이터를 계층적인
+			형태로 변환하는 기능 등을 제공하여 사용자가 복잡한 데이터 구조를 손쉽게 관리할 수 있는 기능을 제공합니다.</p>
+		<dl id="r_0cd91cde3732d640" class="element definition_list"
+			data-element-id="0cd91cde3732d640">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb31luBtsoqrcJh6FoCb0N0Y">TreeView
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3pbEdWSJ4kuo1SAZiwYC9i">TreeView
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_975347c7a2377555" class="element heading1"
+			data-element-id="975347c7a2377555">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_e15b07bcd5f88dc2" class="element normal"
+			data-element-id="e15b07bcd5f88dc2">TreeView 컴포넌트는 다음과 같은 상황에서
+			유용하게 활용될 수 있습니다:</p>
+		<dl id="r_763e468fd94a9470" class="element definition_list"
+			data-element-id="763e468fd94a9470">
+			<dt>
+				<strong>조직 구조 시각화</strong>
+			</dt>
+			<dd>
+				<p>기업의 조직도나 부서별 계층을 명확하게 보여주어 사용자(관리자, 직원)가 조직 내 관계를 한눈에 파악할 수
+					있도록 돕습니다.</p>
+			</dd>
+			<dt>
+				<strong>파일 및 폴더 관리</strong>
+			</dt>
+			<dd>
+				<p>파일 탐색기와 같이 계층적인 파일 및 폴더 구조를 표시하여 사용자가 쉽게 파일을 찾고 관리할 수 있는
+					인터페이스를 제공합니다.</p>
+			</dd>
+			<dt>
+				<strong>내비게이션 메뉴 구성</strong>
+			</dt>
+			<dd>
+				<p>웹 애플리케이션이나 시스템의 복잡한 메뉴 구조를 트리 형태로 구성하여 사용자가 원하는 기능이나 정보에 빠르게
+					접근할 수 있도록 직관적인 내비게이션을 제공합니다.</p>
+			</dd>
+			<dt>
+				<strong>카테고리 및 분류 체계</strong>
+			</dt>
+			<dd>
+				<p>제품 카테고리, 도서 분류 등 계층적인 분류 체계를 시각적으로 표현하여 사용자가 특정 그룹의 항목을 쉽게
+					탐색하고 선택할 수 있도록 지원합니다.s</p>
+			</dd>
+		</dl>
+		<h1 id="r_ea220f0d0f62cc14" class="element heading1"
+			data-element-id="ea220f0d0f62cc14">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_56ae1a8f2fc0320c" class="element unordered_list"
+			data-element-id="56ae1a8f2fc0320c">
+			<li><p>노드 선택/해제</p>
+				<ul>
+					<li><p>
+							노드의
+							<code>index</code>
+							또는
+							<code>value</code>
+							로 노드 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00316.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							노드를 선택하면 상위 노드에 선택된 효과 적용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00333.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							모든 노드의 선택 해제 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00317.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							초기 로딩 시 지정 depth까지 노드 자동 확장하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00458.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>툴팁</p>
+				<ul>
+					<li><p>
+							노드 툴팁에
+							<code>"w2group"</code>
+							Class를 추가하지 않기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00387.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							툴팁 변경하기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00454.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>노드 스타일</p>
+				<ul>
+					<li><p>
+							특정 노드에 스타일 적용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TreeView/setNodeClass_removeNodeClass_TreeView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/gWexCY9D70Y">YouTube</a>)
+						</p></li>
+					<li><p>노드 접기/펼치기</p>
+						<ul>
+							<li><p>
+									특정 노드 접기/펼치기 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TreeView/spanNode_TreeView.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/zs1aRFTlUHc">YouTube</a>)
+								</p></li>
+							<li><p>
+									전체 노드 접기/펼치기 (<a class="link"
+										href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TreeView/spanAll_TreeView.xml">샘플</a>,
+									<a class="link" href="https://youtu.be/i6isWpeG4Bg">YouTube</a>)
+								</p></li>
+						</ul></li>
+				</ul></li>
+			<li><p>체크 박스</p>
+				<ul>
+					<li><p>
+							각 노드에 체크 박스 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TreeView/showCheckbox_setShowCheckBox_TreeView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/WpGLtdALi3U">YouTube</a>)
+						</p></li>
+					<li><p>
+							부모 노드 체크 박스를 선택하여 자식 노드 전체를 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00459.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TreeView/showCheckbox_hierarchy_TreeView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/5lO3ZLmhBHc">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					노드 라벨 포맷 –
+					<code>customFormatter</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00460.xml">WRE</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

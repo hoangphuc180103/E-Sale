@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 전송, 이동">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="map" id="dlt_Upload">
+					<w2:columnInfo>
+						<w2:column id="name" name="File Name" dataType="text"></w2:column>
+						<w2:column id="size" name="File Size" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+	dlt_Upload.setJSON([]);
+};
+
+/**
+ * upload 컴포넌트의 [전송]버튼 클릭 핸들러
+ */
+scwin.btn_upload_onclick = function (e) {
+	//결과값 출력 textarea 초기화
+	txa_uploadDone.setValue("");
+	//선택된 파일이 있는지에 따른 분기 처리.
+	if (upd_ex01.getValue()) {
+		//업로드 실행.
+		upd_ex01.submit();
+	} else {
+		//파일이 선택되지 않은 경우 alert 처리.
+		alert("파일이 선택되지 않았습니다.");
+	}
+};
+
+/**
+ * upload 컴포넌트의 ondone 이벤트 발생 시
+ * 업로드 결과 출력
+ */
+scwin.upd_ex01_ondone = function (retXml) {
+	var strRet;
+
+	//upload 컴포넌트 초기화.
+	upd_ex01.reset();
+
+	//textarea에 출력할 결과값 가공. (xml과 xml을 json으로 변환한 문자열을 함께 출력)
+	strRet = WebSquare.xml.indent(retXml);
+	strRet += "\n\n******************************************************\n** WebSquare.json.XML2JSONString 로 변환 **\n******************************************************\n\n"
+	strRet += WebSquare.json.XML2JSONString(retXml);
+
+	//textarea
+	txa_uploadDone.setValue(strRet);
+
+	/*
+	//retXml 예시
+	<ret>
+		<key>C:/ws5/sample/resource/websquare_home/upload/up</key>
+		<storedFileList>00_20161227094305.xml</storedFileList>
+		<localfileList>00.xml</localfileList>
+		<fileSizeList>1436</fileSizeList>
+		<maxUploadSize>200000000</maxUploadSize>
+		<deniedList/>
+		<deniedCodeList/>
+	</ret>
+	*/
+};
+
+/**
+ * multiUpload 컴포넌트의 selectCallback 속성에 지정한 메소드.
+ * 파일 선택이 완료된 경우 발생.
+ */
+scwin.multiUploadSelectDone = function () {
+	//선택된 파일 목록을 그리드에 출력. 그리드에 연결된 DataList에 선택된 파일 정보를 할당. dlt_Upload는 GridView와 연결되어 있음.
+	dlt_Upload.setJSON(mpd_html5Type.getFileInfos());
+};
+
+/**
+ * multiupload 컴포넌트의 ondone 이벤트 발생 시
+ * 업로드 결과 출력
+ */
+scwin.mpd_html5Type_ondone = function (data) {
+	alert("업로드가 완료되었습니다.");
+	//결과값을 textarea에 출력.
+	txa_muliuploadDone.setValue(JSON.stringify(data, null, "\t"));
+};
+
+/**
+ * multiupload 컴포넌트의 [초기화] 버튼 클릭 시 발생
+ */
+scwin.btn_InitMultiupload_onclick = function (e) {
+	//선택 목록 삭제 - 그리드에 연결된 DataList의 데이터 삭제.
+	dlt_Upload.removeAll();
+	//multiupload 컴포넌트의 선택된 파일 목록 삭제.
+	mpd_html5Type.removeAllFiles();
+	//multiupload 결과값 출력 textarea의 value 초기화.
+	txa_muliuploadDone.setValue("");
+};
+
+/**
+ * multiupload 컴포넌트의 [전송] 버튼 클릭 시 발생
+ */
+scwin.btn_saveMultiupload_onclick = function (e) {
+	//선택된 파일이 없는 경우 분기 처리.
+	if (mpd_html5Type.getFileCount() === 0) {
+		alert("업로드할 파일이 없습니다.");
+		return;
+	}
+
+	//파일 업로드 시작. 완료되면 multiupload의 ondone 이벤트가 발생.(scwin.mpd_html5Type_ondone)
+	mpd_html5Type.startUpload();
+};
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="폼을 구성하는 컴포넌트로, 기본 button (input type=&quot;button&quot;)과 html로 구성 된 업로드 컴포넌트 예시입니다.&lt;br/&gt;MultiUpload의 경우 기본 UI가 Flash임으로 HTML5의 Multiple을 사용하기 위해선 mode속성의 값을 html5_transparent으로 설정하여 UI를 구성해야 합니다.&lt;br/&gt;아래 'type : html5_transparent' 예시는 Multiupload와 GridView컴포넌트로 구성되어 있습니다.&lt;br/&gt;Trigger, Anchor, Upload, MultiUpload"
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Trigger" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:trigger class="" id="" style="width: 100px;height: 30px;" type="button">
+							<xf:label><![CDATA[type:button]]></xf:label>
+						</xf:trigger>
+						<xf:trigger class="" id="" style="width: 100px;height: 30px;" type="anchor">
+							<xf:label><![CDATA[type:anchor]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Anchor" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:anchor class="mr_def" id="" outerDiv="false" style="text-decoration:underline;">
+							<xf:label><![CDATA[이동]]></xf:label>
+						</w2:anchor>
+						<w2:anchor class="btn_cm" id="" outerDiv="true" style="">
+							<xf:label><![CDATA[button]]></xf:label>
+						</w2:anchor>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Upload" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="max-width: 600px;">
+							<xf:group class="titbox" id="">
+								<w2:upload class="" disabled="" ev:ondone="scwin.upd_ex01_ondone" id="upd_ex01"
+									imageStyle="position:absolute;vertical-align:middle;word-wrap:break-word"
+									inputStyle="position:absolute;vertical-align:middle;word-wrap:break-word" style="position: relative ;width: calc(100% - 80px);"
+									type="image">
+								</w2:upload>
+								<xf:trigger class="btn_cm" ev:onclick="scwin.btn_upload_onclick" id="btn_upload" style="" type="button">
+									<xf:label><![CDATA[전송]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+							<xf:group class="titbox" id="" style="">
+								<w2:textbox class="txt_bold" id="" label="업로드 결과" style=""></w2:textbox>
+							</xf:group>
+							<xf:textarea class="" id="txa_uploadDone" spellcheck="false" style="width: 100%;height: 120px;"></xf:textarea>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="MultiUpload" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="max-width: 600px;">
+							<w2:textbox class="mb_def" id="" label='mode="html5_transparent"' style=""></w2:textbox>
+							<w2:textbox class="mb_def" id="" label="(Multiupload, Trigger, GridView등의 컴포넌트로 구성)" style=""></w2:textbox>
+							<xf:group class="titbox" id="" style="">
+								<xf:group class="" id="" style="position: relative; float: left;">
+									<xf:trigger class="btn_cm" ev:onclick="" id="ui_SelectFile" nextTabID="" style="width:80px;" type="button">
+										<xf:label>파일 선택</xf:label>
+									</xf:trigger>
+									<w2:multiupload action="" ev:ondone="scwin.mpd_html5Type_ondone" filter="" id="mpd_html5Type" maxcount="" maxsize=""
+										mode="html5_transparent" selectCallback="scwin.multiUploadSelectDone"
+										style="position: absolute;left: 0px;top:0px;width:80px;height: 26px;cursor: pointer;z-index: 999;" uploadButton="" wmode="false">
+									</w2:multiupload>
+								</xf:group>
+								<xf:trigger class="btn_cm fr" ev:onclick="scwin.btn_saveMultiupload_onclick" id="btn_saveMultiupload" style=""
+									type="button">
+									<xf:label><![CDATA[전송]]></xf:label>
+								</xf:trigger>
+								<xf:trigger class="btn_cm fr" ev:onclick="scwin.btn_InitMultiupload_onclick" id="btn_InitMultiupload" style=""
+									type="button">
+									<xf:label><![CDATA[초기화]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+							<xf:group class="gvwbox" id="">
+								<w2:gridView autoFit="lastColumn" class="gvw" dataList="dlt_Upload" fixedColumnWithHidden="true" id=""
+									ignoreCellClick="false" ignoreToggleOnDisabled="false" noResultMessage="선택된 파일이 없습니다." noResultMessageClass="w2gridViewNoResult"
+									noResultMessageStyle="" noResultMessageVisible="true" rowNumHeaderValue="No" rowNumVisible="true" rowNumWidth="36"
+									scrollByColumn="false" scrollByColumnAdaptive="false" style="height: 150px;margin-top: 10px;" summaryAuto="false"
+									useShiftKey="true" visibleRowNum="5">
+									<w2:header id="header1" style="">
+										<w2:row id="row1" style="">
+											<w2:column blockSelect="false" displayMode="label" id="column3" inputType="text" style="height:20px;" value="파일명"
+												width="199">
+											</w2:column>
+											<w2:column blockSelect="false" displayMode="label" id="column1" inputType="text" style="height:20px;" value="사이즈(byte)"
+												width="88">
+											</w2:column>
+										</w2:row>
+									</w2:header>
+									<w2:gBody id="gBody1" style="">
+										<w2:row id="row2" style="">
+											<w2:column blockSelect="false" displayMode="label" id="name" inputType="text" style="height:20px" textAlign="left"
+												width="199">
+											</w2:column>
+											<w2:column blockSelect="false" dataType="number" displayFormat="#,###" displayMode="label" id="size" inputType="text"
+												style="height:20px" textAlign="right" width="88">
+											</w2:column>
+										</w2:row>
+									</w2:gBody>
+								</w2:gridView>
+							</xf:group>
+							<xf:group class="titbox" id="" style="">
+								<w2:textbox class="txt_bold" id="" label="업로드 결과" style=""></w2:textbox>
+							</xf:group>
+							<xf:textarea class="mb_def" id="txa_muliuploadDone" spellcheck="false" style="width: 100%;height: 120px;"></xf:textarea>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

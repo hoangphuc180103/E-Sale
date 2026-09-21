@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 출력된 데이터가 없는 경우 지정된 메시지 출력하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220907" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="stock" name="Stock"></w2:column>
+						<w2:column id="created_date" name="Date" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'noResultMessageVisibleAlways' 속성을 사용하여, 데이터가 없는 경우 표시되는 메시지를 항상 표시하도록 설정한 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 최초 GridView에 할당된 Data가 없는 경우 메시지 미표시" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView rowNumWidth="34" visibleRowNumFix="true" rowNumVisible="true" dataList="data:dlt_exam" style="height:100px;"
+								autoFit="allColumn" id="" visibleRowNum="3" class="gvw" defaultCellHeight="37" autoFitMinWidth="240"
+								noResultMessageVisibleAlways="false">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="178" inputType="text" id="column3" value="Product" displayMode="label"></w2:column>
+										<w2:column width="63" inputType="text" id="column2" value="Stock" displayMode="label"></w2:column>
+										<w2:column width="83" inputType="text" id="column1" value="Date" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column textAlign="left" width="178" inputType="text" id="product" displayMode="label"></w2:column>
+										<w2:column textAlign="right" dataType="number" width="63" displayFormat="#,###" inputType="text" id="stock"
+											displayMode="label">
+										</w2:column>
+										<w2:column dataType="date" width="83" displayFormat="yyyy-MM-dd" inputType="text" id="created_date" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="GridView에 할당된 Data가 없는 경우 메시지 표시" style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView rowNumWidth="34" noResultMessageVisibleAlways="true" rowNumVisible="true" visibleRowNumFix="true"
+								dataList="data:dlt_exam" style="height:100px;" autoFit="allColumn" id="" visibleRowNum="3" class="gvw" defaultCellHeight="37"
+								autoFitMinWidth="240">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="178" inputType="text" id="column3" value="Product" displayMode="label"></w2:column>
+										<w2:column width="63" inputType="text" id="column2" value="Stock" displayMode="label"></w2:column>
+										<w2:column width="83" inputType="text" id="column1" value="Date" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column textAlign="left" width="178" inputType="text" id="product" displayMode="label"></w2:column>
+										<w2:column textAlign="right" dataType="number" width="63" displayFormat="#,###" inputType="text" id="stock"
+											displayMode="label">
+										</w2:column>
+										<w2:column dataType="date" width="83" displayFormat="yyyy-MM-dd" inputType="text" id="created_date" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

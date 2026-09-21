@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    scwin.count++;
+    var options = {
+        id: scwin.count,
+        type: "pageFramePopup",
+        height: "300px",
+        width: "400px",
+        popupName: "fixPosition: true",
+        fixPosition: true
+    };
+    $p.openPopup("", options);
+};
+
+scwin.trigger2_onclick = function (e) {
+    scwin.count++;
+    var options = {
+        id: scwin.count,
+        type: "pageFramePopup",
+        height: "300px",
+        width: "400px",
+        popupName: "fixPosition: false",
+        fixPosition: false
+    };
+    $p.openPopup("", options);
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="ポップアップ位置固定" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1-1.最初のボタンをクリックしてポップアップを作成します。 &lt;br/&gt;1-2.生成したポップアップの位置が固定され、ポップアップの位置を移動できないことを確認。 (fixPosition: true)&lt;br/&gt;（詳細なスクリプトは Script タブで確認）。 2番目のボタンをクリックしてポップアップを作成します。 &lt;br/&gt;2-2.作成したポップアップの位置を移動できることを確認してください。 (fixPosition: false)&lt;br/&gt;（詳細なスクリプトは Script タブで確認。）'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[openPopup() - fixPosition: true]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger type="button" id="trigger2" style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[openPopup() - fixPosition: false]]></xf:label>
+    	</xf:trigger>
+    </xf:group></body>
+</html>

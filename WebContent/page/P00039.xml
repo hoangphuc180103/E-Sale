@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="데이터 타입별 포맷 예시">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220522" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="데이터 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataMap baseNode="map" id="dma_sampleDataForm">
+					<w2:keyInfo>
+						<w2:key id="json" name="name1" dataType="text"></w2:key>
+						<w2:key id="array" name="name2" dataType="text"></w2:key>
+						<w2:key id="arrayString" name="name3" dataType="text"></w2:key>
+						<w2:key id="xml" name="name4" dataType="text"></w2:key>
+					</w2:keyInfo>
+					<w2:data use="true">
+						<json><![CDATA[[
+	{ "SEQ_NO":"1", "CODE":"100001", "NAME":"USER-01"},
+	{ "SEQ_NO":"2", "CODE":"100002", "NAME":"USER-02"}
+]]]></json>
+						<array><![CDATA[{
+	"columnInfo":["SEQ_NO", "CODE", "NAME"],
+	"data":["1", "100001", "USER-01", "2", "100001", "USER-01"]
+}]]></array>
+						<arrayString><![CDATA['"1","100001","USER-01", "2","100002","USER-02"']]></arrayString>
+						<xml><![CDATA[&lt;list id="dlt_example"&gt;
+	&lt;map&gt;
+		&lt;SEQ_NO&gt;1&lt;/SEQ_NO&gt;
+		&lt;CODE&gt;100001&lt;/CODE&gt;
+		&lt;NAME&gt;USER-01&lt;/NAME&gt;
+	&lt;/map&gt;
+	&lt;map&gt;
+		&lt;SEQ_NO&gt;2&lt;/SEQ_NO&gt;
+		&lt;CODE&gt;100002&lt;/CODE&gt;
+		&lt;NAME&gt;USER-02&lt;/NAME&gt;
+	&lt;/map&gt;
+&lt;/list&gt;]]></xml>
+					</w2:data>
+				</w2:dataMap>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 설명부에 pre tag 추가
+ */
+scwin.displayFormatter_desc = function (strValue) {
+    return "<pre>" + strValue + "</pre>";
+}
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="DataList에 셋팅할 수 있는 데이터의 포맷 예시입니다.&lt;br/&gt;Submission에 지정할 수 있는 타입은 JSON, Array, XML입니다.(속성 중 target과 reference의 dataType에 할당.)"
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label="JSON - 기본 권장 포맷" style="" tagname="h3"></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" escape="false" id="tbx_desc_json" label="" style=""
+				ref="data:dma_sampleDataForm.json" displayFormatter="scwin.displayFormatter_desc">
+			</w2:textbox>
+			<w2:textbox id="" label="Submission 설정 예시" style="" class="mb_def"></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" id=""
+				label="&lt;span class='wre_txt_red'&gt;target=&quot;data:json&lt;/span&gt;,[데이터 리스트 아이디]&quot;&lt;br/&gt;mediatype=&quot;application/json&quot;"
+				style="" escape="false">
+			</w2:textbox>
+			<w2:textbox class="wre_heading" id="" label="ARRAY - 대용량 데이터 권장 포맷" style="" tagname="h3"></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" escape="false" id="tbx_desc_jsonArray" label="" style=""
+				ref="data:dma_sampleDataForm.array" displayFormatter="scwin.displayFormatter_desc">
+			</w2:textbox>
+			<w2:textbox class="mb_def" id="" label="Submission 설정 예시" style=""></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" escape="false" id=""
+				label="&lt;span class='wre_txt_red'&gt;target=&quot;data:array&lt;/span&gt;,[데이터 리스트 아이디]&quot;&lt;br/&gt;mediatype=&quot;application/json&quot;"
+				style="">
+			</w2:textbox>
+			<w2:textbox class="wre_heading" id="" label="1차원 ARRAY" style="" tagname="h3"></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" escape="false" id="tbx_desc_array" label="" style=""
+				ref="data:dma_sampleDataForm.arrayString" displayFormatter="scwin.displayFormatter_desc">
+			</w2:textbox>
+			<w2:textbox class="mb_def" id="" label="Submission 설정 예시" style=""></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" escape="false" id=""
+				label="&lt;span class='wre_txt_red'&gt;1차원 ARRAY은 Submission에 지정할 수 없으며 응답 데이터를 직접 DataList에 할당해야 합니다. DataList의 API 중 setData를 사용합니다.&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span class='wre_txt_red'&gt;target : &quot;&quot;&lt;/span&gt;&lt;br/&gt;mediatype=&quot;text/plain&quot;"
+				style="">
+			</w2:textbox>
+			<w2:textbox class="wre_heading" id="" label="XML" style="" tagname="h3"></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" escape="false" id="tbx_desc_xml" label="" style=""
+				ref="data:dma_sampleDataForm.xml" displayFormatter="scwin.displayFormatter_desc">
+			</w2:textbox>
+			<w2:textbox class="mb_def" id="" label="Submission 설정 예시" style=""></w2:textbox>
+			<w2:textbox class="wre_block_code minH mb_def" escape="false" id=""
+				label="&lt;span class='wre_txt_red'&gt;target=&quot;data:xml&lt;/span&gt;,[데이터 리스트 아이디]&quot;&lt;br/&gt;mediatype=&quot;application/xml&quot;"
+				style="">
+			</w2:textbox>
+		</xf:group>
+	</body>
+</html>

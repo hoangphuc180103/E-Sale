@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[AutoComplete] 편집 모드 진입 시 목록 표시하지 않기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231123" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="AutoComplete의 'hideListOnFocus' 속성을 사용하여 편집 모드로 전환될 때 목록의 표시 여부를 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="목록 미표시" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:autoComplete disableEdit="false" hideListOnFocus="true" id="acb_exam1" style="width: 150px;min-height:24px;"
+							submenuSize="auto">
+							<w2:choices>
+								<w2:item>
+									<w2:label><![CDATA[App]]></w2:label>
+									<w2:value><![CDATA[App]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Apple]]></w2:label>
+									<w2:value><![CDATA[Apple]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Appendix]]></w2:label>
+									<w2:value><![CDATA[Appendix]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Banana]]></w2:label>
+									<w2:value><![CDATA[Banana]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Cat]]></w2:label>
+									<w2:value><![CDATA[Cat]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Dog]]></w2:label>
+									<w2:value><![CDATA[Dog]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Happy]]></w2:label>
+									<w2:value><![CDATA[Happy]]></w2:value>
+								</w2:item>
+							</w2:choices>
+						</w2:autoComplete>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 목록 표시" style=""></w2:textbox>
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:autoComplete id="acb_exam2" style="width: 150px;min-height:26px;" submenuSize="auto" disableEdit="false"
+							hideListOnFocus="false">
+							<w2:choices>
+								<w2:item>
+									<w2:label><![CDATA[App]]></w2:label>
+									<w2:value><![CDATA[App]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Apple]]></w2:label>
+									<w2:value><![CDATA[Apple]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Appendix]]></w2:label>
+									<w2:value><![CDATA[Appendix]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Banana]]></w2:label>
+									<w2:value><![CDATA[Banana]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Cat]]></w2:label>
+									<w2:value><![CDATA[Cat]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Dog]]></w2:label>
+									<w2:value><![CDATA[Dog]]></w2:value>
+								</w2:item>
+								<w2:item>
+									<w2:label><![CDATA[Happy]]></w2:label>
+									<w2:value><![CDATA[Happy]]></w2:value>
+								</w2:item>
+							</w2:choices>
+						</w2:autoComplete>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>PageControl</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_c9ae2fe337681f18" class="chapter_title">PageControl</h1>
+		<h1 id="r_1a94b3ebc24c51ec" class="element heading1"
+			data-element-id="1a94b3ebc24c51ec">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_a68d12e89999244d" class="element normal"
+			data-element-id="a68d12e89999244d">PageControl 컴포넌트는 페이징 기능을 구현할
+			수 있도록 도와주는 사용자 인터페이스 구성 요소입니다. 일반적으로 데이터 목록을 여러 페이지로 나누어 보여줄 때 사용되며,
+			사용자는 해당 컴포넌트를 통해 이전 페이지 또는 다음 페이지로 손쉽게 이동할 수 있습니다. PageControl 컴포넌트는
+			최소한의 기본 기능(이전, 다음 이동 버튼)을 제공하며, 실제 페이징 로직 및 전체 페이지 수 관리 등은 개발자가 별도로
+			구현해야 합니다. 즉, 전체 페이지 수나 페이지 당 표시할 데이터의 양 등은 개발자가 별도로 구현해야 합니다.</p>
+		<h1 id="r_63a99c5e172d1523" class="element heading1"
+			data-element-id="63a99c5e172d1523">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_ac08e4bd17ac5b4d" class="element normal"
+			data-element-id="ac08e4bd17ac5b4d">PageControl 컴포넌트는 주로 다음과 같은
+			상황에서 활용될 수 있습니다.</p>
+		<dl id="r_7c9e82dfe5f75901" class="element definition_list"
+			data-element-id="7c9e82dfe5f75901">
+			<dt>
+				<strong>대량의 데이터 탐색</strong>
+			</dt>
+			<dd>
+				<p>게시판, 상품 목록, 검색 결과 등 여러 페이지에 걸쳐 있는 대량의 데이터를 사용자가 쉽게 탐색할 수 있도록
+					페이지 이동 기능을 제공합니다.</p>
+			</dd>
+			<dt>
+				<strong>슬라이드 또는 캐러셀 제어</strong>
+			</dt>
+			<dd>
+				<p>이미지 슬라이드, 배너, 제품 홍보 등 여러 콘텐츠가 순차적으로 전환되는 경우, 각 콘텐츠를 페이지로 간주하여
+					제어하는 데 사용될 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>단계별 프로세스 안내</strong>
+			</dt>
+			<dd>
+				<p>회원 가입, 주문 처리 등 여러 단계를 거쳐야 하는 프로세스에서 각 단계를 페이지로 구성하여 사용자가 현재
+					단계를 파악하고 다음 단계로 이동할 수 있도록 안내하는 역할을 합니다.</p>
+			</dd>
+			<dt>
+				<strong>다국어 콘텐츠 전환</strong>
+			</dt>
+			<dd>
+				<p>여러 언어로 제공되는 콘텐츠를 페이지 단위로 전환하여 보여줄 때 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>성능 최적화</strong>
+			</dt>
+			<dd>
+				<p>모든 데이터를 한 번에 로드하지 않고 필요한 부분만 표시하여 화면 렌더링 성능을 향상시킬 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_c0ad68c59f2aa18d" class="element heading1"
+			data-element-id="c0ad68c59f2aa18d">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_faf9640d9d4dcd7e" class="element unordered_list"
+			data-element-id="faf9640d9d4dcd7e">
+			<li><p>
+					총 페이지 수 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00291.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					페이지 표시 유형 설정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00413.xml">WRE</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>TableLayout</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_c010a2f7501b7ce8" class="chapter_title">TableLayout</h1>
+		<h1 id="r_1b1dcb6ac5273ce5" class="element heading1"
+			data-element-id="1b1dcb6ac5273ce5">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_2017ce5606bc0906" class="element normal"
+			data-element-id="2017ce5606bc0906">TableLayout 컴포넌트는 웹 애플리케이션에서 표
+			형태의 레이아웃을 손쉽게 구성하고 관리할 수 있도록 지원하는 강력한 도구입니다. TableLayout은 구조화된 레이아웃을
+			생성하는 데 최적화되어 있으며, 각 셀에 다양한 UI 컴포넌트를 자유롭게 배치할 수 있습니다. 이를 통해 개발자는 복잡한 폼
+			레이아웃이나 데이터 표시 화면을 효율적으로 구성할 수 있습니다. 특히, 직관적인 형태로 정렬된 UI를 제공하기 때문에 폼
+			입력 화면이나 정보 표시 테이블을 구성할 때 매우 유용합니다.</p>
+		<dl id="r_da4df6375ffafc01" class="element definition_list"
+			data-element-id="da4df6375ffafc01">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb0VqTzmRAyr7tXJZpCxrXbv">TableLayout
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_7ba0ef791aed69a4" class="element heading1"
+			data-element-id="7ba0ef791aed69a4">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_737f4110775f0641" class="element normal"
+			data-element-id="737f4110775f0641">TableLayout 컴포넌트는 주로 다음과 같은
+			용도로 활용됩니다.</p>
+		<dl id="r_0dfe26b62ae88cfb" class="element definition_list"
+			data-element-id="0dfe26b62ae88cfb">
+			<dt>폼 양식 구성</dt>
+			<dd>
+				<p>입력 필드와 레이블을 체계적으로 배치하여 사용자 친화적인 인터페이스를 구현할 수 있습니다. 또한 데이터 입력
+					화면, 상세 정보 표시 화면, 설정 페이지 등 다양한 비즈니스 애플리케이션 화면 구성에 활용됩니다.</p>
+			</dd>
+			<dt>표 기반 레이아웃 설계</dt>
+			<dd>
+				<p>행과 열로 정보를 구분하여 표현해야 하는 표 기반의 화면을 설계할 때 유용합니다.</p>
+			</dd>
+			<dt>복합적인 인터페이스 구현</dt>
+			<dd>
+				<p>내부 셀마다 다른 컴포넌트를 배치할 수 있습니다.</p>
+			</dd>
+			<dt>최적화된 레이아웃 제공</dt>
+			<dd>
+				<p>반응형 웹 디자인을 지원하여 다양한 화면 크기에서 최적화된 레이아웃을 제공하며, 테이블 기반의 구조화된 데이터
+					표시에도 효과적입니다. 이를 통해 사용자는 어떤 기기에서든 일관되고 편리한 사용자 경험을 할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_99a45a34e694a7ea" class="element heading1"
+			data-element-id="99a45a34e694a7ea">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_9f8cd0b2826f5e30" class="element unordered_list"
+			data-element-id="9f8cd0b2826f5e30">
+			<li><p>
+					TableLayout 소개 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TableLayout/introduction_TableLayout.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/FgJIBcSgqTI">YouTube</a>)
+				</p></li>
+			<li><p>
+					적응형 웹 적용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/TableLayout/adaptive_adaptiveThreshold_TableLayout.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/q8tQ06AF3G8">YouTube</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

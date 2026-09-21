@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>InputBox</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_c0721c0a463b803e" class="chapter_title">InputBox</h1>
+		<h1 id="r_1688f13b01153d8a" class="element heading1"
+			data-element-id="1688f13b01153d8a">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_21db7586fb29eaa6" class="element normal"
+			data-element-id="21db7586fb29eaa6">InputBox는 웹스퀘어 AI 플랫폼에서 제공하는
+			가장 기본적인 텍스트 입력 컴포넌트입니다. 개발자는 복잡한 코딩 없이 이 컴포넌트를 추가하여 웹 화면에 사용자 입력 상자를
+			쉽게 구현할 수 있습니다. InputBox 컴포넌트는 단순한 텍스트 입력 기능뿐만 아니라, 다양한 형식의 데이터(날짜,
+			시간, 숫자, 통화 등)를 처리할 수 있는 고급 기능을 제공합니다. 또한 입력값의 유효성 검사, 자동 포맷팅, 마스킹 등의
+			기능을 통해 사용자 경험을 향상시키고 데이터 정확성을 보장합니다.</p>
+		<dl id="r_fc0f0149b643bf92" class="element definition_list"
+			data-element-id="fc0f0149b643bf92">
+			<dt>
+				<strong>사용 예시 영상</strong>
+			</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb05RQ5h7SX85cVKxVeRJ6Ri">InputBox
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb06wbWFP3qUNey8KNLqMi1L">InputBox
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_fbe4e74461dd3dbc" class="element heading1"
+			data-element-id="fbe4e74461dd3dbc">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_4dc1076530c05306" class="element normal"
+			data-element-id="4dc1076530c05306">InputBox는 다양한 형태의 사용자 입력을 처리할
+			수 있어 웹 애플리케이션 개발에서 폭넓게 활용됩니다. 주요 용도는 다음과 같습니다.</p>
+		<dl id="r_61755d88f30b748b" class="element definition_list"
+			data-element-id="61755d88f30b748b">
+			<dt>
+				<strong>텍스트 입력 </strong>
+			</dt>
+			<dd>
+				<p>가장 기본적인 용도로, 사용자로부터 일반 텍스트를 입력받을 때 사용합니다. 이름, 주소, 이메일 등의 정보를
+					입력받는 데 적합합니다.</p>
+			</dd>
+			<dt>
+				<strong>숫자 입력 </strong>
+			</dt>
+			<dd>
+				<p>dataType을 "number"나 "float"로 설정하여 숫자 전용 입력 필드로 사용할 수 있습니다.
+					수량, 금액, 통계치 등의 숫자 데이터를 입력받는 데 활용됩니다.</p>
+			</dd>
+			<dt>
+				<strong>날짜 및 시간 입력 </strong>
+			</dt>
+			<dd>
+				<p>dataType을 "date"나 "time"으로 설정하여 날짜나 시간 입력용으로 사용할 수 있습니다. 특정
+					형식(예: "yyyy-MM-dd")에 맞춰 날짜를 입력받을 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>화폐 단위 입력 </strong>
+			</dt>
+			<dd>
+				<p>dataType을 "euro", "rupee", "tenge" 등의 화폐 단위로 설정하여 금액 입력 시
+					자동으로 화폐 기호와 천 단위 구분자를 적용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>마스킹된 데이터 입력 </strong>
+			</dt>
+			<dd>
+				<p>개인정보 보호가 필요한 데이터(주민등록번호, 신용카드 번호 등)를 입력받을 때 마스킹 기능을 활용하여 일부
+					정보를 숨길 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_279ec0ac272082ec" class="element heading1"
+			data-element-id="279ec0ac272082ec">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_8a0127fb0dd0c84b" class="element unordered_list"
+			data-element-id="8a0127fb0dd0c84b">
+			<li><p>
+					데이터 객체와 바인딩 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00380.xml">WRE</a>)
+				</p></li>
+			<li><p>포맷 적용하기</p>
+				<ul>
+					<li><p>
+							<code>displayFormatter</code>
+							적용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00240.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							시간 및 날짜 포맷 (<a class="link" href="https://youtu.be/ijYnYvNdlSE">YouTube</a>)
+						</p></li>
+					<li><p>
+							반올림 및 올림 기능 (<a class="link" href="https://youtu.be/BuRyN4ZxtfY">YouTube</a>)
+						</p></li>
+					<li><p>
+							정의한 포맷으로 숫자 입력 (<a class="link"
+								href="https://youtu.be/al7A8OO0dWQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							포맷 적용 시점 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00125.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/dataType_displayFormat_applyFormat_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/al7A8OO0dWQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							대문자 변환 (<a class="link" href="https://youtu.be/OsS9j06q5ME">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					마스킹 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00241.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							마스킹 방향 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/maskFormat_applyFormat_displayFormat_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/YqLhFD72kZE">YouTube</a>)
+						</p></li>
+					<li><p>
+							숫자 및 알파벳 마스킹 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/masking_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/BB5eDivmrw4">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					최대 입력 길이 제한 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00127.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							최대 입력 가능 바이트 길이 설정 및 초기화 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/setMaxByteLength_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Cn2MzrsuRXk">YouTube</a>)
+						</p></li>
+					<li><p>
+							소수점 이력 길이 제한 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00441.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					입력 검증 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00195.xml">WRE</a>)
+				</p>
+				<ul>
+					<li><p>
+							입력 검증 및 오류 메시지 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/validate_displaymessage_invalidMessage_invalidMessageFunc_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/JCY4DR0ciHk">YouTube</a>)
+						</p></li>
+					<li><p>
+							필수 입력 (
+							<code>mandatory</code>
+							) 설정 및 확인 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/setMandatory_getMandatory_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Fs6piaQX3ZE">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>힌트 문구</p>
+				<ul>
+					<li><p>
+							설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00354.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							읽기 전용 모드 혹은 비활성화된 경우에도 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00355.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							읽기 전용 모드 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00372.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							입력 값의 좌우 공백 제거 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00126.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/ltrim_trm_rtrim_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/7I_TWRe5v5I">YouTube</a>)
+						</p></li>
+					<li><p>
+							값 설정 및 반환 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/setValue_getValue_InputBox.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/uwM_6AqWc9Q">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_f0e7152256d59498" class="element heading1"
+			data-element-id="f0e7152256d59498">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_1c3d1c27625dd87f" class="element unordered_list"
+			data-element-id="1c3d1c27625dd87f">
+			<li><p>
+					<code>onblur</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00353.xml">WRE</a>)
+				</p></li>
+			<li><p>
+					<code>oneditfull</code>
+					(<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00128.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/InputBox/oneditfull_maxByteLength_autoFocus_InputBox.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/VcJP7qwDR3k">YouTube</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

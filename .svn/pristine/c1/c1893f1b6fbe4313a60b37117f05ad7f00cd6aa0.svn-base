@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="팝업" meta_screenName="P00157 팝업 페이지 01">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221104" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [팝업 열기] 클릭시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var jsnOptions;
+    var strPopID = "popup_P00157P02";
+
+    //중복 팝업 제어
+    if ($p.getPopupWindow(strPopID)) {
+        return;
+    }
+
+    jsnOptions = {
+        id: strPopID,
+        type: "wframePopup",
+        modal: "modal",
+        frameModal: "",
+        width: "220px",
+        height: "180px",
+        popupName: "popup1-1",
+        left: "60px",
+        top: "60px"
+    };
+
+    //팝업 열기
+    $p.openPopup("/page/P00157P02.xml", jsnOptions);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="pop_contents" id="" style="padding: 10px;">
+		<xf:group id="" class="mb_def_box"><w2:textbox style="color: DarkCyan;font-size: 1.1em;font-weight: bold;" id="" label="팝업1"></w2:textbox><w2:textbox style="color: DarkCyan;font-size: 1.1em;font-weight: bold;" id="" label="P00157P01.xml"></w2:textbox><xf:group style="" id="">
+				<xf:trigger useDefaultLabel="true" ev:onclick="scwin.btn_ex1_onclick" localeRef="" style="min-width: 30px;" id="btn_ex1" type="" class="btn_exam_exec">
+					<xf:label><![CDATA[팝업 열기]]></xf:label>
+				</xf:trigger>
+			</xf:group></xf:group></xf:group>
+	</body>
+</html>

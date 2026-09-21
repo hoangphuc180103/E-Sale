@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+            			<w2:column dataType="text" id="col2" name="Country"></w2:column>
+            			<w2:column dataType="text" id="col3" name="Item"></w2:column>
+            			<w2:column dataType="text" id="col4" name="Quantity"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[Asia]]></col1>
+            				<col2><![CDATA[Korea]]></col2>
+            				<col3><![CDATA[Freezer]]></col3>
+            				<col4><![CDATA[300]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Asia]]></col1>
+            				<col2><![CDATA[China]]></col2>
+            				<col3><![CDATA[Washer]]></col3>
+            				<col4><![CDATA[700]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Europe]]></col1>
+            				<col2><![CDATA[Germany]]></col2>
+            				<col3><![CDATA[TV]]></col3>
+            				<col4><![CDATA[350]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Europe]]></col1>
+            				<col2><![CDATA[France]]></col2>
+            				<col3><![CDATA[Washer]]></col3>
+            				<col4><![CDATA[400]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Americas]]></col1>
+            				<col2><![CDATA[Canada]]></col2>
+            				<col3><![CDATA[TV]]></col3>
+            				<col4><![CDATA[330]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Americas]]></col1>
+            				<col2><![CDATA[Mexico]]></col2>
+            				<col3><![CDATA[Freezer]]></col3>
+            				<col4><![CDATA[500]]></col4>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {		
+			
+	};
+	
+	
+	
+	
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Show Context Menu&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(First GridView)&lt;br/&gt;Confirm that right-clicking a cell displays the context menu. (contextMenu=“true”)&lt;br/&gt;&lt;br/&gt;(Second GridView)&lt;br/&gt;Confirm that right-clicking a cell does not display the context menu. (contextMenu=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='contextMenu="true"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView rowNumVisible="" showSortableImage="" scrollByColumn="false" defaultCellHeight="20" focusMode="cell"
+    		selectedCellColor="#FF8040" checkAllType="false" copyType="native" id="gridView1" autoFit="allColumn" copyOption=""
+    		showSortableUseFilter="" scrollByColumnAdaptive="false" noResultMessageVisibleAlways="true" useShiftKey="true" sortable=""
+    		noResultMessageVisible="" contextMenuAltClick="" noResultMessage="No data." noResultMessageClass="" contextMenu="true"
+    		dataList="data:dataList1" style="border: solid 1px gray;margin-bottom: 10px;" visibleRowNum="4" useFilterList="true" useCtrlKey=""
+    		visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="" style="height:20px" id="column4" value="Continent" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column4" value="Country" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column5" value="Item" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column6" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column ref="" chooseOption="" width="70" inputType="" style="height:20px" id="col1" allOption="" value=""
+    					displayMode="label" embeddedInput="">
+    					<w2:choices></w2:choices>
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col4" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='contextMenu="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" checkAllType="false" contextMenuAltClick="" copyOption="" copyType="native"
+    		dataList="data:dataList1" defaultCellHeight="20" focusMode="cell" id="gridView2" noResultMessage="No data." noResultMessageClass=""
+    		noResultMessageVisible="" noResultMessageVisibleAlways="true" rowNumVisible="" scrollByColumn="false" scrollByColumnAdaptive="false"
+    		selectedCellColor="#FF8040" showSortableImage="" showSortableUseFilter="" sortable="" style="border: solid 1px gray;" useCtrlKey=""
+    		useFilterList="true" useShiftKey="true" visibleRowNum="4" visibleRowNumFix="true">
+    		<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column displayMode="label" id="column3" inputType="" style="height:20px" value="Continent" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column4" inputType="text" style="" value="Country" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column5" inputType="text" style="" value="Item" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column6" inputType="text" style="" value="Quantity" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column allOption="" chooseOption="" displayMode="label" embeddedInput="" id="col1" inputType="" ref=""
+    					style="height:20px" value="" width="70">
+    					<w2:choices></w2:choices>
+    				</w2:column>
+    				<w2:column displayMode="label" id="col2" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col3" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col4" inputType="text" style="" value="" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

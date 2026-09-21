@@ -1,0 +1,68 @@
+/*amd /edu/adv/pageFrame_c.xml 6617 8e0326bcd010cb0b614f2687e0103c22ccbf3472eef52e7ab745e7a9b5c3384c */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  scwin.btn_setData_onclick();
+};
+
+//완성 화면 보기 
+scwin.ui_textbox1_onclick = function (e) {
+  var _url = "";
+  var _path = "";
+  _path = this.getUserData("userData1");
+  _url = $c.frame.getBasePageURL($p, true) + "#w2xPath=" + _path;
+  window.open(_url, "_blank");
+};
+
+//부모값 자동 넣기
+scwin.btn_setData_onclick = function (e) {
+  ui_ipt1.setValue("parent_Value1");
+  ui_ipt2.setValue("parent_Value2");
+};
+
+//setSrc적용
+//async await 문법 사용 안 할경우 발생    
+//getWindow() : pageFrame 화면 안의 객체를 접근하려면 이 함수를 호출함
+scwin.btn_setSrc_onclick = function (e) {
+  pageFrame2.setSrc("/edu/adv/pageFrame_child_2.xml"); //1
+
+  pageFrame2.getWindow().scwin.setData(); //2
+};
+
+//setSrc적용(async)
+//async await 문법 사용하기 
+//getWindow() : pageFrame 화면 안의 객체를 접근하려면 이 함수를 호출함
+scwin.btn_setSrc_async_onclick = async function (e) {
+  var rowJSON = {
+    "data1": ui_ipt1.getValue(),
+    "data2": ui_ipt2.getValue()
+  };
+  var obj = {
+    "dataObject": {
+      "type": "json",
+      "name": "pageParam",
+      "data": rowJSON
+    }
+  };
+  await pageFrame2.setSrc("/edu/adv/pageFrame_child_2.xml", obj); //1
+
+  pageFrame2.getWindow().scwin.setData(); //2
+};
+
+//자식값 가져오기
+//getWindow() : pageFrame 화면 안의 객체를 접근하려면 이 함수를 호출함
+//ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+scwin.btn_getChild_onclick = function (e) {
+  ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+};
+
+//부모값 보내기
+//pageFrame1.getWindow().ui_ipt1.setValue(ui_ipt1.getValue());
+scwin.btn_setChild_onclick = function (e) {
+  pageFrame1.getWindow().ui_ipt1.setValue(ui_ipt1.getValue());
+};
+
+//자식1 -> 자식2
+//pageFrame2.getWindow().ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+scwin.btn_bro_onclick = function (e) {
+  pageFrame2.getWindow().ui_ipt1.setValue(pageFrame1.getWindow().ui_ipt1.getValue());
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'pgtbox',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_fav',id:'',style:'',type:'button'},E:[{T:1,N:'xf:label'}]},{T:1,N:'w2:textbox',A:{class:'pgt_tit',id:'',label:'[완성화면] PageFrame 컴포넌트',style:'',tagname:''}}]},{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',id:'',label:'해당화면은 코딩이 완료된 화면',style:'',tagname:'h3'}}]},{T:1,N:'w2:pageFrame',A:{style:'',id:'',src:'/edu/adv/pageFrame_desc.xml'}},{T:1,N:'xf:group',A:{class:'tblbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{adaptive:'layout',adaptiveThreshold:'600',class:'w2tb tbl',id:'',style:'',tagname:'table'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:summary'}]},{T:1,N:'xf:group',A:{tagname:'colgroup'},E:[{T:1,N:'xf:group',A:{style:'width:150px;',tagname:'col'}},{T:1,N:'xf:group',A:{style:'',tagname:'col'}},{T:1,N:'xf:group',A:{style:'width:150px;',tagname:'col'}},{T:1,N:'xf:group',A:{style:'',tagname:'col'}}]},{T:1,N:'xf:group',A:{style:'',tagname:'tr'},E:[{T:1,N:'xf:group',A:{class:'w2tb_th',style:'',tagname:'th'},E:[{T:1,N:'w2:textbox',A:{class:'req',id:'',label:'부모 헤더1',ref:'',style:'',userData2:''}}]},{T:1,N:'xf:group',A:{class:'w2tb_td',style:'',tagname:'td'},E:[{T:1,N:'xf:input',A:{id:'ui_ipt1',style:'width: 144px;height: 21px;'}}]},{T:1,N:'xf:group',A:{class:'w2tb_th ',tagname:'th'},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:textbox',A:{class:'',id:'',label:'부모 헤더2',ref:'',style:'',userData2:''}}]},{T:1,N:'xf:group',A:{class:'w2tb_td',tagname:'td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'xf:input',A:{id:'ui_ipt2',style:'width: 144px;height: 21px;'}},{T:1,N:'xf:trigger',A:{type:'button',id:'btn_setData',style:'width: 80px;height: 23px;',class:'','ev:onclick':'scwin.btn_setData_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'값 자동 넣기'}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:span',A:{id:'',label:'아래에는 pageFrame이 존재합니다.(id:pageFrame1)',style:'margin-right: 10px;font-weight: bold;'}},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm ',id:'btn_getChild',style:'',type:'button','ev:onclick':'scwin.btn_getChild_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'자식값 가져오기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm ',id:'btn_setChild',style:'',type:'button','ev:onclick':'scwin.btn_setChild_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'부모값 보내기'}]}]}]}]},{T:1,N:'w2:pageFrame',A:{style:'border: 2px solid green;padding: 10px;margin-bottom: 10px;',id:'pageFrame1',src:'/edu/adv/pageFrame_child_1_c.xml'}},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:span',A:{id:'',label:'async, await 문법 사용하기',style:'margin-right: 10px;font-weight: bold;'}},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm ',id:'btn_setSrc_async',style:'',type:'button','ev:onclick':'scwin.btn_setSrc_async_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'setSrc적용(async)'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_cm ','ev:onclick':'scwin.btn_setSrc_onclick',id:'btn_setSrc',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'setSrc적용'}]}]}]}]},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:span',A:{id:'',label:'아래에는 pageFrame이 존재합니다.(id:pageFrame2)',style:'margin-right: 10px;font-weight: bold;'}},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm ','ev:onclick':'scwin.btn_bro_onclick',id:'btn_bro',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'자식1 - > 자식2'}]}]}]}]},{T:1,N:'w2:pageFrame',A:{style:'border: 2px solid green;padding: 10px;margin-bottom: 10px;',id:'pageFrame2'}}]}]}]}]}]})

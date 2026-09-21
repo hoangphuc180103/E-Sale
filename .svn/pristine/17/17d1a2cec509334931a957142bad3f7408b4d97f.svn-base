@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>Excel/CSV 연동</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_6a40d13cd9f07667" class="chapter_title">Excel/CSV 연동</h1>
+		<h1 id="r_b62ec12c9810d1ad" class="element heading1"
+			data-element-id="b62ec12c9810d1ad">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_33d06267d9e70e71" class="element normal"
+			data-element-id="33d06267d9e70e71">WebSquare AI에서 제공하는 GridView와
+			Pivot 컴포넌트 및 DataList 데이터 모델을 Excel 또는 CSV 형식으로 변환하여 내보내거나, 파일을 업로드하여
+			데이터를 표현할 수 있습니다.</p>
+		<dl id="r_98440e3fce4fd32d" class="element definition_list"
+			data-element-id="98440e3fce4fd32d">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb1BDBKKQElEcTBfyZ9VaKHh">GridView의
+						Excel 내보내기/불러오기 기능 사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_26b2cbc94c1a3661" class="element heading1"
+			data-element-id="26b2cbc94c1a3661">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<dl id="r_faf94af9d6296563" class="element definition_list"
+			data-element-id="faf94af9d6296563">
+			<dt>데이터 내보내기, 공유하기, 이관하기, 백업하기</dt>
+			<dd>
+				<p>GridView의 내용이나 Pivot 데이터를 Excel 파일 또는 CSV 파일로 다운로드하여, 포맷, 셀
+					스타일, 수식, 병합된 셀 등 웹상에서 구성된 데이터를 그대로 Excel 상에 재현할 수 있습니다.</p>
+				<p>또한 다운로드한 Excel 파일 및 CSV 파일을 다른 사용자와 쉽게 공유하거나 오프라인에서 분석할 수
+					있습니다.</p>
+				<p>기존 시스템의 데이터를 Excel 형식으로 추출하여 WebSquare AI 기반의 새로운 시스템으로 손쉽게
+					이관할 수 있습니다.</p>
+				<p>GridView의 내용이나 Pivot 데이터를 Excel 파일 또는 CSV 파일로 다운로드하여 중요한 데이터를
+					안전하게 보관하거나 기록할 수 있습니다.</p>
+			</dd>
+			<dt>데이터 불러오기</dt>
+			<dd>
+				<p>Excel, CSV, 한셀 또는 넥셀과 같이 다양한 파일 형식의 데이터를 GridView 또는 Pivot에
+					업로드하여 화면에 표현할 수 있도록 합니다. 헤더 유무, 날짜 포맷, 소수점 처리 등 업로드 시 세부 옵션을 통해 사용자
+					환경에 최적화된 데이터 처리가 가능합니다.</p>
+				<p>특히, 미리 작성된 Excel 파일에서 대량의 데이터를 GridView로 한 번에 업로드하여 수동 입력에 드는
+					시간과 노력을 절약할 수 있습니다.</p>
+			</dd>
+			<dt>다중 데이터 처리</dt>
+			<dd>
+				<p>여러 개의 GridView 또는 DataList의 데이터를 하나의 Excel 파일(또는 별도의 시트)로
+					다운로드할 수 있는 기능을 제공하여, 통합 리포트 생성 및 대량 데이터 관리가 용이하도록 합니다.</p>
+			</dd>
+			<dt>
+				<strong>오프라인 데이터 작업</strong>
+			</dt>
+			<dd>
+				<p>인터넷 연결이 불안정하거나 오프라인 작업이 필요한 경우, Excel로 데이터를 다운로드하여 작업한 후 다시
+					업로드할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>데이터 유효성 검증</strong>
+			</dt>
+			<dd>
+				<p>업로드 기능을 통해 특정 형식이나 규칙에 맞지 않는 데이터를 사전에 걸러내어 데이터 품질을 향상시킬 수
+					있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_e1aa064297812dd1" class="element heading1"
+			data-element-id="e1aa064297812dd1">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>Excel 파일로 내보내기</span>
+			</div>
+		</h1>
+		<h2 id="r_3948f9751cd1fea8" class="element heading2"
+			data-element-id="3948f9751cd1fea8">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.1</span><span>GridView를 Excel 파일로
+					다운로드</span>
+			</div>
+		</h2>
+		<ul id="r_ea42fd82e490db74" class="element unordered_list"
+			data-element-id="ea42fd82e490db74">
+			<li><p>GridView를 Excel 파일로 다운로드</p>
+				<ul>
+					<li><p>
+							기본 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00192.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_GridView/advancedExcelDownload_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/to3ecuDoh0o">YouTube</a>)
+						</p></li>
+					<li><p>
+							다중 행으로 구성된 GridView를 Excel 파일로 다운로드 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00196.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							여러 GridView를 하나의 Excel 시트로 다운로드 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_WebSquare.util/multipleExcelDownload_multipleSheet_WebSquare_util/multipleExcelDownload_multipleSheet_WebSquare_util.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>다운로드할 데이터 설정</p>
+				<ul>
+					<li><p>
+							GridView 전체에 대해 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00106.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_type_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/D8jt37CoAYY">YouTube</a>)
+						</p></li>
+					<li><p>
+							GridView 컬럼 별로 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00107.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_type_convertIndex_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/UxauFsASseU">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>스타일 적용</p>
+				<ul>
+					<li><p>
+							공통 스타일 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00243.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Excel 파일의 Body (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00235.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Excel 파일의 SubTotal (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00236.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Excel 파일의 Footer (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00237.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Excel 파일의 행 번호 컬럼 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00238.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							Excel 파일의 헤더를 굵게(bold) 표시 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00234.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_useStyle_headerFontBold_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/SksWosghgOc">YouTube</a>)
+						</p></li>
+					<li><p>
+							Excel 파일의 지정한 영역을 굵게(bold) 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_xxxFontBold.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/wAa6iNN1O28">YouTube</a>)
+						</p></li>
+					<li><p>
+							GridView 스타일을 Excel 파일에서 유지 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_useStyle_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/fC1l-5e1vhc">YouTube</a>)
+						</p></li>
+					<li><p>
+							Excel 파일의 헤더 높이 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_headerRowHeight_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/yZ9l510_fec">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>형식</p>
+				<ul>
+					<li><p>
+							Excel 파일에서의 데이터 표시 형식 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00110.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/excelCellType_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/bhtHwu1yiOQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							Excel 파일에서의 데이터 형식 설정 (속성 이용) (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/excelFormat_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/vFo-uXLpHbs">YouTube</a>)
+						</p></li>
+					<li><p>
+							Excel 파일에서의 데이터 형식 설정 (함수 이용) (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/excelFormatter_gridView_column.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/4SEWyOMmfvY">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>연산</p>
+				<ul>
+					<li><p>
+							<code>inputType="custom"</code>
+							셀의 Excel 연산 지원 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00105.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_customToDataType_GridView/advancedExcelDownload_customToDataType_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/5S247ShXA9g">YouTube</a>)
+						</p></li>
+					<li><p>
+							Excel 수식을 사용하여 셀 추가 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_excelExpression_GridView.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							병합 상태를 유지하여 Excel로 다운로드 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00231.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_colMerge_colMergeValue_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/GXJI2Es0vLA">YouTube</a>)
+						</p></li>
+					<li><p>
+							좌우 공백 제거 후 Excel 파일로 다운로드 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00232.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_trim_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/A-F4r2LCwmI">YouTube</a>)
+						</p></li>
+					<li><p>
+							서브토탈(
+							<code>subTotal</code>
+							)의 데이터를 브라우저에 표시된 데이터로 전달 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00269.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							컬럼의
+							<code>value</code>
+							속성 값도 다운로드 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelDownload_useValueAttribute_GridView.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h2 id="r_f8bea16ad8a59c69" class="element heading2"
+			data-element-id="f8bea16ad8a59c69">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.2</span><span>여러 개의 DataList를
+					Excel 파일로 내보내기</span>
+			</div>
+		</h2>
+		<ul id="r_a2df8ff88cdc9b6b" class="element unordered_list"
+			data-element-id="a2df8ff88cdc9b6b">
+			<li><p>
+					여러 개의 GridView 데이터를 하나의 Excel 파일로 다운로드 (<a class="link"
+						href="https://youtu.be/nX4Q2K7Hvwo">YouTube</a>)
+				</p></li>
+			<li><p>
+					여러 개의 GridView 데이터를 하나의 Excel 시트로 다운로드 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_WebSquare.util/multipleExcelDownload_multipleSheet_WebSquare_util/multipleExcelDownload_multipleSheet_WebSquare_util.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/pGqUHCFEVoo">YouTube</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_528fa14bba5f8c8d" class="element heading2"
+			data-element-id="528fa14bba5f8c8d">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.3</span><span>여러 개의 DataList를
+					Excel 파일로 내보내기</span>
+			</div>
+		</h2>
+		<ul id="r_8a229264c8508004" class="element unordered_list"
+			data-element-id="8a229264c8508004">
+			<li><p>
+					여러 개의 DataList를 Excel 파일로 다운로드 (<a class="link"
+						href="https://youtu.be/QJ3G8Rg0-NI">YouTube</a>)
+				</p></li>
+			<li><p>
+					여러 개의 DataList를 동적으로 생성하고 Excel 파일로 다운로드 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_p/data/data_create_p_setData_DataList_mutipleDataListDownload_WebSquare_util.xml">샘플</a>)
+				</p></li>
+			<li><p>
+					여러 개의 DataList를 다운로드할 때 상태 메시지 표시 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_WebSquare.util/multipleDataListDownload_showProcess_processMsg_WebSquare_util.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/bTU7Ug8-lwc">YouTube</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_05df4edfaedfb097" class="element heading2"
+			data-element-id="05df4edfaedfb097">
+			<div class="r_heading_inner">
+				<span class="heading2_n">3.4</span><span>Pivot을 Excel 파일로
+					내보내기</span>
+			</div>
+		</h2>
+		<ul id="r_2cd3c6f2d04c9b08" class="element unordered_list"
+			data-element-id="2cd3c6f2d04c9b08">
+			<li><p>
+					기본 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/pivotExcelDownload_Pivot.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/2vzPY0QLCok">YouTube</a>)
+				</p></li>
+			<li><p>
+					Excel 파일의 컬럼 너비 조정 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00142.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_778f4d502e1b92e6" class="element heading1"
+			data-element-id="778f4d502e1b92e6">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>Excel 파일 불러오기</span>
+			</div>
+		</h1>
+		<h2 id="r_54858e45b645b80e" class="element heading2"
+			data-element-id="54858e45b645b80e">
+			<div class="r_heading_inner">
+				<span class="heading2_n">4.1</span><span>Excel 파일을 GridView로
+					불러오기</span>
+			</div>
+		</h2>
+		<ul id="r_764ddfe974ce23cc" class="element unordered_list"
+			data-element-id="764ddfe974ce23cc">
+			<li><p>
+					기본 업로드 (<a class="link" href="https://youtu.be/b62m9Ppr710">YouTube</a>)
+				</p></li>
+			<li><p>
+					다중 행으로 구성된 Exel을 GridView로 불러오기 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00196.xml">WRE</a>)
+				</p></li>
+			<li><p>업로드할 데이터 설정</p>
+				<ul>
+					<li><p>
+							GridView 전체에 대해 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelUpload_type_GridView/advancedExcelUpload_type_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/MCExudmdnnI">YouTube</a>)
+						</p></li>
+					<li><p>
+							GridView 컬럼 별로 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelUpload_type_convertIndex_GridView/advancedExcelUpload_type_convertIndex_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Vna1V_cJrc8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					Excel 업로드 창 커스터마이징 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelUpload_wframe_features_className_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/1xigWeMmHNI">YouTube</a>)
+				</p></li>
+			<li><p>
+					특정 컬럼 제외 업로드 (<a class="link" href="https://youtu.be/pCpFEoC7Rm8">YouTube</a>)
+				</p></li>
+			<li><p>
+					특정 시트만 업로드 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelUpload_sheetName_GridView/advancedExcelUpload_sheetName_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/8rBgo85KGMY">YouTube</a>)
+				</p></li>
+			<li><p>
+					헤더 제외 업로드 (<a class="link" href="https://youtu.be/xQi_mH-rcXs">YouTube</a>)
+				</p></li>
+			<li><p>
+					날짜 형식 지정 업로드 (<a class="link" href="https://youtu.be/BpLQJUrDebY">YouTube</a>)
+				</p></li>
+			<li><p>
+					좌우 공백 제거 후 GridView로 업로드 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00109.xml">WRE</a>,
+					<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelUpload_trim_GridView/advancedExcelUpload_trim_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/YvEkki38gz8">YouTube</a>)
+				</p></li>
+			<li><p>
+					소수점 반올림 후 GridView로 업로드 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/advancedExcelUpload_decimal_applyDecimal_GridView/advancedExcelUpload_decimal_applyDecimal_GridView.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/1kVpL-Nw3hc">YouTube</a>)
+				</p></li>
+			<li><p>
+					다중 행으로 구성된 GridView를 엑셀로 내보내기 혹은 불러오기 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00196.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h2 id="r_2b79a554a0ff6fd2" class="element heading2"
+			data-element-id="2b79a554a0ff6fd2">
+			<div class="r_heading_inner">
+				<span class="heading2_n">4.2</span><span>Excel 파일을 Pivot으로
+					불러오기</span>
+			</div>
+		</h2>
+		<ul id="r_8230a9ed060783de" class="element unordered_list"
+			data-element-id="8230a9ed060783de">
+			<li><p>
+					Excel 파일을 Pivot으로 불러 오기 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Pivot/pivotExcelUpload_Pivot/pivotExcelUpload_Pivot.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/Vxrj5-Wmzjk">YouTube</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_6d5c147b5500aa3d" class="element heading1"
+			data-element-id="6d5c147b5500aa3d">
+			<div class="r_heading_inner">
+				<span class="heading1_n">5</span><span>CSV 파일로 내보내기</span>
+			</div>
+		</h1>
+		<ul id="r_bfc8bfc5195de83d" class="element unordered_list"
+			data-element-id="bfc8bfc5195de83d">
+			<li><p>GridView를 CSV 파일로 내보내기</p>
+				<ul>
+					<li><p>
+							기본 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00239.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							내보내기 할 데이터 출처 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00244.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>Pivot을 CSV 파일로 내보내기</p>
+				<ul>
+					<li><p>
+							기본 –
+							<code>pivotCSVDownloadCSV()</code>
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_0d40fa96021790a6" class="element heading1"
+			data-element-id="0d40fa96021790a6">
+			<div class="r_heading_inner">
+				<span class="heading1_n">6</span><span>CSV 파일 불러오기</span>
+			</div>
+		</h1>
+		<ul id="r_eef0977badc14b17" class="element unordered_list"
+			data-element-id="eef0977badc14b17">
+			<li><p>GridView를 CSV 파일로 불러오기</p>
+				<ul>
+					<li><p>
+							기본 –
+							<code>readCSV()</code>
+						</p></li>
+					<li><p>
+							CSV 업로드 창 커스터마이징 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/GridView/Excel/readCSV_wframe_features_className_GridView.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/9xsDR6xp0NU">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

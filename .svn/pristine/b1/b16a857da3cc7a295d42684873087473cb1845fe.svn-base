@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>WidgetContainer</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_b56c086d494a74e8" class="chapter_title">WidgetContainer</h1>
+		<h1 id="r_bc7676b706cc5b71" class="element heading1"
+			data-element-id="bc7676b706cc5b71">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_81c1fe8756d32435" class="element normal"
+			data-element-id="81c1fe8756d32435">WidgetContainer는 웹스퀘어 AI에서 다양한
+			웹 위젯을 하나의 화면에 구성하여 사용자 맞춤형 업무 환경을 제공하는 컨테이너 컴포넌트입니다. 각 위젯은 WFrame을
+			기반으로 구성되며, 사용자가 위젯의 위치, 크기, 상태를 자유롭게 조정할 수 있는 대시보드 형태의 사용자 인터페이스를
+			제공합니다. 위젯은 별도의 URL 또는 XML 페이지로 구성되며, 사용자가 필요에 따라 화면을 구성할 수 있도록 유연한
+			배치를 지원합니다. WidgetContainer의 핵심은 2차원 좌표계를 기반으로 한 정확한 위치 제어와 동적 위젯 관리
+			기능입니다. 이를 통해 복잡한 업무 화면을 모듈화하고, 사용자별로 개인화된 작업 환경을 구성할 수 있습니다. 이 컴포넌트를
+			통해 SPA(Single Page Application) 기반의 웹 애플리케이션을 보다 효율적으로 구성할 수 있으며, 위젯
+			간의 리소스 공유 및 상호작용도 가능합니다.</p>
+		<dl id="r_e5e28fb373122d5b" class="element definition_list"
+			data-element-id="e5e28fb373122d5b">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb1Nf9NRubR0GgqtgBRFUkLX">WidgetContainer
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb0vm2s4YlRkoUZ_icoutHkQ">WidgetContainer
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_584a0c0c1ba6afcf" class="element heading1"
+			data-element-id="584a0c0c1ba6afcf">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_0a868627edd4e8c4" class="element normal"
+			data-element-id="0a868627edd4e8c4">WidgetContainer는 다음과 같은 목적으로
+			사용될 수 있습니다.</p>
+		<dl id="r_76527a33e3e63f5f" class="element definition_list"
+			data-element-id="76527a33e3e63f5f">
+			<dt>엔터프라이즈 대시보드</dt>
+			<dd>
+				<p>여러 업무 시스템의 정보를 하나의 화면에 통합 표시할 수 있습니다.</p>
+				<p>실시간 모니터링 데이터와 KPI 지표를 위젯 단위로 분리 관리 가능합니다.</p>
+				<p>사용자별 권한에 따른 위젯 구성의 차별화가 가능합니다.</p>
+			</dd>
+			<dt>개인화된 작업 공간</dt>
+			<dd>
+				<p>사용자가 자주 사용하는 기능들을 위젯으로 구성하여 맞춤형 인터페이스 제공합니다.</p>
+				<p>위젯 배치, 크기, 표시 상태를 개인 설정으로 저장 및 복원할 수 있습니다.</p>
+				<p>업무 효율성을 위한 최적화된 화면 레이아웃 구성에 용이합니다.</p>
+			</dd>
+			<dt>모듈형 애플리케이션 아키텍처</dt>
+			<dd>
+				<p>독립적인 기능 단위를 위젯으로 개발하여 재사용성 극대화할 수 있습니다.</p>
+				<p>서로 다른 개발팀이 담당하는 모듈들을 하나의 플랫폼에서 통합할 수 있습니다.</p>
+				<p>마이크로프론트엔드 아키텍처 구현을 위한 컨테이너로 역할 가능합니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_5592f24366024406" class="element heading1"
+			data-element-id="5592f24366024406">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_ccb6a430e3aca603" class="element unordered_list"
+			data-element-id="ccb6a430e3aca603">
+			<li><p>
+					좌표계 및 레이아웃 관리 (<a class="link" href="https://youtu.be/dlKWj8jXlTY">YouTube</a>)
+				</p></li>
+			<li><p>위젯 생성</p>
+				<ul>
+					<li><p>
+							동적으로 위젯 추가 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/addWidgets_WidgetContainer/addWidgets_WidgetContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/TkJHyMY6jSc">YouTube</a>,
+							<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00319.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							추가된 위젯의 화면(
+							<code>src</code>
+							) 변경 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00323.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							위젯 생성 후 서브미션 상태창 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/processMsgFrame_WidgetContainer/processMsgFrame_WidgetContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/rzhAmSBddS4">YouTube</a>)
+						</p></li>
+					<li><p>
+							위젯에 커스텀 버튼 추가 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/addWidgets_buttonFormatter_WidgetContainer.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							사용자 버튼과 기능 버튼 정의 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00321.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							파라미터 정의 및 반환 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00322.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							CSS class 적용 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00320.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+			<li><p>위젯 제어</p>
+				<ul>
+					<li><p>
+							위젯 정보 확인 및 위젯 삭제 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00318.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/exportWidgets_removeWidgetsAll_WidgetContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/5NzApu6W4kA">YouTube</a>)
+						</p></li>
+					<li><p>
+							위젯 이동 및 리사이징 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/move_resize_widgets_WidgetContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/57_mj1K0qy0">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>위젯 타이틀</p>
+				<ul>
+					<li><p>
+							위젯 타이틀 더블 클릭을 통한 위젯 최대화 방지 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/preventMaximizeByTitle_WidgetContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/nQ-JJe8ku9U">YouTube</a>)
+						</p></li>
+					<li><p>
+							위젯 타이틀에 스타일 적용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/addWidgets_titleClass_WidgetContainer.xml">샘플</a>)
+						</p></li>
+					<li><p>
+							위젯 타이틀에 아이콘 이미지 표시 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WidgetContainer/addWidgets_userIconClass_WidgetContainer.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							localStorage를 이용한 개인화 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00303.xml">WRE</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

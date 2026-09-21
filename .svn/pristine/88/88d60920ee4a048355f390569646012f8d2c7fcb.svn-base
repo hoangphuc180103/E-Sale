@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00303 서브 페이지 06">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dc_chart" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="type" name="name1"></w2:column>
+            			<w2:column dataType="text" id="count" name="name2"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<count><![CDATA[1465]]></count>
+            				<type><![CDATA[컴퓨터]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<count><![CDATA[210]]></count>
+            				<type><![CDATA[휴대전화]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<count><![CDATA[26]]></count>
+            				<type><![CDATA[알 수 없음]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<count><![CDATA[14]]></count>
+            				<type><![CDATA[태블릿]]></type>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	var fc = ui_chart.fc();
+    var fcOpt = {
+        "showBorder": "0",
+        "bgAlpha": "0",
+        "canvasBgAlpha": "0",
+        "canvasBorderThickness": "0",
+        "divLineAlpha": "100",
+        "caption": "기기 유형별 조회수",
+        "captionFontSize": "16",
+        "showPercentValues": true,
+        //showPercentInToolTip
+        "showValues": true,
+        "valueFontColor": "#999",
+        "startingAngle": 270,
+        "showHoverEffect": "1",
+        "showLegend": "1",
+        "legendBgColor": "#ffffff",
+        "legendBorderAlpha": "0",
+        "legendShadow": "0",
+        "labelFontSize": 12,
+        "labelDistance": "0",
+        "enableSmartLabels": "0",
+        "useDataPlotColorForLabels": "1",
+        "showPrintMenuItem": true,
+        "exportEnabled": true,
+        "exportAction": "download",
+        "exportFormats": "PNG=Export as PNG Image|JPG=Export as JPG Image|PDF=Export as PDF File",
+        "exportShowMenuItem": true,
+        "toolTipColor": "#ffffff",
+        "toolTipPadding":"5",
+        "toolTipBorderColor": "#000",
+        "toolTipBorderThickness": "0",
+        "toolTipBgColor": "#000",
+        "toolTipBgAlpha": "80",
+        "toolTipBorderRadius": "2",
+        "valueFontColor" : "#f28633"  , 
+		"outCnvBaseFontColor" : "#f28633", 
+		"baseFontColor" : "#f28633" ,
+		"labelFontColor" : "#f28633",
+        "plottooltext": "<div style='color:#fff;text-align:center;'><div style='color:#ffff00;'>$label</div><div>$dataValue회</div></div>"
+    }
+    fc.setTransparent(true);
+    fc.setChartAttribute(fcOpt);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="background: transparent;padding:0">
+    		<w2:fusionchart accessibility="false" chartType="Pareto2D" drawType="javascript" id="ui_chart" labelNode="type"
+    			ref="data:dc_chart" runflashAt="IE6,IE7,IE8" seriesType="simple" style="height: 230px;" valueNode="count">
+    		</w2:fusionchart>
+    	</xf:group>
+    </body>
+</html>

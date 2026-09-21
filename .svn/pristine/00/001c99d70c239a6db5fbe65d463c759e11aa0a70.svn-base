@@ -1,0 +1,35 @@
+/*amd /guide/TabControl/addTab_scopeInherit_TabControl/addTab_scopeInherit_TabControl.xml 4832 25a0ae330ae8bd0c1e82a26710657d7b95e0b03b17ba68a8b986918128d61330 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var scopeInheritValue = radio1.getValue();
+  scwin.count++;
+  var tmpSrc = scwin.getfolderPath() + "/wframe.xml";
+  tabControl1.addTab(scwin.count, {
+    label: "WFrame Tab" + " - " + scopeInheritValue,
+    title: "WFrame_Tab",
+    openAction: "exist",
+    closable: "true"
+  }, {
+    "src": tmpSrc,
+    "frameMode": "wframe",
+    scopeInherit: scopeInheritValue
+  });
+  tabControl1.setSelectedTabIndex(scwin.count);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'margin-bottom: 10px;color: blue;',id:'textbox2',label:'부모의 Scope 상속',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox3',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox4',label:'(예제를 단독으로 실행.)<br/>1. scopeInherit 옵션 값을 선택. (none, api, all 혹은 component)<br/>2. 하단의 addTab() 버튼을 클릭. <br/>3. WFrame을 포함한 탭이 생성되고, 생성된 탭은 WFrame이 중첩 구성된 화면을 표시하는 것을 확인.<br/>4. WFrame 내부의 각 버튼을 클릭.<br/>5. 각 버튼이 scopeInherit 속성 값에 따라 동작하는지 확인. <br/> &nbsp; &nbsp; "none" : (1) X, (2) 최상단 접근, (3) O<br/> &nbsp; &nbsp; "api" : (1) &nbsp;X, (2) 부모 접근, (3) O<br/> &nbsp; &nbsp; "all" : (1) O, (2) 부모 접근, (3) O<br/> &nbsp; &nbsp; "component" : (1) O, (2) 최상단 접근, (3) O',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;',id:'textbox5',label:'scopeInherit 속성 값 선택',escape:'false'}},{T:1,N:'xf:select1',A:{id:'radio1',selectedIndex:'-1',appearance:'full',style:'margin-bottom: 20px;border: solid 2px lightpink;padding: 10px;',cols:'',rows:'1',ref:''},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'none'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'none'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'api'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'api'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'all'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'all'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'component'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'component'}]}]}]}]},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox6',label:'옵션 설정<br/>addTab(id, tabOptions, contentOptions) - contentOptions.scopeInherit="nont" / "api" "all" "component"',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px',id:'trigger1',type:'button',class:''},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'addTab()'}]}]},{T:1,N:'w2:textbox',A:{style:'text-align: left;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: blue;margin-bottom: 10px;',id:'textbox1',label:'Top (id="textbox1")'}},{T:1,N:'w2:tabControl',A:{alwaysDraw:'true',style:'height: 400px;border: gray solid 1px;',id:'tabControl1',selectedIndex:'2'},E:[{T:1,N:'w2:tabs',A:{disabled:'false',style:'width:133px;height:30px;',id:'tabs2'}},{T:1,N:'w2:content',A:{alwaysDraw:'false',style:'height:170px',id:'content2'}}]}]}]}]}]})

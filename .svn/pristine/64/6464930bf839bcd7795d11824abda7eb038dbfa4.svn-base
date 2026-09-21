@@ -1,0 +1,55 @@
+/*amd /guide_eng/_DataCollection/DataList/initialColumnId_dataList_column.xml 7414 3669afd146fd3738a65ec6602ca0cff16503041010208dc84fbb8fc2ee6ba836 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'col1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'col2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'col3',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col4',name:'col4',dataType:'text',initialColumnId:'col1'}},{T:1,N:'w2:column',A:{id:'col5',name:'col5',dataType:'text',initialColumnId:'col2'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:mfeSubmission'},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.trigger1_onclick = function (e) {
+  dataList1.setJSON([{
+    "col1": "apricot",
+    "col2": 1,
+    "col3": 2
+  }], true);
+};
+scwin.trigger2_onclick = function (e) {
+  dataList1.setData(["banana", 3, 4, "", ""], true);
+};
+scwin.trigger3_onclick = function (e) {
+  dataList1.setArray({
+    "columnInfo": ["col1", "col2", "col3"],
+    "data": ["cherry", 5, 6]
+  }, true);
+};
+scwin.trigger4_onclick = function (e) {
+  var tmpXMLStr = "";
+  tmpXMLStr += "<list id=\"dataList1\">";
+  tmpXMLStr += "<map index=\"0\">";
+  tmpXMLStr += "<col1>grape</col1>";
+  tmpXMLStr += "<col2>5</col2>";
+  tmpXMLStr += "<col3>6</col3>";
+  tmpXMLStr += "</map>";
+  tmpXMLStr += "<map index=\"1\">";
+  tmpXMLStr += "<col1>melon</col1>";
+  tmpXMLStr += "<col2>7</col2>";
+  tmpXMLStr += "<col3>8</col3>";
+  tmpXMLStr += "</map>";
+  tmpXMLStr += "</list>";
+  var tmpXML = WebSquare.xml.parse(tmpXMLStr);
+  dataList1.setXML(tmpXML, true);
+};
+scwin.trigger5_onclick = function (e) {
+  var tmpXMLStr = "";
+  tmpXMLStr += "<map>";
+  tmpXMLStr += "<col1>papaya</col1>";
+  tmpXMLStr += "<col2>9</col2>";
+  tmpXMLStr += "<col3>10</col3>";
+  tmpXMLStr += "</map>";
+  var xmlDoc = WebSquare.xml.parse(tmpXMLStr);
+  dataList1.setRowXML(0, xmlDoc);
+};
+scwin.trigger6_onclick = function (e) {
+  dataList1.setRowJSON(0, {
+    "col1": "strawberry",
+    "col2": 11,
+    "col3": 12,
+    "col4": "",
+    "col5": ""
+  });
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin:10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Specify Initial Value for DataList Column',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Verify that the initialColumnId property value for the col4 column in dataList1 is set to “col1”. <br/>2. Verify that the initialColumnId property value for the col5 column in dataList1 is set to “col2”.<br/>3. Click each button below. (Each button performs an action that adds data only to the “col1”, “col2”, and “col3” columns without defining data for the ‘col4’ and “col5” columns in dataList1.)<br/>4. Verify that the value for “col4” is set using the value from “col1”, and the value for ‘col5’ is set using the value from “col2”.',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'initialColumnId="col1" (dataList1.col4)<br/>initialColumnId="col2" (dataList1.col5)',escape:'false'}},{T:1,N:'xf:trigger',A:{style:'height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;',id:'trigger1',type:'button','ev:onclick':'scwin.trigger1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.setJSON([{ "col1": "apricot", "col2": 1, "col3": 2 }]);'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger2',style:'height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.setData(["banana", 3, 4, "", ""]);'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger3',style:'height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;','ev:onclick':'scwin.trigger3_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.setArray({"columnInfo": ["col1", "col2", "col3"], "data" : ["cherry", 5, 6] });'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger4',style:'height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;','ev:onclick':'scwin.trigger4_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.setXML();'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger5',style:'height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;','ev:onclick':'scwin.trigger5_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.setRowXML();'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger6',style:'height:42px; line-height:32px; padding:5px; background-color:coral; font-size:15px; weight:bolder; font-weight:bolder; text-align:left; display:block; margin-bottom:10px;','ev:onclick':'scwin.trigger6_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.setRowJSON(0, { "col1": "strawberry", "col2": 11, "col3": 12});'}]}]},{T:1,N:'w2:gridView',A:{visibleRowNumFix:'true',rowNumVisible:'true',checkAllType:'false',dataList:'data:dataList1',style:'border:solid gray 1px;',id:'gridView1',autoFit:'allColumn',visibleRowNum:'8'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'column5',value:'col1'}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'column4',value:'col2'}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'column3',value:'col3'}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'column2',value:'col4'}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'column1',value:'col5'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'col1',value:''}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'col2',value:''}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'col3',value:''}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'col4',value:''}},{T:1,N:'w2:column',A:{width:'70',style:'',inputType:'text',id:'col5',value:''}}]}]}]}]}]}]}]})

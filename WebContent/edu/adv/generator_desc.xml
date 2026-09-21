@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]generator를 이용한 화면 설명">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true"
+        			ev:ondataload="scwin.dataList1_ondataload">
+        			<w2:columnInfo>
+        				<w2:column id="name" name="이름" dataType="text"></w2:column>
+        				<w2:column id="totalCount" name="totalCount" dataType="text"></w2:column>
+        				<w2:column id="periodicInspection" name="periodicInspection" dataType="text"></w2:column>
+        				<w2:column id="individualInquiry" name="individualInquiry" dataType="text"></w2:column>
+        				<w2:column id="serviceDesk" name="serviceDesk" dataType="text"></w2:column>
+        				<w2:column id="installationSupport" name="installationSupport" dataType="text"></w2:column>
+        				<w2:column id="errorResponse" name="errorResponse" dataType="text"></w2:column>
+        				<w2:column id="license" name="license" dataType="text"></w2:column>
+        				<w2:column id="fixedLengthVo" name="fixedLengthVo" dataType="text"></w2:column>
+        				<w2:column id="totalPageCount" name="totalPageCount" dataType="text"></w2:column>
+
+        			</w2:columnInfo>
+        		</w2:dataList>
+        		<w2:dataMap baseNode="map" id="dma_request" style="">
+        			<w2:keyInfo>
+        				<w2:key dataType="text" id="req" name="요청"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission abortTrigger="" action="/util/genExcel.do" customHandler="" encoding="UTF-8" errorHandler="" ev:submit=""
+				ev:submitdone="scwin.sbm_genExcel_submitdone" ev:submiterror="" id="sbm_genExcel" instance="" mediatype="application/json" method="post"
+				mode="asynchronous" processMsg="Down..." ref="data:json,dma_request" replace="" target='' style="">
+			</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+ 
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group style="" id="" class="ws_example_grp_desc">
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 목표" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label="1. 개요&lt;br/&gt;본 화면은 generator 컴포넌트를 활용하여 Table 형태의 반복 기능의 화면을 구성한 예제 입니다.&lt;br/&gt;generator 컴포넌트 : generator 컴포넌트는 특정 컴포넌트를 반복적으로 추가/삭제가 가능한 컴포넌트 입니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator 컴포넌트의 하위에 정의된 영역이 반복되며 script를 통해 제어 가능합니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator로 생성된 컴포넌트를 제어할 수 있는 함수도 지원하고 있습니다. &lt;br/&gt;"
+    				class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 방법" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label="1. Design Kit 를 활용하여 generator 컴포넌트를 추가합니다. &lt;br/&gt;2. generator ID : gen_add 로 생성합니다. &lt;br/&gt;3. 반복하고 싶은 컴포넌트를 구성합니다. &lt;br/&gt;4. '동적 생성' 버튼에 onclick 이벤트를 추가하고 스크립트를 작성합니다. &amp;nbsp;&lt;br/&gt; &amp;nbsp; ex) gen_add.insertChild();&lt;br/&gt;5. '마지막 자식 삭제' 버튼에 onclick 이벤트를 추가하고 스크립트를 작성합니다. &amp;nbsp;&lt;br/&gt; &amp;nbsp; ex) gen_add.removeChild(numLastIndex-1);&lt;br/&gt;6. '전체 삭제' 버튼에 onclick 이벤트를 추가하고 스크립트를 작성합니다. &amp;nbsp;&lt;br/&gt; &amp;nbsp; ex) gen_add.removeAll();"
+    				class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group style="" id="" class="example_div_tb_style_wrap mb_def">
+    			<xf:group style="" id="" class="example_div_tr_style"></xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

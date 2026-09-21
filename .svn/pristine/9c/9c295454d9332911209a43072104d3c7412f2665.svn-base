@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.calendar1_onyearselect = function(info) {
+		alert("onyearselect\n\n Change the year from " + info.oldValue + " to " + info.newValue + "?" );
+	};
+	
+	scwin.calendar1_onmonthselect = function(info) {
+		alert("onmonthselect\n\n Change the month from " + info.oldValue + " to " + info.newValue + "?" );	
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="이벤트 - onmonthselect &amp; onyearselect" style="color: blue;margin-bottom: 10px;"
+    		tabIndex="h1" tagname="h1">
+    	</w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label="1. 달력에서 새로운 월을 선택. &lt;br/&gt;2. onmonthselect 이벤트가 발생하는 것을 확인. &lt;br/&gt;3. 달력에서 새로운 연도를 선택. &lt;br/&gt;4. onyearselect 이벤트가 발생하는 것을 확인. "
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="이벤트 설명&lt;br/&gt;onmonthselect &amp; onyearselect - 달력에서 월 혹은 연도를 변경할 경우 발생. " escape="false">
+    	</w2:textbox>
+    	<w2:textbox style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" id="textbox5" label='/// 샘플 코드 &lt;br/&gt;&lt;br/&gt;scwin.calendar1_onyearselect = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onyearselect\n\n Change the year from " + info.oldValue + " to " + info.newValue + "?");&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.calendar1_onmonthselect = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onmonthselect\n\n Change the month from " + info.oldValue + " to " + info.newValue + "?");&lt;br/&gt;};&lt;br/&gt;' escape="false">
+    	</w2:textbox>
+    	<w2:calendar ev:onyearselect="scwin.calendar1_onyearselect" footerDiv="false" ev:onmonthselect="scwin.calendar1_onmonthselect"
+    		style="width: 100px;height: 100px;" id="calendar1" calendarValueType="" monthNames="1,2,3,4,5,6,7,8,9,10,11,12" yearSuffix="Y">
+    	</w2:calendar>
+    </xf:group></body>
+</html>

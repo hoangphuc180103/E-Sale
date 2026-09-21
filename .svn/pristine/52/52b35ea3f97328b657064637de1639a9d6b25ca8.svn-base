@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="選択した項目をリストの上部に表示" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. AutoCompleteを選択項目リストから任意の項目を選択します。 &lt;br/&gt;2.選択行目リストを閉じてからもう一度開きます。 &lt;br/&gt;3.上記の手順1で選択した項目がリストの上部に表示されていることを確認してください。" escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;" id="textbox4" label='プロパティの設定&lt;br/&gt;showCheckedTop="true" &lt;br/&gt;checkboxClickSync="true"' escape="false">
+    	</w2:textbox><xf:checkcombobox enableColumn="" showCheckedTop="true" displayAllOptionLabel="false" submenuSize="auto" chooseOption="" allOption="" displayMode="label" ref="" appearance="minimal" enableColumnFalseValue="" checkboxClickSync="true" disabled="false" style="width: 50%;display: block" id="checkcombobox1" class="" direction="auto">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[One]]></xf:label>
+    				<xf:value><![CDATA[1]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Two]]></xf:label>
+    				<xf:value><![CDATA[2]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Three]]></xf:label>
+    				<xf:value><![CDATA[3]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Four]]></xf:label>
+    				<xf:value><![CDATA[4]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Five]]></xf:label>
+    				<xf:value><![CDATA[5]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:checkcombobox></xf:group></body>
+</html>

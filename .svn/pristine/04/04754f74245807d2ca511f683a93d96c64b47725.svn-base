@@ -1,0 +1,32 @@
+/*amd /guide/WindowContainer/frameMode_spaReplaceHistory_WindowContainer/frameMode_spaReplaceHistory_WindowContainer.xml 5116 16d81355984111f02298f853f785ba543a06d94498efba6a83098024848783a9 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var idx = radio1.getValue();
+  var tmpSrc = scwin.getfolderPath() + "/" + idx + ".xml";
+  scwin.count++;
+  var obj = {
+    "title": "test_" + scwin.count,
+    "windowID": "window_" + scwin.count,
+    "frameMode": "pageFrame",
+    "src": tmpSrc
+  };
+  windowContainer1.createWindow(obj);
+  windowContainer1.setArrangeWindows("cascade");
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'브라우저의 History 기능 사용',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(예제를 단독으로 실행.)<br/>1. 브라우저에서 새로운 탭을 열고 임의의 웹페이지로 이동. <br/>2. 샘플 파일을 단독으로 실행한 주소를 위의 1 단계 브라우저 탭으로 복사해서 붙여넣기. <br/>3. 위 1 단계의 브라우저 탭으로 복사된 샘플 파일 화면에서 createWindow() 버튼 상단의 파일명을 선택. <br/>4. createWindow() 버튼을 클릭. <br/>5. 위의 방법으로 윈도우 여러 개를 생성. <br/>6. 브라우저의 뒤로 가기 버튼을 클릭. <br/>7. 위 1 단계의 최초 웹 페이지로 이동하는 것을 확인. <br/>8. 브라우저의 앞으로 가기 버튼을 클릭.<br/>9. 여러 개의 윈도우가 생성된 상태의 샘플 화면으로 돌아오는 것을 확인.<br/>(spaReplaceHistory="false" 설정을 적용할 경우, 윈도우가 생성되는 각 단계 별로 화면이 이동.)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'속성 설정<br/>spaReplaceHistory="true"',escape:'false'}},{T:1,N:'xf:group',A:{id:'',style:'margin-bottom: 10px;'},E:[{T:1,N:'xf:select1',A:{id:'radio1',selectedIndex:'-1',appearance:'full',style:'width: 150px;height: 21px;margin-bottom: 10px;',cols:'',rows:'1',ref:''},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'11.xml'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'11'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'22.xml'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'22'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'33.xml'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'33'}]}]}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'createWindow()'}]}]}]},{T:1,N:'w2:windowContainer',A:{sequentialArrangeColNum:'2',sequentialArrangeRowNum:'2',spaReplaceHistory:'true',fixArrangeFullScreen:'false',frameMode:'iframe',useFixButton:'false',windowAutoResize:'false',verticalArrangeNum:'2',windowMaxNum:'10',useCloseButton:'false',controlIconPosition:'left',windowMaximizeAll:'false',stopMinimizeOnNameLayer:'false',toolbarPosition:'bottom',id:'windowContainer1',useStatusMsg:'true',hideTitleOnMaximize:'false',spaInitCount:'10',stopToggleOnLast:'false',useNameContainer:'false',horizontalArrangeNum:'2',useCustomMsg:'false',spaAuto:'true',useControlIconTitle:'false',tooltipDisplay:'true',tooltipGroupClass:'false',windowTooltipDisplay:'true',style:'position: relative;height: 400px;border: gray solid 1px;'},E:[{T:1,N:'w2:windowToolbar',E:[{T:1,N:'w2:controlIconLayer',E:[{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'}]},{T:1,N:'w2:nameLayer'},{T:1,N:'w2:selectedNameLayer'}]}]}]}]}]}]})

@@ -1,0 +1,92 @@
+/*amd /guide/TreeView/spanNode_TreeView.xml 5603 87b4dc1ce451000661bf69535c5e8901b8a9377981842e7870c6e3aa38c05b52 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'name1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'name2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'name3'}},{T:1,N:'w2:column',A:{id:'col4',name:'name4',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'false'}}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "1 Asia",
+    "col2": "1",
+    "col3": "con"
+  }, {
+    "col1": "2 Korea",
+    "col2": "2",
+    "col3": "nat"
+  }, {
+    "col1": "3 Seoul",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "4 Guro",
+    "col2": "4",
+    "col3": "gu"
+  }, {
+    "col1": "5 Gangseo",
+    "col2": "4",
+    "col3": "gu"
+  }, {
+    "col1": "6 Busan",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "7 Jeju",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "8 China",
+    "col2": "2",
+    "col3": "nat",
+    "col4": "nat"
+  }, {
+    "col1": "9 Beijing",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "10 Shanghai",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "11 Europe",
+    "col2": "1",
+    "col3": "con"
+  }, {
+    "col1": "12 Germany",
+    "col2": "2",
+    "col3": "nat"
+  }, {
+    "col1": "13 Berlin",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "14 Munich",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "15 Bonn",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "16 France",
+    "col2": "2",
+    "col3": "nat"
+  }, {
+    "col1": "17 Paris",
+    "col2": "3",
+    "col3": "ct"
+  }, {
+    "col1": "18 Rouen",
+    "col2": "3",
+    "col3": "ct"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  treeview1.spanAll(false);
+};
+scwin.trigger2_onclick = function (e) {
+  treeview1.spanNode(11);
+};
+scwin.trigger3_onclick = function (e) {
+  treeview1.spanNode(11, true);
+};
+scwin.trigger4_onclick = function (e) {
+  treeview1.spanNode(11, true, true);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'특정 노드 접기/펼치기',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 첫 번째 spanAll() 버튼을 클릭하여 모든 노드 닫기. <br/>2. 두 번째 spanNode(11) 버튼을 클릭하면 index="11" 노드가 열리고, 다시 클릭하면 닫히는 것을 확인. <br/>3. 세 번째 spanNode(11, true) 버튼을 클릭하면 index="11" 노드가 열리는 것을 확인.<br/>4. 네 번째 spanNode(11, true, true) 버튼을 클릭하면 index="11" 노드가 자식 노드와 함께 모두 열리는 것을 확인.<br/>(상세한 스크립트는 Script 탭에서 확인.)<br/>',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'treeview1.spanAll(false);'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'treeview1.spanNode(11);'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'treeview1.spanNode(11, true);'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger4_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'treeview1.spanNode(11, true, true);'}]}]},{T:1,N:'w2:treeview',A:{showCheckbox:'',showCheckboxLabel:'',tooltipGroupClass:'false',dataType:'listed',hierarchy:'',style:'width: 200px;margin-top: 10px;',id:'treeview1'},E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'w2:label',A:{ref:'col1'}},{T:1,N:'w2:value',A:{ref:'col3'}},{T:1,N:'w2:depth',A:{ref:'col2'}},{T:1,N:'w2:folder',A:{ref:''}},{T:1,N:'w2:checkbox',A:{ref:'col4'}},{T:1,N:'w2:checkboxDisabled',A:{ref:''}},{T:1,N:'w2:image',A:{ref:''}},{T:1,N:'w2:iconImage',A:{ref:''}},{T:1,N:'w2:selectedImage',A:{ref:''}},{T:1,N:'w2:expandedImage',A:{ref:''}},{T:1,N:'w2:leafImage',A:{ref:''}}]}]}]}]}]}]})

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 셀의 inputType을 동적으로 변경하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220930" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="DataList 'dlt_exam1'가 변경되고, 이에 따른 GridVeiw의 설정과 스크립트가 수정되었습니다." meta_date="20240705" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="type_name" name="type_name" dataType="text"></w2:column>
+						<w2:column id="type" name="type" dataType="text"></w2:column>
+						<w2:column id="type_value" name="name3" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<type_name><![CDATA[checkbox]]></type_name>
+							<type><![CDATA[checkbox]]></type>
+							<type_value><![CDATA[Y]]></type_value>
+						</w2:row>
+						<w2:row>
+							<type_name><![CDATA[input]]></type_name>
+							<type><![CDATA[input]]></type>
+							<type_value><![CDATA[TEXT 1]]></type_value>
+						</w2:row>
+						<w2:row>
+							<type_name><![CDATA[calendar]]></type_name>
+							<type><![CDATA[calendar]]></type>
+							<type_value><![CDATA[20020415]]></type_value>
+						</w2:row>
+						<w2:row>
+							<type_name><![CDATA[checkbox]]></type_name>
+							<type><![CDATA[checkbox]]></type>
+							<type_value><![CDATA[N]]></type_value>
+						</w2:row>
+						<w2:row>
+							<type_name><![CDATA[select]]></type_name>
+							<type><![CDATA[select]]></type>
+							<type_value><![CDATA[02]]></type_value>
+						</w2:row>
+						<w2:row>
+							<type_name><![CDATA[input]]></type_name>
+							<type><![CDATA[input]]></type>
+							<type_value><![CDATA[TEXT 2]]></type_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_code" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="code" name="name1" dataType="text"></w2:column>
+						<w2:column id="label" name="name2" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<code><![CDATA[01]]></code>
+							<label><![CDATA[YES]]></label>
+						</w2:row>
+						<w2:row>
+							<code><![CDATA[02]]></code>
+							<label><![CDATA[NO]]></label>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * grd_exam1의 컬럼 [inputType="custom"]의 inputType 반환받기
+ * 바디 컬럼의 'typeGetter' 속성에 메소드명이 정의되어있습니다.
+ */
+scwin.grd_exam1_type_value_typeGetter = function (argInfo) {
+    var rowIndex = argInfo.rowIndex;
+    var colIndex = argInfo.colIndex;
+
+    //inputType 정보가 담긴 JSON객체
+    var returnInfo;
+    
+    //현 행의 JSON 데이터 반환받기
+    var jsnRow = dlt_exam1.getRowJSON(rowIndex)
+    var inputType = jsnRow.type || "notype";
+    
+    //중복되지 않는 ID 생성
+    var strID = "dynamic_" + inputType + "_" + rowIndex + "_" + colIndex;
+
+    switch (inputType) {
+        case "checkbox":
+            returnInfo = {
+                id: strID,
+                inputType: "checkbox",
+                options: { valueType: "other", trueValue: "Y", falseValue: "N", checkboxLabel: "YES" }
+            };
+            break;
+        case "calendar":
+            returnInfo = {
+                id: strID,
+                inputType: "calendar",
+                options: { viewType: "icon", dataType: "date", displayFormat: "yyyy-MM-dd" }
+            };
+            break;
+        case "select":
+            //itemSet 속성은 select에 출력할 콤보 리스트에 연결할 DataList의 정보입니다.
+            returnInfo = {
+                id: strID,
+                inputType: "select",
+                options: { viewType: "icon" },
+                itemSet: {
+                    nodeset: "data:dlt_code",
+                    label: "label",
+                    value: "code"
+                }
+            };
+            break;
+        case "input":
+        default:
+            returnInfo = {
+                id: strID,
+                inputType: "text",
+                options: {}
+            };
+            break;
+    }
+
+    return returnInfo;
+
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 셀의 'inputType'을 동적으로 설정한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+			<xf:group id="" class="gvwbox" style="width: 290px;"><w2:gridView rowNumWidth="34" rowNumVisible="true" dataList="data:dlt_exam1" style="height:100px;width: 290px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="all" class="gvw" defaultCellHeight="37">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="80" inputType="text" id="column3" value="Type" displayMode="label"></w2:column>
+							<w2:column width="166" inputType="text" id="column1" value='inputType="custom"' displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="80" inputType="text" readOnly="true" id="type_name" displayMode="label"></w2:column>
+							<w2:column typeGetter="scwin.grd_exam1_type_value_typeGetter" textAlign="left" width="166" inputType="custom" id="type_value" value="" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView></xf:group></xf:group>
+		</xf:group>
+	</body>
+</html>

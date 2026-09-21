@@ -1,0 +1,105 @@
+/*amd /edu/adv/dataList.xml 20890 e860cb1b8bfcf56546edd6edd5a2f8fe50c2a73e10a49a4de79da1953763a8ff */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{id:'dc_userInfoList'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'EMP_CD',name:'EMP_CD',dataType:'text'}},{T:1,N:'w2:column',A:{id:'EMP_NM',name:'EMP_NM',dataType:'text'}},{T:1,N:'w2:column',A:{id:'GENDER_CD',name:'GENDER_CD',dataType:'text'}},{T:1,N:'w2:column',A:{id:'JOIN_DATE',name:'JOIN_DATE',dataType:'text'}},{T:1,N:'w2:column',A:{id:'POSITION_CD',name:'POSITION_CD',dataType:'text'}},{T:1,N:'w2:column',A:{id:'DUTY_CD',name:'DUTY_CD',dataType:'text'}},{T:1,N:'w2:column',A:{id:'ROLE_CD',name:'ROLE_CD',dataType:'text'}},{T:1,N:'w2:column',A:{id:'ASSIGNED_TASK',name:'ASSIGNED_TASK',dataType:'text'}},{T:1,N:'w2:column',A:{id:'EMAIL',name:'EMAIL',dataType:'text'}},{T:1,N:'w2:column',A:{id:'ZIP_CD',name:'ZIP_CD',dataType:'text'}},{T:1,N:'w2:column',A:{id:'ADDRESS1',name:'ADDRESS1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'ADDRESS2',name:'ADDRESS2',dataType:'text'}}]},{T:1,N:'w2:data',A:{xmlns:'',use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000007'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'허길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'M'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20040203'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'01'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'puza935@inswave02.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'402793'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'인천 남구 용현2동'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'대우아파트 '}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000027'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'진길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'F'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20110716'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'02'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'jizu928@inswave02.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'220810'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'강원 원주시 부론면'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'  '}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000029'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'채길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'F'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20141013'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'02'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'02'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'gobu041@inswave01.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'110796'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'서울 종로구 신문로1가'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'고려빌딩 '}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000031'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'마길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'M'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20120821'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'02'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'meta218@inswave02.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'706807'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'대구 수성구 만촌3동'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:' 770∼782'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000035'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'함길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'F'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20131028'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'05'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'01'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'meqi774@inswave01.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'330710'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'충남 천안시 유량동'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'정보통신공무원교육원 '}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000049'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'마길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'F'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20120302'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'01'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'02'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'02'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'wohu640@inswave03.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'135809'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'서울 강남구 개포4동'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'시영아파트(26∼30동)'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000063'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'이길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'F'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20120222'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'02'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'veno148@inswave02.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'395834'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'충북 단양군 영춘면'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'별방리 '}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000065'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'천길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'M'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20160312'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'05'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'01'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'jaku982@inswave01.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'442120'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'경기 수원시 팔달구 중동'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'  '}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000088'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'영길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'F'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20140702'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'wecu882@inswave02.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'135960'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'서울 강남구 포이동'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:' 23'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'EMP_CD',E:[{T:4,cdata:'10000094'}]},{T:1,N:'EMP_NM',E:[{T:4,cdata:'흥길동'}]},{T:1,N:'GENDER_CD',E:[{T:4,cdata:'M'}]},{T:1,N:'JOIN_DATE',E:[{T:4,cdata:'20011002'}]},{T:1,N:'POSITION_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'DUTY_CD',E:[{T:4,cdata:'03'}]},{T:1,N:'ROLE_CD',E:[{T:4,cdata:'04'}]},{T:1,N:'ASSIGNED_TASK'},{T:1,N:'EMAIL',E:[{T:4,cdata:'quki957@inswave03.com'}]},{T:1,N:'ZIP_CD',E:[{T:4,cdata:'135774'}]},{T:1,N:'ADDRESS1',E:[{T:4,cdata:'서울 강남구 대치1동'}]},{T:1,N:'ADDRESS2',E:[{T:4,cdata:'청실아파트 '}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.ui_textbox1_onclick = function (e) {
+  var _url = "";
+  var _path = "";
+  _path = this.getUserData("userData1");
+  _url = $c.frame.getBasePageURL($p, true) + "#w2xPath=" + _path;
+  window.open(_url, "_blank");
+};
+
+//dc_userInfoList.clearFilter();
+scwin.btnFilter_onclick = function (e) {
+  //1.컬럼 filter 해제  
+};
+
+//성별 selectBox onviewchange
+scwin.selGender_onviewchange = function (info) {
+  // 1. 기존 flilter 해제 clearFilter() 활용 
+  dc_userInfoList.clearFilter();
+  // 2. 성별로 filter 적용 setColumnFilter 활용 
+  dc_userInfoList.setColumnFilter({
+    type: 'row',
+    colIndex: 'GENDER_CD',
+    key: info.newValue,
+    condition: 'and'
+  });
+};
+
+//성명 검색 일치되는 값 찾기 
+scwin.btnMatch_onclick = function (e) {
+  //1. 배경색 초기화 적용
+  scwin.setRowBackgroundColorInit();
+
+  //2. 일치되는 값 찾기 true getMatchedIndex();
+
+  var _index = dc_userInfoList.getMatchedIndex('EMP_NM', iptSearch.getValue(), true);
+  var _len = _index.length;
+  //2-1. 일치되는 값이 여러개 일때 처리  
+  for (var i = 0; i < _len; i++) {
+    //2-2. 일치되는 값 셀 색변경하기 
+    grd.setCellBackgroundColor(_index[i], "EMP_NM", "#FF80FF");
+  }
+};
+
+//성명 검색 포함되는 값 찾기
+scwin.btnCondition_onclick = function (e) {
+  //1. 배경색 초기화 적용
+  scwin.setRowBackgroundColorInit();
+
+  //2. 포함함되는 값 찾기 false getMatchedIndex(); 
+
+  //2-1. 포함함되는 값이 여러개 일때 처리  
+  //2-2. 포함함되는 값 셀 색변경하기  
+};
+scwin.sel_type_onviewchange = function (info) {
+  let result = "";
+  let strLog = "";
+  var dataType = info.newValue;
+  txa_log_1.setValue("");
+  strLog = "# 컬럼 'EMP_NM'의 값이 '마길동'과 일치하는 데이터 받기 \n";
+  if (dataType == '01') {
+    result = dc_userInfoList.getMatchedJSON("EMP_NM", '마길동', true);
+    strLog += " - JSON 형식 | 함수 getMatchedJSON 호출 값";
+    $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+    $c.frame.printExampleLog($p, JSON.stringify(result), txa_log_1, false);
+  } else if (dataType == '02') {
+    result = dc_userInfoList.getMatchedArray("EMP_NM", '마길동', true);
+    strLog += " - 1차원 Array 형식 + 컬럼 정보 | 함수 getMatchedArray 호출 값";
+    $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+    $c.frame.printExampleLog($p, JSON.stringify(result), txa_log_1, false);
+  } else if (dataType == '03') {
+    result = dc_userInfoList.getMatchedData("EMP_NM", '마길동', true);
+    strLog += " - 1차원 Array 형식 | 함수 getMatchedData 호출 값";
+    $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+    $c.frame.printExampleLog($p, JSON.stringify(result), txa_log_1, false);
+  } else if (dataType == '04') {
+    result = dc_userInfoList.getMatchedXML("EMP_NM", '마길동', true);
+    strLog += " - XML 형식 | 함수 getMatchedXML 호출 값";
+    $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+    $c.frame.printExampleLog($p, WebSquare.xml.serialize(result), txa_log_1, false);
+  } else if (dataType == '05') {
+    result = dc_userInfoList.getMatchedIndex("EMP_NM", '마길동', true);
+    strLog += " - 1차원 Array 형식 | 함수 getMatchedIndex 호출 값";
+    $c.frame.printExampleLog($p, strLog, txa_log_1, false);
+    $c.frame.printExampleLog($p, JSON.stringify(result), txa_log_1, false);
+  }
+  console.log(strLog);
+  console.log(result);
+};
+
+// row 배경색 초기화 
+scwin.setRowBackgroundColorInit = function () {
+  var _totalRowCnt = dc_userInfoList.getTotalRow();
+  for (var i = 0; i < _totalRowCnt; i++) {
+    // grd.setRowBackgroundColor(i, "#fff");
+    grd.setCellBackgroundColor(i, "EMP_NM", "#fff");
+  }
+};
+scwin.iptSearch_onkeydown = function (e) {
+  if (e.keyCode == 13) {
+    // 엔터키 입력시 match 조회 실행 
+    scwin.btnMatch_onclick();
+  }
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'pgtbox',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_fav',id:'',style:'',type:'button'},E:[{T:1,N:'xf:label'}]},{T:1,N:'w2:textbox',A:{class:'pgt_tit',id:'',label:'[실습화면] DataList 활용',style:'',tagname:''}}]},{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',id:'',label:'해당화면은 코딩이 없는 실습용 화면',style:'',tagname:'h3'}},{T:1,N:'w2:textbox',A:{class:'','ev:onclick':'scwin.ui_textbox1_onclick',id:'ui_textbox1',label:'[완성 화면 보기]',style:'cursor: pointer;',tagname:'h3',userData1:'/edu/adv/dataList_c.xml'}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:'',tagname:'details'},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'실습 목표',style:'',tagname:'summary'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false',id:'',label:'본 화면은 DataList를 활용하는 실습 화면입니다. <br/>DataList의 API 중 필터링을 동적으로 적용하는 기능과 제시된 값과 일치되는 값을 찾아주는 기능에 대해 확인합니다. <br/>',style:''}}]},{T:1,N:'xf:group',A:{class:'',id:'',style:'',tagname:'details'},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'실습 방법',style:'',tagname:'summary'}},{T:1,N:'w2:textbox',A:{class:'',escape:'false',id:'',label:'1. 아래의 API를 활용하여 DataList의 Filter 를 실습 해 봅니다. <br/> &nbsp; 1) \'성별 선택\' &nbsp;selectBox에 onviewchange 이벤트 함수를 추가합니다 <br/> &nbsp; &nbsp; &nbsp; 추가한 함수에 API를 활용하여 동적으로 dataList의 컬럼별 Filter를 적용해 봅니다.<br/> &nbsp; &nbsp; &nbsp;ex) DataList ID.setColumnFilter(); <br/><br/> &nbsp; 2) \'컬럼 Filter 해제\' 버튼에 onclick &nbsp;이벤트 함수를 추가합니다 &nbsp;<br/> &nbsp; &nbsp; &nbsp;현재 DataList에 적용된 필터링을 모두 해제하는 API <br/> &nbsp; &nbsp; &nbsp;ex) DataList ID.clearFilter(); <br/> &nbsp; &nbsp;<br/>2. API를 활용하여 DataList의 특정 컬럼 값과 입력 한 값이 일치되는 Data를 확인합니다. <br/> &nbsp;1) \'일치되는 값 찾기\' 버튼에 onclick 이벤트 함수를 추가합니다 &nbsp;<br/> &nbsp; &nbsp; &nbsp;ex) DataList ID.getUnmatchedIndex("EMP_NM, "미길동", true ); <br/><br/> &nbsp;2) \'포함되는 값 찾기\' 버튼에 onclick 이벤트 함수를 추가합니다 &nbsp;<br/> &nbsp; &nbsp; &nbsp;ex) DataList ID.getUnmatchedIndex("EMP_NM, "미길", false ); <br/><br/>3. 데이터 유형을 변경해 보며 반환데이터를 비교 해 보세요 <br/> &nbsp; &nbsp;반환 데이터의 유형은 5가지이며, 유형별 함수는 아래와 같습니다. &nbsp; <br/> &nbsp; 1) JSON 형식 : getMatchedJSON()<br/> &nbsp; 2) 1차원 Array 형식 + 컬럼 정보 : getMatchedArray()<br/> &nbsp; 3) 2차원 Array 형식 : getMatchedData()<br/> &nbsp; 4) XML 형식 : getMatchedXML()<br/> &nbsp; 5) Row Index가 담긴 1차원 Array 형식 : getMatchedIndex()<br/><br/>4. <a href="/_iws/dev_kit/document/api/html/WebSquare.uiplugin.dataList.html" target=\'_blank\'>사용자 가이드</a>',style:''}}]}]},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:span',A:{label:'성별 선택 : ',style:'margin-right: 10px;font-weight: bold;',id:''}},{T:1,N:'xf:select1',A:{allOption:'',appearance:'minimal',chooseOption:'true',class:'',direction:'auto',disabled:'false',disabledClass:'w2selectbox_disabled',id:'selGender',ref:'',renderType:'',style:'width: 148px;',submenuSize:'auto',chooseOptionLabel:'$blank','ev:onviewchange':'scwin.selGender_onviewchange'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'남자'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'M'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'여자'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'F'}]}]}]}]},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btnFilter',style:'',type:'button','ev:onclick':'scwin.btnFilter_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'컬럼 Filter 해제'}]}]}]}]},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:span',A:{label:'성명 검색 : ',style:'margin-right: 10px;font-weight: bold;',id:''}},{T:1,N:'w2:searchbox',A:{id:'iptSearch',style:'width: 150px;height: 21px;','ev:onkeydown':'scwin.iptSearch_onkeydown'}},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btnMatch',style:'',type:'button','ev:onclick':'scwin.btnMatch_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'일치되는 값 찾기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btnCondition',style:'',type:'button','ev:onclick':'scwin.btnCondition_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'포함되는 값 찾기'}]}]}]}]},{T:1,N:'xf:group',A:{adaptiveThreshold:'',class:'gvwbox',id:'',style:''},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',checkReadOnlyOnPasteEnable:'',class:'gvw',dataList:'data:dc_userInfoList',defaultCellHeight:'26',focusMode:'row',id:'grd',scrollByColumn:'false',scrollByColumnAdaptive:'false',style:'height: 150px;margin-bottom: 10px;',visibleRowNum:'10',readOnly:'true',rowNumVisible:'true',rowNumHeaderValue:'No.',autoFitMinWidth:'900',backgroundColorMode:'always'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column12',value:'사번',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',style:'',id:'column11',value:'성명',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column10',value:'성별',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',style:'',id:'column9',value:'가입일',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'150',inputType:'text',style:'',id:'column4',value:'이메일',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',style:'',id:'column3',value:'우편번호',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'150',inputType:'text',style:'',id:'column2',value:'주소',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'120',inputType:'text',style:'',id:'column1',value:'상세주소',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:';background-color:;',id:'EMP_CD',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',style:';background-color:;',id:'EMP_NM',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'select',style:'',id:'GENDER_CD',value:'',displayMode:'label',allOption:'',chooseOption:'',ref:''},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'남자'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'M'}]}]},{T:1,N:'w2:item',E:[{T:1,N:'w2:label',E:[{T:4,cdata:'여자'}]},{T:1,N:'w2:value',E:[{T:4,cdata:'F'}]}]}]}]},{T:1,N:'w2:column',A:{width:'100',inputType:'text',style:'',id:'JOIN_DATE',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'150',inputType:'text',style:'',id:'EMAIL',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',style:'',id:'ZIP_CD',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'150',inputType:'text',style:'',id:'ADDRESS1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'120',inputType:'text',style:'',id:'ADDRESS2',value:'',displayMode:'label'}}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',id:'',label:'아래 로그 확인 영역에서 반환 데이터를 유형별로 비교 해 보세요',style:'background-color: #eee;padding:10px 10px;margin-bottom: 10px'}},{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:span',A:{id:'',label:'데이터 유형 :',style:'margin-right: 10px;font-weight: bold;'}},{T:1,N:'xf:select1',A:{id:'sel_type',chooseOption:'true',style:'width: 148px;height: 21px;',submenuSize:'auto',allOption:'',disabled:'false',direction:'auto',appearance:'minimal',disabledClass:'w2selectbox_disabled',ref:'',chooseOptionLabel:'유형을 선택하세요',textAlign:'left','ev:onviewchange':'scwin.sel_type_onviewchange'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'JSON 형식'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'01'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1차원 Array 형식 + 컬럼 정보'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'02'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2차원 Array 형식'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'03'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'XML 형식'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'04'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1차원 Array 형식'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'05'}]}]}]}]},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''}}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''}},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_bold',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'',style:'',title:'로그 삭제',type:'button',userData1:'txa_log_1'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log_1',spellcheck:'false',style:'width:100%;height:160px;'}}]}]}]}]}]}]})

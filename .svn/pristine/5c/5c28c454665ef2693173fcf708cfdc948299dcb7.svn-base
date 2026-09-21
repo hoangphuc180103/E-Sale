@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+                <w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+                	<w2:columnInfo>
+                		<w2:column id="col1" name="name1" dataType="text"></w2:column>
+                		<w2:column id="col2" name="name2" dataType="text"></w2:column>
+                		<w2:column id="col3" name="name3" dataType="text"></w2:column>
+                		<w2:column id="col4" name="name4" dataType="text"></w2:column>
+                		<w2:column id="col5" name="name5" dataType="text"></w2:column>
+                	</w2:columnInfo>
+                </w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+    
+    scwin.onpageload = function() {
+        
+        var data = [];
+        for (var i = 0; i < 100; i++) {
+            for (var j = 0; j < 5; j++){
+                data.push(i);
+            }
+        }
+        dataList1.setData(data);
+    };
+    
+    scwin.onpageunload = function() {
+        
+    };
+
+    
+    
+    
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ドラッグとShiftキーによるセルの選択とデータの削除" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. 下部の GridView でマウスドラッグまたは Shift キーを使って複数のセルを選択します。 &lt;br/&gt;2. Del ボタンを選択します。&lt;br/&gt;3.選択したセルのデータが削除されることを確認してください。' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;dataDragSelect="true"&lt;br/&gt;useShiftKey="true"' escape="false">
+    	</w2:textbox><w2:gridView scrollByColumnAdaptive="false" dataDragSelectAutoScroll="true" rowNumVisible="true" useShiftKey="true" scrollByColumn="false" dataDragSelectAutoScrollDPI="5" dataDragSelectAutoScrollDelay="50" defaultCellHeight="20" dataDragSelectAutoScrollPeriod="70" rowStatusVisible="true" dataList="data:dataList1" dataDragSelect="true" columnMove="true" style="border: solid gray 1px;" id="gridView1" autoFit="allColumn" visibleRowNum="10" fastScroll="false" dataDragSelectAutoScrollLevel="1300" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header2">
+    			<w2:row style="" id="row3">
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="column41" value="name1" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="column39" value="name2" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="column37" value="name3" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="column35" value="name4" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="column33" value="name5" blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody2">
+    			<w2:row style="" id="row4">
+    				<w2:column customFormatter="scwin.gridView1_col1" removeBorderStyle="false" width="70" style="" inputType="text" id="col1" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column customFormatter="scwin.gridView1_col2" removeBorderStyle="false" width="70" style="" inputType="text" id="col2" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="col3" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="col4" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" style="" inputType="text" id="col5" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView></xf:group></body>
+</html>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Adaptive Web " escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Display the sample screen in the browser (by clicking the “Run Sample Only” button in the upper right corner).&lt;br/&gt;2. Adjust the browser size.&lt;br/&gt;3. Verify that the design changes (adaptive=“layout”) when the browser width falls below 600 pixels (adaptiveThreshold=“600”).' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='adaptive="layout" &lt;br/&gt;adaptiveThreshold="600"' escape="false">
+    	</w2:textbox><xf:group adaptive="layout" tagname="table" adaptiveThreshold="600" style="" id="" class="w2tb">
+    		<w2:attributes>
+    			<w2:summary></w2:summary>
+    		</w2:attributes>
+    		<xf:group tagname="caption"></xf:group>
+    		<xf:group tagname="colgroup">
+    			<xf:group tagname="col" style="width:16.67%;"></xf:group>
+    			<xf:group tagname="col" style="width:16.67%"></xf:group>
+    			<xf:group tagname="col" style="width:16.67%;"></xf:group>
+    			<xf:group tagname="col" style="width:16.67%"></xf:group>
+    			<xf:group tagname="col" style="width:16.67%;"></xf:group>
+    			<xf:group tagname="col" style="width:16.67%"></xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				ID
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<xf:input adjustMaxLength="false" style="width: 90%;height: 21px;" id="input1"></xf:input>
+    			</xf:group>
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Code
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<xf:input adjustMaxLength="false" style="width: 90%;height: 21px;" id="input2"></xf:input>
+    			</xf:group>
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Job
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<xf:input adjustMaxLength="false" style="width: 90%;height: 21px;" id="input3"></xf:input>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Name
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<xf:input adjustMaxLength="false" style="width: 90%;height: 21px;" id="input4"></xf:input>
+    			</xf:group>
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Nationality
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<xf:input adjustMaxLength="false" style="width: 90%;height: 21px;" id="input5"></xf:input>
+    			</xf:group>
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Flight&amp;nbsp;No.
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<xf:input adjustMaxLength="false" style="width: 90%;height: 21px;" id="input6"></xf:input>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Contact
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<xf:input adjustMaxLength="false" style="width: 90%;height: 21px;" id="input7"></xf:input>
+    			</xf:group>
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Date&amp;nbsp;of&amp;nbsp;Birth
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group tagname="td" style="" class="w2tb_td">
+    				<w2:attributes>
+    					<w2:colspan>3</w2:colspan>
+    					<w2:rowspan>1</w2:rowspan>
+    				</w2:attributes>
+    				<w2:inputCalendar footerDiv="false" rightAlign="false" focusOnDateSelect="false" style="width: 150px;height: 23px;" id="inputCalendar1" renderDiv="true" calendarValueType="yearMonthDate">
+    				</w2:inputCalendar>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group tagname="tr" style="">
+    			<xf:group tagname="th" style="" class="w2tb_th">
+    				Memo
+    				<w2:attributes>
+    					<w2:scope>row</w2:scope>
+    				</w2:attributes>
+    			</xf:group>
+    			<xf:group adaptive="layout" tagname="td" adaptiveThreshold="800" style="" class="w2tb_td">
+    				<w2:attributes>
+    					<w2:colspan>5</w2:colspan>
+    					<w2:rowspan>1</w2:rowspan>
+    				</w2:attributes>
+    				<xf:textarea style="width: 300px;height: 100px;" id="textarea1"></xf:textarea>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group></xf:group></body>
+</html>

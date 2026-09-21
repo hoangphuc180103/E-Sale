@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="guide_sample">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column id="CHECK" name="Check" dataType="text"></w2:column>
+        				<w2:column dataType="text" id="EMP_TITLE" name="Title"></w2:column>
+        				<w2:column dataType="text" id="EMP_NAME" name="Name"></w2:column>
+        				<w2:column dataType="text" id="EMP_DEPT" name="Department"></w2:column>
+        				<w2:column dataType="number" id="NOTE" name="Note"></w2:column>
+        				<w2:column dataType="text" id="EMP_TYPE" name="Type"></w2:column>
+
+        				<w2:column dataType="text" id="EMP_POSITION" name="Position"></w2:column>
+
+
+        				<w2:column dataType="text" id="EMP_EMAIL" name="Email"></w2:column>
+        				<w2:column dataType="text" id="EMP_PHONE" name="Phone"></w2:column>
+
+        				<w2:column dataType="text" id="EMP_JOIN_DATE" name="Joining Date"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        		<w2:dataList baseNode="list" repeatNode="map" id="dept">
+        			<w2:columnInfo>
+        				<w2:column id="col1" name="value" dataType="text"></w2:column>
+        				<w2:column id="col2" name="label" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+        					<col1><![CDATA[0]]></col1>
+        					<col2><![CDATA[IT]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[1]]></col1>
+        					<col2><![CDATA[Legal]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[2]]></col1>
+        					<col2><![CDATA[Operation]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[3]]></col1>
+        					<col2><![CDATA[Sales]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[4]]></col1>
+        					<col2><![CDATA[Customer Service]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[5]]></col1>
+        					<col2><![CDATA[Finance]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[6]]></col1>
+        					<col2><![CDATA[Marketing]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[7]]></col1>
+        					<col2><![CDATA[Design]]></col2>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        		<w2:dataList baseNode="list" repeatNode="map" id="title">
+        			<w2:columnInfo>
+        				<w2:column id="code" name="name1" dataType="text"></w2:column>
+        				<w2:column id="label" name="name2" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+        					<code><![CDATA[Supervisor]]></code>
+        					<label><![CDATA[1]]></label>
+        				</w2:row>
+        				<w2:row>
+        					<code><![CDATA[Admin]]></code>
+        					<label><![CDATA[2]]></label>
+        				</w2:row>
+        				<w2:row>
+        					<code><![CDATA[Member]]></code>
+        					<label><![CDATA[3]]></label>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        		<w2:dataList baseNode="list" repeatNode="map" id="type">
+        			<w2:columnInfo>
+        				<w2:column id="col1" name="name1" dataType="text"></w2:column>
+        				<w2:column id="col2" name="name2" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+        					<col1><![CDATA[Regular]]></col1>
+        					<col2><![CDATA[1]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[Part-time]]></col1>
+        					<col2><![CDATA[2]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[Weekly]]></col1>
+        					<col2><![CDATA[3]]></col2>
+        				</w2:row>
+        				<w2:row>
+        					<col1><![CDATA[Night]]></col1>
+        					<col2><![CDATA[4]]></col2>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" action="dataList1.json" method="post" mediatype="application/json" ref=""
+        		target="data:json,dataList1" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission1 = $p.getSubmission("submission1");
+    objSubmission1.action = scwin.getfolderPath() + '/dataList1.json';
+    $p.executeSubmission("submission1");
+    
+    var objSubmission2 = $p.getSubmission("submission2");
+    objSubmission2.action = scwin.getfolderPath() + '/dataList2.json';
+    $p.executeSubmission("submission2");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    gridView2.setHeaderFilter(false);
+};
+
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="padding: 10px;">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ヘッダーフィルタ" escape="false">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    			label='（Check 列 inputType="checkbox"）&lt;br/&gt;1. ヘッダーチェックボックスクリック。&lt;br/&gt;2. チェック済み行のみ表示されるもの確認。&lt;br/&gt;&lt;br/&gt;（Title 列 inputType="checkcombobox"）&lt;br/&gt;1. ヘッダーリストアイコンクリック。 &lt;br/&gt;2. フィルタリングするアイテム選択して "選択適用" ボタンクリック。&lt;br/&gt;3. 選択アイテムのみ表示されるもの確認。 &lt;br/&gt;&lt;br/&gt;（Name 列 inputType="text"）&lt;br/&gt;1. 列のフィルターアイコンクリック。 &lt;br/&gt;2. フィルタリング条件選択。 &lt;br/&gt;3. 入力箱にランダムキーワード入力して Enter ボタン選択。 &lt;br/&gt;4. 該当条件に一致するデータのみ表示されるもの確認。 &lt;br/&gt;&lt;br/&gt;（Department 列 inputType="select"）&lt;br/&gt;1. ヘッダーリストアイコンクリック。 &lt;br/&gt;2. フィルタリングするアイテム選択して "選択適用" ボタンクリック。 &lt;br/&gt;3. 選択アイテムのみ表示されるもの確認。 &lt;br/&gt;&lt;br/&gt;（Note 列 inputType="spinner"）&lt;br/&gt;1. 列のフィルターアイコンクリック。 &lt;br/&gt;2. フィルタリング条件選択。 &lt;br/&gt;3. 入力箱にランダムキーワード入力して Enter ボタン選択。 &lt;br/&gt;4. 該当条件に一致するデータのみ表示されるもの確認。 &lt;br/&gt;&lt;br/&gt;（Type 列 inputType="autoComplete"）&lt;br/&gt;1. ヘッダーリストアイコンクリック。 &lt;br/&gt;2. フィルタリングするアイテム選択して "選択適用" ボタンクリック。 &lt;br/&gt;3. 選択アイテムのみ表示されるもの確認。 &lt;br/&gt;&lt;br/&gt;（Position 列 inputType="radio"）&lt;br/&gt;1. ヘッダー Radio ボタンクリック。 &lt;br/&gt;2. Radio ボタンチェック済み行のみ表示されるもの確認。&lt;br/&gt;&lt;br/&gt;（Email 列 inputType="link"）&lt;br/&gt;1. 列のフィルターアイコンクリック。&lt;br/&gt;2. フィルタリング条件選択。&lt;br/&gt;3. 入力箱にランダムキーワード入力して Enter ボタン選択。&lt;br/&gt;4. 該当条件に一致するデータのみ表示されるもの確認。&lt;br/&gt;&lt;br/&gt;（Phone 列 inputType="text"）&lt;br/&gt;1. 列のフィルターアイコンクリック。&lt;br/&gt;2. フィルタリング条件選択。&lt;br/&gt;3. 入力箱にランダムキーワード入力して Enter ボタン選択。&lt;br/&gt;4. 該当条件に一致するデータのみ表示されるもの確認。&lt;br/&gt;&lt;br/&gt;（Joining Date 列 inputType="calendar"）&lt;br/&gt;1. 列のフィルターアイコンクリック。 &lt;br/&gt;2. フィルタリング条件選択。 &lt;br/&gt;3. ランダム日付選択して "確認" ボタンクリック。 &lt;br/&gt;4. 該当条件に一致するデータのみ表示されるもの確認。 &lt;br/&gt;'
+    			escape="false">
+    		</w2:textbox>
+    		<w2:textbox
+    			style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    			id="textbox4" label='プロパティの設定&lt;br/&gt;headerFilter="true"&lt;br/&gt;defaultShowHeaderFilter="true"' escape="false">
+    		</w2:textbox>
+    		<w2:gridView checkAllType="false" id="gridView1" style="border:gray 1px solid; margin-bottom:10px;" dataList="data:dataList1"
+    			autoFit="allColumn" visibleRowNum="10" visibleRowNumFix="true" headerFilter="true" defaultShowHeaderFilter="true"
+    			rowNumVisible="true" rowStatusVisible="true">
+    			<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header2">
+    				<w2:row style="" id="row3">
+    					<w2:column width="70" style="" inputType="" id="column12" value="Check &lt;br/&gt;(checkbox)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column11" value="Title&lt;br/&gt;(checkcombobox)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column10" value="Name&lt;br/&gt;(text)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column9" value="Department&lt;br/&gt;(select)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column8" value="Note&lt;br/&gt;(spinner)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column7" value="Type&lt;br/&gt;(autoComplete)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column6" value="Position&lt;br/&gt;(radio)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column5" value="Email&lt;br/&gt;(link)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column4" value="Phone&lt;br/&gt;(text)"></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="column3" value="Joining Date&lt;br/&gt;(calendar)"></w2:column>
+    				</w2:row>
+    				<w2:row style="" id="row5" class="w2grid_header_filter">
+    					<w2:filterColumn width="70" style="" id="filterColumn10"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn9"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn8"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn7"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn6"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn5"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn4"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn3"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn2"></w2:filterColumn>
+    					<w2:filterColumn width="70" style="" id="filterColumn1"></w2:filterColumn>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody2">
+    				<w2:row style="" id="row4">
+    					<w2:column width="70" style="" inputType="checkbox" id="CHECK" value=""></w2:column>
+    					<w2:column width="70" style="" inputType="checkcombobox" id="EMP_TITLE" value="" allOption="" chooseOption="" ref=""
+    						viewType="icon" delimiter=" - " displayMode="value delim label">
+    						<w2:choices>
+    							<w2:itemset nodeset="data:title">
+    								<w2:label ref="label"></w2:label>
+    								<w2:value ref="code"></w2:value>
+    							</w2:itemset>
+    						</w2:choices>
+    					</w2:column>
+    					<w2:column width="70" style="" inputType="text" id="EMP_NAME" value=""></w2:column>
+    					<w2:column width="70" style="" inputType="select" id="EMP_DEPT" value="" allOption="" chooseOption="" ref=""
+    						viewType="icon">
+    						<w2:choices>
+    							<w2:itemset nodeset="data:dept">
+    								<w2:label ref="col2"></w2:label>
+    								<w2:value ref="col1"></w2:value>
+    							</w2:itemset>
+    						</w2:choices>
+    					</w2:column>
+    					<w2:column width="70" style="" inputType="spinner" id="NOTE" value="" viewType="icon"></w2:column>
+    					<w2:column width="70" style="" inputType="autoComplete" id="EMP_TYPE" value="" viewType="icon" allOption=""
+    						chooseOption="" ref="" displayMode="value">
+    						<w2:choices>
+    							<w2:itemset nodeset="data:type">
+    								<w2:label ref="col2"></w2:label>
+    								<w2:value ref="col1"></w2:value>
+    							</w2:itemset>
+    						</w2:choices>
+    					</w2:column>
+    					<w2:column width="70" style="" inputType="radio" id="EMP_POSITION" value=""></w2:column>
+    					<w2:column width="70" style="" inputType="link" id="EMP_EMAIL" value=""></w2:column>
+    					<w2:column width="70" style="" inputType="text" id="EMP_PHONE" value=""></w2:column>
+    					<w2:column width="70" style="" inputType="calendar" id="EMP_JOIN_DATE" value="" viewType="icon" viewTypeIconImage=""
+    						displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    	</xf:group>
+    </body>
+</html>

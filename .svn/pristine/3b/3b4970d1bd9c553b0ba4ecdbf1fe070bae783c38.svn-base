@@ -1,0 +1,144 @@
+/*amd /page/P00283.xml 13456 a0cbc1132a65313fbd8abea4285484b61d7152bd528c993ce5cf325caff49290 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_1',repeatNode:'map',style:'',valueAttribute:'',getMatchedFromAllData:'false'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}},{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_2',repeatNode:'map',style:'',valueAttribute:'',getMatchedFromAllData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}},{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_dataType',repeatNode:'map'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'dataType_text',name:'Text Type'}},{T:1,N:'w2:column',A:{dataType:'number',id:'dataType_number',name:'Number Type'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // DataList에 초기 데이터 할당
+  scwin.initData();
+};
+
+/**
+ * DataList 'dlt_exam_1'에 데이터 할당하기
+ */
+scwin.initData = function () {
+  let data = [{
+    "category": "Networking",
+    "product": "SpeedLink"
+  }, {
+    "category": "Support Services",
+    "product": "TechAssist"
+  }, {
+    "category": "Servers",
+    "product": "EcoServe"
+  }, {
+    "category": "Cloud Services",
+    "product": "CloudPro"
+  }, {
+    "category": "Support Services",
+    "product": "TeamTech"
+  }, {
+    "category": "Security",
+    "product": "SecureGate"
+  }, {
+    "category": "Networking",
+    "product": "LinkSecure"
+  }, {
+    "category": "Servers",
+    "product": "ServeTech"
+  }];
+
+  // DataList 'dlt_exam_1'과 'dlt_exam_2'에 데이터 할당하기
+  dlt_exam_1.setJSON(data);
+  dlt_exam_2.setJSON(data);
+  let data2 = [{
+    "dataType_text": "777",
+    "dataType_number": "777"
+  }, {
+    "dataType_text": "9",
+    "dataType_number": "9"
+  }, {
+    "dataType_text": "18000",
+    "dataType_number": "18000"
+  }];
+  dlt_dataType.setJSON(data2);
+};
+
+/**
+ * 버튼 [DataList의 데이터 초기화] 클릭 시
+ */
+scwin.btn_initData_onclick = function (e) {
+  scwin.initData();
+};
+
+/**
+ * 버튼 [1.0 DataList의 정렬 해제] 클릭 시
+ */
+scwin.btn_sortInit_1_onclick = function (e) {
+  // DataList 'dlt_exam_1'의 정렬을 해제합니다.
+  dlt_exam_1.clearSort();
+};
+
+/**
+ * 버튼 [1.1 'Category' 컬럼을 오름차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // DataList 'dlt_exam_1'의 정렬을 해제합니다.
+  dlt_exam_1.clearSort();
+
+  // DataList 'dlt_exam_1'의 'Category' 컬럼을 오름차순으로 정렬합니다.
+  dlt_exam_1.sort("category", 0); // 정렬 옵션 [0,1,2] 0:오름차순, 1:내림차순, 2:정렬 취소
+};
+
+/**
+ * 버튼 [1.2 'Product' 컬럼을 내림차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+  // DataList 'dlt_exam_1'의 정렬을 해제합니다.
+  dlt_exam_1.clearSort();
+
+  // DataList 'dlt_exam_1'의 'Product' 컬럼을 내림차순으로 정렬합니다.
+  dlt_exam_1.sort("product", 1); // 정렬 옵션 [0,1,2] 0:오름차순, 1:내림차순, 2:정렬 취소
+};
+
+/**
+ * 버튼 [2.0 DataList의 정렬 해제] 클릭 시
+ */
+scwin.btn_sortInit_2_onclick = function (e) {
+  // DataList 'dlt_exam_2'의 정렬을 해제합니다.
+  dlt_exam_2.clearSort();
+};
+
+/**
+ * 버튼 [2.1 'Category' 컬럼을 오름차순으로, 'Product' 컬럼을 내림차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+  // DataList 'dlt_exam_2'의 정렬을 해제합니다.
+  dlt_exam_2.clearSort();
+
+  // DataList 'dlt_exam_2'의 'Category' 컬럼을 오름차순으로, 'Product' 컬럼을 내림차순으로 정렬합니다.
+  let options = {};
+  options.sortIndex = "category product"; // DataList의 컬럼 ID 또는 Index. 공백으로 컬럼을 구분합니다.
+  options.sortOrder = "1 -1"; // 정렬 기준으로 공백으로 구분합니다. 1:오름차순, -1:내림차순
+
+  dlt_exam_2.multisort(options);
+};
+
+/**
+ * 버튼 [3.0 DataList의 정렬 해제] 클릭 시
+ */
+scwin.btn_sortInit_3_onclick = function (e) {
+  // DataList 'dlt_dataType'의 정렬을 해제합니다.
+  dlt_dataType.clearSort();
+};
+
+/**
+ * 버튼 [3.1 컬럼 'dataType="text"'를 오름차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam3_1_onclick = function (e) {
+  // DataList 'dlt_dataType'의 정렬을 해제합니다.
+  dlt_dataType.clearSort();
+
+  // DataList 'dlt_dataType'의 컬럼 ID 'dataType_text'의 'dataType' 속성의 설정 값은 'text'입니다.
+  // DataList 'dlt_dataType'의 컬럼 'dataType="text"'를 오름차순으로 정렬합니다.
+  dlt_dataType.sort("dataType_text", 0); // 정렬 옵션 [0,1,2] 0:오름차순, 1:내림차순, 2:정렬 취소
+};
+
+/**
+ * 버튼 [3.2 컬럼 'dataType="number"'를 오름차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam3_2_onclick = function (e) {
+  // DataList 'dlt_dataType'의 정렬을 해제합니다.
+  dlt_dataType.clearSort();
+
+  // DataList 'dlt_dataType'의 컬럼 ID 'dataType_number'의 'dataType' 속성의 설정 값은 'number'입니다.
+  // DataList 'dlt_dataType'의 컬럼 'dataType="number"'를 오름차순으로 정렬합니다.
+  dlt_dataType.sort("dataType_number", 0); // 정렬 옵션 [0,1,2] 0:오름차순, 1:내림차순, 2:정렬 취소
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'DataList의 \'sort\' 메소드와 \'multisort\' 메소드를 사용하여 데이터를 정렬하고, \'clearSort\' 메소드를 사용하여 데이터 정렬을 해제한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mb_def',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'단건 컬럼 정렬하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm',disabled:'',escape:'false',id:'btn_sortInit_1',style:'',type:'button','ev:onclick':'scwin.btn_sortInit_1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.0 DataList의 정렬 해제'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.1 \'Category\' 컬럼을 오름차순으로 정렬하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_2_onclick',id:'btn_exam1_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.2 \'Product\' 컬럼을 내림차순으로 정렬하기'}]}]}]},{T:1,N:'w2:textbox',A:{class:'wre_txt_caption',escape:'false',id:'',label:'데이터 확인용 GridView',style:''}},{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:'max-width: 340px;'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'220',class:'gvw',dataList:'data:dlt_exam_1',defaultCellHeight:'37',id:'',initFixedHeightByRowNum:'4',noResultMessage:'No data to display',readOnly:'true',rowNumWidth:'34',style:'height:80px;',tooltipDisplay:'true',visibleRowNum:'4'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',style:'',value:'Category',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',style:'',value:'Product',width:'80'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'category',inputType:'text',style:'',textAlign:'left',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'product',inputType:'text',style:'',textAlign:'left',width:'80'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'다건 컬럼 정렬하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm',disabled:'',escape:'false',id:'btn_sortInit_2',style:'',type:'button','ev:onclick':'scwin.btn_sortInit_2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.0 DataList의 정렬 해제'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam2_1_onclick',id:'btn_exam2_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.1 \'Category\' 컬럼을 오름차순으로, \'Product\' 컬럼을 내림차순으로 정렬하기'}]}]}]},{T:1,N:'w2:textbox',A:{class:'wre_txt_caption',escape:'false',id:'',label:'데이터 확인용 GridView',style:''}},{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:'max-width: 340px;'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'220',class:'gvw',dataList:'data:dlt_exam_2',defaultCellHeight:'37',id:'',initFixedHeightByRowNum:'4',noResultMessage:'No data to display',readOnly:'true',rowNumWidth:'34',style:'height:80px;',tooltipDisplay:'true',visibleRowNum:'4'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',style:'',value:'Category',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',style:'',value:'Product',width:'80'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'category',inputType:'text',style:'',textAlign:'left',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'product',inputType:'text',style:'',textAlign:'left',width:'80'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'숫자형 컬럼 정렬하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm',disabled:'',escape:'false','ev:onclick':'scwin.btn_sortInit_3_onclick',id:'btn_sortInit_3',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'3.0 DataList의 정렬 해제'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam3_1_onclick',id:'btn_exam3_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'3.1 \'dataType="text"\'를 오름차순으로 정렬하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam3_2_onclick',id:'btn_exam3_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'3.2 \'dataType="number"\'를 오름차순으로 정렬하기'}]}]}]},{T:1,N:'w2:textbox',A:{class:'wre_txt_caption',escape:'false',id:'',label:'데이터 확인용 GridView',style:''}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox',style:'max-width: 340px;'},E:[{T:1,N:'w2:gridView',A:{tooltipDisplay:'true',initFixedHeightByRowNum:'3',rowNumWidth:'34',dataList:'data:dlt_dataType',readOnly:'true',style:'height:60px;',id:'',visibleRowNum:'all',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'220',autoFit:'allColumn'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'130',inputType:'text',id:'column5',value:'dataType="text"',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'150',inputType:'text',id:'column4',value:'dataType="number"',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{textAlign:'right',width:'130',inputType:'text',id:'dataType_text',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'right',width:'150',inputType:'text',id:'dataType_number',displayMode:'label'}}]}]}]}]}]}]}]}]}]}]}]})

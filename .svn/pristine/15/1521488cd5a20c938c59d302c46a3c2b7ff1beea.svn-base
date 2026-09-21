@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+    				<w2:columnInfo>
+    					<w2:column id="c_code" name="city_code" dataType="text"></w2:column>
+    					<w2:column id="airport" name="airport" dataType="text"></w2:column>
+    					<w2:column id="country" name="country" dataType="text"></w2:column>
+    					<w2:column id="city" name="city" dataType="text"></w2:column>
+    					<w2:column id="a_code" name="airport_code" dataType="text"></w2:column>
+    					<w2:column id="traffic" name="traffic" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    			<w2:data use="true"></w2:data></w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+    	<script type="text/javascript" lazy="false"><![CDATA[
+	scwin.onpageload = function() {
+		var json = [{
+			"c_code" : "PAR",
+			"airport" : "ORLY",
+			"country" : "FRANCE",
+			"city" : "PARIS",
+			"a_code" : "ORY",
+			"traffic" : "50000"
+		}, {
+			"c_code" : "PDX",
+			"airport" : "PORTLAND INT’L",
+			"country" : "U.S.A.",
+			"city" : "PORTLAND",
+			"a_code" : "PDX",
+			"traffic" : "1000"
+		}, {
+			"c_code" : "PEK",
+			"airport" : "CAPITAL",
+			"country" : "CHINA",
+			"city" : "BEIJING",
+			"a_code" : "PEK",
+			"traffic" : "40000"
+		}, {
+			"c_code" : "PER",
+			"airport" : "PERTH",
+			"country" : "AUSTRALIA",
+			"city" : "PERTH",
+			"a_code" : "PER",
+			"traffic" : "15000"
+		}, {
+			"c_code" : "PHL",
+			"airport" : "PHILADELPHIA INT’L",
+			"country" : "U.S.A.",
+			"city" : "PHILADELPHIA",
+			"a_code" : "PHL",
+			"traffic" : "10000"
+		}, {
+			"c_code" : "PHX",
+			"airport" : "SKY HARBOR ",
+			"country" : "U.S.A.",
+			"city" : "PHOENIX",
+			"a_code" : "PHX",
+			"traffic" : "7000"
+		}, {
+			"c_code" : "PIT",
+			"airport" : "PITTSBURGH INT’L",
+			"country" : "U.S.A.",
+			"city" : "PITTSBURGH",
+			"a_code" : "PIT",
+			"traffic" : "5000"
+		}, {
+			"c_code" : "PNH",
+			"airport" : "POCHENTONG",
+			"country" : "CAMBODIA",
+			"city" : "PHNOMPENH",
+			"a_code" : "PNH",
+			"traffic" : "10000"
+		}, {
+			"c_code" : "PUS",
+			"airport" : "KIMHAE",
+			"country" : "KOREA",
+			"city" : "PUSAN",
+			"a_code" : "PUS",
+			"traffic" : "30000"
+		}];
+		dataList1.setJSON(json);
+	};
+
+	scwin.onpageunload = function() {
+
+	};]]></script>
+    	<style type="text/css"><![CDATA[.blue {
+                color : blue;
+                font-weight: bolder;
+                font-size: 40px;
+                background-color: yellow;
+            } ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Hide Filter Icon when There is No Data&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(For the first GridView)&lt;br/&gt;Verify that no data is present and the filter icon is not displayed in the header. (hideFilterIconOnNoData=“true”)&lt;br/&gt;&lt;br/&gt;(For the second GridView)&lt;br/&gt;Verify that no data is present but the filter icon is displayed in the header. (hideFilterIconOnNoData=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='hideFilterIconOnNoData="true"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView showSortableUseFilter="true" scrollByColumnAdaptive="false" rowNumVisible="true" showSortableImage=""
+    		scrollByColumn="false" sortable="" defaultCellHeight="20" hideSortIconOnNoData="" checkAllType="false" dataList=""
+    		style="border: solid gray 1px;margin-bottom: 10px;" id="gridView1" autoFit="allColumn" visibleRowNum="5" useFilterList="true" visibleRowNumFix="true"
+    		hideFilterIconOnNoData="true" noResultMessageVisibleAlways="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="height:20px" id="column5" value="airport" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column4" value="country" displayMode="label"
+    					useFilter="true">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="city" displayMode="label"
+    					useFilter="true">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column1" value="traffic" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="height:20px" id="airport" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="country" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="city" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="traffic" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='hideFilterIconOnNoData="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" checkAllType="false" dataList="" defaultCellHeight="20" hideSortIconOnNoData="" id="gridView2" rowNumVisible="true" scrollByColumn="false" scrollByColumnAdaptive="false" showSortableImage=""
+    		showSortableUseFilter="true" sortable="" style="border: solid gray 1px;" useFilterList="true" visibleRowNum="5"
+    		visibleRowNumFix="true" noResultMessageVisibleAlways="true">
+    		<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column displayMode="label" id="column5" inputType="text" style="height:20px" value="airport" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column4" inputType="text" style="height:20px" useFilter="true" value="country"
+    					width="70">
+    				</w2:column>
+    				<w2:column displayMode="label" id="column3" inputType="text" style="height:20px" useFilter="true" value="city"
+    					width="70">
+    				</w2:column>
+    				<w2:column displayMode="label" id="column1" inputType="text" style="height:20px" value="traffic" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column displayMode="label" id="airport" inputType="text" style="height:20px" width="70"></w2:column>
+    				<w2:column displayMode="label" id="country" inputType="text" style="height:20px" width="70"></w2:column>
+    				<w2:column displayMode="label" id="city" inputType="text" style="height:20px" width="70"></w2:column>
+    				<w2:column displayMode="label" id="traffic" inputType="text" style="height:20px" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="Display Placeholder in Read-only or Disabled State&lt;br/&gt;" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(showPlaceHolderOnReadOnly=“true”)&lt;br/&gt;Confirm that the text set as the placeholder attribute is displayed in a TextArea that is read-only (readOnly=“true”) or disabled (disabled=“true”). &lt;br/&gt;&lt;br/&gt;(showPlaceHolderOnReadOnly=“false”)&lt;br/&gt;Confirm that the text set in the placeholder attribute is not displayed in a TextArea that is read-only (readOnly=“true”) or disabled (disabled=“true”). &lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4"
+    		label='showPlaceHolderOnReadOnly="true"'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:textarea style="margin-bottom: 10px;display: block;" readOnly="true" id="textarea1" placeholder='Enter text. (readOnly="true")'
+    		showPlaceHolderOnReadOnly="true">
+    	</xf:textarea>
+    	<xf:textarea style="margin-bottom: 10px;display: block" disabled="true" id="textarea2" placeholder='Enter text. (disabled="true")'
+    		showPlaceHolderOnReadOnly="true">
+    	</xf:textarea>
+    	<w2:textbox id="textbox5"
+    		label='showPlaceHolderOnReadOnly="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		escape="false">
+    	</w2:textbox>
+
+    	<xf:textarea id="textarea3" placeholder='Enter text. (readOnly="true")' readOnly="true" showPlaceHolderOnReadOnly="false"
+    		style="margin-bottom: 10px;display: block;">
+    	</xf:textarea>
+    	<xf:textarea disabled="true" id="textarea4" placeholder='Enter text. (disabled="true")' showPlaceHolderOnReadOnly="false"
+    		style="margin-bottom: 10px;display: block">
+    	</xf:textarea>
+    </xf:group></body>
+</html>

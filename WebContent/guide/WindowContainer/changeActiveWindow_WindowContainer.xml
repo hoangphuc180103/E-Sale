@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>COMPONENT</w2:type>
+    	<w2:buildDate />
+    	<w2:MSA />
+    	<xf:model>
+    		<w2:dataCollection baseNode="map" />
+    		<w2:workflowCollection />
+    	</xf:model>
+    	<w2:layoutInfo />
+    	<w2:publicInfo method="" />
+    	<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	var i;
+        for (i=0; i<10; i++) {
+	        var num = JSON.stringify(i+1);  
+	        var title = "windowTitle_" + num;
+	        var windowId = num;
+	        var windowName = "window_" + num;
+	        windowContainer1.createWindow( title , "" , "" , windowName , windowId ,"newWindow");
+	        windowContainer1.setArrangeWindows("cascade");
+	        }   
+};
+]]></script>
+    	<style type="text/css"><![CDATA[.w2window_selected {border: solid 3px blueviolet;} ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="네임 레이어의 스크롤 버튼을 통한 윈도우 선택" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. WindowContainer 하단의 네임 레이어를 확인. &lt;br/&gt;2. 네임 레이어 상의 스크롤을 위한 좌측 화살표나 우측 화살표 버튼을 클릭. &lt;br/&gt;3. 화살표를 클릭할 때 마다 네임 레이어 상에 새로 표시되는 윈도우 타이틀에 따라 해당 윈도우가 선택되는 것을 확인. ' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='속성 설정&lt;br/&gt;changeActiveWindow="true"' escape="false">
+    	</w2:textbox><w2:windowContainer sequentialArrangeColNum="2" sequentialArrangeRowNum="2" fixArrangeFullScreen="false" useFixButton="false" windowAutoResize="false" verticalArrangeNum="2" windowMaxNum="10" useCloseButton="false" controlIconPosition="left" windowMaximizeAll="false" stopMinimizeOnNameLayer="false" toolbarPosition="bottom" id="windowContainer1" useStatusMsg="true" hideTitleOnMaximize="false" spaInitCount="0" nameLayerRearrange="false" stopToggleOnLast="false" useNameContainer="false" horizontalArrangeNum="2" useCustomMsg="false" useControlIconTitle="false" tooltipDisplay="true" tooltipGroupClass="false" windowTooltipDisplay="true" style="position: relative;height: 400px;border: gray solid 1px;" changeActiveWindow="true">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer></xf:group></body>
+</html>

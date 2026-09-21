@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+    	<w2:buildDate />
+    	<xf:model>
+    		<xf:instance>
+    			<data xmlns="" />
+    		</xf:instance>
+    		<w2:dataCollection baseNode="map">
+    			<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+    				<w2:columnInfo>
+    					<w2:column id="c_code" name="city_code" dataType="text"></w2:column>
+    					<w2:column id="airport" name="airport" dataType="text"></w2:column>
+    					<w2:column id="country" name="country" dataType="text"></w2:column>
+    					<w2:column id="city" name="city" dataType="text"></w2:column>
+    					<w2:column id="a_code" name="airport_code" dataType="text"></w2:column>
+    					<w2:column id="traffic" name="traffic" dataType="text"></w2:column>
+    				</w2:columnInfo>
+    			</w2:dataList>
+    		</w2:dataCollection>
+    		<w2:workflowCollection></w2:workflowCollection>
+    	</xf:model>
+    	<script type="text/javascript" lazy="false"><![CDATA[
+	scwin.onpageload = function() {
+		var json = [{
+			"c_code" : "PAR",
+			"airport" : "ORLY",
+			"country" : "FRANCE",
+			"city" : "PARIS",
+			"a_code" : "ORY",
+			"traffic" : "50000"
+		}, {
+			"c_code" : "PDX",
+			"airport" : "PORTLAND INT’L",
+			"country" : "U.S.A.",
+			"city" : "PORTLAND",
+			"a_code" : "PDX",
+			"traffic" : "1000"
+		}, {
+			"c_code" : "PEK",
+			"airport" : "CAPITAL",
+			"country" : "CHINA",
+			"city" : "BEIJING",
+			"a_code" : "PEK",
+			"traffic" : "40000"
+		}, {
+			"c_code" : "PER",
+			"airport" : "PERTH",
+			"country" : "AUSTRALIA",
+			"city" : "PERTH",
+			"a_code" : "PER",
+			"traffic" : "15000"
+		}, {
+			"c_code" : "PHL",
+			"airport" : "PHILADELPHIA INT’L",
+			"country" : "U.S.A.",
+			"city" : "PHILADELPHIA",
+			"a_code" : "PHL",
+			"traffic" : "10000"
+		}, {
+			"c_code" : "PHX",
+			"airport" : "SKY HARBOR ",
+			"country" : "U.S.A.",
+			"city" : "PHOENIX",
+			"a_code" : "PHX",
+			"traffic" : "7000"
+		}, {
+			"c_code" : "PIT",
+			"airport" : "PITTSBURGH INT’L",
+			"country" : "U.S.A.",
+			"city" : "PITTSBURGH",
+			"a_code" : "PIT",
+			"traffic" : "5000"
+		}, {
+			"c_code" : "PNH",
+			"airport" : "POCHENTONG",
+			"country" : "CAMBODIA",
+			"city" : "PHNOMPENH",
+			"a_code" : "PNH",
+			"traffic" : "10000"
+		}, {
+			"c_code" : "PUS",
+			"airport" : "KIMHAE",
+			"country" : "KOREA",
+			"city" : "PUSAN",
+			"a_code" : "PUS",
+			"traffic" : "30000"
+		}];
+		dataList1.setJSON(json);
+	};
+
+	scwin.onpageunload = function() {
+
+	};
+
+	scwin.trigger1_onclick = function(e) {
+		gridView1.setCellClass(0, 0, "blue");
+	};
+]]></script>
+    	<style type="text/css"><![CDATA[.blue {
+                color : blue;
+                font-weight: bolder;
+                font-size: 50px;
+                background-color: yellow;
+            } ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="特定のセルにCSSクラスを適用する"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 下部のボタンをクリックします。 &lt;br/&gt;2. （0,0）座標に対応するセルに「blue」CSSスタイルが適用されることを確認してください。 &lt;br/&gt;（スタイルクラスは CSS タブで確認。）' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[gridView1.setCellClass(0, 0, "blue");]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" checkAllType="false" dataList="data:dataList1"
+    		style="border: solid 1px gray;" scrollByColumn="false" id="gridView1" autoFit="allColumn" visibleRowNum="9" defaultCellHeight="20"
+    		visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="height:20px" id="column6" value="city_code" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column5" value="airport" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column4" value="country" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="city" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column2" value="airport_code" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column1" value="traffic" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="height:20px" id="c_code" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="airport" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="country" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="city" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="a_code" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="traffic" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox4"
+    		label="/// CSS Style&lt;br/&gt;&lt;br/&gt;.blue {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;color : blue;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;font-weight: bolder;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;font-size: 50px;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;background-color: yellow;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}"
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

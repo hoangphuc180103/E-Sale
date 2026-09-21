@@ -1,0 +1,50 @@
+/*amd /guide_jpn/TabControl/getParameter_p_addTab_TabControl/getParameter_p_addTab_TabControl.xml 4977 62491ba976cad0c82cdd189071f8f4a1b183a08b008e37f53adb93632c9cb0ea */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  tabControl1.deleteAllTabs();
+  scwin.count++;
+  var parameter1 = input1.getValue();
+  var parameter2 = input2.getValue();
+  var rowJSON = {
+    //    "Product Info": { "Origin": "Korea", "Manufacturer": "Inswave", "Type": "Software" },
+    //    "Region": "Seoul"+ scwin.count,
+    //    "Carrier": true
+    "Parameter 1": parameter1,
+    "Parameter 2": parameter2
+  };
+  var dataObject = {
+    "type": "json",
+    "name": "param",
+    "data": rowJSON
+  };
+  var tmpSrc = scwin.getfolderPath() + "/src.xml";
+  tabControl1.addTab(scwin.count, {
+    "label": "New - " + scwin.count,
+    "title": "dataObject",
+    "openAction": "exist",
+    "closable": "true"
+  }, {
+    "src": tmpSrc,
+    "frameMode": "wframePreload",
+    "scope": "true",
+    "dataObject": dataObject
+  });
+  tabControl1.setSelectedTabIndex(scwin.count);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'margin-bottom: 10px;color: blue;',id:'textbox1',label:'タブ生成時パラメータ転送',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 下部の InputBox にタブ生成時に渡すパラメータを入力します。 <br/>2. addTab() ボタンをクリックします。 <br/>3. タブが生成されることを確認してください。 （上記で入力したパラメータも渡されます。）<br/>4. 生成されたタブ画面の $p.getParameter() ボタンをクリックします。 <br/>5. 上記で入力した（タブ作成時に渡した）パラメータが表示されることを確認。 <br/>',escape:'false'}},{T:1,N:'xf:input',A:{style:'text-align: right;height:50px;padding: 5px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;display: block;',id:'input1',placeholder:'パラメータ 1 入力'}},{T:1,N:'xf:input',A:{style:'text-align: right;height:50px;padding: 5px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;display: block;',id:'input2',placeholder:'パラメータ 2 入力'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'addTab()'}]}]},{T:1,N:'w2:tabControl',A:{confirmTrueAction:'exist',useTabKeyOnly:'true',confirmFalseAction:'new',useMoveNextTabFocus:'false',useConfirmMessage:'false',alwaysDraw:'false',style:'border: gray solid 1px;height: 400px;',id:'tabControl1'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox4',label:'/// サンプルコード <br/><br/>scwin.count++;<br/><br/>var parameter1 = input1.getValue();<br/>var parameter2 = input2.getValue()< {<br/> &nbsp; &nbsp;"Parameter 1": parameter1,<br/> &nbsp; &nbsp;"Parameter 2": parameter2,<br/>};<br/><br/>var dataObject = {<br/> &nbsp; &nbsp;"type": "json",<br/> &nbsp; &nbsp;"name": "param",<br/> &nbsp; &nbsp;"data": rowJSON<br/>};<br/><br/>tabControl1.addTab(scwin.count, {<br/> &nbsp; &nbsp;"label":"New &nbsp; "title": "dataObject",<br/> &nbsp;"openAction": "exist",<br/> &nbsp;"t; &nbsp; &nbsp;"src.xml",<br/> &nbsp;"frameMode": "wframePreload",<br/>" &nbsp;"dataObject": dataObject<br/>});',style:'padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;'}}]}]}]}]})

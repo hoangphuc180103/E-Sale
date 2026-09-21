@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[CheckCombobox] 특정 항목 비활성화 하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220824" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam_code" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="label" name="label" dataType="text"></w2:column>
+						<w2:column id="code" name="code" dataType="text"></w2:column>
+						<w2:column id="useYN" name="useYN" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //DataList dlt_exam_code에 데이터 할당
+    dlt_exam_code.setJSON([
+        { "label": "Apple", "code": "01", "useYN": "Y" },
+        { "label": "Pear", "code": "02", "useYN": "N" },
+        { "label": "Grapes", "code": "03", "useYN": "Y" },
+        { "label": "Watermelon", "code": "04", "useYN": "N" },
+        { "label": "Peach", "code": "05", "useYN": "Y" }
+    ]);
+};
+
+
+/**
+ * CheckCombobox - 비활성화 항목 지정 - 스크립트
+ * 버튼 [항목 비활성화] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    //항목 비활성화 컬럼 및 비활성화값 설정
+    ccb_exam3.setEnableColumn("useYN", "N");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="CheckCombobox의 항목을 조건에 따라 비활성화하는 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="모든 항목 활성화" style=""></w2:textbox>
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:checkcombobox id="ccb_exam1" displayAllOptionLabel="false" chooseOption="" displayMode="label"
+							style="width: 150px;min-height:24px;" submenuSize="auto" allOption="" disabled="false" direction="auto" appearance="minimal"
+							ref="">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam_code">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:checkcombobox>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='비활성화 항목 지정' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:checkcombobox allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+							displayAllOptionLabel="false" displayMode="label" id="ccb_exam2" ref="" style="width: 150px;min-height:24px;" submenuSize="auto"
+							enableColumn="useYN" enableColumnFalseValue="N">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam_code">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:checkcombobox>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="비활성화 항목 지정 - 스크립트" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="" class="mb10">
+							<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style="" type="button">
+								<xf:label><![CDATA[항목 비활성화]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:checkcombobox allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+							displayAllOptionLabel="false" displayMode="label" id="ccb_exam3" ref="" style="width: 150px;min-height:24px;" submenuSize="auto">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam_code">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:checkcombobox>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="Name" name="name1"></w2:column>
+            			<w2:column dataType="text" id="Value" name="name2"></w2:column>
+            			<w2:column dataType="text" id="Type" name="name3"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<Name><![CDATA[Seoul]]></Name>
+            				<Value><![CDATA[001]]></Value>
+            				<Type><![CDATA[Domestic]]></Type>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Busan]]></Name>
+            				<Value><![CDATA[002]]></Value>
+            				<Type><![CDATA[Domestic]]></Type>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Daegu]]></Name>
+            				<Value><![CDATA[003]]></Value>
+            				<Type><![CDATA[Domestic]]></Type>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Jeju]]></Name>
+            				<Value><![CDATA[004]]></Value>
+            				<Type><![CDATA[Domestic]]></Type>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Tokyo]]></Name>
+            				<Value><![CDATA[100]]></Value>
+            				<Type><![CDATA[Overseas]]></Type>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Beijing]]></Name>
+            				<Value><![CDATA[200]]></Value>
+            				<Type><![CDATA[Overseas]]></Type>
+            				
+            			</w2:row>
+            			<w2:row>
+            				<Name><![CDATA[Taipei]]></Name>
+            				<Value><![CDATA[300]]></Value>
+            				<Type><![CDATA[Overseas]]></Type>
+            				
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};	
+
+	scwin.trigger1_onclick = function(e) {
+		checkbox1.setVisibleColumn("Type", "Overseas");
+	};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="一部を選択項目を隠す" escape="false">
+    		</w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Ctrl ボタンを押しながらマウスを右クリックします。 &lt;br/&gt;2. CheckBoxとバインディングされたdataList1をチェックします。&lt;br/&gt;3. CheckBoxの選択リストにdataList1のデータが表示されていることを確認してください。下部の setVisibleColumn() ボタンをクリックします。 &lt;br/&gt;5. Type列の値が「Overseas」の選択項目が選択リストに表示されないことを確認してください。' escape="false">
+    		</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:30px;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[checkbox1.setVisibleColumn("Type", "Overseas");]]></xf:label>
+    	</xf:trigger>
+    	<xf:select visibleColumn="" ref="" appearance="full" visibleColumnFalseValue="" style="" id="checkbox1" selectedindex="-1" rows=""
+    		cols="">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="Name"></xf:label>
+    				<xf:value ref="Value"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select></xf:group></body>
+</html>

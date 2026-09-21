@@ -1,0 +1,61 @@
+/*amd /guide_eng/CheckComboBox/columnEllipsis_CheckComboBox.xml 4615 e9fba8c98c1ff6912a1e7b58a7cb4ab8c9ccb6991bbdfc6fa9c61d5aa89ffccb */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'C_Code',name:'name1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'City',name:'name2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Country',name:'name3'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Airport',name:'name4'}},{T:1,N:'w2:column',A:{dataType:'text',id:'A_Code',name:'name5'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "C_Code": "PAR",
+    "Airport": "ORLY",
+    "Country": "FRANCE",
+    "City": "PARIS",
+    "A_Code": "ORY"
+  }, {
+    "C_Code": "PDX",
+    "Airport": "PORTLAND INT’L",
+    "Country": "U.S.A.",
+    "City": "PORTLAND",
+    "A_Code": "PDX"
+  }, {
+    "C_Code": "PEK",
+    "Airport": "CAPITAL",
+    "Country": "CHINA",
+    "City": "BEIJING",
+    "A_Code": "PEK"
+  }, {
+    "C_Code": "PER",
+    "Airport": "PERTH",
+    "Country": "AUSTRALIA",
+    "City": "PERTH",
+    "A_Code": "PER"
+  }, {
+    "C_Code": "PHL",
+    "Airport": "PHILADELPHIA INT’L",
+    "Country": "U.S.A.",
+    "City": "PHILADELPHIA",
+    "A_Code": "PHL"
+  }, {
+    "C_Code": "PHX",
+    "Airport": "SKY HARBOR ",
+    "Country": "U.S.A.",
+    "City": "PHOENIX",
+    "A_Code": "PHX"
+  }, {
+    "C_Code": "PIT",
+    "Airport": "PITTSBURGH INT’L",
+    "Country": "U.S.A.",
+    "City": "PITTSBURGH",
+    "A_Code": "PIT"
+  }, {
+    "C_Code": "PNH",
+    "Airport": "POCHENTONG",
+    "Country": "CAMBODIA",
+    "City": "PHNOMPENH",
+    "A_Code": "PNH"
+  }, {
+    "C_Code": "PUS",
+    "Airport": "KIMHAE",
+    "Country": "KOREA",
+    "City": "PUSAN",
+    "A_Code": "PUS"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Display Ellipsis<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(First CheckComboBox)<br/>1. Open the CheckComboBox list.<br/>2. Confirm that if the selected item\'s text exceeds the list width, it is displayed with an ellipsis.<br/><br/>(Second CheckComboBox)<br/>2-1. Open the CheckComboBox list.<br/>2-2. Confirm that only text fitting within the list width is displayed when the selected item\'s text is long.<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;',id:'textbox4',label:'columnEllipsis="true"',escape:'false'}},{T:1,N:'xf:checkcombobox',A:{displayAllOptionLabel:'false',chooseOptionLabel:'Choose airport(s).',submenuSize:'fixed',chooseOption:'true',allOption:'true',displayMode:'value delim label',ref:'',appearance:'minimal',columnEllipsis:'true',delimiter:', ',style:'width: 170px;display: block;margin-bottom: 10px;',disabled:'false',id:'checkcombobox1',displaymessage:''},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Airport'}},{T:1,N:'xf:value',A:{ref:'A_Code'}}]}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'columnEllipsis="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;'}},{T:1,N:'xf:checkcombobox',A:{allOption:'true',appearance:'minimal',chooseOption:'true',chooseOptionLabel:'Choose airport(s).',columnEllipsis:'false',delimiter:', ',disabled:'false',displayAllOptionLabel:'false',displayMode:'value delim label',displaymessage:'',id:'checkcombobox2',ref:'',style:'width: 170px;display: block;',submenuSize:'fixed'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Airport'}},{T:1,N:'xf:value',A:{ref:'A_Code'}}]}]}]}]}]}]}]})

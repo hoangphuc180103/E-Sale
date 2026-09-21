@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="onpanelload_onpanelunload_Accordion">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.accordion1_onpanelload = function (panlID, userID) {
+    alert("onpanelload - Loaded! Panel ID : " + panlID + " & User ID : " + userID);
+};
+
+scwin.accordion1_onpanelunload = function (panlID, userID) {
+    alert("onpanelunload - Unloaded! Panel ID : " + panlID + " & User ID : " + userID);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="이벤트 - onpanelload &amp; onpageunload"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1. 특정 패널 열기. &lt;br/&gt;2. 열려 있던 패널이 닫히고 onpageunload 이벤트가 발생하는 것을 확인.&lt;br/&gt;3. 위의 1 단계에서 선택한 패널이 열리고 onpageload 이벤트가 발생하는 것을 확인. "
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="이벤트 설명&lt;br/&gt;onpanelload &amp; onpageunload - 패널 열림/닫힘 시 이벤트 발생. " escape="false">
+    	</w2:textbox>
+    	<w2:accordion ev:onpanelunload="scwin.accordion1_onpanelunload" ev:onpanelload="scwin.accordion1_onpanelload"
+    		style="border:solid 2px gray;margin-bottom: 10px;" id="accordion1" selectedPanel="" collapsible="" class="" panelMoveSpeed="" titleDivTag="">
+    		<w2:panels style="" id="panels1" class="">
+    			<w2:panelTitle style="" id="panelTitle1" label="1" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent1" class="">
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 1">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels style="" id="panels2" class="">
+    			<w2:panelTitle style="" id="panelTitle2" label="2" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent2" class="">
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 2">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    		<w2:panels style="width: 100%;" id="panels3" class="">
+    			<w2:panelTitle style="" id="panelTitle3" label="3" class=""></w2:panelTitle>
+    			<w2:panelContent style="height:80%;width: 90%;" id="panelContent3" class="">
+    				<xf:select1 appearance="full" style="position: absolute ;left:589px;top:91px;width: 54px;height: 25px;" id="select1"
+    					selectedIndex="-1">
+    				</xf:select1>
+    				<w2:textbox
+    					style="width: 150px;height: 23px;margin: 50px;background-color: lightgreen;font-size:15px;padding: 10px;font-style:normal;font-weight:bolder;"
+    					id="" label="Panel 3">
+    				</w2:textbox>
+    			</w2:panelContent>
+    		</w2:panels>
+    	</w2:accordion>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='/// 샘플 코드 &lt;br/&gt;&lt;br/&gt;scwin.accordion1_onpanelload = function (panlID, userID) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onpanelload - Loaded! Panel ID : " + panlID + " &amp; User ID : " + userID);&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.accordion1_onpanelunload = function (panlID, userID) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onpanelunload - Unloaded! Panel ID : " + panlID + " &amp; User ID : " + userID);&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

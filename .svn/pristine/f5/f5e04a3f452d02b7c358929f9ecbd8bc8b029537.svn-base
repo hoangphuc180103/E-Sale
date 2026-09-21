@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="Status" name="Status"></w2:column>
+        				<w2:column dataType="date" id="Date" name="Date"></w2:column>
+        				<w2:column dataType="number" id="Expense" name="Expense"></w2:column>
+        				<w2:column dataType="number" id="Income" name="Income"></w2:column>
+        				<w2:column dataType="text" id="Hobby" name="Hobby"></w2:column>
+        				<w2:column dataType="text" id="Region" name="Region"></w2:column>
+        				<w2:column dataType="number" id="Frequency" name="Frequency"></w2:column>
+        				<w2:column dataType="number" id="ID" name="ID"></w2:column>
+        				<w2:column dataType="number" id="Age" name="Age"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="population.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/population.json';
+    $p.executeSubmission("submission1");
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.gridView1_onscrollstart = function () {
+    alert("onscrollstart - You have reached the first line of the GridView.");
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="이벤트 - onscrollstart" escape="false">
+    	</w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. GridView의 세로 스크롤을 아래로 이동. &lt;br/&gt;2. 아래로 이동한 스크롤을 다시 최상단까지 이동. &lt;br/&gt;3. onscrollstart 이벤트가 발생하는 것을 확인. &lt;br/&gt;(이벤트 핸들러의 자세한 스크립트는 Script 탭에서 확인.)' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;" id="textbox4" label="이벤트 설명&lt;br/&gt;onscrollstart - 세로 스크롤이 GridView 상단에 닿을 때 발생. " escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox5" label="속성 설정&lt;br/&gt; alwaysTriggerScrollStart " escape="false">
+    	</w2:textbox>
+    	<w2:gridView scrollByColumnAdaptive="false" alwaysTriggerScrollStart="true" rowNumVisible="true" filterBoxvisibleRowNum="0"
+    		ev:onscrollstart="scwin.gridView1_onscrollstart" scrollByColumn="false" defaultCellHeight="" visibleRowNumFix="true"
+    		dataList="data:dataList1" style="border: gray solid 1px;" id="gridView1" autoFit="allColumn" fastScroll="" visibleRowNum="5">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="" id="column26" value="Date" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column25" value="Expense" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column24" value="Income" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column23" value="Hobby" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column19" value="Age" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="calendar" style="" id="Date" value="" displayMode="label" dataType="date"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="Expense" value="" displayMode="label" dataType="number"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="Income" value="" displayMode="label" dataType="number"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="Hobby" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="Age" value="" displayMode="label" dataType="number"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView></xf:group></body>
+</html>

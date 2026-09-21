@@ -1,0 +1,17 @@
+/*amd /guide_jpn/InputCalendar/validate_displaymessage_invalidMessageFunc_InputCalendar.xml 3733 54ecf646ea21ab2eccfce3be1c410fa4b1c3298ee8f1634ccfe57f14a498fa4e */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:7,N:'xml-stylesheet',instruction:'href="/2019-09/Components/WebSquare.css" type="text/css"'},{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  inputCalendar1.validate();
+};
+scwin.fn_msg = function () {
+  var msg = "";
+  var invalidType = this.getType();
+  if (invalidType == "mandatory") {
+    msg = "Enter a date. 날짜를 입력하세요. ";
+  } else {
+    msg = "Invalid date. 날짜 형식을 확인하세요.";
+  }
+  alert(msg);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'入力検証とエラーメッセージの表示',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 何も入力しないなし validate() ボタンクリック。 <br/>2. invalidMessageFunc プロパティ値として指定した関数返されたエラーメッセージ表示されるもの確認。<br/>3. 間違った形式の日付入力して validate() ボタンクリック。 <br/>4. invalidMessageFunc プロパティ値として指定した関数返されたエラーメッセージ表示されるもの確認。',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox5',label:'プロパティの設定<br/>mandatory="true" <br/>displaymessage="true" <br/>invalidMessageFunc="scwin.fn_msg"',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;',id:'textbox6',label:'/// サンプルコード<br/><br/>scwin.fn_msg = function() {<br/> &nbsp; &nbsp;var msg = "";<br/> &nbsp; &nbsp;var invalidType = this.getType();<br/> &nbsp; &nbsp;if(invalidType == "mandatory") {<br/> &nbsp; &nbsp; &nbsp; &nbsp;msg = "Enter a date.日付を入力してください。";<br/> &nbsp; &nbsp;} else {<br/> &nbsp; &nbsp; &nbsp; &nbsp;msg="Invalid date. 日付形式を確認してください。";<br/> &nbsp; &nbsp;}<br/> &nbsp; &nbsp;alert(msg);<br/>};',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'inputCalendar1.validate();'}]}]},{T:1,N:'w2:inputCalendar',A:{defaultDate:'20180101',footerDiv:'false',focusOnDateSelect:'false',calendarValueType:'yearMonthDate',rightAlign:'false',style:'',id:'inputCalendar1',renderType:'component',renderDiv:'true',displaymessage:'true',invalidMessageFunc:'scwin.fn_msg',mandatory:'true',dateValidCheck:'true'}}]}]}]}]})

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="선택된 항목을 목록 상단에 표시" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. AutoComplete 선택 항목 목록에서 임의의 항목을 선택. &lt;br/&gt;2. 선택 행목 목록을 닫은 후 다시 열기. &lt;br/&gt;3. 위의 1 단계에서 선택한 항목이 목록 상단에 표시되는 것을 확인. " escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;" id="textbox4" label='속성 설정&lt;br/&gt;showCheckedTop="true" &lt;br/&gt;checkboxClickSync="true"' escape="false">
+    	</w2:textbox><xf:checkcombobox enableColumn="" showCheckedTop="true" displayAllOptionLabel="false" submenuSize="auto" chooseOption="" allOption="" displayMode="label" ref="" appearance="minimal" enableColumnFalseValue="" checkboxClickSync="true" disabled="false" style="width: 50%;display: block" id="checkcombobox1" class="" direction="auto">
+    		<xf:choices>
+    			<xf:item>
+    				<xf:label><![CDATA[One]]></xf:label>
+    				<xf:value><![CDATA[1]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Two]]></xf:label>
+    				<xf:value><![CDATA[2]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Three]]></xf:label>
+    				<xf:value><![CDATA[3]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Four]]></xf:label>
+    				<xf:value><![CDATA[4]]></xf:value>
+    			</xf:item>
+    			<xf:item>
+    				<xf:label><![CDATA[Five]]></xf:label>
+    				<xf:value><![CDATA[5]]></xf:value>
+    			</xf:item>
+    		</xf:choices>
+    	</xf:checkcombobox></xf:group></body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[CheckCombobox] 선택된 항목 출력하기 - 구분자 설정">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220824" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam_code" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="label" name="label" dataType="text"></w2:column>
+						<w2:column id="code" name="code" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //DataList dlt_exam_code에 데이터 할당
+    dlt_exam_code.setJSON([
+        { "label": "Apple", "code": "01" },
+        { "label": "Pear", "code": "02" },
+        { "label": "Lime", "code": "03" },
+        { "label": "Grapes", "code": "04" },
+        { "label": "Kiwi", "code": "05" },
+        { "label": "Watermelon", "code": "06" },
+        { "label": "Peach", "code": "07" }
+    ]);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="CheckCombobox의 'separator' 속성을 사용하여, 선택된 항목의 구분자를 설정한 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='(기본 설정) 선택된 항목의 구분자를 " "(공백)으로 설정'
+						style=""></w2:textbox>
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:checkcombobox id="" chooseOption="" displayMode="label" style="width: 150px;min-height:24px;" submenuSize="auto"
+							disabled="false" direction="auto" appearance="minimal" ref="" separator=" ">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam_code">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:checkcombobox>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='선택된 항목의 구분자를 ","(쉼표)로 설정' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:checkcombobox allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+							displayMode="label" id="" style="width: 150px;min-height:24px;" submenuSize="auto" separator=", ">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam_code">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:checkcombobox>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

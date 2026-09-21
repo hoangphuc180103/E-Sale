@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="yyyyMMdd 형식의 날짜 문자열에 일 수를 더하거나 빼기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230807" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="컴포넌트별 기본 값 변경" meta_date="20240617" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정 및 예제 구성 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    // InputCalenar 'ica_exam1'에 초기 값 설정
+    ica_exam1.setValue("20250101");
+};
+
+/**
+ * 버튼 "AddDate"의 onclick 이벤트
+ */
+scwin.btn_addDate_onclick = function (e) {
+    var _result = "";
+    
+    // InputCalendar에서 받은 "yyyyMMdd" 형식의 날짜
+    var _date = ica_exam1.getValue();
+    
+    // Input에서 받은 더할 숫자
+    var _offset = ipt_num.getValue() || 0;
+    
+    // "yyyyMMdd" 형식의 날짜와 더할 일 수를 입력받아 더한 날짜를 반환합니다. 더할 값은 음수도 가능합니다.
+    _result = WebSquare.date.dateAdd(_date, _offset);
+
+    // 로그 출력
+    let strLog = "Date: " + _date + ", Offset: " + _offset + ", Result: " + _result;
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="'WebSquare.date.dateAdd' 메소드를 사용하여 'yyyyMMdd' 형식의 날짜에 일 수를 더하거나 빼는 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+
+				<xf:group class="example_div_tr_style" id="" style="">
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 5px;">
+							<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" footerDiv="true" id="ica_exam1"
+								renderDiv="true" renderType="" rightAlign="false" style="width: 110px;margin-right: 10px;" showToday="true">
+							</w2:inputCalendar>
+							<xf:input allowChar="-0-9" class="" id="ipt_num" maxlength="8" style="width : 50px;margin-right: 10px;" initValue="-3" inputMode="numeric" type="number">
+							</xf:input>
+							<xf:trigger style="" id="btn_addDate" type="button" class="btn_exam_exec" ev:onclick="scwin.btn_addDate_onclick">
+								<xf:label><![CDATA[AddDate]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

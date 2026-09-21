@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>Accordion</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_80870dc12244e449" class="chapter_title">Accordion</h1>
+		<h1 id="r_6cf427603674e06c" class="element heading1"
+			data-element-id="6cf427603674e06c">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_603c2d340440df66" class="element normal"
+			data-element-id="603c2d340440df66">Accordion 컴포넌트는 여러 개의 패널로
+			구성되어, 각 패널에 서로 다른 컨텐츠를 담아 순차적으로 열고 닫을 수 있는 UI 구성 요소입니다. 각 패널은 제목(헤더)과
+			내용(콘텐츠)으로 구성되어 있으며, 사용자는 제목을 클릭하여 해당 패널의 내용을 열거나 닫을 수 있습니다. 이 컴포넌트는
+			콘텐츠를 효율적으로 구성하고, 사용자가 원하는 특정 패널의 내용을 확장하거나 축소하여 정보를 보기 쉽게 제공하여 사용자
+			인터페이스의 가독성과 편의성을 높이는 데 활용됩니다.</p>
+		<dl id="r_5aaeacae9874a096" class="element definition_list"
+			data-element-id="5aaeacae9874a096">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb23rTGpwGL_4V4tB3rNGr_x">Accordion
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb06f6oKRnEXIGic72JVb1lm">Accordion
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_3a15a54cada93763" class="element heading1"
+			data-element-id="3a15a54cada93763">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_6120b6e122370d90" class="element normal"
+			data-element-id="6120b6e122370d90">Accordion 컴포넌트는 다음과 같은 상황에서
+			유용하게 사용될 수 있습니다.</p>
+		<dl id="r_e63a3cbaf2f43482" class="element definition_list"
+			data-element-id="e63a3cbaf2f43482">
+			<dt>
+				<strong>정보 분류 및 계층화</strong>
+			</dt>
+			<dd>
+				<p>많은 양의 정보를 논리적인 그룹으로 묶어 보여줄 때 효과적입니다. 예를 들어, 자주 묻는 질문(FAQ) 목록,
+					설정 옵션, 제품 상세 정보 등을 분류하여 표시할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>공간 효율성 증대</strong>
+			</dt>
+			<dd>
+				<p>한정된 화면 공간에서 다양한 콘텐츠를 제공해야 할 때, Accordion은 콘텐츠를 접어서 숨겨 공간을 절약할
+					수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>사용자 상호작용 개선</strong>
+			</dt>
+			<dd>
+				<p>사용자가 원하는 섹션만 열어볼 수 있도록 하여, 전체 페이지를 스크롤하는 번거로움을 줄이고 필요한 정보에
+					빠르게 접근할 수 있도록 돕습니다.</p>
+			</dd>
+			<dt>
+				<strong>동적 콘텐츠 표시</strong>
+			</dt>
+			<dd>
+				<p>특정 조건에 따라 패널을 동적으로 열거나 닫아서 사용자에게 적절한 시점에 필요한 정보를 제공할 수 있습니다.
+					예를 들어, 사용자가 특정 옵션을 선택했을 때 추가적인 입력 필드가 담긴 패널을 자동으로 열 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_581b516a022bf526" class="element heading1"
+			data-element-id="581b516a022bf526">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_944f22f41e2e3bc3" class="element unordered_list"
+			data-element-id="944f22f41e2e3bc3">
+			<li><p>패널 제어 기능</p>
+				<ul>
+					<li><p>
+							모든 패널이 열린 상태로 로딩 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00062.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Accordion/unCollapseAll_Accordion.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/FObIC3iWy_4">YouTube</a>)
+						</p></li>
+					<li><p>
+							Enter 키로 패널 열고 닫기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Accordion/enterKeyPanelToggle_Accordion.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/1fSpSevuwGA">YouTube</a>)
+						</p></li>
+					<li><p>
+							패널의 열린 상태를 유지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00221.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Accordion/independentPanel_Accordion.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/KHSd1h2JA6s">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>패널 상태 확인 기능</p>
+				<ul>
+					<li><p>
+							특정 패널의 속성 확인 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Accordion/getOpenPanelInfo_Accordion.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/1O4RTyEfGwg">YouTube</a>)
+						</p></li>
+					<li><p>
+							모든 열린 패널의 속성 확인 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Accordion/getOpenPanelListInfo_Accordion.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/yWgZuaPL_JQ">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>
+					이중 Accordion으로 UI 구성 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00040.xml">WRE</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_f2943394f2f48bcf" class="element heading1"
+			data-element-id="f2943394f2f48bcf">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_a6b8e1dcdaecfd0a" class="element unordered_list"
+			data-element-id="a6b8e1dcdaecfd0a">
+			<li><p>
+					<code>onpanelload</code>
+					&amp;
+					<code>onpanelunload</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Accordion/onpanelload_onpanelunload_Accordion.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/FObIC3iWy_4">YouTube</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

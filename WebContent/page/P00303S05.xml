@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00303 서브 페이지 05">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="" id="" style="">
+    		<xf:group class="_flex around" id="">
+    			<xf:image id="" src="/frame/images/widget05_img.png" style="width: 200px;height: 200px;"></xf:image>
+    			<xf:group class="helpbox" id="">
+    				<xf:group class="help_items" id="" style="">
+    					<w2:textbox class="tit" id="" label="기술 지원" style=""></w2:textbox>
+    					<w2:textbox class="contxt" id="" label="1522-1421" style=""></w2:textbox>
+    				</xf:group>
+    				<xf:group class="help_items" id="" style="">
+    					<w2:textbox class="tit" id="" label="교육 문의" style=""></w2:textbox>
+    					<w2:textbox class="contxt" escape="false" id="" label="02-2082-1439" style=""></w2:textbox>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="widget07_bottombox type02" id="" style="height: 40px;">
+    			<w2:span id="" label="질문이 있으신가요?" style=""></w2:span>
+    			<w2:span class="txt2" id="" label="FAQ 바로가기" style=""></w2:span>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

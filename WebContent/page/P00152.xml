@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Spinner] 데이터 타입 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221028" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //화면 초기화
+    scwin.initPage();
+};
+
+/**
+ * 화면 초기화
+ */
+scwin.initPage = function () {
+    spi_exam1.setValue("0");
+    spi_exam2.setValue("20241231"); //2024년 12월 31일 할당
+    spi_exam3.setValue("1159"); //11시 59분 할당
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="Spinner의 'dataType' 속성을 사용하여, 데이터의 타입을 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='(기본) dataType="number"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:spinner skin="type1" buttonSize="30" inputReadOnly="false" id="spi_exam1"
+							style="position: relative;width:130px;min-height:24px;" dataType="number">
+						</w2:spinner>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='dataType="date"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:spinner buttonSize="30" id="spi_exam2" inputReadOnly="false" skin="type1"
+							style="position: relative;width:130px;min-height:24px;" dataType="date">
+						</w2:spinner>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='dateType="time"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:spinner buttonSize="30" id="spi_exam3" inputReadOnly="false" skin="type1"
+							style="position: relative;width:130px;min-height:24px;" dataType="time" dateIncrementType="minute">
+						</w2:spinner>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

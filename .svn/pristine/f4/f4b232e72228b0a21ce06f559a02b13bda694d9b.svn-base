@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] AliasDataList 예제">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:aliasDataList scope="" id="da_aliasDataList"></w2:aliasDataList>
+            	<w2:dataList id="dc_userInfoList" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="EMP_CD" name="EMP_CD"></w2:column>
+            			<w2:column dataType="text" id="EMP_NM" name="EMP_NM"></w2:column>
+            			<w2:column dataType="text" id="GENDER_CD" name="GENDER_CD"></w2:column>
+            			<w2:column dataType="text" id="JOIN_DATE" name="JOIN_DATE"></w2:column>
+            			<w2:column dataType="text" id="POSITION_CD" name="POSITION_CD"></w2:column>
+            			<w2:column dataType="text" id="DUTY_CD" name="DUTY_CD"></w2:column>
+            			<w2:column dataType="text" id="ROLE_CD" name="ROLE_CD"></w2:column>
+            			<w2:column dataType="text" id="ASSIGNED_TASK" name="ASSIGNED_TASK"></w2:column>
+            			<w2:column dataType="text" id="EMAIL" name="EMAIL"></w2:column>
+            			<w2:column dataType="text" id="ZIP_CD" name="ZIP_CD"></w2:column>
+            			<w2:column dataType="text" id="ADDRESS1" name="ADDRESS1"></w2:column>
+            			<w2:column dataType="text" id="ADDRESS2" name="ADDRESS2"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data xmlns="" use="true">
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000007]]></EMP_CD>
+            				<EMP_NM><![CDATA[허길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20040203]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[01]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[04]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[puza935@inswave02.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[402793]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[인천 남구 용현2동]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[대우아파트 ]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000027]]></EMP_CD>
+            				<EMP_NM><![CDATA[진길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20110716]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[02]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[jizu928@inswave02.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[220810]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[강원 원주시 부론면]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[  ]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000029]]></EMP_CD>
+            				<EMP_NM><![CDATA[채길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20141013]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[03]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[02]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[02]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[gobu041@inswave01.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[110796]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[서울 종로구 신문로1가]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[고려빌딩 ]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000031]]></EMP_CD>
+            				<EMP_NM><![CDATA[마길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20120821]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[04]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[02]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[03]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[meta218@inswave02.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[706807]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[대구 수성구 만촌3동]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[ 770∼782]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000035]]></EMP_CD>
+            				<EMP_NM><![CDATA[함길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20131028]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[05]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[01]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[meqi774@inswave01.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[330710]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[충남 천안시 유량동]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[정보통신공무원교육원 ]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000049]]></EMP_CD>
+            				<EMP_NM><![CDATA[궉길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20120302]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[01]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[02]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[02]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[wohu640@inswave03.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[135809]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[서울 강남구 개포4동]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[시영아파트(26∼30동)]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000063]]></EMP_CD>
+            				<EMP_NM><![CDATA[이길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20120222]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[02]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[03]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[veno148@inswave02.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[395834]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[충북 단양군 영춘면]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[별방리 ]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000065]]></EMP_CD>
+            				<EMP_NM><![CDATA[천길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20160312]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[05]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[01]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[jaku982@inswave01.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[442120]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[경기 수원시 팔달구 중동]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[  ]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000088]]></EMP_CD>
+            				<EMP_NM><![CDATA[영길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20140702]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[03]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[04]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[wecu882@inswave02.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[135960]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[서울 강남구 포이동]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[ 23]]></ADDRESS2>
+            			</w2:row>
+            			<w2:row>
+            				<EMP_CD><![CDATA[10000094]]></EMP_CD>
+            				<EMP_NM><![CDATA[흥길동]]></EMP_NM>
+            				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+            				<JOIN_DATE><![CDATA[20011002]]></JOIN_DATE>
+            				<POSITION_CD><![CDATA[04]]></POSITION_CD>
+            				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+            				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+            				<ASSIGNED_TASK></ASSIGNED_TASK>
+            				<EMAIL><![CDATA[quki957@inswave03.com]]></EMAIL>
+            				<ZIP_CD><![CDATA[135774]]></ZIP_CD>
+            				<ADDRESS1><![CDATA[서울 강남구 대치1동]]></ADDRESS1>
+            				<ADDRESS2><![CDATA[청실아파트 ]]></ADDRESS2>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() { 
+};
+ 
+ 
+//오름차순으로 정렬 버튼  
+scwin.btn_getChild_onclick = function (e) { 
+   //1."EMP_NM" 으로 정렬 [0,1,2] 정렬 옵션 (0: 오름차순, 1: 내림차순, 2: 정렬 취소)
+ 
+};  
+
+//데이터 복원 버튼 
+scwin.btn_setChild_onclick = function (e) {
+    // 1.dc_userInfoList 의 값을 복원 
+     
+
+    // 2.dc_userInfoList 에 적용된 정렬을 제거    
+     
+};
+  
+scwin.ui_textbox1_onclick = function (e) { 
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] AliasDataList" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style=""
+    					tagname="strong" userData1="/edu/adv/aliasDataList_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 개요&lt;br/&gt;본 화면은 pageFrame 에서 aliasDataList 를 활용하는 실습 화면입니다. &lt;br/&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label='1. 추가 되어 있는 PageFrame 에 다른 화면 페이지를 추가합니다. &lt;br/&gt; &amp;nbsp;1) &lt;b&gt;[속성 활용]&lt;/b&gt;Component View 에서 속성 src 에 아래와 같은 속성을 넣습니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;ex) /edu/adv/alias_child_1.xml&lt;br/&gt; &amp;nbsp;2) pageFrame 영역에 넣고자하는 파일을 Project View 에서 찾아 drag&amp;drop 한다. &amp;nbsp;&lt;br/&gt;2.pageFrame 에 추가한 화면에서 aliasDataList 를 만들어 연결한다. &lt;br/&gt;&lt;br/&gt;3. 오름차순으로 정렬 버튼에 이벤트 함수 추가 &lt;br/&gt; &amp;nbsp; ex) DataList ID.sort("EMP_NM", 0);&lt;br/&gt;4. 데이터 복원 버튼에 이벤트 함수 추가 &lt;br/&gt; &amp;nbsp; &amp;nbsp;ex) DataList ID.undoAll(); &lt;br/&gt; &amp;nbsp; &amp;nbsp;ex) DataList ID.removeColumnFilterAll(); &lt;br/&gt; '
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<w2:gridView checkAllType="false" defaultCellHeight="20" id="ui_grid1" style="height: 150px;" dataList="data:dc_userInfoList" autoFit="allColumn" autoFitMinWidth="1000">
+    				<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    				<w2:header style="" id="header1">
+    					<w2:row style="" id="row1">
+    						<w2:column width="70" inputType="text" style="" id="column12" value="EMP_CD" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column11" value="EMP_NM" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column10" value="GENDER_CD" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column9" value="JOIN_DATE" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column8" value="POSITION_CD" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column7" value="DUTY_CD" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column6" value="ROLE_CD" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column5" value="ASSIGNED_TASK" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column4" value="EMAIL" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column3" value="ZIP_CD" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column2" value="ADDRESS1" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column1" value="ADDRESS2" displayMode="label"></w2:column>
+    					</w2:row>
+    				</w2:header>
+    				<w2:gBody style="" id="gBody1">
+    					<w2:row style="" id="row2">
+    						<w2:column width="70" inputType="text" style="" id="EMP_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="EMP_NM" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="GENDER_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="JOIN_DATE" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="POSITION_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="DUTY_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="ROLE_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="ASSIGNED_TASK" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="EMAIL" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="ZIP_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="ADDRESS1" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="ADDRESS2" value="" displayMode="label"></w2:column>
+    					</w2:row>
+    				</w2:gBody>
+    			</w2:gridView>
+    			<xf:group class="tblbox" id="" style="">
+    			</xf:group>
+    			<xf:group class="titbox" id="" style="">
+    				<w2:span id="" label="아래에는 pageFrame이 존재합니다.(id:pageFrame1)" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    				<xf:group class="rt" id="" style="">
+    					<xf:trigger class="btn_cm " id="btn_getChild" style="" type="button" ev:onclick="scwin.btn_getChild_onclick">
+    						<xf:label><![CDATA[오름차순으로 정렬]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger class="btn_cm " id="btn_setChild" style="" type="button" ev:onclick="scwin.btn_setChild_onclick">
+    						<xf:label><![CDATA[데이터복원]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    			<w2:pageFrame style="border: 2px solid green;padding: 10px;margin-bottom: 10px;" id="" src="/edu/adv/alias_child_1.xml"></w2:pageFrame>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

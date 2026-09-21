@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>IFrame</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_dc0c99fe94b7c0e5" class="chapter_title">IFrame</h1>
+		<h1 id="r_a81b44ac5b44a5d0" class="element heading1"
+			data-element-id="a81b44ac5b44a5d0">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_4819afd9249d4743" class="element normal"
+			data-element-id="4819afd9249d4743">
+			IFrame 컴포넌트는 HTML의
+			<code>&lt;iframe&gt;</code>
+			요소와 유사한 방식으로 작동하며, 웹 애플리케이션 내에서 외부 콘텐츠 또는 다른 웹 페이지를 손쉽게 임베드할 수 있도록
+			지원하는 기능을 제공합니다. 이 컴포넌트를 활용하면 WebSquare 파일뿐만 아니라 일반 웹 콘텐츠, 그리고 외부 사이트의
+			콘텐츠를 화면에 출력하여 사용자 경험을 풍부하게 만들고, 다양한 소스의 정보를 통합하여 보여주는 유연한 UI를 구현할 수
+			있습니다.
+		</p>
+		<dl id="r_b0928db06c6ca6c0" class="element definition_list"
+			data-element-id="b0928db06c6ca6c0">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3gLxM2tVmMkCuBEvBb12a6">IFrame
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_156ef43a0a85438b" class="element heading1"
+			data-element-id="156ef43a0a85438b">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_1599be8397d39788" class="element normal"
+			data-element-id="1599be8397d39788">IFrame 컴포넌트는 다음과 같은 상황에서 유용하게
+			활용될 수 있습니다.</p>
+		<dl id="r_016949568eafbf18" class="element definition_list"
+			data-element-id="016949568eafbf18">
+			<dt>
+				<strong>외부 웹사이트 통합</strong>
+			</dt>
+			<dd>
+				<p>타사 웹사이트나 웹 서비스를 애플리케이션 내에서 직접 표시할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>레거시 시스템 통합</strong>
+			</dt>
+			<dd>
+				<p>기존에 구축된 웹 페이지나 시스템을 새로운 WebSquare 기반 애플리케이션에 매끄럽게 연결하여 보여줄 수
+					있습니다.</p>
+			</dd>
+			<dt>
+				<strong>분리된 모듈 관리</strong>
+			</dt>
+			<dd>
+				<p>웹 애플리케이션의 특정 부분을 별도의 페이지로 구성하고 IFrame을 통해 로드함으로써, 모듈 간의 독립성을
+					유지하고 개발 및 유지보수를 용이하게 합니다.</p>
+			</dd>
+			<dt>미디어 및 예제 활용</dt>
+			<dd>
+				<p>YouTube 동영상 모음과 같이 다양한 미디어 자료를 임베디드 방식으로 쉽게 출력할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_ae0791bbf4ff6ac6" class="element heading1"
+			data-element-id="ae0791bbf4ff6ac6">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_a8de35589d3b7dc9" class="element unordered_list"
+			data-element-id="a8de35589d3b7dc9">
+			<li><p>
+					IFrame 내부의 History 기능 금지 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/IFrame/spa_spaReplaceHistory_IFrame/spa_spaReplaceHistory_true_IFrame.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/Ocb7gaTwXy8">YouTube</a>)
+				</p></li>
+			<li><p>
+					IFrame 내부의 History 기능 허용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/IFrame/spa_spaReplaceHistory_IFrame/spa_spaReplaceHistory_false_IFrame.xml">샘플</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

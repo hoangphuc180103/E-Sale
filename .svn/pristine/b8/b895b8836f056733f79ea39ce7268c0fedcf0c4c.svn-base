@@ -1,0 +1,30 @@
+/*amd /edu/adv/popup_desc.xml 3560 bebc362a1e87777e1cd3eff7be75f572dc25c9f86ae7bd562f84bf9f8e965e0e */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.btn_type_onclick = function (e) {
+  //type : wframePopup , iframePopup, browserPopup 
+  // 별도의 브라우저로 생성되는 팝업 예시 
+  var jsnOptions = {
+    id: "popup1",
+    type: "browserPopup",
+    //필수 고정
+    width: "300px",
+    height: "180px",
+    popupName: "browserPopup",
+    modal: "false" //필수 고정
+  };
+  $p.openPopup("/page/P00057P01.xml", jsnOptions);
+};
+scwin.btn_modal_onclick = function (e) {
+  //modal: 모달 or 모달리스
+  var jsnOptions = {
+    id: "popup1",
+    type: "wframePopup",
+    //필수 고정
+    width: "300px",
+    height: "180px",
+    popupName: "wframePopup true ",
+    modal: "true" // modal 적용 여부 [true: modal popup 사용, false: modal popup 미사용]
+  };
+  $p.openPopup("/page/P00057P01.xml", jsnOptions);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'ws_example_grp_desc'},E:[{T:1,N:'xf:group',A:{tagname:'details',style:'',id:'',class:''},E:[{T:1,N:'w2:textbox',A:{tagname:'summary',style:'',id:'',label:'실습 목표',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'',id:'',label:'1. 개요<br/>본 화면을 통해 팝업을 호출하는 API를 확인합니다. <br/><br/>1) 팝업 종류 (type)<br/> &nbsp; &nbsp;- wframePopup : WFrame 내에 팝업 화면을 호출(권장)<br/> &nbsp; &nbsp;- iframePopup : IFrame 내에 팝업 화면을 호출(비권장)<br/> &nbsp; &nbsp;- browserPopup : 브라우저가 제공하는 native 윈도우에 팝업 화면을 호출(비권장)<br/><br/>2) modal과 modaless 차이점 확인하기<br/> &nbsp; - modal popup : popup창을 호출한 부모(기존) 페이지는 사용하지 못하는 방식<br/> &nbsp; - modalless popup : popup창을 호출한 부모(기존) 페이지를 사용할 수 있는 방식',class:'',escape:'false'}}]},{T:1,N:'xf:group',A:{tagname:'details',style:'',id:'',class:''},E:[{T:1,N:'w2:textbox',A:{tagname:'summary',style:'',id:'',label:'실습 방법',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'',id:'',label:'■ $p.openPopup의 API를 확인 합니다. &nbsp;<br/><br/>1. "type의 차이 확인" 버튼에 onClick 이벤트 <br/> &nbsp; &nbsp;$p.openPopup 의 옵션 중 type의 값을 확인합니다. <br/> &nbsp; &nbsp;- wframePopup : WFrame 내에 팝업 화면을 호출(권장)<br/> &nbsp; &nbsp;- iframePopup : iFrame 내에 팝업 화면을 호출<br/> &nbsp; &nbsp;- browserPopup : 브라우저가 제공하는 native 윈도우에 팝업 화면을 호출(비권장)<br/><br/>2. "모달과 모달리스의 차이 확인" 버튼에 onClick 이벤트<br/> &nbsp; &nbsp;$p.openPopup 의 옵션 중 modal의 값을 확인합니다. <br/> &nbsp; &nbsp;- modal : true &nbsp;=> modal popup을 설정합니다. <br/> &nbsp; &nbsp;- modal : false &nbsp;=> modal popup을 설정하지 않습니다. <br/><br/>3. 파라미터 전달<br/>',class:'',escape:'false'}}]}]}]}]}]})

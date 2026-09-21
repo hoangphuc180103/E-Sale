@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="code" name="name1"></w2:column>
+            			<w2:column dataType="text" id="value" name="name2"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<code><![CDATA[0]]></code>
+            				<value><![CDATA[Seoul]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[1]]></code>
+            				<value><![CDATA[Busan]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[2]]></code>
+            				<value><![CDATA[Daejeon]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[3]]></code>
+            				<value><![CDATA[Jeju]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<code><![CDATA[4]]></code>
+            				<value><![CDATA[A very long long long long long long long long long name]]></value>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Auto-adjust List Width&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Open the SelectBox.&lt;br/&gt;2. Confirm that the list width has been adjusted based on the length of the longest selection item.' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='labelWidthAuto="true"&lt;br/&gt;width: 200px;' escape="false">
+    	</w2:textbox>
+    	<xf:select1 ref="" submenuSize="auto" appearance="minimal" labelWidthAuto="true" disabledClass="w2selectbox_disabled"
+    		chooseOption="" disabled="false" style="margin-bottom: 10px;width: 200px;" allOption="" id="select1" direction="auto">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="value"></xf:label>
+    				<xf:value ref="code"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1>
+    	<w2:textbox escape="false" id="textbox5" label='labelWidthAuto="false"&lt;br/&gt;width: 200px;'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false" disabledClass="w2selectbox_disabled"
+    		id="selectbox1" labelWidthAuto="false" ref="" style="width: 200px;" submenuSize="auto">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="value"></xf:label>
+    				<xf:value ref="code"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select1>
+    </xf:group></body>
+</html>

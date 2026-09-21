@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 탭 추가하기 - 콘텐츠 옵션 'alwaysDraw'(탭 추가 즉시 탭 콘텐츠 구성) 설정 비교하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230802" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="탭의 'frameMode'를 'pageFrame'으로 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [1-1. 탭 추가 - 'alwaysDraw'를 true로 설정] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = async function (e) {
+    // TabControl 'tac_exam1'에 탭 추가하기 - "alwaysDraw": true
+    let result = await tac_exam1.addTab(
+        "tac_exam1_alwaysDraw_true",
+        {
+            "label": "alwaysDraw_true",
+            "openAction": "select",
+            "disabled": true
+        },
+        {
+            "src": "/page/P00315S01.xml",
+            "alwaysDraw": true, // 필수
+            "frameMode": "pageFrame" // 필수
+        }
+    );
+
+    let strErrorLog = "# 탭 'alwaysDraw_true'가 추가되었습니다.";
+    $c.frame.printExampleLog(strErrorLog, txa_log_1, false);
+    console.log(strErrorLog);
+};
+
+/**
+ * 버튼 [1-2. 탭 'alwaysDraw_true'의 InputBox 값 반환받기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // 탭 추가 여부 확인하기
+    if (tac_exam1.getTabIndex("tac_exam1_alwaysDraw_true") == null) {
+        alert("탭이 추가되지 않았습니다.");
+        let strErrorLog = "# 탭이 추가되지 않았습니다.\n버튼 [1-1. 탭 추가 - 'alwaysDraw'를 true로 설정]을 클릭하여 탭을 추가해야합니다.";
+        $c.frame.printExampleLog(strErrorLog, txa_log_1, false);
+        console.log(strErrorLog);
+        return;
+    }
+
+    // 탭 콘텐츠의 InputBox 'ibx_exam1'의 value 꺼내오기
+    // 오류 발생 시 로그를 출력하기 위해 try/catch로 작성되었습니다.
+    try {
+        // 1. 탭 콘텐츠 객체 반환 받기
+        let objContWindow = tac_exam1.getWindow("tac_exam1_alwaysDraw_true");
+
+        // 2. 탭 콘텐츠의 InputBox 'ibx_exam1' 객체 반환 받기
+        let cmpInput = objContWindow.$p.getComponentById("ibx_exam1");
+
+        // 3. 탭 콘텐츠의 InputBox 'ibx_exam1'의 value 꺼내오기
+        let strInputValue = cmpInput.getValue();
+
+        // 로그 출력
+        let strLog = "# 탭 'alwaysDraw_true'의 콘텐츠의 'ibx_exam1'의 value: \n";
+        $c.frame.printExampleLog(strLog + strInputValue, txa_log_1, false);
+        console.log(strLog, strInputValue);
+
+    } catch (error) {
+        let strErrorLog = "# 오류 발생 #\n탭 'alwaysDraw_true'의 콘텐츠 접근 중 오류 발생.\n";
+        $c.frame.printExampleLog(strErrorLog + error.stack, txa_log_1, false);
+        console.log(strErrorLog, error);
+    }
+};
+
+/**
+ * 버튼 [2-1. 탭 추가 - 'alwaysDraw'를 false로 설정] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = async function (e) {
+    // TabControl 'tac_exam1'에 탭 추가하기 - "alwaysDraw": false
+    let result = await tac_exam1.addTab(
+        "tac_exam1_alwaysDraw_false",
+        {
+            "label": "alwaysDraw_false",
+            "openAction": "select",
+            "disabled": true
+        },
+        {
+            "src": "/page/P00315S01.xml",
+            "alwaysDraw": false, // 필수
+            "frameMode": "pageFrame" // 필수
+        }
+    );
+
+    let strErrorLog = "# 탭 'alwaysDraw_false'가 추가되었습니다.";
+    $c.frame.printExampleLog(strErrorLog, txa_log_1, false);
+    console.log(strErrorLog);
+};
+
+/**
+ * 버튼 [2-2. 탭 'alwaysDraw_false'의 InputBox 값 반환받기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // 탭 추가 여부 확인하기
+    if (tac_exam1.getTabIndex("tac_exam1_alwaysDraw_false") == null) {
+        alert("탭이 추가되지 않았습니다.");
+        let strErrorLog = "# 탭이 추가되지 않았습니다.\n버튼 [2-1. 탭 추가 - 'alwaysDraw'를 false로 설정]을 클릭하여 탭을 추가해야합니다.";
+        $c.frame.printExampleLog(strErrorLog, txa_log_1, false);
+        console.log(strErrorLog);
+        return;
+    }
+
+    // 탭 콘텐츠의 InputBox 'ibx_exam1'의 value 꺼내오기
+    // 오류 발생 시 로그를 출력하기 위해 try/catch로 작성되었습니다.
+    // 아래의 스크립트는 오류가 발생하여 catch에 작성된 스크립트가 실행됩니다.
+    try {
+        // 1. 탭 콘텐츠 객체 반환 받기
+        let objContWindow = tac_exam1.getWindow("tac_exam1_alwaysDraw_false");
+
+        // 2. 탭 콘텐츠의 InputBox 'ibx_exam1' 객체 반환 받기
+        let cmpInput = objContWindow.$p.getComponentById("ibx_exam1");
+
+        // 3. 탭 콘텐츠의 InputBox 'ibx_exam1'의 value 꺼내오기
+        let strInputValue = cmpInput.getValue();
+
+        // 로그 출력
+        let strLog = "# 탭 'alwaysDraw_false'의 콘텐츠의 'ibx_exam1'의 value: \n";
+        $c.frame.printExampleLog(strLog + strInputValue, txa_log_1, false);
+        console.log(strLog, strInputValue);
+
+    } catch (error) {
+        alert("스크립트 실행 중 오류가 발행하였습니다.");
+
+        let strErrorLog = "# 오류 발생\n탭 'alwaysDraw_false'의 콘텐츠 접근 중 오류 발생.\n";
+        $c.frame.printExampleLog(strErrorLog + error.message, txa_log_1, false);
+        console.log(strErrorLog, error);
+    }
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="TabControl의 'addTab' 메소드를 사용하여 'pageFrame' 모드의 탭을 추가할 때, 세 번째 인자 JSON 객체의 'alwaysDraw' 속성 설정 값에 따른 동작을 비교한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap P00315">
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="탭을 추가하고 탭 콘텐츠의 컴포넌트에 접근하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<w2:textbox class="wre_txt_normal" escape="false" id=""
+							label="추가된 탭의 콘텐츠는 'TAB' 탭과 동일합니다." style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								type="button">
+								<xf:label><![CDATA[1-1. 탭 추가 - 'alwaysDraw'를 true로 설정]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								type="button" style="">
+								<xf:label><![CDATA[1-2. 탭 'alwaysDraw_true'의 InputBox 값 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1"
+								type="button">
+								<xf:label><![CDATA[2-1. 탭 추가 - 'alwaysDraw'를 false로 설정]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_2_onclick" id="btn_exam2_2" style=""
+								type="button">
+								<xf:label><![CDATA[2-2. 탭 'alwaysDraw_false'의 InputBox 값 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="tbcbox">
+							<w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true"
+								useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="position: relative;height: 140px;" id="tac_exam1"
+								class="tbc" keepDisabledTab="true" tabScroll="true">
+								<w2:tabs disabled="false" style="width:70px;" id="tac_exam1_1" label="TAB" tabType="text"></w2:tabs>
+								<w2:content style="min-height:30px" id="content1_1" scope="true" src="/page/P00315S01.xml"
+									frameMode="wframe">
+									<w2:textbox id="" label="TAB Content" style="font-size: 1.2em;font-weight: bold;padding: 6px;"></w2:textbox>
+								</w2:content>
+							</w2:tabControl>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제"
+								type="button" userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 90px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+scwin.onpageload = function () {
+    scwin.count++;
+    var tmpSrc1 = scwin.getfolderPath() + "/sub_red.xml";
+    var tmpSrc2 = scwin.getfolderPath() + "/sub_green.xml";
+    var tmpSrc3 = scwin.getfolderPath() + "/sub_blue.xml";
+    var tmpSrc4 = scwin.getfolderPath() + "/sub_yellow.xml";
+
+    windowContainer1.createWindow({
+        "title": "Red - " + scwin.count,
+        "src": tmpSrc1,
+        "windowId": "red",
+        "frameMode": "wframe"
+    });
+    windowContainer1.createWindow({
+        "title": "Green - " + scwin.count,
+        "src": tmpSrc2,
+        "windowId": "green",
+        "frameMode": "wframe"
+    });
+    windowContainer1.createWindow({
+        "title": "Blue - " + scwin.count,
+        "src": tmpSrc3,
+        "windowId": "blue",
+        "frameMode": "wframe"
+    });
+    windowContainer1.createWindow({
+        "title": "Yellow - " + scwin.count,
+        "src": tmpSrc4,
+        "windowId": "yellow",
+        "frameMode": "wframe",
+    });
+    windowContainer1.setArrangeWindows("vertical");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    windowContainer1.setArrangeWindows("vertical", ["red", "yellow", "green"]);
+};
+
+scwin.trigger2_onclick = function (e) {
+    windowContainer1.setArrangeWindows("horizontal", ["blue", "red", "green"]);
+
+};
+
+scwin.trigger3_onclick = function (e) {
+    windowContainer1.setArrangeWindows("cascade", ["red", "blue", "green"]);
+
+};
+
+scwin.trigger4_onclick = function (e) {
+    windowContainer1.setArrangeWindows("sequential", ["blue", "green", "red"]);
+
+};
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Set Window Display and Arrangement Order&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. Click each button below.&lt;br/&gt;2. Confirm that windows appear and arrange according to your option settings.' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;display: block" id="trigger1" type="button">
+    		<xf:label><![CDATA[windowContainer1.setArrangeWindows("vertical", ["red", "yellow", "green"]);]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;display: block;" id="trigger2" type="button">
+    		<xf:label><![CDATA[windowContainer1.setArrangeWindows("horizontal", ["blue", "red", "green"]);]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger3_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;display: block;" id="trigger3" type="button">
+    		<xf:label><![CDATA[windowContainer1.setArrangeWindows("cascade", ["red", "blue", "green"];]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger4_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;display: block;" id="trigger4" type="button">
+    		<xf:label><![CDATA[windowContainer1.setArrangeWindows("sequential", ["blue", "green", "red"]);]]></xf:label>
+    	</xf:trigger><w2:windowContainer sequentialArrangeColNum="2" sequentialArrangeRowNum="2" fixArrangeFullScreen="false" useFixButton="false" windowAutoResize="false" verticalArrangeNum="2" windowMaxNum="5" useCloseButton="false" controlIconPosition="left" windowMaximizeAll="false" stopMinimizeOnNameLayer="true" toolbarPosition="bottom" id="windowContainer1" useStatusMsg="true" hideTitleOnMaximize="false" spaInitCount="0" stopToggleOnLast="false" useNameContainer="false" horizontalArrangeNum="2" useCustomMsg="false" useControlIconTitle="false" tooltipDisplay="true" tooltipGroupClass="false" windowTooltipDisplay="true" style="position: relative;height: 400px;border: gray solid 1px;">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer></xf:group></body>
+</html>

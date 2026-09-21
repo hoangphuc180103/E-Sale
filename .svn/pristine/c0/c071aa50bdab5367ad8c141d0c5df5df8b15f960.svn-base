@@ -1,0 +1,45 @@
+/*amd /page/P00191.xml 6108 95e72498cf7c1792e00fbbb15e36c5753bc488e0089470d6a66d908f593eb1a8 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col_a',name:'A'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'2547869000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'8740500'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'543900'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 ['A' 컬럼의 dataType 속성의 설정 값 반환받기] 클릭 시
+ */
+scwin.btn_ex1_1_onclick = function (e) {
+  //GridView 'grd_exam1'의 'A' 컬럼의 dataType 속성의 값을 반환 받습니다.
+  let returnValue = grd_exam1.getDataType("col_a");
+
+  //로그 출력
+  $c.frame.printExampleLog($p, "** 메소드 scwin.btn_ex1_1_onclick **", txa_log, false);
+  $c.frame.printExampleLog($p, 'grd_exam1.getDataType("col_a"); 반환 값 : ' + returnValue, txa_log, false);
+  console.log("** 메소드 scwin.btn_ex1_1_onclick **");
+  console.log('grd_exam1.getDataType("col_a"); 반환 값 : ' + returnValue);
+  txa_log.focus();
+};
+
+/**
+ * 버튼 ['A' 컬럼의 dataType 속성을 'number'로 설정하고 displayFormat 속성을 '#,###'으로 설정하기] 클릭 시
+ */
+scwin.btn_ex1_2_onclick = function (e) {
+  //GridView 'grd_exam1'의 'A' 컬럼의 dataType 속성의 값을 'number'로 설정합니다.
+  grd_exam1.setDataType("col_a", "number");
+  //GridView 'grd_exam1'의 'A' 컬럼의 속성 displayFormat의 값을 '#,###'으로 설정합니다.
+  grd_exam1.setColumnDisplayFormat("col_a", "#,###");
+};
+
+/**
+ * 버튼 ['A' 컬럼의 dataType 속성을 'float'로 설정하고 displayFormat 속성을 '#,###.00'으로 설정하기] 클릭 시
+ */
+scwin.btn_ex1_3_onclick = function (e) {
+  //GridView 'grd_exam1'의 'A' 컬럼의 dataType 속성을 'float'로 설정합니다.
+  grd_exam1.setDataType("col_a", "float");
+  //GridView 'grd_exam1'의 'A' 컬럼의 displayFormat 속성을 '#,###.00'으로 설정합니다.
+  grd_exam1.setColumnDisplayFormat("col_a", "#,###.00");
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  txa_log.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 메소드를 사용하여 바디 컬럼의 \'dataType\' 속성과 \'displayFormat\' 속성을 설정하고, \'dataType\' 속성의 설정값을 반환받는 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex1_1_onclick',id:'btn_ex1_1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'\'A\' 컬럼의 dataType 속성의 설정 값 반환받기 - 로그 출력'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex1_2_onclick',id:'btn_ex1_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'\'A\' 컬럼의 dataType 속성을 \'number\'로 설정하고 displayFormat 속성을 \'#,###\'으로 설정하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex1_3_onclick',id:'btn_ex1_3',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'\'A\' 컬럼의 dataType 속성을 \'float\'로 설정하고 displayFormat 속성을 \'#,###.00\'으로 설정하기'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox',style:'max-width:210px;'},E:[{T:1,N:'w2:gridView',A:{rowNumVisible:'true',rowNumWidth:'40',disabledBackgroundColor:'#eee',defaultCellHeight:'37',disabledFontColor:'#bbb',visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'lastColumn',id:'grd_exam1',visibleRowNum:'3',class:'gvw',autoFitMinWidth:'210'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column2',value:'A',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{textAlign:'right',width:'70',inputType:'text',id:'col_a',displayMode:'label'}}]}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_th_style',id:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_blue',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'btn_clearLog',style:'',title:'로그 삭제',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log',spellcheck:'false',style:'width: 100%;height: 140px;'}}]}]}]}]}]}]}]})

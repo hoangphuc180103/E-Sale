@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[WidgetContainer] 위젯 정보 반환받기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230807" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 예제 테스트를 위해 위젯 추가
+    wgc_exam1.addWidgets([
+        {
+            id: "wg_exam1",
+            src: "/page/P00318S01.xml",
+            title: "ID : wg_exam1",
+            x: 0,
+            y: 0,
+            scope: true,
+            unitWidth: 1,
+            unitHeight: 5
+        },
+        {
+            id: "wg_exam2",
+            src: "/page/P00318S02.xml",
+            title: "ID : wg_exam2",
+            x: 0,
+            y: 6,
+            scope: true,
+            unitWidth: 1,
+            unitHeight: 5
+        }
+    ]);
+};
+
+/**
+ * 로그 출력용 Textrea의 Value 삭제하기
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    let strTargetId = this.getUserData("userData1");
+    let cmpTarget;
+    if (strTargetId) {
+        cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+    } else {
+        cmpTarget = txa_log;
+    }
+    //textarea value를 빈문자열로 할당.
+    cmpTarget.setValue("");
+};
+
+/**
+ * 버튼 [위젯의 ID가 'wg_exam2'인 위젯의 정보 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // WidgetContainer 'wgc_exam1'에 추가된 위젯의 ID가 'wg_exam2'인 위젯의 정보를 반환받습니다.
+    let result = wgc_exam1.exportWidget("wg_exam2");
+
+    // 반환 값 예시)
+    // {
+    //     "id": "wg_exam2",
+    //     "src": "/page/P00318S02.xml",
+    //     "scope": true,
+    //     "minimized": false,
+    //     "maximized": false,
+    //     "x": 0,
+    //     "y": 5,
+    //     "unitWidth": 1,
+    //     "unitHeight": 5,
+    //     "fixed": false,
+    //     "oriFixed": false,
+    //     "title": "ID : wg_exam2",
+    //     "className": "w2widget",
+    //     "maximizeFormatter": null,
+    //     "buttonFormatter": null,
+    //     "titleClass": ""
+    // }
+
+    // 로그 출력
+    let strLog = "# 스크립트 wgc_exam1.exportWidget('wg_exam2'); 반환 값: \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_1, false);
+    console.log(strLog, result);
+};
+
+/**
+ * 버튼 [모든 위젯 정보 반환받기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // WidgetContainer 'wgc_exam1'에 추가된 모든 위젯의 정보를 배열로 반환받습니다.
+    let result = wgc_exam1.exportWidgets();
+
+    // 반환 값 예시)
+    // [
+    //     {
+    //         "id": "wg_exam1",
+    //         "src": "/page/P00318S01.xml",
+    //         "scope": true,
+    //         "minimized": false,
+    //         "maximized": false,
+    //         "x": 0,
+    //         "y": 0,
+    //         "unitWidth": 1,
+    //         "unitHeight": 5,
+    //         "fixed": false,
+    //         "oriFixed": false,
+    //         "title": "ID : wg_exam1",
+    //         "className": "w2widget",
+    //         "maximizeFormatter": null,
+    //         "buttonFormatter": null,
+    //         "titleClass": ""
+    //     },
+    //     {
+    //         "id": "wg_exam2",
+    //         "src": "/page/P00318S02.xml",
+    //         "scope": true,
+    //         "minimized": false,
+    //         "maximized": false,
+    //         "x": 0,
+    //         "y": 5,
+    //         "unitWidth": 1,
+    //         "unitHeight": 5,
+    //         "fixed": false,
+    //         "oriFixed": false,
+    //         "title": "ID : wg_exam2",
+    //         "className": "w2widget",
+    //         "maximizeFormatter": null,
+    //         "buttonFormatter": null,
+    //         "titleClass": ""
+    //     }
+    // ]
+
+    // 로그 출력
+    let strLog = "# 스크립트 wgc_exam1.exportWidgets(); 반환 값: \n";
+    $c.frame.printExampleLog(strLog + JSON.stringify(result, null, "  "), txa_log_1, false);
+    console.log(strLog, result);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="WidgetContainer의 'exportWidget' 메소드와 'exportWidgets' 메소드를 사용하여 위젯의 정보를 반환받는 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" type="button">
+								<xf:label><![CDATA[위젯의 ID가 'wg_exam2'인 위젯의 정보 반환받기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1" type="button">
+								<xf:label><![CDATA[모든 위젯 정보 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="위젯의 타이틀에 위젯의 ID를 표기하였습니다." style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom">
+							<w2:widgetContainer verticalMargin="0" threshold="null" params="false" mode="pushpull"
+								style="height: 200px;box-sizing:border-box;" id="wgc_exam1" cols="1" unitHeightPixel="20" class="wre_comm" horizontalMargin="8">
+							</w2:widgetContainer>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom">
+							<w2:span class="mr_def txt_bold" label="로그 확인"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" title="로그 삭제" type="button"
+								userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width: 100%;height: 100px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

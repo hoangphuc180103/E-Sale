@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		var count = multiUpload1.getFileCount();
+		alert("Total " + count + " files to be uploaded.");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;margin-bottom: 100px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="업로드 대상 파일 수 반환" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. MultiUpload 컴포트넌트를 클릭.&lt;br/&gt;2. 5개 이하의 파일을 선택. (maxcount 기본 값 : &amp;nbsp;"5") &lt;br/&gt;3. 상단의 버튼을 클릭. &lt;br/&gt;4. 선택한 파일의 개수가 반환되는 것을 확인.' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[multiUpload1.getFileCount();]]></xf:label>
+    	</xf:trigger><w2:multiupload filter="*:*.*" mode="html5_transparent" maxcount="" action="" style="width: 300px;height: 50px;border: solid gray 1px;margin-bottom: 10px;" wmode="" id="multiUpload1" maxsize="" userData1="" uploadButton="">
+    	</w2:multiupload></xf:group></body>
+</html>

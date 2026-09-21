@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="달력 요일을 텍스트 또는 이미지로 표시"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(첫 번째 InputCalendar의 경우)&lt;br/&gt;1. 달력 아이콘을 클릭. &lt;br/&gt;2. 마우스를 드래깅하여 "일월화수목금토" 요일 부분이 텍스트로 선택되는것을 확인. (dislayDayType="text")&lt;br/&gt;&lt;br/&gt;(두 번째 InputCalendar의 의 경우)&lt;br/&gt;1. 달력 아이콘을 클릭. &lt;br/&gt;2. 마우스를 드래깅하여 요일 부분이 이미지로 표시되고 텍스트로 선택되지 않는 것을 확인. (dislayDayType="image")'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;displayDayType="text"' escape="false">
+    	</w2:textbox>
+    	<w2:inputCalendar footerDiv="false" displayDayType="text" focusOnDateSelect="false" autoFocus="false"
+    		calendarValueType="yearMonthDate" nextTabID="" rightAlign="false" ev:onkeyup="scwin.cal1_onkeyup"
+    		ev:onviewchange="scwin.cal1_onviewchange" editType="select" style="margin-bottom: 10px;" id="inputCalendar1" renderType="component" renderDiv="true"
+    		monthNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" yearSuffix="Y">
+    	</w2:inputCalendar>
+    	<w2:textbox escape="false" id="textbox5" label='속성 설정&lt;br/&gt;displayDayType="image"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:inputCalendar autoFocus="false" calendarValueType="yearMonthDate" displayDayType="image" ev:onkeyup="scwin.cal1_onkeyup" ev:onviewchange="scwin.cal1_onviewchange" focusOnDateSelect="false" footerDiv="false"
+    		id="inputCalendar2" monthNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" nextTabID="" renderDiv="true"
+    		renderType="component" rightAlign="false" style="" yearSuffix="Y" editType="select">
+    	</w2:inputCalendar>
+    </xf:group></body>
+</html>

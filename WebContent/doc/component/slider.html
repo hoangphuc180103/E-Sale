@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>Slider</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_0d6852ded5ac4427" class="chapter_title">Slider</h1>
+		<h1 id="r_6919a0d27686e659" class="element heading1"
+			data-element-id="6919a0d27686e659">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_e4fc701caa5e14f3" class="element normal"
+			data-element-id="e4fc701caa5e14f3">Slider 컴포넌트는 사용자가 상하 또는 좌우로
+			핸들을 슬라이딩하여 연속적인 값을 직관적으로 선택할 수 있는 인터페이스를 제공합니다. 사용자는 시각적이고 직관적인 방식으로
+			값을 조절할 수 있어 사용자가 연속적인 데이터 범위에서 특정 값을 선택해야 할 때 매우 유용합니다. Slider 컴포넌트는
+			최소값과 최대값 사이에서 핸들을 이동하여 원하는 값을 설정할 수 있으며, 수직 또는 수평 방향으로 배치가 가능합니다. 이
+			컴포넌트는 다양한 사용자 입력 시나리오에서 유용하게 활용되며, 시각적으로도 직관적인 입력 방식을 제공합니다. 반응형
+			레이아웃과 함께 사용할 경우, 다양한 화면 크기에서도 유연하게 동작합니다.</p>
+		<h1 id="r_957af820130e57e5" class="element heading1"
+			data-element-id="957af820130e57e5">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_32c46b5631eaf0b2" class="element normal"
+			data-element-id="32c46b5631eaf0b2">Slider 컴포넌트는 다음과 같은 상황에서 효과적으로
+			사용할 수 있습니다.</p>
+		<dl id="r_92e97c7e9f2e61e1" class="element definition_list"
+			data-element-id="92e97c7e9f2e61e1">
+			<dt>
+				<strong>수치 조절 </strong>
+			</dt>
+			<dd>
+				<p>볼륨 조절, 밝기 설정, 줌 레벨 등 연속적인 값을 조절할 때 주료 사용합니다.</p>
+			</dd>
+			<dt>
+				<strong>범위 내 선택</strong>
+			</dt>
+			<dd>
+				<p>0~100 사이의 퍼센트 입력, 날짜 범위 내의 시점 설정 등 가격 범위, 연령대, 시간 범위 등 특정 범위
+					내에서 값을 선택할 때 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>시각적인 조작 경험 제공</strong>
+			</dt>
+			<dd>
+				<p>사용자에게 현재 값이나 진행 상태를 시각적으로 표현하여 제공할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>인터랙티브 폼</strong>
+			</dt>
+			<dd>
+				<p>사용자 경험을 향상시키는 인터랙티브한 폼 요소로 활용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>확대/축소</strong>
+			</dt>
+			<dd>
+				<p>지도나 이미지 뷰어에서 확대/축소 수준을 조절하는 데 Slider를 활용하여 사용자가 원하는 배율을 부드럽게
+					선택할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_3ae7f7daec22cfd6" class="element heading1"
+			data-element-id="3ae7f7daec22cfd6">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_c0759956e801bbe7" class="element unordered_list"
+			data-element-id="c0759956e801bbe7">
+			<li><p>기본 기능</p>
+				<ul>
+					<li><p>
+							방향 설정 –
+							<code>vertical</code>
+						</p></li>
+					<li><p>
+							최소값/최대값 설정 –
+							<code>setMinValue()</code>
+							,
+							<code>setMaxValue()</code>
+						</p></li>
+				</ul></li>
+			<li><p>
+					증감 단위 설정 –
+					<code>increment</code>
+				</p></li>
+			<li><p>
+					반응형 디자인 지원 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/Slider/responsive_vertical_Slider.xml">샘플</a>)
+				</p></li>
+		</ul>
+		<h1 id="r_d8ebede0f530b6e2" class="element heading1"
+			data-element-id="d8ebede0f530b6e2">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_dc2916700a20754e" class="element unordered_list"
+			data-element-id="dc2916700a20754e">
+			<li><p>
+					<code>onthumbmove</code>
+				</p></li>
+			<li><p>
+					<code>onmovedone</code>
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

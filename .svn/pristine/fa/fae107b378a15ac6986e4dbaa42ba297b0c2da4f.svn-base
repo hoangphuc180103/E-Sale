@@ -1,0 +1,68 @@
+/*amd /page/P00006S03.xml 5095 b8081393adfdf5e2e5d303631eeb664d19cb1c69eeecf9bd2b24a8d066773a30 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.gVar = {
+  arrMenu: [{
+    "title": "항목, 값 선택",
+    "page_key": "P00003"
+  }, {
+    "title": "컬럼 타입",
+    "page_key": "P00008"
+  }, {
+    "title": "필터, 정렬, 컬럼간 이동",
+    "page_key": "P00009"
+  }, {
+    "title": "드래그 & 드롭",
+    "page_key": "P00010"
+  }, {
+    "title": "소계, 합계",
+    "page_key": "P00011"
+  }, {
+    "title": "드릴다운",
+    "page_key": "P00012"
+  }, {
+    "title": "ExcelDown Chart",
+    "page_key": "P00013"
+  }, {
+    "title": "컬럼 동적 변경",
+    "page_key": "P00014"
+  }, {
+    "title": "Fusion 차트",
+    "page_key": "P00017"
+  }]
+};
+scwin.onpageload = function () {
+  scwin.dispMenu();
+  scwin.dispPage("P00017", "Fusion 차트");
+  scwin.dispPage("P00014", "컬럼 동적 변경");
+};
+scwin.dispMenu = function () {
+  var _arrMenu;
+  var item, i, i_max;
+  var cmpGen, cmpTmp;
+  _arrMenu = scwin.gVar.arrMenu;
+  cmpGen = gen_top_menu;
+  for (i = 0, i_max = _arrMenu.length; i < i_max; i++) {
+    item = _arrMenu[i];
+    cmpGen.insertChild();
+    cmpTmp = gen_top_menu.getChild(i, "btn_gen_menu");
+    cmpTmp.setValue(item.title);
+    cmpTmp.setUserData("exam_key", item.page_key);
+  }
+  ;
+  gen_top_menu.getChild(i_max - 1, "spa_gen_bar").hide();
+};
+
+/**
+ * 페이지 추가
+ */
+scwin.dispPage = function (argPageInfo, argPageTitle) {
+  var strPagePath;
+  if (!argPageInfo) {
+    return;
+  }
+  strPagePath = "/page/" + argPageInfo + ".xml";
+  wdc_main.createWindow(argPageTitle, null, strPagePath, argPageTitle, "win_" + argPageInfo, "selectWindow", null, null, null, {}, "wframe");
+};
+scwin.gen_btn_menu_onclick = function (e) {
+  scwin.dispPage(this.getUserData("exam_key"), this.getValue());
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'',id:'grp_main_wrap',style:'position: relative;    height: 100%;}'},E:[{T:1,N:'xf:group',A:{style:'position: relative; z-index: 1000; width: 100%; height: 50px; font-weight: bold; box-sizing:border-box; padding: 12px 10px 0px 10px; background-color: #2D5277 !important; background: no-repeat right 300px top -50px/ 700px url(../../cm/images/contents/bg_w.png), linear-gradient(46deg, #2C599E 0%, #2197A1 100%) 0% 0% no-repeat padding-box;',id:'',class:''},E:[{T:1,N:'w2:textbox',A:{id:'',label:'WindowContainer 예시',style:'color: #fff;display: inline-block; vertical-align: middle; font-size: 16px; margin-top: 3px;',tagname:'strong',class:'fr'}},{T:1,N:'w2:generator',A:{style:'',id:'gen_top_menu',class:'fl'},E:[{T:1,N:'xf:trigger',A:{useDefaultLabel:'true',localeRef:'',style:'min-width: 30px; min-height: 26px; margin: 0px; font-size: 14px; color:#fff;',id:'btn_gen_menu',type:'',class:'btn_exam_tran','ev:onclick':'scwin.gen_btn_menu_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'메뉴1'}]}]},{T:1,N:'w2:span',A:{label:'|',style:'line-height: 26px;font-size: 10px;margin: 0px 4px;color: #fff;opacity: 0.5;',id:'spa_gen_bar'}}]}]},{T:1,N:'xf:group',A:{id:'grp_container',class:'container',style:'position: absolute; top: 50px; right: 0; bottom: 0; left: 0; background: #fff;'},E:[{T:1,N:'xf:group',A:{style:'position: absolute;left: 0px;right: 0px;bottom: 0px;top: 0px;',id:'',class:''},E:[{T:1,N:'w2:windowContainer',A:{sequentialArrangeColNum:'2',verticalArrangeNum:'2',controlIconPosition:'left',windowMaximizeAll:'false',id:'wdc_main',useStatusMsg:'true',hideTitleOnMaximize:'false',spaInitCount:'0',nameLayerRearrange:'false',useNameContainer:'false',useControlIconTitle:'false',tooltipDisplay:'true',style:'position: relative;box-sizing: border-box;width: 100%;height: 100%;background: #fff;',sequentialArrangeRowNum:'2',fixArrangeFullScreen:'false',useFixButton:'false',windowAutoResize:'false',windowMaxNum:'5',useCloseButton:'false',stopMinimizeOnNameLayer:'false',toolbarPosition:'bottom',stopToggleOnLast:'false',horizontalArrangeNum:'2',useCustomMsg:'false',tooltipGroupClass:'false',windowTooltipDisplay:'true',class:''},E:[{T:1,N:'w2:windowToolbar',E:[{T:1,N:'w2:controlIconLayer',E:[{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'},{T:1,N:'w2:controlIcon'}]},{T:1,N:'w2:nameLayer'},{T:1,N:'w2:selectedNameLayer'}]}]}]}]}]},{T:1,N:'xf:group',A:{style:'display: none;',id:'grp_hidden'},E:[{T:1,N:'a',A:{id:'hidden_download_anchor'}}]},{T:1,N:'input',A:{id:'hidden_clipboard_input',style:'position:absolute;left:-1000px;top:-1000px;border:0px solid #fff;'}}]}]}]})

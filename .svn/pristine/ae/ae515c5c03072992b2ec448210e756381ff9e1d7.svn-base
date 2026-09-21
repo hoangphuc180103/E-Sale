@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>MultiUpload</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_b9f376fb357c2bb1" class="chapter_title">MultiUpload</h1>
+		<h1 id="r_a5b46b382ef0df30" class="element heading1"
+			data-element-id="a5b46b382ef0df30">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_667192d01d0532d9" class="element normal"
+			data-element-id="667192d01d0532d9">MultiUpload 컴포넌트는 사용자가 웹 화면에서
+			여러 파일을 한 번에 업로드할 수 있도록 지원합니다. 개발자는 별도의 복잡한 구현 없이 화면에 단순히 MultiUpload
+			컴포넌트를 추가하는 것만으로도 파일 첨부 메뉴, 이미지나 동영상 업로드 등 다양한 파일 업로드 인터페이스를 손쉽게 구현할 수
+			있습니다. 또한, 이 MultiUpload 컴포넌트는 파일 형식 제한, 최대 업로드 파일 수 및 최대 파일 크기 제한 등
+			세부적인 속성 설정 기능을 제공하며, 클라이언트와 서버 양쪽에서 용량 제한을 설정할 수 있는 subSize 속성을 통해 보다
+			유연한 제어가 가능하도록 설계되었습니다.</p>
+		<dl id="r_ae785b4cc6b296e9" class="element definition_list"
+			data-element-id="ae785b4cc6b296e9">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb2GupMXHTIGuU2f-Z8I2oAJ">MultiUpload
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_21b7211d58a441ea" class="element heading1"
+			data-element-id="21b7211d58a441ea">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_64aec6cba53ab941" class="element normal"
+			data-element-id="64aec6cba53ab941">MultiUpload 컴포넌트는 다음과 같은 상황에서
+			유용하게 활용될 수 있습니다.</p>
+		<dl id="r_4ba285af4c5130fe" class="element definition_list"
+			data-element-id="4ba285af4c5130fe">
+			<dt>
+				<strong>다중 파일 업로드</strong>
+			</dt>
+			<dd>
+				<p>사용자가 여러 파일을 한 번에 업로드해야 하는 경우, 이 컴포넌트는 편리하고 직관적인 인터페이스를 제공합니다.
+				</p>
+			</dd>
+			<dt>
+				<strong>파일 관리 기능</strong>
+			</dt>
+			<dd>
+				<p>업로드할 파일을 추가, 삭제, 취소하고, 업로드 진행 상태를 시각적으로 보여줌으로써 사용자 경험을
+					향상시킵니다.</p>
+			</dd>
+			<dt>
+				<strong>다양한 업로드 방식 지원</strong>
+			</dt>
+			<dd>
+				<p>개발자는 MultiUpload 컴포넌트를 통해 다양한 업로드 방식과 옵션을 설정하여, 애플리케이션의 요구사항에
+					맞는 최적의 파일 업로드 환경을 구축할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_dcd6c5044a71cb59" class="element heading1"
+			data-element-id="dcd6c5044a71cb59">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_6503193fb9ce0ee8" class="element unordered_list"
+			data-element-id="6503193fb9ce0ee8">
+			<li><p>
+					파일 확장자 제한 필터 설정 –
+					<code>filter</code>
+				</p></li>
+			<li><p>
+					최대 업로드 파일 개수 제한 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/MultiUpload/maxcount_MultiUpload.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/dBTN2L2FOqY">YouTube</a>)
+				</p></li>
+			<li><p>
+					최대 업로드 파일 크기 제한 –
+					<code>maxsize</code>
+					,
+					<code>subSize</code>
+				</p></li>
+			<li><p>
+					업로드 대상 파일 정보 확인 후 각 파일의 파라미터로 설정 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/MultiUpload/getFileInfos_setParamJSON_MultiUpload.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/N7dAsU12OGY">YouTube</a>)
+				</p></li>
+			<li><p>
+					업로드 대상 파일 수 반환 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/MultiUpload/getFileCount_MultiUpload.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/keVnrnMaRO8">YouTube</a>)
+				</p></li>
+			<li><p>
+					중복 파일 확인 –
+					<code>preventDuplicatedFileName</code>
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

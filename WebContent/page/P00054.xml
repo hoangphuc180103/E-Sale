@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] scrollEnd 기능을 사용한 데이터 추가하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220706" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정 및 버튼명 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="DataList 'dlt_member'의 데이터가 변경되고, 이에 따른 스크립트가 수정되었습니다." meta_date="20240627" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_member" baseNode="list" saveRemovedData="true" repeatNode="map"
+					ev:ondataload="scwin.dlt_member_ondataload" ev:oninsertrow="" ev:onremoverow="">
+					<w2:columnInfo>
+						<w2:column id="USER_PK" name="고유키" dataType="text"></w2:column>
+						<w2:column id="USER_ID" name="아이디" dataType="text"></w2:column>
+						<w2:column id="NAME" name="이름" dataType="text"></w2:column>
+						<w2:column id="GROUP_A" name="그룹 A" dataType="text"></w2:column>
+						<w2:column id="GROUP_B" name="그룹 B" dataType="text"></w2:column>
+						<w2:column id="GROUP_C" name="그룹 C" dataType="text"></w2:column>
+						<w2:column id="GROUP_D" name="그룹 D" dataType="text"></w2:column>
+						<w2:column id="EMAIL" name="이메일" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataMap baseNode="map" id="dma_search">
+					<w2:keyInfo>
+						<w2:key id="TOTAL_YN" name="총건수 조회여부" dataType="text"></w2:key>
+						<w2:key id="startNum" name="시작 순번" dataType="text"></w2:key>
+						<w2:key id="endNum" name="끝 순번" dataType="text"></w2:key>
+						<w2:key id="count" name="화면 행수" dataType="text"></w2:key>
+						<w2:key id="searchParam" name="검색 파라메터" dataType="text"></w2:key>
+						<w2:key id="searchType" name="검색 타입" dataType="text"></w2:key>
+
+					</w2:keyInfo>
+				</w2:dataMap>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_select" ref='data:json,dma_search' target='' action="/data/sampleData/dlt_member_append_40_0.json"
+				method="post" mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+				processMsg="" ev:submit="" ev:submitdone="scwin.sbm_select_submitdone" ev:submiterror="" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.gVar = {
+	append: false,
+	totalCnt: 0,
+	pageNum: 0
+};
+
+scwin.onpageload = function () {
+	//'GridView 초기화' 버튼 click 이벤트 발생
+	btn_Search.trigger("onclick");
+};
+
+//[GridView 초기화] 버튼 클릭 시
+scwin.btn_Search_onclick = function () {
+	scwin.gVar.append = false;
+	scwin.gVar.totalCnt = 0;
+	scwin.gVar.pageNum = 0;
+	spn_curCount.setValue(0);
+	spn_totCount.setValue(0);
+
+	scwin.searchMain(0, "Y");
+};
+
+/**
+* 조회 (현재 샘플은 100개씩 조회할 경우 기준) 
+* idx - 조회 시작 순번
+* strYn - 총 건수 조회 여부 
+*/
+scwin.searchMain = function (idx, strYn) {
+	dma_search.set("TOTAL_YN", strYn);
+	dma_search.set("startNum", idx);
+	dma_search.set("endNum", 40);
+	dma_search.set("count", 20);
+
+	//이 예제는 DB 연계가 되어 있지 않기 때문에 40건씩 나뉘어진 json 파일을 호출하도록 되어있습니다.
+	scwin.setActionURL();
+
+	scwin.gVar.pageNum++;
+
+	$p.executeSubmission("sbm_select");
+};
+
+
+/**
+ * json 파일 URL 설정
+ */
+scwin.setActionURL = function (idx) {
+	var _cmpSubmission;
+	_cmpSubmission = $p.getSubmission("sbm_select");
+	console.log($p.getSubmissionList());
+	console.log($p.getSubmission("sbm_select"));
+	_cmpSubmission.action = '/data/sampleData/dlt_member_append_40_' + scwin.gVar.pageNum + '.json';
+};
+
+/**
+ * sbm_select의 submitdone 핸들러
+ */
+scwin.sbm_select_submitdone = function (e) {
+	if (e.responseJSON.msgCode == "S") {
+		var firstYn = dma_search.get("TOTAL_YN");
+
+		// 최초 조회일 경우에만 전체 건수를 구하여 전역변수에 담는다.
+		if (firstYn == "Y") {
+			let totCount = e.responseJSON.TOTAL_CNT; 
+			scwin.gVar.totalCnt = totCount;
+			spn_totCount.setValue(totCount);
+		}
+		dlt_member.setJSON(e.responseJSON.dlt_member, scwin.gVar.append);
+	}
+
+};
+
+/**
+ * grd_member의 onscrollend 핸들러
+ * 데이터를 추가합니다.
+ */
+scwin.grd_member_onscrollend = function () {
+	var startRow = dlt_member.getRowCount();
+
+	// 전체 건수보다 조회된 건수가 작을 경우에만 추가 조회를 한다.
+	if (scwin.gVar.totalCnt > startRow) {
+		scwin.gVar.append = true;
+		scwin.searchMain(startRow, "N");
+	}
+};
+
+/**
+ * dlt_member의 ondataload 이벤트 핸들러
+ */
+scwin.dlt_member_ondataload = function () {
+	//게시물 수 출력
+	spn_curCount.setValue(dlt_member.getRowCount());
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView의 'onscrollend' 이벤트를 사용하여 데이터를 마지막 행에 추가하는 예제입니다.&lt;br/&gt;" style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="ofh def_box" id="" style="">
+							<xf:group class="fl wre_txt_bold" id="" style="line-height: 30px;">
+								<w2:span class="mr_def" dataType="text" displayFormat="" id="" label="총" style=""></w2:span>
+								<w2:span class="" dataType="number" displayFormat="#,##0" id="spn_curCount" label="0" ref="" style=""></w2:span>
+								<w2:span class="" dataType="text" displayFormat="" id="" label=" / " style=""></w2:span>
+								<w2:span class="" dataType="number" displayFormat="#,##0" id="spn_totCount" label="0" ref="" style=""></w2:span>
+								<w2:span class="" dataType="text" displayFormat="" id="" label="건" style=""></w2:span>
+							</xf:group>
+							<xf:trigger class="btn_cm fr" ev:onclick="scwin.btn_Search_onclick" id="btn_Search" style="width:120px;"
+								type="button">
+								<xf:label><![CDATA[GridView 초기화]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="gvwbox" id="" style="">
+							<w2:gridView autoFit="allColumn" autoFitFilterList="true" class="gvw mb_def"
+								dataList="dlt_member" defaultCellHeight="37" ev:onscrollend="scwin.grd_member_onscrollend" focusMode="row" id="grd_member" ignoreCellClick="false" ignoreToggleOnDisabled="false"
+								initFixedHeightByRowNum="10" loadCount="10" readOnly="true" rowNumHeaderValue="번호" rowNumVisible="true" rowNumWidth="36"
+								rowStatusHeaderValue="상태" rowStatusVisible="false" rowStatusWidth="40" style="height: 280px;" summaryAuto="false"
+								tooltipDisplay="true" tooltipShowAlways="" useCtrlKey="false" useFilterList="true" useShiftKey="true" visibleRowNum="10"
+								visibleRowNumFix="true" autoFitMinWidth="380">
+								<w2:header id="header1" style="">
+									<w2:row id="row1" style="">
+										<w2:column blockSelect="false" displayMode="label" id="column29" inputType="text" value="고유키"
+											width="80">
+										</w2:column>
+										<w2:column blockSelect="false" displayMode="label" id="column27" inputType="text" value="아이디"
+											width="90">
+										</w2:column>
+										<w2:column blockSelect="false" displayMode="label" id="column13" inputType="text" value="이메일"
+											width="190">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody1" style="">
+									<w2:row id="row2" style="">
+										<w2:column blockSelect="false" displayMode="label" id="USER_PK" inputType="text" width="80"></w2:column>
+										<w2:column blockSelect="false" displayMode="label" id="USER_ID" inputType="text" width="90"></w2:column>
+										<w2:column blockSelect="false" displayMode="label" id="EMAIL" inputType="text" width="190"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[AutoComplete] onchange와 onviewchange 비교하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230320" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제의 구성이 변경되었습니다." meta_date="20240712" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="Label" id="label"></w2:column>
+						<w2:column dataType="text" name="Value" id="code"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<label><![CDATA[A]]></label>
+							<code><![CDATA[01]]></code>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[B]]></label>
+							<code><![CDATA[02]]></code>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[C]]></label>
+							<code><![CDATA[03]]></code>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    txa_log.setValue("");
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+
+/**
+ * 영역 [Event: onchange]의
+ * Autocomplet [acb_exam]의 onviewchange
+ */
+scwin.acb_exam_onviewchange = function (info) {
+
+    //로그 출력
+    var strLog = "[Even: onviewchange] 발생";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+scwin.acb_exam_onchange = function (info) {
+    
+    //로그 출력
+    var strLog = "[Even: onchange] 발생";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+scwin.btn_exam_onclick = function (e) {
+    acb_exam.setValue("03");
+};
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='AutoComplete의 onchange 이벤트와 onviewchange 이벤트의 동작을 비교하는 예제입니다.'
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 15px;" class="def_box">
+							<w2:autoComplete allOption="" autoFocus="true" editType="select" id="acb_exam" ref="" search="start"
+								style="width:80px;" submenuSize="auto" useKeywordHighlight="false" useLocale="false" ev:onviewchange="scwin.acb_exam_onviewchange"
+								ev:onchange="scwin.acb_exam_onchange">
+								<w2:choices>
+									<w2:itemset nodeset="data:dlt_exam1">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="code"></w2:value>
+									</w2:itemset>
+								</w2:choices>
+							</w2:autoComplete>
+							<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_exam" localeRef="" style="min-width: 30px; height: 26px;" type=""
+								useDefaultLabel="true" ev:onclick="scwin.btn_exam_onclick">
+								<xf:label><![CDATA[setValue 메소드로 'C' 항목 선택하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+
+					</xf:group>
+
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

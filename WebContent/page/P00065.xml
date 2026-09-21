@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[AutoComplete] 특정 항목 비활성화 하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220803" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="예제 설명 문구 추가" meta_date="20240312" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam_code" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="label" name="label" dataType="text"></w2:column>
+						<w2:column id="code" name="code" dataType="text"></w2:column>
+						<w2:column id="useYN" name="useYN" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<label><![CDATA[Apple]]></label>
+							<code><![CDATA[01]]></code>
+							<useYN><![CDATA[Y]]></useYN>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Pear]]></label>
+							<code><![CDATA[02]]></code>
+							<useYN><![CDATA[N]]></useYN>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Grapes]]></label>
+							<code><![CDATA[03]]></code>
+							<useYN><![CDATA[Y]]></useYN>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Watermelon]]></label>
+							<code><![CDATA[04]]></code>
+							<useYN><![CDATA[N]]></useYN>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Peach]]></label>
+							<code><![CDATA[05]]></code>
+							<useYN><![CDATA[Y]]></useYN>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Strawberry]]></label>
+							<code><![CDATA[06]]></code>
+							<useYN><![CDATA[Y]]></useYN>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[Blueberry]]></label>
+							<code><![CDATA[07]]></code>
+							<useYN><![CDATA[Y]]></useYN>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+
+scwin.btn_ex1_onclick = function (e) {
+    //항목 비활성화 컬럼 및 비활성화값 설정
+    acb_ex3.setEnableColumn("useYN", "N");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='AutoComplete의 목록의 특정 항목을 비활성화하는 예제입니다.' style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="비활성화 항목 미적용" style=""></w2:textbox>
+
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:autoComplete editType="select" style="width: 150px;min-height:24px;" submenuSize="auto" search="" allOption=""
+							chooseOption="" ref="" id="acb_ex1">
+							<w2:choices>
+								<w2:itemset nodeset="data:dlt_exam_code">
+									<w2:label ref="label"></w2:label>
+									<w2:value ref="code"></w2:value>
+								</w2:itemset>
+							</w2:choices>
+						</w2:autoComplete>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='비활성화 항목 적용' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:autoComplete allOption="" chooseOption="" editType="select" ref="" search=""
+							style="width: 150px;min-height:24px;" submenuSize="auto" enableColumn="useYN" enableColumnFalseValue="N" id="acb_ex2">
+							<w2:choices>
+								<w2:itemset nodeset="data:dlt_exam_code">
+									<w2:label ref="label"></w2:label>
+									<w2:value ref="code"></w2:value>
+								</w2:itemset>
+							</w2:choices>
+						</w2:autoComplete>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="스크립트로 비활성화 항목 지정하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:autoComplete allOption="" chooseOption="" editType="select" id="acb_ex3" ref="" search=""
+							style="width: 150px;min-height:24px;" submenuSize="auto" class="mr_def">
+							<w2:choices>
+								<w2:itemset nodeset="data:dlt_exam_code">
+									<w2:label ref="label"></w2:label>
+									<w2:value ref="code"></w2:value>
+								</w2:itemset>
+							</w2:choices>
+						</w2:autoComplete>
+						<xf:trigger class="btn_exam_exec" id="btn_ex1" style="" type="button" ev:onclick="scwin.btn_ex1_onclick">
+							<xf:label><![CDATA[항목 비활성화]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

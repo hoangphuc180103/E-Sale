@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/Guide/GridView/color.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="166 162 156 158" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true"
+        			ev:oncelldatachange="scwin.dataList1_oncelldatachange">
+        			<w2:columnInfo>
+        				<w2:column id="Change" name="Change" dataType="text" ignoreStatus="true"></w2:column>
+        				<w2:column id="Status" name="Status" dataType="text"></w2:column>
+        				<w2:column id="Date" name="Date" dataType="text"></w2:column>
+        				<w2:column id="Expense" name="Expense" dataType="text"></w2:column>
+        				<w2:column id="Income" name="Income" dataType="text"></w2:column>
+        				<w2:column id="Hobby" name="Hobby" dataType="text"></w2:column>
+        				<w2:column id="Region" name="Region" dataType="text"></w2:column>
+        				<w2:column id="Frequency" name="Frequency" dataType="text"></w2:column>
+        				<w2:column id="ID" name="ID" dataType="text"></w2:column>
+        				<w2:column id="Age" name="Age" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList2" saveRemovedData="true">
+        			<w2:columnInfo>
+        				<w2:column id="Country" name="Country" dataType="text"></w2:column>
+        				<w2:column id="City" name="City" dataType="text"></w2:column>
+        				<w2:column id="Airport" name="Airport" dataType="text"></w2:column>
+        				<w2:column id="A_Code" name="A_Code" dataType="text"></w2:column>
+        				<w2:column id="C_Code" name="C_Code" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target='data:json,["dataList1","dataList2"]' action="two_data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/two_data.json';
+    $p.executeSubmission("submission1");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+		var options = {
+            common: {
+               fileName : "gridViews_download.xlsx",
+                multipleSheet : "false"
+            },
+            excelInfo: [
+                {	
+                	infoArr : [{rowIndex:1,colIndex:0,rowSpan:2,colSpan:3,text:"Sample 1"}],
+                    startRowIndex : 3,
+                    gridId : "gridView1"
+                },
+                {	
+                	startRowIndex : 3,
+                    gridId : "gridView2"
+                }
+            ]
+        };
+        
+        WebSquare.util.multipleExcelDownload( options );
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    			label="Download Multiple GridView Data to a Single Excel File&lt;br/&gt;" escape="false">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    			label="1. Click the button below.&lt;br/&gt;2. Open the downloaded Excel file.&lt;br/&gt;3. Verify that the GridViews displayed on the current screen have been downloaded as a single Excel sheet.&lt;br/&gt;(See the Script tab for detailed script information.)"
+    			escape="false">
+    		</w2:textbox>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[WebSquare.util.multipleDataListDownload()]]></xf:label>
+    		</xf:trigger>
+    		<w2:gridView captionTitle="" scrollByColumnAdaptive="false" ev:onaftercolumnmove="" noSelect="false" rowNumVisible="true"
+    			ev:onsort="scwin.gridView1_onsort" ev:onaftercolumnresize="" useShiftKey="true" scrollByColumn="false" sortable="true"
+    			ev:onbeforecolumnmove="" defaultCellHeight="20" rowStatusHeaderValue="" footerCaptionAuto="" contextMenu="" visibleRowNumFix="true"
+    			dataList="data:dataList1" style="margin-bottom: 10px;border: solid 1px gray;" id="gridView1" visibleRowNum="5" autoFit="allColumn"
+    			ev:oncelldblclick="" useCtrlKey="true" footerSummaryAuto="">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column removeBorderStyle="false" width="70" inputType="checkbox" style="height:20px" id="column10" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column9" value="Status"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column8" value="Date"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column7" value="Expense"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column6" value="Income"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column5" value="Hobby"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column4" value="Region"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column3" value="Frequency"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column2" value="ID"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column1" value="Age"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column removeBorderStyle="false" width="70" inputType="checkbox" style="height:20px" id="Change" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Status" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="calendar" style="height:20px" adaptiveStyle="" id="Date"
+    						value="" blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Expense" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Income" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Hobby" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Region" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Frequency" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="ID" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Age" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" visibleRowNumFix="true" dataList="data:dataList2"
+    			style="border: solid 1px gray;margin-bottom: 10px;" scrollByColumn="false" id="gridView2" autoFit="allColumn" visibleRowNum="5" defaultCellHeight="20">
+    			<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header1">
+    				<w2:row style="" id="row1">
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column5" value="Country"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column4" value="City"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column3" value="Airport"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column2" value="A_Code"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column1" value="C_Code"
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody1">
+    				<w2:row style="" id="row2">
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Country" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="City" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Airport" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="A_Code" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    					<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="C_Code" value=""
+    						blockSelect="false" displayMode="label">
+    					</w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    		<w2:textbox escape="false" id="textbox4"
+    			label='/// Sample Code &lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt; &amp;nbsp; &amp;nbsp;common: {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;fileName: "gridViews_download.xlsx",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;multipleSheet: "false"&lt;br/&gt; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp;excelInfo: [{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;infoArr: [{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;rowIndex: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;colIndex: 0,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;rowSpan: 2,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;colSpan: 3,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;text: "Sample 1"&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}],&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;startRowIndex: 3,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;gridId: "gridView1"&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;startRowIndex: 3,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;gridId: "gridView2"&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;]&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;WebSquare.util.multipleExcelDownload(options);'
+    			style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    			tagname="">
+    		</w2:textbox>
+    	</xf:group>
+    </body>
+</html>

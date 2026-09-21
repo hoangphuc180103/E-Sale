@@ -1,0 +1,9 @@
+/*amd /guide_jpn/_Page/onbeforepageunload_body_Page/src.xml 1065 4ecafbf5c09d75d02d3b943b6b360cc1ce60d77e61aaf70d62388818c1a29e3d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  alert("onpageload - Popup is about to be loaded.");
+};
+scwin.onpageunload = function () {};
+scwin.onbeforepageunload = function () {
+  alert("onbeforepageunload - Popup is about to be unloaded");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload','ev:onbeforepageunload':'scwin.onbeforepageunload'},E:[{T:1,N:'w2:textbox',A:{id:'textbox1',label:'PopUp (src.xml)',style:'font-size:30px;font-style:italic;color:black;margin-left: 30px;'}}]}]}]})

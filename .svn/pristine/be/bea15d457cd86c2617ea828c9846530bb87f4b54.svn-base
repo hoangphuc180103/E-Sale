@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00007 서브 페이지 03">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="데이터 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_chart" repeatNode="map" saveRemovedData="true" style="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="series" name="name1"></w2:column>
+						<w2:column dataType="text" id="female" name="여"></w2:column>
+						<w2:column dataType="text" id="male" name="남"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<series><![CDATA[18–24세]]></series>
+							<female><![CDATA[0]]></female>
+							<male><![CDATA[5]]></male>
+						</w2:row>
+						<w2:row>
+							<series><![CDATA[25–34세]]></series>
+							<female><![CDATA[8]]></female>
+							<male><![CDATA[10]]></male>
+						</w2:row>
+						<w2:row>
+							<series><![CDATA[35–44세]]></series>
+							<female><![CDATA[14]]></female>
+							<male><![CDATA[25]]></male>
+						</w2:row>
+						<w2:row>
+							<series><![CDATA[45–54세]]></series>
+							<female><![CDATA[1]]></female>
+							<male><![CDATA[13]]></male>
+						</w2:row>
+						<w2:row>
+							<series><![CDATA[55세 이상]]></series>
+							<female><![CDATA[0]]></female>
+							<male><![CDATA[2]]></male>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //차트 설정
+    scwin.setChartOptions();
+};
+
+//차트 설정
+scwin.setChartOptions = function () {
+    var fc = cht_ex01.fc();
+    var fcOpt = {
+        "caption": "성별 조회수",
+        "captionFontSize": "16",
+        "showPercentValues": true,
+        "showValues": true,
+        "valueFontColor": "#999",
+        "showHoverEffect": "1",
+        "showLegend": "1",
+        "legendBgColor": "#ffffff",
+        "legendBorderAlpha": "0",
+        "legendShadow": "0",
+        "labelFontSize": 12,
+        "labelDistance": "0",
+        "enableSmartLabels": "0",
+        "useDataPlotColorForLabels": "1",
+        "showPrintMenuItem": true,
+        "exportEnabled": true,
+        "exportAction": "download",
+        "exportFormats": "PNG=Export as PNG Image|JPG=Export as JPG Image|PDF=Export as PDF File",
+        "exportShowMenuItem": true,
+        "toolTipColor": "#ffffff",
+        "toolTipPadding": "5",
+        "toolTipBorderColor": "#000",
+        "toolTipBorderThickness": "0",
+        "toolTipBgColor": "#000",
+        "toolTipBgAlpha": "80",
+        "toolTipBorderRadius": "2",
+        "plottooltext": "<div style='color:#fff;text-align:center;'><div style='color:#ffff00;'>$label</div><div>$dataValue회</div></div>"
+    }
+    fc.setChartAttribute(fcOpt);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="ws_example_w2widget_content" id="">
+			<w2:fusionchart accessibility="false" chartType="MSBar2D" drawType="javascript" id="cht_ex01" labelNode="series"
+				ref="data:dlt_chart" runflashAt="IE6,IE7,IE8" seriesColumns="[['female','male']]" seriesNode="" seriesType="advanced"
+				style="width: 100%;height: 100%;" valueNode="count">
+			</w2:fusionchart>
+		</xf:group>
+	</body>
+</html>

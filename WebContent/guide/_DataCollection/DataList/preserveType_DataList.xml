@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="preserveType_DataList">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true" preserveType="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="col1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="col2" dataType="number"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    alert("Type of 111 : " + typeof (111) + " & " +"Type of 111 : " + typeof (222));
+    var tmpArr = [{ "col1": 111, "col2": 222 }];
+    dataList1.setJSON(tmpArr);
+    gridView1.setCellColor(0, 0, "red");
+    gridView1.setCellColor(0, 1, "red");
+};
+
+scwin.trigger2_onclick = function (e) {
+    var firstCol = dataList1.getCellData(0, 0);
+    var secondCol = dataList1.getCellData(0, 1);
+    alert("After Setting - Type of 111 : " + typeof (firstCol) + " & " + "Type of 111 : " + typeof (secondCol));
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox3" label="DataList에서 number 타입 데이터를 string 타입으로 설정" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox5" label='1. 첫 번째 버튼을 클릭하여 dataType이 “number”인 데이터를 DataList에 설정. &lt;br/&gt;2. 두 번째 버튼을 클릭하여 col1의 dataType은 "string"으로 변환되고 col2는 “number”인 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox6" label='속성 설정&lt;br/&gt;preserveType="true" (DataList)&lt;br/&gt;dataType="text" (dataList.column - col1)&lt;br/&gt;dataType="number" (dataList.column - col2)' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[dataList1.setJSON();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[typeof() DataList]]></xf:label>
+    	</xf:trigger><w2:gridView checkAllType="false" dataList="data:dataList1" style="border: solid gray 1px;" id="gridView1" autoFit="allColumn" defaultCellHeight="20" visibleRowNum="2" visibleRowNumFix="true" noResultMessageVisibleAlways="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="" id="column2" value="name1" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column1" value="name2" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView></xf:group></body>
+</html>

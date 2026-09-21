@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>PageFrame</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_0f7d31429db72799" class="chapter_title">PageFrame</h1>
+		<h1 id="r_0a4f3dca5d8ce3ba" class="element heading1"
+			data-element-id="0a4f3dca5d8ce3ba">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_1b5203f7164262d2" class="element normal"
+			data-element-id="1b5203f7164262d2">
+			PageFrame 컴포넌트는 WebSquare AI에서 제공하는 화면 분할 및 로딩용 UI 컴포넌트입니다. 기존
+			WFrame과 동일한 기능을 제공하며, 추가적으로 Page Component를 소스(
+			<code>src</code>
+			) 로 지정하여 해당 Page Component의 API에 직접 접근할 수 있는 기능을 제공합니다. 이로 인해 복잡한 사용자
+			정의 컴포넌트(UDC)를 별도로 등록하지 않고도 재사용 가능한 구조를 손쉽게 구성할 수 있고, 복잡한 애플리케이션을
+			모듈화하고 각 모듈을 독립적으로 개발 및 배포할 수 있어 개발 효율성을 높일 수 있습니다.
+		</p>
+		<dl id="r_73649fea2b414896" class="element definition_list"
+			data-element-id="73649fea2b414896">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb0gRxSMm0EdPR0G42iuByhz">PageFrame
+						사용법 모음</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_6376391467c4cb29" class="element heading1"
+			data-element-id="6376391467c4cb29">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_86ad1fa0843b13f7" class="element normal"
+			data-element-id="86ad1fa0843b13f7">PageFrame은 다음과 같은 상황에서 효과적으로
+			활용할 수 있습니다.</p>
+		<dl id="r_b37827dd67420404" class="element definition_list"
+			data-element-id="b37827dd67420404">
+			<dt>
+				<strong>모듈화된 화면 개발</strong>
+			</dt>
+			<dd>
+				<p>복잡한 애플리케이션을 여러 개의 독립적인 Page Component로 분할하여 개발할 때 각 모듈을
+					PageFrame으로 통합 관리할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>재사용 가능한 컴포넌트 구현</strong>
+			</dt>
+			<dd>
+				<p>공통으로 사용되는 화면 요소들을 Page Component로 작성하고, PageFrame을 통해 다양한
+					화면에서 재사용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>복잡한 레이아웃 관리</strong>
+			</dt>
+			<dd>
+				<p>하나의 페이지 내에 여러 개의 독립적인 영역을 구성해야 할 때, 각 영역을 PageFrame으로 분리하여
+					관리함으로써 페이지의 복잡성을 줄이고 가독성을 높일 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>동적 컨텐츠 로딩</strong>
+			</dt>
+			<dd>
+				<p>사용자의 상호작용이나 비즈니스 로직에 따라 다른 화면을 동적으로 로딩해야 하는 경우에 활용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>기존 WFrame 대체</strong>
+			</dt>
+			<dd>
+				<p>WFrame을 사용하던 기존 프로젝트에서 더 향상된 기능이 필요한 경우 PageFrame으로 원활하게
+					마이그레이션할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>복합 UI 구성</strong>
+			</dt>
+			<dd>
+				<p>TabControl, WindowContainer, 팝업 등 다른 컨테이너 컴포넌트와 함께 사용하여 복잡한
+					사용자 인터페이스를 구성할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_ac5f9ea2875b48ad" class="element heading1"
+			data-element-id="ac5f9ea2875b48ad">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_e58ff99b3d4f4351" class="element unordered_list"
+			data-element-id="e58ff99b3d4f4351">
+			<li><p>
+					Page Component의 메소드 사용 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/_Page_Component/method_Page_Component/method_Page_Component.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/q5B8xYNWFJA">YouTube</a>)
+				</p></li>
+			<li><p>
+					Page Component를 소스 화면으로 연결 (<a class="link"
+						href="https://example.websquare.kr/link.html?p=/page/P00435.xml">WRE</a>)
+				</p></li>
+			<li><p>WFrame 호환 및 대체</p></li>
+		</ul>
+		<h1 id="r_d45bbad66b6c53d9" class="element heading1"
+			data-element-id="d45bbad66b6c53d9">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_1005bc2188ba7fff" class="element unordered_list"
+			data-element-id="1005bc2188ba7fff">
+			<li><p>
+					<code>onpageframeload</code>
+					&amp;
+					<code>onbeforepageframeunload</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/PageFrame/onpageframeload_onbeforepageframeunload_PageFrame/onpageframeload_onbeforepageframeunload_PageFrame.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/uA8I2aZDZM8">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>onresize</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/PageFrame/onresize_PageFrame/onresize_PageFrame.xml">샘플</a>)
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

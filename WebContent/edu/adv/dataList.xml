@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제]DataList 실습화면" meta_vertical_guides="" meta_horizontal_guides="">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+	<w2:dataList id="dc_userInfoList">
+		<w2:columnInfo>
+			<w2:column id="EMP_CD" name="EMP_CD" dataType="text"></w2:column>
+			<w2:column id="EMP_NM" name="EMP_NM" dataType="text"></w2:column>
+			<w2:column id="GENDER_CD" name="GENDER_CD" dataType="text"></w2:column>
+			<w2:column id="JOIN_DATE" name="JOIN_DATE" dataType="text"></w2:column>
+			<w2:column id="POSITION_CD" name="POSITION_CD" dataType="text"></w2:column>
+			<w2:column id="DUTY_CD" name="DUTY_CD" dataType="text"></w2:column>
+			<w2:column id="ROLE_CD" name="ROLE_CD" dataType="text"></w2:column>
+			<w2:column id="ASSIGNED_TASK" name="ASSIGNED_TASK" dataType="text"></w2:column>
+			<w2:column id="EMAIL" name="EMAIL" dataType="text"></w2:column>
+			<w2:column id="ZIP_CD" name="ZIP_CD" dataType="text"></w2:column>
+			<w2:column id="ADDRESS1" name="ADDRESS1" dataType="text"></w2:column>
+			<w2:column id="ADDRESS2" name="ADDRESS2" dataType="text"></w2:column>
+		</w2:columnInfo>
+		<w2:data xmlns="" use="true">
+			<w2:row>
+				<EMP_CD><![CDATA[10000007]]></EMP_CD>
+				<EMP_NM><![CDATA[허길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20040203]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[01]]></POSITION_CD>
+				<DUTY_CD><![CDATA[04]]></DUTY_CD>
+				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[puza935@inswave02.com]]></EMAIL>
+				<ZIP_CD><![CDATA[402793]]></ZIP_CD>
+				<ADDRESS1><![CDATA[인천 남구 용현2동]]></ADDRESS1>
+				<ADDRESS2><![CDATA[대우아파트 ]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000027]]></EMP_CD>
+				<EMP_NM><![CDATA[진길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20110716]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[02]]></POSITION_CD>
+				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[jizu928@inswave02.com]]></EMAIL>
+				<ZIP_CD><![CDATA[220810]]></ZIP_CD>
+				<ADDRESS1><![CDATA[강원 원주시 부론면]]></ADDRESS1>
+				<ADDRESS2><![CDATA[  ]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000029]]></EMP_CD>
+				<EMP_NM><![CDATA[채길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20141013]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[03]]></POSITION_CD>
+				<DUTY_CD><![CDATA[02]]></DUTY_CD>
+				<ROLE_CD><![CDATA[02]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[gobu041@inswave01.com]]></EMAIL>
+				<ZIP_CD><![CDATA[110796]]></ZIP_CD>
+				<ADDRESS1><![CDATA[서울 종로구 신문로1가]]></ADDRESS1>
+				<ADDRESS2><![CDATA[고려빌딩 ]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000031]]></EMP_CD>
+				<EMP_NM><![CDATA[마길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20120821]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[04]]></POSITION_CD>
+				<DUTY_CD><![CDATA[02]]></DUTY_CD>
+				<ROLE_CD><![CDATA[03]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[meta218@inswave02.com]]></EMAIL>
+				<ZIP_CD><![CDATA[706807]]></ZIP_CD>
+				<ADDRESS1><![CDATA[대구 수성구 만촌3동]]></ADDRESS1>
+				<ADDRESS2><![CDATA[ 770∼782]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000035]]></EMP_CD>
+				<EMP_NM><![CDATA[함길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20131028]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[05]]></POSITION_CD>
+				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+				<ROLE_CD><![CDATA[01]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[meqi774@inswave01.com]]></EMAIL>
+				<ZIP_CD><![CDATA[330710]]></ZIP_CD>
+				<ADDRESS1><![CDATA[충남 천안시 유량동]]></ADDRESS1>
+				<ADDRESS2><![CDATA[정보통신공무원교육원 ]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000049]]></EMP_CD>
+				<EMP_NM><![CDATA[마길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20120302]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[01]]></POSITION_CD>
+				<DUTY_CD><![CDATA[02]]></DUTY_CD>
+				<ROLE_CD><![CDATA[02]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[wohu640@inswave03.com]]></EMAIL>
+				<ZIP_CD><![CDATA[135809]]></ZIP_CD>
+				<ADDRESS1><![CDATA[서울 강남구 개포4동]]></ADDRESS1>
+				<ADDRESS2><![CDATA[시영아파트(26∼30동)]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000063]]></EMP_CD>
+				<EMP_NM><![CDATA[이길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20120222]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[02]]></POSITION_CD>
+				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+				<ROLE_CD><![CDATA[03]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[veno148@inswave02.com]]></EMAIL>
+				<ZIP_CD><![CDATA[395834]]></ZIP_CD>
+				<ADDRESS1><![CDATA[충북 단양군 영춘면]]></ADDRESS1>
+				<ADDRESS2><![CDATA[별방리 ]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000065]]></EMP_CD>
+				<EMP_NM><![CDATA[천길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20160312]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[05]]></POSITION_CD>
+				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+				<ROLE_CD><![CDATA[01]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[jaku982@inswave01.com]]></EMAIL>
+				<ZIP_CD><![CDATA[442120]]></ZIP_CD>
+				<ADDRESS1><![CDATA[경기 수원시 팔달구 중동]]></ADDRESS1>
+				<ADDRESS2><![CDATA[  ]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000088]]></EMP_CD>
+				<EMP_NM><![CDATA[영길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[F]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20140702]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[03]]></POSITION_CD>
+				<DUTY_CD><![CDATA[04]]></DUTY_CD>
+				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[wecu882@inswave02.com]]></EMAIL>
+				<ZIP_CD><![CDATA[135960]]></ZIP_CD>
+				<ADDRESS1><![CDATA[서울 강남구 포이동]]></ADDRESS1>
+				<ADDRESS2><![CDATA[ 23]]></ADDRESS2>
+			</w2:row>
+			<w2:row>
+				<EMP_CD><![CDATA[10000094]]></EMP_CD>
+				<EMP_NM><![CDATA[흥길동]]></EMP_NM>
+				<GENDER_CD><![CDATA[M]]></GENDER_CD>
+				<JOIN_DATE><![CDATA[20011002]]></JOIN_DATE>
+				<POSITION_CD><![CDATA[04]]></POSITION_CD>
+				<DUTY_CD><![CDATA[03]]></DUTY_CD>
+				<ROLE_CD><![CDATA[04]]></ROLE_CD>
+				<ASSIGNED_TASK><![CDATA[]]></ASSIGNED_TASK>
+				<EMAIL><![CDATA[quki957@inswave03.com]]></EMAIL>
+				<ZIP_CD><![CDATA[135774]]></ZIP_CD>
+				<ADDRESS1><![CDATA[서울 강남구 대치1동]]></ADDRESS1>
+				<ADDRESS2><![CDATA[청실아파트 ]]></ADDRESS2>
+			</w2:row>
+		</w2:data>
+	</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    
+};
+
+scwin.ui_textbox1_onclick = function (e) {  
+	var _url = "";
+	var _path= "";  
+	_path = this.getUserData("userData1"); 
+    _url =  $c.frame.getBasePageURL(true)+"#w2xPath="+_path; 
+    window.open(_url, "_blank");
+};
+
+//dc_userInfoList.clearFilter();
+scwin.btnFilter_onclick = function (e) {
+    //1.컬럼 filter 해제  
+};
+
+//성별 selectBox onviewchange
+scwin.selGender_onviewchange = function (info) {
+    // 1. 기존 flilter 해제 clearFilter() 활용 
+    dc_userInfoList.clearFilter();
+    // 2. 성별로 filter 적용 setColumnFilter 활용 
+    dc_userInfoList.setColumnFilter({type:'row',colIndex:'GENDER_CD',key:info.newValue,condition:'and'});
+};
+
+//성명 검색 일치되는 값 찾기 
+scwin.btnMatch_onclick = function (e) {
+    //1. 배경색 초기화 적용
+    scwin.setRowBackgroundColorInit();
+
+
+    //2. 일치되는 값 찾기 true getMatchedIndex();
+     
+     var _index = dc_userInfoList.getMatchedIndex('EMP_NM', iptSearch.getValue(), true );
+     var _len = _index.length; 
+        //2-1. 일치되는 값이 여러개 일때 처리  
+        for(var i=0; i<_len; i++){ 
+         //2-2. 일치되는 값 셀 색변경하기 
+         grd.setCellBackgroundColor(_index[i], "EMP_NM", "#FF80FF");   
+        }    
+};
+
+//성명 검색 포함되는 값 찾기
+scwin.btnCondition_onclick = function (e) {
+
+    //1. 배경색 초기화 적용
+    scwin.setRowBackgroundColorInit();
+
+    //2. 포함함되는 값 찾기 false getMatchedIndex(); 
+
+        //2-1. 포함함되는 값이 여러개 일때 처리  
+        //2-2. 포함함되는 값 셀 색변경하기  
+};
+
+
+scwin.sel_type_onviewchange = function (info) {
+   
+    let result = "";  
+    let strLog = "";  
+    var dataType = info.newValue;
+    txa_log_1.setValue(""); 
+
+    strLog = "# 컬럼 'EMP_NM'의 값이 '마길동'과 일치하는 데이터 받기 \n";
+    if(dataType == '01'){
+
+        result = dc_userInfoList.getMatchedJSON("EMP_NM", '마길동', true); 
+        strLog += " - JSON 형식 | 함수 getMatchedJSON 호출 값";  
+        $c.frame.printExampleLog(strLog, txa_log_1, false);
+        $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+
+    } else if(dataType == '02'){
+        result = dc_userInfoList.getMatchedArray("EMP_NM", '마길동', true); 
+        strLog += " - 1차원 Array 형식 + 컬럼 정보 | 함수 getMatchedArray 호출 값"; 
+        $c.frame.printExampleLog(strLog, txa_log_1, false);
+        $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+
+    } else if(dataType == '03'){
+        result = dc_userInfoList.getMatchedData("EMP_NM", '마길동', true); 
+        strLog += " - 1차원 Array 형식 | 함수 getMatchedData 호출 값"; 
+        $c.frame.printExampleLog(strLog, txa_log_1, false);
+        $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+
+    } else if(dataType == '04'){
+        result = dc_userInfoList.getMatchedXML("EMP_NM", '마길동', true); 
+        strLog += " - XML 형식 | 함수 getMatchedXML 호출 값"; 
+        $c.frame.printExampleLog(strLog, txa_log_1, false);
+        $c.frame.printExampleLog(WebSquare.xml.serialize(result), txa_log_1, false);
+
+    } else if(dataType == '05'){
+        result = dc_userInfoList.getMatchedIndex("EMP_NM", '마길동', true); 
+        strLog += " - 1차원 Array 형식 | 함수 getMatchedIndex 호출 값"; 
+        $c.frame.printExampleLog(strLog, txa_log_1, false);
+        $c.frame.printExampleLog(JSON.stringify(result), txa_log_1, false);
+
+    }
+    console.log(strLog);
+    console.log(result);
+};
+ 
+
+// row 배경색 초기화 
+scwin.setRowBackgroundColorInit = function(){
+    var _totalRowCnt = dc_userInfoList.getTotalRow();
+    for(var i=0; i<_totalRowCnt; i++){
+       // grd.setRowBackgroundColor(i, "#fff");
+        grd.setCellBackgroundColor(i, "EMP_NM",  "#fff")
+    }
+};
+
+scwin.iptSearch_onkeydown = function (e) {
+    if(e.keyCode == 13){
+        // 엔터키 입력시 match 조회 실행 
+        scwin.btnMatch_onclick(); 
+    }
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[실습화면] DataList 활용" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 없는 실습용 화면" style="" tagname="h3"></w2:textbox>
+    				<w2:textbox class="" ev:onclick="scwin.ui_textbox1_onclick" id="ui_textbox1" label="[완성 화면 보기]" style="cursor: pointer;" tagname="h3"
+    					userData1="/edu/adv/dataList_c.xml">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="본 화면은 DataList를 활용하는 실습 화면입니다. &lt;br/&gt;DataList의 API 중 필터링을 동적으로 적용하는 기능과 제시된 값과 일치되는 값을 찾아주는 기능에 대해 확인합니다. &lt;br/&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 아래의 API를 활용하여 DataList의 Filter 를 실습 해 봅니다. &lt;br/&gt; &amp;nbsp; 1) '성별 선택' &amp;nbsp;selectBox에 onviewchange 이벤트 함수를 추가합니다 &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; 추가한 함수에 API를 활용하여 동적으로 dataList의 컬럼별 Filter를 적용해 봅니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;ex) DataList ID.setColumnFilter(); &lt;br/&gt;&lt;br/&gt; &amp;nbsp; 2) '컬럼 Filter 해제' 버튼에 onclick &amp;nbsp;이벤트 함수를 추가합니다 &amp;nbsp;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;현재 DataList에 적용된 필터링을 모두 해제하는 API &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;ex) DataList ID.clearFilter(); &lt;br/&gt; &amp;nbsp; &amp;nbsp;&lt;br/&gt;2. API를 활용하여 DataList의 특정 컬럼 값과 입력 한 값이 일치되는 Data를 확인합니다. &lt;br/&gt; &amp;nbsp;1) '일치되는 값 찾기' 버튼에 onclick 이벤트 함수를 추가합니다 &amp;nbsp;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;ex) DataList ID.getUnmatchedIndex(&quot;EMP_NM, &quot;미길동&quot;, true ); &lt;br/&gt;&lt;br/&gt; &amp;nbsp;2) '포함되는 값 찾기' 버튼에 onclick 이벤트 함수를 추가합니다 &amp;nbsp;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp;ex) DataList ID.getUnmatchedIndex(&quot;EMP_NM, &quot;미길&quot;, false ); &lt;br/&gt;&lt;br/&gt;3. 데이터 유형을 변경해 보며 반환데이터를 비교 해 보세요 &lt;br/&gt; &amp;nbsp; &amp;nbsp;반환 데이터의 유형은 5가지이며, 유형별 함수는 아래와 같습니다. &amp;nbsp; &lt;br/&gt; &amp;nbsp; 1) JSON 형식 : getMatchedJSON()&lt;br/&gt; &amp;nbsp; 2) 1차원 Array 형식 + 컬럼 정보 : getMatchedArray()&lt;br/&gt; &amp;nbsp; 3) 2차원 Array 형식 : getMatchedData()&lt;br/&gt; &amp;nbsp; 4) XML 형식 : getMatchedXML()&lt;br/&gt; &amp;nbsp; 5) Row Index가 담긴 1차원 Array 형식 : getMatchedIndex()&lt;br/&gt;&lt;br/&gt;4. &lt;a href=&quot;/_iws/dev_kit/document/api/html/WebSquare.uiplugin.dataList.html&quot; target='_blank'&gt;사용자 가이드&lt;/a&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:span label="성별 선택 : " style="margin-right: 10px;font-weight: bold;" id=""></w2:span>
+    			<xf:select1 allOption="" appearance="minimal" chooseOption="true" class="" direction="auto" disabled="false"
+    				disabledClass="w2selectbox_disabled" id="selGender" ref="" renderType="" style="width: 148px;" submenuSize="auto"
+    				chooseOptionLabel="$blank" ev:onviewchange="scwin.selGender_onviewchange">
+    				<xf:choices>
+    					<xf:item>
+    						<xf:label><![CDATA[남자]]></xf:label>
+    						<xf:value><![CDATA[M]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[여자]]></xf:label>
+    						<xf:value><![CDATA[F]]></xf:value>
+    					</xf:item>
+    				</xf:choices>
+    			</xf:select1>
+    			<xf:group class="rt" id="" style="">
+    				<xf:trigger class="btn_exam_exec btn_txt_of" id="btnFilter" style="" type="button" ev:onclick="scwin.btnFilter_onclick">
+    					<xf:label><![CDATA[컬럼 Filter 해제]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="titbox" id="" style="">
+    			<w2:span label="성명 검색 : " style="margin-right: 10px;font-weight: bold;" id=""></w2:span>
+    			<w2:searchbox id="iptSearch" style="width: 150px;height: 21px;" ev:onkeydown="scwin.iptSearch_onkeydown"></w2:searchbox>
+    			<xf:group class="rt" id="" style="">
+    				<xf:trigger class="btn_exam_exec btn_txt_of" id="btnMatch" style="" type="button" ev:onclick="scwin.btnMatch_onclick">
+    					<xf:label><![CDATA[일치되는 값 찾기]]></xf:label>
+    				</xf:trigger>
+    				<xf:trigger class="btn_exam_exec btn_txt_of" id="btnCondition" style="" type="button" ev:onclick="scwin.btnCondition_onclick">
+    					<xf:label><![CDATA[포함되는 값 찾기]]></xf:label>
+    				</xf:trigger>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group adaptiveThreshold="" class="gvwbox" id="" style="">
+    			<w2:gridView autoFit="allColumn" checkReadOnlyOnPasteEnable="" class="gvw" dataList="data:dc_userInfoList"
+    				defaultCellHeight="26" focusMode="row" id="grd" scrollByColumn="false" scrollByColumnAdaptive="false" style="height: 150px;margin-bottom: 10px;"
+    				visibleRowNum="10" readOnly="true" rowNumVisible="true" rowNumHeaderValue="No." autoFitMinWidth="900"
+    				backgroundColorMode="always">
+    				<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    				<w2:header style="" id="header1">
+    					<w2:row style="" id="row1">
+    						<w2:column width="70" inputType="text" style="" id="column12" value="사번" displayMode="label"></w2:column>
+    						<w2:column width="100" inputType="text" style="" id="column11" value="성명" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="text" style="" id="column10" value="성별" displayMode="label"></w2:column>
+    						<w2:column width="100" inputType="text" style="" id="column9" value="가입일" displayMode="label"></w2:column>
+    						<w2:column width="150" inputType="text" style="" id="column4" value="이메일" displayMode="label"></w2:column>
+    						<w2:column width="100" inputType="text" style="" id="column3" value="우편번호" displayMode="label"></w2:column>
+    						<w2:column width="150" inputType="text" style="" id="column2" value="주소" displayMode="label"></w2:column>
+    						<w2:column width="120" inputType="text" style="" id="column1" value="상세주소" displayMode="label"></w2:column>
+    					</w2:row>
+    				</w2:header>
+    				<w2:gBody style="" id="gBody1">
+    					<w2:row style="" id="row2">
+    						<w2:column width="70" inputType="text" style=";background-color:;" id="EMP_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="100" inputType="text" style=";background-color:;" id="EMP_NM" value="" displayMode="label"></w2:column>
+    						<w2:column width="70" inputType="select" style="" id="GENDER_CD" value="" displayMode="label" allOption=""
+    							chooseOption="" ref="">
+    							<w2:choices>
+    								<w2:item>
+    									<w2:label><![CDATA[남자]]></w2:label>
+    									<w2:value><![CDATA[M]]></w2:value>
+    								</w2:item>
+    								<w2:item>
+    									<w2:label><![CDATA[여자]]></w2:label>
+    									<w2:value><![CDATA[F]]></w2:value>
+    								</w2:item>
+    							</w2:choices>
+    						</w2:column>
+    						<w2:column width="100" inputType="text" style="" id="JOIN_DATE" value="" displayMode="label"></w2:column>
+    						<w2:column width="150" inputType="text" style="" id="EMAIL" value="" displayMode="label"></w2:column>
+    						<w2:column width="100" inputType="text" style="" id="ZIP_CD" value="" displayMode="label"></w2:column>
+    						<w2:column width="150" inputType="text" style="" id="ADDRESS1" value="" displayMode="label"></w2:column>
+    						<w2:column width="120" inputType="text" style="" id="ADDRESS2" value="" displayMode="label"></w2:column>
+    					</w2:row>
+    				</w2:gBody>
+    			</w2:gridView>
+    			<xf:group class="example_div_td_style" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="아래 로그 확인 영역에서 반환 데이터를 유형별로 비교 해 보세요" style="background-color: #eee;padding:10px 10px;margin-bottom: 10px"></w2:textbox>
+    				<xf:group class="titbox" id="" style="">
+    					<w2:span id="" label="데이터 유형 :" style="margin-right: 10px;font-weight: bold;"></w2:span>
+    					<xf:select1 id="sel_type" chooseOption="true" style="width: 148px;height: 21px;" submenuSize="auto" allOption=""
+    						disabled="false" direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref=""
+    						chooseOptionLabel="유형을 선택하세요" textAlign="left" ev:onviewchange="scwin.sel_type_onviewchange">
+    						<xf:choices>
+    							<xf:item>
+    								<xf:label><![CDATA[JSON 형식]]></xf:label>
+    								<xf:value><![CDATA[01]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[1차원 Array 형식 + 컬럼 정보]]></xf:label>
+    								<xf:value><![CDATA[02]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[2차원 Array 형식]]></xf:label>
+    								<xf:value><![CDATA[03]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[XML 형식]]></xf:label>
+    								<xf:value><![CDATA[04]]></xf:value>
+    							</xf:item>
+    							<xf:item>
+    								<xf:label><![CDATA[1차원 Array 형식]]></xf:label>
+    								<xf:value><![CDATA[05]]></xf:value>
+    							</xf:item>
+    						</xf:choices>
+    					</xf:select1>
+    					<xf:group class="rt" id="" style="">
+    					</xf:group>
+    				</xf:group>
+    				<xf:group class="mb_def_box nobottom" id="" style=""></xf:group>
+    				<xf:group class="mb_def_box nobottom" id="" style="">
+    					<w2:span class="mr_def txt_bold" id="" label="로그 확인" style=""></w2:span>
+    					<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="" style="" title="로그 삭제"
+    						type="button" userData1="txa_log_1">
+    						<xf:label><![CDATA[로그 삭제]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    				<xf:textarea class="wre_txa_log" id="txa_log_1" spellcheck="false" style="width:100%;height:160px;"></xf:textarea>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

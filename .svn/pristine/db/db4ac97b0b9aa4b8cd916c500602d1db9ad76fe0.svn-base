@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 병합된 헤더 컬럼에 정렬 기능을 사용할 바디 컬럼 지정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220930" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exams_1" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+						<w2:column dataType="text" id="stock" name="Stock"></w2:column>
+						<w2:column id="product" name="Product" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList baseNode="list" id="dlt_exams_2" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+						<w2:column dataType="text" id="stock" name="Stock"></w2:column>
+						<w2:column id="product" name="Product" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    scwin.setInitData();
+};
+
+scwin.setInitData = function () {
+    var arrData = [
+        { "category": "Software", "product": "SecureGate", "stock": "98291" },
+        { "category": "Software", "product": "CodeStream", "stock": "6894" },
+        { "category": "Hardware", "product": "NetMax", "stock": "4536219" },
+        { "category": "Services", "product": "TechAssist", "stock": "73918" },
+        { "category": "Software", "product": "IntelliAI", "stock": "351" },
+        { "category": "Hardware", "product": "StoreSafe", "stock": "9810" },
+        { "category": "Services", "product": "ManageIT", "stock": "782" },
+        { "category": "Software", "product": "WebBuilder", "stock": "9461" },
+        { "category": "Services", "product": "SmartConsult", "stock": "265" },
+        { "category": "Software", "product": "MobileMagic", "stock": "1746123" },
+        { "category": "Hardware", "product": "SpeedLink", "stock": "564" },
+        { "category": "Software", "product": "VirusGuard", "stock": "732" },
+        { "category": "Hardware", "product": "DataVault", "stock": "582196" },
+        { "category": "Services", "product": "GlobalSupport", "stock": "372594" },
+        { "category": "Software", "product": "FrameworkPro", "stock": "6105" }
+    ];
+
+    dlt_exams_1.setJSON(arrData);
+    dlt_exams_2.setJSON(arrData);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='GridView의 헤더 컬럼이 병합되었을 때 정렬 기능을 적용할 바디 컬럼을 설정한 예제입니다.' style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="세 번째 바디 컬럼이 정렬" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView sortEvent="onclick" rowNumVisible="true" showSortableImage="true" sortable="true"
+								defaultCellHeight="37" rowNumWidth="34" visibleRowNumFix="true" dataList="data:dlt_exams_1" style="height:100px;"
+								autoFit="allColumn" id="grd_exam1" visibleRowNum="4" class="gvw" autoFitMinWidth="240">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column colSpan="3" width="290" inputType="text" id="column3" orderByColumn="stock" value="Product Info"
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column textAlign="left" width="110" inputType="text" id="category" displayMode="label"></w2:column>
+										<w2:column displayMode="label" id="product" inputType="text" textAlign="left" width="110"></w2:column>
+										<w2:column textAlign="right" dataType="number" width="70" displayFormat="#,###" inputType="text"
+											id="stock" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 정렬 기준 미지정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="병합된 헤더 컬럼의 첫 번째 바디 컬럼을 기준으로 정렬됩니다." style=""></w2:textbox>
+						<xf:group class="gvwbox" id="">
+							<w2:gridView autoFit="allColumn" autoFitMinWidth="240" class="gvw" dataList="data:dlt_exams_2"
+								defaultCellHeight="37" id="grd_exam2" rowNumVisible="true" rowNumWidth="34" showSortableImage="true" sortEvent="onclick"
+								sortable="true" style="height:100px;" visibleRowNum="4" visibleRowNumFix="true">
+								<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+								<w2:header id="header1" style="">
+									<w2:row id="row1" style="">
+										<w2:column colSpan="3" displayMode="label" id="column3" inputType="text" value="Product Info"
+											width="290">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody1" style="">
+									<w2:row id="row2" style="">
+										<w2:column displayMode="label" id="category" inputType="text" textAlign="left" width="110"></w2:column>
+										<w2:column displayMode="label" id="product" inputType="text" textAlign="left" width="110"></w2:column>
+										<w2:column dataType="number" displayFormat="#,###" displayMode="label" id="stock" inputType="text"
+											textAlign="right" width="70">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 초기 탭 선택하기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230808" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () { 
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="" nextTabID="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'useMoveNextTabFocus' 속성을 사용한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+
+				<xf:group class="example_div_tr_style" id="" style="">
+
+					<xf:group class="example_div_th_style" id="" style="">
+						<w2:span class="mr_def txt_blue" id="" label="useMoveNextTabFocus : true" style=""></w2:span>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin-bottom: 5px;">
+						<xf:group id="" class="tbcbox">
+							<w2:tabControl alwaysDraw="false" style="height: 200px;" id="tabc_main" class="tbc"
+								useMoveNextTabFocus="true">
+								<w2:tabs disabled="false" style="width:70px;" id="tabs1" label="TAB 1"></w2:tabs>
+								<w2:tabs disabled="false" style="width:70px;" id="tabs2" label="TAB 2"></w2:tabs>
+								<w2:tabs disabled="false" style="width:70px;" id="tabs3" label="TAB 3"></w2:tabs>
+								<w2:content alwaysDraw="false" style="height:150px;" id="content1">
+									<w2:textbox style="margin-bottom: 10px;" id="" label="TAB 1의 콘텐츠입니다." class="wre_txt_normal"
+										escape="false">
+									</w2:textbox>
+
+									<xf:group id="" style="margin-bottom: 8px;">
+										<w2:span style="margin: 10px;" label="InputBox : " id=""></w2:span>
+										<xf:input style="width: 144px;height: 21px;" id=""></xf:input>
+									</xf:group>
+									<xf:group id="" style="margin-bottom: 8px;">
+										<w2:span id="" label="InputCalendar : " style="margin: 10px;"></w2:span>
+										<w2:inputCalendar id="" style="width: 150px;height: 23px;" calendarValueType="yearMonthDate"></w2:inputCalendar>
+									</xf:group>
+									<xf:group id="" style="">
+										<w2:span id="" label="Checkbox : " style="margin: 10px;"></w2:span>
+										<xf:select selectedindex="0" id="" appearance="full" style="width:239px;height:21px;" cols=""
+											rows="1" ref="">
+											<xf:choices>
+												<xf:item>
+													<xf:label><![CDATA[A]]></xf:label>
+													<xf:value><![CDATA[0]]></xf:value>
+												</xf:item>
+												<xf:item>
+													<xf:label><![CDATA[B]]></xf:label>
+													<xf:value><![CDATA[1]]></xf:value>
+												</xf:item>
+												<xf:item>
+													<xf:label><![CDATA[C]]></xf:label>
+													<xf:value><![CDATA[2]]></xf:value>
+												</xf:item>
+											</xf:choices>
+										</xf:select>
+									</xf:group>
+								</w2:content>
+								<w2:content alwaysDraw="false" style="height:150px;" id="content2">
+									<w2:textbox class="wre_txt_normal" escape="false" id="" label="TAB 2의 콘텐츠입니다."
+										style="margin-bottom: 10px;">
+									</w2:textbox>
+									<xf:group id="" style="margin-bottom: 8px;">
+										<w2:span id="" label="InputBox : " style="margin: 10px;"></w2:span>
+										<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+									</xf:group>
+									<xf:group id="" style="margin-bottom: 8px;">
+										<w2:span id="" label="InputCalendar : " style="margin: 10px;"></w2:span>
+										<w2:inputCalendar calendarValueType="yearMonthDate" id="" style="width: 150px;height: 23px;"></w2:inputCalendar>
+									</xf:group>
+									<xf:group id="" style="">
+										<w2:span id="" label="Checkbox : " style="margin: 10px;"></w2:span>
+										<xf:select appearance="full" cols="" id="" ref="" rows="1" selectedindex="0"
+											style="width:239px;height:21px;">
+											<xf:choices>
+												<xf:item>
+													<xf:label><![CDATA[A]]></xf:label>
+													<xf:value><![CDATA[0]]></xf:value>
+												</xf:item>
+												<xf:item>
+													<xf:label><![CDATA[B]]></xf:label>
+													<xf:value><![CDATA[1]]></xf:value>
+												</xf:item>
+												<xf:item>
+													<xf:label><![CDATA[C]]></xf:label>
+													<xf:value><![CDATA[2]]></xf:value>
+												</xf:item>
+											</xf:choices>
+										</xf:select>
+									</xf:group>
+								</w2:content>
+								<w2:content alwaysDraw="false" style="height:150px;" id="content3">
+									<w2:textbox class="wre_txt_normal" escape="false" id="" label="TAB 3의 콘텐츠입니다."
+										style="margin-bottom: 10px;">
+									</w2:textbox>
+									<xf:group id="" style="margin-bottom: 8px;">
+										<w2:span id="" label="InputBox : " style="margin: 10px;"></w2:span>
+										<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+									</xf:group>
+									<xf:group id="" style="margin-bottom: 8px;">
+										<w2:span id="" label="InputCalendar : " style="margin: 10px;"></w2:span>
+										<w2:inputCalendar calendarValueType="yearMonthDate" id="" style="width: 150px;height: 23px;"></w2:inputCalendar>
+									</xf:group>
+									<xf:group id="" style="">
+										<w2:span id="" label="Checkbox : " style="margin: 10px;"></w2:span>
+										<xf:select appearance="full" cols="" id="" ref="" rows="1" selectedindex="0"
+											style="width:239px;height:21px;">
+											<xf:choices>
+												<xf:item>
+													<xf:label><![CDATA[A]]></xf:label>
+													<xf:value><![CDATA[0]]></xf:value>
+												</xf:item>
+												<xf:item>
+													<xf:label><![CDATA[B]]></xf:label>
+													<xf:value><![CDATA[1]]></xf:value>
+												</xf:item>
+												<xf:item>
+													<xf:label><![CDATA[C]]></xf:label>
+													<xf:value><![CDATA[2]]></xf:value>
+												</xf:item>
+											</xf:choices>
+										</xf:select>
+									</xf:group>
+								</w2:content>
+							</w2:tabControl></xf:group></xf:group>
+					</xf:group>
+
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="" style="">
+						<w2:span class="mr_def txt_blue" id="" label="useMoveNextTabFocus : false (기본 값)" style=""></w2:span>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style=""><xf:group id="" style="">
+		<xf:group id="" class="tbcbox">
+			<w2:tabControl alwaysDraw="false" style="height: 200px;" id="tac_tabControl1" class="tbc">
+				<w2:tabs disabled="false" style="width:70px;" id="tabs1" label="TAB 1"></w2:tabs>
+				<w2:tabs disabled="false" style="width:70px;" id="tabs2" label="TAB 2"></w2:tabs>
+				<w2:tabs disabled="false" style="width:70px;" id="tabs3" label="TAB 3"></w2:tabs>
+				<w2:content alwaysDraw="false" style="height:150px;" id="content1">
+					<w2:textbox class="wre_txt_normal" escape="false" id="" label="TAB 1의 콘텐츠입니다." style="margin-bottom: 10px;"></w2:textbox>
+					<xf:group id="" style="margin-bottom: 8px;">
+						<w2:span id="" label="InputBox : " style="margin: 10px;"></w2:span>
+						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+					</xf:group>
+					<xf:group id="" style="margin-bottom: 8px;">
+						<w2:span id="" label="InputCalendar : " style="margin: 10px;"></w2:span>
+						<w2:inputCalendar calendarValueType="yearMonthDate" id="" style="width: 150px;height: 23px;"></w2:inputCalendar>
+					</xf:group>
+					<xf:group id="" style="">
+						<w2:span id="" label="Checkbox : " style="margin: 10px;"></w2:span>
+						<xf:select appearance="full" cols="" id="" ref="" rows="1" selectedindex="0" style="width:239px;height:21px;">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[A]]></xf:label>
+									<xf:value><![CDATA[0]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[B]]></xf:label>
+									<xf:value><![CDATA[1]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[C]]></xf:label>
+									<xf:value><![CDATA[2]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select>
+					</xf:group>
+				</w2:content>
+				<w2:content alwaysDraw="false" style="height:150px;" id="content2">
+					<w2:textbox class="wre_txt_normal" escape="false" id="" label="TAB 2의 콘텐츠입니다." style="margin-bottom: 10px;"></w2:textbox>
+					<xf:group id="" style="margin-bottom: 8px;">
+						<w2:span id="" label="InputBox : " style="margin: 10px;"></w2:span>
+						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+					</xf:group>
+					<xf:group id="" style="margin-bottom: 8px;">
+						<w2:span id="" label="InputCalendar : " style="margin: 10px;"></w2:span>
+						<w2:inputCalendar calendarValueType="yearMonthDate" id="" style="width: 150px;height: 23px;"></w2:inputCalendar>
+					</xf:group>
+					<xf:group id="" style="">
+						<w2:span id="" label="Checkbox : " style="margin: 10px;"></w2:span>
+						<xf:select appearance="full" cols="" id="" ref="" rows="1" selectedindex="0" style="width:239px;height:21px;">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[A]]></xf:label>
+									<xf:value><![CDATA[0]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[B]]></xf:label>
+									<xf:value><![CDATA[1]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[C]]></xf:label>
+									<xf:value><![CDATA[2]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select>
+					</xf:group>
+				</w2:content>
+				<w2:content alwaysDraw="false" style="height:150px;" id="content3">
+					<w2:textbox class="wre_txt_normal" escape="false" id="" label="TAB 3의 콘텐츠입니다." style="margin-bottom: 10px;"></w2:textbox>
+					<xf:group id="" style="margin-bottom: 8px;">
+						<w2:span id="" label="InputBox : " style="margin: 10px;"></w2:span>
+						<xf:input id="" style="width: 144px;height: 21px;"></xf:input>
+					</xf:group>
+					<xf:group id="" style="margin-bottom: 8px;">
+						<w2:span id="" label="InputCalendar : " style="margin: 10px;"></w2:span>
+						<w2:inputCalendar calendarValueType="yearMonthDate" id="" style="width: 150px;height: 23px;"></w2:inputCalendar>
+					</xf:group>
+					<xf:group id="" style="">
+						<w2:span id="" label="Checkbox : " style="margin: 10px;"></w2:span>
+						<xf:select appearance="full" cols="" id="" ref="" rows="1" selectedindex="0" style="width:239px;height:21px;">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[A]]></xf:label>
+									<xf:value><![CDATA[0]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[B]]></xf:label>
+									<xf:value><![CDATA[1]]></xf:value>
+								</xf:item>
+								<xf:item>
+									<xf:label><![CDATA[C]]></xf:label>
+									<xf:value><![CDATA[2]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select>
+					</xf:group>
+				</w2:content>
+			</w2:tabControl></xf:group></xf:group></xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+		
+		
+	</body>
+</html>

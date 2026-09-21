@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="서브" meta_screenName="P00055 서브 페이지 02">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220729" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [$p.isPopup() 실행] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var ispopup;
+    var strResult;
+
+    ispopup = $p.isPopup(); //예상 결과 : false
+
+    strResult = "$p.isPopup();\n";
+    strResult += "예상 결과 : false\n";
+    strResult += "실행 결과 : " + ispopup;
+
+    alert(strResult);
+};
+
+/**
+ * 버튼 [$p.isPopup(true) 실행] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var ispopup;
+    var strResult;
+
+    ispopup = $p.isPopup(true); //예상 결과 : true
+
+    strResult = "$p.isPopup(true);\n";
+    strResult += "예상 결과 : true\n";
+    strResult += "실행 결과 : " + ispopup;
+
+    alert(strResult);
+};
+
+/**
+ * 버튼 [$p.isWFramePopup() 실행] 클릭 시
+ */
+scwin.btn_ex3_onclick = function (e) {
+    var isWFramePopup;
+    var strResult;
+
+    isWFramePopup = $p.isWFramePopup(); //예상 결과 : false
+
+    strResult = "$p.isWFramePopup();\n";
+    strResult += "예상 결과 : false\n";
+    strResult += "실행 결과 : " + isWFramePopup;
+
+    alert(strResult);
+};
+
+/**
+ * 버튼 [$p.isWFramePopup(true) 실행] 클릭 시
+ */
+scwin.btn_ex4_onclick = function (e) {
+    var isWFramePopup;
+    var strResult;
+
+    isWFramePopup = $p.isWFramePopup(true); //예상 결과 : true
+
+    strResult = "$p.isWFramePopup(true);\n";
+    strResult += "예상 결과 : true\n";
+    strResult += "실행 결과 : " + isWFramePopup;
+
+    alert(strResult);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="ws_example_grp_desc" id="" style="">
+			<w2:textbox escape="false" id="" label="이 영역은 WFrame 입니다. WFrame안의 소스에서의 동작을 확인하기 위해 구성되었습니다." style=""></w2:textbox>
+		</xf:group>
+		<xf:group id="" style="" class="mb_def_box nobottom">
+			<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style=""
+				type="button">
+				<xf:label><![CDATA[$p.isPopup() 실행]]></xf:label>
+			</xf:trigger>
+			<xf:trigger class="btn_exam_exec" disabled="" escape="false" id="btn_ex2" style="" type="button"
+				ev:onclick="scwin.btn_ex2_onclick">
+				<xf:label><![CDATA[$p.isPopup(true) 실행]]></xf:label>
+			</xf:trigger>
+		</xf:group>
+		<xf:group class="mb_def_box nobottom" id="" style="">
+			<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3" style=""
+				type="button">
+				<xf:label><![CDATA[$p.isWFramePopup() 실행]]></xf:label>
+			</xf:trigger>
+			<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex4_onclick" id="btn_ex4" style=""
+				type="button">
+				<xf:label><![CDATA[$p.isWFramePopup(true) 실행]]></xf:label>
+			</xf:trigger>
+		</xf:group>
+	</body>
+</html>

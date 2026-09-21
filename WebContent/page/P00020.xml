@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 팝업">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_bookList" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="title" name="title"></w2:column>
+						<w2:column dataType="text" id="price" name="price"></w2:column>
+						<w2:column dataType="text" id="img" name="img"></w2:column>
+						<w2:column dataType="text" id="info" name="info"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<title><![CDATA[Harry Potter]]></title>
+							<price><![CDATA[29.99]]></price>
+							<img><![CDATA[/img/example/book1.jpg]]></img>
+							<info></info>
+						</w2:row>
+						<w2:row>
+							<title><![CDATA[Learning XML]]></title>
+							<price><![CDATA[39.95]]></price>
+							<img><![CDATA[/img/example/book2.gif]]></img>
+							<info></info>
+						</w2:row>
+						<w2:row>
+							<title><![CDATA[XQuery Kick Start]]></title>
+							<price><![CDATA[49.99]]></price>
+							<img><![CDATA[/img/example/book3.jpg]]></img>
+							<info></info>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * WebSquare popup window type
+ * gridView cell click
+ */
+scwin.grd_ex1_oncellclick = function (row, col) {
+    var rowJSON = dlt_bookList.getRowJSON(row);
+    scwin.openPopup(rowJSON, false, "wframePopup");
+};
+
+/**
+ * WebSquare popup browser type
+ * gridView cell click
+ */
+scwin.grd_ex2_oncellclick = function (row, col) {
+    var rowJSON = dlt_bookList.getRowJSON(row);
+    scwin.openPopup(rowJSON, true, "browserPopup");
+};
+
+/**
+ * FloatingLayer Component
+ * gridView cell click
+ */
+scwin.grd_ex3_oncellclick = function (row, col) {
+    var opts;
+
+    //모바일에서의 크기,위치 조절을 위해 공통 메소드 사용하였습니다.
+    //시작
+    opts = $c.frame.getPopupPosition({
+        width: flt_ex1.getStyle("width"),
+        height: flt_ex1.getStyle("height")
+    });
+    //flt_ex1.setPosition(opts.left, opts.top);
+    //종료 
+
+    //레이어 노출
+    flt_ex1.show();
+};
+
+/**
+ * floatinglayer의 close 버튼 클릭 시 호출
+ */
+scwin.flt_ex1_onclose = function () {
+    flt_ex1.hide();
+    $p.hideModal();
+};
+
+/**
+ * 팝업에서 호출.
+ */
+scwin.closePopup = function () {
+    $p.closePopup("popup1");
+}
+
+scwin.openPopup = function (rowJSON, useIFrameMode, openType) {
+    //dataObject{ dataType: ["xml","string","json","array"], data: "전달 데이터" , name :"변수명"}
+    var _width = "230px";
+    var _height = "250px";
+
+    if (useIFrameMode == false) {
+        _width = "270px";
+        _height = "300px";
+    }
+
+    var dataObj = {
+        type: "json",
+        data: rowJSON,
+        name: "rowObj"
+    };
+
+    var options = {
+        id: "popup1",
+        //popupUrl : "popup.html",
+        type: openType,
+
+        width: _width,
+        height: _height,
+
+        top: 130,
+        left: 250,
+
+        popupName: "openPopup",
+        modal: true,
+        useIFrame: useIFrameMode,
+
+        resizable: true,
+        status: true,
+        menubar: false,
+        scrollbars: false,
+        title: false,
+
+        dataObject: dataObj
+    };
+
+    //모바일에서의 크기,위치 조절을 위해 공통 메소드 사용하였습니다. 기본 옵션은 최초 선언된 options를 참고하시기 바랍니다.
+    options.left = "auto";
+    options = $c.frame.getPopupPosition(options);
+
+    $p.openPopup("/page/P00020P01.xml", options);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="'$p.openPopup' API를 사용한 팝업 예시와 FloatingLayer 컴포넌트를 사용하여 팝업을 표현한 예시입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="팝업 유형 : layerPopup" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:gridView autoFit="allColumn" baseNode="" class="gvw" dataList="dlt_bookList" defaultCellHeight="37"
+							ev:oncellclick="scwin.grd_ex1_oncellclick" id="grd_ex1" keepDefaultColumnWidth="true" repeatNode="" rowNumHeaderValue="No."
+							rowNumVisible="true" rowNumWidth="50" scrollByColumn="false" style="height: 100px;" visibleRowNum="all" autoFitMinWidth="250">
+							<w2:header id="header3" style="">
+								<w2:row id="row5" style="">
+									<w2:column id="column10" inputType="text" style="" value="Book Title" width="140"></w2:column>
+									<w2:column blockSelect="false" displayMode="label" id="column11" inputType="text" style="" value="price" width="70">
+									</w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody id="gBody3" style="">
+								<w2:row id="row6" style="">
+									<w2:column id="title" inputType="text" style="" width="140"></w2:column>
+									<w2:column blockSelect="false" dataType="number" displayFormat="$#,###.#0" displayMode="label" id="price"
+										inputType="text" style="" width="70">
+									</w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="팝업 유형 : browserPopup" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:gridView autoFit="allColumn" baseNode="" class="gvw" dataList="dlt_bookList" defaultCellHeight="37"
+							ev:oncellclick="scwin.grd_ex2_oncellclick" id="grd_ex2" keepDefaultColumnWidth="true" repeatNode="" rowNumHeaderValue="No."
+							rowNumVisible="true" rowNumWidth="50" scrollByColumn="false" style="height: 100px;" visibleRowNum="all" autoFitMinWidth="250">
+							<w2:header id="header3" style="">
+								<w2:row id="row5" style="">
+									<w2:column id="column10" inputType="text" style="" value="Book Title" width="140"></w2:column>
+									<w2:column blockSelect="false" displayMode="label" id="column11" inputType="text" style="" value="price" width="70">
+									</w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody id="gBody3" style="">
+								<w2:row id="row6" style="">
+									<w2:column id="title" inputType="text" style="" width="140"></w2:column>
+									<w2:column blockSelect="false" dataType="number" displayFormat="$#,###.#0" displayMode="label" id="price"
+										inputType="text" style="" width="70">
+									</w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="FloatingLayer" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:gridView autoFit="allColumn" baseNode="" class="gvw" dataList="dlt_bookList" defaultCellHeight="37"
+							ev:oncellclick="scwin.grd_ex3_oncellclick" id="grd_ex3" keepDefaultColumnWidth="true" repeatNode="" rowNumHeaderValue="No."
+							rowNumVisible="true" rowNumWidth="50" scrollByColumn="false" style="height: 100px;" visibleRowNum="all" autoFitMinWidth="250">
+							<w2:header id="header2" style="">
+								<w2:row id="row3" style="">
+									<w2:column id="column3" inputType="text" style="" value="Book Title" width="150"></w2:column>
+									<w2:column blockSelect="false" displayMode="label" id="column4" inputType="text" style="" value="price" width="70">
+									</w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody id="gBody2" style="">
+								<w2:row id="row4" style="">
+									<w2:column id="title" imageClickFunction="" imageHeight="20" imageSrc="" imageWidth="20" imeMode="disabled"
+										inputType="text" style="" width="70">
+									</w2:column>
+									<w2:column blockSelect="false" dataType="number" displayFormat="$#,###.#0" displayMode="label" id="price"
+										inputType="text" style="" width="70">
+									</w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+		<w2:floatingLayer bodyComplex="true" dragAlwaysView="false" ev:onclose="scwin.flt_ex1_onclose" id="flt_ex1"
+			style="position:absolute;left:33px;top:524px;width:250px;height:250px;background:white;display:none;z-index:99999;" title="Book Info."
+			useResizeDrag="false">
+			<xf:group id="floatingLayer_group" style="position: absolute;width: 100%;height: 100%;">
+				<w2:textbox id="" label="PRICE"
+					style="position: absolute ;left:112px;top:40px;width:101px;height:25px;font: bold 11px tahoma;">
+				</w2:textbox>
+				<xf:image id="" ref="data:dlt_bookList.img" src="" style="position: absolute ;left:12px;top:40px;width: 90px;height: 120px;">
+				</xf:image>
+				<w2:textbox id="" label="" ref="data:dlt_bookList.title"
+					style="position: absolute ;left:12px;top:10px;width: 200px;height: 30px;font: bold 15px tahoma;">
+				</w2:textbox>
+				<w2:textbox id="" label="REVIEW"
+					style="position: absolute ;left:112px;top:95px;width:101px;height:25px;font: bold 11px tahoma;">
+				</w2:textbox>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.flt_ex1_onclose" id=""
+					style="position: absolute ;left:164px;top:180px;width: 50px;" type="button">
+					<xf:label>close</xf:label>
+				</xf:trigger>
+				<w2:textbox dataType="number" displayFormat="$#,###.#0" id="" label="" ref="data:dlt_bookList.price"
+					style="position: absolute ;left:112px;top:65px;width:101px;height:25px;font: bold 11px tahoma;">
+				</w2:textbox>
+				<w2:textbox id="" label="" ref="data:dlt_bookList.info"
+					style="position: absolute ;left:112px;top:120px;width: 100px;height: 50px;">
+				</w2:textbox>
+			</xf:group>
+		</w2:floatingLayer>
+	</body>
+</html>

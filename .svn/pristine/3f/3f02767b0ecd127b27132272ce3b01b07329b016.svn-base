@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 툴팁 표시하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230203" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_member" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="EMP_CD" name="USER PK" dataType="number"></w2:column>
+						<w2:column id="EMP_NM" name="USER" dataType="text"></w2:column>
+						<w2:column id="EMAIL" name="EMAIL" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<EMP_CD><![CDATA[10000001]]></EMP_CD>
+							<EMP_NM><![CDATA[USER 1]]></EMP_NM>
+							<EMAIL><![CDATA[gevo206@inswave02.com]]></EMAIL>
+						</w2:row>
+						<w2:row>
+							<EMP_CD><![CDATA[10999999]]></EMP_CD>
+							<EMP_NM><![CDATA[USER 999999]]></EMP_NM>
+							<EMAIL><![CDATA[fa12@inswave01.com]]></EMAIL>
+						</w2:row>
+						<w2:row>
+							<EMP_CD><![CDATA[10000003]]></EMP_CD>
+							<EMP_NM><![CDATA[USER 3]]></EMP_NM>
+							<EMAIL><![CDATA[zibe925@inswave02.com]]></EMAIL>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label='GridView의 속성을 사용하여, 툴팁을 표시한 예제입니다.'
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id=""
+					label="Tooltip 기능은 마우스의 over/out 이벤트로 구현된 기능입니다.&lt;br/&gt;마우스를 사용할 수 있는 환경에서만 정상 동작 합니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="전체 데이터가 출력되지 않는 셀만 툴팁 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox" style="width: 324px;">
+							<w2:gridView tooltipDisplay="true" dataList="data:dlt_member" style="height: 100px;" scrollByColumn="true" id=""
+								visibleRowNum="all" autoFit="none" tooltipHeader="true" class="gvw" defaultCellHeight="37">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header2">
+									<w2:row style="" id="row3">
+										<w2:column width="90" inputType="text" id="column16" value="USER PK" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" id="column15" value="USER" displayMode="label"></w2:column>
+										<w2:column width="154" inputType="text" style="" id="column17" value="E-MAIL: Header Tooltip Test"
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody2">
+									<w2:row style="" id="row4">
+										<w2:column width="90" inputType="text" id="EMP_CD" displayMode="label" value=""></w2:column>
+										<w2:column textAlign="left" width="80" inputType="text" id="EMP_NM" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="154" inputType="text" style="" id="EMAIL" value=""
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="모든 셀에 데이터 툴팁을 항상 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox" style="width: 324px;">
+							<w2:gridView tooltipShowAlways="true" tooltipHeaderShowAlways="true" tooltipDisplay="true"
+								dataList="data:dlt_member" scrollByColumn="true" style="height: 100px;" autoFit="none" id="" visibleRowNum="all"
+								tooltipHeader="true" class="gvw" defaultCellHeight="37">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header2">
+									<w2:row style="" id="row3">
+										<w2:column width="90" inputType="text" id="column16" value="USER PK" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" id="column15" value="USER" displayMode="label"></w2:column>
+										<w2:column width="154" inputType="text" style="" id="column17" value="E-MAIL: Header Tooltip Test"
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody2">
+									<w2:row style="" id="row4">
+										<w2:column width="90" inputType="text" id="EMP_CD" displayMode="label" value=""></w2:column>
+										<w2:column textAlign="left" width="80" inputType="text" id="EMP_NM" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="154" inputType="text" style="" id="EMAIL" value=""
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="지정된 컬럼의 전체 데이터가 출력되지 않는 셀만 툴팁 표시하기"
+						style="">
+					</w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox" style="width: 324px;">
+							<w2:gridView tooltipDisplay="true" dataList="data:dlt_member" scrollByColumn="true" style="height: 100px;"
+								autoFit="none" id="" visibleRowNum="all" tooltipDisplayColumn="EMP_NM" class="gvw" defaultCellHeight="37">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header2">
+									<w2:row style="" id="row3">
+										<w2:column width="90" inputType="text" id="column16" value="USER PK" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" id="column15" value="USER" displayMode="label" style="color:blue;"></w2:column>
+										<w2:column width="154" inputType="text" style="" id="column17" value="E-MAIL: Header Tooltip Test"
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody2">
+									<w2:row style="" id="row4">
+										<w2:column width="90" inputType="text" id="EMP_CD" displayMode="label" value=""></w2:column>
+										<w2:column textAlign="left" width="80" inputType="text" id="EMP_NM" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="154" inputType="text" style="" id="EMAIL" value=""
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="지정된 컬럼의 셀에 데이터 툴팁을 항상 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox" style="width: 324px;">
+							<w2:gridView tooltipDisplay="true" dataList="data:dlt_member" scrollByColumn="true" style="height: 100px;"
+								autoFit="none" id="" visibleRowNum="all" class="gvw" defaultCellHeight="37" tooltipShowAlwaysColumns="EMP_NM">
+								<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header2">
+									<w2:row style="" id="row3">
+										<w2:column width="90" inputType="text" id="column16" value="USER PK" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" id="column15" value="USER" displayMode="label" style="color:blue;"></w2:column>
+										<w2:column width="154" inputType="text" style="" id="column17" value="E-MAIL: Header Tooltip Test"
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody2">
+									<w2:row style="" id="row4">
+										<w2:column width="90" inputType="text" id="EMP_CD" displayMode="label" value=""></w2:column>
+										<w2:column textAlign="left" width="80" inputType="text" id="EMP_NM" displayMode="label"></w2:column>
+										<w2:column textAlign="left" width="154" inputType="text" style="" id="EMAIL" value=""
+											displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

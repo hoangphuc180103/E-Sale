@@ -1,0 +1,20 @@
+/*amd /guide_jpn/TabControl/useTabTitleSelected_TabControl.xml 3868 1652450beff53a136d673992e8ca585562f6769ebf66ea86fc55747fc3196c3c */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var tabOptions = {};
+  for (var i = 0; i < 3; i++) {
+    var addCount = i + 2;
+    var tabOptions = {
+      label: "Tab - " + addCount,
+      openAction: "new",
+      closable: "true"
+    };
+    var contentsOptions = {
+      frameMode: "wframe",
+      alwaysDraw: false
+    };
+    tabControl1.addTab(i, tabOptions, contentsOptions);
+    tabControl2.addTab(i, tabOptions, contentsOptions);
+  }
+};
+scwin.onpageunload = function () {};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'margin-bottom: 10px;color: blue;',id:'textbox1',label:'タブ選択状態をツールチップとして表示',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1-1. 初めて目 TabControlから現在選択タブにマウスカース持参待機。 <br/>1-2. "タブラベル" + "選択済み" テキスト表示されるもの確認。 (useTabTitleSelected="true")<br/><br/>2-1. 二つ目 TabControlから現在選択タブにマウスカース持参待機。 <br/>2-2. "タブラベル" &nbsp;テキストのみ表示されるもの確認。 (useTabTitleSelected="false")',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'プロパティの設定<br/>useTabTitleSelected="true"',escape:'false'}},{T:1,N:'w2:tabControl',A:{confirmTrueAction:'exist',useTabKeyOnly:'true',confirmFalseAction:'new',useMoveNextTabFocus:'false',tabScrollAuto:'',useConfirmMessage:'false',alwaysDraw:'false',style:'border: gray solid 1px;height: 200px;margin-bottom: 10px;',tabPosition:'top',id:'tabControl1','ev:onscrollleftbtnclick':'scwin.tabControl1_onscrollleftbtnclick','ev:onscrollrightbtnclick':'scwin.tabControl1_onscrollrightbtnclick','ev:onsubmenubtnclick':'scwin.tabControl1_onsubmenubtnclick',useTabTitleSelected:'true'},E:[{T:1,N:'w2:tabs',A:{disabled:'false',style:'width:128px;height:30px;',id:'tabs1',label:'Tab 1'}},{T:1,N:'w2:content',A:{alwaysDraw:'false',style:'height:170px;',id:'content1'}}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'プロパティの設定<br/>useTabTitleSelected="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:tabControl',A:{alwaysDraw:'false',confirmFalseAction:'new',confirmTrueAction:'exist','ev:onscrollleftbtnclick':'scwin.tabControl1_onscrollleftbtnclick','ev:onscrollrightbtnclick':'scwin.tabControl1_onscrollrightbtnclick','ev:onsubmenubtnclick':'scwin.tabControl1_onsubmenubtnclick',id:'tabControl2',style:'border: gray solid 1px;height: 200px;',tabPosition:'top',tabScrollAuto:'',useConfirmMessage:'false',useMoveNextTabFocus:'false',useTabKeyOnly:'true',useTabTitleSelected:'false'},E:[{T:1,N:'w2:tabs',A:{disabled:'false',id:'tabs2',label:'Tab 1',style:'width:128px;height:30px;'}},{T:1,N:'w2:content',A:{alwaysDraw:'false',id:'content2',style:'height:170px'}}]}]}]}]}]})

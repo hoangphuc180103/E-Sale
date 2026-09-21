@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="inputType_drilldown_onbeforetoggleclick_gridView_column">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+        			<w2:columnInfo>
+        				<w2:column id="Depth" name="Depth" dataType="text"></w2:column>
+        				<w2:column id="Region" name="Region" dataType="text"></w2:column>
+        				<w2:column id="Population" name="Population" dataType="text" valueType=""></w2:column>
+        				<w2:column id="Area" name="Area" dataType="text"></w2:column>
+        				<w2:column id="GDP" name="GDP" dataType="text"></w2:column>
+        				<w2:column id="Literacy" name="Literacy" dataType="text"></w2:column>
+        				<w2:column id="Phones" name="Phones" dataType="text"></w2:column>
+        				<w2:column id="Birthrate" name="Birthrate" dataType="text"></w2:column>
+        				<w2:column id="Deathrate" name="Deathrate" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="population.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="" style="margin: 10px;">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/population.json';
+    $p.executeSubmission("submission1");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.gridView1_onbeforetoggleclick = function (rowIndex) {
+    alert(rowIndex);
+  /**  var region = dataList1.getCellData(rowIndex, "Region");
+    if (region == "Asia") {
+        alert("onbeforetoggleclick - Asia is set to always be open.");
+        return false;
+    } else {
+        alert("onbeforetoggleclick - Toggling is working.");
+        return true;
+    } **/
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="イベント - onbeforetoggleclick"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1.ドリルダウンが適用されたRegion列のトグルボタンをクリックします。 &lt;br/&gt;2. onbeforetoggleclick イベントが発生していることを確認してください。&lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='イベント説明&lt;br/&gt;onbeforetoggleclick - ドリルダウン列のトグルボタンをクリックしたときに発生します。' escape="false">
+    	</w2:textbox>
+    	<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" dataList="data:dataList1" style="border: solid gray 1px;"
+    		scrollByColumn="false" id="gridView1" autoFit="allColumn" defaultCellHeight="20"
+    		ev:onbeforetoggleclick="scwin.gridView1_onbeforetoggleclick" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" id="column19" value="Depth"></w2:column>
+    				<w2:column width="70" id="column20" value="Region"></w2:column>
+    				<w2:column width="70" id="column21" value="Population"></w2:column>
+    				<w2:column width="70" id="column22" value="Area"></w2:column>
+    				<w2:column width="70" id="column23" value="GDP"></w2:column>
+    				<w2:column width="70" id="column24" value="Literacy"></w2:column>
+    				<w2:column width="70" id="column25" value="Phones"></w2:column>
+    				<w2:column width="70" id="column26" value="Birthrate"></w2:column>
+    				<w2:column width="70" id="column27" value="Deathrate"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" id="Depth"></w2:column>
+    				<w2:column width="70" style="" inputType="drilldown" id="Region" showDepth="3" depthColumn="Depth" textAlign="left">
+    				</w2:column>
+    				<w2:column width="70" id="Population"></w2:column>
+    				<w2:column width="70" id="Area"></w2:column>
+    				<w2:column width="70" id="GDP"></w2:column>
+    				<w2:column width="70" id="Literacy"></w2:column>
+    				<w2:column width="70" id="Phones"></w2:column>
+    				<w2:column width="70" id="Birthrate"></w2:column>
+    				<w2:column width="70" id="Deathrate"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5"
+    		label="/// サンプルコード&lt;br/&gt;&lt;br/&gt;scwin.gridView1_onbeforetoggleclick = function (rowIndex) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert(rowIndex);&lt;br/&gt;};"
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

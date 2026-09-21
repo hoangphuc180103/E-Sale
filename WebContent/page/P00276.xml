@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[DataList] 컬럼 데이터에 필터 적용하기 - 데이터 문자열 검색">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230622" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" name="Stock" id="stock"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // DataList에 초기 데이터 할당
+    scwin.initData();
+};
+
+/**
+ * DataList 'dlt_exam'에 데이터 할당하기
+ */
+scwin.initData = function () {
+    // DataList 'dlt_exam'에 데이터 할당하기
+    let data = [
+        { "category": "Networking", "product": "SpeedLink", "stock": "15800" },
+        { "category": "Cloud Services", "product": "CloudFlex", "stock": "17800" },
+        { "category": "Support Services", "product": "TechAssist", "stock": "15800" },
+        { "category": "Servers", "product": "EcoServe", "stock": "17200" },
+        { "category": "Cloud Services", "product": "CloudPro", "stock": "18000" },
+        { "category": "Networking", "product": "NetMax", "stock": "16000" },
+        { "category": "Support Services", "product": "TechTeam", "stock": "17800" },
+        { "category": "Security", "product": "SecureGate", "stock": "28900" },
+        { "category": "Networking", "product": "LinkSecure", "stock": "12500" }
+    ];
+    dlt_exam.setJSON(data);
+
+    // DataList 'dlt_exam'의 모든 필터 해제하기
+    dlt_exam.clearFilter();
+};
+
+/**
+ * 버튼 [DataList의 데이터 초기화] 클릭 시
+ */
+scwin.btn_initData_onclick = function (e) {
+    scwin.initData();
+};
+
+/**
+ * 버튼 [DataList의 필터 전체 해제] 클릭 시
+ */
+scwin.btn_clearFilter_onclick = function (e) {
+    // DataList 'dlt_exam'의 모든 필터 해제하기
+    dlt_exam.clearFilter();
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터가 'Networking'과 일치] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "row"; // 검색 방식. 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "===" 또는 메소드 "indexOf"로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = "Networking"; // 검색 문자열.
+    jsnFilterOptions.exactMatch = true; // 검색 대상 데이터와 검색 문자열과의 완전 일치 여부. 비교 연산 "==="로 검색.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // 검색 대상 데이터 : ID가 "category"인 컬럼
+    // 검색 문자열 : "Networking"
+    // 검색 방법 : 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "==="로 검색.
+    // 기 적용된 필터 데이터와의 병합 조건 : 교집합
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터가 'Networking' | 필터 조건 ";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(JSON.stringify(jsnFilterOptions, null, "\t"), txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터 중 'Services'가 포함] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "row"; // 검색 방식. 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "===" 또는 메소드 "indexOf"로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = "Services"; // 검색 문자열.
+    jsnFilterOptions.exactMatch = false; // 검색 대상 데이터와 검색 문자열과의 완전 일치 여부. 메소드 "indexOf"로 검색하여 -1보다 큰 경우 결과에 포함.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // 검색 대상 데이터 : ID가 "category"인 컬럼
+    // 검색 문자열 : "Services"
+    // 검색 방법 : 검색 대상 데이터를 문자열로 변경한 뒤 메소드 "indexOf"로 검색하여 -1보다 큰 경우 결과에 포함.
+    // 기 적용된 필터 데이터와의 병합 조건 : 교집합
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터 중 'Services'가 포함 | 필터 조건 ";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(JSON.stringify(jsnFilterOptions, null, "\t"), txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터가 'Services'와 일치] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions = {};
+
+    jsnFilterOptions.type = "row"; // 검색 방식. 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "===" 또는 메소드 "indexOf"로 검색.
+    jsnFilterOptions.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions.key = "Services"; // 검색 문자열.
+    jsnFilterOptions.exactMatch = true; // 검색 대상 데이터와 검색 문자열과의 완전 일치 여부. 비교 연산 "==="로 검색.
+    jsnFilterOptions.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // 검색 대상 데이터 : ID가 "category"인 컬럼
+    // 검색 문자열 : "Services"
+    // 검색 방법 : 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "==="로 검색.
+    // 기 적용된 필터 데이터와의 병합 조건 : 교집합
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions);
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터가 'Services'와 일치 | 필터 조건 ";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog(JSON.stringify(jsnFilterOptions, null, "\t"), txa_log, false);
+    console.log(strLog);
+    console.log(jsnFilterOptions);
+};
+
+/**
+ * 버튼 ['Category' 컬럼에 필터 적용 - 데이터가 'Servers'와 일치하거나 'Services'가 포함] 클릭 시
+ */
+scwin.btn_exam1_4_onclick = function (e) {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions_1 = {};
+
+    jsnFilterOptions_1.type = "row"; // 검색 방식. 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "===" 또는 메소드 "indexOf"로 검색.
+    jsnFilterOptions_1.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions_1.key = "Servers"; // 검색 문자열.
+    jsnFilterOptions_1.exactMatch = true; // 검색 대상 데이터와 검색 문자열과의 완전 일치 여부. 비교 연산 "==="로 검색.
+    jsnFilterOptions_1.condition = "and"; // 기 적용된 필터 데이터와의 병합 조건. 최초 필터를 적용하는 경우 "and"로 할당. 
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions_1);
+
+    // 필터 조건이 담긴 JSON
+    let jsnFilterOptions_2 = {};
+
+    jsnFilterOptions_2.type = "row"; // 검색 방식. 검색 대상 데이터를 문자열로 변경한 뒤 비교 연산 "===" 또는 메소드 "indexOf"로 검색.
+    jsnFilterOptions_2.colIndex = "category"; // DataList의 컬럼 ID 또는 컬럼 Index. 검색 대상.
+    jsnFilterOptions_2.key = "Services"; // 검색 문자열.
+    jsnFilterOptions_2.exactMatch = false; // 검색 대상 데이터와 검색 문자열과의 완전 일치 여부. 메소드 "indexOf"로 검색하여 -1보다 큰 경우 결과에 포함.
+    jsnFilterOptions_2.condition = "or"; // 기 적용된 필터 데이터와의 병합 조건. 합집합
+
+    // DataList 'dlt_exam'에 필터를 적용합니다.
+    dlt_exam.setColumnFilter(jsnFilterOptions_2);
+
+    // 2개 이상의 조건이 있는 경우 "type"을 "regExp" 또는 "func"로 지정하여 구현하는 것이 속도 개선에 도움이 됩니다.
+
+    // 로그 출력
+    let strLog = "# 'Category' 컬럼에 필터 적용 - 데이터가 'Servers'와 일치하거나 'Services'가 포함";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    $c.frame.printExampleLog("필터 조건 1\n" + JSON.stringify(jsnFilterOptions_1, null, "\t"), txa_log, false);
+    $c.frame.printExampleLog("필터 조건 2\n" + JSON.stringify(jsnFilterOptions_2, null, "\t"), txa_log, false);
+    console.log(strLog);
+    console.log("필터 조건 1");
+    console.log(jsnFilterOptions_1);
+    console.log("필터 조건 2");
+    console.log(jsnFilterOptions_2);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    //textarea value를 빈문자열로 할당.
+    txa_log.setValue("");
+};
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="DataList의 'setColumnFilter' 메소드를 사용하여 컬럼 데이터에 필터를 문자열 비교 방식으로 적용한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style no_padding" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_initData" style="" type="button"
+								ev:onclick="scwin.btn_initData_onclick">
+								<xf:label><![CDATA[DataList의 데이터 초기화]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_cm" disabled="" escape="false" id="btn_clearFilter" style="" type="button"
+								ev:onclick="scwin.btn_clearFilter_onclick">
+								<xf:label><![CDATA[DataList의 필터 전체 해제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터가 'Networking'과 일치]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터 중 'Services'가 포함]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_3_onclick" id="btn_exam1_3"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터가 'Services'와 일치]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_4_onclick" id="btn_exam1_4"
+								style="" type="button">
+								<xf:label><![CDATA['Category' 컬럼에 필터 적용 - 데이터가 'Servers'와 일치하거나 'Services'가 포함]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="[ 결과 확인용 GridView ]" style=""></w2:textbox>
+						<xf:group id="" class="gvwbox" style="max-width: 400px;">
+							<w2:gridView tooltipDisplay="true" initFixedHeightByRowNum="4" rowNumWidth="34" dataList="data:dlt_exam"
+								style="height:80px;" readOnly="true" autoFit="allColumn" id="" visibleRowNum="4" class="gvw" defaultCellHeight="37"
+								autoFitMinWidth="220" noResultMessage="No data to display">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="100" inputType="text" style="" id="column3" value="Category" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column2" value="Product" displayMode="label"></w2:column>
+										<w2:column width="60" inputType="text" style="" id="column1" value="Stock" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="100" inputType="text" style="" id="category" displayMode="label" textAlign="left"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="product" displayMode="label" textAlign="left"></w2:column>
+										<w2:column width="60" inputType="text" style="" id="stock" displayMode="label" textAlign="right"
+											displayFormatter="#,###" dataType="number"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group id="" class="example_div_th_style">
+						<w2:span label="로그 확인" style="" id="" class="mr_def txt_blue"></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

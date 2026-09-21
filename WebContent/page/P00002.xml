@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="[컴포넌트 소개] 출력" meta_author="InswaveSystems" meta_type="메인">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="폼을 구성하는 컴포넌트로, 텍스트나 이미지 출력용 컴포넌트 예시입니다.&lt;br/&gt;TextBox, Span,Image가 해당됩니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Textbox" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="" id="" label="WebSquare" style="line-height: 2em;"></w2:textbox>
+						<xf:group id="">
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='Textbox - escape="true" (기본 값)' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="" id=""
+							label='&lt;span style="color:steelblue; font-size:1.2em;font-weight:bold;"&gt;W&lt;/span&gt;eb&lt;span style="color:orange; font-size:1.2em;font-weight:bold;"&gt;S&lt;/span&gt;quare'
+							style="line-height: 2em;">
+						</w2:textbox>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='Textbox - escape="false"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="" escape="false" id=""
+							label='&lt;span style="color:steelblue; font-size:1.2em;font-weight:bold;"&gt;W&lt;/span&gt;eb&lt;span style="color:orange; font-size:1.2em;font-weight:bold;"&gt;S&lt;/span&gt;quare'
+							style="line-height: 2em;">
+						</w2:textbox>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Span" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:span id="" label="WebSquare" style=""></w2:span>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Image" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:image class="defComp" id="" src="/img/WebSquareAI.png" style="width: 164px;height: 32px;"></xf:image>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

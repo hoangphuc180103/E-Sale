@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.group1_onmouseleave = function(e) {
+		alert("onmouseleave - Mouse LEAVING the Group component.");
+	};
+	
+	scwin.group1_onmouseenter = function(e) {
+		alert("onmouseenter - Mouse ENTERING the Group component.");		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="イベント - onmouseenter &amp; onmouseleave" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. マウスカーソルをグループ内に移動します。 &lt;br/&gt;2. onmouseenter イベントが発生していることを確認してください。 &lt;br/&gt;3.マウスカーソルをグループ外に移動します。 &lt;br/&gt;4. onmouseleave イベントが発生することを確認してください。' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;" id="textbox4" label="イベント &lt;br/&gt;onmouseenter - マウスが Group コンポーネント内部に入ると発生します。 &lt;br/&gt;onmouseleave - マウスが Group コンポーネントの外に出たときに発生します。 &lt;br/&gt;" escape="false">
+    	</w2:textbox><xf:group ev:onmouseenter="scwin.group1_onmouseenter" tagname="" ev:onmouseleave="scwin.group1_onmouseleave" style="padding: 20px;border: solid teal 2px;font-size: 30px;color: teal;" id="group1" text="Group">
+    	</xf:group></xf:group></body>
+</html>

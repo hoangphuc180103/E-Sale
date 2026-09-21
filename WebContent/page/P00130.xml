@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[InputCalendar] 유효하지 않은 값이 입력된 경우 메시지를 팝업하고 직전 값으로 되돌리기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221004" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    scwin.setInitPage();
+};
+
+/**
+ * 화면 초기화
+ */
+scwin.setInitPage = function () {
+    var strDate;
+
+    //서버에서 오늘 날짜 반환 받기.
+    strDate = $p.getCurrentServerDate("yyyyMMdd");
+
+    //inputCalendar에 오늘 날짜 할당.
+    ica_exam_1.setValue(strDate);
+    ica_exam_2.setValue(strDate);
+};
+
+/**
+ * inputCalendar [ica_exam_1]의 'invalidMessageFunc' 속성에 설정
+ * 유효하지 않은 날짜가 입력된 경우 엔진에서 호출합니다.
+ */
+scwin.inputCalendar_invalidMessageFunc = function () {
+    var strTarget;
+    var jsnPopParam;
+    var jsnPopDataObjectsnPopParam;
+    var jsnPopOptions;
+
+    //컴포넌트 ID
+    //this.callerId
+
+    //대상 InputCalendar의 ID로 컴포넌트 객체 반환 받기
+    strTarget = $p.getComponentById(this.callerId);
+
+    //팝업에 전달할 데이터
+    jsnPopParam = {
+        "inputData": strTarget.getValue()  //입력값 전달
+    };
+
+    //팝업에 전달한 데이터 객체 정보
+    jsnPopDataObjectsnPopParam = {
+        "type": "json", // 데이터 타입. "json" 권장 
+        "name": "p_param",  // 데이터를 가져오기 위한 key 값. popup에서 $p.getParameter("p_param")로 반환 받을 수 있습니다.
+        "data": jsnPopParam // 실제 전달할 데이터
+    };
+
+    //팝업 객체 정보
+    jsnPopOptions = {
+        "id": "popup_P00130P01",
+        "type": "wframePopup",
+        "modal": true,
+        "frameModal": true,
+        "width": "270px",
+        "height": "160px",
+        "popupName": "유효성 체크 메시지",
+        "left": strTarget.getPosition("left"), //inputCalendar의 left 값
+        "top": strTarget.getPosition("top"), //inputCalendar의 top 값
+        "dataObject": jsnPopDataObjectsnPopParam //팝업에 전달할 데이터 객체 정보
+    };
+
+    //팝업 열기
+    $p.openPopup("/page/P00130P01.xml", jsnPopOptions);
+
+    //직전 값으로 복원.
+    strTarget.setValueCancel();
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="'InputCalendar'의 입력값이 유효한 날짜가 아닌 경우, 개발자가 정의한 팝업에 메시지를 출력하고 직전 값으로 되돌리는 예제입니다."
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="유효성 체크" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" dateValidSet="true" dateValidSetCustom="true"
+							focusOnDateSelect="false" id="ica_exam_1" invalidMessageFunc="scwin.inputCalendar_invalidMessageFunc" renderDiv="true"
+							rightAlign="false" style="min-width: 110px;min-height: 24px;" validateOnInput="true" validateOnInputMobile="true">
+						</w2:inputCalendar>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 유효성 미체크" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" focusOnDateSelect="false" id="ica_exam_2" renderDiv="true"
+							rightAlign="false" style="min-width: 110px;min-height: 24px;">
+						</w2:inputCalendar>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

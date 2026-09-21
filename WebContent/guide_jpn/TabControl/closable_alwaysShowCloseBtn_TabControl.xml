@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="closable_alwaysShowCloseBtn_TabControl ">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var tabOptions = {};
+		for (var i = 0; i < 10; i++) {
+			var addCount = i + 1;
+			var tabOptions = {
+				label : " " + addCount,
+				openAction: "new"
+			}
+			var contentsOptions = {
+                    frameMode : "wframe",
+                    alwaysDraw : false
+                }
+			tabControl1.addTab(i, tabOptions, contentsOptions);
+			tabControl2.addTab(i, tabOptions, contentsOptions);
+			tabControl3.addTab(i, tabOptions, contentsOptions);
+		}
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="タブ閉じるボタン表示" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 最初の TabControl のタブに閉じるボタンが常に表示されることを確認。 (closable="true" alwaysShowCloseBtn="true")&lt;br/&gt;2. 2番目のTabControlのタブにマウスカーソルを置くと閉じるボタンが表示されることを確認してください。 (closable="true")&lt;br/&gt;3. 3番目のTabControlのタブに閉じるボタンが表示されていないことを確認してください。 (closable="false")&lt;br/&gt;'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='プロパティの設定&lt;br/&gt;closable="true" &amp;nbsp;&lt;br/&gt;alwaysShowCloseBtn="true"' escape="false">
+    	</w2:textbox>
+    	<w2:tabControl confirmTrueAction="exist" useTabKeyOnly="true" confirmFalseAction="new" useMoveNextTabFocus="false" tabScroll="true"
+    		tabScrollAuto="true" useConfirmMessage="false" alwaysDraw="false" style="border: gray solid 1px;height: 200px;margin-bottom: 10px;"
+    		tabPosition="top" id="tabControl1" alwaysShowCloseBtn="true" closable="true">
+
+    		<w2:content alwaysDraw="false" style="height:170px" id="content1"></w2:content>
+    	</w2:tabControl>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;closable="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:tabControl alwaysDraw="false" confirmFalseAction="new" confirmTrueAction="exist" id="tabControl2"
+    		style="border: gray solid 1px;height: 200px;margin-bottom: 10px;" tabPosition="top" tabScroll="true" tabScrollAuto="true" useConfirmMessage="false"
+    		useMoveNextTabFocus="false" useTabKeyOnly="true" closable="true">
+    		<w2:content alwaysDraw="false" id="content2" style="height:170px"></w2:content>
+    	</w2:tabControl>
+    	<w2:textbox escape="false" id="textbox6" label='プロパティの設定&lt;br/&gt;closable="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:tabControl alwaysDraw="false" confirmFalseAction="new" confirmTrueAction="exist" id="tabControl3"
+    		style="border: gray solid 1px;height: 200px;" tabPosition="top" tabScroll="true" tabScrollAuto="true" useConfirmMessage="false"
+    		useMoveNextTabFocus="false" useTabKeyOnly="true">
+    		<w2:content alwaysDraw="false" id="content3" style="height:170px"></w2:content>
+    	</w2:tabControl>
+    </xf:group></body>
+</html>

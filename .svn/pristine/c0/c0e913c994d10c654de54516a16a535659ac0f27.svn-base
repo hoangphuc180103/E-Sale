@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TreeView] 모든 노드의 선택 해제하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230803" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList 'dlt_exam'의 데이터가 변경되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="depth" name="depth"></w2:column>
+						<w2:column dataType="text" id="label" name="label"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[MENU-1]]></label>
+							<value><![CDATA[menu1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[MENU1-1]]></label>
+							<value><![CDATA[menu1-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[MENU1-1-1]]></label>
+							<value><![CDATA[menu1-1-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[MENU1-1-2]]></label>
+							<value><![CDATA[menu1-1-2]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[MENU1-1-3]]></label>
+							<value><![CDATA[menu1-1-3]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[MENU2]]></label>
+							<value><![CDATA[menu2]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[MENU2-1]]></label>
+							<value><![CDATA[menu2-1]]></value>
+						</w2:row>
+
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[MENU2-1-1]]></label>
+							<value><![CDATA[menu2-1-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[MENU2-1-2]]></label>
+							<value><![CDATA[menu2-1-2]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[MENU2-1-3]]></label>
+							<value><![CDATA[menu2-1-3]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [체크된 노드의 value 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // value 반환받기
+    var tmp = trv_exam1.getCheckedValues();
+
+    // 로그 출력
+    if(tmp.length === 0) {
+        let strLog = "체크된 노드가 없습니다.";
+        $c.frame.printExampleLog(strLog, textarea1, false);
+        // console.log(strLog);
+    } else {
+        let strLog = "checkedValues : [" + tmp + "]";
+        $c.frame.printExampleLog(strLog, textarea1, false);
+        // console.log(strLog);
+    }
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false" label="TreeView의 'getCheckedValues' 메소드를 사용하여 체크된 노드들의 Value를 배열로 반환받는 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<xf:group class="example_div_td_style" style="margin-bottom: 10px;">
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								type="button">
+								<xf:label><![CDATA[체크된 노드의 value 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:group class="" id=""
+								style="padding: 6px;border: 1px solid #CED4DA;box-sizing: border-box; max-width:490px;">
+								<w2:treeview class="" dataType="listed" hierarchy="false" id="trv_exam1"
+									style="min-height: 50px;overflow: inherit;" toggleEvent="none" useHirarchySelect="true" showCheckbox="true">
+									<w2:itemset nodeset="data:dlt_exam">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="value"></w2:value>
+										<w2:depth ref="depth"></w2:depth>
+										<w2:folder ref=""></w2:folder>
+										<w2:checkbox ref=""></w2:checkbox>
+										<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+										<w2:image ref=""></w2:image>
+										<w2:iconImage ref=""></w2:iconImage>
+										<w2:selectedImage ref=""></w2:selectedImage>
+										<w2:expandedImage ref=""></w2:expandedImage>
+										<w2:leafImage ref=""></w2:leafImage>
+									</w2:itemset>
+								</w2:treeview>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:span class="mr_def txt_bold" id="" label="로그 확인" style="margin-left: 4px;"></w2:span>
+							<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="trigger2" style=""
+								title="로그 삭제" type="button" userData1="txa_log_1">
+								<xf:label><![CDATA[로그 삭제]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="example_div_td_style" id="" style="">
+							<xf:textarea class="wre_txa_log" id="textarea1" spellcheck="false" style="width: 490px;height: 100px;"></xf:textarea>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

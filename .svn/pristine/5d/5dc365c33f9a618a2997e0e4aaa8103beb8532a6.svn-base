@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="inputType_autoComplete_emptyItem_emptyValue_gridView_column">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[001]]></col1>
+            				<col2><![CDATA[001]]></col2>
+
+            				
+            				<col3><![CDATA[001]]></col3>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[002]]></col1>
+            				<col2><![CDATA[002]]></col2>
+
+            				
+            				<col3><![CDATA[002]]></col3>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[003]]></col1>
+            				<col2><![CDATA[003]]></col2>
+
+            				
+            				<col3><![CDATA[003]]></col3>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[004]]></col1>
+            				<col2><![CDATA[004]]></col2>
+
+            				
+            				<col3><![CDATA[004]]></col3>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[005]]></col1>
+            				<col2><![CDATA[005]]></col2>
+
+            				
+            				<col3><![CDATA[005]]></col3>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="autoComplete" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="label" name="label" dataType="text"></w2:column>
+            			<w2:column id="value" name="value" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<label><![CDATA[Bangkok]]></label>
+            				<value><![CDATA[001]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Danang]]></label>
+            				<value><![CDATA[002]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Hanoi]]></label>
+            				<value><![CDATA[003]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Seoul]]></label>
+            				<value><![CDATA[004]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Tokyo]]></label>
+            				<value><![CDATA[005]]></value>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    dataList1.setData(["aaa", "bbb", "ccc"], true);
+};
+
+scwin.trigger2_onclick = function (e) {
+    var blankShow = dataList1.getRowData(5);
+    alert(blankShow);
+
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox2" label="선택 항목에 없는 값 동적 설정" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox4" label='1. 첫 번째 버튼을 클릭하여 AutoComplete의 선택 항목에 없는 값을 설정. &lt;br/&gt;2. 각 컬럼의 화살표를 클릭하고 아래와 같이 동작하는지 확인. &lt;br/&gt; &amp;nbsp; (1) 첫 번째 컬럼 (emptyItem="false") : 목록의 첫 번째 값이 표시되고 선택됨. &lt;br/&gt; &amp;nbsp; (2) 두 번째 컬럼 (emptyItem="true") : 공백이 표시됨. &lt;br/&gt; &amp;nbsp; (3) 세 번째 컬럼 (emptyItem="true" emptyValue="xxx") : 공백이 표시됨. &lt;br/&gt;3. 두 번째 버튼을 클릭하거나, Ctrl + 마우스 우클릭 하여 "dataCollection 보기" 메뉴를 선택. &lt;br/&gt;4. [선택 항목 목록의 첫번째 값, "", "xxx", "ddd"]가 GridView와 바인딩된 "dataList1"에 설정된 것을 확인.' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox5" label='속성 설정&lt;br/&gt;emptyItem="false" &amp;nbsp;(col1 컬럼)&lt;br/&gt;emptyItem="true" (col2 컬럼)&lt;br/&gt;emptyItem="true" (col3 컬럼) &lt;br/&gt;emptyValue="xxx" (col3 컬럼)' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[dataList1.setData(["aaa", "bbb", "ccc"], true);]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[dataList1.getRowData(5);]]></xf:label>
+    	</xf:trigger><w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" visibleRowNumFix="true" dataList="data:dataList1" style="border: solid gray 1px;margin-bottom: 10px;" scrollByColumn="false" id="gridView1" autoFit="allColumn" visibleRowNum="8" defaultCellHeight="20" copyOption="display">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="" id="column17" value="name1" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column18" value="name2" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column19" value="name3" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column ref="" chooseOption="" width="70" emptyItem="false" viewType="icon" inputType="autoComplete" style="" id="col1" allOption="" value="" displayMode="label">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:autoComplete">
+    							<w2:label ref="label"></w2:label>
+    							<w2:value ref="value"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column ref="" chooseOption="" width="70" emptyItem="true" viewType="icon" inputType="autoComplete" style="" id="col2" allOption="" value="" displayMode="value">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:autoComplete">
+    							<w2:label ref="label"></w2:label>
+    							<w2:value ref="value"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column ref="" emptyValue="xxx" chooseOption="" width="70" emptyItem="true" viewType="icon" inputType="autoComplete" style="" id="col3" allOption="" value="" displayMode="label delim value">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:autoComplete">
+    							<w2:label ref="label"></w2:label>
+    							<w2:value ref="value"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView></xf:group></body>
+</html>

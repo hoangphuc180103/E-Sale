@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="useNull_DataMap">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1" preserveType="true" useNull="true">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="name1" dataType="text"></w2:key>
+            			<w2:key id="key2" name="name2" dataType="text"></w2:key>
+            			<w2:key id="key3" name="name3" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            		<w2:data use="false"></w2:data>
+            	</w2:dataMap>
+            	<w2:dataMap baseNode="map" id="dataMap2">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="name1" dataType="text"></w2:key>
+            			<w2:key id="key2" name="name2" dataType="text"></w2:key>
+            			<w2:key id="key3" name="name3" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+scwin.trigger1_onclick = function (e) {
+    dataMap1.setArray([3, "", null]);
+};
+
+scwin.trigger2_onclick = function (e) {
+    dataMap2.setArray([5, "", null]);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Distinguish between Null and Blank&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1-1. Click the first button at the bottom to set both blank and null values simultaneously.&lt;br/&gt;1-2. Press Ctrl + right-click the mouse, then select the “View dataCollection” menu.&lt;br/&gt;1-3. Verify that blank and null values are set separately in dataMap1.&lt;br/&gt;&lt;br/&gt;2-1. Click the second button at the bottom to set both blank and null simultaneously.&lt;br/&gt;2-2. Press Ctrl + right-click, then select the “View dataCollection” menu.&lt;br/&gt;2-3. Verify that dataMap2 is set entirely to blank.'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='useNull="true"' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[dataMap1.setArray([3, "", null]);]]></xf:label>
+    	</xf:trigger>
+    	<xf:group id="" style="margin-bottom: 10px;">
+    		<xf:input ref="data:dataMap1.key1"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-top: 10px;color: purple;"
+    			id="input1">
+    		</xf:input>
+    		<xf:input ref="data:dataMap1.key2"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 10px;color: purple;"
+    			id="input2">
+    		</xf:input>
+    		<xf:input ref="/WESE_1039_fix.xml"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 10px;color: purple;"
+    			id="input3">
+    		</xf:input>
+    	</xf:group>
+    	<w2:textbox escape="false" id="textbox5" label='useNull="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<xf:trigger type="button" id="trigger2"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;" ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[dataMap1.setArray([5, "", null]);]]></xf:label>
+    	</xf:trigger>
+    <xf:group id=""><xf:input style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-top: 10px;color: purple;" id="input4" ref="data:dataMap2.key1"></xf:input><xf:input style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 10px;color: purple;" id="input5" ref="data:dataMap2.key2"></xf:input><xf:input style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 10px;color: purple;" id="input6" ref="data:dataMap2.key3"></xf:input></xf:group></xf:group></body>
+</html>

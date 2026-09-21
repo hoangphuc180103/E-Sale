@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="" meta_screenName="syncRowPositionOption_GridView">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true" initRowPosition="1">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="AAA" dataType="text"></w2:column>
+            			<w2:column id="col2" name="BBB" dataType="text"></w2:column>
+            			<w2:column id="col3" name="CCC" dataType="text"></w2:column>
+            			<w2:column id="col4" name="DDD" dataType="text"></w2:column>
+            			<w2:column id="col5" name="EEE" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D1]]></col4>
+            				<col5><![CDATA[E1]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D1]]></col4>
+            				<col5><![CDATA[E2]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D1]]></col4>
+            				<col5><![CDATA[E3]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D2]]></col4>
+            				<col5><![CDATA[E4]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D2]]></col4>
+            				<col5><![CDATA[E5]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D3]]></col4>
+            				<col5><![CDATA[E6]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D3]]></col4>
+            				<col5><![CDATA[E7]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D3]]></col4>
+            				<col5><![CDATA[E8]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D3]]></col4>
+            				<col5><![CDATA[E9]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D4]]></col4>
+            				<col5><![CDATA[E10]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D4]]></col4>
+            				<col5><![CDATA[E11]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D4]]></col4>
+            				<col5><![CDATA[E12]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D4]]></col4>
+            				<col5><![CDATA[E13]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D4]]></col4>
+            				<col5><![CDATA[E14]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D5]]></col4>
+            				<col5><![CDATA[E15]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D5]]></col4>
+            				<col5><![CDATA[E16]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D5]]></col4>
+            				<col5><![CDATA[E17]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D5]]></col4>
+            				<col5><![CDATA[E18]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D5]]></col4>
+            				<col5><![CDATA[E19]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D5]]></col4>
+            				<col5><![CDATA[E20]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D6]]></col4>
+            				<col5><![CDATA[E21]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D6]]></col4>
+            				<col5><![CDATA[E22]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D6]]></col4>
+            				<col5><![CDATA[E23]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D6]]></col4>
+            				<col5><![CDATA[E24]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D6]]></col4>
+            				<col5><![CDATA[E25]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D7]]></col4>
+            				<col5><![CDATA[E26]]></col5>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[A]]></col1>
+            				<col2><![CDATA[B]]></col2>
+            				<col3><![CDATA[C]]></col3>
+            				<col4><![CDATA[D7]]></col4>
+            				<col5><![CDATA[E27]]></col5>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    dataList1.setRowPosition(2);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload" style="">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="DataList의 rowPosition에 해당하는 행을 포커싱" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 하단의 버튼을 클릭하여 dataList1의 rowPosition을 "2"로 설정. &lt;br/&gt;2. 첫 번째 GridView의 포커스가 새로 rowPosition="2" 행으로 이동하는 것을 확인. &lt;br/&gt;3. 두 번째 GridView에서는 포커스가 이동하지 않는 것을 확인.&lt;br/&gt;(두 GridView 모두 "dataList1"과 바인딩되어 있음.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[dataList1.setRowPosition(2);]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;syncRowPositionOption="style"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView syncRowPositionOption="style" scrollByColumnAdaptive="false" focusMode="row" rowNumVisible="true" checkAllType="false"
+    		dataList="data:dataList1" style="border: solid 1px gray;margin-bottom: 10px;" scrollByColumn="false" id="gridView1" visibleRowNum="5"
+    		autoFit="allColumn" defaultCellHeight="20" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="" id="column5" value="AAA" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column4" value="BBB" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column3" value="CCC" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column2" value="DDD" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="column1" value="EEE" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col4" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="" id="col5" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='속성 설정&lt;br/&gt;syncRowPositionOption="none"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" checkAllType="false" dataList="data:dataList1" defaultCellHeight="20" focusMode="row"
+    		id="gridView2" rowNumVisible="true" scrollByColumn="false" scrollByColumnAdaptive="false" style="border: solid 1px gray;visiblerow"
+    		visibleRowNum="5" visibleRowNumFix="true" syncRowPositionOption="none">
+    		<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column displayMode="label" id="column5" inputType="text" style="" value="AAA" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column4" inputType="text" style="" value="BBB" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column3" inputType="text" style="" value="CCC" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column2" inputType="text" style="" value="DDD" width="70"></w2:column>
+    				<w2:column displayMode="label" id="column1" inputType="text" style="" value="EEE" width="70"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column displayMode="label" id="col1" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col2" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col3" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col4" inputType="text" style="" value="" width="70"></w2:column>
+    				<w2:column displayMode="label" id="col5" inputType="text" style="" value="" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

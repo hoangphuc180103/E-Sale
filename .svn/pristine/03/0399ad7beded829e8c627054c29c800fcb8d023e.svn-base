@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[FusionChart] 차트 타입 예제 - FwFunnelChart_simple" meta_vertical_guides="" meta_horizontal_guides="1004">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="label" name="label"></w2:column>
+            			<w2:column dataType="text" id="value" name="value"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<label><![CDATA[Website Visits]]></label>
+            				<value><![CDATA[1460000]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Programme Details Section Visits]]></label>
+            				<value><![CDATA[930000]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Attempts to Register]]></label>
+            				<value><![CDATA[540000]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Successful Registrations]]></label>
+            				<value><![CDATA[210000]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Logged In]]></label>
+            				<value><![CDATA[190000]]></value>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Purchased on Introductory Offers]]></label>
+            				<value><![CDATA[120000]]></value>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<w2:textbox escape="false" id="" label="FwFunnelChart의 기본 사용 방법을 확인할 수 있는 예제입니다." style=""></w2:textbox>
+    			<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제의 Fusion Chart 버전은 3.19입니다." style=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<w2:textbox class="example_div_th_style" escape="false" id="" label="dataList structure"
+    					style="margin-bottom: 7px;">
+    				</w2:textbox>
+    				<w2:gridView autoFit="allColumn" dataList="data:dataList1" fixedColumnWithHidden="true" id="gridView2"
+    					scrollByColumn="false" style="height:156px;" useShiftKey="true">
+    					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    					<w2:header style="" id="header1">
+    						<w2:row style="" id="row1">
+    							<w2:column width="102" inputType="text" style="height:20px;" id="column2" value="label" displayMode="label"></w2:column>
+    							<w2:column width="70" inputType="text" style="height:20px;" id="column1" value="value" displayMode="label"></w2:column>
+    						</w2:row>
+    					</w2:header>
+    					<w2:gBody style="" id="gBody1">
+    						<w2:row style="" id="row2">
+    							<w2:column width="102" inputType="text" style="height:20px;" id="label" value="" displayMode="label"></w2:column>
+    							<w2:column width="70" inputType="text" style="height:20px;" id="value" value="" displayMode="label"></w2:column>
+    						</w2:row>
+    					</w2:gBody>
+    				</w2:gridView>
+    			</xf:group>
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<w2:textbox class="example_div_th_style" escape="false" id="" label='FwFunnelChart'
+    					style="margin-bottom: 7px;">
+    				</w2:textbox>
+    				<w2:fwFunnelChart accessibility="true" id="fwFunnelChart1" labelNode="label" ref="data:dataList1" seriesColumns=""
+    					seriesNode="" seriesType="simple" style="height:250px;" valueNode="value">
+    				</w2:fwFunnelChart>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,1081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]generator를 이용한 Table 형태 구성 화면">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true"
+        			ev:ondataload="scwin.dataList1_ondataload">
+        			<w2:columnInfo>
+        				<w2:column id="name" name="이름" dataType="text"></w2:column>
+        				<w2:column id="totalCount" name="totalCount" dataType="text"></w2:column>
+        				<w2:column id="periodicInspection" name="periodicInspection" dataType="text"></w2:column>
+        				<w2:column id="individualInquiry" name="individualInquiry" dataType="text"></w2:column>
+        				<w2:column id="serviceDesk" name="serviceDesk" dataType="text"></w2:column>
+        				<w2:column id="installationSupport" name="installationSupport" dataType="text"></w2:column>
+        				<w2:column id="errorResponse" name="errorResponse" dataType="text"></w2:column>
+        				<w2:column id="license" name="license" dataType="text"></w2:column>
+        				<w2:column id="fixedLengthVo" name="fixedLengthVo" dataType="text"></w2:column>
+        				<w2:column id="totalPageCount" name="totalPageCount" dataType="text"></w2:column>
+
+        			</w2:columnInfo>
+        		</w2:dataList>
+        		<w2:dataMap baseNode="map" id="dma_request" style="">
+        			<w2:keyInfo>
+        				<w2:key dataType="text" id="req" name="요청"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission abortTrigger="" action="/util/genExcel.do" customHandler="" encoding="UTF-8" errorHandler="" ev:submit=""
+				ev:submitdone="scwin.sbm_genExcel_submitdone" ev:submiterror="" id="sbm_genExcel" instance="" mediatype="application/json" method="post"
+				mode="asynchronous" processMsg="Down..." ref="data:json,dma_request" replace="" target='' style="">
+			</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	var json = [
+        {
+            "name": "사용자1",
+            "totalCount": 0,
+            "periodicInspection": 1,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자1",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자1",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자1",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자1",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자2",
+            "totalCount": 0,
+            "periodicInspection": 1,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자2",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자2",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자2",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자2",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자3",
+            "totalCount": 0,
+            "periodicInspection": 3,
+            "individualInquiry": 2,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자3",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 1,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자3",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자3",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자3",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자4",
+            "totalCount": 0,
+            "periodicInspection": 4,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자4",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자4",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자4",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자4",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자5",
+            "totalCount": 0,
+            "periodicInspection": 5,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자5",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자5",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자5",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자5",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자6",
+            "totalCount": 0,
+            "periodicInspection": 6,
+            "individualInquiry": 3,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 1,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자6",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 2,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자6",
+            "totalCount": 0,
+            "periodicInspection": 2,
+            "individualInquiry": 1,
+            "serviceDesk": 2,
+            "installationSupport": 1,
+            "errorResponse": 1,
+            "license": 1,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자6",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자6",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자7",
+            "totalCount": 0,
+            "periodicInspection": 7,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자7",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 2,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자7",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자7",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자7",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자8",
+            "totalCount": 0,
+            "periodicInspection": 8,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자8",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자8",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자8",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자8",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자9",
+            "totalCount": 0,
+            "periodicInspection": 9,
+            "individualInquiry": 1,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 1,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자9",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자9",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자9",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        },
+        {
+            "name": "사용자9",
+            "totalCount": 0,
+            "periodicInspection": 0,
+            "individualInquiry": 0,
+            "serviceDesk": 0,
+            "installationSupport": 0,
+            "errorResponse": 0,
+            "license": 0,
+            "fixedLengthVo": false,
+            "totalPageCount": 1
+        }
+    ];
+
+    dataList1.setJSON(json);
+
+    // 전역 변수 선언 
+    scwin._nameStr = "";
+};
+
+
+// 초기화 
+scwin.btnInit_onclick = function(e) {
+    scwin._nameStr = "";
+    gen1.removeAll();
+};
+
+//  기존 내용 지우고 재 생성 
+scwin.btnAdd1_onclick = function(e) {
+    gen1.removeAll();
+
+    var _nameStr = chk1.getValue();
+    if(_nameStr == ""){
+        alert("조건을 선택 하세요");
+    }else{
+        var _nameArr = _nameStr.split(","); 
+        var _nameLen = _nameArr.length;
+
+        for(var i=0; i<_nameLen; i++){
+            gen1.insertChild(i);
+            
+            gen1.getChild(i, ("spn_name")).setValue(_nameArr[i]);
+
+            var obj = dataList1.getMatchedJSON("name", _nameArr[i], true);
+
+            for(var j=0;j<5;j++){
+                // 정기 점검
+                var obj_periodicInspection = gen1.getChild(i, ("spn_periodicInspection" + j));
+                obj_periodicInspection.setValue(obj[j].periodicInspection);
+
+                // 개별 문의
+                var obj_individualInquiry = gen1.getChild(i, ("spn_individualInquiry" + j));
+                obj_individualInquiry.setValue(obj[j].individualInquiry);
+
+                // 서비스데스크
+                var obj_serviceDesk = gen1.getChild(i, ("spn_serviceDesk" + j));
+                obj_serviceDesk.setValue(obj[j].serviceDesk);
+
+                // 설치 지원 
+                var obj_installationSupport = gen1.getChild(i, ("spn_installationSupport" + j));
+                obj_installationSupport.setValue(obj[j].installationSupport);
+
+                // 패치 지원원
+                var obj_fixedLengthVo = gen1.getChild(i, ("spn_fixedLengthVo" + j));
+                obj_fixedLengthVo.setValue(obj[j].fixedLengthVo);
+
+                // 장애 대응
+                var obj_errorResponse = gen1.getChild(i, ("spn_errorResponse" + j));
+                obj_errorResponse.setValue(obj[j].errorResponse);
+
+                // 라이선스
+                var obj_license = gen1.getChild(i, ("spn_license" + j));
+                obj_license.setValue(obj[j].license);
+            }
+        }
+        
+    }
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="Generator를 활용한 Table 형태의 구성화면" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 완료된 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 개요&lt;br/&gt;본 화면은 generator 컴포넌트를 활용하여 Table 형태의 반복 기능의 화면을 구성한 예제 입니다.&lt;br/&gt;generator 컴포넌트 : generator 컴포넌트는 특정 컴포넌트를 반복적으로 추가/삭제가 가능한 컴포넌트 입니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator 컴포넌트의 하위에 정의된 영역이 반복되며 script를 통해 제어 가능합니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator로 생성된 컴포넌트를 제어할 수 있는 함수도 지원하고 있습니다. &lt;br/&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 구성된 화면을 웹 브라우저를 통해 실행합니다. &lt;br/&gt;2. 실행된 화면에서 조건 선택을 통해 다수의 사용자를 지정 후 추가 버튼을 클릭합니다. &lt;br/&gt;3. 선택된 사용자에 맞게 테이블 형태가 반복 되며, 초기화 버튼을 클릭하면, 반복된 영역이 사라집니다."
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="schbox" id="" style="">
+    			<xf:group class="schbox_inner" id="" style="">
+    				<xf:group adaptive="layout" adaptiveThreshold="768" class="w2tb tbl " id="" style="" tagname="table">
+    					<w2:attributes>
+    						<w2:summary></w2:summary>
+    					</w2:attributes>
+    					<xf:group tagname="colgroup">
+    						<xf:group style="width:100px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    						<xf:group style="width:170px;" tagname="col"></xf:group>
+    						<xf:group style="" tagname="col"></xf:group>
+    					</xf:group>
+    					<xf:group class="" id="" style="" tagname="tr">
+    						<xf:group class="w2tb_th" style="" tagname="th">
+    							<w2:span label="조건 선택" style="" id=""></w2:span>
+    						</xf:group>
+    						<xf:group class="w2tb_td" style="" tagname="td">
+    							<xf:checkcombobox allOption="true" chooseOption="" direction="auto" disabled="false" displayMode="label"
+    								id="chk1" style="width:300px;height:21px;" submenuSize="auto" chooseOptionLabel="" ref="" separator=",">
+    								<xf:choices>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자1]]></xf:label>
+    										<xf:value><![CDATA[사용자1]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자2]]></xf:label>
+    										<xf:value><![CDATA[사용자2]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자3]]></xf:label>
+    										<xf:value><![CDATA[사용자3]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자4]]></xf:label>
+    										<xf:value><![CDATA[사용자4]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자5]]></xf:label>
+    										<xf:value><![CDATA[사용자5]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자6]]></xf:label>
+    										<xf:value><![CDATA[사용자6]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자7]]></xf:label>
+    										<xf:value><![CDATA[사용자7]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자8]]></xf:label>
+    										<xf:value><![CDATA[사용자8]]></xf:value>
+    									</xf:item>
+    									<xf:item>
+    										<xf:label><![CDATA[사용자9]]></xf:label>
+    										<xf:value><![CDATA[사용자9]]></xf:value>
+    									</xf:item>
+    								</xf:choices>
+    							</xf:checkcombobox>
+    						</xf:group>
+    						<xf:group class="w2tb_th" style="" tagname="th"><w2:attributes>
+    								<w2:colspan>2</w2:colspan>
+    								<w2:rowspan>1</w2:rowspan>
+    							</w2:attributes><xf:trigger class="btn_cm" id="btnInit" style="" type="button" ev:onclick="scwin.btnInit_onclick">
+    								<xf:label><![CDATA[초기화]]></xf:label>
+    							</xf:trigger><xf:trigger class="btn_cm" id="btnAdd" style="display: none;" type="button"
+    								ev:onclick="scwin.btnAdd_onclick">
+    								<xf:label><![CDATA[추가]]></xf:label>
+    							</xf:trigger><xf:trigger class="btn_cm" id="btnAdd1" style="" type="button" ev:onclick="scwin.btnAdd1_onclick">
+    								<xf:label><![CDATA[추가]]></xf:label>
+    							</xf:trigger></xf:group>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    			<xf:group class="btn_schbox" id="" style=""></xf:group>
+    		</xf:group>
+    		<xf:group adaptiveThreshold="" class="gvwbox" id="" style="">
+    			<xf:group tagname="table" style="width:100%;" id="grp_table" class="w2tb">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="caption"></xf:group>
+    				<xf:group tagname="colgroup">
+    					<xf:group tagname="col" style="width:7%;"></xf:group>
+    					<xf:group tagname="col" style="width:7%;"></xf:group>
+    					<xf:group tagname="col" style="width:14.29%"></xf:group>
+    					<xf:group tagname="col" style="width:14.29%"></xf:group>
+    					<xf:group tagname="col" style="width:14.29%"></xf:group>
+    					<xf:group tagname="col" style="width:14.29%"></xf:group>
+    					<xf:group tagname="col" style="width:14.29%"></xf:group>
+    				</xf:group>
+    				<w2:generator style="" id="gen1" tagname="tbody">
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    								<w2:colspan>2</w2:colspan>
+    								<w2:rowspan>3</w2:rowspan>
+    							</w2:attributes>
+    							<w2:span style="" label="구분" id=""></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    								<w2:colspan>5</w2:colspan>
+    								<w2:rowspan>1</w2:rowspan>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="주간 공수 합계 (m/d) / 업무별 지원 횟수 통계"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="1주차"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="2주차"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="3주차"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="4주차"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="5주차"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>col</w2:scope>
+    							</w2:attributes>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>col</w2:scope>
+    							</w2:attributes>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>col</w2:scope>
+    							</w2:attributes>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>col</w2:scope>
+    							</w2:attributes>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>col</w2:scope>
+    							</w2:attributes>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr" style="">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="이름"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:span id="spn_name" label="이름" style=""></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="정기점검"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th"></xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_periodicInspection0" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_periodicInspection1" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_periodicInspection2" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_periodicInspection3" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_periodicInspection4" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    								<w2:colspan>1</w2:colspan>
+    								<w2:rowspan>2</w2:rowspan>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="기술문의"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:span style="" id="" label="개별문의"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_individualInquiry0" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_individualInquiry1" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_individualInquiry2" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_individualInquiry3" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_individualInquiry4" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:span style="" id="" label="서비스데스크"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_serviceDesk0" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_serviceDesk1" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_serviceDesk2" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_serviceDesk3" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_serviceDesk4" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="설치지원"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th"></xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_installationSupport0" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_installationSupport1" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_installationSupport2" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_installationSupport3" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_installationSupport4" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="패치지원"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th"></xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_fixedLengthVo0" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_fixedLengthVo1" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_fixedLengthVo2" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_fixedLengthVo3" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_fixedLengthVo4" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="장애대응"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th"></xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_errorResponse0" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_errorResponse1" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_errorResponse2" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_errorResponse3" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="spn_errorResponse4" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" style="" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="지라등록"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" style="" class="w2tb_th"></xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" style="" class="w2tb_td">
+    							<w2:span style="" id="" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    					<xf:group tagname="tr">
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    							<w2:span style="" id="" label="라이선스"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="th" class="w2tb_th">
+    							<w2:attributes>
+    								<w2:scope>row</w2:scope>
+    							</w2:attributes>
+    						</xf:group>
+    						<xf:group tagname="td" class="w2tb_td">
+    							<w2:attributes></w2:attributes>
+    							<w2:span style="" id="spn_license0" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" class="w2tb_td">
+    							<w2:attributes></w2:attributes>
+    							<w2:span style="" id="spn_license1" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" class="w2tb_td">
+    							<w2:attributes></w2:attributes>
+    							<w2:span style="" id="spn_license2" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" class="w2tb_td">
+    							<w2:attributes></w2:attributes>
+    							<w2:span style="" id="spn_license3" label="#"></w2:span>
+    						</xf:group>
+    						<xf:group tagname="td" class="w2tb_td">
+    							<w2:attributes></w2:attributes>
+    							<w2:span style="" id="spn_license4" label="#"></w2:span>
+    						</xf:group>
+    					</xf:group>
+    				</w2:generator>
+    			</xf:group>
+    		</xf:group>
+
+    	</xf:group>
+    </body>
+</html>

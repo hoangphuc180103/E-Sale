@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="Code" name="name1" dataType="text"></w2:column>
+            			<w2:column id="City" name="name2" dataType="text"></w2:column>
+            			<w2:column id="Country" name="name3" dataType="text"></w2:column>
+            			<w2:column id="Type" name="name4" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var json = [
+			{"Code" : "SEL", "City" : "Seoul", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "BSN", "City" : "Busan", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "ICN", "City" : "Incheon", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "DJN", "City" : "Daejeon", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "DGU", "City" : "Daegu", "Country" : "Korea", "Type" : "Domestic"},
+			{"Code" : "OTW", "City" : "Ottawa", "Country" : "Canada", "Type" : "Overseas"},
+			{"Code" : "LDN", "City" : "Toronto", "Country" : "Canada", "Type" : "Overseas"},
+			{"Code" : "BRN", "City" : "Berlin", "Country" : "Germany", "Type" : "Overseas"},
+			{"Code" : "BJG", "City" : "Beijing", "Country" : "China", "Type" : "Overseas"},
+			{"Code" : "LDN", "City" : "London", "Country" : "UK", "Type" : "Overseas"},
+			];
+		dataList1.setJSON(json);	
+        autoComplete1.openTable();	
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		autoComplete1.setEnableColumn("Country", "Korea");
+        autoComplete1.openTable();	
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Disable Some Selection Items (Dynamically)&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1. Hold down the Ctrl key and right-click the mouse.&lt;br/&gt;2. Verify that dataList1 is bound to AutoComplete.&lt;br/&gt;3. Confirm that dataList1's data appears in AutoComplete's selection list.&lt;br/&gt;4. Click the setEnableColumn() button at the bottom.&lt;br/&gt;5. Confirm that the selection items where the Country column value is “Korea” in dataList1 are disabled in the selection list."
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[autoComplete1.setEnableColumn("Country", "Korea");]]></xf:label>
+    	</xf:trigger>
+    	<w2:autoComplete enableColumn="" submenuSize="auto" search="start" ref="" enableColumnFalseValue="" chooseOption=""
+    		editType="select" useKeywordHighlight="false" style="display: block;width: 50%" id="autoComplete1" allOption="" useLocale="false">
+    		<w2:choices>
+    			<w2:itemset nodeset="data:dataList1">
+    				<w2:label ref="City"></w2:label>
+    				<w2:value ref="Code"></w2:value>
+    			</w2:itemset>
+    		</w2:choices>
+    	</w2:autoComplete>
+    </xf:group></body>
+</html>

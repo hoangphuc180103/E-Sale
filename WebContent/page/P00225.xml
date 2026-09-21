@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인"
+		meta_screenName="[GridView] Event - ondateselect (inputType이 calendar이고, 사용자가 달력 UI에서 일(day)을 선택했을 때 발생)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230217" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="col_date" name="A"></w2:column>
+						<w2:column dataType="text" id="col_a" name="B"></w2:column>
+						<w2:column id="col_b" name="C" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_date><![CDATA[20110715]]></col_date>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+						</w2:row>
+						<w2:row>
+							<col_date><![CDATA[20220418]]></col_date>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+						</w2:row>
+						<w2:row>
+							<col_date><![CDATA[19991225]]></col_date>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+}; 
+
+/**
+ * GridView grd_exam1의 ondateselect 이벤트 핸들러
+ */
+scwin.grd_exam1_ondateselect = function (row, col, dateStr, dateObj) {
+    //row : 수정되고 있는 셀의 행 번호
+    //col : 수정되고 있는 셀의 열 번호
+    //dateStr : 선택한 날짜의 문자열
+    //dateObj : 선택한 날짜의 Date 객체 -> 개발자 도구 console에서 확인합니다.
+
+    let strLog = "";
+
+    strLog += "** scwin.grd_exam1_ondateselect ** \n";
+    strLog += "row index : " + row + "\n";
+    strLog += "column index : " + col + "\n";
+    strLog += "selected date : " + dateStr;
+
+    //textarea에 log 출력
+    $c.frame.printExampleLog(strLog, txa_log, false);
+
+    //console에 log 출력
+    console.log(strLog);
+    console.log(row, col, dateStr, dateObj);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView의 'ondateselect' 이벤트를 설정한 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="exam_txt caution" id="" label="컴포넌트의 이벤트 발생 시 영역 [로그 확인]의 textarea 또는 브라우저 개발자도구 콘솔에 로그가 출력됩니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox" style="max-width: 320px;">
+							<w2:gridView ev:ondateselect="scwin.grd_exam1_ondateselect" editModeEvent="onclick" visibleRowNumFix="true"
+								dataList="data:dlt_exam" style="height:100px;" id="grd_exam1" visibleRowNum="3" autoFit="allColumn" class="gvw"
+								defaultCellHeight="37" autoFitMinWidth="274">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column hidden="false" width="100" inputType="text" id="h_col1" value="Date" displayMode="label" class="wre_txt_blue">
+										</w2:column>
+										<w2:column hidden="false" width="80" inputType="text" id="h_col2" value="A" displayMode="label">
+										</w2:column>
+										<w2:column width="80" inputType="text" id="h_col3" value="B" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column dataType="date" width="100" displayFormat="yyyy-MM-dd" inputType="calendar" id="col_date" displayMode="label">
+										</w2:column>
+										<w2:column width="80" inputType="text" id="col_a" value="" displayMode="label">
+										</w2:column>
+										<w2:column width="80" inputType="text" id="col_b" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style="" title="로그 삭제"
+							type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] 컴포넌트를 동적으로 구성 설명">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="학습목표" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    		<xf:group id="" class="detailsbox"><xf:group tagname="details" style="" id="" class="">
+    				<w2:textbox tagname="summary" style="" id="" label="컴포넌트를 동적으로 구성하기" escape="false"></w2:textbox>
+    				<w2:textbox style="" id="" label='1. 컴포넌트를 API로 제어하는 방법&lt;br/&gt;ex) 컴포넌트ID.show(""); //웹스퀘어 컴포넌트를 화면에 표시. (웹스퀘어 컴포넌트 공통.)&lt;br/&gt; &amp;nbsp; &amp;nbsp; 컴포넌트ID.hide(); &amp;nbsp;//웹스퀘어 컴포넌트를 화면에서 숨김. (웹스퀘어 컴포넌트 공통.) &amp;nbsp;&lt;br/&gt;2. generator 컴포넌트 활용&lt;br/&gt;generator : 특정 컴포넌트를 반복적으로 추가/삭제가 가능한 컴포넌트&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator 컴포넌트의 하위에 정의된 영역이 반복되며 script를 통해 제어 가능합니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;generator로 생성된 컴포넌트를 제어할 수 있는 함수도 지원하고 있습니다.&lt;br/&gt;3.$p.dynamicCreate(id, componentName, options, parent) &lt;br/&gt;동적으로 웹스퀘어 객체(컴포넌트)를 생성 ' class="" escape="false">
+    				</w2:textbox>
+    			</xf:group></xf:group></xf:group>
+    	</xf:group>
+    </body>
+</html>

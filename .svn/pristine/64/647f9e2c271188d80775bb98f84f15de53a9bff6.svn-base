@@ -1,0 +1,68 @@
+/*amd /guide/_p/PopUp/getPopupWindow_p/getPopupWindow_p.xml 4642 db07d14732833c7e1029f70f2875656c4767bbc64da98bea33cb1882ca6585da */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {
+  requires("uiplugin.popup");
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  scwin.count++;
+  var tmpSrc = scwin.getfolderPath() + "/pop1.xml";
+  var options = {
+    id: scwin.count,
+    type: "wframePopup",
+    popupName: "PopUp ID : " + scwin.count,
+    width: "300px",
+    height: "200px",
+    top: "50px",
+    left: "300px"
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger2_onclick = function (e) {
+  scwin.count++;
+  var tmpSrc = scwin.getfolderPath() + "/pop2.xml";
+  var options = {
+    id: scwin.count,
+    type: "wframePopup",
+    popupName: "PopUp ID : " + scwin.count,
+    width: "300px",
+    height: "200px",
+    top: "50px",
+    left: "600px"
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger3_onclick = function (e) {
+  scwin.count++;
+  var tmpSrc = scwin.getfolderPath() + "/pop3.xml";
+  var options = {
+    id: scwin.count,
+    type: "wframePopup",
+    popupName: "PopUp ID : " + scwin.count,
+    width: "300px",
+    height: "200px",
+    top: "250px",
+    left: "300px"
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger4_onclick = function (e) {
+  var window = $p.getPopupWindow(scwin.count);
+  var value = window.text1.getValue();
+  alert(value);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'개별 팝업 윈도우 반환 및 접근',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 예제 화면의 PopUp1, PopUp2, PopUp3 버튼을 클릭하여 팝업들을 생성. <br/>2. 예제 화면의 $p.getPopupWindow() 버튼을 클릭. <br/>3-1. 마지막으로 생성한 팝업 윈도우에 접근하여, 해당 팝업 윈도우에 포함된 TextBox의 값이 표시되는 것을 확인. <br/>3-2. 팝업을 하나만 남겨 놓고 닫은 경우, 열려 있는 팝업의 윈도우에 포함된 TextBox의 값이 표시되는 것을 확인. <br/>(자세한 스크립트는 Script 탭에서 확인.)',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'width:80px;height:32px;font-weight:bolder;color:white;background-color:blue;font-family:sans-serif;border-style:none;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'PopUp1'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'width:80px;height:32px;margin-left:40px;font-weight:bolder;color:white;background-color:green;font-family:sans-serif;border-style:none;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'PopUp2'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'width:80px;height:32px;margin-left:40px;font-weight:bolder;color:white;background-color:orange;font-family:sans-serif;font-style:normal;border-style:none;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'PopUp3'}]}]},{T:1,N:'xf:trigger',A:{nextTabID:'','ev:onclick':'scwin.trigger4_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;margin-top:10px;text-align: left;',tabIndex:'',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.getPopupWindow()'}]}]}]}]}]}]})

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+        			<w2:columnInfo>
+        				<w2:column dataType="text" id="C_Code" name="name1"></w2:column>
+        				<w2:column dataType="text" id="City" name="name2"></w2:column>
+        				<w2:column dataType="text" id="Country" name="name3"></w2:column>
+        				<w2:column dataType="text" id="Airport" name="name4"></w2:column>
+        				<w2:column dataType="text" id="A_Code" name="name5"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="citycode.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        var objSubmission = $p.getSubmission( "submission1" ); 
+        objSubmission.action = scwin.getfolderPath() + '/citycode.json';  
+		$p.executeSubmission("submission1");
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+
+    scwin.getfolderPath = function () {
+
+        var currentPath;  
+        var folderPath;
+
+        currentPath = window.location.href;      
+
+        if(currentPath.includes("mainContainer")){ 
+            const cmtFrame = $p.getComponentById($p.getFrameId()); 
+            currentPath = cmtFrame.getSrc();
+            folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+        } else {   
+            folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+        }     
+        return folderPath;
+    };
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="DataListとバインディング" escape="false">
+    	</w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. Ctrl ボタンを押しながらマウスを右クリックします。 &lt;br/&gt;2. dataList1のデータを確認。 &lt;br/&gt;3. MultiSelectの選択項目がdataList1のデータと同じであることを確認してください。" escape="false">
+    	</w2:textbox><xf:select ref="" appearance="minimal" style="width: 30%;" id="multiSelect1">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="City"></xf:label>
+    				<xf:value ref="Airport"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:select></xf:group></body>
+</html>

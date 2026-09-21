@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate />
+        <xf:model>
+            <xf:instance>
+                <data xmlns="" />
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+                <w2:dataList id="dataList1" baseNode="list" style=""
+                    saveRemovedData="true" repeatNode="map">
+                    <w2:columnInfo>
+                        <w2:column id="title" name="title" dataType="text">
+                        </w2:column>
+                        <w2:column id="start" name="start" dataType="text">
+                        </w2:column>
+                        <w2:column id="end" name="end" dataType="text">
+                        </w2:column>
+                    </w2:columnInfo>
+                    <w2:data use="false">
+                    </w2:data>
+                </w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="javascript" lazy="false"><![CDATA[
+scwin.onpageload = function () {
+    var dateStr = WebSquare.date.getCurrentServerDate("yyyyMMdd");
+    var addDate = WebSquare.date.dateAdd(dateStr, 3);
+    var tmpArr = [{ "title": "My Schedule", "start": dateStr, "end": addDate }];
+    dataList1.setJSON(tmpArr);
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin:10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Show/Hide Calendar Header Toolbar&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(First ScheduleCalendar)&lt;br/&gt;Confirm that the toolbar is not displayed in the header section. (useHeaderToolbar=“false”)&lt;br/&gt;&lt;br/&gt;(Second ScheduleCalendar)&lt;br/&gt;Confirm that the toolbar is displayed in the header section. (useHeaderToolbar=“true”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='useHeaderToolbar="false"' escape="false">
+    	</w2:textbox>
+    	<w2:scheduleCalendar defaultDate="" endColumn="end" editable="false" selectable="true" headerRightBtn="false"
+    		useHeaderToolbar="false" version="6.1.11" titleColumn="title" startColumn="start" dataList="dataList1"
+    		style="width: 400px;height: 500px;margin-bottom: 10px;" eventLimit="false" id="scheduleCalendar1" headerLeftBtn="true" lang="" headerTitle="true">
+    	</w2:scheduleCalendar>
+    	<w2:textbox escape="false" id="textbox5" label='useHeaderToolbar="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:scheduleCalendar dataList="dataList1" defaultDate="" editable="false" endColumn="end" eventLimit="false" headerLeftBtn="true"
+    		headerRightBtn="false" headerTitle="true" id="scheduleCalendar2" lang="" selectable="true" startColumn="start"
+    		style="width: 400px;height: 500px;" titleColumn="title" useHeaderToolbar="true" version="6.1.11">
+    	</w2:scheduleCalendar>
+    </xf:group></body>
+</html>

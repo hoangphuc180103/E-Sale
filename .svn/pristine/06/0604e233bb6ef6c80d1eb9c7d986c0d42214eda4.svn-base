@@ -1,0 +1,26 @@
+/*amd /guide/PageFrame/onpageframeload_onbeforepageframeunload_PageFrame/openPopup_p.xml 1965 e9e066f74dc7cd6b165c98269663f9e0978466f10f61d5ff32102eef3e772f01 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var tmpSrc = scwin.getfolderPath() + "/src.xml";
+  pageFrame1.setSrc(tmpSrc);
+};
+scwin.pageFrame1_onpageframeload = function () {
+  alert("onpageframeload - pageFrame loaded.");
+};
+scwin.pageFrame1_onbeforepageframeunload = function () {
+  alert("onbeforepageframeunload - pageFrame is to be unloaded.");
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'w2:textbox',A:{style:'margin: 10px;font-size: 30px;font-style: italic;color: lightgreen',id:'textbox1',label:'Popup (openPopup_p.xml)'}},{T:1,N:'w2:pageFrame',A:{'ev:onbeforepageframeunload':'scwin.pageFrame1_onbeforepageframeunload','ev:onpageframeload':'scwin.pageFrame1_onpageframeload',style:'height: 250px;border: solid lightgreen 2px;margin: 30px;',id:'pageFrame1'}}]}]}]})

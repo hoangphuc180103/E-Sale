@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[3]]></col1>
+            				<col2><![CDATA[4]]></col2>
+
+
+
+
+            				<col3><![CDATA[1]]></col3>
+            				<col4><![CDATA[4]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[1]]></col2>
+            				<col1><![CDATA[4]]></col1>
+
+
+
+
+            				<col3><![CDATA[5]]></col3>
+            				<col4><![CDATA[3]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[2]]></col2>
+            				<col1><![CDATA[1]]></col1>
+
+
+
+
+            				<col3><![CDATA[2]]></col3>
+            				<col4><![CDATA[2]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[5]]></col2>
+            				<col1><![CDATA[2]]></col1>
+
+
+
+
+            				<col3><![CDATA[4]]></col3>
+            				<col4><![CDATA[1]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[3]]></col2>
+            				<col1><![CDATA[5]]></col1>
+
+
+
+
+            				<col3><![CDATA[3]]></col3>
+            				<col4><![CDATA[5]]></col4>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dataList2" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="name1"></w2:column>
+            			<w2:column dataType="text" id="col2" name="name2"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[Meat (5)]]></col1>
+            				<col2><![CDATA[5]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Cheese (4)]]></col1>
+            				<col2><![CDATA[4]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Fruit (3)]]></col1>
+            				<col2><![CDATA[3]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Blueberry (2)]]></col1>
+            				<col2><![CDATA[2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[1]]></col2>
+            				<col1><![CDATA[Apple (1)]]></col1>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" id="dataList3" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="name1"></w2:column>
+            			<w2:column dataType="text" id="col2" name="name2"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[Buildings (2)]]></col1>
+            				<col2><![CDATA[2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Bridge (4)]]></col1>
+            				<col2><![CDATA[4]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Park (3)]]></col1>
+            				<col2><![CDATA[3]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Temple (1)]]></col1>
+            				<col2><![CDATA[1]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[River (5)]]></col1>
+            				<col2><![CDATA[5]]></col2>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList4" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[Far East (1)]]></col1>
+            				<col2><![CDATA[1]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[France (2)]]></col1>
+            				<col2><![CDATA[2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Asia (3)]]></col1>
+            				<col2><![CDATA[3]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Europe (4)]]></col1>
+            				<col2><![CDATA[4]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Continent (5)]]></col1>
+            				<col2><![CDATA[5]]></col2>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList5" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[Paris (3)]]></col1>
+            				<col2><![CDATA[3]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[London (1)]]></col1>
+            				<col2><![CDATA[1]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Seoul (5)]]></col1>
+            				<col2><![CDATA[5]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Ottawa (2)]]></col1>
+            				<col2><![CDATA[2]]></col2>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[Beijing (4)]]></col1>
+            				<col2><![CDATA[4]]></col2>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    var returnInfo = {};
+    returnInfo.options = {};
+    returnInfo.inputType = "autoComplete";
+    returnInfo.options.displayMode = "label";
+    returnInfo.itemSet = {
+        nodeset: "data:dataList2",
+        label: "col1",
+        value: "col2"
+    }
+    for (var i = 0; i < 5; i++) {
+        gridView1.setCellInputType(i, "col3", returnInfo);
+    }
+};
+
+scwin.trigger2_onclick = function (e) {
+    var returnInfo = {};
+    returnInfo.options = {};
+    returnInfo.inputType = "select";
+    returnInfo.options.displayMode = "label";
+    returnInfo.itemSet = {
+        nodeset: "data:dataList3",
+        label: "col1",
+        value: "col2"
+    }
+    for (var i = 0; i < 5; i++) {
+        gridView1.setCellInputType(i, "col4", returnInfo);
+    }
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox9" label="label 값을 기준으로 정렬"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox10" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox11"
+    		label="1. 각 컬럼의 inputType이 각각 &quot;autoComplete&quot;, &quot;select&quot;, &quot;custom&quot;, &quot;custom'인 것을 확인. &lt;br/&gt;2. 하단의 첫 번째 버튼을 클릭하여 세 번째 컬럼의 inputType을 &quot;autoComplete&quot;로 변경.&lt;br/&gt;3. 하단의 두 번째 버튼을 클릭하여 네 번째 컬럼의 inputType을 &quot;select&quot;로 변경.&lt;br/&gt;4. 첫 번째 컬럼과 세 번째 컬럼의 sortLabel 속성이 &quot;true&quot;로 설정된 것을 확인. &lt;br/&gt;5. 각 컬럼의 헤더를 더블 클릭하여 정렬을 수행. &lt;br/&gt;6. 첫 번째 컬럼과 세 번째 컬럼은 label 값을 기준으로 정렬되는 것을 확인. (sortLabel=&quot;true&quot;)&lt;br/&gt;7. 두 번째 컬럼과 네 번째 컬럼은 value 값을 기준으로 정렬되는 것을 확인. (sortLabel=&quot;false&quot;)"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox12"
+    		label='속성 설정&lt;br/&gt;sortLabel="true" ("autoComplete" 컬럼)&lt;br/&gt;sortLabel="false" ("select" 컬럼)&lt;br/&gt;sortLabel="true" ("custom 1" 컬럼)&lt;br/&gt;sortLabel="false" ("custom 2" 컬럼)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[inputType="custom" to "autoComplete" ("col3")]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[inputType="custom" to "select" ("col4")]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView scrollByColumnAdaptive="false" setCellInputTypeCustom="true" checkAllType="false" dataList="data:dataList1"
+    		style="border: solid gray 1px;" scrollByColumn="false" id="gridView1" sortable="true" autoFit="allColumn" defaultCellHeight="40"
+    		visibleRowNum="5" visibleRowNumFix="true" showSortableImage="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column sortLabel="" width="70" inputType="text" style="height:20px" id="column3" sortable="" value='"autoComplete"'
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column7" value='"select"' displayMode="label">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column21" sortable="" value='"custom 1"'
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column23" value='"custom 2"' displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column ref="" sortLabel="true" chooseOption="" width="70" inputType="autoComplete" style="height:20px" id="col1"
+    					allOption="" sortable="" value="" displayMode="label">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList4">
+    							<w2:label ref="col1"></w2:label>
+    							<w2:value ref="col2"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column ref="" chooseOption="" width="70" inputType="select" style="height:20px" id="col2" allOption="" sortable=""
+    					value="" displayMode="label">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList5">
+    							<w2:label ref="col1"></w2:label>
+    							<w2:value ref="col2"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column typeGetter="" sortLabel="true" width="70" inputType="custom" style="height:20px" id="col3" sortable=""
+    					value="" displayMode="label">
+    				</w2:column>
+    				<w2:column typeGetter="" width="70" inputType="custom" style="height:20px" id="col4" value="" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox13"
+    		label='/// 샘플 코드 1&lt;br/&gt;&lt;br/&gt;scwin.trigger1_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var returnInfo = {};&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.options = {};&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.inputType = "autoComplete";&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.options.displayMode = "label";&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.itemSet = {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;nodeset: "data:dataList2",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;label: "col1",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;value: "col2"&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;for (var i = 0; i &lt; 5; i++) {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;gridView1.setCellInputType(i, "col3", returnInfo);&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;/// 샘플 코드 2&lt;br/&gt;&lt;br/&gt;scwin.trigger2_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var returnInfo = {};&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.options = {};&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.inputType = "select";&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.options.displayMode = "label";&lt;br/&gt; &amp;nbsp; &amp;nbsp;returnInfo.itemSet = {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;nodeset: "data:dataList3",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;label: "col1",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;value: "col2"&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt; &amp;nbsp; &amp;nbsp;for (var i = 0; i &lt; 5; i++) {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;gridView1.setCellInputType(i, "col4", returnInfo);&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

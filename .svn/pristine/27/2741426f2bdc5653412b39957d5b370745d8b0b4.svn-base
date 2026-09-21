@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList_format" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="날짜2"></w2:column>
+            			<w2:column dataType="text" id="col2" name="날짜3"></w2:column>
+            			<w2:column dataType="text" id="col3" name="숫자1"></w2:column>
+            			<w2:column dataType="text" id="col4" name="주민등록번호2"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="false">
+            			<w2:row>
+            				
+            				<col1><![CDATA[1234567890]]></col1>
+            				<col2><![CDATA[1234567890]]></col2>
+            				<col3><![CDATA[1234567890]]></col3>
+            				
+            				
+            				
+            			</w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            			<w2:row></w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	var json = [
+		{"col1" : "20170104", "col2" : "20170104", "col3" : "123456789", "col4" : "1234561234567"},
+		{"col1" : "20170205", "col2" : "20170205", "col3" : "223456789", "col4" : "1234561234567"},
+		{"col1" : "20170306", "col2" : "20170306", "col3" : "323456789", "col4" : "1234561234567"},
+		{"col1" : "20170407", "col2" : "20170407", "col3" : "423456789", "col4" : "1234561234567"},
+		{"col1" : "20170508", "col2" : "20170508", "col3" : "523456789", "col4" : "1234561234567"},
+		{"col1" : "20170104", "col2" : "20170104", "col3" : "123456789", "col4" : "1234561234567"},
+		{"col1" : "20170205", "col2" : "20170205", "col3" : "223456789", "col4" : "1234561234567"},
+		{"col1" : "20170306", "col2" : "20170306", "col3" : "323456789", "col4" : "1234561234567"}
+	];
+	dataList_format.setJSON( json );    
+	
+};
+
+// 날짜1
+scwin.dateFormat_A2Format = function(data) {
+	var dd = data.substr(6,2);
+	var MM = data.substr(4,2);
+	var yy = data.substr(2,2);
+	var result = dd + "-" + MM + "-" + yy;
+
+	return result;
+}
+
+// 날짜2
+scwin.dateFormat2_A2Format = function(data) {
+    var dd = data.substr(6,2);
+	var MM = data.substr(4,2);
+	var yy = data.substr(0,4);
+		
+	if( MM == "01" ) {
+		MM = "January";
+	}else if( MM == "02" ) {
+		MM = "February";
+	}else if( MM == "03" ) {
+		MM = "March";
+	}else if( MM == "04" ) {
+		MM = "April";
+	}else if( MM == "05" ) {
+		MM = "May";
+	}else if( MM == "06" ) {
+		MM = "June";
+	}else if( MM == "07" ) {
+		MM = "July";		
+	}else if( MM == "08" ) {
+		MM = "August";
+	}else if( MM == "09" ) {
+		MM = "September";
+	}else if( MM == "10" ) {
+		MM = "October";
+	}else if( MM == "11" ) {
+		MM = "November";
+	}else if( MM == "12" ) {
+		MM = "December";
+	}
+	
+	var result = MM + " " + dd + ". " + yy;
+	return result;
+
+}
+
+// 주민등록번호
+scwin.marsking_format = function(data) {
+    var ssn = data.replace("-", "");
+    var res = data;
+    if (ssn.length == 13) {
+        res = ssn.slice(0, 6) + "-" + ssn.slice(6, 7) + "******";
+    }
+    return res;
+}
+
+scwin.btn_reset_onclick = function (e) {
+	for(var idx = 0; idx < grd_Main.getColumnOrder().length; idx++){
+        grd_Main.setDisplayFormat( idx, "" );
+        grd_Main.setCustomFormatter(idx, "");
+    	grd_Main.setDisplayFormatter( idx, "" );
+    }
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group style="" id="" class="sub_contents">
+    		<xf:group style="" id="" class="ws_example_grp_desc">
+    			<w2:textbox style="" id="" label="GridView의 포맷을 메소드로 전체 초기화하는 예제입니다." escape="false"></w2:textbox>
+    		</xf:group>
+    		<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+    			<xf:group class="example_div_tr_style" id="" style="">
+    				<xf:group class="mb_def_box nobottom" id="" style="">
+    					<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_reset_onclick" id="btn_reset"
+    						style="" type="button">
+    						<xf:label><![CDATA[전체 포맷 초기화]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    				<xf:group class="example_div_td_style" id="" style="">
+    					<xf:group class="gvwbox" id="">
+    						<w2:gridView autoFit="allColumn" autoFitMinWidth="252" class="gvw" dataList="data:dataList_format"
+    							defaultCellHeight="37" editModeEvent="onclick" focusMode="none" id="grd_Main" readOnlyBackgroundColor="#eee"
+    							style="height: 100px;" visibleRowNum="all">
+    							<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    							<w2:header style="" id="header1">
+    								<w2:row style="" id="row1">
+    									<w2:column width="59" inputType="text" id="column7" value="날짜1" displayMode="label"></w2:column>
+    									<w2:column width="80" inputType="text" id="column6" value="날짜2" displayMode="label"></w2:column>
+    									<w2:column width="70" inputType="text" id="column5" value="숫자" displayMode="label"></w2:column>
+    									<w2:column width="80" inputType="text" id="column1" value="주민등록번호" displayMode="label"></w2:column>
+    								</w2:row>
+    							</w2:header>
+    							<w2:gBody style="" id="gBody1">
+    								<w2:row style="" id="row2">
+    									<w2:column width="59" inputType="text" id="col1" displayMode="label"
+    										displayFormatter="scwin.dateFormat_A2Format">
+    									</w2:column>
+    									<w2:column width="80" inputType="text" id="col2" displayMode="label"
+    										displayFormatter="scwin.dateFormat2_A2Format">
+    									</w2:column>
+    									<w2:column width="70" inputType="text" id="col3" displayMode="label" dataType="number"
+    										displayFormat="#,###">
+    									</w2:column>
+    									<w2:column width="80" inputType="text" id="col4" displayMode="label"
+    										customFormatter="scwin.marsking_format">
+    									</w2:column>
+    								</w2:row>
+    							</w2:gBody>
+    						</w2:gridView>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

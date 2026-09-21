@@ -1,0 +1,46 @@
+/*amd /guide/TabControl/frameMode_tabControl_content_openPopup_frameModal_p/frameMode_tabControl_content_openPopup_frameModal_p.xml 4389 1ea143bbfb4c545c04c0e1a2b030bf749dd53b007f7fe9dcfcd70f8914dd0cbc */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {
+  text1.hide();
+  text2.hide();
+  trigger1.hide();
+  var tmpSrc1 = scwin.getfolderPath() + "/11_wframe_01.xml";
+  var tmpSrc2 = scwin.getfolderPath() + "/02_openPopUp_tab.xml";
+  tabControl1.addTab(scwin.count, {
+    label: "wframe",
+    title: "wframe",
+    openAction: "exist",
+    closable: "true"
+  }, {
+    "src": tmpSrc1,
+    "frameMode": "wframe"
+  });
+  scwin.count++;
+  tabControl1.addTab(scwin.count + 1, {
+    label: "wframePreload",
+    title: "wframePreload",
+    openAction: "exist",
+    closable: "true"
+  }, {
+    "src": tmpSrc2,
+    "frameMode": "wframePreload"
+  });
+  tabControl1.setSelectedTabIndex(scwin.count);
+  scwin.count++;
+};
+scwin.onpageunload = function () {};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'margin-bottom: 10px;color: blue;',id:'textbox1',label:'탭 내부에서 프레임 기반 모달 팝업 생성',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(첫 번째 frameMode="wframe" 탭)<br/>1-1. openPopup() 메소드의 frameModal 옵션을 선택. ("frame", "parent", "top", TabControl ID)<br/>1-2. 탭 &nbsp;내부의 $p.openPopup() 버튼을 클릭.<br/>1-3. 옵션 설정에 따른 팝업 동작 범위를 확인.<br/> &nbsp; "frame" : 해당 프레임 내부에 모달 팝업으로 표시.<br/> &nbsp; "parent" : 부모 프레임 내부에 모달 팝업으로 표시.<br/> &nbsp; "top" : 전체 화면에 모달 팝업으로 표시.<br/> &nbsp; TabControl ID : TabControl 내부에 모달 팝업으로 표시. (아럐 예제의 경우 $p.getFrame().getParentFrame().getParentFrame().id로 TabControl ID를 구함.)<br/><br/>(두 번째 frameMode="wframePreload" 탭)<br/>2-1. 각 버튼을 클릭하여 PageFrame, WFrame, IFrame 타입 팝업을 생성. <br/>2-2. options.frameModal 옵션에 따라 최상단("top") 혹은 자신이 속한 프레임 내부("frame")에 팝업이 표시되는 것을 확인. <br/>(자세한 스크립트는 Script 탭에서 확인.)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;',id:'textbox4',label:'속성 설정<br/>frameMode="wframe" "wframePreload" (tabControl.content)<br/>$p.openPopup(options) - options.modal : "true" & options.frameModal ; "frame" (팝업창)',escape:'false'}},{T:1,N:'w2:tabControl',A:{frameModal:'true',confirmTrueAction:'exist',confirmFalseAction:'new',useTabKeyOnly:'true',useMoveNextTabFocus:'false',closable:'true',useConfirmMessage:'false',alwaysDraw:'false',userData3:'',style:'border: gray solid 1px;height: 500px;margin-bottom: 10px;',id:'tabControl1',processMsgFrame:'true'}},{T:1,N:'w2:textbox',A:{style:'width: 150px;height: 23px;',id:'text1',label:'Main A'}},{T:1,N:'w2:textbox',A:{style:'width: 150px;height: 23px;',id:'text2',label:'Main B'}},{T:1,N:'xf:trigger',A:{style:'width: 80px;height: 23px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label'}]}]}]}]}]})

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 위젯 컨테이너">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //widget 추가
+    scwin.addWidget("E01");
+};
+
+/**
+ * widget 추가 selectbox 변경 시
+ */
+scwin.sbx_addWidget_onviewchange = function (info) {
+    //var curType = info.newValue;
+    scwin.addWidget(info.newValue);
+    this.setValue("");
+};
+
+/**
+ * widget 추가
+ */
+scwin.addWidget = function (type) {
+    var wTitle,
+        wSrc,
+        wWidth = 3,
+        wHeight = 4,
+        wPath,
+        wId;
+
+    wPath = $c.frame.getSrc("/page") + "/";
+
+    switch (type) {
+        case "C01":
+            wTitle = "기기 유형별 조회수";
+            wSrc = wPath + "P00007S02.xml";
+            break;
+        case "C02":
+            wTitle = "성별 조회수";
+            wSrc = wPath + "P00007S03.xml";
+            break;
+        case "C03":
+            wTitle = "일별 조회수";
+            wSrc = wPath + "P00007S01.xml";
+            break;
+        case "E01":
+            wTitle = "캘린더";
+            wSrc = wPath + "P00007S04.xml";
+            wHeight = 5;
+            wWidth = 3;
+            break;
+        default: return;
+    }
+
+    wId = "W" + type;
+
+    if (wgc_ex01.getWidgetById(wId)) {
+        wgc_ex01.moveWidget(wId, 0, 0);
+        return;
+    }
+
+    var opt = {
+        id: wId,
+        src: wSrc,
+        title: wTitle,
+        x: 0,
+        y: 0,
+        scope: true,
+        unitWidth: wWidth,
+        unitHeight: wHeight
+    };
+
+    wgc_ex01.addWidgets(opt);
+
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="WidgetContainer 예시입니다.&lt;br/&gt;WidgetContainer는 대시보드성 UI를 구성할 때 주로 사용합니다." style=""></w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="position: relative; min-height: 600px;height: 100%;">
+				<xf:group id="">
+					<xf:select1 chooseOptionLabel="위젯 추가" submenuSize="auto" chooseOption="true" allOption="" displayMode="label" ref=""
+						appearance="minimal" disabledClass="w2selectbox_disabled" optionOrder="false" disabled="false" style="width: 160px;"
+						id="sbx_addWidget" visibleRowNum="10" class="" direction="auto" ev:onviewchange="scwin.sbx_addWidget_onviewchange">
+						<xf:choices>
+							<xf:item>
+								<xf:label><![CDATA[캘린더]]></xf:label>
+								<xf:value><![CDATA[E01]]></xf:value>
+							</xf:item>
+							<xf:item>
+								<xf:label><![CDATA[기기 유형별 조회수]]></xf:label>
+								<xf:value><![CDATA[C01]]></xf:value>
+							</xf:item>
+							<xf:item>
+								<xf:label><![CDATA[성별 조회수]]></xf:label>
+								<xf:value><![CDATA[C02]]></xf:value>
+							</xf:item>
+							<xf:item>
+								<xf:label><![CDATA[일별 조회수]]></xf:label>
+								<xf:value><![CDATA[C03]]></xf:value>
+							</xf:item>
+						</xf:choices>
+					</xf:select1>
+				</xf:group>
+				<xf:group style="position: absolute;left:0px;right: 0px;top:36px;bottom: 0px;" id="">
+					<w2:widgetContainer unitHeightPixel="100" minUnitWidth="" verticalMargin="5" threshold="700" params=""
+						widgetResize="true" maxUnitWidth="" mode="pushpull" widgetMove="true"
+						style="height: 100%;box-sizing:border-box;background-color: #fefefe;" id="wgc_ex01" horizontalMargin="5" cols="6" class="ws_example">
+					</w2:widgetContainer>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

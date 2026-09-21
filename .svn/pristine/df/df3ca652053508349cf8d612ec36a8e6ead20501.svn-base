@@ -1,0 +1,42 @@
+/*amd /page/P00094.xml 7284 f6324cbf4818dff40911be292f8fff4540e9790dddcbccea9ae2200cb36320f3 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'select',name:'select'}},{T:1,N:'w2:column',A:{dataType:'text',id:'checkcombobox',name:'checkcombobox'}},{T:1,N:'w2:column',A:{id:'autoComplete',name:'autoComplete',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'false'}}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam_code',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'label',dataType:'text'}},{T:1,N:'w2:column',A:{id:'code',name:'code',dataType:'text'}},{T:1,N:'w2:column',A:{id:'useYN',name:'useYN',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  //GridView의 선택형 inputType의 목록과 연결된 DataList "dlt_exam_code"에 데이터 할당
+  dlt_exam_code.setJSON([{
+    "label": "Apple",
+    "code": "01",
+    "useYN": "Y"
+  }, {
+    "label": "Pear",
+    "code": "02",
+    "useYN": "N"
+  }, {
+    "label": "Grapes",
+    "code": "03",
+    "useYN": "Y"
+  }, {
+    "label": "Melon",
+    "code": "04",
+    "useYN": "N"
+  }, {
+    "label": "Peach",
+    "code": "05",
+    "useYN": "Y"
+  }]);
+
+  //GridView와 연결된 DataList에 빈 행 추가
+  dlt_exam.insertRow();
+  dlt_exam.insertRow();
+
+  //GridView의 컬럼 select에 비활성화 항목 설정하기
+  //목록과 연결된 DataList의 "useYN" 컬럼의 값이 "N"이면 비활성화 지정
+  grd_exam2.setColumnEnableColumn("select", "useYN", "N");
+
+  //GridView의 컬럼 checkcombobox에 비활성화 항목 설정하기
+  //목록과 연결된 DataList의 "useYN" 컬럼의 값이 "N"이면 비활성화 지정
+  grd_exam2.setColumnEnableColumn("checkcombobox", "useYN", "N");
+
+  //GridView의 컬럼 autoComplete에 비활성화 항목 설정하기
+  //목록과 연결된 DataList의 "useYN" 컬럼의 값이 "N"이면 비활성화 지정
+  grd_exam2.setColumnEnableColumn("autoComplete", "useYN", "N");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView 바디 컬럼의 \'inputType\'이 목록 선택형(DropDown) 타입인 경우, 목록의 특정 항목을 비활성화하는 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) 모든 항목 활성화',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:80px;',autoFit:'allColumn',id:'',visibleRowNum:'2',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column3',value:'select',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column2',value:'checkcombobox',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column1',value:'autoComplete',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{chooseOptionLabel:'- 선택 -',chooseOption:'true',width:'70',viewType:'icon',inputType:'select',id:'select',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'code'}}]}]}]},{T:1,N:'w2:column',A:{chooseOptionLabel:'- 선택 -',chooseOption:'true',width:'100',viewType:'icon',inputType:'checkcombobox',id:'checkcombobox',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'code'}}]}]}]},{T:1,N:'w2:column',A:{chooseOptionLabel:'- 선택 -',chooseOption:'true',width:'100',viewType:'icon',inputType:'autoComplete',id:'autoComplete',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'code'}}]}]}]}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'비활성화 항목 설정',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:80px;',autoFit:'allColumn',id:'grd_exam2',visibleRowNum:'2',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'column3',value:'select',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column2',value:'checkcombobox',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'100',inputType:'text',id:'column1',value:'autoComplete',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{chooseOptionLabel:'- 선택 -',chooseOption:'true',viewType:'icon',width:'70',inputType:'select',id:'select',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'code'}}]}]}]},{T:1,N:'w2:column',A:{chooseOptionLabel:'- 선택 -',chooseOption:'true',viewType:'icon',width:'100',inputType:'checkcombobox',id:'checkcombobox',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'code'}}]}]}]},{T:1,N:'w2:column',A:{chooseOptionLabel:'- 선택 -',chooseOption:'true',viewType:'icon',width:'100',inputType:'autoComplete',id:'autoComplete',displayMode:'label'},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_exam_code'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'code'}}]}]}]}]}]}]}]}]}]}]}]}]}]}]})

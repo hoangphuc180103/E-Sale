@@ -1,0 +1,85 @@
+/*amd /guide_jpn/_p/PopUp/openPopup_p/openPopup_p.xml 4828 0892df77cfe7bbaef8511bf77daf162d6da471f166a881a0ea21c07665f9b796 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {
+  requires("uiplugin.popup");
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/for_pageFrame.xml";
+  var options = {
+    id: scwin.count,
+    type: "wframePopup",
+    width: "400px",
+    height: "250px",
+    top: "130px",
+    left: "200px",
+    popupName: "PageFrame Popup",
+    modal: true,
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger2_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/for_wframe.xml";
+  var options = {
+    id: scwin.count,
+    type: "wframePopup",
+    width: "400px",
+    height: "250px",
+    top: "130px",
+    left: "200px",
+    popupName: "WFrame Popup",
+    modal: true,
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger3_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/for_iframe.xml";
+  var options = {
+    id: scwin.count,
+    type: "iframePopup",
+    width: "400px",
+    height: "250px",
+    top: "130px",
+    left: "200px",
+    popupName: "IFrame Popup",
+    modal: true,
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.trigger4_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/for_browser.xml";
+  var options = {
+    id: scwin.count,
+    type: "browserPopup",
+    width: "400px",
+    height: "250px",
+    top: "130px",
+    left: "200px",
+    popupName: "Browser Popup",
+    modal: true,
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'ポップアップ生成 （PageFrame, WFrame, IFrame, ブラウザポップアップ）',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'一番下の各ボタンをクリックして、指定した形式のポップアップが生成されることを確認してください。 <br/>（詳細なスクリプトは Script タブで確認。）',escape:'false'}},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger1',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;','ev:onclick':'scwin.trigger1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup pageFramePopup'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup wframePopup'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup iframePopup'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger4_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup browserPopup'}]}]}]}]}]}]})

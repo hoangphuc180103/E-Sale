@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var tmpSrc = scwin.getfolderPath() + "/src.xml";
+
+    var options = {
+        title: "title",
+        iconUrl: null,
+        src: tmpSrc,
+        windowTitle: "windowTitle of the window",
+        windowId: "id of the window",
+        frameMode: "wframe",
+    };
+    windowContainer1.createWindow(options);
+    windowContainer1.setArrangeWindows("cascade");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.onminimizebtnclick = function (info) {
+    alert("onminimizebtnclick\n\n" + "src : " + info.src + "\ntitle : " + info.title + "\nwindowTitle : " + info.windowTitle + "\nid : " + info.id + "\nwindowId : " + info.windowId);
+};
+
+scwin.onrestorebtnclick = function (info) {
+    alert("onrestorebtnclick\n\n" + "src : " + info.src + "\ntitle : " + info.title + "\nwindowTitle : " + info.windowTitle + "\nid : " + info.id + "\nwindowId : " + info.windowId);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    <style type="text/css"><![CDATA[
+    ]]></style>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="이벤트 - onminimizebtnclick &amp; onrestorebtnclick" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 생성된 윈도우의 최소화 버튼을 클릭. &lt;br/&gt;2. onminimizebtnclick 이벤트 핸들러가 실행되는 것을 확인. &lt;br/&gt;3. 생성된 윈도우의 복원 버튼을 클릭. &lt;br/&gt;4. onrestorebtnclick 이벤트 핸들러가 실행되는 것을 확인. &lt;br/&gt;(각 이벤트 핸들러의 자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4"
+    		label='이벤트 설명&lt;br/&gt;onminimizebtnclick - 윈도우 크기를 최소화하는 버튼을 클릭할 때 발생. &lt;br/&gt;onrestorebtnclick - 윈도우 크기를 복원하는 버튼을 클릭할 때 발생. '
+    		escape="false">
+    	</w2:textbox>
+    	<w2:windowContainer sequentialArrangeColNum="2" sequentialArrangeRowNum="2" ev:onwindowload="" fixArrangeFullScreen="false"
+    		frameMode="wframe" useFixButton="false" windowAutoResize="false" useWindowScrollButton="true" processMsgFrame="true"
+    		verticalArrangeNum="2" windowMaxNum="10" ev:onclosewindow="scwin.wcMain_onclosewindow" useCloseButton="true"
+    		controlIconPosition="allright" nameLayerMove="true" toolbarPosition="top" windowMaximizeAll="false" stopMinimizeOnNameLayer="true"
+    		id="windowContainer1" useStatusMsg="false" class="" hideTitleOnMaximize="false" ev:onrestorebtnclick="scwin.onrestorebtnclick"
+    		windowScrollVisibleRowNum="3" spaInitCount="0" stopToggleOnLast="true" useNameContainer="true"
+    		ev:onbeforecloseall="scwin.wcMain_onbeforecloseall" closeType="noneFixedWindow" ev:onminimizebtnclick="scwin.onminimizebtnclick"
+    		horizontalArrangeNum="2" useCustomMsg="false" ev:onwindowchange="scwin.wcMain_onwindowchange" autoArrange="true"
+    		useControlIconTitle="false" tooltipDisplay="true" tooltipGroupClass="false" windowTooltipDisplay="false"
+    		style="position: relative;height: 400px;border: gray solid 1px;margin-bottom: 10px;">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='/// 샘플 코드 &lt;br/&gt;&lt;br/&gt;scwin.onminimizebtnclick = function(info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onminimizebtnclick\n\n" + "src : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.src + "\ntitle : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.title + "\nwindowTitle : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.windowTitle + "\nid : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.id + "\nwindowId : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.windowId);&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.onrestorebtnclick = function(info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onrestorebtnclick\n\n" + "src : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.src + "\ntitle : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.title + "\nwindowTitle : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.windowTitle + "\nid : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.id + "\nwindowId : " +&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;info.windowId);&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

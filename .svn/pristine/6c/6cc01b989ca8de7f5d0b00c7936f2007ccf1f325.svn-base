@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="팝업의 위치 고정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231031" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [1.1 wframe 팝업 열기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // 동일한 팝업이 열려 있는 경우 안내 alert
+    if ($p.getPopupWindow("popup_wframe1")) {
+        alert("열려 있는 팝업이 있습니다.");
+        return;
+    }
+
+    // 팝업 생성 옵션
+    var jsnOptions = {
+        id: "popup_wframe1",
+        type: "wframePopup", // [필수 고정 값] 팝업 콘텐츠를 wframe으로 구성
+        fixPosition: "false", // [필수 고정 값] 팝업의 위치를 고정하지 않음(이동 가능)
+        width: "300px",
+        height: "180px",
+        popupName: "[이동 가능] wframePopup"
+    };
+
+    //모바일에서의 크기,위치 조절을 위해 공통 메소드 사용하였습니다. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions = $c.frame.getPopupPosition(jsnOptions);
+
+    // 예제 화면에서 팝업이 표시되도록 추가 설정. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions.frameModal = "parent"; // 팝업을 부모 frame영역을 기준으로 표시합니다.
+    jsnOptions.left = "10px";
+    jsnOptions.top = this.getPosition("top") + "px";
+
+    $p.openPopup("/page/P00404P01.xml", jsnOptions);
+};
+
+/**
+ * 버튼 [1.2 iframe 팝업 열기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // 동일한 팝업이 열려 있는 경우 안내 alert
+    if ($p.getPopupWindow("popup_iframe1")) {
+        alert("열려 있는 팝업이 있습니다.");
+        return;
+    }
+
+    // 팝업 생성 옵션
+    var jsnOptions = {
+        id: "popup_iframe1",
+        type: "iframePopup", // [필수 고정 값] 팝업 콘텐츠를 iframe으로 구성
+        fixPosition: "false", // [필수 고정 값] 팝업의 위치를 고정하지 않음(이동 가능)
+        width: "300px",
+        height: "180px",
+        popupName: "[이동 가능] iframePopup"
+    };
+
+    //모바일에서의 크기,위치 조절을 위해 공통 메소드 사용하였습니다. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions = $c.frame.getPopupPosition(jsnOptions);
+
+    // 예제 화면에서 팝업이 표시되도록 추가 설정. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions.frameModal = "parent"; // 팝업을 부모 frame영역을 기준으로 표시합니다.
+    jsnOptions.left = "10px";
+    jsnOptions.top = this.getPosition("top") + "px";
+
+    $p.openPopup("/page/P00404P01.xml", jsnOptions);
+};
+
+/**
+ * 버튼 [2.1 wframe 팝업 열기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // 동일한 팝업이 열려 있는 경우 안내 alert
+    if ($p.getPopupWindow("popup_wframe2")) {
+        alert("열려 있는 팝업이 있습니다.");
+        return;
+    }
+
+    // 팝업 생성 옵션
+    var jsnOptions = {
+        id: "popup_wframe2",
+        type: "wframePopup", // [필수 고정 값] 팝업 콘텐츠를 wframe으로 구성
+        fixPosition: "true", // [필수 고정 값] 팝업의 위치를 고정
+        width: "300px",
+        height: "180px",
+        popupName: "[이동 불가] wframePopup"
+    };
+
+    //모바일에서의 크기,위치 조절을 위해 공통 메소드 사용하였습니다. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions = $c.frame.getPopupPosition(jsnOptions);
+
+    // 예제 화면에서 팝업이 표시되도록 추가 설정. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions.frameModal = "parent"; // 팝업을 부모 frame영역을 기준으로 표시합니다.
+    jsnOptions.left = "10px";
+    jsnOptions.top = this.getPosition("top") + "px";
+
+    $p.openPopup("/page/P00404P01.xml", jsnOptions);
+};
+
+/**
+ * 버튼 [2.2 iframe 팝업 열기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // 동일한 팝업이 열려 있는 경우 안내 alert
+    if ($p.getPopupWindow("popup_iframe2")) {
+        alert("열려 있는 팝업이 있습니다.");
+        return;
+    }
+
+    // 팝업 생성 옵션
+    var jsnOptions = {
+        id: "popup_iframe2",
+        type: "iframePopup", // [필수 고정 값] 팝업 콘텐츠를 iframe으로 구성
+        fixPosition: "true", // [필수 고정 값] 팝업의 위치를 고정
+        width: "300px",
+        height: "180px",
+        popupName: "[이동 불가] iframePopup"
+    };
+
+    //모바일에서의 크기,위치 조절을 위해 공통 메소드 사용하였습니다. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions = $c.frame.getPopupPosition(jsnOptions);
+
+    // 예제 화면에서 팝업이 표시되도록 추가 설정. 기본 옵션은 최초 선언된 jsnOptions를 참고하시기 바랍니다.
+    jsnOptions.frameModal = "parent"; // 팝업을 부모 frame영역을 기준으로 표시합니다.
+    jsnOptions.left = "10px";
+    jsnOptions.top = this.getPosition("top") + "px";
+
+    $p.openPopup("/page/P00404P01.xml", jsnOptions);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="'$p.openPopup' 메소드를 사용하여 팝업을 생성할 때 팝업의 위치를 고정하는 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 마우스 사용이 가능한 환경에서 정상 동작합니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 팝업의 위치 고정하지 않기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA[1.1 wframe 팝업 열기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								style="" type="button">
+								<xf:label><![CDATA[1.2 iframe 팝업 열기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="팝업의 위치 고정하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1"
+								style="" type="button">
+								<xf:label><![CDATA[2.1 wframe 팝업 열기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_2_onclick" id="btn_exam2_2"
+								style="" type="button">
+								<xf:label><![CDATA[2.2 iframe 팝업 열기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

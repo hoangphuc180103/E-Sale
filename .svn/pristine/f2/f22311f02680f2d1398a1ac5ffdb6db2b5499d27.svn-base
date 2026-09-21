@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 브라우저에 표현하는 방식 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220907" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" id="stock" name="Stock"></w2:column>
+						<w2:column id="created_date" name="Date" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    // DataList 할당
+    dlt_exam.setJSON([
+        { "created_date": "20110715", "product": "SecureGate", "stock": "98291" },
+        { "created_date": "19991225", "product": "FastServe", "stock": "528" },
+        { "created_date": "20140321", "product": "CloudFlex", "stock": "73928" },
+        { "created_date": "20080612", "product": "CodeStream", "stock": "6894" },
+        { "created_date": "19950103", "product": "NetMax", "stock": "4536219" },
+        { "created_date": "20190523", "product": "TechAssist", "stock": "73918" },
+        { "created_date": "20171018", "product": "IntelliAI", "stock": "351" },
+        { "created_date": "20020814", "product": "StoreSafe", "stock": "9810" },
+        { "created_date": "20151230", "product": "ManageIT", "stock": "782" },
+        { "created_date": "20130809", "product": "WebBuilder", "stock": "9461" },
+        { "created_date": "20210711", "product": "EcoServe", "stock": "6547281" },
+        { "created_date": "19980422", "product": "SmartConsult", "stock": "265" },
+        { "created_date": "20160127", "product": "MobileMagic", "stock": "1746123" },
+        { "created_date": "20000516", "product": "SpeedLink", "stock": "564" },
+        { "created_date": "20030911", "product": "VirusGuard", "stock": "732" },
+        { "created_date": "20140617", "product": "DataVault", "stock": "582196" },
+        { "created_date": "20100129", "product": "GlobalSupport", "stock": "372594" },
+        { "created_date": "20170905", "product": "DataAnalyzer", "stock": "6285" },
+        { "created_date": "19960309", "product": "FrameworkPro", "stock": "6105" },
+        { "created_date": "20071011", "product": "ServeAll", "stock": "5478269" },
+        { "created_date": "20120914", "product": "CloudPro", "stock": "9461" },
+        { "created_date": "20181127", "product": "AppMagic", "stock": "97413" },
+        { "created_date": "19970830", "product": "LinkSecure", "stock": "598362" },
+        { "created_date": "20140618", "product": "HelpDesk", "stock": "732" },
+        { "created_date": "20130420", "product": "SafeWeb", "stock": "802354" },
+        { "created_date": "20050505", "product": "SmartStorage", "stock": "6547281" },
+        { "created_date": "20111212", "product": "BizManage", "stock": "9749" },
+        { "created_date": "20190803", "product": "DeepThink", "stock": "527732" },
+        { "created_date": "20020116", "product": "UltraServer", "stock": "291" },
+        { "created_date": "19990407", "product": "ExpertIT", "stock": "582196" }
+    ]);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView의 'drawType' 속성을 사용하여, GridView를 브라우저에 렌더링하는 방식을 설정한 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) WebSquare 방식(화면에 노출되는 영역만 'table'로 출력)" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+					<xf:group id="" class="gvwbox">
+						<w2:gridView rowNumWidth="34" visibleRowNumFix="true" rowNumVisible="true" dataList="data:dlt_exam"
+							style="height:120px;" autoFit="allColumn" id="" visibleRowNum="4" class="gvw" defaultCellHeight="37" autoFitMinWidth="240"
+							drawType="virtual">
+							<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+							<w2:header style="" id="header1">
+								<w2:row style="" id="row1">
+									<w2:column width="83" inputType="text" id="column1" value="Date" displayMode="label"></w2:column>
+									<w2:column width="140" inputType="text" id="column3" value="Product" displayMode="label"></w2:column>
+									<w2:column width="63" inputType="text" id="column2" value="Stock" displayMode="label"></w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody style="" id="gBody1">
+								<w2:row style="" id="row2">
+									<w2:column dataType="date" width="83" displayFormat="yyyy-MM-dd" inputType="text" id="created_date"
+										displayMode="label">
+									</w2:column>
+									<w2:column textAlign="left" width="140" inputType="text" id="product" displayMode="label" value=""></w2:column>
+									<w2:column textAlign="right" dataType="number" width="63" displayFormat="#,###" inputType="text"
+										id="stock" displayMode="label">
+									</w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView></xf:group></xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Native 방식 (데이터를 'table'로 모두 출력)" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+					<xf:group id="" class="gvwbox">
+						<w2:gridView rowNumWidth="34" rowNumVisible="true" dataList="data:dlt_exam" drawType="native" style="height:190px;"
+							autoFit="allColumn" id="" class="gvw" defaultCellHeight="37" autoFitMinWidth="240">
+							<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+							<w2:header style="" id="header1">
+								<w2:row style="" id="row1">
+									<w2:column width="83" inputType="text" id="column1" value="Date" displayMode="label"></w2:column>
+									<w2:column width="140" inputType="text" id="column3" value="Product" displayMode="label"></w2:column>
+									<w2:column width="63" inputType="text" id="column2" value="Stock" displayMode="label"></w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody style="" id="gBody1">
+								<w2:row style="" id="row2">
+									<w2:column dataType="date" width="83" displayFormat="yyyy-MM-dd" inputType="text" id="created_date"
+										displayMode="label">
+									</w2:column>
+									<w2:column textAlign="left" width="140" inputType="text" id="product" displayMode="label" value=""></w2:column>
+									<w2:column textAlign="right" dataType="number" width="63" displayFormat="#,###" inputType="text"
+										id="stock" displayMode="label">
+									</w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView></xf:group></xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

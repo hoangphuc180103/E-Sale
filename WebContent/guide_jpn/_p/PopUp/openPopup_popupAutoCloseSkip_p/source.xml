@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="source">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:aliasDataList scope="" id="aliasDataList1" userData1="../dataList1"></w2:aliasDataList>
+            	<w2:aliasDataMap scope="../dataMap1" id="aliasDataMap1"></w2:aliasDataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    const tmpSrc = scwin.getfolderPath() + "/source2.xml";
+    var options = {
+        id: "popup1",
+        type: "wframePopup",
+        height: "300px",
+        width: "300px",
+        left: "650px",
+        popupName: "Child Popup",
+    };
+    $p.openPopup(tmpSrc, options);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox style="width:313px;height:94px;font-size:50px;font-style:italic;font-weight:bolder;color: gray;" id="" label="Parent">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="display: block;height:42px;line-height:32px;padding:5px;background-color:teal;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;" id="trigger1" type="button">
+    		<xf:label><![CDATA[$p.openPopup()]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

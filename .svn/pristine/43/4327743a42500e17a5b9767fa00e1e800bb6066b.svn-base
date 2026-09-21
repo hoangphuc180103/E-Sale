@@ -1,0 +1,116 @@
+/*amd /page/P00280.xml 8852 ec97e076a7bf3a6fc21c9635cca350af149ede23bb788a4bb8c8597f5dfc9817 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}},{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',name:'Stock',id:'stock'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // DataList에 초기 데이터 할당
+  scwin.initData();
+};
+
+/**
+ * DataList 'dlt_exam'에 데이터 할당하기
+ */
+scwin.initData = function () {
+  // DataList 'dlt_exam'에 데이터 할당하기
+  let data = [{
+    "category": "Networking",
+    "product": "SpeedLink",
+    "stock": "15800"
+  }, {
+    "category": "Cloud Services",
+    "product": "CloudFlex",
+    "stock": "17800"
+  }, {
+    "category": "Support Services",
+    "product": "TechAssist",
+    "stock": "15800"
+  }, {
+    "category": "Servers",
+    "product": "EcoServe",
+    "stock": "12200"
+  }, {
+    "category": "Cloud Services",
+    "product": "CloudPro",
+    "stock": "18000"
+  }, {
+    "category": "Networking",
+    "product": "NetMax",
+    "stock": "16000"
+  }, {
+    "category": "Support Services",
+    "product": "TechTeam",
+    "stock": "17800"
+  }, {
+    "category": "Security",
+    "product": "SecureGate",
+    "stock": "28900"
+  }, {
+    "category": "Networking",
+    "product": "LinkSecure",
+    "stock": "12500"
+  }, {
+    "category": "Servers",
+    "product": "ServeTech",
+    "stock": "16300"
+  }];
+  dlt_exam.setJSON(data);
+
+  // DataList 'dlt_exam'의 모든 필터 해제하기
+  dlt_exam.clearFilter();
+};
+
+/**
+ * 버튼 [DataList의 데이터 초기화] 클릭 시
+ */
+scwin.btn_initData_onclick = function (e) {
+  scwin.initData();
+};
+
+/**
+ * 버튼 [1.1 필터 적용하기 - 'Product' 컬럼의 값에 'Tech'이 포함되고 'Category' 컬럼의 값이 'Servers'와 일치] 클릭 시
+ * 버튼 [2.1 필터 적용하기 - 'Product' 컬럼의 값에 'Tech'이 포함되고 'Category' 컬럼의 값이 'Servers'와 일치] 클릭 시
+ */
+scwin.exam_setColumnFilter = function () {
+  // DataList 'dlt_exam'에 필터를 해제합니다.
+  dlt_exam.clearFilter();
+
+  // DataList 'dlt_exam'의 'Product' 컬럼에 필터를 적용합니다. - 값에 'Tech'이 포함
+  dlt_exam.setColumnFilter({
+    "type": "row",
+    "colIndex": "product",
+    "key": "Tech",
+    "exactMatch": false,
+    "condition": "and"
+  });
+
+  // DataList 'dlt_exam'의 'Category' 컬럼에 필터를 적용합니다. - 값이 'Servers'와 일치
+  dlt_exam.setColumnFilter({
+    "type": "row",
+    "colIndex": "category",
+    "key": "Servers",
+    "exactMatch": true,
+    "condition": "and"
+  });
+};
+
+/**
+ * 버튼 [1.2 'Category' 컬럼의 필터 해제하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+  // DataList 'dlt_exam'의 'Category' 컬럼에 적용된 필터를 해제합니다.
+  dlt_exam.removeColumnFilter("category");
+};
+
+/**
+ * 버튼 [1.3 'Product' 컬럼의 필터 해제하기] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+  // DataList 'dlt_exam'의 'Product' 컬럼에 적용된 필터를 해제합니다.
+  dlt_exam.removeColumnFilter("product");
+};
+
+/**
+ * 버튼 [2.2 모든 컬럼의 필터 해제하기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+  // DataList 'dlt_exam'에 적용된 모든 필터를 해제합니다.
+  dlt_exam.clearFilter();
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'DataList의 \'removeColumnFilter\' 메소드와 \'clearFilter\' 메소드를 사용하여 컬럼에 적용된 필터를 해제하는 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'ws_example_txt_desc_info',id:'',label:'순서에 맞게 버튼을 클릭하여 GridView의 출력 결과를 확인합니다.',style:'',escape:'false'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mb_def',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style no_padding',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm',disabled:'',escape:'false','ev:onclick':'scwin.btn_initData_onclick',id:'btn_initData',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'DataList의 데이터 초기화'}]}]}]}]},{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'컬럼에 적용된 필터 해제하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.exam_setColumnFilter',id:'',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.1 필터 적용하기 - \'Product\' 컬럼의 값에 \'Tech\'이 포함되고 \'Category\' 컬럼의 값이 \'Servers\'와 일치'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_2_onclick',id:'btn_exam1_2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.2 \'Category\' 컬럼의 필터 해제하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.btn_exam1_3_onclick',id:'btn_exam1_3',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'1.3 \'Product\' 컬럼의 필터 해제하기'}]}]}]}]},{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'모든 컬럼에 적용된 필터 해제하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false','ev:onclick':'scwin.exam_setColumnFilter',id:'',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.1 필터 적용하기 - \'Product\' 컬럼의 값에 \'Tech\'이 포함되고 \'Category\' 컬럼의 값이 \'Servers\'와 일치'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',escape:'false',id:'btn_exam2_2',style:'',type:'button','ev:onclick':'scwin.btn_exam2_2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'2.2 모든 컬럼의 필터 해제하기'}]}]}]}]},{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'결과 확인용 GridView',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'gvwbox',id:'',style:'max-width: 400px;'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'220',class:'gvw',dataList:'data:dlt_exam',defaultCellHeight:'37',id:'',initFixedHeightByRowNum:'4',noResultMessage:'No data to display',readOnly:'true',rowNumWidth:'34',style:'height:80px;',tooltipDisplay:'true',visibleRowNum:'4'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',style:'',value:'Category',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',style:'',value:'Product',width:'80'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column1',inputType:'text',style:'',value:'Stock',width:'60'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'category',inputType:'text',style:'',textAlign:'left',width:'100'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'product',inputType:'text',style:'',textAlign:'left',width:'80'}},{T:1,N:'w2:column',A:{dataType:'number',displayFormatter:'#,###',displayMode:'label',id:'stock',inputType:'text',style:'',textAlign:'right',width:'60'}}]}]}]}]}]}]}]}]}]}]}]})

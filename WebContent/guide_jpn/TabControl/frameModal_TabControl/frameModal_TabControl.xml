@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[scwin.count = 0;
+
+scwin.onpageload = function () {
+    text1.hide();
+    text2.hide();
+
+    var tmpSrc = scwin.getfolderPath() + "/02_openPopUp_tab.xml";
+   
+    scwin.count++;
+    tabControl1.addTab(scwin.count,
+        {
+            label: "frameModal='true'",
+            title: "frameModal='true'",
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc,
+            "frameMode": "wframe"
+        }
+    );
+    tabControl1.setSelectedTabIndex(scwin.count);
+    
+    tabControl2.addTab(scwin.count,
+        {
+            label: "frameModal='false'",
+            title: "frameModal='false'",
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc,
+            "frameMode": "wframe"
+        }
+    );
+    tabControl2.setSelectedTabIndex(scwin.count);
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="タブによって作成された親 - 子ポップアップで閉じる" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='（最初のTabControl）&lt;br/&gt;1-1. 各ボタンをクリックして、親子関係のポップアップを連続して作成します。&lt;br/&gt;1-2. 親ポップアップを閉じます。&lt;br/&gt;1-3. 親ポップアップに属する子ポップアップもすべて閉じられることを確認。 (frameModal="true")&lt;br/&gt;&lt;br/&gt;（2 番目の TabControl）&lt;br/&gt;2-1. 各ボタンをクリックして、親子関係のポップアップを連続して作成します。&lt;br/&gt;2-2. 親ポップアップを閉じます。&lt;br/&gt;2-3. 親ポップアップのみが閉じていることを確認してください。 (frameModal="false")' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;" id="textbox4" label='プロパティの設定&lt;br/&gt;frameModal="true" (TabControl)&lt;br/&gt;frameMode="wframe" / "wframePreload" (tabControl.content)&lt;br/&gt;' escape="false">
+    	</w2:textbox><w2:tabControl frameModal="true" alwaysDraw="false" style="border: gray solid 1px;margin-bottom: 10px;height: 300px;" id="tabControl1"></w2:tabControl><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;" id="textbox5" label='プロパティの設定&lt;br/&gt;frameModal="false" (TabControl)' escape="false">
+    		</w2:textbox>
+    		<w2:tabControl alwaysDraw="false" style="border: gray solid 1px;height: 300px;" id="tabControl2"></w2:tabControl>
+    		<w2:textbox style="width: 150px;height: 23px;" id="text1" label="A"></w2:textbox>
+    		<w2:textbox style="width: 150px;height: 23px;" id="text2" label="B"></w2:textbox></xf:group>
+    </body>
+</html>

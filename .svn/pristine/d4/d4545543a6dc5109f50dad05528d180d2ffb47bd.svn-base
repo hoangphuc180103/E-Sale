@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+            			<w2:column dataType="text" id="col2" name="Country"></w2:column>
+            			<w2:column dataType="text" id="col3" name="Item"></w2:column>
+            			<w2:column dataType="text" id="col4" name="Quantity"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList2" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="label" name="name1" dataType="text"></w2:column>
+            			<w2:column id="value" name="name2" dataType="text"></w2:column>
+            			<w2:column id="type" name="name3" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<label><![CDATA[Asia]]></label>
+            				<value><![CDATA[Asia]]></value>
+            				<type><![CDATA[true]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Europe]]></label>
+            				<value><![CDATA[Europe]]></value>
+            				<type><![CDATA[true]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Americas]]></label>
+            				<value><![CDATA[Americas]]></value>
+            				<type><![CDATA[false]]></type>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList3" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="label" name="label" dataType="text"></w2:column>
+            			<w2:column id="value" name="value" dataType="text"></w2:column>
+            			<w2:column id="type" name="type" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<label><![CDATA[TV]]></label>
+            				<value><![CDATA[TV]]></value>
+            				<type><![CDATA[na]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Freezer]]></label>
+            				<value><![CDATA[Freezer]]></value>
+            				<type><![CDATA[cold]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Washer]]></label>
+            				<value><![CDATA[Washer]]></value>
+            				<type><![CDATA[hot]]></type>
+            			</w2:row>
+            			<w2:row>
+            				<label><![CDATA[Heater]]></label>
+            				<value><![CDATA[Heater]]></value>
+            				<type><![CDATA[hot]]></type>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		var json = [
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "TV", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Washer", "col4" : "100"},
+			{"col1" : "Asia", "col2" : "Korea", "col3" : "Heater", "col4" : "250"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "TV", "col4" : "400"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Asia", "col2" : "China", "col3" : "Washer", "col4" : "100"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Asia", "col2" : "Japan", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Europe", "col2" : "Germany", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Europe", "col2" : "France", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Europe", "col2" : "Denmark", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Americas", "col2" : "Canada", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Americas", "col2" : "USA", "col3" : "Washer", "col4" : "200"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "TV", "col4" : "100"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "Freezer", "col4" : "300"},
+			{"col1" : "Americas", "col2" : "Mexico", "col3" : "Washer", "col4" : "200"}
+			];
+		dataList1.setJSON(json);
+	};
+	
+	scwin.onpageunload = function() {		
+			
+	};
+	
+	
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Show both Sort and Filter Icons&lt;br/&gt;"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(For the first GridView)&lt;br/&gt;Confirm that both the sort icon and filter icon are displayed. (showSortableUseFilter=“true”)&lt;br/&gt;&lt;br/&gt;(For the second GridView)&lt;br/&gt;Confirm that only the sort icon is displayed. (showSortableUseFilter=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='showSortableUseFilter="true"' escape="false">
+    	</w2:textbox>
+    	<w2:gridView showSortableUseFilter="true" scrollByColumnAdaptive="false" rowNumVisible="" showSortableImage="true"
+    		useShiftKey="true" scrollByColumn="false" sortable="true" defaultCellHeight="20" noResultMessageVisible="" focusMode="cell"
+    		selectedCellColor="#FF8040" checkAllType="false" dataList="data:dataList1" copyType="native" style="border: solid gray 1px;margin-bottom: 10px;"
+    		id="gridView1" autoFit="allColumn" useFilterList="true" useCtrlKey="" copyOption="" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="" style="height:20px" id="column4" value="Continent" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Country" displayMode="label" useFilter="true"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column2" value="Item" displayMode="label"
+    					useFilter="true">
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column1" value="Quantity" displayMode="label" useFilter="true"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column ref="" chooseOption="" width="70" inputType="select" style="height:20px" id="col1" allOption="" value=""
+    					displayMode="label" embeddedInput="">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList2">
+    							<w2:label ref="label"></w2:label>
+    							<w2:value ref="value"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column ref="" chooseOption="" width="70" validateOnInput="" inputType="checkcombobox" style="height:20px" id="col3"
+    					allOption="" value="" displayMode="label">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList3">
+    							<w2:label ref="label"></w2:label>
+    							<w2:value ref="value"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column dataType="" width="70" inputType="text" style="height:20px" id="col4" value="" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5" label='showSortableUseFilter="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:gridView autoFit="allColumn" checkAllType="false" copyOption="" copyType="native" dataList="data:dataList1"
+    		defaultCellHeight="20" focusMode="cell" id="gridView2" noResultMessageVisible="" rowNumVisible="" scrollByColumn="false"
+    		scrollByColumnAdaptive="false" selectedCellColor="#FF8040" showSortableImage="true" sortable="true"
+    		style="border: solid gray 1px;" useCtrlKey="" useFilterList="true" useShiftKey="true" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption id="caption2" style="" value="this is a grid caption."></w2:caption>
+    		<w2:header id="header1" style="">
+    			<w2:row id="row1" style="">
+    				<w2:column displayMode="label" id="column4" inputType="" style="height:20px" value="Continent" width="70" useFilter="true"></w2:column>
+    				<w2:column displayMode="label" id="column3" inputType="text" style="height:20px" value="Country" width="70" useFilter="true"></w2:column>
+    				<w2:column displayMode="label" id="column2" inputType="text" style="height:20px" useFilter="true" value="Item"
+    					width="70">
+    				</w2:column>
+    				<w2:column displayMode="label" id="column1" inputType="text" style="height:20px" value="Quantity" width="70" useFilter="true"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody id="gBody1" style="">
+    			<w2:row id="row2" style="">
+    				<w2:column allOption="" chooseOption="" displayMode="label" embeddedInput="" id="col1" inputType="select" ref=""
+    					style="height:20px" value="" width="70">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList2">
+    							<w2:label ref="label"></w2:label>
+    							<w2:value ref="value"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column displayMode="label" id="col2" inputType="text" style="height:20px" value="" width="70"></w2:column>
+    				<w2:column allOption="" chooseOption="" displayMode="label" id="col3" inputType="checkcombobox" ref=""
+    					style="height:20px" validateOnInput="" value="" width="70">
+    					<w2:choices>
+    						<w2:itemset nodeset="data:dataList3">
+    							<w2:label ref="label"></w2:label>
+    							<w2:value ref="value"></w2:value>
+    						</w2:itemset>
+    					</w2:choices>
+    				</w2:column>
+    				<w2:column dataType="" displayMode="label" id="col4" inputType="text" style="height:20px" value="" width="70"></w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    </xf:group></body>
+</html>

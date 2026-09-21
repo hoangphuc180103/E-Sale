@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+        var tmpSrc = scwin.getfolderPath() + "/tabs_added.xml";
+
+		var tabOptions = {};
+		for (var i = 0; i < 7; i++) {
+			var addCount = i + 1;
+			var tabOptions = {
+				label : "Tab " + addCount,
+				openAction: "new",
+				closable: "true"
+			}
+			var contentsOptions = {
+                    frameMode : "wframe",
+                    alwaysDraw : false,
+                    src: tmpSrc
+                }
+			tabControl1.addTab(i, tabOptions, contentsOptions);
+			tabControl2.addTab(i, tabOptions, contentsOptions);
+		}
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="탭 위치 설정" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='탭이 tabPosition 설정에 따라 표시되는 것을 확인.' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;tabPosition="top"' escape="false">
+    	</w2:textbox>
+    	<w2:tabControl confirmTrueAction="exist" useTabKeyOnly="true" confirmFalseAction="new" useMoveNextTabFocus="false"
+    		useConfirmMessage="false" alwaysDraw="false" style="border: gray solid 1px;height: 200px;margin-bottom: 10px;" tabPosition="top"
+    		id="tabControl1" tabRole="true">
+    	</w2:tabControl>
+    	<w2:textbox escape="false" id="textbox5" label='속성 설정&lt;br/&gt;tabPosition="bottom"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<w2:tabControl alwaysDraw="false" confirmFalseAction="new" confirmTrueAction="exist" id="tabControl2"
+    		style="border: gray solid 1px;height: 200px;margin-bottom: 10px;" tabPosition="bottom" tabRole="true" useConfirmMessage="false"
+    		useMoveNextTabFocus="false" useTabKeyOnly="true">
+    	</w2:tabControl>
+    </xf:group></body>
+</html>

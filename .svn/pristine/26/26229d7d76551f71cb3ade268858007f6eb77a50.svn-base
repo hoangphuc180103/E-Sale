@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 엑셀 다운로드 시 데이터의 좌우 공백 제거하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230310" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+						<w2:column dataType="text" name="C" id="col_c"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[   A 1   ]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[   A 2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A 3   ]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 기본] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00232_TYPE1.xlsx"
+    };
+
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};
+
+/**
+ * 버튼 [엑셀 다운로드 - 데이터 좌우 공백 제거] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var jsnOptions;
+
+    jsnOptions = {
+        fileName: "EXAMPLE_P00232_TYPE2.xlsx", //엑셀의 파일명
+        trim: "true" //데이터 좌우 공백 제거
+    };
+    //options.trim <String:N> [default: false] gridView 데이터를 좌우 공백 적용 유무 (true 설정시 공백 제거 후 적용)
+
+    //GridView "grd_exam1"의 엑셀 다운로드 실행
+    grd_exam1.advancedExcelDownload(jsnOptions);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox class="" escape="false" id=""
+					label="GridView의 'advancedExcelDownload' 메소드의 첫 번째 인자인 JSON 객체의 'trim' 속성을 사용하여, 엑셀 다운로드 시 셀 데이터의 좌우 공백이 제거되도록 설정한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="mb_def_box nobottom" id="" style="">
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+						style="min-width: 30px; height: 26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 기본]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" localeRef=""
+						style="min-width: 30px; height: 26px;" type="" useDefaultLabel="true">
+						<xf:label><![CDATA[엑셀 다운로드 - 데이터 좌우 공백 제거]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group id="" class="gvwbox">
+					<w2:gridView rowNumVisible="true" rowNumWidth="40" keepDefaultColumnWidth="true" dataList="data:dlt_exam"
+						style="height:100px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="3" class="gvw" defaultCellHeight="37" autoFitMinWidth="250">
+						<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+						<w2:header style="" id="header1">
+							<w2:row style="" id="row1">
+								<w2:column width="70" inputType="text" style="" id="column3" value="A" displayMode="label"></w2:column>
+								<w2:column width="70" inputType="text" style="" id="column2" value="B" displayMode="label"></w2:column>
+								<w2:column width="70" inputType="text" style="" id="column1" value="C" displayMode="label"></w2:column>
+							</w2:row>
+						</w2:header>
+						<w2:gBody style="" id="gBody1">
+							<w2:row style="" id="row2">
+								<w2:column width="70" inputType="text" style="" id="col_a" value="" displayMode="label" class="P00000_preColumn"></w2:column>
+								<w2:column width="70" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+								<w2:column width="70" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+							</w2:row>
+						</w2:gBody>
+					</w2:gridView>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

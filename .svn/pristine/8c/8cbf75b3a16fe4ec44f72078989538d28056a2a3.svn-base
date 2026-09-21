@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="name1"></w2:column>
+            			<w2:column dataType="text" id="col2" name="name2"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+    
+	scwin.onpageload = function() {
+		var data = [];
+		for (var i = 0; i < 20 ; i ++) {
+			data.push(i + "");
+			data.push(i + "" + "_v");
+		}
+		dataList1.setData(data, true);
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};	
+	
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="Allow Selection via Keyboard Input&lt;br/&gt;" style="color: blue;margin-bottom: 10px;" tabIndex="h1"
+    		tagname="h1">
+    	</w2:textbox>
+    	<w2:textbox id="textbox2" label="How to Use" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label="(First CheckComboBox)&lt;br/&gt;1. Click the CheckComboBox.&lt;br/&gt;2. Confirmthat you can directly enter a value.&lt;br/&gt;2-1. When entering a value present in the selection list, confirm that the value is selected and entered.&lt;br/&gt;2-2. When entering a value not present in the list, confirm that the entered value is displayed but disappears when focus is moved.&lt;br/&gt;&lt;br/&gt;(Second CheckComboBox)&lt;br/&gt;1. Click the CheckComboBox.&lt;br/&gt;2. Confirm that you cannot enter a value because it does not switch to edit mode."
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox escape="false" id="textbox4" label='useEdit="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<xf:checkcombobox visibleColumn="" displayAllOptionLabel="false" submenuSize="auto" chooseOption="" allOption="" separator=","
+    		displayMode="label" visibleColMax="" ref="" appearance="minimal" checkboxClickSync="true" useEdit="true" validateOnInput=""
+    		disabled="false" style="width: 50%;display: block;margin-bottom: 10px;" allowChar="0-9,-" id="checkcombobox1" visibleRowNum="" useDrag="true"
+    		rangeSeparator="-" direction="auto" visibleColNum="5">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="col1"></xf:label>
+    				<xf:value ref="col2"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:checkcombobox>
+    	<w2:textbox escape="false" id="textbox5" label='useEdit="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<xf:checkcombobox allOption="" allowChar="0-9,-" appearance="minimal" checkboxClickSync="true" chooseOption="" direction="auto"
+    		disabled="false" displayAllOptionLabel="false" displayMode="label" id="checkcombobox2" rangeSeparator="-" ref="" separator=","
+    		style="width: 50%;display: block;" submenuSize="auto" useDrag="true" useEdit="false" validateOnInput="" visibleColMax=""
+    		visibleColNum="5" visibleColumn="" visibleRowNum="">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="col1"></xf:label>
+    				<xf:value ref="col2"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:checkcombobox>
+    </xf:group></body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="pageFrame_createWindow_WindowContainer.xml">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+var tmpSrc = scwin.getfolderPath() + "/page_component.xml";
+
+    windowContainer1.createWindow({
+        "title": "PageFrame Window",
+        "src": tmpSrc,
+        "windowId": "window1",
+        "frameMode": "pageFrame",
+        "options.defaultWidth": "330",
+        "options.defaultHeight": "500"
+    });
+
+};
+
+scwin.trigger2_onclick = function (e) {
+    var myWindow = windowContainer1.getWindowByWindowId("window1");
+    myWindow.scwin.borderFirst();
+};
+
+scwin.trigger3_onclick = function (e) {
+    var myWindow = windowContainer1.getWindowByWindowId("window1");
+    myWindow.scwin.borderSecond();
+};
+
+scwin.trigger4_onclick = function (e) {
+    var myWindow = windowContainer1.getWindowByWindowId("window1");
+    myWindow.scwin.setBrown();
+};
+
+scwin.trigger5_onclick = function (e) {
+    var myWindow = windowContainer1.getWindowByWindowId("window1");
+    myWindow.scwin.showAll();
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Create PageFrame Window&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. Click the first button to create a PageFrame window. &amp;nbsp;&lt;br/&gt;2. Confirm that the Page Component file used as the source (src) for the PageFrame window is displayed. (This example uses the page_component.xml file.) &amp;nbsp;&lt;br/&gt;3. Review the methods added to the Page Component. &amp;nbsp;&lt;br/&gt;4. Click each button at the bottom.&lt;br/&gt;5. Confirm that you can directly execute the Page Component's methods within the PageFrame window." escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[windowContainer1.createWindow();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[myWindow.scwin.borderFirst();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger3_onclick" style="height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger3" type="button">
+    		<xf:label><![CDATA[myWindow.scwin.borderSecond();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger4_onclick" style="height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger4" type="button">
+    		<xf:label><![CDATA[myWindow.scwin.setBrown();]]></xf:label>
+    	</xf:trigger><xf:trigger ev:onclick="scwin.trigger5_onclick" style="height:42px;line-height:32px;padding:5px;background-color:lightgreen;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger5" type="button">
+    		<xf:label><![CDATA[myWindow.scwin.showAll();]]></xf:label>
+    	</xf:trigger><w2:windowContainer defaultHeight="340" style="position: relative;height: 400px;border: gray solid 1px;" id="windowContainer1" defaultWidth="330">
+    		<w2:windowToolbar>
+    			<w2:controlIconLayer>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    				<w2:controlIcon></w2:controlIcon>
+    			</w2:controlIconLayer>
+    			<w2:nameLayer></w2:nameLayer>
+    			<w2:selectedNameLayer></w2:selectedNameLayer>
+    		</w2:windowToolbar>
+    	</w2:windowContainer></xf:group></body>
+</html>

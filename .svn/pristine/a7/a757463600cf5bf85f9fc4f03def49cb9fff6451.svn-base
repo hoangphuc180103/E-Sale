@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="컴포넌트의 Plugin Name">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220907" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="Textarea에 출력 값 오류 수정" meta_date="20231127" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam_code" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="label" name="label" dataType="text"></w2:column>
+						<w2:column id="code" name="code" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    scwin.dispGenerator();
+};
+
+scwin.dispGenerator = function () {
+    var arrData = ["Accordion", "accordion", "AliasDataList", "aliasDataList", "AliasDataMap", "aliasDataMap", "AliasLinkedDataList", "aliasLinkedDataList", "Anchor", "anchor", "AutoComplete", "autoComplete", "Calendar", "calendar", "Checkbox", "checkbox", "Checkcombobox", "checkcombobox", "DataList", "dataList", "DataMap", "dataMap", "DatePicker", "datePicker", "Editor", "editor", "Fliptoggle", "fliptoggle", "FloatingLayer", "floatingLayer", "Fusionchart", "fusionchart", "FwBulletChart", "fwBulletChart", "FwFunnelChart", "fwFunnelChart", "FwGanttChart", "fwGanttChart", "FwGaugeChart", "fwGaugeChart", "FwPyramidChart", "fwPyramidChart", "FwRealtimeChart", "fwRealtimeChart", "FwSparkChart", "fwSparkChart", "Generator", "generator", "GridView", "gridView", "Group", "group", "Iframe", "iframe", "Image", "image", "Input", "input", "InputCalendar", "inputCalendar", "LinkedDataList", "linkedDataList", "Mapchart", "mapchart", "Multiselect", "multiselect", "Multiupload", "multiupload", "Output", "output", "PageControl", "pageControl", "PageInherit", "pageInherit", "PageList", "pageList", "Pivot", "pivot", "Progressbar", "progressbar", "Radio", "radio", "Repeat", "repeat", "RoundRectangle", "roundRectangle", "ScheduleCalendar", "scheduleCalendar", "ScrollView", "scrollView", "Searchbox", "searchbox", "SelectBox", "selectbox", "SlideHide", "slideHide", "Slider", "slider", "Span", "span", "Spinner", "spinner", "Switch", "Switch", "TabControl", "tabControl", "Textarea", "textarea", "Textbox", "textbox", "Treeview", "treeview", "Trigger", "trigger", "Upload", "upload", "Wframe", "wframe", "WidgetContainer", "widgetContainer", "WindowContainer", "windowContainer",];
+    var _cmpGen = gen_exam1;
+    var i, i_max;
+    var strTbxValue = "";
+    var strLabel, strValue;
+
+    for (i = 0, i_max = arrData.length / 2; i < i_max; i++) {
+        strLabel = arrData[i * 2];
+        strValue = arrData[i * 2 + 1];
+
+        _cmpGen.insertChild();
+        _cmpGen.getChild(i, "tbx_label").setValue(strLabel);
+        _cmpGen.getChild(i, "tbx_pluginName").setValue(strValue);
+
+        if (i > 0) { strTbxValue += "\n" }
+        strTbxValue += strLabel + ' : "' + strValue + '"';
+    }
+
+    txa_pluginNames.setValue(strTbxValue);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='컴포넌트의 Plugin Name입니다.&lt;br/&gt;컴포넌트의 메소드 "getPluginName"를 호출했을 때의 반환 값 예시입니다.'
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="tbcbox" id="" style="">
+				<w2:tabControl alwaysDraw="true" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="" style="" tabScroll=""
+					useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+					<w2:tabs disabled="false" id="tabs1" label="표로 보기" style="" closable="false"></w2:tabs>
+					<w2:tabs disabled="false" id="tabs2" label="TextArea로 보기" style="" closable="false"></w2:tabs>
+					<w2:content alwaysDraw="true" id="content1" style="">
+						<w2:generator class="example_div_tb_st_tp2 fd_col tr400 th140" id="gen_exam1" style="">
+							<xf:group class="" id="" style="">
+								<xf:group class="" id="">
+									<w2:textbox class="tar" escape="false" id="tbx_label" label="label" style=""></w2:textbox>
+								</xf:group>
+								<xf:group class="" id="" style="">
+									<w2:textbox class="" escape="false" id="tbx_pluginName" label="text" style=""></w2:textbox>
+								</xf:group>
+							</xf:group>
+						</w2:generator>
+					</w2:content>
+					<w2:content alwaysDraw="true" id="content2" style="">
+						<xf:textarea class="" id="txa_pluginNames" style="width: 100%;max-width:400px;height: 300px;line-height:1.8em;"></xf:textarea>
+					</w2:content>
+				</w2:tabControl>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

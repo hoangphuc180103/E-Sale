@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="getAllDataCollection_data_$p">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="CNT" name="Country" dataType="text"></w2:column>
+            			<w2:column id="CAP" name="Capital" dataType="text"></w2:column>
+            			<w2:column id="CONT" name="Continent" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<CNT><![CDATA[Korea]]></CNT>
+            				<CAP><![CDATA[Seoul]]></CAP>
+            				<CONT><![CDATA[Asia]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[Japan]]></CNT>
+            				<CAP><![CDATA[Tokyo]]></CAP>
+            				<CONT><![CDATA[Asia]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[China]]></CNT>
+            				<CAP><![CDATA[Beijing]]></CAP>
+            				<CONT><![CDATA[Asia]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[France]]></CNT>
+            				<CAP><![CDATA[Bangkok]]></CAP>
+            				<CONT><![CDATA[Europe]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[Norway]]></CNT>
+            				<CAP><![CDATA[Oslo]]></CAP>
+            				<CONT><![CDATA[Europe]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[Spain]]></CNT>
+            				<CAP><![CDATA[Madrid]]></CAP>
+            				<CONT><![CDATA[Europe]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[Canada]]></CNT>
+            				<CAP><![CDATA[Ottawa]]></CAP>
+            				<CONT><![CDATA[America]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[Egypt]]></CNT>
+            				<CAP><![CDATA[Cairo]]></CAP>
+            				<CONT><![CDATA[Africa]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[Kenya]]></CNT>
+            				<CAP><![CDATA[Nairobi]]></CAP>
+            				<CONT><![CDATA[Africa]]></CONT>
+            			</w2:row>
+            			<w2:row>
+            				<CNT><![CDATA[Thailand]]></CNT>
+            				<CAP><![CDATA[Bangkok]]></CAP>
+            				<CONT><![CDATA[Asia]]></CONT>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataMap baseNode="map" id="dataMap1">
+            		<w2:keyInfo>
+            			<w2:key id="CNT" name="Country" dataType="text"></w2:key>
+            			<w2:key id="CAP" name="Capital" dataType="text"></w2:key>
+            			<w2:key id="CONT" name="Continent" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            		<w2:data use="true">
+            			<Canada><![CDATA[ ]]></Canada>
+            			<Canada><![CDATA[ ]]></Canada>
+            			<CNT><![CDATA[Canada]]></CNT>
+            			<CAP><![CDATA[Ottawa]]></CAP>
+            			<CONT><![CDATA[America]]></CONT>
+            		</w2:data>
+            	</w2:dataMap>
+            	<w2:linkedDataList bind="dataList1" id="linkedDataList1">
+            		<w2:condition type="filter"><![CDATA[CONT=="Asia"]]></w2:condition>
+            		<w2:condition type="sort"><![CDATA[]]></w2:condition>
+            	</w2:linkedDataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    const tmpSrc = scwin.getfolderPath() + "/source_getAllDataCollection.xml";
+    pageFrame1.setSrc(tmpSrc);
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    var arrResult = $p.data.getAllDataCollection();
+    var toShow = JSON.stringify(arrResult);
+    alert(toShow);
+};
+
+scwin.trigger2_onclick = function (e) {
+    var object = $p.data.getAllDataCollection("object");
+    var strType = object[0].getObjectType();
+    alert(strType);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="完全なDataCollection IDまたはオブジェクトを返す"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. ボン例画面上 Ctrl + 右クリック後, dataCollection 見るメニュー選択。 &lt;br/&gt;2. ボン例画面上定義された DataCollection オブジェクト確認。 &lt;br/&gt;3. ボン例画面上含まれる PageFrameから Ctrl + 右クリック後, dataCollection 見るメニュー選択。 &lt;br/&gt;4. PageFrameのソース(src) 画面上定義された DataCollection オブジェクト確認。 &lt;br/&gt;&lt;br/&gt;5-1. 初めて目ボタンクリック。 &lt;br/&gt;5-2. PageFrameを含むボン例画面全体に定義された DataCollection オブジェクトの ID秋表示されるもの確認。&lt;br/&gt;&lt;br/&gt;6-1. 二つ目ボタンクリック。 &lt;br/&gt;6-2. PageFrameを含むボン例画面全体に定義された DataCollection オブジェクト返されるもの確認。 &lt;br/&gt;（詳細スクリプトは Script タブから確認。）'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger1" type="button" class="btn_cm">
+    		<xf:label><![CDATA[$p.data.getAllDataCollection();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    		id="trigger2" type="button" class="btn_cm">
+    		<xf:label><![CDATA[$p.data.getAllDataCollection("object"); &nbsp;]]></xf:label>
+    	</xf:trigger>
+    	<w2:pageFrame style="height: 300px;border: solid gray 1px;margin-bottom: 10px;" id="pageFrame1"></w2:pageFrame>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='/// サンプルコード (1)&lt;br/&gt;&lt;br/&gt;var arrResult = $p.data.getAllDataCollection();&lt;br/&gt;var toShow = JSON.stringify(arrResult);&lt;br/&gt;alert(toShow);&lt;br/&gt;&lt;br/&gt;/// サンプルコード (2)&lt;br/&gt;&lt;br/&gt;var object = $p.data.getAllDataColle = object[0].getObjectType();&lt;br/&gt;alert(strType);&lt;br/&gt;&lt;br/&gt;'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

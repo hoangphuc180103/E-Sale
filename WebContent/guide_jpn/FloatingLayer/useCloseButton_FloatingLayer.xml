@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="閉じるボタン有効/無効" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1.最初のFloatingLayerの場合、右上に閉じるボタンが表示されていることを確認してください。 (useCloseButton="true")&lt;br/&gt;2.閉じるボタンをクリックすると、FloatingLayerが閉じることを確認します。&lt;br/&gt;2. 2番目のFloatingLayerの場合、右上に閉じるボタンが表示されないことを確認してください。 (useCloseButton="false")' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;useCloseButton="true"' escape="false">
+    	</w2:textbox>
+    	<w2:floatingLayer style="width: 300px;height: 300px;" id="floatingLayer1" title="Title">
+    	</w2:floatingLayer>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;margin-top: 10px;"
+    		id="textbox5" label='プロパティの設定&lt;br/&gt;useCloseButton="false"' escape="false">
+    	</w2:textbox>
+    	<w2:floatingLayer useCloseButton="false" style="width: 300px;height: 300px;" id="floatingLayer2" title="Title"></w2:floatingLayer></xf:group></body>
+</html>

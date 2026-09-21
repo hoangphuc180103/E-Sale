@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[PageList] 페이지 번호 좌우 기능 버튼의 유형 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231120" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // PageList 'pgc_exam1', 'pgc_exam2', 'pgc_exam3', 'pgc_exam4', 'pgc_exam5'의 전체 페이지 수를 52로 설정합니다.
+    pgl_exam1.setCount(52);
+    pgl_exam2.setCount(52);
+    pgl_exam3.setCount(52);
+    pgl_exam4.setCount(52);
+    pgl_exam5.setCount(52);
+};
+]]>
+		</script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="PageList의 'buttonShowType' 속성을 사용하여 페이지 번호의 좌우 기능 버튼의 유형을 비교하는 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox escape="false" id=""
+					label="예제의 PageList는 다음의 조건이 동일하게 설정되었습니다.&lt;br/&gt;- 화면에 표시할 페이지 수('pageSize' 속성) : '10'&lt;br/&gt;- 전체 페이지 수 : '52'" style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="buttonShowType: 0" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="이전 목록, 페이지 번호, 다음 목록" style=""></w2:textbox>
+						<w2:pageList displayFormat="#" id="pgl_exam1" style="height: 24px;" buttonShowType="0"></w2:pageList>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='(기본 설정) buttonShowType="1"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="이전 목록, 이전 페이지, 페이지 번호, 다음 페이지, 다음 목록" style=""></w2:textbox>
+						<w2:pageList buttonShowType="1" displayFormat="#" id="pgl_exam2" style="height: 24px;"></w2:pageList>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="buttonShowType: 2" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="이전 페이지, 페이지 번호, 다음 페이지" style=""></w2:textbox>
+						<w2:pageList buttonShowType="2" displayFormat="#" id="pgl_exam3" style="height: 24px;"></w2:pageList>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="buttonShowType: 3" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="첫 페이지, 이전 목록, 페이지 번호, 다음 목록, 마지막 페이지" style=""></w2:textbox>
+						<w2:pageList buttonShowType="3" displayFormat="#" id="pgl_exam4" style="height: 24px;"></w2:pageList>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="buttonShowType: 4" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="첫 페이지, 이전 페이지, 페이지 번호, 다음 페이지, 마지막 페이지" style=""></w2:textbox>
+						<w2:pageList buttonShowType="4" displayFormat="#" id="pgl_exam5" style="height: 24px;"></w2:pageList>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

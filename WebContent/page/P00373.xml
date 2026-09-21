@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[InputCalendar] 달력 유형(연월일, 연월, 연월일시분초 등) 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230907" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    // InputCalendar에 할당할 날짜 문자열. 연월일시분초(yyyyMMddHHmmss)
+    let strCurDate = "20241231235959";
+
+    // InputCalendar 'ica_exam1'의 초기 값 할당
+    // calendarValueType="yearMonthDate" : 연월일(yyyyMMdd)
+    ica_exam1.setValue(strCurDate.substring(0, 8));
+
+    // InputCalendar 'ica_exam2'의 초기 값 할당
+    // calendarValueType="yearMonth" : 연월(yyyyMM)
+    ica_exam2.setValue(strCurDate.substring(0, 6));
+
+    // InputCalendar 'ica_exam3'의 초기 값 할당
+    // calendarValueType="year" : 연도(yyyy)
+    ica_exam3.setValue(strCurDate.substring(0, 4));
+
+    // InputCalendar 'ica_exam4'의 초기 값 할당
+    // calendarValueType="yearMonthDateHour" : 연월일시(yyyyMMddHH)
+    ica_exam4.setValue(strCurDate.substring(0, 10));
+
+    // InputCalendar 'ica_exam5'의 초기 값 할당
+    // calendarValueType="yearMonthDateTime" : 연월일시분(yyyyMMddHHmm)
+    ica_exam5.setValue(strCurDate.substring(0, 12));
+
+    // InputCalendar 'ica_exam6'의 초기 값 할당
+    // calendarValueType="yearMonthDateTimeSec" : 연월일시분초(yyyyMMddHHmmss)
+    ica_exam6.setValue(strCurDate.substring(0, 14));
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents P00373" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="InputCalendar의 'calendarValueType' 속성 설정에 따른 입력 필드의 출력 형식과 달력 UI를 비교하는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="" id="" style="">
+							<w2:span class="wre_txt_list" id="" label="(기본 설정) yearMonthDate"
+								style="display: block;margin-bottom:6px;">
+							</w2:span>
+							<w2:inputCalendar id="ica_exam1" style="width: 120px;min-height: 26px;" calendarValueType="yearMonthDate"></w2:inputCalendar>
+						</xf:group>
+						<xf:group class="" id="" style="">
+							<w2:span class="wre_txt_list" id="" label="yearMonth" style="display: block;margin-bottom:6px;">
+							</w2:span>
+							<w2:inputCalendar calendarValueType="yearMonth" id="ica_exam2" style="width: 100px;min-height: 26px;"></w2:inputCalendar>
+						</xf:group>
+						<xf:group class="" id="" style="">
+							<w2:span class="wre_txt_list" id="" label="year" style="display: block;margin-bottom:6px;">
+							</w2:span>
+							<w2:inputCalendar calendarValueType="year" id="ica_exam3" style="width: 80px;min-height: 26px;"></w2:inputCalendar>
+						</xf:group>
+						<xf:group class="" id="" style="">
+							<w2:span class="wre_txt_list" id="" label="yearMonthDateHour" style="display: block;margin-bottom:6px;">
+							</w2:span>
+							<w2:inputCalendar calendarValueType="yearMonthDateHour" id="ica_exam4" style="width: 136px;min-height: 26px;"></w2:inputCalendar>
+						</xf:group>
+						<xf:group class="" id="" style="">
+							<w2:span class="wre_txt_list" id="" label="yearMonthDateTime" style="display: block;margin-bottom:6px;">
+							</w2:span>
+							<w2:inputCalendar calendarValueType="yearMonthDateTime" id="ica_exam5" style="width: 150px;min-height: 26px;"></w2:inputCalendar>
+						</xf:group>
+						<xf:group class="" id="" style="">
+							<w2:span class="wre_txt_list" id="" label="yearMonthDateTimeSec" style="display: block;margin-bottom:6px;">
+							</w2:span>
+							<w2:inputCalendar calendarValueType="yearMonthDateTimeSec" id="ica_exam6" style="width: 170px;min-height: 26px;"></w2:inputCalendar>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

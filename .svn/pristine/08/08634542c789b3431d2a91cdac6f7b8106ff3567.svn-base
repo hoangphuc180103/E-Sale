@@ -1,0 +1,41 @@
+/*amd /page/P00466.xml 4768 5c2db019a379b66494e1ae15400fa7136d5de263905f303c2971f887a8634905 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'value',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'depth',name:'name3',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'라벨A'}]},{T:1,N:'depth',E:[{T:4,cdata:'1'}]},{T:1,N:'value',E:[{T:4,cdata:'a'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'라벨A-1'}]},{T:1,N:'depth',E:[{T:4,cdata:'2'}]},{T:1,N:'value',E:[{T:4,cdata:'a1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'라벨A-1-1'}]},{T:1,N:'depth',E:[{T:4,cdata:'3'}]},{T:1,N:'value',E:[{T:4,cdata:'a11'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'라벨A-1-2'}]},{T:1,N:'value',E:[{T:4,cdata:'a12'}]},{T:1,N:'depth',E:[{T:4,cdata:'3'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'depth',E:[{T:4,cdata:'3'}]},{T:1,N:'label',E:[{T:4,cdata:'라벨A-1-3'}]},{T:1,N:'value',E:[{T:4,cdata:'a13'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'라벨B'}]},{T:1,N:'depth',E:[{T:4,cdata:'1'}]},{T:1,N:'value',E:[{T:4,cdata:'b'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'라벨B-1'}]},{T:1,N:'value',E:[{T:4,cdata:'b1'}]},{T:1,N:'depth',E:[{T:4,cdata:'2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'label',E:[{T:4,cdata:'라벨B-2'}]},{T:1,N:'value',E:[{T:4,cdata:'b2'}]},{T:1,N:'depth',E:[{T:4,cdata:'3'}]}]}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam2'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'value',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'depth',name:'name3',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo'},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.btn_ex1_onclick = function (e) {
+  // 새로운 dataList의 아이디가 dataList1인 경우
+  var columnInfoArr = [{
+    "label": "라벨ㄱ",
+    "value": "01",
+    "depth": "1"
+  }, {
+    "label": "라벨ㄱ-1",
+    "value": "02",
+    "depth": "2"
+  }, {
+    "label": "라벨ㄱ-2",
+    "value": "03",
+    "depth": "2"
+  }, {
+    "label": "라벨ㄱ-3",
+    "value": "04",
+    "depth": "2"
+  }, {
+    "label": "라벨ㄴ",
+    "value": "05",
+    "depth": "1"
+  }, {
+    "label": "라벨ㄴ-1",
+    "value": "06",
+    "depth": "2"
+  }, {
+    "label": "라벨ㄴ-2",
+    "value": "07",
+    "depth": "2"
+  }, {
+    "label": "라벨ㄴ-3",
+    "value": "08",
+    "depth": "2"
+  }];
+  dlt_exam2.setJSON(columnInfoArr);
+  trv2.setNodeSet("data:dlt_exam2", columnInfoArr);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents'},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc'},E:[{T:1,N:'w2:textbox',A:{escape:'false',label:'Treeview의 \'setNodeSet\' 메소드를 사용하여 바인딩된 dataList를 변경하는 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap'},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'\'setNodeSet\' 메소드 적용',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'mb_def_box nobottom'},E:[{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.btn_ex1_onclick',disabled:'',style:'',id:'btn_ex1',type:'button',class:'btn_exam_exec btn_txt_of',escape:'false'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'다른 dataList로 변경하기'}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style'},E:[{T:1,N:'w2:treeview',A:{dataType:'listed',id:'trv2',style:'height:230px;'},E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dlt_exam1'},E:[{T:1,N:'w2:label',A:{ref:'label'}},{T:1,N:'w2:value',A:{ref:'value'}},{T:1,N:'w2:depth',A:{ref:'depth'}},{T:1,N:'w2:folder',A:{ref:''}},{T:1,N:'w2:checkbox',A:{ref:''}},{T:1,N:'w2:checkboxDisabled',A:{ref:''}},{T:1,N:'w2:image',A:{ref:''}},{T:1,N:'w2:iconImage',A:{ref:''}},{T:1,N:'w2:selectedImage',A:{ref:''}},{T:1,N:'w2:expandedImage',A:{ref:''}},{T:1,N:'w2:leafImage',A:{ref:''}}]}]}]}]}]}]}]}]}]})

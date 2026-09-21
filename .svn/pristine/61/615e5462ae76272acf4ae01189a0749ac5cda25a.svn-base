@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="동적으로 컴포넌트 생성하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220706" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="버튼의 문자열이 변경되고, 설명 문구가 추가되었습니다." meta_date="20240627" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * [Trigger 생성하기] 클릭 시
+ * trigger 생성 및 출력
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var _comp;
+    var strID;
+    var objDate;
+
+    //중복되지 않는 ID 생성을 위한 스크립트
+    objDate = new Date();
+    strID = "btn_ex_" + objDate.getDate() + "_" + objDate.getTime();
+
+    //버튼(trigger) 생성 
+    _comp = $p.dynamicCreate(
+        strID,
+        "trigger", //생성할 컴포넌트의 pluginName
+        {
+            style: ""
+            , className: "btn_cm mr_def"
+        },
+        grp_target  //생성(추가)할 위치의 컴포넌트 객체
+    );
+
+    //생성된 trigger의 value 할당.
+    _comp.setValue("버튼");
+
+};
+
+/**
+ * [Input 생성하기] 클릭 시
+ * input 생성 및 출력
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var _comp;
+    var strID;
+    var objDate;
+
+    //중복되지 않는 ID 생성을 위한 스크립트
+    objDate = new Date();
+    strID = "ipt_ex_" + objDate.getDate() + "_" + objDate.getTime();
+
+    //input 생성 
+    _comp = $p.dynamicCreate(
+        strID,
+        "input", //생성할 컴포넌트의 pluginName
+        {
+            style: "min-width:80px; min-height:20px;",
+            className: "mr_def",
+            placeholder: "입력하세요.",
+        },
+        grp_target  //생성(추가)할 위치의 컴포넌트 객체
+    );
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="'$p.dynamicCreate' 메소드를 사용하여 UI 컴포넌트를 동적으로 생성하고 추가하는 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="def_box">
+							<xf:trigger ev:onclick="scwin.btn_ex1_onclick" disabled="" style="" id="btn_ex1" type="button"
+								class="btn_exam_exec" escape="false">
+								<xf:label><![CDATA[Trigger 생성하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger ev:onclick="scwin.btn_ex2_onclick" disabled="" style="" id="btn_ex2" type="button"
+								class="btn_exam_exec" escape="false">
+								<xf:label><![CDATA[Input 생성하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="minH" id="" style="">
+							<w2:textbox class="" id="" label="아래에 컴포넌트가 추가됩니다."
+								style="background-color: #eee;padding:4px 4px;font-size: 11px;">
+							</w2:textbox>
+							<xf:group class="minH" id="grp_target" style="padding: 6px 0px; line-height: 30px"></xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

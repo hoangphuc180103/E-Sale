@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Calendar] 특정 날짜를 휴일로 지정하기 - DataList 연결">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220810" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_holiday" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="holiday" name="휴일" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<holiday><![CDATA[*0101]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*0202]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*0303]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*0404]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*0505]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*0606]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*0707]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*0909]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*1010]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*1111]]></holiday>
+						</w2:row>
+						<w2:row>
+							<holiday><![CDATA[*1212]]></holiday>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //DataList dlt_holiday의 컬럼 holiday를 휴일로 지정 (매년 1월 1일, 2월 2일, 3월 3일, 4월 4일, 5월 5일, 6월 6일, 7월 7일, 8월 8일, 9월 9일, 10월 10일, 11월 11일, 12월 12일)
+    cal_exam1.setHolidayRef("data:dlt_holiday.holiday");
+
+    //테스트를 위해 2024년 12월 01일로 이동
+    cal_exam2.gotoCalendar("20241201");
+    cal_exam1.gotoCalendar("20241201");
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="Calendar의 휴일 설정을 'setHolidayRef' 메소드를 사용하여 DataList와 연결한 예제입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='휴일 지정' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:calendar id="cal_exam1" style="min-width: 200px;min-height: 200px;"></w2:calendar>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 휴일 미지정" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:calendar id="cal_exam2" style="min-width: 200px;min-height: 200px;"></w2:calendar>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

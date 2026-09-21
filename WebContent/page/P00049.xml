@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] fastScroll 속성 비교">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220706" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="DataList 'dlt_member'의 데이터가 변경되고, 이에 따른 스크립트와 GridView 설정이 수정되었습니다." meta_date="20240627" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_member" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="USER_PK" name="고유키" dataType="text"></w2:column>
+						<w2:column id="USER_ID" name="아이디" dataType="text"></w2:column>
+						<w2:column id="NAME" name="이름" dataType="text"></w2:column>
+						<w2:column id="GROUP_A" name="그룹 A" dataType="text"></w2:column>
+						<w2:column id="GROUP_B" name="그룹 B" dataType="text"></w2:column>
+						<w2:column id="GROUP_C" name="그룹 C" dataType="text"></w2:column>
+						<w2:column id="GROUP_D" name="그룹 D" dataType="text"></w2:column>
+						<w2:column id="EMAIL" name="이메일" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_getUserData" ref="" target="data:array"
+				action="/data/sampleData/largeData/dlt_member_8X2000_array.json" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submitdone="scwin.sbm_getUserData_submitdone"
+				ev:submit="" ev:submiterror="" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+	$p.executeSubmission("sbm_getUserData")
+};
+
+/**
+ * sbm_getUserData의 submitdone 이벤트 핸들러
+ */
+scwin.sbm_getUserData_submitdone = function (e) {
+	txt_visibleRowCount.setValue(grd_example.getVisibleRowNum());
+};
+
+scwin.btn_setGridHeight_onclick = function (e) {
+	var tmpHeight = ibx_gridHeight.getValue();
+
+	if (!tmpHeight) {
+		alert("변경할 그리드의 높이를 입력하세요.");
+		ibx_gridHeight.focus();
+		return;
+	}
+
+	grd_example.setGridHeight(tmpHeight);
+	grd_example.setScrollTop(0);
+	grd_example2.setGridHeight(tmpHeight);
+	grd_example2.setScrollTop(0);
+
+	txt_visibleRowCount.setValue(grd_example.getVisibleRowNum());
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="그리드뷰의 fastScroll속성에 따른 데이터 출력의 특징을 알아보기 위해 작성된 예시입니다.&lt;br/&gt;그리드뷰의 높이값을 변경한 뒤 그리드뷰의 세로 스크롤 또는 마우스의 휠을 사용하여 데이터가 출력되는 것을 비교합니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="mb_def_box nobottom" id="" style="">
+				<w2:span class="dmr" id="" label="GridView의 높이(px) :" style=""></w2:span>
+				<xf:input adjustMaxLength="false" class="mr_def" dataType="number" ev:onviewchange="" id="ibx_gridHeight" initValue="432"
+					style="width: 60px;" type="number">
+				</xf:input>
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_setGridHeight_onclick" id="btn_setGridHeight" style="" type="button">
+					<xf:label><![CDATA[setGridHeight]]></xf:label>
+				</xf:trigger>
+				<w2:span id="" label="( 현재 화면에 보여지는 행 수 : " style=""></w2:span>
+				<w2:span dataType="number" displayFormat="#,### 건 )" id="txt_visibleRowCount" label="0" style=""></w2:span>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label='fastScroll="true"로 정의' style="" tagname="h3"></w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="26" applyAllColumnStyle="false" senseReader="false"
+					dataList="data:dlt_member" ev:onviewchange="" ignoreCellClick="false" style="height: 300px;" autoFit="allColumn" id="grd_example"
+					visibleRowNum="" fastScroll="" class="gvw" ignoreToggleOnDisabled="false" autoFitMinWidth="840">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="80" inputType="text" id="column29" value="고유키" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column27" value="아이디" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="column25" value="이름" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column23" value="그룹 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column21" value="그룹 B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column19" value="그룹 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column17" value="그룹 D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="180" inputType="text" id="column13" value="이메일" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="80" inputType="text" id="USER_PK" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="USER_ID" blockSelect="false" displayMode="label" value=""></w2:column>
+							<w2:column width="70" inputType="text" id="NAME" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="180" inputType="text" id="EMAIL" blockSelect="false" displayMode="label" value=""></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+			<w2:textbox class="wre_heading" id="" label='fastScroll="false"로 정의' style="" tagname="h3"></w2:textbox>
+			<xf:group id="" class="gvwbox">
+				<w2:gridView scrollByColumnAdaptive="false" rowNumVisible="true" summaryAuto="false" useShiftKey="true" readOnly="true"
+					scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="26" applyAllColumnStyle="false" senseReader="false"
+					dataList="data:dlt_member" ev:onviewchange="" ignoreCellClick="false" style="height: 300px;" autoFit="allColumn" id="grd_example2"
+					visibleRowNum="" fastScroll="false" class="gvw" ignoreToggleOnDisabled="false" autoFitMinWidth="840">
+					<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="80" inputType="text" id="column29" value="고유키" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column27" value="아이디" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="column25" value="이름" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column23" value="그룹 A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column21" value="그룹 B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column19" value="그룹 C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="column17" value="그룹 D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="180" inputType="text" id="column13" value="이메일" blockSelect="false" displayMode="label"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="80" inputType="text" id="USER_PK" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="USER_ID" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="70" inputType="text" id="NAME" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_A" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_B" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_C" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="80" inputType="text" id="GROUP_D" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="180" inputType="text" id="EMAIL" blockSelect="false" displayMode="label" value=""></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

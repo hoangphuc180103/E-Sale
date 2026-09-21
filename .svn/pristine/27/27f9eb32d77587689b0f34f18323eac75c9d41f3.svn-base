@@ -1,0 +1,46 @@
+/*amd /guide_jpn/_p/Submission/executeSubmission_p/executeSubmission_p.xml 8513 4698777321119cf179079178415fbbbae16fd73f17b3e2724ab6954033b53172 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'Status',name:'Status'}},{T:1,N:'w2:column',A:{dataType:'text',id:'date',name:'date'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Expense',name:'Expense'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Income',name:'Income'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Hobby',name:'Hobby'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Region',name:'Region'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Frequency',name:'Frequency'}},{T:1,N:'w2:column',A:{dataType:'text',id:'ID',name:'ID'}},{T:1,N:'w2:column',A:{dataType:'text',id:'Age',name:'Age'}}]}]}]},{T:1,N:'w2:workflowCollection'},{T:1,N:'xf:submission',A:{id:'submission1',ref:'',target:'data:json,dataList1',action:'/WebContent/guide_sample/$p/Submission/executeSubmission_$p/data.json',method:'post',mediatype:'application/json',encoding:'UTF-8',instance:'',replace:'',errorHandler:'',customHandler:'',mode:'asynchronous',processMsg:'Submission being processed...','ev:submit':'scwin.submission1_submit','ev:submitdone':'scwin.submission1_submitdone','ev:submiterror':'scwin.submission1_submiterror',abortTrigger:''}},{T:1,N:'xf:submission',A:{id:'submission2',ref:'',target:'data:json,dataList1',action:'datal.json',method:'post',mediatype:'application/json',encoding:'UTF-8',instance:'',replace:'',errorHandler:'',customHandler:'',mode:'asynchronous',processMsg:'Submission being processed...','ev:submit':'scwin.submission2_submit','ev:submitdone':'scwin.submission2_submitdone','ev:submiterror':'scwin.submission2_submiterror',abortTrigger:''}}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.submission1_submit = function (e) {
+  alert("submit - Submission is about to start!");
+};
+scwin.submission1_submitdone = function (e) {
+  alert("submitdone - Submission successful.");
+};
+scwin.submission1_submiterror = function (e) {
+  alert("submiterror - Submission failed.");
+};
+scwin.trigger1_onclick = function (e) {
+  var objSubmission = $p.getSubmission("submission1");
+  objSubmission.action = scwin.getfolderPath() + '/data.json';
+  $p.executeSubmission("submission1");
+};
+scwin.submission2_submit = function (e) {
+  alert("submit - Submission is about to start!");
+};
+scwin.submission2_submitdone = function (e) {
+  alert("submitdone - Submission successful.");
+};
+scwin.submission2_submiterror = function (e) {
+  alert("submiterror - Submission failed.");
+};
+scwin.trigger2_onclick = function (e) {
+  var objSubmission = $p.getSubmission("submission2");
+  objSubmission.action = scwin.getfolderPath() + '/datal.json';
+  $p.executeSubmission("submission2");
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'イベント - submit & submitdone & submiterror',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1-1. 最初のボタンをクリックします。 <br/>1-2. サブミッションが精巧に実行され、サブミットとサブミットドーンイベントが発生することを確認。 <br/><br/>2-1. 2番目のボタンをクリックします。 <br/>2-2. エラーが発生し、submitとsubmiterrorイベントが発生することを確認してください。 （"submission2"のデータファイル名を誤って誤って設定します。）<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;',id:'textbox4',label:'イベント説明<br/>submit - Submission 開始前に発生。 <br/>submitdone - Submission 完了後に発生。 &nbsp;<br/>submiterror - Submission エラー時に発生。',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.executeSubmission("submission1"); - submit & submitdone'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.executeSubmission("submission2"); - submit & submiterror'}]}]},{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',dataList:'data:dataList1',scrollByColumn:'false',style:'border: solid gray 1px;',autoFit:'allColumn',id:'gridView1',defaultCellHeight:'20',visibleRowNum:'10',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column9',value:'Status',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column8',value:'date',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column7',value:'Expense',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column6',value:'Income',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column5',value:'Hobby',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column4',value:'Region',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column3',value:'Frequency',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column2',value:'ID',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column1',value:'Age',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'Status',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'date',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'Expense',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'Income',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'Hobby',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'Region',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'Frequency',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'ID',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'Age',value:'',displayMode:'label'}}]}]}]}]}]}]}]})

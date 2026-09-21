@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="" meta_screenName="advancedExcelDownload_excelExpression_GridView">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+            			<w2:column dataType="text" id="col2" name="Country"></w2:column>
+            			<w2:column dataType="text" id="col3" name="Item"></w2:column>
+            			<w2:column dataType="number" id="col4" name="Quantity"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var json = [
+        { "col1": "Asia", "col2": "     Korea    ", "col3": "TV", "col4": "400" },
+        { "col1": "Asia", "col2": "     Korea     ", "col3": "Freezer", "col4": "300" },
+        { "col1": "Asia", "col2": "     Korea     ", "col3": "Washer", "col4": "100" },
+        { "col1": "Asia", "col2": "     Korea     ", "col3": "Heater", "col4": "250" },
+        { "col1": "Asia", "col2": "China", "col3": "TV", "col4": "400" },
+        { "col1": "Asia", "col2": "China", "col3": "Freezer", "col4": "300" },
+        { "col1": "Asia", "col2": "China", "col3": "Washer", "col4": "100" },
+        { "col1": "Asia", "col2": "Japan", "col3": "TV", "col4": "100" },
+        { "col1": "Asia", "col2": "Japan", "col3": "Freezer", "col4": "300" },
+        { "col1": "Asia", "col2": "Japan", "col3": "Washer", "col4": "200" },
+        { "col1": "Europe", "col2": "Germany", "col3": "TV", "col4": "100" },
+        { "col1": "Europe", "col2": "Germany", "col3": "Freezer", "col4": "300" },
+        { "col1": "Europe", "col2": "Germany", "col3": "Washer", "col4": "200" },
+        { "col1": "Europe", "col2": "France", "col3": "TV", "col4": "100" },
+        { "col1": "Europe", "col2": "France", "col3": "Freezer", "col4": "300" },
+        { "col1": "Europe", "col2": "France", "col3": "Washer", "col4": "200" },
+        { "col1": "Europe", "col2": "Denmark", "col3": "TV", "col4": "100" },
+        { "col1": "Europe", "col2": "Denmark", "col3": "Freezer", "col4": "300" },
+        { "col1": "Europe", "col2": "Denmark", "col3": "Washer", "col4": "200" },
+        { "col1": "Americas", "col2": "Canada", "col3": "TV", "col4": "100" },
+        { "col1": "Americas", "col2": "Canada", "col3": "Freezer", "col4": "300" },
+        { "col1": "Americas", "col2": "Canada", "col3": "Washer", "col4": "200" },
+        { "col1": "Americas", "col2": "United States of America", "col3": "TV", "col4": "100" },
+        { "col1": "Americas", "col2": "United States of America", "col3": "Freezer", "col4": "300" },
+        { "col1": "Americas", "col2": "United States of America", "col3": "Washer", "col4": "200" },
+        { "col1": "Americas", "col2": "Mexico", "col3": "TV", "col4": "100" },
+        { "col1": "Americas", "col2": "Mexico", "col3": "Freezer", "col4": "300" },
+        { "col1": "Americas", "col2": "Mexico", "col3": "Washer", "col4": "200" }
+    ];
+    dataList1.setJSON(json);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    var options = {
+
+    };
+    var infoArray = [
+
+        {
+            rowIndex: 31,
+            colIndex: 2,
+            rowSpan: 1,
+            colSpan: 1,
+            text: "Total",
+            textAlign: "center",
+            fontSize: "20px",
+            bgColor: "green"
+        },
+        {
+            rowIndex: 31,
+            colIndex: 3,
+            rowSpan: 1,
+            colSpan: 1,
+            text: "",
+            excelExpression: "D2*D29",
+            textAlign: "center",
+            fontSize: "20px",
+            bgColor: "orange"
+        }];
+    gridView1.advancedExcelDownload(options, infoArray);
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Excel 수식을 사용하여 셀 추가"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 하단의 첫 번째 버튼을 클릭. &lt;br/&gt;2. 다운로드한 Excel 파일 열기. &lt;br/&gt;3. infoArray 속성에 따라 셀이 추가 되고 정의한 Excel 수식에 따라 값이 계산된 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[advancedExcelDownload(options, infoArray)]]></xf:label>
+    	</xf:trigger>
+    	<w2:gridView showSortableUseFilter="" scrollByColumnAdaptive="false" noResultMessageVisibleAlways="" rowNumVisible=""
+    		showSortableImage="" useShiftKey="true" scrollByColumn="false" sortable="" defaultCellHeight="20" noResultMessageVisible=""
+    		noResultMessage="no no no" noResultMessageClass="" focusMode="cell" selectedCellColor="#FF8040" checkAllType="false"
+    		dataList="data:dataList1" copyType="native" style="border: solid gray 1px;margin-bottom: 10px;" id="gridView1" autoFit="allColumn" useFilterList=""
+    		useCtrlKey="" copyOption="" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column width="70" inputType="text" style="height:20px" id="column4" value="Continent" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column3" value="Country" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column2" value="Item" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="column1" value="Quantity" displayMode="label"></w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column width="70" inputType="text" style="height:20px" id="col1" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col2" value="" displayMode="label"></w2:column>
+    				<w2:column width="70" inputType="text" style="height:20px" id="col3" value="" displayMode="label"></w2:column>
+    				<w2:column dataType="number" width="70" validateOnInput="" inputType="text" style="height:20px" id="col4" value=""
+    					displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='/// 샘플 코드 &lt;br/&gt;&lt;br/&gt;var options = {&lt;br/&gt;&lt;br/&gt;};&lt;br/&gt;var infoArray = [&lt;br/&gt;&lt;br/&gt; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;rowIndex: 31,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;colIndex: 2,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;rowSpan: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;colSpan: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;text: "Total",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;textAlign: "center",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;fontSize: "20px",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;bgColor: "green"&lt;br/&gt; &amp;nbsp; &amp;nbsp;},&lt;br/&gt; &amp;nbsp; &amp;nbsp;{&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;rowIndex: 31,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;colIndex: 3,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;rowSpan: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;colSpan: 1,&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;text: "",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;excelExpression: "D2*D29",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;textAlign: "center",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;fontSize: "20px",&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;bgColor: "orange"&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt;];&lt;br/&gt;gridView1.advancedExcelDownload(options, infoArray);'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

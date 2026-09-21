@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[FusionChart] 차트 타입을 스크립트로 변경하기 - XY Plot" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230725" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_chartData_1" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="Type" name="Type"></w2:column>
+						<w2:column dataType="text" id="X" name="X"></w2:column>
+						<w2:column dataType="text" id="Y" name="Y"></w2:column>
+						<w2:column dataType="text" id="Z" name="Z"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<Type><![CDATA[Type 1]]></Type>
+							<X><![CDATA[21]]></X>
+							<Y><![CDATA[2.4]]></Y>
+							<Z><![CDATA[4.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 1]]></Type>
+							<X><![CDATA[43]]></X>
+							<Y><![CDATA[2.5]]></Y>
+							<Z><![CDATA[7.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 1]]></Type>
+							<X><![CDATA[43]]></X>
+							<Y><![CDATA[3.5]]></Y>
+							<Z><![CDATA[9.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 1]]></Type>
+							<X><![CDATA[23]]></X>
+							<Y><![CDATA[1.5]]></Y>
+							<Z><![CDATA[1.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 1]]></Type>
+							<X><![CDATA[33]]></X>
+							<Y><![CDATA[1.6]]></Y>
+							<Z><![CDATA[8.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 2]]></Type>
+							<X><![CDATA[41]]></X>
+							<Y><![CDATA[1.1]]></Y>
+							<Z><![CDATA[3.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 2]]></Type>
+							<X><![CDATA[43]]></X>
+							<Y><![CDATA[2.5]]></Y>
+							<Z><![CDATA[12.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 2]]></Type>
+							<X><![CDATA[43]]></X>
+							<Y><![CDATA[1.5]]></Y>
+							<Z><![CDATA[14.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 2]]></Type>
+							<X><![CDATA[50]]></X>
+							<Y><![CDATA[3.2]]></Y>
+							<Z><![CDATA[6.4]]></Z>
+						</w2:row>
+						<w2:row>
+							<Type><![CDATA[Type 2]]></Type>
+							<X><![CDATA[22]]></X>
+							<Y><![CDATA[4.3]]></Y>
+							<Z><![CDATA[14.4]]></Z>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType_1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="chart_name" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="chart_value" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<chart_name><![CDATA[Scatter Chart]]></chart_name>
+							<chart_value><![CDATA[scatter]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Zoom Scatter Chart]]></chart_name>
+							<chart_value><![CDATA[zoomscatter]]></chart_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType_2" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="chart_name" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="chart_value" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<chart_name><![CDATA[Bubble Chart]]></chart_name>
+							<chart_value><![CDATA[bubble]]></chart_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // Fusionchart 'cht_exam1'의 초기 속성을 설정합니다.
+    // 'Scatter Charts' 유형
+    cht_exam1.setChartAttribute({
+        "caption": rad_chartType1.getText(), // radio에 선택된 text를 차트의 caption으로 지정.
+        "canvasTopPadding": 6,
+        "canvasRightMargin": 10,
+        "canvasLeftPadding": 6,
+        "canvasRightPadding": 6,
+        "chartBottomMargin": 16,
+        "xAxisMinValue": "15",
+        "xAxisMaxValue": "55",
+        "anchorradius" : 4
+    });
+
+    // 지정한 속성을 바탕으로 브라우저에 그립니다.
+    cht_exam1.draw();
+
+    // Fusionchart 'cht_exam2'의 초기 속성을 설정합니다.
+    // 'Bubble Charts' 유형
+    cht_exam2.setChartAttribute({
+        "caption": rad_chartType2.getText(), // radio에 선택된 text를 차트의 caption으로 지정.
+        "canvasTopPadding": 6,
+        "canvasRightMargin": 10,
+        "canvasLeftPadding": 6,
+        "canvasRightPadding": 6,
+        "chartBottomMargin": 16,
+        "xAxisMinValue": "15",
+        "xAxisMaxValue": "55"
+    });
+
+    // 지정한 속성을 바탕으로 브라우저에 그립니다.
+    cht_exam2.draw();
+};
+
+/**
+ * 차트 'Scatter Charts' 타입이 구성된 Radio 'rad_chartType1'의 이벤트 'onviewchange' 핸들러
+ */
+scwin.rad_chartType1_onviewchange = function (info) {
+    let chartAlias = info.value;
+    // Fusionchart 'cht_exam1'의 속성을 설정합니다.
+    // radio에 선택된 text를 차트의 caption으로 지정.
+    cht_exam1.setChartAttribute({
+        "caption": this.getText()
+    });
+
+    cht_exam1.changeType(chartAlias);
+
+    // 'Scatter Charts' 타입 변경 예시)
+    // Fucionchart의 'seriesColumns' 속성 예시) [['X','Y']]
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Scatter Chart'로 변경합니다.
+    // cht_exam1.changeType('scatter');
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Zoom Scatter Chart'로 변경합니다.
+    // cht_exam1.changeType('zoomscatter');
+};
+
+/**
+ * 차트 'Bubble Charts' 타입이 구성된 Radio 'rad_chartType2'의 이벤트 'onviewchange' 핸들러
+ */
+scwin.rad_chartType2_onviewchange = function(info) {
+        let chartAlias = info.value;
+    // Fusionchart 'cht_exam2'의 속성을 설정합니다.
+    // radio에 선택된 text를 차트의 caption으로 지정.
+    cht_exam2.setChartAttribute({
+        "caption": this.getText()
+    });
+
+    cht_exam2.changeType(chartAlias);
+
+    // 'Bubble Charts' 타입 변경 예시)
+    // Fucionchart의 'seriesColumns' 속성 예시) [['X','Y','Z']]
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Bubble Chart'로 변경합니다.
+    // cht_exam2.changeType('bubble');
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="FusionChart의 'Scatter' 타입과 'Bubble' 타입을 확인할 수 있는 예제로, 'changeType' 메소드를 사용하여 'Scatter' 타입의 차트를 설정할 수 있도록 구성되었습니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제의 Fusion Chart 버전은 3.19입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Scatter Charts" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:select1 appearance="full" class="w_per_100" cols="" id="rad_chartType1" ref="" renderType="radiogroup"
+								rows="" selectedIndex="0" style="min-height: 26px;" ev:onviewchange="scwin.rad_chartType1_onviewchange">
+								<xf:choices>
+									<xf:itemset nodeset="data:dlt_chartType_1">
+										<xf:label ref="chart_name"></xf:label>
+										<xf:value ref="chart_value"></xf:value>
+									</xf:itemset>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:fusionchart chartType="Scatter" drawType="javascript" id="cht_exam1" ref="data:dlt_chartData_1"
+								seriesColumns="[['X','Y']]" style="height: 300px;min-width:200px;" version="3.19" labelNode="Type">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Bubble Charts" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:select1 appearance="full" class="w_per_100" cols="" id="rad_chartType2" ref="" renderType="radiogroup" rows="" selectedIndex="0" style="min-height: 26px;" ev:onviewchange="scwin.rad_chartType2_onviewchange">
+								<xf:choices>
+									<xf:itemset nodeset="data:dlt_chartType_2">
+										<xf:label ref="chart_name"></xf:label>
+										<xf:value ref="chart_value"></xf:value>
+									</xf:itemset>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:fusionchart chartType="Bubble" drawType="javascript" id="cht_exam2" labelNode="Type"
+								ref="data:dlt_chartData_1" seriesColumns="[['X','Y','Z']]" style="height: 300px;min-width:200px;" version="3.19">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

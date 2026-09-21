@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 조건에 따라 소계(subtotal)에 class 적용하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220916" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_griddata" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category1" name="category1"></w2:column>
+						<w2:column dataType="text" id="product" name="product"></w2:column>
+						<w2:column dataType="text" id="col1" name="col1"></w2:column>
+						<w2:column dataType="text" id="col2" name="col2"></w2:column>
+						<w2:column dataType="text" id="col3" name="col3"></w2:column>
+						<w2:column dataType="text" id="col4" name="col4"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<col1><![CDATA[200]]></col1>
+							<col2><![CDATA[300]]></col2>
+							<col3><![CDATA[800]]></col3>
+							<col4><![CDATA[200]]></col4>
+							<product><![CDATA[UltraNet]]></product>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<col1><![CDATA[300]]></col1>
+							<col2><![CDATA[200]]></col2>
+							<col3><![CDATA[300]]></col3>
+							<col4><![CDATA[300]]></col4>
+							<product><![CDATA[DataStream]]></product>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<col1><![CDATA[400]]></col1>
+							<col2><![CDATA[200]]></col2>
+							<col3><![CDATA[200]]></col3>
+							<col4><![CDATA[400]]></col4>
+							<product><![CDATA[UltraServer]]></product>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<product><![CDATA[StoreSafe]]></product>
+							<col3><![CDATA[200]]></col3>
+							<col4><![CDATA[100]]></col4>
+							<col1><![CDATA[700]]></col1>
+							<col2><![CDATA[400]]></col2>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<col1><![CDATA[600]]></col1>
+							<col2><![CDATA[600]]></col2>
+							<col3><![CDATA[600]]></col3>
+							<col4><![CDATA[600]]></col4>
+							<product><![CDATA[IntelliAI]]></product>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<col1><![CDATA[700]]></col1>
+							<col2><![CDATA[700]]></col2>
+							<col3><![CDATA[700]]></col3>
+							<col4><![CDATA[700]]></col4>
+							<product><![CDATA[DeepThink]]></product>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<product><![CDATA[CodeStream]]></product>
+							<col2><![CDATA[800]]></col2>
+							<col3><![CDATA[100]]></col3>
+							<col1><![CDATA[200]]></col1>
+							<col4><![CDATA[700]]></col4>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * gridView "grd_exam1"의 소계 class formatter
+ */
+scwin.grd_exam1_subtotalStyleFormatter = function (value, formattedValue, subtotalColumnId) {
+    var strReturnValue;
+
+    //소계 컬럼의 ID로 조건 처리
+    switch (subtotalColumnId) {
+        case "sub_col_1":  //Q1 소계 컬럼 ID
+        case "sub_col_2":  //Q2 소계 컬럼 ID
+        case "sub_col_3":  //Q3 소계 컬럼 ID
+        case "sub_col_4":  //Q4 소계 컬럼 ID
+
+            //소계가 1500 이상이면 class "wre_txt_red2"를 적용합니다.
+            if (value >= 1500) {
+                strReturnValue = "wre_txt_red2";
+            }
+            break;
+        default:
+            break;
+    }
+
+    return strReturnValue;
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'subtotalStyleFormatter' 속성을 사용하여, 조건에 따라 소계(subtotal) 컬럼에 CSS 'class'를 적용한 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox escape="false" id="" label="소계(subtotal)의 값이 1500 이상이면 글자를 굵고 붉은색으로 적용됩니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" class="gvwbox" style="max-width: 550px;">
+				<w2:gridView readOnly="true" scrollByColumn="true" defaultCellHeight="37" baseNode="" focusMode="row"
+					dataList="data:dlt_griddata" style="position: relative ;height:300px;" id="grd_exam1" visibleRowNum="all" class="gvw"
+					autoFit="allColumn" autoFitMinWidth="400" subtotalStyleFormatter="scwin.grd_exam1_subtotalStyleFormatter">
+					<w2:header style="" id="header5">
+						<w2:row style="" id="row35">
+							<w2:column hidden="false" width="80" inputType="text" id="column572" value="Category" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column width="110" inputType="text" id="column575" value="Product" blockSelect="false" displayMode="label"></w2:column>
+							<w2:column width="60" inputType="text" id="column468" value="Q1"></w2:column>
+							<w2:column width="60" inputType="text" id="column467" value="Q2"></w2:column>
+							<w2:column width="60" inputType="text" id="column466" value="Q3"></w2:column>
+							<w2:column width="60" inputType="text" id="column465" value="Q4"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody5">
+						<w2:row style="" id="row37">
+							<w2:column hidden="false" colMerge="true" width="80" inputType="text" id="category1" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column width="110" inputType="text" id="product" blockSelect="false" displayMode="label" textAlign="left"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="col1"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="col2"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="col3"></w2:column>
+							<w2:column textAlign="right" dataType="number" width="60" displayFormat="#,###" inputType="text" id="col4"></w2:column>
+						</w2:row>
+					</w2:gBody>
+					<w2:subTotal targetColumnID="category1" style="" id="subTotal1">
+						<w2:row style="" id="row42">
+							<w2:column width="80" inputType="text" id="column577" value="Subtotal" blockSelect="false" displayMode="label"
+								style="height:30px;">
+							</w2:column>
+							<w2:column width="110" inputType="expression" id="column596" displayMode="label"
+								expression="targetColValue() + ':  ' +count('row_total')" blockSelect="false" textAlign="left" style="height:30px;">
+							</w2:column>
+							<w2:column expression="sum('col1')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="sub_col_1" blockSelect="false" displayMode="label" style="height:30px;">
+							</w2:column>
+							<w2:column expression="sum('col2')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="sub_col_2" blockSelect="false" displayMode="label" style="height:30px;">
+							</w2:column>
+							<w2:column expression="sum('col3')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="sub_col_3" blockSelect="false" displayMode="label" style="height:30px;">
+							</w2:column>
+							<w2:column expression="sum('col4')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" id="sub_col_4" blockSelect="false" displayMode="label" style="height:30px;">
+							</w2:column>
+						</w2:row>
+					</w2:subTotal>
+					<w2:footer style="" id="footer1">
+						<w2:row style="" id="row41">
+							<w2:column width="80" inputType="text" style="height:50px;" id="column580" value="Total" blockSelect="false"
+								displayMode="label">
+							</w2:column>
+							<w2:column width="110" inputType="expression" style="height:50px;" id="column597"
+								expression="'Products: '+ count('row_total')" textAlign="left">
+							</w2:column>
+							<w2:column expression="sum('col1')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" style="height:50px;" id="column526">
+							</w2:column>
+							<w2:column expression="sum('col2')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" style="height:50px;" id="column584" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('col3')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" style="height:50px;" id="column585" blockSelect="false" displayMode="label">
+							</w2:column>
+							<w2:column expression="sum('col4')" textAlign="right" dataType="number" width="60" displayFormat="#,###"
+								inputType="expression" style="height:50px;" id="column586" blockSelect="false" displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:footer>
+				</w2:gridView>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

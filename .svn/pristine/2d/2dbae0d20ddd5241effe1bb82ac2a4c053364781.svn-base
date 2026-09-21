@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[FloatingLayer] 헤더 영역에 타이틀 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231113" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map"></w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [타이틀 변경하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // FloatingLayer 'flt_exam1'의 타이틀을 변경합니다.
+    flt_exam1.setTitle("타이틀이 변경되었습니다");
+};
+
+]]>
+		</script>
+		<style type="text/css"><![CDATA[
+			/* FloatingLayer의 닫기 버튼 숨김 처리 */
+			.P00412_closeButton {
+				display: none;
+			}
+		]]></style>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="FloatingLayer의 'title' 속성과 'setTitle' 메소드를 사용하여 헤더 영역의 타이틀을 설정한 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 닫기 버튼이 CSS로 감춰진 상태입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="헤더 영역에 타이틀이 설정된 상태" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick"
+								id="btn_exam1_1" style="" type="button">
+								<xf:label><![CDATA[타이틀 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="grp_exam1" style="height: 140px;position: relative;">
+							<w2:floatingLayer closeButtonClass="P00412_closeButton" fixed="true" id="flt_exam1"
+								style="position:absolute;width:240px;height:140px;" title="타이틀 지정 예시입니다">
+								<w2:textbox id="" label="콘텐츠 영역입니다." style="padding: 12px 6px;"></w2:textbox>
+							</w2:floatingLayer>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 헤더 영역에 타이틀이 설정되지 않은 상태" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="grp_exam2" style="height: 140px;position: relative;">
+							<w2:floatingLayer fixed="true" id="flt_exam2" style="position:absolute;width:240px;height:140px;"
+								closeButtonClass="P00412_closeButton">
+								<w2:textbox id="" label="콘텐츠 영역입니다." style="padding: 12px 6px;"></w2:textbox>
+							</w2:floatingLayer>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

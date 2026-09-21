@@ -1,0 +1,49 @@
+/*amd /guide/_DataCollection/DataList/setUserData_getUserData_DataList.xml 3952 11dde9c3c4af70c1d9fa5642b921ff19851ebdc621b0eb39de8113c259f086e4 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true',userData1:'Default userData1',userData2:'12345',userData3:'67890'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col4',name:'name4',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col5',name:'name5',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json1 = [{
+    "col1": "1",
+    "col2": "3",
+    "col3": "8",
+    "col4": "2",
+    "col5": "4"
+  }, {
+    "col1": "3",
+    "col2": "5",
+    "col3": "7",
+    "col4": "3",
+    "col5": "5"
+  }, {
+    "col1": "2",
+    "col2": "7",
+    "col3": "6",
+    "col4": "2",
+    "col5": "1"
+  }, {
+    "col1": "4",
+    "col2": "9",
+    "col3": "5",
+    "col4": "3",
+    "col5": "5"
+  }, {
+    "col1": "5",
+    "col2": "1",
+    "col3": "4",
+    "col4": "4",
+    "col5": "5"
+  }, {
+    "col1": "6",
+    "col2": "2",
+    "col3": "3",
+    "col4": "5",
+    "col5": "1"
+  }];
+  dataList1.setJSON(json1);
+};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  alert(dataList1.getUserData("userData1"));
+};
+scwin.trigger2_onclick = function (e) {
+  dataList1.setUserData("userData1", "This is userData1 newly set.");
+};
+}}}]},{T:1,N:'style',A:{type:'text/css'},E:[{T:4,cdata:'.gridBodyDefault button{width:50px!important}'}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox3',label:'DataList의 userData 속성 값 설정 및 확인',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox4',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox5',label:'1. 첫 번째 버튼을 클릭하여 현재 설정된 userData1 값을 확인. <br/>2. 두 번째 버튼을 클릭하여 userData1 값을 새로 설정. <br/>3. &nbsp;첫 번째 버튼을 다시 클릭하여 새로 설정한 userData1 값을 확인.<br/>(userData1, userData2, userData3 속서을 동일한 방식으로 설정 및 확인 가능.)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox6',label:'속성 설정<br/>userData1="Default userData1" <br/>userData2="12345" <br/>userData3="67890"',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.getUserData("userData1");'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dataList1.setUserData("userData1", "This is userData1 newly set.");'}]}]}]}]}]}]})

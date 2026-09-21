@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[
+
+var count = 0;
+
+scwin.trigger1_onclick = function (e) {
+    count++;
+    widgetContainer1.addWidgets({
+        id: "Widget_Added_" + count,
+        title: "Widget_Added_" + count,
+        //src : "widget.xml",
+        scope: true,
+        x: 0,
+        y: 0,
+        unitWidth: 2,
+        unitHeight: 1
+    });
+};
+
+
+scwin.trigger2_onclick = function (e) {
+    var x = widgetContainer1.exportWidgets();
+    alert(JSON.stringify(x, null, "\t"));
+};
+
+scwin.trigger3_onclick = function (e) {
+    widgetContainer1.removeWidgetsAll();
+};
+]]></script>
+    </head>
+    <body style="padding:20px;">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="위젯 정보 확인 및 위젯 삭제"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. addWidgets() 버튼을 클릭하려 위젯을 여러 개 추가. &lt;br/&gt;2. exportWidgets() 버튼을 클릭. &lt;br/&gt;3. 추가된 위젯들의 정보가 표시되는 것을 확인. &lt;br/&gt;4. removeWidgetsAll() 버튼을 클릭. &lt;br/&gt;5. 모든 위젯이 삭제되는 것을 확인.&lt;br/&gt;(자세한 스크립트는 Script 탭에서 확인.)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="" style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; color:brown;" id="textbox4" label='/// 샘플 코드 (1)&lt;br/&gt;&lt;br/&gt;var x = widgetContainer1.exportWidgets();&lt;br/&gt;alert(JSON.stringify(x, null, "\t"));&lt;br/&gt;&lt;br/&gt;/// 샘플 코드 (2)&lt;br/&gt;&lt;br/&gt;widgetContainer1.removeWidgetsAll();' escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[addWidgets()]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[exportWidgets()]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger3_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger3" type="button">
+    		<xf:label><![CDATA[removeWidgetsAll()]]></xf:label>
+    	</xf:trigger>
+    	<w2:widgetContainer mode="pushpull" unitHeightPixel="200" preventMaximizeByTitle="true" widgetMove="true"
+    		style="height: 400px;border:1px solid black;margin-bottom: 10px;" id="widgetContainer1" cols="3" ev:onwidgetmove="scwin.widgetContainer1_onwidgetmove">
+    	</w2:widgetContainer>
+    </xf:group></body>
+</html>

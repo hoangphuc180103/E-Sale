@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[InputCalendar] 오늘 날짜 할당하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221014" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [오늘 날짜 할당] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var strDate;
+
+    //오늘 날짜 반환 받기 - InputCalenar에 설정된 ioFormat과 동일해야 합니다.
+    strDate = $p.getCurrentServerDate("yyyyMMdd");
+
+    //InputCalenar [ica_exam_2]에 value 할당하기
+    ica_exam_2.setValue(strDate);
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='InputCalendar에 오늘 날짜를 출력하는 예제입니다.' style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="오늘 날짜 출력하기 - 속성" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" id="ica_exam_1" style="width:110px;min-height: 24px;"
+							validateOnInput="true" validateOnInputMobile="true" renderDiv="true" setCurrentDate="true">
+						</w2:inputCalendar>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="오늘 날짜 출력하기 - 스크립트" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:inputCalendar calendarValueType="yearMonthDate" id="ica_exam_2" renderDiv="true"
+							style="width:110px;min-height: 24px;" validateOnInput="true" validateOnInputMobile="true" class="mr_def">
+						</w2:inputCalendar>
+						<xf:trigger class="btn_exam_exec" id="btn_ex1" localeRef="" style="min-width: 30px; height: 26px;" type=""
+							useDefaultLabel="true" ev:onclick="scwin.btn_ex1_onclick">
+							<xf:label><![CDATA[오늘 날짜 할당]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

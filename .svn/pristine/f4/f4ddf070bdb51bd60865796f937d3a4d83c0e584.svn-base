@@ -1,0 +1,42 @@
+/*amd /guide/TabControl/processMsgFrame_TabControl/processMsgFrame_TabControl.xml 3687 114adde5f789d57e206f98bfd037adaec3be5ccd20b0147965ce2e5392167683 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/source.xml";
+  tabControl1.addTab(scwin.count, {
+    label: 'processMsgeFrame="true"',
+    title: 'processMsgeFrame="true"',
+    openAction: "exist",
+    closable: "true"
+  }, {
+    "src": tmpSrc,
+    "frameMode": "wframe"
+  });
+  tabControl1.setSelectedTabIndex(scwin.count);
+  tabControl2.addTab(scwin.count, {
+    label: 'processMsgeFrame="false"',
+    title: 'processMsgeFrame="false"',
+    openAction: "exist",
+    closable: "true"
+  }, {
+    "src": tmpSrc,
+    "frameMode": "wframe"
+  });
+  tabControl2.setSelectedTabIndex(scwin.count);
+};
+scwin.onpageunload = function () {};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'margin-bottom: 10px;color: blue;',id:'textbox1',label:'서브미션 상태창을 탭 태부에만 표시 (기본 상태창)',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(첫 번째 TabControl) <br/>1-1. 내부의 Submit 버튼을 클릭. <br/>1-2. 상태 창이 탭 내부에만 표시되는 것을 확인. (processMsgFrame="true")<br/><br/>(두 번째 TabControl) <br/>2-1. 내부의 Submit 버튼을 클릭. <br/>2-2. 상태 창이 전체 화면에 표시되는 것을 확인. (processMsgFrame="false")',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'속성 설정<br/>processMsgFrame="true"',escape:'false'}},{T:1,N:'w2:tabControl',A:{confirmTrueAction:'exist',useTabKeyOnly:'true',confirmFalseAction:'new',useMoveNextTabFocus:'false',useConfirmMessage:'false',alwaysDraw:'false',style:'border: gray solid 1px;margin-bottom: 10px;height: 300px;',id:'tabControl1',processMsgFrame:'true'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'속성 설정<br/>processMsgFrame="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:tabControl',A:{alwaysDraw:'false',confirmFalseAction:'new',confirmTrueAction:'exist',id:'tabControl2',style:'border: gray solid 1px;height: 300px;',useConfirmMessage:'false',useMoveNextTabFocus:'false',useTabKeyOnly:'true'}}]}]}]}]})

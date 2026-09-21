@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 모바일 전용">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="'FlipToggle'의 UI 틀어짐 현상이 수정되었습니다." meta_date="20231101" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="모바일에 특화된 컴포넌트 예시입니다. 일반 브라우저에서도 사용이 가능합니다. WebSquare 컴포넌트는 모바일 개발에 사용가능한 몇몇의 권장 컴포넌트가 있으므로 유의해야 합니다.&lt;br/&gt;DatePicker, flipToggle, PageControl, scrollView"
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="DatePicker" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:datePicker class="defComp" id="" style="width:230px;position: relative;height: 3.6em;"></w2:datePicker>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="FlipToggle" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:fliptoggle class="defComp" id="" style="width:230px;position: relative;height: 3.6em;display: block;">
+							<w2:on label="On" value="On"></w2:on>
+							<w2:off label="Off" value="Off"></w2:off>
+						</w2:fliptoggle>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="PageControl" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:pageControl class="defComp" id="" style="width:230px;position: relative;height: 3.6em;"></w2:pageControl>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="ScrollView" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:scrollView class="" id="" showHorizontalScroll="" showVerticalScroll="true"
+							style="max-width: 500px;height: 180px;position: relative;">
+							<xf:group class="" id="" style="background-color:#f1f1f1;padding:10px;">
+								<w2:textbox class="" id="" label="Example" style="font-size:2.5em;margin-bottom: 0.5em;"></w2:textbox>
+								<w2:textbox escape="false" id=""
+									label="1234567890&lt;br/&gt;abcdefghijklmnopqrstuvwxyz&lt;br/&gt;ABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;br/&gt;½ ⅓ ¼ ⅕ ⅙ ⅐ ⅛ ⅑ ⅒ ⅔ ⅖ ¾ ⅗ ⅜ ⅘ ⅚ ⅝&lt;br/&gt;&lt;br/&gt;1234567890&lt;br/&gt;abcdefghijklmnopqrstuvwxyz&lt;br/&gt;ABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;br/&gt;½ ⅓ ¼ ⅕ ⅙ ⅐ ⅛ ⅑ ⅒ ⅔ ⅖ ¾ ⅗ ⅜ ⅘ ⅚ ⅝&lt;br/&gt;&lt;br/&gt;1234567890&lt;br/&gt;abcdefghijklmnopqrstuvwxyz&lt;br/&gt;ABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;br/&gt;½ ⅓ ¼ ⅕ ⅙ ⅐ ⅛ ⅑ ⅒ ⅔ ⅖ ¾ ⅗ ⅜ ⅘ ⅚ ⅝&lt;br/&gt;&lt;br/&gt;1234567890&lt;br/&gt;abcdefghijklmnopqrstuvwxyz&lt;br/&gt;ABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;br/&gt;½ ⅓ ¼ ⅕ ⅙ ⅐ ⅛ ⅑ ⅒ ⅔ ⅖ ¾ ⅗ ⅜ ⅘ ⅚ ⅝"
+									style="line-height:1.5em;font-size: 1.1em;font-weight: bold;">
+								</w2:textbox>
+							</xf:group>
+						</w2:scrollView>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

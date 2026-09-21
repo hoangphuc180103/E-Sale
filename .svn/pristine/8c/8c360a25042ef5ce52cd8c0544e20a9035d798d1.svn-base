@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] 목록에서 항목이 선택되었을 때의 이벤트 핸들러 등록하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20221028" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+
+/**
+ * sbx_exam1 컴포넌트의 이벤트 onselected 핸들러
+ */
+scwin.sbx_exam_onselected = function (info) {
+    var strLog;
+
+    var _newSelectedIndex = info.newSelectedIndex;  //선택된 항목의 index
+    var _newValue = info.newValue;  //선택된 값
+    var _oldSelectedIndex = info.oldSelectedIndex;  //이전에 선택된 항목의 index
+    var _oldValue = info.oldValue;  //이전 값
+
+    //이벤트 확인용 로그 출력
+    console.log("scwin.sbx_exam_onselected >> ", info);
+
+    $c.frame.printExampleLog("scwin.sbx_exam_onselected", txa_log);
+    $c.frame.printExampleLog("info : \n" + JSON.stringify(info, null, "\t"), txa_log, false);
+    strLog = "info.newSelectedIndex : " + _newSelectedIndex + "\n";
+    strLog += "info.newValue : " + _newValue + "\n";
+    strLog += "info.oldSelectedIndex : " + _oldSelectedIndex + "\n";
+    strLog += "info.oldValue : " + _oldValue;
+    $c.frame.printExampleLog(strLog, txa_log, false);
+
+    //로직 구성
+};
+
+
+/**
+ * 로그 출력용 메소드
+ */
+scwin.printLog = function (argStr) {
+    var strLog;
+    strLog = txa_log.getValue();
+    txa_log.setValue(strLog + "\n" + argStr);
+};
+
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    //textarea value를 빈문자열로 할당.
+    txa_log.setValue("");
+};
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="SelectBox의 'onselected' 이벤트를 설정한 예제입니다."
+					style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+					disabledClass="w2selectbox_disabled" ev:onselected="scwin.sbx_exam_onselected" id="sbx_exam1" ref=""
+					style="width:120px;min-height:24px;" submenuSize="auto">
+					<xf:choices>
+						<xf:item>
+							<xf:label><![CDATA[apple]]></xf:label>
+							<xf:value><![CDATA[01]]></xf:value>
+						</xf:item>
+						<xf:item>
+							<xf:label><![CDATA[grapes]]></xf:label>
+							<xf:value><![CDATA[02]]></xf:value>
+						</xf:item>
+						<xf:item>
+							<xf:label><![CDATA[strawberry]]></xf:label>
+							<xf:value><![CDATA[03]]></xf:value>
+						</xf:item>
+						<xf:item>
+							<xf:label><![CDATA[blueberry]]></xf:label>
+							<xf:value><![CDATA[04]]></xf:value>
+						</xf:item>
+					</xf:choices>
+				</xf:select1>
+
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group id="" class="example_div_th_style">
+						<w2:span label="로그 확인" style="" id="" class="mr_def txt_blue"></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

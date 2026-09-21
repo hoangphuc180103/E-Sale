@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="openPopup_$p">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[scwin.count=0;
+        
+	scwin.onpageload = function() {
+		requires("uiplugin.popup");
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	scwin.trigger2_onclick = function(e) {
+        scwin.count++;
+		const tmpSrc = scwin.getfolderPath() + "/openPopup_p.xml";
+	
+		var options = {  
+		 
+		        id : scwin.count, 
+		        type : "pageFramePopup", 
+		        width: "450px", 
+		        height: "400px", 
+		        top: "130px", 
+		        left: "200px", 
+		        popupName : "Popup (openPopup_p.xml)", 
+                modal: true,
+		        resizable : true
+		    }; 
+	 
+	    $p.openPopup(tmpSrc,options );
+	};
+	
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="이벤트 - onpageframeload &amp; onbeforepageframeunload" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="샘플 사용 방법"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. 하단의 버튼을 클릭하여 팝업 창 열기. &lt;br/&gt; &amp;nbsp; (팝업 창의 소스 화면(openPopup_$p.xml)이 PageFrame을 포함.) &lt;br/&gt;2. 팝업 창이 표시되기 전에 onpageframeload 이벤트가 발생하는 것을 확인. &lt;br/&gt;3. 팝업 창 우측 상단의 닫기 버튼을 클릭. &lt;br/&gt;4. 팝업 창이 닫히기 전에 onpageframeunload 이벤트가 발생하는 것을 확인." escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;" id="textbox4" label="이벤트 설명&lt;br/&gt;onpageframeload - PageFrame이 로딩되는 시점에 발생. &lt;br/&gt;onpageframeunload - PageFrame의 소스 페이지가 setSrc()에 의해 새로 설정되거나, PageFrame이 언로딩되기 직전에 발생." escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger2_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger2" type="button">
+    		<xf:label><![CDATA[$p.openPopup() ]]></xf:label>
+    	</xf:trigger></xf:group></body>
+</html>

@@ -1,0 +1,21 @@
+[mcp_servers.websquare-mcp]
+url = "/InswaveAdmin/mcp/websquare"
+
+# 정적 헤더 (값을 직접 입력)
+[mcp_servers.websquare-mcp.http_headers]
+"Proworks-Lang" = "ko"
+"Proworks-Body" = "Y"
+"Proworks-tKey" = ""
+
+[mcp_servers.validate-mcp]
+command = "node"
+args = ["/no_data/dist/validate-mcp.mjs"]
+
+[mcp_servers.proworks-mcp]
+url = "/InswaveAdmin/mcp/proworks"
+
+# 정적 헤더 (값을 직접 입력)
+[mcp_servers.proworks-mcp.http_headers]
+"Proworks-Lang" = "ko"
+"Proworks-Body" = "Y"
+"Proworks-tKey" = ""

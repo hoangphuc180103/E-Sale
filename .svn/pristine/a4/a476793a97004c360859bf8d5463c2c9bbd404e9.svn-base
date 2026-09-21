@@ -1,0 +1,36 @@
+/*amd /page/P00445.xml 6255 864583d62a420c7d2f9f5fb9700d1a9422081b40f1f953e0544419486d53ce26 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:'','ev:oncelldatachange':'scwin.dataList1_oncelldatachange'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'col1',dataType:'text'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'col2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'col3'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col2',E:[{T:4,cdata:'a2'}]},{T:1,N:'col3',E:[{T:4,cdata:'a3'}]},{T:1,N:'col1',E:[{T:4,cdata:'a1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col2',E:[{T:4,cdata:'b2'}]},{T:1,N:'col3',E:[{T:4,cdata:'b3'}]},{T:1,N:'col1',E:[{T:4,cdata:'b1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col2',E:[{T:4,cdata:'c2'}]},{T:1,N:'col3',E:[{T:4,cdata:'c3'}]},{T:1,N:'col1',E:[{T:4,cdata:'c1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col2',E:[{T:4,cdata:'d2'}]},{T:1,N:'col3',E:[{T:4,cdata:'d3'}]},{T:1,N:'col1',E:[{T:4,cdata:'d1'}]}]}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList2',removeDummyRowStatus:'false',removedDataMatch:'true',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'chk',name:'chk',ignoreStatus:'true'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'col1',ignoreStatus:'true'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'col2',ignoreStatus:'true'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'chk'},{T:1,N:'col1',E:[{T:4,cdata:'a1'}]},{T:1,N:'col2',E:[{T:4,cdata:'a2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'chk'},{T:1,N:'col1',E:[{T:4,cdata:'b1'}]},{T:1,N:'col2',E:[{T:4,cdata:'b2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'chk'},{T:1,N:'col1',E:[{T:4,cdata:'c1'}]},{T:1,N:'col2',E:[{T:4,cdata:'c2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col1',E:[{T:4,cdata:'d1'}]},{T:1,N:'col2',E:[{T:4,cdata:'d2'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * DataList의 oncelldatachange 이벤트 핸들러
+ */
+scwin.dataList1_oncelldatachange = function (info) {
+  // info : oldValue, newValue, rowIndex, colID
+  var rowIndex = info.rowIndex;
+  var columnId = info.colID;
+  gridView1.setCellColor(rowIndex, columnId, "blue");
+
+  // 로그 출력
+  let strLog = "# oncelldatachange event\n";
+  strLog += "이전 값 : " + info.oldValue + "\n";
+  strLog += "현재 값 : " + info.newValue;
+  $c.frame.printExampleLog($p, strLog, txa_log, false);
+  console.log(strLog);
+  console.log(info);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  let strTargetId = this.getUserData("userData1");
+  let cmpTarget;
+  if (strTargetId) {
+    cmpTarget = $p.getComponentById(strTargetId) || txa_log;
+  } else {
+    cmpTarget = txa_log;
+  }
+  //textarea value를 빈문자열로 할당.
+  cmpTarget.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'DataList의 \'oncelldatachange\' 이벤트를 설정한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'exam_txt caution',id:'',label:'컴포넌트의 이벤트 발생 시 영역 [로그 확인]의 textarea 또는 브라우저 개발자도구 콘솔에 로그가 출력됩니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mb_def',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{autoFit:'allColumn',autoFitMinWidth:'280',class:'gvw',dataList:'data:dataList1',defaultCellHeight:'37',id:'gridView1',keepDefaultColumnWidth:'true',readOnly:'false',rowNumVisible:'true',rowNumWidth:'40',rowStatusVisible:'true',rowStatusWidth:'40',style:'height:100px;',visibleRowNum:'all',visibleRowNumFix:'true',focusMode:'none',rowStatusHeaderValue:'상태',editModeEvent:'onclick',keyMoveEditMode:'true',focusFlow:'linear'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'col1',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'col2',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'col3',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col3',value:'',displayMode:'label'}}]}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap mb_def',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'example_div_th_style'},E:[{T:1,N:'w2:span',A:{style:'',id:'',label:'로그 확인',class:'mr_def txt_blue'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.btn_clearLog_onclick',style:'',id:'btn_clearLog',title:'로그 삭제',type:'button',class:'wre_btn_log_clear'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log',spellcheck:'false',style:'width: 100%;height: 140px;'}}]}]}]}]}]}]}]})

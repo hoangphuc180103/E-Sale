@@ -1,0 +1,88 @@
+/*amd /edu/adv/chart.xml 9103 fdd1fd91854e865bc0a8858c0eb9c2da57473fb839a5c7d848f6e09182f2d977 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_chartData',repeatNode:'data',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'Month',name:'Month'}},{T:1,N:'w2:column',A:{dataType:'text',id:'quarter1',name:'quarter1'}},{T:1,N:'w2:column',A:{dataType:'text',id:'quarter2',name:'quarter2'}},{T:1,N:'w2:column',A:{dataType:'text',id:'quarter3',name:'quarter3'}},{T:1,N:'w2:column',A:{dataType:'text',id:'quarter4',name:'quarter4'}}]},{T:1,N:'w2:data',A:{use:'true',xmlns:''},E:[{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'January'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'10000'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'10800'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'17000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'February'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'11500'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'28110'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'23990'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'15000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'March'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'12500'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'29800'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'32700'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'27000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'April'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'10000'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'29000'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'12000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'May'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'1500'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'10600'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'10000'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'8000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'June'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'19700'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'32600'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'22600'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'17000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'July'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'29700'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'31900'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'27000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'August'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'10000'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'21800'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'19000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'September'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'31800'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'42800'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'32000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'October'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'15000'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'11000'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'6000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'November'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'9800'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'11800'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'17000'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Month',E:[{T:4,cdata:'December'}]},{T:1,N:'quarter1',E:[{T:4,cdata:'27400'}]},{T:1,N:'quarter2',E:[{T:4,cdata:'22900'}]},{T:1,N:'quarter3',E:[{T:4,cdata:'20800'}]},{T:1,N:'quarter4',E:[{T:4,cdata:'11000'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * selectbox에 chart type 할당하기
+ */
+scwin.setSelectBox = function (chartType) {
+  var selectData = [];
+  if (chartType == 1) {
+    selectData = ["column2d", "column3d", "bar2d", "bar3d", "area2d", "line", "pareto2d", "pareto3d"];
+  } else if (chartType == 2) {
+    selectData = ["pie2d", "pie3d", "doughnut2d", "doughnut3d"];
+  } else if (chartType == 3) {
+    selectData = ["MSColumn2D", "MSColumn3D", "MSLine", "ZoomLine", "MSArea", "MSBar2D", "MSBar3D", "Marimekko", "StackedColumn2D", "StackedColumn3D", "StackedArea2D", "StackedBar2D", "StackedBar3D"];
+  } else {}
+  scwin.setItemList("sbx_chartType", selectData);
+};
+
+/**
+ * selectbox 에 data 할당. 공통 스크립트
+ */
+scwin.setItemList = function (objName, arrData) {
+  var tmpVal;
+  var curComp = $p.getComponentById(objName);
+  curComp.removeAll("true");
+  for (var i = 0; i < arrData.length; i++) {
+    tmpVal = arrData[i];
+    curComp.addItem(tmpVal, tmpVal);
+  }
+  curComp.setSelectedIndex(0);
+};
+//API를 활용해 차트 각종 옵션 적용
+scwin.ui_chartBt1_onclick = function (e) {
+  udc_ca.udc_api();
+  console.log("1.x   ==>" + x); // undefined
+  var x = 10;
+  var z = 10;
+
+  //console.log("2.y   ==>" + y); // ReferenceError: y is not defined
+  let y = 10;
+  var x = 100;
+  var z;
+  console.log("5.y   ==>" + y);
+  console.log("3.x   ==>" + x);
+  console.log("4.z   ==>" + z);
+  var trnOptions = {};
+  trnOptions.startValue = 20000; // [필수] 시작 값.
+  trnOptions.endValue = 25000; // 종료 값.
+  trnOptions.displayValue = "기준선"; // 트렌드라인에 좌측 또는 우측에 표시할 레이블.
+  trnOptions.color = "#FF0030"; // 색.
+
+  //FusionChart의 TrendLine를 추가합니다. 
+  ui_chart.addTrendLine(trnOptions);
+
+  // 속성 'displayValue'의 추가 속성
+  let attOptions = {};
+  attOptions.caption = "월별 차트 제목 변경";
+  attOptions.subCaption = "월별 차트 소제목 추가";
+  attOptions.trendValueAlpha = 200; // [0-100] 속성 'displayValue'의 투명도.
+  attOptions.trendValueFontSize = 15; // 속성 'displayValue'의 글자 크기.    // [0-100] 속성 'displayValue'의 투명도.
+  attOptions.yAxisPosition = "right"; //Y 축 오른쪽으로 변경
+  attOptions.yAxisName = "가격 {br}(원)"; //Y 축 설명 추가
+  attOptions.xAxisName = "월"; //X 축 설명 추가
+
+  ui_chart.setChartAttribute(attOptions);
+
+  //FusionChart를 화면에 출력합니다
+  ui_chart.draw();
+};
+scwin.ui_chType_onchange = function (info) {
+  scwin.setSelectBox(info.newValue);
+};
+scwin.sbx_chartType_onchange = function (info) {
+  let ref = 'data:dlt_chartData';
+  let labelNode = 'Month';
+  let seriesColumns = '';
+  if (ui_chType.getValue() == 3) {
+    seriesColumns = "[['quarter1','quarter2','quarter3','quarter4' ]]";
+  } else {
+    seriesColumns = "[['quarter2']]";
+  }
+  ui_chart.changeType(info.newValue);
+  ui_chart.setChartColumnRef(ref, labelNode, seriesColumns);
+
+  //FusionChart를 화면에 출력합니다
+  ui_chart.draw();
+};
+}}}]},{T:1,N:'w2:require',A:{as:'udc_udc',type:'page',variableClone:'true',src:'/frame/udc/udc.xml'}}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'',id:'',label:'Fusionchart 실습 예제 파일',style:'',tagname:'h4'}}]},{T:1,N:'xf:group',A:{class:'lybox',id:'',style:''},E:[{T:1,N:'xf:group',A:{adaptiveThreshold:'',class:'ly_column col_5',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'',id:'',label:'차트타입',style:'',tagname:'h3'}},{T:1,N:'xf:group',A:{class:'rt',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{type:'button',id:'ui_chartBt1',style:'width: 80px;height: 23px;','ev:onclick':'scwin.ui_chartBt1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'차트옵션변경'}]}]}]},{T:1,N:'xf:select1',A:{allOption:'',appearance:'minimal',chooseOption:'true',class:'',direction:'auto',disabled:'false',disabledClass:'w2selectbox_disabled',id:'ui_chType',ref:'',renderType:'',style:'width:150px;',submenuSize:'auto',chooseOptionLabel:'차트의 유형을 선택하시요','ev:onchange':'scwin.ui_chType_onchange'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'선형,기둥형 차트'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'1'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'원형,도넛 차트'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'2'}]}]},{T:1,N:'xf:item',E:[{T:1,N:'xf:label',E:[{T:4,cdata:'다중계열 차트'}]},{T:1,N:'xf:value',E:[{T:4,cdata:'3'}]}]}]}]},{T:1,N:'xf:select1',A:{id:'sbx_chartType',chooseOption:'false',style:'width: 148px;height: 21px;',submenuSize:'auto',allOption:'false',disabled:'false',direction:'auto',appearance:'minimal',disabledClass:'w2selectbox_disabled','ev:onchange':'scwin.sbx_chartType_onchange'}}]},{T:1,N:'w2:udc_udc',A:{style:'',id:'udc_ca'}},{T:1,N:'w2:fusionchart',A:{drawType:'javascript',runflashAt:'IE6,IE7,IE8',chartType:'Column2D',style:'height: 300px;',id:'ui_chart',ref:'data:dlt_chartData',labelNode:'Month',title:'차트의 제목영역',seriesColumns:'[[\'quarter2\']]'}}]}]}]}]}]})

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 필터, 정렬, 컬럼간 이동">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="GridView의 'noSelect' 속성을 'true'로 설정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="DataList 'dlt_grid'의 데이터가 변경되고, 이에 따른 GridView 설정이 수정되었습니다." meta_date="20240624" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_grid" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category1" name="category1"></w2:column>
+						<w2:column dataType="text" id="category2" name="category2"></w2:column>
+						<w2:column dataType="text" id="product" name="product"></w2:column>
+						<w2:column dataType="text" id="quantity" name="quantity"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Apps]]></category2>
+							<product><![CDATA[SmartApp]]></product>
+							<quantity><![CDATA[100]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Networking]]></category2>
+							<product><![CDATA[SpeedLink]]></product>
+							<quantity><![CDATA[200]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Servers]]></category2>
+							<product><![CDATA[FastServe]]></product>
+							<quantity><![CDATA[300]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Apps]]></category2>
+							<product><![CDATA[AppCreator]]></product>
+							<quantity><![CDATA[400]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Storage Solutions]]></category2>
+							<product><![CDATA[StoreSafe]]></product>
+							<quantity><![CDATA[500]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Web Frameworks]]></category2>
+							<product><![CDATA[WebPro]]></product>
+							<quantity><![CDATA[700]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Code Editors]]></category2>
+							<product><![CDATA[CodeStream]]></product>
+							<quantity><![CDATA[800]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Networking]]></category2>
+							<product><![CDATA[LinkSecure]]></product>
+							<quantity><![CDATA[900]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Security]]></category2>
+							<product><![CDATA[SafeWeb]]></product>
+							<quantity><![CDATA[1000]]></quantity>
+						</w2:row>
+						<w2:row>
+							<product><![CDATA[EcoServe]]></product>
+							<category1><![CDATA[Hardware]]></category1>
+							<category2><![CDATA[Servers]]></category2>
+							<quantity><![CDATA[1000]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[Web Frameworks]]></category2>
+							<product><![CDATA[SiteBuilder]]></product>
+							<quantity><![CDATA[1000]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Software]]></category1>
+							<category2><![CDATA[AI Tools]]></category2>
+							<product><![CDATA[AI Optimizer]]></product>
+							<quantity><![CDATA[1000]]></quantity>
+						</w2:row>
+						<w2:row>
+							<category1><![CDATA[Services]]></category1>
+							<category2><![CDATA[Cloud Services]]></category2>
+							<product><![CDATA[CloudFlex]]></product>
+							<quantity><![CDATA[1000]]></quantity>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView 헤더에 정렬 기능과 필터 기능을 설정한 예제입니다. 헤더 컬럼을 더블 클릭하면 컬럼 데이터가 정렬됩니다. 헤더에서 Ctrl 키를 누르고 더블 클릭하면 다중 컬럼 정렬 기능을 사용할 수 있습니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="overflow:auto;" class="ofh box_flex_1x1">
+				<xf:group id="" style="position: relative ;float:left;margin-right:2%;box-sizing:border-box;max-width: 560px;width: 49%;" class="">
+					<xf:group class="titbox" id="" style="">
+						<w2:textbox class="" id="" label="기본 필터 기능 - 팝업으로 조건을 지정" style="" tagname="h3"></w2:textbox>
+					</xf:group>
+					<xf:group class="gvwbox" id="" style="">
+						<w2:gridView autoFit="allColumn" baseNode="" class="gvw" dataList="data:dlt_grid"
+							defaultCellHeight="37" fixedColumn="" focusMode="row" id="grd_ex01" readOnly="true" readOnlyBackgroundColor="" repeatNode=""
+							scrollByColumn="false" sortable="true" style="height:360px;" tooltipDisplay="true" visibleRowNum="all" noSelect="true">
+							<w2:header id="header5" style="">
+								<w2:row id="row35" style="">
+									<w2:column blockSelect="false" hidden="false" id="column530" inputType="text" style="" useFilter="true" value="대분류"
+										width="90">
+									</w2:column>
+									<w2:column blockSelect="false" hidden="false" id="column532" inputType="text" style="" useFilter="true" value="중분류"
+										width="110">
+									</w2:column>
+									<w2:column blockSelect="false" id="column535" inputType="text" style="" value="제품명" width="100"></w2:column>
+									<w2:column id="column468" inputType="text" style="" useFilter="true" value="수량" width="60"></w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody id="gBody5" style="">
+								<w2:row id="row37" style="">
+									<w2:column blockSelect="false" hidden="false" id="category1" inputType="text" style="" width="90"></w2:column>
+									<w2:column blockSelect="false" hidden="false" id="category2" inputType="text" style="" width="110"></w2:column>
+									<w2:column blockSelect="false" id="product" inputType="text" style="" width="100"></w2:column>
+									<w2:column dataType="number" displayFormat="#,###" id="quantity" inputType="text" style="" width="60" textAlign="right"></w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView>
+					</xf:group>
+				</xf:group>
+				<xf:group id="" style="position: relative ;float:left;box-sizing: border-box;max-width: 560px;width: 49%;">
+					<xf:group class="titbox" id="" style="">
+						<w2:textbox class="" id="" label="필터 리스트 기능(useFilterList) - 유일한 데이터를 목록으로 제공" style="" tagname="h3"></w2:textbox>
+					</xf:group>
+					<xf:group class="gvwbox" id="" style="max-width: 560px;">
+						<w2:gridView autoFit="allColumn" class="gvw" columnMove="true" dataList="data:dlt_grid" defaultCellHeight="37"
+							fixedColumn="" focusMode="row" id="grd_ex02" readOnly="true" scrollByColumn="false" sortable="true" style="height:360px;"
+							tooltipDisplay="true" useFilterList="true" visibleRowNum="all" useFilterSearch="true" noSelect="true">
+							<w2:header id="header5" style="">
+								<w2:row id="row35" style="">
+									<w2:column blockSelect="false" hidden="false" id="column530" inputType="text" style="" useFilter="true" value="대분류"
+										width="90">
+									</w2:column>
+									<w2:column blockSelect="false" hidden="false" id="column532" inputType="text" style="" useFilter="true" value="중분류"
+										width="110">
+									</w2:column>
+									<w2:column blockSelect="false" id="column535" inputType="text" style="" value="제품명" width="100"></w2:column>
+									<w2:column id="column468" inputType="text" style="" useFilter="true" value="수량" width="60"></w2:column>
+								</w2:row>
+							</w2:header>
+							<w2:gBody id="gBody5" style="">
+								<w2:row id="row37" style="">
+									<w2:column blockSelect="false" hidden="false" id="category1" inputType="text" style="" width="90"></w2:column>
+									<w2:column blockSelect="false" hidden="false" id="category2" inputType="text" style="" width="110"></w2:column>
+									<w2:column blockSelect="false" id="product" inputType="text" style="" width="100"></w2:column>
+									<w2:column dataType="number" displayFormat="#,###" id="quantity" inputType="text" style="" width="60" textAlign="right"></w2:column>
+								</w2:row>
+							</w2:gBody>
+						</w2:gridView>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="입력 값의 좌우 공백 제거" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="샘플 사용 방법"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox2" label="좌/우측 공백을 포함한 값을 입력한 후 포커스를 밖으로 뺄 경우, 좌/우측의 공백이 제거되는지 확인."
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='속성 설정&lt;br/&gt;ltrim="true" (좌측 공백 제거)' escape="false">
+    	</w2:textbox>
+    	<xf:input ltrim="true" adjustMaxLength="false" style="width:100%;height:40px;padding: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;" id="input1">
+    				</xf:input>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox5" label='속성 설정&lt;br/&gt;trim="true" (좌/우측 공백 모두 제거)' escape="false">
+    	</w2:textbox>
+    	<xf:input trim="true" rtrim="" adjustMaxLength="false" style="width:100%;height:40px;padding: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;" id="input2">
+    				</xf:input>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox6" label='속성 설정&lt;br/&gt;rtrim="true" (우측 공백 제거)' escape="false">
+    	</w2:textbox>
+    	<xf:input trim="" rtrim="true" adjustMaxLength="false" style="width:100%;height:40px;padding: 10px;margin-bottom: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;" id="input3">
+    				</xf:input>
+    </xf:group></body>
+</html>

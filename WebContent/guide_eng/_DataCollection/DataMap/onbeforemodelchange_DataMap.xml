@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1" ev:onbeforemodelchange="scwin.dataMap1_onbeforemodelchange">
+            		<w2:keyInfo>
+            			<w2:key id="id" name="id" dataType="text"></w2:key>
+            			<w2:key id="type" name="type" dataType="text"></w2:key>
+            			<w2:key id="color" name="color" dataType="text"></w2:key>
+            			<w2:key id="shape" name="shape" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            		<w2:data use="true">
+            			<id><![CDATA[1001]]></id>
+            			<type><![CDATA[Medical]]></type>
+            			<color><![CDATA[Red]]></color>
+            			<shape><![CDATA[Round]]></shape>
+            		</w2:data>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    dataMap1.set("type", "Tourism");
+};
+
+scwin.trigger2_onclick = function (e) {
+    dataMap1.set("type", "Leisure");
+
+};
+
+scwin.dataMap1_onbeforemodelchange = function (info) {
+    if (info.newValue == "Leisure") {
+        alert(info.newValue + " cannot be used.");
+        return false;
+    } else {
+        alert("Event - onbeforemodelchange\n\nKey : " + info.key + "\n\nOldValue : " + info.oldValue + "\n\nNewValue : " + info.newValue);
+    }
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="Event - onbeforemodelchange&lt;br/&gt;" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1-1. Click the first button.&lt;br/&gt;1-2. Verify that the onbeforeModelChange event fires and the data in dataMap1 changes, reflecting in the bound InputBox. &lt;br/&gt;&lt;br/&gt;2-1. Click the second button.&lt;br/&gt;2-2. Verify that the onbeforeModelChange event occurs, but the event handler returns “false”. This prevents the set() method from executing, and the data in dataMap1 remains unchanged. "
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4" label="Event Description&lt;br/&gt;&lt;br/&gt;onbeforemodelchange - Occurs immediately before data values change."
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[dataMap1.set("type", "Tourism");]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger type="button" id="trigger2" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" ev:onclick="scwin.trigger2_onclick">
+    		<xf:label><![CDATA[dataMap1.set("type", "Leisure");]]></xf:label>
+    	</xf:trigger>
+    	<xf:input ref="data:dataMap1.id"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-style:normal;font-weight:bolder;margin-top: 10px;display: block;"
+    		id="input1">
+    	</xf:input>
+    	<xf:input ref="data:dataMap1.type"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-style:normal;font-weight:bolder;margin-top: 10px;color: red;display: block;"
+    		id="input2">
+    	</xf:input>
+    	<xf:input ref="data:dataMap1.color"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-style:normal;font-weight:bolder;margin-top: 10px;display: block;"
+    		id="input3">
+    	</xf:input>
+    	<xf:input ref="data:dataMap1.shape"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-style:normal;font-weight:bolder;margin-top: 10px;display: block;"
+    		id="input4">
+    	</xf:input>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='/// Sample Code&lt;br/&gt;&lt;br/&gt;scwin.dataMap1_onbeforemodelchange = function (info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;if (info.newValue == "Leisure") {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;alert(info.newValue + " cannot be used.");&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;return false;&lt;br/&gt; &amp;nbsp; &amp;nbsp;} else {&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;alert("Event - onbeforemodelchange\n\nKey : " + info.key + "\n\nOldValue : " + info.oldValue + "\n\nNewValue : " + info.newValue);&lt;br/&gt; &amp;nbsp; &amp;nbsp;}&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;"
+    		tagname="">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

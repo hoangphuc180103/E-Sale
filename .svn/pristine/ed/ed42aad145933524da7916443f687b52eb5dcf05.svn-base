@@ -1,0 +1,32 @@
+/*amd /guide_eng/FusionChart/changeType_FusionChart.xml 3045 cbfd776dd689ee36f6360d3f3be5ac9ad6b40a4e144bf06ce0a54006171749e5 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var jsonData = {
+    "data": [{
+      "value": "490000",
+      "label": "China"
+    }, {
+      "value": "340000",
+      "label": "USA"
+    }, {
+      "value": "160000",
+      "label": "Brazil"
+    }, {
+      "value": "220000",
+      "label": "Spain"
+    }, {
+      "value": "123000",
+      "label": "India"
+    }]
+  };
+  chart1.setJSONData(jsonData);
+};
+scwin.trigger1_onclick = function (e) {
+  chart1.changeType("line");
+};
+scwin.trigger2_onclick = function (e) {
+  chart1.changeType("funnel");
+};
+scwin.trigger3_onclick = function (e) {
+  chart1.changeType("pyramid");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Change Chart Type Dynamically<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. Click each changeType() button below.<br/>2. Confirm that the chart changes to the specified type each time you click a button.',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'chart1.changeType("line");'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger2',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;','ev:onclick':'scwin.trigger2_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'chart1.changeType("funnel");'}]}]},{T:1,N:'xf:trigger',A:{type:'button',id:'trigger3',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;','ev:onclick':'scwin.trigger3_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'chart1.changeType("pyramid");'}]}]},{T:1,N:'w2:fusionchart',A:{seriesType:'simple',drawType:'javascript',runflashAt:'IE6,IE7,IE8',chartType:'Column2D',style:'width: 500px;height: 300px;',id:'chart1'}}]}]}]}]})

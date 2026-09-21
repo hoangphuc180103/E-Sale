@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox style="margin-bottom: 10px;color: blue;" id="textbox1" label='フォーマット適用時の設定' escape="false" tagname="h1"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox4" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='数字「1234567」を入力し、指定したフォーマットに従って「1,234,567」と表示されていることを確認してください。'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;"
+    		id="textbox2" label='プロパティの設定&lt;br/&gt;dataType="number" &lt;br/&gt;displayFormat="#,###" &lt;br/&gt;applyFormat="all"' escape="false">
+    	</w2:textbox>
+    	<xf:input dataType="number" displayFormat="#,###" maskFormat="" adjustMaxLength="false"
+    		style="width: 300px;text-align: right;height: 50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: red;"
+    		applyFormat="all" id="inputbox1">
+    	</xf:input>
+    </xf:group></body>
+</html>

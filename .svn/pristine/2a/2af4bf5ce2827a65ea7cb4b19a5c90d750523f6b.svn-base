@@ -1,0 +1,132 @@
+/*amd /page/P00090.xml 7495 a9fac3669c2ff2d9768887af2d9f6320994ccc937bf55577b492f7af576c2e67 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'stock',name:'Stock'}},{T:1,N:'w2:column',A:{id:'created_date',name:'Date',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  // DataList 할당
+  dlt_exam.setJSON([{
+    "created_date": "20110715",
+    "product": "SecureGate",
+    "stock": "98291"
+  }, {
+    "created_date": "19991225",
+    "product": "FastServe",
+    "stock": "528"
+  }, {
+    "created_date": "20140321",
+    "product": "CloudFlex",
+    "stock": "73928"
+  }, {
+    "created_date": "20080612",
+    "product": "CodeStream",
+    "stock": "6894"
+  }, {
+    "created_date": "19950103",
+    "product": "NetMax",
+    "stock": "4536219"
+  }, {
+    "created_date": "20190523",
+    "product": "TechAssist",
+    "stock": "73918"
+  }, {
+    "created_date": "20171018",
+    "product": "IntelliAI",
+    "stock": "351"
+  }, {
+    "created_date": "20020814",
+    "product": "StoreSafe",
+    "stock": "9810"
+  }, {
+    "created_date": "20151230",
+    "product": "ManageIT",
+    "stock": "782"
+  }, {
+    "created_date": "20130809",
+    "product": "WebBuilder",
+    "stock": "9461"
+  }, {
+    "created_date": "20210711",
+    "product": "EcoServe",
+    "stock": "6547281"
+  }, {
+    "created_date": "19980422",
+    "product": "SmartConsult",
+    "stock": "265"
+  }, {
+    "created_date": "20160127",
+    "product": "MobileMagic",
+    "stock": "1746123"
+  }, {
+    "created_date": "20000516",
+    "product": "SpeedLink",
+    "stock": "564"
+  }, {
+    "created_date": "20030911",
+    "product": "VirusGuard",
+    "stock": "732"
+  }, {
+    "created_date": "20140617",
+    "product": "DataVault",
+    "stock": "582196"
+  }, {
+    "created_date": "20100129",
+    "product": "GlobalSupport",
+    "stock": "372594"
+  }, {
+    "created_date": "20170905",
+    "product": "DataAnalyzer",
+    "stock": "6285"
+  }, {
+    "created_date": "19960309",
+    "product": "FrameworkPro",
+    "stock": "6105"
+  }, {
+    "created_date": "20071011",
+    "product": "ServeAll",
+    "stock": "5478269"
+  }, {
+    "created_date": "20120914",
+    "product": "CloudPro",
+    "stock": "9461"
+  }, {
+    "created_date": "20181127",
+    "product": "AppMagic",
+    "stock": "97413"
+  }, {
+    "created_date": "19970830",
+    "product": "LinkSecure",
+    "stock": "598362"
+  }, {
+    "created_date": "20140618",
+    "product": "HelpDesk",
+    "stock": "732"
+  }, {
+    "created_date": "20130420",
+    "product": "SafeWeb",
+    "stock": "802354"
+  }, {
+    "created_date": "20050505",
+    "product": "SmartStorage",
+    "stock": "6547281"
+  }, {
+    "created_date": "20111212",
+    "product": "BizManage",
+    "stock": "9749"
+  }, {
+    "created_date": "20190803",
+    "product": "DeepThink",
+    "stock": "527732"
+  }, {
+    "created_date": "20020116",
+    "product": "UltraServer",
+    "stock": "291"
+  }, {
+    "created_date": "19990407",
+    "product": "ExpertIT",
+    "stock": "582196"
+  }]);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 \'drawType\' 속성을 사용하여, GridView를 브라우저에 렌더링하는 방식을 설정한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) WebSquare 방식(화면에 노출되는 영역만 \'table\'로 출력)',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'34',visibleRowNumFix:'true',rowNumVisible:'true',dataList:'data:dlt_exam',style:'height:120px;',autoFit:'allColumn',id:'',visibleRowNum:'4',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240',drawType:'virtual'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'83',inputType:'text',id:'column1',value:'Date',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'63',inputType:'text',id:'column2',value:'Stock',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{dataType:'date',width:'83',displayFormat:'yyyy-MM-dd',inputType:'text',id:'created_date',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label',value:''}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'63',displayFormat:'#,###',inputType:'text',id:'stock',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'Native 방식 (데이터를 \'table\'로 모두 출력)',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumWidth:'34',rowNumVisible:'true',dataList:'data:dlt_exam',drawType:'native',style:'height:190px;',autoFit:'allColumn',id:'',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'240'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'83',inputType:'text',id:'column1',value:'Date',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column3',value:'Product',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'63',inputType:'text',id:'column2',value:'Stock',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{dataType:'date',width:'83',displayFormat:'yyyy-MM-dd',inputType:'text',id:'created_date',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'140',inputType:'text',id:'product',displayMode:'label',value:''}},{T:1,N:'w2:column',A:{textAlign:'right',dataType:'number',width:'63',displayFormat:'#,###',inputType:'text',id:'stock',displayMode:'label'}}]}]}]}]}]}]}]}]}]}]}]})

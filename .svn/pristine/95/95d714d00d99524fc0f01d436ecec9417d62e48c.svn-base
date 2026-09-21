@@ -1,0 +1,29 @@
+/*amd /page/P00325.xml 4814 eb9290f26ceef8caa8ed0a0ae397997dd07559173eb23ab21cb8d7106103a353 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A1'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A2'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B2'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+
+/**
+ * 버튼 [DataList의 데이터 복원하기] 클릭 시
+ */
+scwin.btn_resetData_onclick = function (e) {
+  // DataList 'dlt_exam'의 값을 복원합니다.
+  dlt_exam.undoAll();
+  // DataList 'dlt_exam'에 적용된 정렬을 제거합니다.
+  dlt_exam.removeColumnFilterAll();
+};
+
+/**
+ * 버튼 [DataList의 첫 번째 행의 'B' 컬럼의 셀 값 변경하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+  // DataList 'dlt_exam'의 첫 번째 행의 'B' 컬럼의 셀을 변경합니다.
+  dlt_exam.setCellData(0, "col_b", "B999");
+};
+
+/**
+ * 버튼 [DataList의 'A' 컬럼을 내림차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+  // DataList 'dlt_exam'의 'A' 컬럼을 내림차순으로 정렬합니다.
+  dlt_exam.sort("col_a", 1);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'PageFrame에 정의된 AliasDataList의 \'scope\' 속성을 사용하여, AliasDataList와 예제 화면의 DataList 간 동작을 확인할 수 있는 예제입니다.',style:'margin-bottom: 10px;'}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_cm',id:'btn_resetData',type:'button','ev:onclick':'scwin.btn_resetData_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'DataList의 데이터 복원하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_exam1_1_onclick',id:'btn_exam1_1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'DataList의 첫 번째 행의 \'B\' 컬럼의 셀 값 변경하기'}]}]}]},{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',id:'btn_exam2_1',type:'button','ev:onclick':'scwin.btn_exam2_1_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'DataList의 \'A\' 컬럼을 내림차순으로 정렬하기'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'mb_def_box nobottom',style:'max-width: 400px;'},E:[{T:1,N:'w2:textbox',A:{style:'',id:'',label:'DataList의 ID : \'dlt_exam\'',class:'wre_txt_normal',escape:'false'}},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{editModeEvent:'onclick',dataList:'data:dlt_exam',style:'height:60px;',autoFit:'allColumn',id:'grd_exam1',visibleRowNum:'2',class:'gvw',defaultCellHeight:'37',autoFitMinWidth:'300',rowStatusVisible:'true',rowStatusWidth:'40',keepDefaultColumnWidth:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1'},E:[{T:1,N:'w2:row',A:{id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'h_col_a',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'h_col_b',value:'B',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1'},E:[{T:1,N:'w2:row',A:{id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_a',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',id:'col_b',displayMode:'label'}}]}]}]}]},{T:1,N:'w2:pageFrame',A:{src:'/page/P00325S01.xml',style:'min-height: 30px;border: 2px solid orange;padding: 6px 6px 0px 6px;'}}]}]}]}]}]}]}]}]})

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    $p.reinitialize();
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="" style="margin: 50px;">
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick" id="trigger1"
+    			style="display: block;height:42px;line-height:32px;padding:5px;background-color: orange;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;"
+    			type="button">
+    			<xf:label><![CDATA[$p.reinitialize();]]></xf:label>
+    		</xf:trigger>
+    		<xf:input adjustMaxLength="false" id="input1"
+    			style="width:167px;height:39px;margin-top:20px;color: orange;font-size:20px;font-family: sans-serif;text-align:left;font-style:normal;font-weight:bolder;display:block;border: orange solid 2px;" placeholder="(2) データ入力">
+    		</xf:input>
+    	</xf:group>
+
+    </body>
+</html>

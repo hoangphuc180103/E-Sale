@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    requires("uiplugin.popup");
+    var parent = $p.parent().text1.getValue();
+    var triggerName = parent;
+    trigger1.setLabel(triggerName);
+    text1.hide();
+
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    var tmpSrc = scwin.getfolderPath() + "/03_a_popUp_A.xml";
+
+    var random = Math.random();
+    var parent = $p.parent().text1.getValue();
+    var label = parent + "-1";
+    //trigger1.setLabel(label);
+    text1.setValue(label);
+    var options = {
+        id: random,
+        type: "wframePopup", // "iframePopup", "browserPopup"
+        width: "200px",
+        height: "200px",
+        top: "300px",
+        left: "300px",
+        popupName: label,
+        modal: "modal",
+        frameModal: ""
+    };
+
+    $p.openPopup(tmpSrc, options);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:trigger type="button"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin: 30px;"
+    		id="trigger1" ev:onclick="scwin.trigger1_onclick">
+    		<xf:label><![CDATA[]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox id="text1" label="" style="width: 150px;height: 23px;"></w2:textbox>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] readOnly(읽기 전용)를 스크립트로 설정하기 - 컬럼(열) 단위">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230905" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="col_a" name="A" dataType="text"></w2:column>
+						<w2:column id="col_b" name="B" dataType="text"></w2:column>
+						<w2:column id="col_c" name="C" dataType="text"></w2:column>
+						<w2:column id="col_d" name="D" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A0]]></col_a>
+							<col_b><![CDATA[B0]]></col_b>
+							<col_c><![CDATA[C0]]></col_c>
+							<col_d><![CDATA[D0]]></col_d>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+							<col_d><![CDATA[D1]]></col_d>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+							<col_d><![CDATA[D2]]></col_d>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+							<col_d><![CDATA[D3]]></col_d>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 ['col_b' 컬럼에 'readOnly' 설정하기 - setColumnReadOnly 메소드 사용] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // GridView 'grd_exam1'의 'col_b' 컬럼에 'readOnly'를 설정합니다.
+    grd_exam1.setColumnReadOnly("col_b", true);
+};
+
+/**
+ * 버튼 ['col_b' 컬럼에 'readOnly' 해제하기 - setColumnReadOnly 메소드 사용] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // GridView 'grd_exam1'의 'col_b' 컬럼에 'readOnly'를 해제합니다.
+    grd_exam1.setColumnReadOnly("col_b", false);
+};
+
+/**
+ * 버튼 ['col_c' 컬럼에 'readOnly' 설정하기 - setReadOnly 메소드 사용] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // GridView 'grd_exam1'의 'col_c' 컬럼에 'readOnly'를 설정합니다.
+    grd_exam1.setReadOnly("column", "col_c", true);
+};
+
+/**
+ * 버튼 ['col_c' 컬럼에 'readOnly' 해제하기 - setReadOnly 메소드 사용] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // GridView 'grd_exam1'의 'col_c' 컬럼에 'readOnly'를 해제합니다.
+    grd_exam1.setReadOnly("column", "col_c", false);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'setColumnReadOnly' 메소드와 'setReadOnly' 메소드를 사용하여 GridView 바디 컬럼을 'readOnly'(읽기 전용)로 설정하거나 해제하는 예제입니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="'readOnly'가 설정된 셀의 배경색이 회색(#eee)으로 설정되어 있습니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1"
+								style="" type="button">
+								<xf:label><![CDATA['col_b' 컬럼에 'readOnly' 설정하기 - setColumnReadOnly 메소드 사용]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								style="" type="button">
+								<xf:label><![CDATA['col_b' 컬럼에 'readOnly' 해제하기 - setColumnReadOnly 메소드 사용]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1"
+								style="" type="button">
+								<xf:label><![CDATA['col_c' 컬럼에 'readOnly' 설정하기 - setReadOnly 메소드 사용]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam2_2_onclick" id="btn_exam2_2"
+								style="" type="button">
+								<xf:label><![CDATA['col_c' 컬럼에 'readOnly' 해제하기 - setReadOnly 메소드 사용]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView editModeEvent="onclick" rowNumVisible="true" keepDefaultColumnWidth="true" defaultCellHeight="37"
+								rowNumWidth="40" dataList="data:dlt_exam1" style="height: 100px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="all"
+								readOnlyBackgroundColor="#eee" class="gvw" autoFitMinWidth="252">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="50" inputType="text" id="column6" value="col_a" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" id="column5" value="col_b" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" id="column4" value="col_c" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" id="column3" value="col_d" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="50" inputType="text" id="col_a" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" id="col_b" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" id="col_c" displayMode="label"></w2:column>
+										<w2:column width="50" inputType="text" id="col_d" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인"
+		meta_screenName="[GridView] 마우스 드래그로 다중 셀을 선택할 때 마우스가 GridView 밖으로 이동하면 마우스의 방향에 따라 셀의 선택이 연장되도록 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230210" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridVeiw의 설정이 수정되었습니다." meta_date="20240705"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="col_a" name="A"></w2:column>
+						<w2:column dataType="text" id="col_b" name="B"></w2:column>
+						<w2:column id="col_c" name="C" dataType="text"></w2:column>
+						<w2:column id="col_d" name="D" dataType="text"></w2:column>
+						<w2:column id="col_e" name="E" dataType="text"></w2:column>
+						<w2:column id="col_f" name="F" dataType="text"></w2:column>
+						<w2:column id="col_g" name="G" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[B1]]></col_b>
+							<col_c><![CDATA[C1]]></col_c>
+							<col_d><![CDATA[D1]]></col_d>
+							<col_e><![CDATA[E1]]></col_e>
+							<col_f><![CDATA[F1]]></col_f>
+							<col_g><![CDATA[G1]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[B2]]></col_b>
+							<col_c><![CDATA[C2]]></col_c>
+							<col_d><![CDATA[D2]]></col_d>
+							<col_e><![CDATA[E2]]></col_e>
+							<col_f><![CDATA[F2]]></col_f>
+							<col_g><![CDATA[G2]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[B3]]></col_b>
+							<col_c><![CDATA[C3]]></col_c>
+							<col_d><![CDATA[D3]]></col_d>
+							<col_e><![CDATA[E3]]></col_e>
+							<col_f><![CDATA[F3]]></col_f>
+							<col_g><![CDATA[G3]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A4]]></col_a>
+							<col_b><![CDATA[B4]]></col_b>
+							<col_c><![CDATA[C4]]></col_c>
+							<col_d><![CDATA[D4]]></col_d>
+							<col_e><![CDATA[E4]]></col_e>
+							<col_f><![CDATA[F4]]></col_f>
+							<col_g><![CDATA[G4]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A5]]></col_a>
+							<col_b><![CDATA[B5]]></col_b>
+							<col_c><![CDATA[C5]]></col_c>
+							<col_d><![CDATA[D5]]></col_d>
+							<col_e><![CDATA[E5]]></col_e>
+							<col_f><![CDATA[F5]]></col_f>
+							<col_g><![CDATA[G5]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A6]]></col_a>
+							<col_b><![CDATA[B6]]></col_b>
+							<col_c><![CDATA[C6]]></col_c>
+							<col_d><![CDATA[D6]]></col_d>
+							<col_e><![CDATA[E6]]></col_e>
+							<col_f><![CDATA[F6]]></col_f>
+							<col_g><![CDATA[G6]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A7]]></col_a>
+							<col_b><![CDATA[B7]]></col_b>
+							<col_c><![CDATA[C7]]></col_c>
+							<col_d><![CDATA[D7]]></col_d>
+							<col_e><![CDATA[E7]]></col_e>
+							<col_f><![CDATA[F7]]></col_f>
+							<col_g><![CDATA[G7]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A8]]></col_a>
+							<col_b><![CDATA[B8]]></col_b>
+							<col_c><![CDATA[C8]]></col_c>
+							<col_d><![CDATA[D8]]></col_d>
+							<col_e><![CDATA[E8]]></col_e>
+							<col_f><![CDATA[F8]]></col_f>
+							<col_g><![CDATA[G8]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A9]]></col_a>
+							<col_b><![CDATA[B9]]></col_b>
+							<col_c><![CDATA[C9]]></col_c>
+							<col_d><![CDATA[D9]]></col_d>
+							<col_e><![CDATA[E9]]></col_e>
+							<col_f><![CDATA[F9]]></col_f>
+							<col_g><![CDATA[G9]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A10]]></col_a>
+							<col_b><![CDATA[B10]]></col_b>
+							<col_c><![CDATA[C10]]></col_c>
+							<col_d><![CDATA[D10]]></col_d>
+							<col_e><![CDATA[E10]]></col_e>
+							<col_f><![CDATA[F10]]></col_f>
+							<col_g><![CDATA[G10]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A11]]></col_a>
+							<col_b><![CDATA[B11]]></col_b>
+							<col_c><![CDATA[C11]]></col_c>
+							<col_d><![CDATA[D11]]></col_d>
+							<col_e><![CDATA[E11]]></col_e>
+							<col_f><![CDATA[F11]]></col_f>
+							<col_g><![CDATA[G11]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A12]]></col_a>
+							<col_b><![CDATA[B12]]></col_b>
+							<col_c><![CDATA[C12]]></col_c>
+							<col_d><![CDATA[D12]]></col_d>
+							<col_e><![CDATA[E12]]></col_e>
+							<col_f><![CDATA[F12]]></col_f>
+							<col_g><![CDATA[G12]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A13]]></col_a>
+							<col_b><![CDATA[B13]]></col_b>
+							<col_c><![CDATA[C13]]></col_c>
+							<col_d><![CDATA[D13]]></col_d>
+							<col_e><![CDATA[E13]]></col_e>
+							<col_f><![CDATA[F13]]></col_f>
+							<col_g><![CDATA[G13]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A14]]></col_a>
+							<col_b><![CDATA[B14]]></col_b>
+							<col_c><![CDATA[C14]]></col_c>
+							<col_d><![CDATA[D14]]></col_d>
+							<col_e><![CDATA[E14]]></col_e>
+							<col_f><![CDATA[F14]]></col_f>
+							<col_g><![CDATA[G14]]></col_g>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A15]]></col_a>
+							<col_b><![CDATA[B15]]></col_b>
+							<col_c><![CDATA[C15]]></col_c>
+							<col_d><![CDATA[D15]]></col_d>
+							<col_e><![CDATA[E15]]></col_e>
+							<col_f><![CDATA[F15]]></col_f>
+							<col_g><![CDATA[G15]]></col_g>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'dataDragSelectAutoScroll' 속성을 사용하여, 마우스로 드래그하여 다중 셀을 선택할 때 마우스가 GridView 밖으로 이동하면 마우스의 방향에 따라 셀 선택이 연장되도록 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 마우스 사용이 가능한 환경에서 정상 동작합니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'dataDragSelectAutoScroll' 속성 사용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView dataDragSelectAutoScroll="true" rowNumVisible="true" useShiftKey="true" readOnly="true"
+								defaultCellHeight="37" dataDragSelectAutoScrollPeriod="50" tooltipDisplay="true" rowMouseOver="false" rowNumWidth="40"
+								visibleRowNumFix="true" dataList="data:dlt_exam" dataDragSelect="true" style="height:100px;" id="" visibleRowNum="4" autoFit="none"
+								dataDragSelectAutoScrollLevel="1000" class="gvw" noSelect="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="80" inputType="text" style="" id="column7" value="A" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column6" value="B" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column5" value="C" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column4" value="D" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column3" value="E" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column2" value="F" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column1" value="G" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="80" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_d" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_e" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_f" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_g" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) 'dataDragSelectAutoScroll' 속성 미사용" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" class="gvwbox">
+							<w2:gridView dataDragSelectAutoScroll="false" rowNumVisible="true" useShiftKey="true" readOnly="true"
+								defaultCellHeight="37" tooltipDisplay="true" rowMouseOver="false" rowNumWidth="40" visibleRowNumFix="true" dataList="data:dlt_exam"
+								dataDragSelect="true" style="height:100px;" autoFit="none" id="" visibleRowNum="4" class="gvw" noSelect="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="80" inputType="text" style="" id="column7" value="A" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column6" value="B" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column5" value="C" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column4" value="D" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column3" value="E" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column2" value="F" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="column1" value="G" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="80" inputType="text" style="" id="col_a" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_b" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_c" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_d" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_e" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_f" value="" displayMode="label"></w2:column>
+										<w2:column width="80" inputType="text" style="" id="col_g" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

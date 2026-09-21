@@ -1,0 +1,25 @@
+/*amd /page/P00111.xml 5223 f9315c14dbef0896472e6cf719a11842f0439fe6e39d00c8a49ca0ddc73ddcc3 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_1',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dlt_exam_2',repeatNode:'map',style:'',valueAttribute:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'product',name:'Product'}},{T:1,N:'w2:column',A:{dataType:'text',id:'category',name:'Category'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 초기화
+  scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+  var arrData = [{
+    "category": "Software",
+    "product": "SecureGate"
+  }, {
+    "category": "Hardware",
+    "product": "FastServe"
+  }, {
+    "category": "Services",
+    "product": "CloudFlex"
+  }, {
+    "category": "Software",
+    "product": "CodeStream"
+  }];
+  dlt_exam_1.setJSON(arrData);
+  dlt_exam_2.setJSON(arrData);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'GridView의 컬럼에 정렬과 필터 기능이 모두 적용된 경우, GridView의 헤더에 정렬(sort) 아이콘와 필터(filter) 아이콘을 함께 표시한 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'정렬 및 필터 아이콘 모두 표시 활성화',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{showSortableUseFilter:'true',rowNumVisible:'true',showSortableImage:'true',sortable:'true',defaultCellHeight:'37',rowNumWidth:'34',visibleRowNumFix:'true',dataList:'data:dlt_exam_1',style:'height:100px;',autoFit:'lastColumn',id:'',visibleRowNum:'4',useFilterList:'true',class:'gvw',autoFitMinWidth:'240',sortEvent:'onclick',sortHeaderDiv:'onclick'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'column2',value:'Category',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'130',inputType:'text',id:'column3',value:'Product',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'140',inputType:'text',id:'category',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'left',width:'130',inputType:'text',id:'product',displayMode:'label'}}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'(기본 설정) 정렬 및 필터 아이콘 모두 표시 비활성화',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'wre_txt_normal',escape:'false',id:'',label:'기능 비교를 위해 구성된GridView입니다.',style:''}},{T:1,N:'xf:group',A:{class:'gvwbox',id:''},E:[{T:1,N:'w2:gridView',A:{showSortableUseFilter:'false',sortable:'true',autoFit:'lastColumn',autoFitMinWidth:'240',class:'gvw',dataList:'data:dlt_exam_2',defaultCellHeight:'37',id:'',rowNumVisible:'true',rowNumWidth:'34',style:'height:100px;',visibleRowNum:'4',visibleRowNumFix:'true',sortEvent:'onclick',sortHeaderDiv:'onclick'},E:[{T:1,N:'w2:caption',A:{id:'caption1',style:'',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{id:'header1',style:''},E:[{T:1,N:'w2:row',A:{id:'row1',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'column2',inputType:'text',value:'Category',width:'140',useFilter:'true'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'column3',inputType:'text',sortable:'true',value:'Product',width:'130'}}]}]},{T:1,N:'w2:gBody',A:{id:'gBody1',style:''},E:[{T:1,N:'w2:row',A:{id:'row2',style:''},E:[{T:1,N:'w2:column',A:{displayMode:'label',id:'category',inputType:'text',width:'140'}},{T:1,N:'w2:column',A:{displayMode:'label',id:'product',inputType:'text',textAlign:'left',width:'130'}}]}]}]}]}]}]}]}]}]}]}]})

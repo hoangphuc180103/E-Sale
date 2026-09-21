@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[Radio] 선택한 데이터를 검증하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230313" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 Radio의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="Label" id="label"></w2:column>
+						<w2:column dataType="text" name="Value" id="code"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<label><![CDATA[A]]></label>
+							<code><![CDATA[01]]></code>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[B]]></label>
+							<code><![CDATA[02]]></code>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[C]]></label>
+							<code><![CDATA[03]]></code>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[D]]></label>
+							<code><![CDATA[04]]></code>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 버튼 [ 체크 여부 판단하기 ] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    // Radio 'rad_exam1'의 체크 여부를 검증합니다.
+    let message = rad_exam1.validate();
+    alert(message);
+};
+
+/**
+ * 버튼 [ 지정된 메시지 표시하기 ] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    // Radio 'rad_exam2'의 체크 여부를 검증합니다.
+    rad_exam2.validate();
+};
+
+/**
+ * 버튼 [ 설정한 메시지 표시하기 ] 클릭 시
+ */
+scwin.btn_ex3_onclick = function (e) {
+    // Radio 'rad_exam3'의 체크 여부를 검증합니다.
+    rad_exam3.validate();
+};
+
+/**
+ * 버튼 [ 사용자 지정 메소드로 설정한 메시지 표시하기 ] 클릭 시
+ */
+scwin.btn_ex4_onclick = function (e) {
+    // Radio 'rad_exam4'의 체크 여부를 검증합니다.
+    rad_exam4.validate();
+};
+
+/**
+ * 영역 [사용자 지정 메소드로 설정한 메시지 표시하기]의
+ * Radio컴포넌트 [rad_exam4]의 invalidMessageFunc메소드
+ */
+scwin.fn_msg = function () {
+    var invalidType = this.getType();
+    if (invalidType == "mandatory") {
+        message = "사용자 지정 메소드로 설정된 메시지입니다.";
+    }
+
+    return message;
+}]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='Radio에서 선택한 데이터를 검증할 수 있는 속성과 메소드를 사용한 예제입니다.' style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="체크 여부 판단하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+								style="min-width: 30px;height: 26px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[체크 여부 판단하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:select1 id="rad_exam1" selectedIndex="-1" appearance="full" style="width: 200px;min-height:25px;" cols="" rows=""
+							ref="" mandatory="true">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam1">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="지정된 메시지 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" localeRef=""
+								style="min-width: 30px;height: 26px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[지정된 메시지 표시하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" style="margin: 10px 0px 10px 0px;">
+						</xf:group>
+						<xf:select1 id="rad_exam2" selectedIndex="-1" appearance="full" style="width: 200px;min-height:25px;" cols="" rows=""
+							ref="" mandatory="true" displaymessage="true">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam1">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="사용자 설정 메시지 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3" localeRef=""
+								style="min-width: 30px;height: 26px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[사용자 설정 메시지 표시하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" style="margin: 10px 0px 10px 0px;">
+						</xf:group>
+						<xf:select1 id="rad_exam3" selectedIndex="-1" appearance="full" style="width: 200px; min-height:25px;" cols="" rows=""
+							ref="" mandatory="true" displaymessage="true" invalidMessage="사용자 설정 메시지">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam1">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="사용자 지정 메소드로 설정한 메시지 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex4_onclick" id="btn_ex4" localeRef=""
+								style="min-width: 30px;height: 26px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[사용자 지정 메소드로 설정한 메시지 표시하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" style="margin: 10px 0px 10px 0px;">
+						</xf:group>
+						<xf:select1 id="rad_exam4" selectedIndex="-1" appearance="full" style="width: 200px;min-height:25px;" cols="" rows=""
+							ref="" mandatory="true" displaymessage="true" invalidMessageFunc="scwin.fn_msg">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_exam1">
+									<xf:label ref="label"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

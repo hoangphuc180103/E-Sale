@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Warning for Invalid Date&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="(Case 1)&lt;br/&gt;1. Enter a date in the correct format. (e.g., “20201010”)&lt;br/&gt;2. Click the spinner's arrow to confirm the entered date is displayed.&lt;br/&gt;&lt;br/&gt;(Case 2)&lt;br/&gt;1. Confirm that entering letters does not work. &lt;br/&gt;&lt;br/&gt;(Case 3)&lt;br/&gt;1. Confirm that clicking the arrow without entering anything displays a warning message.&lt;br/&gt;&lt;br/&gt;(Case 4)&lt;br/&gt;1. Confirm that clicking the arrow after entering a number not in date format displays a warning message." escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='useAlert="true"' escape="false">
+    	</w2:textbox><w2:spinner useAlert="false" dataType="date" skin="type1" inputReadOnly="false" style="width: 50%;margin-bottom: 10px;" id="spinner1" buttonSize="30">
+    	</w2:spinner></xf:group></body>
+</html>

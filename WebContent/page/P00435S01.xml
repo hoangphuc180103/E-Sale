@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="P00435의 서브 페이지 01">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:aliasDataMap studioSrc="/P0001.xml" scope="../dataMap1" id="aliasDataMap1"></w2:aliasDataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.btn_main_onclick = function (e) {
+    // 자식 => 부모 (상위 객체 접근)
+    alert( $p.parent().ipt1.getValue() );
+};
+
+
+scwin.btn_sub_onclick = function (e) {
+    alert( ipt1.getValue() );
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group style="" id="" class="pgtbox">
+    		<w2:textbox tagname="" style="" id="" label="Sub" class="pgt_tit"></w2:textbox>
+    	</xf:group>
+    	<xf:group style="" id="" class="tblbox">
+    		<xf:group adaptive="layout" adaptiveThreshold="768" tagname="table" style="" id="" class="w2tb tbl">
+    			<w2:attributes>
+    				<w2:summary></w2:summary>
+    			</w2:attributes>
+    			<xf:group tagname="colgroup">
+    				<xf:group tagname="col" style="width:150px;"></xf:group>
+    				<xf:group tagname="col" style=""></xf:group>
+    			</xf:group>
+    			<xf:group tagname="tr" style="">
+    				<xf:group tagname="th" style="" class="w2tb_th">
+    					<w2:textbox ref="" style="" userData2="" id="" label="sub 헤더" class=""></w2:textbox>
+    				</xf:group>
+    				<xf:group tagname="td" style="" class="w2tb_td">
+    					<xf:input style="width: 144px;height: 21px;" id="ipt1"></xf:input>
+    					<xf:trigger ev:onclick="scwin.btn_main_onclick" style="width: 80px;height: 23px;" id="btn_main" type="button">
+    						<xf:label><![CDATA[main]]></xf:label>
+    					</xf:trigger>
+    					<xf:trigger ev:onclick="scwin.btn_sub_onclick" style="width: 80px;height: 23px;" id="btn_sub" type="button">
+    						<xf:label><![CDATA[sub]]></xf:label>
+    					</xf:trigger>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

@@ -1,0 +1,786 @@
+/*amd /mainContainer.xml 27903 ef926a20f4c4b57da34842c9b168ba9acc0c2e51af61298be4adecac63e1179d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_cssFileList',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'label',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'path',name:'name2',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'path',E:[{T:4,cdata:'style'}]},{T:1,N:'label',E:[{T:4,cdata:'내부 internalStyle'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'path',E:[{T:4,cdata:'/css/example.css'}]},{T:1,N:'label',E:[{T:4,cdata:'[예제별 예시] /css/example.css'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'path',E:[{T:4,cdata:'/cm/css/base.css'}]},{T:1,N:'label',E:[{T:4,cdata:'[공통]/cm/css/base.css'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'path',E:[{T:4,cdata:'/cm/css/contents.css'}]},{T:1,N:'label',E:[{T:4,cdata:'[공통]/cm/css/contents.css'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'path',E:[{T:4,cdata:'/frame/css/wre.css'}]},{T:1,N:'label',E:[{T:4,cdata:'[공통]/frame/css/wre.css'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.gVar = {
+  "WRE_MAIN_TYPE": "P",
+  //화면 타입
+  "jsnParam": null,
+  "jsnLeftMenuLink": {},
+  "layoutComponentID": "tac_main"
+};
+scwin.onpageload = async function () {
+  console.log("운영반영 테스트");
+  $p.js($c.frame.getSrc($p, "/frame/highlight/highlight.min.js"), () => {});
+  await scwin.menu.init();
+
+  //샘플 fullpath 을 위한 json 생성 
+  await scwin.compent_path.init();
+
+  //querystring param 분석
+  scwin.parseParam();
+
+  //좌측 메뉴 구성
+  await wfm_leftContainer.setSrc($c.frame.getSrc($p, "frame/page/leftContainer.xml"));
+
+  // CKEDITOR5 버전부터 미사용
+  // inquires("externalJS/editor4.17.1/ckeditor.js").then(function (argDone) {
+  //     CKEDITOR.disableAutoInline = false;
+  //     // CKEDITOR.config.autoUpdateElement = false;
+  //     // CKEDITOR.scayt_autoStartupSince = false; 
+
+  //     scwin.setInitPage();
+  // }, function (arsError) {
+  //     console.log("[ERROR]externalJS/editor4.17.1/ckeditor.js", argError);
+  //     scwin.setInitPage();
+  // });
+
+  scwin.setInitPage();
+};
+scwin.setInitPage = async function () {
+  await scwin.dispDashboard();
+  await scwin.dispPageByParam();
+};
+
+/**
+ * querystring의 param 분석
+ */
+scwin.parseParam = function () {
+  var strAllParam;
+  var arrParam;
+  var jsnParam;
+  strAllParam = location.search.replace("?", "");
+  arrParam = strAllParam.split("&");
+  jsnParam = {};
+  arrParam.forEach((argItem, argIndex) => {
+    let arrItem = (argItem || "").trim().split("=");
+    jsnParam[arrItem[0]] = arrItem[1];
+  });
+
+  //전역 변수에 할당.
+  scwin.gVar.jsnParam = JSON.parse(JSON.stringify(jsnParam));
+};
+scwin.dispPageByParam = async function () {
+  var strPage;
+  var jsnMenu;
+  strPage = scwin.gVar.jsnParam.p;
+  if (!strPage) {
+    return;
+  }
+  jsnMenu = scwin.menu.getMenuByPage(strPage);
+  if (scwin.gVar.jsnParam.lm === "h") {
+    grp_main_wrap.removeClass("show_menu");
+  }
+  if (jsnMenu && jsnMenu.ID) {
+    await scwin.dispPage(jsnMenu, true);
+  } else {
+    var strLink = "https://example.websquare.kr/websquare/websquare.html?w2xPath=";
+    await scwin.dispPage3("", "", strLink + strPage, true);
+  }
+};
+scwin.dispPage = async function (argMenuID, argSelectedTab) {
+  try {
+    let position_y = tac_main.getWindow(tac_main.getSelectedTabIndex()).ifm_example_desc.getWindow().pageYOffset;
+    sessionStorage.setItem("frameY", position_y);
+  } catch (e) {}
+  var jsnMenuData;
+  var strMenuID;
+  var strMenuTitle;
+  var strTabID;
+  var isFirstOpen;
+  var isValid = false;
+  var numTabIndex;
+  var strPageContainer;
+  switch (typeof argMenuID) {
+    case "string":
+      jsnMenuData = scwin.menu.getMenuByID(argMenuID);
+      isValid = true;
+      break;
+    case "object":
+      if ($.isPlainObject(argMenuID) && argMenuID.ID) {
+        jsnMenuData = argMenuID;
+        isValid = true;
+      }
+      break;
+    default:
+      break;
+  }
+  strMenuID = jsnMenuData["ID"];
+  strMenuTitle = jsnMenuData["TITLE"];
+  strTabID = "tab_" + strMenuID;
+  numTabIndex = tac_main.getTabIndex(strTabID);
+  //console.log("tabIndex ::: " + numTabIndex);
+
+  isFirstOpen = numTabIndex < 0 || numTabIndex == null ? true : false;
+  if (isFirstOpen === true) {
+    let dispMode = jsnMenuData["DISPLAY_MODE"];
+    if (dispMode == "NONE") {
+      strPageContainer = $c.frame.getSrc($p, jsnMenuData["PATH"]);
+    } else {
+      strPageContainer = $c.frame.getSrc($p, "/frame/page/pageContainer.xml");
+    }
+    await tac_main.addTab(strTabID, {
+      "label": strMenuTitle,
+      "closable": "true",
+      "openAction": "select"
+    }, {
+      "src": strPageContainer,
+      "scope": true,
+      "frameMode": "pageFrame",
+      "dataObject": {
+        "type": "json",
+        "name": "tabParam",
+        "data": {
+          "menuData": jsnMenuData,
+          "withDoc": scwin.gVar.jsnParam && scwin.gVar.jsnParam.ed
+        }
+      }
+    });
+  }
+  if (!isFirstOpen || isFirstOpen && argSelectedTab !== false) {
+    tac_main.setSelectedTabIndex(tac_main.getTabIndex(strTabID));
+  }
+};
+
+//컴포넌트 가이드(WRE) 에서 온 샘플 표현 
+scwin.dispPage3 = async function (compName, type, argPath, argSelectedTab) {
+  try {
+    let position_y = tac_main.getWindow(tac_main.getSelectedTabIndex()).ifm_example_desc.getWindow().pageYOffset;
+    sessionStorage.setItem("frameY", position_y);
+  } catch (e) {}
+  var argMenuID;
+  var jsnMenuData;
+  var strMenuID;
+  var strMenuTitle;
+  var strTabID;
+  var isFirstOpen;
+  var isValid = false;
+  var numTabIndex;
+  var strPageContainer;
+  let pageUrl = "";
+  if (type == "WRE") {
+    pageUrl = argPath.split("?p=")[1];
+    argMenuID = scwin.menu.getMenuByPage(pageUrl);
+  } else {
+    // 샘플 path 수정으로 인한 로직 변경
+    pageUrl = argPath.split("w2xPath=")[1];
+    // pageUrl = argPath.split("attachments/")[1];     
+    // let pathCode = pageUrl.split("/")[0];
+    // pageUrl = pageUrl.split("/")[1];
+    // pageUrl = pageUrl.split("?version")[0];
+    /*
+        if(compName == ""){ 
+            compName = scwin.compent_path.getName(pageUrl);
+        }
+    // file name 가져오기
+    var path = pageUrl;
+    var parts = path.split('/');
+    var filename = parts[parts.length - 1];
+    scwin.lastTitle = "샘플";
+    		//scwin.displayTitle();
+        scwin.lastTitle = scwin.compent_path.getTitle(pageUrl);
+            argMenuID = {
+        	"ID": filename,
+        	"TITLE": "[" + compName + "] " + scwin.lastTitle,
+        	"DISPLAY_MODE": "",
+        	"MENU_BREADCRUMBS": compName,
+        	"PATH": pageUrl,
+        	"GUIDE": "Y"
+        };
+    */
+    argMenuID = scwin.compent_path.getMenuInfo(pageUrl);
+  }
+  switch (typeof argMenuID) {
+    case "string":
+      jsnMenuData = scwin.menu.getMenuByID(argMenuID);
+      isValid = true;
+      break;
+    case "object":
+      if ($.isPlainObject(argMenuID) && argMenuID.ID) {
+        jsnMenuData = argMenuID;
+        isValid = true;
+      }
+      break;
+    default:
+      break;
+  }
+  strMenuID = jsnMenuData["ID"];
+  strMenuTitle = jsnMenuData["TITLE"];
+
+  //console.log("jsnMenuData ==> " + JSON.stringify(jsnMenuData));
+  //console.log("strMenuTitle ==> " + strMenuTitle);
+  strTabID = "tab_" + strMenuID;
+  numTabIndex = tac_main.getTabIndex(strTabID);
+  isFirstOpen = numTabIndex < 0 || numTabIndex == null ? true : false;
+  if (isFirstOpen === true) {
+    let dispMode = jsnMenuData["DISPLAY_MODE"];
+    if (dispMode == "NONE") {
+      strPageContainer = $c.frame.getSrc($p, jsnMenuData["PATH"]);
+    } else {
+      strPageContainer = $c.frame.getSrc($p, "/frame/page/pageContainer.xml");
+    }
+    await tac_main.addTab(strTabID, {
+      "label": strMenuTitle,
+      "closable": "true",
+      "openAction": "select"
+    }, {
+      "src": strPageContainer,
+      "scope": true,
+      "frameMode": "pageFrame",
+      "dataObject": {
+        "type": "json",
+        "name": "tabParam",
+        "data": {
+          "menuData": jsnMenuData,
+          "withDoc": scwin.gVar.jsnParam && scwin.gVar.jsnParam.ed
+        }
+      }
+    });
+  }
+  if (!isFirstOpen || isFirstOpen && argSelectedTab !== false) {
+    tac_main.setSelectedTabIndex(tac_main.getTabIndex(strTabID));
+  }
+};
+
+/**
+ * tab 전체 닫기 click 시
+ */
+scwin.btn_tab_allclose_onclick = async function () {
+  var lenLen = tac_main.getTabCount();
+  for (let i = lenLen; i > 0; i--) {
+    await tac_main.deleteTab(i);
+  }
+};
+
+//dashboard 추가
+scwin.dispDashboard = async function () {
+  await tac_main.addTab("C_dashboard", {
+    "label": "HOME",
+    "closable": "false",
+    "openAction": "select",
+    "class": "tab_home",
+    "tabWidth": "0"
+  }, {
+    "src": $c.frame.getSrc($p, "/frame/page/intro_dashboard.xml"),
+    "scope": true,
+    "frameMode": "pageFrame"
+  });
+};
+scwin.btn_sitemap_onclick = function (e) {
+  var objRect;
+  var numMaxHeight, numMaxWidth;
+  var jsnOptions;
+  objRect = document.body.getBoundingClientRect();
+  numMaxHeight = objRect.height;
+  numMaxWidth = objRect.width;
+  jsnOptions = {
+    id: "pop_sitemap",
+    type: "browserPopup",
+    resizable: "true",
+    top: 120,
+    left: "auto",
+    width: (numMaxWidth > 1300 ? 1300 : numMaxWidth) + "px",
+    height: (numMaxHeight > 650 ? 650 : numMaxHeight) + "px",
+    dataObject: {
+      "type": "json",
+      "name": "popupParam",
+      "data": scwin.menu.getAllMenuDataString()
+    }
+  };
+  jsnOptions = $c.frame.getPopupPosition($p, jsnOptions);
+  $p.openPopup($c.frame.getSrc($p, "/frame/page/sitemap.xml"), jsnOptions);
+};
+
+//header 메뉴 확장/축소
+scwin.btn_toggle_menu_onclick = function () {
+  grp_main_wrap.toggleClass("show_menu");
+};
+
+/**
+ * 상단의 logo 클릭 시
+ */
+scwin.btn_logo_onclick = function () {
+  location.reload();
+};
+
+/**
+ * 탭 변경 시
+ */
+scwin.tac_main_onchange = function (tabID, idx, userTabID) {
+  var strMenuID;
+  var strSelectedMenuID;
+  var strkey = "ex_selectedMenuID";
+  strMenuID = userTabID.replace("tab_", "");
+
+  //home 활성화 시 class 추가
+  if (userTabID === "C_dashboard") {
+    btn_home.addClass("active");
+  } else {
+    btn_home.removeClass("active");
+  }
+
+  //기 선택된 요소 class 제거
+  strSelectedMenuID = this.getUserData(strkey);
+  if (strSelectedMenuID) {
+    scwin.setEmpClass_leftMenu(strSelectedMenuID, false);
+  }
+
+  //선택된 요소 class 추가 >>> 확장 처리까지.
+  scwin.setEmpClass_leftMenu(strMenuID, true);
+  this.setUserData(strkey, strMenuID);
+
+  // Iframe 의 세로 스크롤 position 유지
+  try {
+    let _y = sessionStorage.getItem("frameY");
+    tac_main.getWindow(tac_main.getSelectedTabIndex()).ifm_example_desc.getWindow().scrollTo({
+      top: _y
+    });
+  } catch (e) {}
+};
+
+/**
+ * 좌측 메뉴 강조 class 적용
+ */
+scwin.setEmpClass_leftMenu = function (argCurMenuID, argIsRemove) {
+  var strMenuComp;
+  var arrMenuComp;
+  var numLenArrMenuComp;
+  strMenuComp = scwin.gVar.jsnLeftMenuLink[argCurMenuID];
+  if (!strMenuComp) {
+    $c.frame.log($p, "scwin.setEmpClass_leftMenu", "메뉴 정보가 없습니다 : " + argCurMenuID, "debug");
+    return;
+  }
+  arrMenuComp = strMenuComp.split("|");
+  numLenArrMenuComp = arrMenuComp.length;
+  arrMenuComp.forEach((item, index) => {
+    //menu
+    let cmpMenu = $p.getComponentById(item);
+    if (!cmpMenu) {
+      $c.frame.log($p, "scwin.setEmpClass_leftMenu", "컴포넌트를 찾을 수 없습니다. : " + item, "debug");
+      return;
+    }
+    if (argIsRemove === false) {
+      cmpMenu.removeClass("on");
+    } else {
+      cmpMenu.addClass("on");
+      if (numLenArrMenuComp - 1 == index) {
+        cmpMenu.getParent().removeClass("isCollapsed");
+      } else if (index == 1) {
+        cmpMenu.removeClass("isCollapsed");
+      }
+    }
+  });
+  $p.getComponentById(arrMenuComp[0]).focus();
+};
+// 폰트사이즈
+scwin.header_hide_onlabelclick = function (index, checked, value) {
+  if (checked) {
+    $("html").css("font-size", "12px");
+    grp_main_wrap.addClass("large_font");
+  } else {
+    $("html").css("font-size", "10px");
+    grp_main_wrap.removeClass("large_font");
+  }
+};
+
+/**
+ * 모바일 메인으로 이동
+ */
+scwin.btn_pc_onclick = function (e) {
+  location.href = $c.frame.getConst($p, "WRE_URL_MOBILE");
+};
+
+/**
+ * TabControl의 [home] 클릭 시
+ */
+scwin.btn_home_onclick = function () {
+  scwin.dispDashboard();
+  //.w2table_tabControl_col
+};
+scwin.menu = function () {
+  let _var_jsnAllMenu;
+  let _var_arrAllMenu;
+  const _init = async function () {
+    var prmMenuResult;
+    try {
+      prmMenuResult = await _getMenuData();
+      _createMenuData(prmMenuResult);
+    } catch (ex) {
+      console.error(ex);
+    }
+  };
+  const _getMenuData = async function () {
+    var _promise;
+    _promise = new Promise((resolve, reject) => {
+      $p.ajax({
+        action: $c.frame.getSrc($p, "/frame/data/menu.json") + "?postfix=" + $c.frame.getRandomString($p),
+        method: "get",
+        success: function (argRes) {
+          resolve(JSON.parse(argRes.responseText));
+        },
+        error: function (argRes) {
+          reject(argRes);
+        }
+      });
+    });
+    return _promise;
+  };
+  const _createMenuData = function (argArrMenuData) {
+    let jsnAllMenu = {};
+    let arrAllMenu = [];
+    let i, i_max, i_item;
+    let arrDCInfo = [];
+    let strDataListID = "dlt_menu";
+    let jsnCtgKeyword = {};
+    let jsnCtgMap = {};
+    let strHiddenStatus;
+    let numHiddenLevel;
+    let arrFileMenu = [];
+    _var_jsnAllMenu = [];
+    try {
+      $p.data.remove(strDataListID);
+    } catch (ex) {}
+    let api_regExp_1 = new RegExp("WebSquare\\.uiplugin\\.", "g");
+    let api_regExp_2 = new RegExp("[a-zA-Z]\\|", "g");
+    let api_regExp_3 = new RegExp(",", "g");
+    for (i = 0, i_max = argArrMenuData.length; i < i_max; i++) {
+      let menuID;
+      let strKeyword;
+      let strParentID;
+      let strHiddenYN;
+      let numDepth;
+      i_item = argArrMenuData[i];
+      menuID = i_item.ID;
+      if (!menuID) {
+        throw "메뉴 데이터의 ID가 누락되었습니다. data : " + JSON.stringify(i_item);
+      }
+      strKeyword = i_item.KEYWORD || "";
+      strParentID = i_item.PARENT_ID;
+      strHiddenYN = i_item.HIDDEN || "N";
+      numDepth = +i_item.DEPTH || 0;
+
+      // 메뉴명
+      i_item["TITLE_ORG"] = i_item["TITLE_KO"] + "";
+      i_item["TITLE"] = i_item["TITLE_KO"];
+
+      //Hidden == "Y" 건도 검색은 되야 해서 모두 담아온다 20260203 add 
+      /*
+      if (strHiddenYN === "Y") {
+          // $c.frame.log("[createMenuData] 메뉴가 hidden 처리 되었습니다. 메뉴명:" + i_item["TITLE"]);
+            if (i_item["TYPE"] === "C") {
+              strHiddenStatus = "Y";
+              numHiddenLevel = +i_item["DEPTH"];
+          } else {
+              strHiddenStatus = "N";
+              numHiddenLevel = -1;
+          }
+          continue;
+      }
+      */
+
+      if (strHiddenStatus == "Y" && numDepth > numHiddenLevel) {
+        // $c.frame.log("[createMenuData] 상위 메뉴가 hidden 처리 되었습니다. 메뉴명:" + i_item["TITLE"]);
+        continue;
+      } else {
+        strHiddenStatus = "N";
+        numHiddenLevel = -1;
+      }
+
+      // API
+      let strAPI = (i_item["API"] || "").trim();
+      i_item["API"] = strAPI;
+      let strDispAPI = strAPI.replace(api_regExp_1, "").replace(api_regExp_2, "").replace(api_regExp_3, "|");
+      i_item["DISP_API"] = strDispAPI;
+
+      // 키워드
+      if (strParentID && jsnCtgKeyword[strParentID]) {
+        strKeyword = jsnCtgKeyword[strParentID] + (strKeyword ? "|" : "") + strKeyword;
+      }
+
+      // API도 키워드에 포함
+      let strKeywordAPI = strAPI.split(",").map(item => {
+        return item.replace(/.*\./, "");
+      }).join("|");
+
+      // API와 중복되는 키워드 제거
+      if (strKeywordAPI) {
+        let strResult = "";
+        let strLowerKeywordAPI = strKeywordAPI.toLowerCase();
+        let arrStrKeyword = strKeyword.split("|");
+        for (let i = 0, i_max = arrStrKeyword.length; i < i_max; i++) {
+          let item = arrStrKeyword[i];
+          if (strLowerKeywordAPI.indexOf(item.toLowerCase()) < 0) {
+            strResult += (strResult ? "|" : "") + item;
+          }
+        }
+        ;
+        strKeyword = strResult + (strResult ? "|" : "") + strKeywordAPI;
+      }
+      if (strKeyword) {
+        strKeyword = [...new Set(strKeyword.split("|"))].sort().join("|");
+      }
+      i_item["ALL_KEYWORD"] = strKeyword;
+      if (i_item["TYPE"] === "C" || i_item["TYPE"] === "Z") {
+        // 메뉴 경로 표현을 위한 작업.
+        jsnCtgMap[menuID] = i_item["TITLE"];
+        if (strParentID) {
+          jsnCtgMap[menuID] = (jsnCtgMap[strParentID] ? jsnCtgMap[strParentID] + "%||%" : "") + jsnCtgMap[menuID];
+        }
+        if (strKeyword) {
+          jsnCtgKeyword[menuID] = strKeyword;
+        }
+      }
+      if (strParentID) {
+        let tmpParentTitle = jsnCtgMap[strParentID];
+        i_item["MENU_BREADCRUMBS"] = jsnCtgMap[strParentID];
+        i_item["DISP_MENU_TITLE"] = i_item["TITLE"].replace(new RegExp("\\[" + tmpParentTitle.split("%||%").join("\\]\\[") + "\\] {0,1}", "i"), "");
+      }
+      if (jsnAllMenu[menuID]) {
+        console.error("_createMenuData", "메뉴ID가 중복 되었습니다. >>>>>>>> ", "menuID : ", menuID, " | ", i_item.TITLE, " :::::::::::::::::::::::: ", JSON.stringify(jsnAllMenu[menuID]));
+      }
+      jsnAllMenu[menuID] = i_item;
+      if (menuID.indexOf("M01") != 0 && i_item.TYPE === "F") {
+        arrFileMenu.push(i_item);
+      } else {
+        if (menuID == "M570000000") {
+          // 교육 메뉴는 파일명 정렬안함 - 로직상 교육메뉴 모두 끝나고 파일명 체크 해야함
+        } else {
+          // 파일명으로 정렬
+          arrFileMenu.sort((a, b) => {
+            let strLowerA = a.TITLE.toLowerCase();
+            let strLowerB = b.TITLE.toLowerCase();
+            let returnValue = 0;
+            if (strLowerA < strLowerB) {
+              returnValue = -1;
+            } else if (strLowerA > strLowerB) {
+              returnValue = 1;
+            } else {
+              returnValue = 0;
+            }
+            return returnValue;
+          });
+        }
+        arrAllMenu = arrAllMenu.concat(arrFileMenu);
+        arrFileMenu = [];
+        arrAllMenu.push(i_item);
+      }
+    } // for
+
+    arrAllMenu = arrAllMenu.concat(arrFileMenu);
+    arrFileMenu = [];
+    Object.keys(arrAllMenu[0]).forEach(item => {
+      arrDCInfo.push({
+        "id": item,
+        "name": item,
+        "dataType": "text"
+      });
+    });
+    $p.data.create({
+      "id": strDataListID,
+      "type": "dataList",
+      "option": {
+        "baseNode": "list",
+        "repeatNode": "map"
+      },
+      "columnInfo": arrDCInfo
+    });
+    $p.data.set("JSON", {
+      [strDataListID]: arrAllMenu
+    }, [strDataListID]);
+    _var_jsnAllMenu = jsnAllMenu;
+    _var_arrAllMenu = arrAllMenu;
+  };
+  const _getMenuByID = function (argMenuID) {
+    var jsnMenuData;
+    jsnMenuData = _var_jsnAllMenu[argMenuID];
+    if (!jsnMenuData) {
+      throw "메뉴가 존재하지 않습니다. MENU ID : " + argMenuID;
+    }
+    return JSON.parse(JSON.stringify(jsnMenuData));
+  };
+  const _getMenuByPage = function (argMenuPage) {
+    var returnValue;
+    _var_arrAllMenu.some((item, index) => {
+      let strPath = (item.PATH || "").trim();
+      if (!strPath) {
+        return false;
+      }
+      if (strPath.endsWith(argMenuPage) || strPath.endsWith(argMenuPage + ".xml")) {
+        returnValue = item;
+        return true;
+      }
+    });
+    return returnValue;
+  };
+  const _getAllMenuDataString = function () {
+    return JSON.stringify(_var_arrAllMenu);
+  };
+  return {
+    init: _init,
+    getMenuByID: _getMenuByID,
+    getMenuByPage: _getMenuByPage,
+    getAllMenuDataString: _getAllMenuDataString
+  };
+}();
+scwin.compent_path = function () {
+  let _var_jsnAllMenu;
+  const _init = async function () {
+    var prmPathResult;
+    try {
+      prmPathResult = await _getCompentPathData();
+      _var_jsnAllpath = prmPathResult;
+    } catch (ex) {
+      console.error(ex);
+    }
+  };
+  const _getCompentPathData = async function () {
+    var _promise;
+    _promise = new Promise((resolve, reject) => {
+      $p.ajax({
+        action: $c.frame.getSrc($p, "/frame/data/fullpath.json") + "?postfix=" + $c.frame.getRandomString($p),
+        method: "get",
+        success: function (argRes) {
+          resolve(JSON.parse(argRes.responseText));
+        },
+        error: function (argRes) {
+          reject(argRes);
+        }
+      });
+    });
+    return _promise;
+  };
+  const _getFullPath = function (argPage, compName) {
+    var returnValue;
+    let i, i_max, i_item;
+    let strFullpath;
+    var addxml = "";
+    if (argPage.indexOf(".zip") > -1) {
+      argPage = argPage.replace(".zip", "/");
+      addxml = argPage;
+      addxml = addxml.replace("/", "") + ".xml";
+      //console.log("pageUrl  addxml ==> " + addxml);
+    }
+    _var_jsnAllpath.some((item, index) => {
+      let strPath = (item.PATH || "").trim();
+      if (!strPath) {
+        return false;
+      }
+      //|| strPath.endsWith(argPage + ".xml")
+      if (strPath.endsWith(argPage)) {
+        returnValue = item;
+        returnValue = {
+          ID: argPage,
+          TITLE: "[" + compName + "]" + item.DESC,
+          DISPLAY_MODE: "",
+          MENU_BREADCRUMBS: compName,
+          PATH: "/guide/" + item.PATH + addxml,
+          GUIDE: "Y"
+        };
+        return true;
+      }
+    });
+    return returnValue;
+  };
+  const _getName = function (argPage) {
+    var returnValue;
+    var parts = argPage.split('/');
+    var filename = parts[parts.length - 1];
+    _var_jsnAllpath.some((item, index) => {
+      let strPath = (item.PATH || "").trim();
+      if (!strPath) {
+        return false;
+      }
+      if (strPath.endsWith(filename)) {
+        returnValue = item.NAME;
+        return true;
+      }
+    });
+    return returnValue;
+  };
+  const _getTitle = function (argPage) {
+    var returnValue;
+    var parts = argPage.split('/');
+    var filename = parts[parts.length - 1];
+    _var_jsnAllpath.some((item, index) => {
+      let strPath = (item.PATH || "").trim();
+      if (!strPath) {
+        return false;
+      }
+      if (strPath.endsWith(filename)) {
+        returnValue = item.TITLE;
+        return true;
+      }
+    });
+    return returnValue;
+  };
+  const _getMenuInfo = function (argPage) {
+    var returnValue;
+    var parts = argPage.split('/');
+    var filename = parts[parts.length - 1];
+    _var_jsnAllpath.some((item, index) => {
+      let strPath = (item.PATH || "").trim();
+      let strfileNm = strPath.split("/").pop();
+      if (!strPath) {
+        return false;
+      }
+      if (strPath.endsWith(filename)) {
+        if (strfileNm === filename) {
+          returnValue = {
+            ID: filename,
+            TITLE: "[" + item.NAME + "] " + item.TITLE,
+            DISPLAY_MODE: "",
+            MENU_BREADCRUMBS: item.NAME,
+            PATH: argPage,
+            //ALL_KEYWORD: item.KEY,
+            GUIDE: "Y"
+          };
+        }
+        //  return true;
+      }
+    });
+    return returnValue;
+  };
+  const _getAllFullpathDataString = function () {
+    return JSON.stringify(_var_jsnAllpath);
+  };
+  return {
+    init: _init,
+    getFullPath: _getFullPath,
+    getName: _getName,
+    getTitle: _getTitle,
+    getMenuInfo: _getMenuInfo,
+    getAllFullpathDataString: _getAllFullpathDataString // **
+  };
+}();
+
+/**
+ * 예제에서 다른 예제 호출할 때 사용
+ */
+scwin.openPage = function (argPageNo) {
+  var jsnMenu;
+  if (!argPageNo) {
+    return;
+  }
+  jsnMenu = scwin.menu.getMenuByPage(argPageNo);
+  if (jsnMenu && jsnMenu.ID) {
+    scwin.dispPage(jsnMenu, true);
+  }
+};
+
+// 클릭한 샘플의 타이틀 가져오기
+scwin.displayTitle = function () {
+  scwin.lastTitle = "샘플";
+  var iframe = document.querySelector("iframe");
+  var iframeDoc = iframe ? iframe.contentDocument || iframe.contentWindow.document : null;
+  if (!iframeDoc) {
+    return;
+  }
+  var target = event.target;
+  if (target && target.tagName === "A" && target.classList.contains("link")) {
+    event.preventDefault();
+    var pTag = target.closest("p");
+    if (pTag) {
+      var text = pTag.innerText || "";
+      lastTitle = text.split(" (")[0];
+      scwin.lastTitle = lastTitle;
+    }
+  }
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'wrap show_menu pc',id:'grp_main_wrap',style:''},E:[{T:1,N:'xf:group',A:{class:'bg_mainbox',id:'',style:''}},{T:1,N:'xf:group',A:{class:'header',id:'',style:''},E:[{T:1,N:'w2:anchor',A:{class:'btn_toggle_menu','ev:onclick':'scwin.btn_toggle_menu_onclick',id:'btn_toggle_menu',name:'',outerDiv:'false',style:'',title:'메뉴 확장/축소'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'tootleMenu'}]}]},{T:1,N:'xf:group',A:{class:'',id:'',style:'',tagname:'h1'},E:[{T:1,N:'w2:anchor',A:{class:'logo','ev:onclick':'scwin.btn_logo_onclick',id:'btn_logo',outerDiv:'false',title:'브라우저 새로고침'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'inswave systems'}]}]}]},{T:1,N:'xf:group',A:{class:'version',id:''},E:[{T:1,N:'w2:textbox',A:{id:'',label:'v.',tagname:'span'}},{T:1,N:'w2:textbox',A:{id:'',label:'SP6',tagname:'strong'}}]},{T:1,N:'xf:group',A:{class:'grp_r_link',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'btn_exam_tran_grp',id:''},E:[{T:1,N:'w2:span',A:{class:'v_bar',id:'',label:'',style:'display:none;'}},{T:1,N:'xf:trigger',A:{class:'btn_exam_tran','ev:onclick':'scwin.btn_sitemap_onclick',id:'btn_sitemap',style:'display: none;',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'사이트맵'}]}]},{T:1,N:'w2:span',A:{class:'v_bar',id:'',label:''}},{T:1,N:'xf:trigger',A:{class:'btn_exam_tran','ev:onclick':'scwin.btn_pc_onclick',id:'btn_pc',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'모바일버전'}]}]},{T:1,N:'w2:span',A:{class:'v_bar',id:'',label:'|',style:'display: none;'}}]},{T:1,N:'xf:group',A:{class:'input_switch',id:'',style:'display: none;'},E:[{T:1,N:'w2:span',A:{id:'',label:'큰글씨',style:''}},{T:1,N:'xf:select',A:{appearance:'full',cols:'','ev:onlabelclick':'scwin.header_hide_onlabelclick',id:'header_hide',ref:'',renderType:'checkboxgroup',rows:'',selectedindex:'-1',style:''},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:item',E:[{T:1,N:'xf:label'},{T:1,N:'xf:value'}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'container',id:'grp_container'},E:[{T:1,N:'xf:group',A:{class:'contents',id:'',style:''},E:[{T:1,N:'w2:tabControl',A:{alwaysDraw:'false',changeActiveTab:'true',class:'tbc_page',closable:'true',closeAllBtn:'true',confirmFalseAction:'new',confirmTrueAction:'exist','ev:onchange':'scwin.tac_main_onchange',id:'tac_main',style:'',tabScroll:'true',useConfirmMessage:'false',useMoveNextTabFocus:'false',useTabKeyOnly:'true'}},{T:1,N:'w2:anchor',A:{class:'tbc_close','ev:onclick':'scwin.btn_tab_allclose_onclick',id:'btn_tab_allclose',outerDiv:'false',style:'',title:'탭 전체 닫기'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'탭 전체 닫기'}]}]},{T:1,N:'w2:anchor',A:{class:'tab_home active','ev:onclick':'scwin.btn_home_onclick',id:'btn_home',outerDiv:'false',style:'',title:'HOME'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'HOME'}]}]}]}]},{T:1,N:'w2:wframe',A:{class:'side',id:'wfm_leftContainer',style:''}},{T:1,N:'xf:group',A:{class:'dim',id:'',style:''}}]},{T:1,N:'xf:group',A:{id:'grp_hidden',style:'display: none;'},E:[{T:1,N:'a',A:{id:'hidden_download_anchor'}}]},{T:1,N:'input',A:{id:'hidden_clipboard_input',style:'position:absolute;left:-1010px;top:-1010px;border:0px solid #fff;'}}]}]}]})

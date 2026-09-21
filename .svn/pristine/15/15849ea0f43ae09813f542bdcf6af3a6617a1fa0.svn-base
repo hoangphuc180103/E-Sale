@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="Continent" dataType="text"></w2:key>
+            			<w2:key id="key2" name="Country" dataType="text"></w2:key>
+            			<w2:key id="key3" name="City" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            		<w2:data use="true">
+            			<Asa><![CDATA[ ]]></Asa>
+            			<Asia><![CDATA[ ]]></Asia>
+            			<Korea><![CDATA[ ]]></Korea>
+            			<Seoul><![CDATA[ ]]></Seoul>
+            			<key1><![CDATA[ Asia]]></key1>
+            			<key2><![CDATA[Korea]]></key2>
+            			<key3><![CDATA[Seoul]]></key3>
+            		</w2:data>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	
+	scwin.trigger1_onclick = function(e) {
+		search1.setRef("data:dataMap1.key2");
+	};
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox5" label="Set Binding through ref Property&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox6" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox7" label='1. Hold down the Ctrl key and right-click the mouse. &lt;br/&gt;2. Check the value of key2 in dataMap1. (“Korea”)&lt;br/&gt;3. Check the value currently set in the SearchBox component. (“Seoul”)&lt;br/&gt;3. Click the setRef() button at the bottom.&lt;br/&gt;4. Confirm that the value of the SearchBox component changes to the value of key2 in dataMap1. (“Korea”)' escape="false">
+    	</w2:textbox><xf:trigger ev:onclick="scwin.trigger1_onclick" style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;" id="trigger1" type="button">
+    		<xf:label><![CDATA[search1.setRef("data:dataMap1.key2");]]></xf:label>
+    	</xf:trigger><w2:searchbox ref="data:dataMap1.key3" style="" id="search1"></w2:searchbox></xf:group></body>
+</html>

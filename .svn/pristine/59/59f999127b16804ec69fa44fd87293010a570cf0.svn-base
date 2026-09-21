@@ -1,0 +1,16 @@
+/*amd /guide/InputCalendar/cancelButtonShow_InputCalendar.xml 2439 8faa4b559e6a903be3ac19ed31018425ffcc3c65d1c3ab93037a2594738ddcc4 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.trigger1_onclick = function (e) {
+  inputCalendar1.validate();
+};
+scwin.fn_msg = function () {
+  var msg = "";
+  var invalidType = this.getType();
+  if (invalidType == "mandatory") {
+    msg = "Enter a date. 날짜를 입력하세요. ";
+  } else {
+    msg = "Invalid date. 날짜 형식을 확인하세요.";
+  }
+  alert(msg);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'날짜 선택 취소 버튼 표시하기',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. InputCalendar 컴포넌트의 달력 아이콘을 클릭. <br/>2. 날짜 선택 취소 버튼이 달력 위에 표시되는 것을 확인.',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'속성 설정<br/>cancelButtonShow="true"',escape:'false'}},{T:1,N:'w2:inputCalendar',A:{style:'margin-bottom: 10px;',id:'inputCalendar1',calendarValueType:'yearMonthDate',cancelButtonShow:'true',setCurrentDate:'true'}},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'속성 설정<br/>cancelButtonShow="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:inputCalendar',A:{calendarValueType:'yearMonthDate',cancelButtonShow:'false',id:'inputCalendar2',setCurrentDate:'true',style:''}}]}]}]}]})

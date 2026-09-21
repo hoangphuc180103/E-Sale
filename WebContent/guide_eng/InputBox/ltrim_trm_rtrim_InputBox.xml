@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Remove Whitespace from Input Value&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox2" label="After entering a value that includes left/right spaces, confirm that the left/right spaces are removed when focus is moved outside the field."
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='ltrim="true" (Trim whitespace on the left.)' escape="false">
+    	</w2:textbox>
+    	<xf:input ltrim="true" adjustMaxLength="false" style="width:100%;height:40px;padding: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;" id="input1">
+    				</xf:input>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox5" label='trim="true" (Trim whitespace both on the right and the left.)' escape="false">
+    	</w2:textbox>
+    	<xf:input trim="true" rtrim="" adjustMaxLength="false" style="width:100%;height:40px;padding: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;" id="input2">
+    				</xf:input>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox6" label='rtrim="true" (Trim whitespace on the right.)' escape="false">
+    	</w2:textbox>
+    	<xf:input trim="" rtrim="true" adjustMaxLength="false" style="width:100%;height:40px;padding: 10px;margin-bottom: 10px;font-size:20px;font-style:normal;font-weight:bolder;color: red;" id="input3">
+    				</xf:input>
+    </xf:group></body>
+</html>

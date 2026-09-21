@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="nullYNType_DataMap">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1" preserveType="true" nullYNType="null">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="name1" dataType="text" nullYN="true"></w2:key>
+            			<w2:key id="key2" name="name2" dataType="number"></w2:key>
+            			<w2:key id="key3" name="name3" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            	<w2:dataMap baseNode="map" id="dataMap2">
+            		<w2:keyInfo>
+            			<w2:key id="key1" name="name1" dataType="text"></w2:key>
+            			<w2:key id="key2" name="name2" dataType="number"></w2:key>
+            			<w2:key id="key3" name="name3" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.trigger1_onclick = function (e) {
+    dataMap1.setArray(["", "", "aaa"]);
+};
+
+scwin.trigger2_onclick = function (e) {
+    var jsnData = $p.data.get("JSON", ["dataMap1"]);
+    var pre = WebSquare.json.JSON2XML(jsnData);
+    var result = WebSquare.json.XML2JSONString(pre);
+    alert(result);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="" style="margin: 10px;margin-bottom: 0px;">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Set Handling Method for Blank Data&lt;br/&gt;"
+    			escape="false">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    			label='1. Click the setJArray() button to set data containing spaces.&lt;br/&gt;2. Click the $p.data.get() button to verify the set data.&lt;br/&gt;3. Verify that key1 displays as “null” and key2 displays as a space.&lt;br/&gt;(See the Script tab for detailed script.)' escape="false">
+    		</w2:textbox>
+    		<w2:textbox
+    			style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    			id="textbox4" label='nullYNType="null" (dataMap1)&lt;br/&gt;nullYN="true" (dataMap.key - key1)&lt;br/&gt;nullYN="false" (dataMap.key - key2)' escape="false">
+    		</w2:textbox>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;display: block;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[dataMap1.setArray( ["","", "aaa"] );]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    			style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;margin-bottom: 10px;display: block;"
+    			id="trigger2" type="button">
+    			<xf:label><![CDATA[$p.data.get()]]></xf:label>
+    		</xf:trigger>
+    	</xf:group>
+    	<xf:group style="margin-bottom: 10px;" id="">
+    		<xf:input ref="data:dataMap1.key1"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 10px;color: purple;"
+    			id="input1">
+    		</xf:input>
+    		<xf:input ref="data:dataMap1.key2"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 10px;color: purple;"
+    			id="input2">
+    		</xf:input>
+    		<xf:input ref="data:dataMap1.key3"
+    			style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 10px;color: purple;"
+    			id="input3">
+    		</xf:input>
+    	</xf:group>
+    </body>
+</html>

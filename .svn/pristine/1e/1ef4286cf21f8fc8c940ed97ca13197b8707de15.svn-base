@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/Guide/GridView/color.css" type="text/css"?>
+<?xml-stylesheet href="/Guide/GridView/style.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+        	<xf:instance>
+        		<data xmlns="" />
+        	</xf:instance>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true"
+        			ev:oncelldatachange="scwin.dataList1_oncelldatachange">
+        			<w2:columnInfo>
+        				<w2:column id="Status" name="Status" dataType="text" importFormatter=""></w2:column>
+        				<w2:column id="Date" name="Date" dataType="text"></w2:column>
+        				<w2:column id="Expense" name="Expense" dataType="text"></w2:column>
+        				<w2:column id="Income" name="Income" dataType="text"></w2:column>
+        				<w2:column id="Hobby" name="Hobby" dataType="text"></w2:column>
+        				<w2:column id="Region" name="Region" dataType="text"></w2:column>
+        				<w2:column id="Frequency" name="Frequency" dataType="text" importFormatter=""></w2:column>
+        				<w2:column id="ID" name="ID" dataType="text"></w2:column>
+        				<w2:column id="Age" name="Age" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection></w2:workflowCollection>
+        	<xf:submission id="submission1" ref="" target="data:json,dataList1" action="data.json" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        	<xf:submission id="submission2" ref="" target="" action="" method="post" mediatype="application/json" encoding="UTF-8"
+        		instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="" ev:submitdone=""
+        		ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    var objSubmission = $p.getSubmission("submission1");
+    objSubmission.action = scwin.getfolderPath() + '/data.json';
+    $p.executeSubmission("submission1");
+};
+
+scwin.onpageunload = function () {
+
+};
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="フッターの追加と演算子の使用" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='1. GridView 各列の expression プロパティ設定を確認します。 &lt;br/&gt;2.各カラムのフッタ部に対応する演算が正常に行われ、結果が表示されていることを確認。' escape="false">
+    	</w2:textbox><w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;Expense 列 : expression="MIN("Expense")"&lt;br/&gt;Income 列 : expression="MAX("Income")"&lt;br/&gt;Frequency 列 : expression="SUM("Frequency") expression="AVG("Age")"' escape="false">
+    	</w2:textbox><w2:gridView scrollByColumnAdaptive="false" contextMenu="true" rowNumVisible="true" dataList="data:dataList1" style="border: solid gray 1px;" scrollByColumn="false" id="gridView1" autoFit="allColumn" ev:oncelldblclick="scwin.gridView1_oncelldblclick" defaultCellHeight="20" autoFitMinWidth="0" visibleRowNum="10" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column7" value="Expense" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column6" value="Income" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column5" value="Hobby" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column3" value="Frequency" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column1" value="Age" blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column displayFormatter="" displayFormatFunc="" removeBorderStyle="false" width="70" displayFormat="#,###,###" inputType="text" style="height:20px" id="Expense" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column displayType="#,###" removeBorderStyle="false" width="70" displayFormat="#,###,###" inputType="text" style="height:20px" id="Income" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column customFormatter="" removeBorderStyle="false" width="70" displayFormat="" inputType="text" style="height:20px" id="Hobby" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Frequency" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="Age" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    		<w2:footer style="" id="footer4">
+    			<w2:row style="" id="row6">
+    				<w2:column expression='MIN("Expense")' removeBorderStyle="false" dataType="number" width="70" displayFormat="#,###" inputType="expression" style="height:20px" id="column43" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column expression='MAX("Income")' removeBorderStyle="false" dataType="number" width="70" displayFormat="#,###" inputType="expression" style="height:20px" id="column42" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="column41" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column expression='SUM("Frequency")' removeBorderStyle="false" dataType="number" width="70" inputType="expression" style="height:20px" id="column39" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column expression='AVG("Age")' removeBorderStyle="false" dataType="number" width="70" inputType="expression" style="height:20px" id="column37" value="" blockSelect="false" displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:footer>
+    	</w2:gridView></xf:group></body>
+</html>

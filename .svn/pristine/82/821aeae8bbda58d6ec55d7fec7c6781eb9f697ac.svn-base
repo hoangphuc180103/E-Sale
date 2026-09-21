@@ -1,0 +1,33 @@
+/*amd /guide_eng/_p/PopUp/pageFramePopup_openPopup_p/openPopup_p.xml 2181 35af69835e86dab1f7258071f76a16d4b4d23f8604dcd8d1688d79d314bac61c */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  requires("uiplugin.popup");
+};
+scwin.onpageunload = function () {};
+scwin.trigger2_onclick = function (e) {
+  const tmpSrc = scwin.getfolderPath() + "/page_component.xml";
+  var options = {
+    id: "pop1",
+    type: "pageFramePopup",
+    width: "400px",
+    height: "350px",
+    popupName: 'PageFrame (src="page_component.xml")',
+    frameModal: "parent",
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'w2:textbox',A:{style:'color: magenta;height:63px;margin:10px;font-size:20px;font-weight:bolder;font-style:italic;line-height:60px;',id:'textbox1',label:'PageFrame (src="popUp_02A_src.xml")'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color: magenta;font-size:15px;weight: bolder;color: white;font-weight:bolder;margin:50px;text-align: left;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup() '}]}]}]}]}]})

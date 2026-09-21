@@ -1,0 +1,213 @@
+/*amd /guide_eng/GridView/Grouping/customFilterBox_GridView.xml 10470 26dbf6dc2ddd044fcb4c1dd4f4ac778666d45515f8bfd8ce7bf63b91a2300612 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'Continent'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'Country'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'Item'}},{T:1,N:'w2:column',A:{dataType:'number',id:'col4',name:'Quantity'}}]}]},{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList2',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'Continent'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'Country'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'Item'}},{T:1,N:'w2:column',A:{dataType:'number',id:'col4',name:'Quantity'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Freezer",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Washer",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Freezer",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Washer",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "TV",
+    "col4": "823"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Freezer",
+    "col4": "288"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Washer",
+    "col4": "325"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "TV",
+    "col4": "823"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Freezer",
+    "col4": "288"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Washer",
+    "col4": "325"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "TV",
+    "col4": "823"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Freezer",
+    "col4": "288"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Washer",
+    "col4": "325"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "TV",
+    "col4": "823"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Freezer",
+    "col4": "288"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Washer",
+    "col4": "325"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "TV",
+    "col4": "823"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "Freezer",
+    "col4": "288"
+  }, {
+    "col1": "Americas",
+    "col2": "Canada",
+    "col3": "Washer",
+    "col4": "325"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "TV",
+    "col4": "823"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "Freezer",
+    "col4": "288"
+  }, {
+    "col1": "Americas",
+    "col2": "USA",
+    "col3": "Washer",
+    "col4": "325"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "TV",
+    "col4": "823"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "Freezer",
+    "col4": "288"
+  }, {
+    "col1": "Americas",
+    "col2": "Mexico",
+    "col3": "Washer",
+    "col4": "325"
+  }];
+  dataList1.setJSON(json);
+  dataList2.setJSON(json);
+};
+scwin.onpageunload = function () {};
+scwin.gridView1_ongroupby = function (options) {
+  options.groupbyHeader = [{
+    inputType: 'expression',
+    expression: 'toggle() + depthStr() + "    [ " + count() + " Cases ]  "',
+    align: 'left',
+    colSpan: 4
+  }];
+  options.closeGroup = true, options.groupbyFooter = {
+    depth_0: [{
+      colSpan: 3,
+      value: "Grand Total",
+      align: "right"
+    }, {
+      inputType: 'expression',
+      expression: 'SUM("col4")'
+    }],
+    depth_1: [{
+      colSpan: 3,
+      value: "Total",
+      align: "right"
+    }, {
+      inputType: 'expression',
+      expression: 'SUM("col4")'
+    }],
+    depth_2: [{
+      colSpan: 3,
+      value: "Sub Total",
+      align: "right"
+    }, {
+      inputType: 'expression',
+      expression: 'SUM("col4")'
+    }]
+  };
+  gridView1.groupby(options);
+};
+scwin.gridView2_ongroupby = function (options) {
+  options.groupbyHeader = [{
+    inputType: 'expression',
+    expression: 'toggle() + depthStr() + "    [ " + count() + " Cases ]  "',
+    align: 'left',
+    colSpan: 4
+  }];
+  options.closeGroup = true, options.groupbyFooter = {
+    depth_0: [{
+      colSpan: 3,
+      value: "Grand Total",
+      align: "right"
+    }, {
+      inputType: 'expression',
+      expression: 'SUM("col4")'
+    }],
+    depth_1: [{
+      colSpan: 3,
+      value: "Total",
+      align: "right"
+    }, {
+      inputType: 'expression',
+      expression: 'SUM("col4")'
+    }],
+    depth_2: [{
+      colSpan: 3,
+      value: "Sub Total",
+      align: "right"
+    }, {
+      inputType: 'expression',
+      expression: 'SUM("col4")'
+    }]
+  };
+  gridView2.groupby(options);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'Grouping while Maintaining Filtering<br/>',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'How to Use'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(First GridView)<br/>1-1. Select a filter from the header.<br/>1-2. Drag the header of the first GridView to perform grouping.<br/>1-3. Grouping is performed while the filter remains applied. (customFilterBox=“true”)<br/><br/>(Second GridView)<br/>2-1. Select a filter from the header.<br/>2-2. Drag the header of the second GridView to perform grouping.<br/>2-3. The filter is cleared, and grouping is performed on the entire dataset. (customFilterBox=“false”)',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'customFilterBox="true"',escape:'false'}},{T:1,N:'w2:gridView',A:{'ev:ongroupby':'scwin.gridView1_ongroupby',scrollByColumnAdaptive:'false',groupbyZoneMessage:'Drag headers here.',groupbyZoneHeight:'',scrollByColumn:'false',customFilterBox:'true',defaultCellHeight:'20',groupbyMaxCount:'',groupbyFilterBoxLocation:'',checkAllType:'false',dataList:'data:dataList1',style:'border: solid gray 1px;margin-bottom: 10px;',groupbyFilterBoxFormatter:'',id:'gridView1',autoFit:'allColumn',visibleRowNum:'10',useFilterList:'true',visibleRowNumFix:'true',groupbyFilterBox:'true',footerSummaryAuto:'true',groupbyZone:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column4',value:'Continent',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column3',value:'Country',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column2',value:'Item',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'column1',value:'Quantity',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col3',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'height:20px',id:'col4',value:'',displayMode:'label'}}]}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox5',label:'customFilterBox="false"',style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;'}},{T:1,N:'w2:gridView',A:{autoFit:'allColumn',checkAllType:'false',dataList:'data:dataList2',defaultCellHeight:'20','ev:ongroupby':'scwin.gridView2_ongroupby',groupbyFilterBox:'true',groupbyFilterBoxFormatter:'',groupbyFilterBoxLocation:'',groupbyMaxCount:'',groupbyZone:'true',groupbyZoneHeight:'',groupbyZoneMessage:'Drag headers here.',id:'gridView2',scrollByColumn:'false',scrollByColumnAdaptive:'false',style:'border: solid gray 1px;',useFilterList:'true',visibleRowNum:'10',visibleRowNumFix:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption2',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column12',value:'Continent',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column11',value:'Country',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column10',value:'Item',displayMode:'label',useFilter:'true'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column9',value:'Quantity',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row4'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col3',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col4',value:'',displayMode:'label',dataType:'number'}}]}]}]}]}]}]}]})

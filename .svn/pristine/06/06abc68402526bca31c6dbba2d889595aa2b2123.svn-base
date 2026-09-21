@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="동적으로 Submission 제어하기(생성,삭제,실행)">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataMap baseNode="map" id="dma_request">
+					<w2:keyInfo>
+						<w2:key id="name" name="name1" dataType="text"></w2:key>
+						<w2:key id="addr" name="name2" dataType="text"></w2:key>
+					</w2:keyInfo>
+					<w2:data use="true">
+						<name><![CDATA[WebSquare]]></name>
+						<addr><![CDATA[Seoul]]></addr>
+					</w2:data>
+				</w2:dataMap>
+				<w2:dataList baseNode="list" repeatNode="map" id="dc_resUserListData" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="name" name="name1" dataType="text"></w2:column>
+						<w2:column id="birthday" name="name2" dataType="text"></w2:column>
+						<w2:column id="height" name="name3" dataType="text"></w2:column>
+						<w2:column id="weight" name="name4" dataType="text"></w2:column>
+						<w2:column id="gender" name="name5" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+			<xf:submission id="sbm_example1" ref="data:json,dma_request" target="data:json,dc_resUserListData"
+				action="/data/sampleData/sampleData_json_dc_list.json" method="post" mediatype="application/json" encoding="UTF-8" instance=""
+				replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="" ev:submitdone="scwin.sbm_example1_submitdone"
+				ev:submiterror="scwin.sbm_example1_submiterror" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * [실행1] 클릭 시
+ * $p.createSubmission( 옵션 객체 );
+ */
+scwin.btn_ex1_onclick = function (e) {
+    var jsnSubmissionOptions;
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex1_onclick 실행 **", txa_log, false);
+
+    //서브미션 옵션 설정.
+    jsnSubmissionOptions = {
+        id: "sbm_example_dynamic",
+        ref: "data:json,dma_request",              //생략 가능 - $p.executeSubmission 호출시 request data 전달이 가능합니다. 
+        target: "data:json,dc_resUserListData",    //생략 가능 - submitDoneHandler 메소드에서 response data의 제어가 가능합니다.
+        action: "/data/sampleData/sampleData_json_dc_list.json",
+        mediatype: "application/json",
+        submitDoneHandler: function (e) {
+            //응답 본문 alert 출력
+            alert(e.responseText);
+
+            //응답 본문 log 출력
+            $c.frame.printExampleLog("sbm_example_dynamic - submitDoneHandler", txa_log, false);
+            $c.frame.printExampleLog(e.responseText, txa_log, false);
+        },
+        submitErrorHandler: function (e) {
+            $c.frame.printExampleLog("sbm_example_dynamic - submitErrorHandler", txa_log, false);
+            //개발자 도구 console에 에러 객체 출력
+            console.error("sbm_example_dynamic - submitErrorHandler", e);
+        }
+    };
+
+    //submission 생성
+    $p.createSubmission(jsnSubmissionOptions);
+};
+
+/**
+ * [실행2] 클릭 시
+ * $p.deleteSubmission( submissionID );
+ */
+scwin.btn_ex2_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex2_onclick 실행 **", txa_log, false);
+    $c.frame.printExampleLog('"sbm_example1" ID를 가진 submission이 이미 삭제된 경우는 오류가 발생합니다. 브라우저 개발자 도구의 콘솔을 확인하세요.', txa_log, false);
+    $c.frame.printExampleLog('$p.deleteSubmission("sbm_example1");', txa_log, false);
+
+    //submission 삭제. - "sbm_example1" ID를 가진 submission을 삭제합니다.
+    $p.deleteSubmission("sbm_example1");
+
+    //로그 출력
+    $c.frame.printExampleLog('정상적으로 삭제되었습니다.', txa_log, false);
+};
+
+/**
+ * [실행3] 클릭 시
+ * $p.executeSubmission( submissionID , requestData );
+ * ex) $p.executeSubmission("sbm_example1");
+ */
+scwin.btn_ex3_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex3_onclick 실행 **", txa_log, false);
+    $c.frame.printExampleLog('$p.executeSubmission("sbm_example1");', txa_log, false);
+    $c.frame.printExampleLog('"sbm_example1" ID를 가진 submission이 없는 경고 로그가 출력됩니다. 브라우저 개발자 도구의 콘솔을 확인하세요.', txa_log, false);
+
+    //submission 실행. - "sbm_example1" ID를 가진 submission을 실행합니다.
+    $p.executeSubmission("sbm_example1");
+};
+
+/**
+ * [실행4] 클릭 시
+ * $p.getSubmission( submissionID );
+ * ex) $p.getSubmission("sbm_example1");
+ */
+scwin.btn_ex4_onclick = function (e) {
+    var tmpRet;
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex4_onclick 실행 **", txa_log, false);
+    $c.frame.printExampleLog('$p.getSubmission("sbm_example1");', txa_log, false);
+    $c.frame.printExampleLog('"sbm_example1" ID를 가진 submission객체가 반환됩니다. 브라우저 개발자 도구의 콘솔을 확인하세요.', txa_log, false);
+
+    //submisison 객체 반환 - "sbm_example1" ID를 가진 submission을 반환합니다.
+    //반환 받은 객체의 속성을 재정의하여 사용할 수 있습니다.
+    tmpRet = $p.getSubmission("sbm_example1");
+
+    console.log('$p.getSubmission("sbm_example1"); 반환값 : ', tmpRet);
+
+    if (!tmpRet) {
+        //반환된 submission객체가 없는 경우 - null 반환
+        $c.frame.printExampleLog('"sbm_example1" ID를 가진 submission객체를 찾을 수 없습니다.', txa_log, false);
+    } else {
+        //반환된 submission의 정보 출력
+        $c.frame.printExampleLog('action : ' + tmpRet.action, txa_log, false);
+        $c.frame.printExampleLog('ref : ' + tmpRet.ref, txa_log, false);
+    }
+};
+
+/**
+ * sbm_example1의 submitdone handler
+ */
+scwin.sbm_example1_submitdone = function (e) {
+    //응답 본문 console 출력
+    console.log(e.responseText);
+    //응답 객체 console 출력
+    console.log(e.responseJSON);
+
+    //응답 본문 log 출력
+    $c.frame.printExampleLog("submitDoneHandler", txa_log, false);
+    $c.frame.printExampleLog(e.responseText, txa_log, false);
+};
+
+/**
+ * sbm_example1의 submiterror handler
+ */
+scwin.sbm_example1_submiterror = function (e) {
+    $c.frame.printExampleLog("submitErrorHandler", txa_log, false);
+
+    //개발자 도구 console에 에러 객체 출력
+    console.error("submitErrorHandler", e);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+
+/**
+ * 버튼 [새로고침] 클릭 시
+ */
+scwin.btn_pageReload_onclick = function (e) {
+    $p.reinitialize();
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group id="" style="" class="mb_def">
+				<xf:trigger type="button" id="btn_pageReload" style="width: 80px;" ev:onclick="scwin.btn_pageReload_onclick">
+					<xf:label><![CDATA[새로고침]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+			<xf:group class="mb_def" id="" style="" tagname="ul">
+				<xf:group class="wre_heading_btn" id="" style="" tagname="li">
+					<w2:textbox class="wre_heading" id="" label="Submission 생성하기" style=""></w2:textbox>
+					<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" style=""
+						type="button">
+						<xf:label><![CDATA[실행1]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group class="wre_heading_btn" id="" style="" tagname="li">
+					<w2:textbox class="wre_heading" id="" label="Submission 삭제하기" style=""></w2:textbox>
+					<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" style=""
+						type="button">
+						<xf:label><![CDATA[실행2]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group class="wre_heading_btn" id="" style="" tagname="li">
+					<w2:textbox class="wre_heading" id="" label="Submission 실행하기" style=""></w2:textbox>
+					<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3" style=""
+						type="button">
+						<xf:label><![CDATA[실행3]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group class="wre_heading_btn" id="" style="" tagname="li">
+					<w2:textbox class="wre_heading" id="" label="Submission 객체 반환받기" style=""></w2:textbox>
+					<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex4_onclick" id="btn_ex4" style=""
+						type="button">
+						<xf:label><![CDATA[실행4]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

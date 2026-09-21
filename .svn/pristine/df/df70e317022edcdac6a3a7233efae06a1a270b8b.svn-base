@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 셀의 데이터 반환받기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230712" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정이 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column dataType="text" name="A" id="col_a"></w2:column>
+						<w2:column dataType="text" name="B" id="col_b"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_a><![CDATA[A1]]></col_a>
+							<col_b><![CDATA[18000]]></col_b>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A2]]></col_a>
+							<col_b><![CDATA[17600]]></col_b>
+						</w2:row>
+						<w2:row>
+							<col_a><![CDATA[A3]]></col_a>
+							<col_b><![CDATA[16000]]></col_b>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    
+};
+
+/**
+ * 버튼 [GridView에 출력된 데이터 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // GridView 'grd_exam'에 출력된 'B' 컬럼의 2번째 행의 데이터를 반환받습니다.
+    let result = grd_exam.getCellDisplayData(1, "col_b");
+
+    alert("getCellDisplayData : " + result);
+    console.log("getCellDisplayData : ", result);
+};
+
+/**
+ * 버튼 [GridView와 연결된 DataList의 데이터 반환받기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // 예시 1) GridView에 연결된 DataList의 Id를 알고 있는 경우
+    // let result = dlt_books_1.getCellData(1, "col_b");
+
+    // 예시 2) GridView에 연결된 DataList를 알수 없는 경우
+    // GridView 'grd_exam'에 연결된 DataList 객체를 반환받습니다.
+    let _dataList = $p.getComponentById(grd_exam.getDataList());
+
+    // GridView와 연결된 DataList의 'B' 컬럼의 2번째 행의 데이터를 반환받습니다.
+    let result = _dataList.getCellData(1, "col_b");
+
+    alert("getCellData : " + result);
+    console.log("getCellData : ", result);
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView의 'getCellDisplayData' 메소드와 DataList의 'getCellData' 메소드를 사용하여 GridView 셀의 데이터를 반환받는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="'B' 컬럼의 2번째 행의 데이터 반환받기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger id="btn_exam1_1" style="" type="button" class="btn_exam_exec btn_txt_of"
+								ev:onclick="scwin.btn_exam1_1_onclick">
+								<xf:label><![CDATA[GridView에 출력된 데이터 반환받기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec" id="btn_exam1_2" style="" type="button" ev:onclick="scwin.btn_exam1_2_onclick">
+								<xf:label><![CDATA[GridView와 연결된 DataList의 데이터 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="mb_def_box nobottom" style="">
+							<xf:group id="" class="gvwbox" style="max-width:240px;">
+								<w2:gridView rowNumVisible="true" rowNumWidth="40" keepDefaultColumnWidth="true" readOnly="true" defaultCellHeight="37"
+									initFixedHeightByRowNum="4" tooltipDisplay="true" dataList="data:dlt_exam" style="height:80px;" autoFit="allColumn" id="grd_exam"
+									visibleRowNum="3" class="gvw" autoFitMinWidth="170">
+									<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+									<w2:header style="" id="header1">
+										<w2:row style="" id="row1">
+											<w2:column width="70" inputType="text" id="column3" value="A" displayMode="label"></w2:column>
+											<w2:column width="70" inputType="text" id="column5" value="B" displayMode="label"></w2:column>
+										</w2:row>
+									</w2:header>
+									<w2:gBody style="" id="gBody1">
+										<w2:row style="" id="row2">
+											<w2:column textAlign="center" width="70" inputType="text" id="col_a" displayMode="label"></w2:column>
+											<w2:column textAlign="right" dataType="number" width="70" displayFormat="#,###" inputType="text" id="col_b"
+												displayMode="label">
+											</w2:column>
+										</w2:row>
+									</w2:gBody>
+								</w2:gridView>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="pageFrame">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    const tmpSrc = scwin.getfolderPath() + "/page_component.xml";
+    pageFrame1.setSrc(tmpSrc);
+};
+
+scwin.trigger1_onclick = function (e) {
+    pageFrame1.borderFirst();
+};
+
+scwin.trigger2_onclick = function (e) {
+    pageFrame1.borderSecond();
+};
+
+scwin.trigger3_onclick = function (e) {
+    pageFrame1.setBrown();
+};
+
+scwin.trigger4_onclick = function (e) {
+    pageFrame1.showAll();
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath= window.location.href;
+    var folderPath;
+
+    console.log("currentPath  ===> " + currentPath);
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Use Methods of Page Component&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Verify the Page Component file used as the source (src) for PageFrame. &amp;nbsp;&lt;br/&gt; &amp;nbsp; &amp;nbsp; (In this example, the page_component.xml file is used.)&lt;br/&gt;2. Verify the methods added to the Page Component. &amp;nbsp;&lt;br/&gt;3. Click each button below.&lt;br/&gt;4. Confirm that methods from the Page Component can be executed directly within the PageFrame.&lt;br/&gt;(Detailed scripts can be found in the Script tab.)'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[pageFrame1.borderFirst();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger2" type="button">
+    		<xf:label><![CDATA[pageFrame1.borderSecond();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger3_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger3" type="button">
+    		<xf:label><![CDATA[pageFrame1.setBrown();]]></xf:label>
+    	</xf:trigger>
+    	<xf:trigger ev:onclick="scwin.trigger4_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger4" type="button">
+    		<xf:label><![CDATA[pageFrame1.showAll();]]></xf:label>
+    	</xf:trigger>
+    	<w2:pageFrame ev:onpageframeload="scwin.pageFrame1_onpageframeload" src="./page_component.xml"
+    		style="height: 300px;border: solid lightgreen 2px;" id="pageFrame1">
+    	</w2:pageFrame>
+    </xf:group></body>
+</html>

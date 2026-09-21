@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]inputbox_displayFormat 올림/내림 처리">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="pgtbox" id="" style="">
+    			<xf:trigger class="btn_fav" id="" style="" type="button">
+    				<xf:label></xf:label>
+    			</xf:trigger>
+    			<w2:textbox class="pgt_tit" id="" label="[완성화면] Inputbox 컴포넌트의 displayFormat 활용" style="" tagname=""></w2:textbox>
+    		</xf:group>
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="해당화면은 코딩이 완료된 화면" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 목표" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="1. 개요&lt;br/&gt;본 화면은 Inputbox 컴포넌트의 displayFormat 기능을 활용한 올림/내림/반올림 등을 실습하는 화면입니다. &lt;br/&gt;"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실습 방법" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label='1. Design Kit 를 활용하여 Inputbox 추가합니다.&lt;br/&gt;2. &lt;b&gt;[속성 활용]&lt;/b&gt;Component View 에서 속성 Tab 에 아래와 같은 속성을 넣습니다.&lt;br/&gt; &amp;nbsp; 1) &lt;b&gt;dataType&lt;/b&gt; =&gt; data 값을 소수점이 포함된 값으로 사용 &amp;nbsp;ex) dataType="float"&lt;br/&gt; &amp;nbsp; 2) &lt;b&gt;initValue&lt;/b&gt; =&gt; InputBox의 초기값 ex) initValue="22222.2347"&lt;br/&gt; &amp;nbsp; 3) &lt;b&gt;displayForamt&lt;/b&gt; =&gt; 보여주고자 하는 format을 설정 &amp;nbsp;&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;- &lt;b&gt;displayFormat="#,###.###"&lt;/b&gt; 소수점 4번째자리에서 반올림하여 소수점 3번째 자리까지 표시&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;- &lt;b&gt;displayFormat="#,###.###[ceil]"&lt;/b&gt; 소수점 4번째자리에서 올림하여 소수점 3번째 자리까지 표시&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;- &lt;b&gt;displayFormat="#,###.###[floor]"&lt;/b&gt; 소수점 4번째자리에서 버림하여 소수점 3번째 자리까지 표시&lt;br/&gt; &amp;nbsp;'
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="tblbox" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group tagname="col" style="width:150.00px;"></xf:group>
+    					<xf:group tagname="col" style="width:150.00px;"></xf:group>
+    					<xf:group style="width:150px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr">
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="유형" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="displayFormat" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="적용값" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th" style="text-align:center;">
+    						<w2:attributes></w2:attributes>
+    						<w2:textbox class="" id="" label="결과" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group style="" tagname="tr">
+    					<xf:group class="w2tb_th" style="" tagname="th">
+    						<w2:textbox class="" id="" label="반올림" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="#,###.###" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="22222.2347" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" style="" tagname="td">
+    						<xf:input id="" style="width:500px;height:21px;" initValue="22222.2347" dataType="float"
+    							displayFormat="#,###.###">
+    						</xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr">
+    					<xf:group class="w2tb_th " tagname="th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="올림" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="#,###.###[ceil]" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="33333.1231" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" tagname="td">
+    						<w2:attributes>
+    							<w2:colspan>1</w2:colspan>
+    							<w2:rowspan>1</w2:rowspan>
+    						</w2:attributes>
+    						<xf:input id="" style="width:500px;height:21px;" displayFormat="#,###.###[ceil]" dataType="float"
+    							initValue="33333.1231">
+    						</xf:input>
+    					</xf:group>
+    				</xf:group>
+    				<xf:group tagname="tr">
+    					<xf:group tagname="th" class="w2tb_th ">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="내림" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="#,###.###[floor]" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="th" class="w2tb_th">
+    						<w2:attributes>
+    							<w2:scope>row</w2:scope>
+    						</w2:attributes>
+    						<w2:textbox class="" id="" label="44444.6789" ref="" style="" userData2=""></w2:textbox>
+    					</xf:group>
+    					<xf:group tagname="td" class="w2tb_td">
+    						<w2:attributes></w2:attributes>
+    						<xf:input id="" style="width:500px;height:21px;" initValue="44444.6789" dataType="float"
+    							displayFormat="#,###.###[floor]">
+    						</xf:input>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

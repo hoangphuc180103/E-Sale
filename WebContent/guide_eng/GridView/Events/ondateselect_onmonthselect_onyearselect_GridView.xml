@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Date" dataType="text"></w2:column>
+            			<w2:column id="col2" name="Month" dataType="text"></w2:column>
+            			<w2:column id="col3" name="Year" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    dataList1.insertRow();
+};
+
+scwin.onpageunload = function () {
+
+};
+
+scwin.gridView1_ondateselect = function (row, col, dateStr, dateObj) {
+    var toshow = JSON.stringify(dateObj);
+    alert("ondateselect - Row : " + row + " Column : " + col + " Date String : " + dateStr + " Date Object : " + toshow);
+};
+
+scwin.gridView1_onmonthselect = function (row, col, info) {
+    var toshow = JSON.stringify(info);
+    alert("onmonthselect - Row : " + row + " Column : " + col + " Info : " + toshow);
+
+};
+
+scwin.gridView1_onyearselect = function (row, col, info) {
+    var toshow = JSON.stringify(info);
+    alert("onmonthselect - Row : " + row + " Column : " + col + " Info : " + toshow);
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1"
+    		label="Event - ondateselect &amp; onmonthselect &amp; onyearselect&lt;br/&gt;" escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. Select a date from the first Date column and confirm that the onDateSelect event fires.&lt;br/&gt;2. Select a month from the second Month column and confirm that the onMonthSelect event fires.&lt;br/&gt;3. Select a year from the third Year column and confirm that the onYearSelect event fires.&lt;br/&gt;(Detailed scripts for each event handler can be found in the Script tab.)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;"
+    		id="textbox4"
+    		label="Event Description&lt;br/&gt;&lt;br/&gt;ondateselect - Fired when a date is selected.&lt;br/&gt;onmonthselect - Fired when a month is selected.&lt;br/&gt;onyearselect - Fired when a year is selected."
+    		escape="false">
+    	</w2:textbox>
+    	<w2:gridView ev:oneditend="scwin.gridView1_oneditend" scrollByColumnAdaptive="false" ev:onbeforeedit="scwin.gridView1_onbeforeedit"
+    		scrollByColumn="false" defaultCellHeight="30" ev:ondateselect="scwin.gridView1_ondateselect"
+    		ev:onyearselect="scwin.gridView1_onyearselect" captionAuto="" dataList="data:dataList1"
+    		ev:onmonthselect="scwin.gridView1_onmonthselect" style="border: gray solid 1px;" id="gridView1"
+    		ev:onafteredit="scwin.gridView1_onafteredit" autoFit="allColumn" visibleRowNum="5" visibleRowNumFix="true">
+    		<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+    		<w2:header style="" id="header1">
+    			<w2:row style="" id="row1">
+    				<w2:column removeBorderStyle="false" width="299" inputType="text" style="" id="column1" value="Date" blockSelect="false"
+    					displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="260" inputType="text" style="" id="column2" value="Month"
+    					blockSelect="false" displayMode="label">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="294" inputType="text" style="" id="column4" value="Year" blockSelect="false"
+    					displayMode="label">
+    				</w2:column>
+    			</w2:row>
+    		</w2:header>
+    		<w2:gBody style="" id="gBody1">
+    			<w2:row style="" id="row2">
+    				<w2:column removeBorderStyle="false" width="299" viewType="icon" inputType="calendar" style="" id="col1"
+    					blockSelect="false" displayMode="label" calendarValueType="yearMonthDate">
+    				</w2:column>
+    				<w2:column pickerType="dynamic" removeBorderStyle="false" width="260" viewType="icon" inputType="calendar" style=""
+    					id="col2" blockSelect="false" displayMode="label" calendarValueType="yearMonth">
+    				</w2:column>
+    				<w2:column removeBorderStyle="false" width="294" viewType="icon" inputType="calendar" style="" id="col3"
+    					blockSelect="false" displayMode="label" calendarValueType="year" pickerType="dynamic">
+    				</w2:column>
+    			</w2:row>
+    		</w2:gBody>
+    	</w2:gridView>
+    	<w2:textbox escape="false" id="textbox5"
+    		label='/// Sample Code &lt;br/&gt;&lt;br/&gt;scwin.gridView1_ondateselect = function (row, col, dateStr, dateObj) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var toshow = JSON.stringify(dateObj);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("ondateselect - Row : " + row + " Column : " + col + " Date String : " + dateStr + " Date Object : " + toshow);&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.gridView1_onmonthselect = function (row, col, info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var toshow = JSON.stringify(info);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onmonthselect - Row : " + row + " Column : " + col + " Info : " + toshow);&lt;br/&gt;&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.gridView1_onyearselect = function (row, col, info) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var toshow = JSON.stringify(info);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert("onmonthselect - Row : " + row + " Column : " + col + " Info : " + toshow);&lt;br/&gt;};'
+    		style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;">
+    	</w2:textbox>
+    </xf:group></body>
+</html>

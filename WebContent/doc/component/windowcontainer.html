@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>WindowContainer</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_6f8fe5446a28a74e" class="chapter_title">WindowContainer</h1>
+		<h1 id="r_472bbf9edbd057ad" class="element heading1"
+			data-element-id="472bbf9edbd057ad">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_3f627e927e42e018" class="element normal"
+			data-element-id="3f627e927e42e018">WindowContainer는 웹스퀘어 AI에서 여러
+			개의 윈도우를 생성하고 관리할 수 있도록 지원하는 컨테이너 컴포넌트입니다. MDI(Multiple Document
+			Interface) 방식을 활용하여 부모-자식 관계의 윈도우를 계층적으로 구성할 수 있으며, 동적 윈도우 생성, 고정,
+			정렬, 최소화 및 최대화 등 다양한 윈도우 제어 기능을 제공합니다. WindowContainer를 사용하면 툴바에서 여러
+			윈도우를 손쉽게 제어할 수 있으며, 동적 데이터 전달, 윈도우 고정, 최소화 및 최대화 기능 등 다양한 기능을 사용할 수
+			있습니다.</p>
+		<dl id="r_6dd1fb572cdd1694" class="element definition_list"
+			data-element-id="6dd1fb572cdd1694">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3XTGQ1f53wizoLORdND0Yf">WindowContainer
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://www.youtube.com/playlist?list=PL7a9HhkvOVb3y9O3_FBxMW6bZqJxh9WDW">WindowContainer
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_0150ed89c75a2890" class="element heading1"
+			data-element-id="0150ed89c75a2890">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_49208c9d1fcc8f57" class="element normal"
+			data-element-id="49208c9d1fcc8f57">WindowContainer는 주로 다음과 같은
+			상황에서 활용됩니다:</p>
+		<dl id="r_8f9c272818107f84" class="element definition_list"
+			data-element-id="8f9c272818107f84">
+			<dt>
+				<strong>다중 작업 환경 구축</strong>
+			</dt>
+			<dd>
+				<p>여러 개의 화면이나 애플리케이션을 동시에 사용자에게 제공해야 할 때 유용합니다. 예를 들어, 대시보드 형태의
+					화면에서 여러 통계 창을 동시에 띄우거나, 한 화면에서 여러 문서 편집 창을 열어야 할 때 사용될 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>복잡한 데이터 조회 및 편집</strong>
+			</dt>
+			<dd>
+				<p>관련 데이터를 여러 윈도우에 분산하여 표시하고, 각 윈도우에서 독립적으로 데이터를 조회하거나 편집할 수 있도록
+					지원합니다.</p>
+			</dd>
+			<dt>
+				<strong>모듈화된 UI 구성</strong>
+			</dt>
+			<dd>
+				<p>개별적인 기능 단위를 윈도우 형태로 모듈화하여, 사용자가 필요한 기능만 선택적으로 열고 닫을 수 있도록
+					합니다. 이는 애플리케이션의 유연성과 확장성을 높이는 데 기여합니다.</p>
+			</dd>
+			<dt>
+				<strong>사용자 경험 개선</strong>
+			</dt>
+			<dd>
+				<p>사용자가 원하는 방식으로 윈도우를 배치하고 크기를 조절할 수 있게 하여, 개인화된 작업 환경을 제공하고
+					전반적인 사용자 만족도를 향상시킵니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_912bd23118ed49b3" class="element heading1"
+			data-element-id="912bd23118ed49b3">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_48c67058d32cbcdb" class="element unordered_list"
+			data-element-id="48c67058d32cbcdb">
+			<li><p>윈도우 생성</p>
+				<ul>
+					<li><p>
+							윈도우 생성 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/createWindow_WindowContainer/createWindow_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/eVVuQtrCb0I">YouTube</a>)
+						</p></li>
+					<li><p>
+							PageFrame 윈도우 생성 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/pageFrame_createWindow_WindowContainer/pageFrame_createWindow_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/RpgpUeBIo40">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 생성 시 파라미터 전달 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/getParameter_p_createWindow_WindowContainer/getParameter_p_createWindow_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/XYuqgVugfEo">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>윈도우 디자인</p>
+				<ul>
+					<li><p>
+							윈도우 크기 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00124.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/createWindow_defaultWidth_defaultHeight_WindowContainer/createWindow_defaultWidth_defaultHeight_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/gx3a9cI8WRg">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 크기 기반 적응형 디자인 적용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/createWindow_adaptiveFrame_WindowContainer/createWindow_adaptiveFrame_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/fFm-oDSJxxk">YouTube</a>)
+						</p></li>
+					<li><p>
+							현재 선택된 윈도우에 적용할 스타일 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00145.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/w2window_selected_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/IwIiNZJvo1c">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>윈도우 관리</p>
+				<ul>
+					<li><p>
+							윈도우 고정 (<a class="link" href="https://youtu.be/60Az2lCc_10">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 최대화 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/window_maximization_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/HlxA08cFll4">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 최소화 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/window_minimization_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/5VsjK7ob3qI">YouTube</a>)
+						</p></li>
+					<li><p>
+							네임 레이어를 통한 최소화 방지 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00224.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/stopMinimizeOnNameLayer_WindowContainer/stopMinimizeOnNameLayer_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/2TI-A0_cbog">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>윈도우 표시</p>
+				<ul>
+					<li><p>
+							윈도우 표시 및 배열 순서 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/setArrangeWindows_WindowContainer/setArrangeWindows_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/J0qlR_D3pWI">YouTube</a>)
+						</p></li>
+					<li><p>
+							최소화된 윈도우 포함 정렬 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/includeMinimizeWindow_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/0sXLZTHPR9E">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 정렬 버튼 위치 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00131.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/controlIconPosition_useNameContainer_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/UX4YEp2obi8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>윈도우 선택</p>
+				<ul>
+					<li><p>
+							현재 선택된 윈도우의 인덱스 확인 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00113.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/getSelectedIndex_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/AteLPAoIYK8">YouTube</a>)
+						</p></li>
+					<li><p>
+							지정한 윈도우에 포커스 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/setFocus_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Q7pDyJzoClY">YouTube</a>)
+						</p></li>
+					<li><p>
+							네임 레이어의 스크롤 버튼을 통한 윈도우 선택 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00222.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/changeActiveWindow_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Qcdc1Xg2Gx8">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>윈도우 닫기</p>
+				<ul>
+					<li><p>
+							모든 윈도우 또는 특정 윈도우 일괄 닫기 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00138.xml">WRE</a>,
+							<a class="link" href="https://youtu.be/8Hx2sBDwxRE">YouTube</a>)
+						</p></li>
+					<li><p>
+							특정 윈도우 제외 나머지 윈도우 닫기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/closeOthers_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/456lXCr-O0Y">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 닫기 시 남아 있는 윈도우의 자동 정렬 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00146.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/autoArrange_WindowContainer/autoArrange_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/ZuPDYmLdMM0">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>윈도우 드래깅</p>
+				<ul>
+					<li><p>
+							윈도우 드래깅 시 위치 설정 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00108.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/windowMoveType_WindowContainer/windowMoveType_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/bRaPG5A6s9U">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>네임 레이어</p>
+				<ul>
+					<li><p>
+							네임 레이어 상의 윈도우 순서 변경 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00223.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/setWindowTabOrder_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Cnp_VCf7WN8">YouTube</a>)
+						</p></li>
+					<li><p>
+							고정된 윈도우를 네임 레이어의 최앞단으로 이동 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00114.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/useFixButton_nameLayerRearrange_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/BX23wkAgGtQ">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 목록 보기 버튼 표시 (<a class="link"
+								href="https://youtu.be/fFm-oDSJxxk">WRE</a>, <a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/useWindowScrollButton_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/QyALhNlbbWk">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우 목록에 표시할 항목 개수 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/useWindowScrollButton_windowScrollVisibleRowNum_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/woovMy277dg">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>팝업</p>
+				<ul>
+					<li><p>
+							윈도우 내부에서 프레임 기반 모달 팝업 생성 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00123.xml">WRE</a>,
+							<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/frameMode_windowContainer_window_openPopup_frameModal_p/frameMode_windowContainer_window_openPopup_frameModal_p.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/Ch-k_-Vo8Kk">YouTube</a>)
+						</p></li>
+					<li><p>
+							윈도우에서 생성한 부모-자식 팝업 함께 닫기 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/createWindow_frameModal_WindowContainer/createWindow_frameModal_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/kTIlquVF8yw">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>서브미션 상태창 표시</p>
+				<ul>
+					<li><p>
+							기본 상태창 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/processMsgFrame_WindowContainer/processMsgFrame_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/9_SgibAMgw4">YouTube</a>)
+						</p></li>
+					<li><p>
+							커스텀 상태창 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/processMsgFrameURL_config_processMsgFrame_WindowContainer/processMsgFrameURL_config_processMsgFrame_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/PBFSg8Kpqzk">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>기타</p>
+				<ul>
+					<li><p>
+							브라우저의 History 기능 사용 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/frameMode_spaReplaceHistory_WindowContainer/frameMode_spaReplaceHistory_WindowContainer.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/OfsxRRlZ8cI">YouTube</a>)
+						</p></li>
+					<li><p>
+							부모의 Scope 상속 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/createWindow_scopeInherit_WindowContainer/createWindow_scopeInherit_WindowContainer.xml">샘플</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_0eef7b602562b3de" class="element heading1"
+			data-element-id="0eef7b602562b3de">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_791157b91a6a5aa8" class="element unordered_list"
+			data-element-id="791157b91a6a5aa8">
+			<li><p>윈도우 로드 및 언로드</p>
+				<ul>
+					<li><p>
+							<code>onwindowload</code>
+						</p></li>
+					<li><p>
+							<code>onwindowunload</code>
+						</p></li>
+				</ul></li>
+			<li><p>
+					드래깅 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/ondragstart_ondragend_WindowContainer.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/yPEr8hbp158">YouTube</a>)
+				</p>
+				<ul>
+					<li><p>
+							<code>ondragstart</code>
+							&amp;
+							<code>ondragend</code>
+						</p></li>
+				</ul></li>
+			<li><p>
+					버튼 클릭 (<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/WindowContainer/onminimizebtnclick_onrestorebtnclick_WindowContainer/onminimizebtnclick_onrestorebtnclick_WindowContainer.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/wC8QoEawA0Y">YouTube</a>)
+				</p>
+				<ul>
+					<li><p>
+							<code>onminimizebtnclick</code>
+						</p></li>
+					<li><p>
+							<code>onrestorebtnclick</code>
+						</p></li>
+				</ul></li>
+		</ul>
+	</div>
+</body>
+</html>

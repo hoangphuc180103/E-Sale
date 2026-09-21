@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    input1.setValue("test");
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    var status = input1.getMandatory();
+    alert(status);
+};
+
+scwin.trigger2_onclick = function (e) {
+    input1.setMandatory(true);
+    input1.setValue("test");
+    alert('Set mandatory property as "true"');
+};
+
+scwin.input1_onchange = function (e) {
+    input1.validate();
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group id="" style="margin: 10px;">
+    		<w2:textbox style="color: blue;margin-bottom: 10px;" id="textbox1" label="Set as Mandatory Field and Validate"
+    			escape="false" tagname="h1">
+    		</w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox3" label="How to Use"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox2"
+    			label='1. Click the getMandatory() button to confirm the current mandatory attribute value is “false”.&lt;br/&gt;2. Delete the text in the InputBox and press the Enter key.&lt;br/&gt;3. Confirm that no validation failure message appears.&lt;br/&gt;4. Click the setMandatory() button to set the mandatory attribute value to “true”. &lt;br/&gt;5. Delete the text in the InputBox and press the Enter key.&lt;br/&gt;6. Confirm that a validation failure message appears.'
+    			escape="false">
+    		</w2:textbox>
+    		<xf:input ev:onchange="scwin.input1_onchange" adjustMaxLength="false"
+    			style="width: 300px;text-align: right;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: red;margin-bottom: 10px;"
+    			id="input1" displaymessage="true" invalidMessage="Required field.">
+    		</xf:input>
+    		<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    			style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    			id="trigger1" type="button">
+    			<xf:label><![CDATA[getMandatory()]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger ev:onclick="scwin.trigger2_onclick"
+    			style="display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;"
+    			id="trigger2" type="button">
+    			<xf:label><![CDATA[setMandatory()]]></xf:label>
+    		</xf:trigger>
+    		<w2:textbox id="textbox4" label="/// Sample Code&lt;br/&gt;&lt;br/&gt;scwin.trigger1_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;var status = input1.getMandatory();&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert(status);&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.trigger2_onclick = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;input1.setMandatory(true);&lt;br/&gt; &amp;nbsp; &amp;nbsp;input1.setValue(&quot;test&quot;);&lt;br/&gt; &amp;nbsp; &amp;nbsp;alert('Set mandatory property as &quot;true&quot;');&lt;br/&gt;};&lt;br/&gt;&lt;br/&gt;scwin.input1_onchange = function (e) {&lt;br/&gt; &amp;nbsp; &amp;nbsp;input1.validate();&lt;br/&gt;};" style="padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;" escape="false"></w2:textbox>
+    	</xf:group></body>
+</html>

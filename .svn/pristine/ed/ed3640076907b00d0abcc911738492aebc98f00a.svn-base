@@ -1,0 +1,63 @@
+/*amd /page/P00267.xml 6923 47d8d14aeee4c94667a0a03dcbd604a5bccc0fc44b981de58f9d24e6b004b038 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_exam',saveRemovedData:'true',removedDataMatch:'true',removeDummyRowStatus:'false'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',name:'A',id:'col_a'}},{T:1,N:'w2:column',A:{dataType:'text',name:'B',id:'col_b'}},{T:1,N:'w2:column',A:{dataType:'text',name:'C',id:'col_c'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A1'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B1'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C1'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'삭제 예정'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B2'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C2'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'col_a',E:[{T:4,cdata:'A3'}]},{T:1,N:'col_b',E:[{T:4,cdata:'B3'}]},{T:1,N:'col_c',E:[{T:4,cdata:'C3'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  // 예제 테스트를 위한 데이터 상태 변경 로직
+  dlt_exam.setCellData(2, "col_a", "수정");
+  dlt_exam.deleteRow(1);
+  dlt_exam.insertJSON(0, [{
+    col_a: "신규",
+    col_b: "B0",
+    col_c: "C0"
+  }]);
+};
+
+/**
+ * 버튼 [Index 추출하기] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  // DataList 'dlt_exam'의'rowStatus'의 값이 'R'인 Row Index를 배열로 추출합니다.
+  let arrResult = dlt_exam.getRowIndexByStatus("R");
+
+  // 로그 출력
+  $c.frame.printExampleLog($p, "버튼 [Index 추출하기] 클릭", txa_log);
+  $c.frame.printExampleLog($p, "# 'rowStatus'의 값이 'R'인 Row Index - return 예시)", txa_log, false);
+  $c.frame.printExampleLog($p, JSON.stringify(arrResult), txa_log, false);
+  console.log("# 'rowStatus'의 값이 'R'인 Row Index - return 예시)", "\n", arrResult);
+};
+
+//
+/**
+ * 버튼 [JSON 형식으로 데이터 추출하기] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  // DataList 'dlt_exam'의'rowStatus'의 값이 'R'인 Row Index를 배열로 추출합니다.
+  let arrRowIndex = dlt_exam.getRowIndexByStatus("R");
+
+  // 변수 'arrRowIndex'의 길이를 추출합니다.
+  let numArrRowIdxLen = arrRowIndex.length;
+
+  // 결과를 담을 배열을 선언합니다.
+  let arrResult = [];
+
+  // 변수 'arrRowIndex'의 길이만큼 'for' 구문을 실행합니다.
+  for (let i = 0; i < numArrRowIdxLen; i++) {
+    let numRowIndex = arrRowIndex[i]; // 행의 Index
+    let jsnRowData = dlt_exam.getRowJSON(numRowIndex); // 행의 데이터를 JSON 형식으로 추출
+
+    // 추출한 JSON 형식의 데이터를 배열에 추가
+    arrResult.push(jsnRowData);
+  }
+
+  // 로그 출력
+  $c.frame.printExampleLog($p, "버튼 [JSON 형식으로 데이터 추출하기] 클릭", txa_log);
+  $c.frame.printExampleLog($p, "# 'rowStatus'의 값이 'R'인 행의 데이터를 JSON 형식으로 추출하기 - return 예시)", txa_log, false);
+  $c.frame.printExampleLog($p, JSON.stringify(arrResult, "", "\t"), txa_log, false);
+  console.log("# 'rowStatus'의 값이 'R'인 행의 데이터를 JSON 형식으로 추출하기 - return 예시)", "\n", arrResult);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+  txa_log.setValue("");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'DataList의 \'rowStatus\'(행 상태)의 값이 \'R\'인 데이터를 JSON 형식으로 반환받는 예제입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_td_style no_padding',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'mb_def_box nobottom',id:'',style:''},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Index 추출하기'}]}]},{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of',disabled:'',escape:'false','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',style:'',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'JSON 형식으로 데이터 추출하기'}]}]}]},{T:1,N:'xf:group',A:{id:'',class:'gvwbox'},E:[{T:1,N:'w2:gridView',A:{rowNumVisible:'true',rowStatusWidth:'40',readOnly:'true',keepDefaultColumnWidth:'true',defaultCellHeight:'37',rowStatusVisible:'true',rowNumWidth:'40',visibleRowNumFix:'true',dataList:'data:dlt_exam',style:'height:100px;',autoFit:'allColumn',id:'grd_exam1',visibleRowNum:'all',class:'gvw',autoFitMinWidth:'280'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'A',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column2',value:'B',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column1',value:'C',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_a',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_b',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col_c',value:'',displayMode:'label'}}]}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'example_div_th_style',id:''},E:[{T:1,N:'w2:span',A:{class:'mr_def txt_blue',id:'',label:'로그 확인',style:''}},{T:1,N:'xf:trigger',A:{class:'wre_btn_log_clear','ev:onclick':'scwin.btn_clearLog_onclick',id:'btn_clearLog',style:'',title:'로그 삭제',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'로그 삭제'}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:textarea',A:{class:'wre_txa_log',id:'txa_log',spellcheck:'false',style:'width: 100%;height: 140px;'}}]}]}]}]}]}]}]})

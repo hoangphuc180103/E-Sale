@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="[메인] 문서만 보이는 메인화면 " meta_process="왼쪽 메뉴 목록에서 새롭게 추가된 컴포넌트 목록 클릭시 보여지는 3rabbitz를 보여주는 메인화면 ">
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_viewSource_data" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="col1" name="name1" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:aliasDataList scope="/dlt_cssFileList" id="adl_cssFileList"></w2:aliasDataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    scwin.initPageContainer();
+};
+
+scwin.initPageContainer = function () {
+    var jsnParam;
+    var strExampleDocumentPath;
+
+
+    var jsnData;
+    var strHtmlPath;
+
+    jsnParam = $p.getParameter("tabParam");
+
+    jsnData = jsnParam["compName"];
+    strHtmlPath = jsnParam["path"];
+
+
+    tbx_pageTitle.setValue(jsnData);
+    
+    scwin.compName = "";
+    if(strHtmlPath != ""){
+
+        strExampleDocumentPath = "/doc/component/" + strHtmlPath.toLowerCase() + ".html"; ;
+        scwin.compName = strHtmlPath;
+    } else {
+        strExampleDocumentPath = "/doc/component/" + jsnData.toLowerCase() + ".html";
+        scwin.compName = jsnData;
+    } 
+
+    if (strExampleDocumentPath) {
+        let objIframe = document.getElementById(ifm_example_desc.getID());
+        objIframe.onload = scwin.ifm_example_desc_onload_handler;
+
+        ifm_example_desc.setSrc(strExampleDocumentPath);
+    } 
+};
+
+/**
+ * 설명부 iframe onload 이벤트 핸들러
+*/
+scwin.ifm_example_desc_onload = function (e) {
+    window.setTimeout(scwin.ifm_example_desc_onload_handler, 100);
+};
+
+/**
+ * 설명부 iframe onload 이벤트 핸들러
+*/
+scwin.ifm_example_desc_onload_handler = function (e) {
+    var objWin;
+    var eleContent;
+    var strSrc;
+    var i, i_max, item;
+    var objLink;
+    var strIframeHref;
+    strSrc = ifm_example_desc.getSrc();
+
+    objWin = ifm_example_desc.getWindow();
+
+    //2022.06.15 간헐적으로 html 컨텐츠가 표현되지 않는 현상이 발생. 관련 보완 로직.
+    strIframeHref = objWin.location.href;
+    if (strIframeHref == "about:blank" && ifm_example_desc.render.src != strIframeHref) {
+        let num_ex_recount = +ifm_example_desc.getUserData("ex_recount") || 0;
+
+        // console.log("==ifm_example_desc.render.src != objWin.location.href==>>>" + num_ex_recount);
+
+        if (num_ex_recount < 5) {
+            ifm_example_desc.setUserData("ex_recount", num_ex_recount++);
+            ifm_example_desc.setSrc(strSrc);
+        }
+
+        return;
+    } else {
+        ifm_example_desc.setUserData("ex_recount", 0);
+    }
+
+    //css 추가
+    objLink = document.createElement('link');
+    objLink.rel = 'stylesheet';
+    objLink.type = 'text/css';
+    objLink.href = $c.frame.getSrc('/frame/css/wre_doc.css') + "?"  + $c.frame.getConst("WRE_VER_WS5_EXAMPLE_DOC_CSS");
+
+    objWin.document.getElementsByTagName('head')[0].appendChild(objLink);
+
+    eleContent = objWin.document.body.firstChild;
+ 
+    if (!eleContent || !eleContent.classList) { 
+
+         //console.log("====(!eleContent || !eleContent.classList)=========================");
+         //console.log(eleContent);
+        
+        // 3rabbitz에서 가져온 컴포넌트 html a Tag 조작 20250916
+        let arrAnchor = objWin.document.getElementsByTagName('a') || [];
+        
+        let regExp_class = new RegExp("link|reference");
+        for (i = 0, i_max = arrAnchor.length; i < i_max; i++) { 
+            item =arrAnchor[i]; 
+            item.id = arrAnchor[i];
+            item.href = "#";     
+
+            //click 이벤트 추가 
+            arrAnchor[i].addEventListener('click',function(event) { 
+            //console.log("event.currentTarget.textContent  == >" + event.currentTarget.textContent);  // "click"
+            //console.log("target   => " + event.target); // 클릭한 요소
+            //console.log("this.id   => " +this.id); // 클릭한 요소
+
+                if( typeof this.id === "string" && this.id.includes("youtu.be")){ 
+                    let strLink = this.id;
+                    window.open(strLink, "_blank");
+                } else { 
+                    if( scwin.compName === "wrelist" ){ 
+                        parent.mf_scwin.dispPage3(scwin.compName, "WRE", this.id, true);
+                    } else { 
+                        parent.mf_scwin.dispPage3(scwin.compName, event.currentTarget.textContent, this.id, true);
+                    } 
+                } 
+            });
+
+        }   //end for
+    } else {
+
+        
+        console.log("====else=========================");
+        eleContent.classList.add('example_desc');
+
+        // 2022.06.15 외부 링크 새창으로 열기. 3rabbitz에서 target 속성을 지원하지 않음.
+        // 2023.09 css 직접 제어로 스크립트 제거
+        let _flag_202309 = false;
+        if (_flag_202309) {
+            let arrAnchor = objWin.document.getElementsByTagName('a') || [];
+            
+            let regExp_class = new RegExp("link|reference");
+            for (i = 0, i_max = arrAnchor.length; i < i_max; i++) {
+                item = arrAnchor[i]; 
+                let ele_className = item.className || "";
+                if (regExp_class.test(ele_className)) { 
+                    item.target = "_blank";
+
+                }
+            }
+        }
+
+        // 2023.06.30 스크롤 문제로 임시 기능 삭제
+        let _flag_20230630 = false;
+        if (_flag_20230630) {
+            //2022.06.15 컨텐츠 목차 추가
+            let domDocContext = document.createElement("div");
+            domDocContext.setAttribute("id", "ws_doc_context");
+            domDocContext.setAttribute("class", "doc_context");
+            domDocContext.innerHTML = scwin.getHTML_docContext(objWin.document.getElementsByTagName('h1'));
+            objWin.document.body.insertBefore(domDocContext, objWin.document.body.firstChild);
+        }
+    }
+
+    // 별도의 css 반영으로 인해 컨텐츠가 조정되는 것을 덜 노출 시키기 위한 처리
+    $p.setTimeout(function () { ifm_example_desc.setStyle("visibility", "visible"); }, { delay: 100 });
+
+};
+
+scwin.getHTML_docContext = function (argArrElement) {
+    var i, i_max, item;
+    var rerunValue;
+    var strPrefix, strPostfix;
+    var strList = "";
+
+    strPrefix = '<details><summary>목차</summary><ul>';
+    strPostfix = '</ul></details>';
+
+    for (i = 0, i_max = argArrElement.length; i < i_max; i++) {
+        item = argArrElement[i];
+        if (item.className.indexOf('chapter_title') > -1) {
+            continue;
+        }
+        //strList += '<li class="doc_title">' + item.textContent + '</li>';
+        strList += '<li class="doc_title"><a href="#' + item.id + '">' + item.getInnerHTML() + '</a></li>';
+    }
+
+    rerunValue = strPrefix + strList + strPostfix;
+
+    return rerunValue;
+};
+
+//화면 새로 고침
+scwin.btn_reloadPageContainer_onclick = function (e) {
+    $p.reinitialize();
+};
+
+// 예제 샘플을 pageFrame에 load
+scwin.guideLoad = async function(path){
+    
+    // 실제 전달할 데이터 정의. 새로 열릴 탭에 데이터를 전달 (dataObject를 통해 전달 가능) 
+    var rowJSON = {"path" : path}; 
+    
+    // 새로 열릴 화면에 데이터를 전달 (dataObject를 통해 전달 가능)
+    var obj = { 
+        "dataObject": {
+            "type" : "json",
+            "name" : "pathParam",  
+            "data" : rowJSON 
+        }
+    };
+    
+    await pgf_guide.setSrc("/guide/guide.xml", obj);
+    await grp_showHide.addClass("on");
+};
+
+// 닫기 버튼 클릭시 예제 샘플을 show & hide 형태로 사용하기
+scwin.btn_showHide_onclick = function (e) {
+    grp_showHide.removeClass("on");
+    
+};
+]]></script>
+		<style type="text/css"><![CDATA[.editor-popup-box {
+    display:flex;
+    flex-direction:column;
+    position: fixed;
+    top: 120px;
+    right: -100%;
+    z-index: 200;
+    width: 700px;
+    max-width: 100%;
+    bottom:0;
+    background-color: #fff;
+    transition: right 0.5s ease;
+    box-shadow: -7px 10px 20px rgb(0 0 0 / 8%);
+    box-sizing: border-box;
+}
+
+.editor-popup-box.on {
+    right: 0;
+}
+
+.editor-popup-box .pgf_guide {
+    flex:1;
+    overflow-y:auto;
+}
+
+.editor-popupclose-btn {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    border: 0;
+    border-radius: 0;
+    background: var(--ws-primary-500) url(/frame/images/ico_popup_arrow.svg) no-repeat center center;
+    font-size: 0;
+    line-height: 0;
+    box-sizing: border-box;
+}]]></style>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents exam_subbox" id="" style="">
+			<xf:group class="pgtbox mb_def" id="" style="">
+				<w2:textbox class="pgt_tit" id="tbx_pageTitle" label="화면타이틀" style="margin-right:24px" tagname=""></w2:textbox>
+				<xf:group id="" style="display: inline-block" class="pgt_titbtn">
+					<xf:trigger ev:onclick="scwin.btn_reloadPageContainer_onclick" style="display: none;" id="btn_reloadPageContainer" type="button"
+						title="화면 새로 고침" class="btn_cm reload">
+						<xf:label><![CDATA[새로고침]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+
+			<xf:group style="height: calc(100% - 47px);" id="grp_examplebox" class="exam_examplebox dual_view">
+				<xf:group id="" class="exam_examplebox_contents" style="top:0">
+					<w2:iframe src="" style="visibility: hidden;" id="ifm_example_desc" class="frame_desc" spa="false"></w2:iframe>
+					<xf:group style="" id="grp_showHide" class="editor-popup-box">
+						<xf:trigger type="button" id="btn_showHide" style="" class="editor-popupclose-btn"
+							ev:onclick="scwin.btn_showHide_onclick">
+							<xf:label><![CDATA[]]></xf:label>
+						</xf:trigger>
+						<w2:pageFrame style="" id="pgf_guide" class="pgf_guide"></w2:pageFrame>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+	</body>
+</html>

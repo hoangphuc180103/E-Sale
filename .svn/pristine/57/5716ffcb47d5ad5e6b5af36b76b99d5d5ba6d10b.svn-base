@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 탭의 ID로 Index 반환받기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230718" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 예제 테스트를 위해 탭 추가
+    let strTabID = "tab_exam"; // Tab의 ID
+    tac_exam1.addTab(
+        strTabID,
+        {
+            "label": "TAB_EXAM",
+            "openAction": "select",
+            "tabWidth": 140
+        },
+        {
+            "src": "/page/P00295S01.xml",
+            "wframe": true,
+            "dataObject": {
+                "type": "json",
+                "name": "tabParam",
+                "data": { "tabID": strTabID }
+            }
+        }
+    );
+};
+
+/**
+ * 버튼 [탭의 ID가 'tabs1'인 탭의 Index 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // TabControl 'tac_exam1'의 탭 ID가 'tabs1'인 탭의 Index 반환받습니다.
+    let result = tac_exam1.getTabIndex("tabs1");
+    // 반환 값 예시) 0
+
+    // 결과 값 출력
+    alert("getTabIndex: " + result);
+    console.log("getTabIndex: ", result);
+};
+
+/**
+ * 버튼 [탭의 ID가 'tab_exam'인 탭의 Index 반환받기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // TabControl 'tac_exam1'의 탭 ID가 'tab_exam'인 탭의 Index 반환받습니다.
+    let result = tac_exam1.getTabIndex("tab_exam");
+    // 반환 값 예시) 1
+
+    // 결과 값 출력
+    alert("getTabIndex: " + result);
+    console.log("getTabIndex: ", result);
+};
+
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'getTabIndex' 메소드를 사용하여 탭의 아이디로 인덱스를 반환받는 예제입니다."
+					style=""></w2:textbox>
+			</xf:group>
+			<xf:group id="" style="" class=""></xf:group>
+			<xf:group class="example_div_tb_style_wrap mw600" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" style=""
+								type="button">
+								<xf:label><![CDATA[탭의 ID가 'tabs1'인 탭의 Index 반환받기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2" style=""
+								type="button">
+								<xf:label><![CDATA[탭의 ID가 'tab_exam'인 탭의 Index 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="tbcbox" id="" style="">
+							<w2:tabControl alwaysDraw="false" class="tbc" confirmFalseAction="new" confirmTrueAction="exist" id="tac_exam1"
+								style="position: relative;height: 120px;" tabScroll="" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+								<w2:tabs disabled="false" id="tabs1" label="TAB1" style="width:100px;"></w2:tabs>
+								<w2:content alwaysDraw="false" id="content1" style="min-height:30px;">
+									<w2:textbox id="" label="TAB1 CONTENT" style="font-size: 1.2em;color: steelblue;font-weight: bold;">
+									</w2:textbox>
+									<w2:textbox id="" label="Tab ID : tabs1" style=""></w2:textbox>
+								</w2:content>
+							</w2:tabControl>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

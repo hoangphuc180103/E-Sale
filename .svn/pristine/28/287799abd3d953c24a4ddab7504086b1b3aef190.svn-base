@@ -1,0 +1,35 @@
+/*amd /page/P00259.xml 6159 dc11f800b2b5f6115c6c2d17e9eb574ba3361b91e6fc5c2e3042df64c8507030 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:historyInfo',E:[{T:1,N:'w2:history',A:{}},{T:1,N:'w2:history',A:{}}]},{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dlt_dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'Code',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'Label',name:'name2',dataType:'text'}}]},{T:1,N:'w2:data',A:{use:'true'},E:[{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'01'}]},{T:1,N:'Label',E:[{T:4,cdata:'Apple'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'02'}]},{T:1,N:'Label',E:[{T:4,cdata:'Banana'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'03'}]},{T:1,N:'Label',E:[{T:4,cdata:'Cherry'}]}]},{T:1,N:'w2:row',E:[{T:1,N:'Code',E:[{T:4,cdata:'04'}]},{T:1,N:'Label',E:[{T:4,cdata:'Dragon fruit'}]}]}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  sbx_exam1.setValue("02");
+  sbx_exam2.setValue("02");
+  sbx_exam3.setValue("02");
+};
+
+/**
+ * 버튼 [ 선택 목록에 "Watermelon" 설정하기 ] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+  // SelectBox 'sbx_exam1'에 "Watermelon" 데이터를 세팅합니다.
+  sbx_exam1.setValue("Watermelon");
+};
+
+/**
+ * 버튼 [ 선택 목록에 "Watermelon" 설정하기 ] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+  // SelectBox 'sbx_exam2'에 "Watermelon" 데이터를 세팅합니다.
+  sbx_exam2.setValue("Watermelon");
+};
+
+/**
+ * 버튼 [ 선택 목록에 "Watermelon" 설정하기 ] 클릭 시
+ */
+scwin.btn_ex3_onclick = function (e) {
+  // SelectBox 'sbx_exam3'에 "Watermelon" 데이터를 세팅합니다.
+  sbx_exam3.setValue("Watermelon");
+
+  // SelectBox 'sbx_exam3'에 표시되고 있는 항목의 인덱스를 반환합니다.
+  let index = sbx_exam3.getSelectedIndex();
+  alert("인덱스 값은 : " + index + " 입니다.");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'ws_example_grp_desc',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{escape:'false',id:'',label:'SelectBox의 \'setValue\' 메소드로 설정한 값이 항목에 없는 경우, \'valueNotInList\' 속성과 \'emptyItem\' 속성을 사용하여 처리 방식을 설정한 예제입니다.',style:''}},{T:1,N:'w2:textbox',A:{class:'exam_txt info',escape:'false',id:'',label:'테스트를 위해 이 예제의 모든 SelectBox는 두 번째 항목 \'Banana\'가 선택된 상태입니다.',style:''}}]},{T:1,N:'xf:group',A:{class:'example_div_tb_style_wrap',id:''},E:[{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'선택 항목 목록에 없는 값은 무시하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px 0px 10px 0px;'},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex1_onclick',id:'btn_ex1',localeRef:'',style:'min-width: 30px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'선택 목록에 "Watermelon" 설정하기'}]}]}]},{T:1,N:'xf:select1',A:{id:'sbx_exam1',chooseOption:'',style:'width: 148px;',submenuSize:'auto',allOption:'',disabled:'false',direction:'auto',appearance:'minimal',disabledClass:'w2selectbox_disabled',ref:'',valueNotInList:'default',emptyItem:'true'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Label'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]},{T:1,N:'xf:group',A:{id:'',style:'',class:'example_div_tr_style'},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'목록의 첫번째 항목을 표시하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px 0px 10px 0px;'},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex2_onclick',id:'btn_ex2',localeRef:'',style:'min-width: 30px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'선택 목록에 "Watermelon" 설정하기'}]}]}]},{T:1,N:'xf:select1',A:{id:'sbx_exam2',chooseOption:'',style:'width: 148px;',submenuSize:'auto',allOption:'',disabled:'false',direction:'auto',appearance:'minimal',disabledClass:'w2selectbox_disabled',ref:'',valueNotInList:'default',emptyItem:'false'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Label'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'example_div_tr_style',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'example_div_th_style',escape:'false',id:'',label:'선택 항목 목록에 없는 값을 유지하기',style:''}},{T:1,N:'xf:group',A:{class:'example_div_td_style',id:'',style:''},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px 0px 10px 0px;'},E:[{T:1,N:'xf:trigger',A:{class:'btn_exam_exec btn_txt_of','ev:onclick':'scwin.btn_ex3_onclick',id:'btn_ex3',localeRef:'',style:'min-width: 30px;',type:'',useDefaultLabel:'true'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'선택 목록에 "Watermelon" 설정하기'}]}]}]},{T:1,N:'xf:select1',A:{id:'sbx_exam3',chooseOption:'',style:'width: 148px;',submenuSize:'auto',allOption:'',disabled:'false',direction:'auto',appearance:'minimal',disabledClass:'w2selectbox_disabled',ref:'',valueNotInList:'keepValue'},E:[{T:1,N:'xf:choices',E:[{T:1,N:'xf:itemset',A:{nodeset:'data:dlt_dataList1'},E:[{T:1,N:'xf:label',A:{ref:'Label'}},{T:1,N:'xf:value',A:{ref:'Code'}}]}]}]}]}]}]}]}]}]}]})

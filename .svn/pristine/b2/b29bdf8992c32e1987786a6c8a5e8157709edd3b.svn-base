@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="page_component">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method="scwin.borderFirst,scwin.borderSecond,scwin.setBrown,scwin.showAll"/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+/**
+ * @component
+ * @componentName udc_page_component
+ * @pluginName
+ * @company
+ * @developer
+ * @category /
+ * @notSupportBrowser
+ * @version
+ * @htmlRender
+ * @icon
+ * @disableIcon
+ * @description
+ * @width
+ * @height
+ * @license
+ * @imagePath
+ * @homepage
+ */
+
+scwin.onpageload = function() {	
+    input1.setValue("Inswave");
+    input2.setValue("Systems");
+};
+
+/**
+ * @method
+ * @name borderFirst
+ * @description Add border to first input box.
+ * 
+ * @param
+ * @returns
+ * @hidden N
+ * @exception
+ * @example
+ */
+scwin.borderFirst = function () {
+	input1.setStyle("border", "solid red 5px");
+};
+
+/**
+ * @method
+ * @name borderSecond
+ * @description Add border to the second input box.
+ * @param
+ * @returns
+ * @hidden N
+ * @exception
+ * @example
+ */
+scwin.borderSecond = function () {
+	input2.setStyle("border", "solid blue 5px");
+};
+
+/**
+ * @method
+ * @name setBrown
+ * @description Set the background color of the group.
+ * 
+ * @param
+ * @returns
+ * @hidden N
+ * @exception
+ * @example
+ */
+scwin.setBrown = function () {
+	group1.setStyle("background-color", "brown"); 
+};
+
+/**
+ * @method
+ * @name showAll
+ * @description Display values of the two input boxes.
+ * 
+ * @param
+ * @returns
+ * @hidden N
+ * @exception
+ * @example
+ */
+scwin.showAll = function () {
+	var first = input1.getValue();
+    var second = input2.getValue();
+    alert (first + " " + second);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<w2:textbox style="margin: 10px;font-size: 20px;font-style: italic;color: lightgreen;" id="textbox5" label='PageFrame (src="page_component.xml")'></w2:textbox>
+    	<xf:input id="input1"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 10px;margin-top: 20px;">
+    	</xf:input>
+    	<xf:input id="input2"
+    		style="width:140px;height:30px;padding:5px;text-align:left;font-size:20px;font-family:consolas;font-style:normal;font-weight:bolder;margin-left: 20px;margin-top: 20px;">
+    	</xf:input>
+    	<xf:group id="group1" style="height: 100px;width: 300px;border: solid brown 2px;margin: 10px;"></xf:group>
+    </body>
+</html>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 공통] 스크립트로 style 제어하기">
+		<w2:historyInfo>
+			<w2:history meta_no="02" meta_desc="화면 구성 변경 및 문서 변경" meta_date="20221108" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+/**
+ * 영역 [style 할당하기]의 
+ * 버튼 [border-color 변경하기] 클릭 시
+ * [컴포넌트 ID].setStyle(style 속성명, 값);
+ * ex) ibx_exam1.setStyle("border-color", "red");
+ */
+scwin.btn_ex1_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex1_onclick 실행 **", txa_log, false);
+    //로그 출력
+    $c.frame.printExampleLog('ibx_exam1.setStyle("border-color", "red");', txa_log, false);
+
+    ibx_exam1.setStyle("border-color", "red");
+};
+
+/**
+ * 영역 [style 속성값 반환받기]의
+ * 버튼 [border-color 속성값 반환받기] 클릭 시
+ * [컴포넌트 ID].getStyle(style 속성명);
+ * ex) ibx_exam2.getStyle("border-color");
+ */
+scwin.btn_ex2_onclick = function (e) {
+    var strRet;
+
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex2_onclick 실행 **", txa_log, false);
+    //로그 출력
+    $c.frame.printExampleLog('ibx_exam2.getStyle("border-color");', txa_log, false);
+
+    //inputbox의 border-color style 값 반환받기.
+    strRet = ibx_exam2.getStyle("border-color");
+
+    //반환값 로그 출력
+    $c.frame.printExampleLog('반환값 : ' + strRet, txa_log, false);
+
+    //반환값 alert
+    alert(strRet);
+};
+
+/**
+ * 영역 [style 속성값을 초기 값으로 할당하기]의 
+ * 버튼 [1. color 변경하기] 클릭 시
+ * [컴포넌트 ID].setStyle(style 속성명, 값);
+ * ex) ibx_exam3.setStyle("color", "red");
+ */
+scwin.btn_ex3_1_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex3_1_onclick 실행 **", txa_log, false);
+    //로그 출력
+    $c.frame.printExampleLog('ibx_exam3.setStyle("color", "red");', txa_log, false);
+
+    //컴포넌트의 style 속성 중 color를 할당합니다.
+    ibx_exam3.setStyle("color", "red");
+};
+
+/**
+ * 영역 [style 속성값을 초기 값으로 할당하기]의 
+ * [2. color 속성값을 초기값으로 할당하기] 클릭 시
+ * [컴포넌트 ID].setInitStyle(style 속성명, 값);
+ * ex) ibx_exam3.setInitStyle("color");
+ */
+scwin.btn_ex3_2_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex3_onclick 실행 **", txa_log, false);
+    //로그 출력
+    $c.frame.printExampleLog('ibx_exam3.setInitStyle("color");', txa_log, false);
+
+    //컴포넌트의 style 속성 중 color를 초기값으로 복구합니다.
+    ibx_exam3.setInitStyle("color");
+};
+
+
+/**
+ * 영역 [초기 style 속성값 반환받기]의 
+ * 버튼 [1. border-color 변경하기] 클릭 시
+ * [컴포넌트 ID].setStyle(style 속성명, 값);
+ * ex) ibx_exam4.setStyle("border-color", "blue");
+ */
+scwin.btn_ex4_1_onclick = function (e) {
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex4_1_onclick 실행 **", txa_log, false);
+    //로그 출력
+    $c.frame.printExampleLog('ibx_exam4.setStyle("border-color", "blue");', txa_log, false);
+
+    //컴포넌트의 style 속성 중 border-color를 할당합니다.
+    ibx_exam4.setStyle("border-color", "blue");
+};
+
+/**
+ * 영역 [초기 style 속성값 반환받기]의 
+ * 버튼 [2. 초기 border-color 값 반환받기] 클릭 시
+ * [컴포넌트 ID].getInitStyle(style 속성명);
+ * ex) ibx_exam4.getInitStyle("border-color");
+ */
+scwin.btn_ex4_2_onclick = function (e) {
+    var strRet;
+
+    //로그 출력
+    $c.frame.printExampleLog("** scwin.btn_ex4_onclick 실행 **", txa_log, false);
+    //로그 출력
+    $c.frame.printExampleLog('ibx_exam4.getInitStyle("border-color");', txa_log, false);
+
+    //inputbox의 초기 border-color style 값 반환받기.
+    strRet = ibx_exam4.getInitStyle("border-color");
+
+    //console에 반환값 출력
+    console.log(strRet);
+
+    if ($.isPlainObject(strRet)) {
+        strRet = JSON.stringify(strRet, null, "\t");
+    }
+
+    //반환값 로그 출력
+    $c.frame.printExampleLog('반환값 : ' + strRet, txa_log, false);
+
+    //반환값 alert
+    alert(strRet);
+};
+
+/**
+ * textarea의 로그 삭제
+ */
+scwin.btn_clearLog_onclick = function (e) {
+    txa_log.setValue("");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox class="mb10" escape="false" id=""
+					label="컴포넌트의 style를 제어하는 API 사용 예제입니다.&lt;br/&gt;영역 [로그 확인]에서 실행 스크립트를 확인할 수 있습니다." style="">
+				</w2:textbox>
+				<w2:textbox class="" escape="false" id=""
+					label="아래의 API로 CSS 속성을 제어 할 수 있습니다.&lt;br/&gt;- CSS 속성값 설정 : setStyle&lt;br/&gt;- CSS 속성값 반환 : getStyle&lt;br/&gt;- 초기 CSS 속성값으로 복구 : setInitStyle&lt;br/&gt;- 초기 CSS 속성값 반환 : getInitStyle&lt;br/&gt;"
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="style 할당하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label='InputBox의 style 속성 border-color를 변경합니다.' style="">
+						</w2:textbox>
+						<xf:group id="" class="mb_def_box nobottom">
+							<xf:trigger ev:onclick="scwin.btn_ex1_onclick" disabled="" style="" id="btn_ex1" type="button" class="btn_exam_exec"
+								escape="false">
+								<xf:label><![CDATA[border-color 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:input class="mr_def" id="ibx_exam1" initStyle="true" initValue="WebSquare" style="width:140px;border-width: 2px;"></xf:input>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="style 속성값 반환받기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label='InputBox의 style 속성 border-color의 값을 alert 합니다.'
+							style="">
+						</w2:textbox>
+						<xf:group id="" class="mb_def_box nobottom">
+							<xf:trigger ev:onclick="scwin.btn_ex2_onclick" disabled="" style="" id="btn_ex2" type="button"
+								class="btn_exam_exec btn_txt_of" escape="false">
+								<xf:label><![CDATA[border-color 속성값 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:input class="mr_def" id="ibx_exam2" initStyle="true" initValue="WebSquare"
+							style="width:140px;border-color: red;border-width: 2px;">
+						</xf:input>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="style 속성값을 초기 값으로 할당하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="버튼을 순서대로 클릭하여 실행 결과를 확인합니다." style="">
+						</w2:textbox>
+						<xf:group id="" class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex3_1_onclick" id="btn_ex3_1" style=""
+								type="button">
+								<xf:label><![CDATA[1. color 변경하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger ev:onclick="scwin.btn_ex3_2_onclick" disabled="" style="" id="btn_ex3_2" type="button" class="btn_exam_exec"
+								escape="false">
+								<xf:label><![CDATA[2. color 속성값을 초기값으로 할당하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:input class="mr_def" id="ibx_exam3" initStyle="true" initValue="WebSquare" style="width:140px;border-width: 2px;">
+						</xf:input>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="초기 style 속성값 반환받기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="버튼을 순서대로 클릭하여 실행 결과를 확인합니다." style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex4_1_onclick" id="btn_ex4_1" style=""
+								type="button">
+								<xf:label><![CDATA[1. border-color 변경하기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex4_2_onclick" id="btn_ex4_2" style=""
+								type="button">
+								<xf:label><![CDATA[2. 초기 border-color 값 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:input class="mr_def" id="ibx_exam4" initStyle="true" initValue="WebSquare"
+							style="width:140px;border-color: red;border-width: 2px;">
+						</xf:input>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="" style="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

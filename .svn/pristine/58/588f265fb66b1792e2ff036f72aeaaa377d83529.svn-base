@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] Groupby 기능 적용하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230208" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="03" meta_desc="DataList 'dataList1'의 데이터가 변경되었습니다." meta_date="20240705" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="col1" name="Continent"></w2:column>
+						<w2:column dataType="text" id="col2" name="Country"></w2:column>
+						<w2:column dataType="text" id="col3" name="Item"></w2:column>
+						<w2:column dataType="number" id="col4" name="Quantity"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country A]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[400]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country A]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country A]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country A]]></col2>
+							<col3><![CDATA[Heater]]></col3>
+							<col4><![CDATA[250]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country B]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[400]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country B]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country B]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country C]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country C]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Asia]]></col1>
+							<col2><![CDATA[Country C]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[200]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country D]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country D]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country D]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[200]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country E]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country E]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country E]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[200]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country F]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country F]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Europe]]></col1>
+							<col2><![CDATA[Country F]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[200]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Americas]]></col1>
+							<col2><![CDATA[Country G]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Americas]]></col1>
+							<col2><![CDATA[Country G]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Americas]]></col1>
+							<col2><![CDATA[Country G]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[200]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Americas]]></col1>
+							<col2><![CDATA[Country H]]></col2>
+							<col3><![CDATA[TV]]></col3>
+							<col4><![CDATA[100]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Americas]]></col1>
+							<col2><![CDATA[Country H]]></col2>
+							<col3><![CDATA[Freezer]]></col3>
+							<col4><![CDATA[300]]></col4>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[Americas]]></col1>
+							<col2><![CDATA[Country H]]></col2>
+							<col3><![CDATA[Washer]]></col3>
+							<col4><![CDATA[200]]></col4>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+};
+
+/**
+ * 영역 [Grouping]의 
+ * Gridview [grd]의 ongroupby 이벤트
+ */
+scwin.ongroupby = function (options) {
+	// ongroupby 이벤트에서 전달 받은 groupby에서 사용할 옵션 객체
+	options.closeGroup = true;		// groupby 된 데이터의 숨김 상태 여부
+	options.groupbyHeader = [		// 전체 건수를 헤더에 표현하는 방식 설정
+		{
+			colSpan: "4",
+			inputType: "expression",
+			expression: 'toggle() + depthStr() + " (" + count() + " Cases)"',
+			align: "left", colSpan: "4"
+		}
+	];
+	options.groupbyFooter = [		// 단계별 지정이 아닌 한가지로 표현
+		{ colSpan: "3", value: "Total", align: "right" },
+		{ colSpan: "1", inputType: "expression", expression: 'SUM("col4")' }
+	];
+	grd.groupby(options); //그룹핑 시작
+
+    //로그 출력
+    let strLog = "ongroupby 이벤트 발생";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog, options);
+}
+/**
+ * 영역 [Grouping]의 
+ * 버튼 [btn_groupby]의 onclick 이벤트
+ */
+scwin.btn_groupby_onclick = function(e) {
+	// groupby에서 사용할 옵션 객체
+	var options = {
+		sortIndex: [0, 1],		// groupby를 할 기준 컬럼 index (0번, 1번)
+		sortOrder : [1, 1],		// groupby된 컬럼의 정렬을 지정합니다. (-1: 내림차순, 1: 오름차순)
+		closeGroup: true,		// groupby 된 데이터의 숨김 상태 여부
+		groupbyHeader: [		// 전체 건수를 헤더에 표현하는 방식 설정
+			{
+				inputType: "expression",	// expression 그룹핑 컬럼 데이터를 계산식으로 표현
+				// 표현식 : 토글버튼, 컬럼에 속한 값, 데이터 건수 표시
+				expression: 'toggle() + depthStr() + " (" + count() + " Cases)"',
+				align: "left", colSpan: "4"	
+			}
+		],
+		groupbyFooter: {	// 1단, 2단까지 표현 형식을 지정
+			depth_0: [		//1단 Footer 내용
+				{ colSpan: "3", value: "Total", align: "right" },
+				// col4의 총 합
+				{ inputType: "expression", expression: 'SUM("col4")' }
+			],
+			depth_1: [		//2단 Footer 내용
+				{ colSpan: "3", value: "Sub Total", align: "right" },
+				// col4의 총 합
+				{ inputType: "expression", expression: 'SUM("col4")' }
+			]
+		}
+	};
+
+	grd.groupby(options); // 그룹핑 시작
+
+    //로그 출력
+    let strLog = "groupby 실행";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+
+/**
+ * 영역 [Grouping]의 
+ * 버튼튼 [btn_clear]의 onclick 이벤트
+ */
+scwin.btn_clear_onclick = function(e) {
+	grd.clearGroupby();
+
+    //로그 출력
+    let strLog = "clearGroupby 실행";
+    $c.frame.printExampleLog(strLog, txa_log, false);
+    console.log(strLog);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView에 'Groupby' 기능을 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_groupby_onclick"
+								id="btn_groupby" style="" type="button">
+								<xf:label><![CDATA[Groupby]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec btn_txt_of" disabled="" escape="false" ev:onclick="scwin.btn_clear_onclick"
+								id="btn_clear" style="" type="button">
+								<xf:label><![CDATA[ClearGroup]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="gvwbox">
+							<w2:gridView ev:ongroupby="scwin.ongroupby" groupbyZone="true" dataList="data:dataList1" style=""
+								autoFit="allColumn" id="grd" useFilterList="" visibleRowNum="8" class="gvw P00194" defaultCellHeight="37" groupbyZoneHeight="56">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="74" inputType="text" style="" id="column4" value="Continent"
+											displayMode="label">
+										</w2:column>
+										<w2:column width="70" inputType="text" style="" id="column3" value="Country" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column2" value="Item" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="column1" value="Quantity" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column width="74" inputType="text" style="" id="col1" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col2" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col3" value="" displayMode="label"></w2:column>
+										<w2:column width="70" inputType="text" style="" id="col4" value="" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_th_style" id="">
+						<w2:span class="mr_def txt_blue" id="" label="로그 확인" style=""></w2:span>
+						<xf:trigger class="wre_btn_log_clear" ev:onclick="scwin.btn_clearLog_onclick" id="btn_clearLog" style=""
+							title="로그 삭제" type="button">
+							<xf:label><![CDATA[로그 삭제]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:textarea class="wre_txa_log" id="txa_log" spellcheck="false" style="width: 100%;height: 140px;"></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

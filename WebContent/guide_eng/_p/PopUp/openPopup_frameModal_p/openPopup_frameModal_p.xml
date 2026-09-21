@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    const tmpSrc = scwin.getfolderPath() + "/wframe_01.xml";
+    wframe1.setSrc(tmpSrc);
+
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;"><w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" id="textbox1" label="Create Frame-based Modal Popup&lt;br/&gt;" escape="false"></w2:textbox><w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox><w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label="1. Select the frameModal option for the openPopup() method in the innermost frame. (“frame”, ‘parent’, “top”, frame ID)&lt;br/&gt;2. Click the $p.openPopup() button inside the window.&lt;br/&gt;3. Verify the popup's display scope based on the selected option.&lt;br/&gt;&lt;br/&gt;The behavior based on the frameModal option value is as follows:&lt;br/&gt; &amp;nbsp; &amp;nbsp;“frame” : Displays as a modal popup inside the specified frame. &lt;br/&gt; &amp;nbsp; &amp;nbsp;“parent”: Displays as a modal popup inside the parent frame.&lt;br/&gt; &amp;nbsp; &amp;nbsp;“top”: Displays as a modal popup covering the entire screen.&lt;br/&gt; &amp;nbsp; &amp;nbsp;Frame ID: Displays as a modal popup inside the specified frame. (In the example, the frame ID is obtained via $p.getFrame().getParentFrame().getParentFrame().id.)" escape="false">
+    	</w2:textbox><w2:wframe style="border: gray solid 1px;" id="wframe1"></w2:wframe></xf:group></body>
+</html>

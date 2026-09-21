@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+<head>
+<title>ScheduleCalendar</title>
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<meta name="EPB-UUID" content="c99e4036f3588cb9" />
+</head>
+<body>
+	<div class="chapter_content">
+		<h1 id="r_c3228cac8ac57c04" class="chapter_title">ScheduleCalendar</h1>
+		<h1 id="r_5df438a3363461ce" class="element heading1"
+			data-element-id="5df438a3363461ce">
+			<div class="r_heading_inner">
+				<span class="heading1_n">1</span><span>소개</span>
+			</div>
+		</h1>
+		<p id="r_06f2f91c21e67d9b" class="element normal"
+			data-element-id="06f2f91c21e67d9b">ScheduleCalendar는 일정 관리용 UI
+			컴포넌트로, 웹 화면에 달력 형태로 스케줄을 표시하고 관리할 수 있는 기능을 제공합니다. 사용자는 달력에서 일정을 직접
+			추가, 삭제, 편집할 수 있으며, 드래그 앤 드롭이나 클릭 기반의 입력 등 다양한 기능을 사용할 수 있습니다. 내부적으로
+			DataList와 연동하여 일정을 관리할 수 있으며, 다양한 사용자 설정(예: 편집 가능 여부, 날짜 및 시간 형식 설정
+			등)을 지원함으로써 개발 및 사용자 요구에 유연하게 대응할 수 있습니다.</p>
+		<dl id="r_c570353dc3a6c0bd" class="element definition_list"
+			data-element-id="c570353dc3a6c0bd">
+			<dt>사용 예시 영상</dt>
+			<dd>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3XyMUJI0jpJB70Xk0CP0rx">ScheduleCalendar
+						사용법 모음 1</a>
+				</p>
+				<p>
+					<a class="link"
+						href="https://youtube.com/playlist?list=PL7a9HhkvOVb3pxTNX43cmOZYS667ZQIhv">ScheduleCalendar
+						사용법 모음 2</a>
+				</p>
+			</dd>
+		</dl>
+		<h1 id="r_f150e2d475d7ee12" class="element heading1"
+			data-element-id="f150e2d475d7ee12">
+			<div class="r_heading_inner">
+				<span class="heading1_n">2</span><span>주요 용도 및 특징</span>
+			</div>
+		</h1>
+		<p id="r_380ac1572f6aab9a" class="element normal"
+			data-element-id="380ac1572f6aab9a">ScheduleCalendar는 다음과 같은 용도로
+			활용할 수 있습니다:</p>
+		<dl id="r_d349143b66d4fcbe" class="element definition_list renumbered"
+			data-element-id="d349143b66d4fcbe">
+			<dt>
+				<strong>업무 일정 관리</strong>
+			</dt>
+			<dd>
+				<p>회의, 프로젝트 마일스톤, 작업 기한 등을 시각적으로 관리할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>이벤트 계획</strong>
+			</dt>
+			<dd>
+				<p>컨퍼런스, 세미나, 워크샵 등의 이벤트 일정을 관리할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>리소스 예약</strong>
+			</dt>
+			<dd>
+				<p>회의실, 장비, 차량 등의 자원 예약 시스템을 구현할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>근무 일정 관리</strong>
+			</dt>
+			<dd>
+				<p>직원 근무 일정, 휴가 관리 등에 활용할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>교육 일정 관리</strong>
+			</dt>
+			<dd>
+				<p>강의, 시험, 과제 제출 등 교육 관련 일정을 관리할 수 있습니다.</p>
+			</dd>
+			<dt>
+				<strong>프로젝트 관리 도구</strong>
+			</dt>
+			<dd>
+				<p>프로젝트 일정을 한눈에 파악하고, 작업 진행 상황을 추적하는 데 유용합니다.</p>
+			</dd>
+			<dt>
+				<strong>고객 응대 시스템</strong>
+			</dt>
+			<dd>
+				<p>고객과의 상담, 방문 일정을 관리하고, 관련 이력을 효과적으로 기록할 수 있습니다.</p>
+			</dd>
+		</dl>
+		<h1 id="r_bc65fe54b1bc7f00" class="element heading1"
+			data-element-id="bc65fe54b1bc7f00">
+			<div class="r_heading_inner">
+				<span class="heading1_n">3</span><span>주요 기능</span>
+			</div>
+		</h1>
+		<ul id="r_5d2405d4fbb1919c" class="element unordered_list"
+			data-element-id="5d2405d4fbb1919c">
+			<li><p>스케줄 추가</p>
+				<ul>
+					<li><p>
+							동적 스케줄 추가 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/addSchedule_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/HiwlzUYeX7Y">YouTube</a>)
+						</p></li>
+					<li><p>
+							GridView를 활용하여 스케줄 추가 (<a class="link"
+								href="https://example.websquare.kr/link.html?p=/page/P00047.xml">WRE</a>)
+						</p></li>
+					<li><p>
+							DataList 바인딩을 통해 스케줄 추가 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/dataList_titleColumn_idColumn_startColumn_endColumn_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/ebbi0EHywYE">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>일정 상호 작용 설정</p>
+				<ul>
+					<li><p>
+							마우스 드래깅을 통한 스케줄 날짜 변경 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/editable_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/4rPJJ1M_rhc">YouTube</a>)
+						</p></li>
+					<li><p>
+							마우스 클릭 혹은 드래깅을 통한 스케줄 등록 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/selectable_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/YxHHnoGnweA">YouTube</a>)
+						</p></li>
+					<li><p>
+							스케줄 등록창 커스터마이징 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/selectable_noUsePrompt_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/rQl7Jzhvh8k">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>표시 설정</p>
+				<ul>
+					<li><p>
+							스케줄 종료 기준 설정 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/nextDayThreshold_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/eccEEjoAVnc">YouTube</a>)
+						</p></li>
+					<li><p>
+							시간 표시 형식 (<a class="link" href="https://youtu.be/zLYqYH7B1Ic">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>헤더 설정</p>
+				<ul>
+					<li><p>
+							헤더 아이콘 (<a class="link" href="https://youtu.be/87Y_k1E1HIg">YouTube</a>)
+						</p></li>
+					<li><p>
+							달력 헤더 툴바의 표시 및 숨김 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/useHeaderToolbar_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/552eX01PYpo">YouTube</a>)
+						</p></li>
+					<li><p>
+							달력 헤더 툴바에 표시할 버튼 선택 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/setHeaderBtn_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/drTC63wusbY">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>푸터 설정</p>
+				<ul>
+					<li><p>
+							달력 푸터에 버튼 추가 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/useFooterToolbar_customButtonText_customButtonClickFunction_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/FUQh7pQR8jw">YouTube</a>)
+						</p></li>
+				</ul></li>
+			<li><p>언어 및 스타일 설정</p>
+				<ul>
+					<li><p>
+							스케줄 타이틀 변환 (<a class="link"
+								href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/titleFormatter_ScheduleCalendar.xml">샘플</a>,
+							<a class="link" href="https://youtu.be/x2xa3Ptte6Y">YouTube</a>)
+						</p></li>
+					<li><p>
+							요일별 스타일 설정 (<a class="link" href="https://youtu.be/kf64NaYvI2c">YouTube</a>)
+						</p></li>
+				</ul></li>
+		</ul>
+		<h1 id="r_7e7e89e3c9c8642b" class="element heading1"
+			data-element-id="7e7e89e3c9c8642b">
+			<div class="r_heading_inner">
+				<span class="heading1_n">4</span><span>주요 이벤트</span>
+			</div>
+		</h1>
+		<ul id="r_4476275aa7da1709" class="element unordered_list"
+			data-element-id="4476275aa7da1709">
+			<li><p>
+					<code>onaddschedule</code>
+					(<a class="link"
+						href="https://example.websquare.kr/websquare/websquare.html?w2xPath=/guide/ScheduleCalendar/onaddschedule_onmoveschedule_ScheduleCalendar.xml">샘플</a>,
+					<a class="link" href="https://youtu.be/IGgpOcse1gY">YouTube</a>)
+				</p></li>
+			<li><p>
+					<code>onmoveschedule</code>
+				</p></li>
+		</ul>
+	</div>
+</body>
+</html>

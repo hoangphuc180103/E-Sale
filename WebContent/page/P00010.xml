@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 소개] 드래그 드롭">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="데이터 변경 및 화면 구성 변경" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dlt_userInfo" baseNode="map/list" style="" repeatNode="map" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="name" name="name" dataType="text"></w2:column>
+						<w2:column id="gender" name="gender" dataType="text"></w2:column>
+						<w2:column id="info" name="info" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data xmlns="" use="true">
+						<w2:row>
+							<name><![CDATA[USER-01]]></name>
+							<gender><![CDATA[F]]></gender>
+							<info><![CDATA['USER-01'가 태어난 해는 1993년입니다.]]></info>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[USER-02]]></name>
+							<gender><![CDATA[M]]></gender>
+							<info><![CDATA['USER-02'가 태어난 해는 1983년입니다.]]></info>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[USER-03]]></name>
+							<gender><![CDATA[M]]></gender>
+							<info><![CDATA['USER-03'가 태어난 해는 2003년입니다.]]></info>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[USER-04]]></name>
+							<gender><![CDATA[F]]></gender>
+							<info><![CDATA['USER-04'가 태어난 해는 1982년입니다.]]></info>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[USER-05]]></name>
+							<gender><![CDATA[M]]></gender>
+							<info><![CDATA['USER-05'가 태어난 해는 2004년입니다.]]></info>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[USER-06]]></name>
+							<birthday><![CDATA[19920606]]></birthday>
+							<gender><![CDATA[F]]></gender>
+							<work><![CDATA[1]]></work>
+							<info><![CDATA['USER-06'가 태어난 해는 1992년입니다.]]></info>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[USER-07]]></name>
+							<birthday><![CDATA[19801116]]></birthday>
+							<gender><![CDATA[M]]></gender>
+							<work><![CDATA[3]]></work>
+							<info><![CDATA['USER-07'가 태어난 해는 1995년입니다.]]></info>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[USER-08]]></name>
+							<birthday><![CDATA[19850919]]></birthday>
+							<gender><![CDATA[M]]></gender>
+							<work><![CDATA[4,5]]></work>
+							<info><![CDATA['USER-08'가 태어난 해는 1985년입니다.]]></info>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList id="dlt_userInfo2" baseNode="map/list" style="" repeatNode="map" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="name" name="name" dataType="text"></w2:column>
+						<w2:column id="gender" name="gender" dataType="text"></w2:column>
+						<w2:column id="info" name="info" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataList id="dlt_code_gender" baseNode="list" style="" repeatNode="map" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column id="label" name="label" dataType="text"></w2:column>
+						<w2:column id="value" name="value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data xmlns="" use="true">
+						<w2:row>
+							<label><![CDATA[남자]]></label>
+							<value><![CDATA[M]]></value>
+						</w2:row>
+						<w2:row>
+							<label><![CDATA[여자]]></label>
+							<value><![CDATA[F]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="GridView에서 제공하는 Drag &amp; Drop 기능 예시입니다. 왼쪽 GridView의 행를 드래그하여 오른쪽 GridView위에서 드롭합니다." style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 마우스 사용이 가능한 환경에서 정상 동작합니다." style=""></w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제는 시연용 예제로 예제 가이드 문서가 포함되어 있지 않습니다." style="">
+				</w2:textbox>
+			</xf:group>
+		<xf:group id="" style="overflow: hidden;"><xf:group style="width:160px;float:left;margin-right:10px;box-sizing:border-content;" class="gvwbox">
+				<w2:gridView sortEvent="onclick" dataDragDrop="true" useShiftKey="false" scrollByColumn="false" sortable="true" defaultCellHeight="37" dragEndFunction="" adaptive="" fixedColumnWithHidden="true" dataList="dlt_userInfo" dragStartFunction="" dragDisplayColumn="name" filterFocusMode="infocus" columnMove="" enterKeyMove="" style="height: 310px;" autoFit="lastColumn" id="" visibleRowNum="8" fastScroll="" class="gvw" autoFitMinWidth="200" visibleRowNumFix="true" noSelect="true">
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="90" inputType="text" style="" id="column3" value="이름" blockSelect="false"></w2:column>
+							<w2:column width="60" inputType="text" style="" id="column5" value="성별" blockSelect="false"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column width="90" inputType="text" style="" id="name" value="" blockSelect="false"></w2:column>
+							<w2:column depthType="" chooseOption="" width="60" inputType="select" style="" allOption="" id="gender" depthColumn="" value="" blockSelect="false">
+								<w2:choices>
+									<w2:itemset nodeset="data:dlt_code_gender">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="value"></w2:value>
+									</w2:itemset>
+								</w2:choices>
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group><xf:group style="width:calc(100% - 170px);float:left;box-sizing:border-content;" id="" class="gvwbox">
+				<w2:gridView dataDragDrop="true" useShiftKey="false" keepDefaultColumnWidth="" scrollByColumn="false" defaultCellHeight="37" dragEndFunction="" adaptive="" fixedColumnWithHidden="true" dataList="dlt_userInfo2" dragStartFunction="" dragDisplayColumn="name,gender" columnMove="" style="height: 310px;" autoFit="lastColumn" id="" visibleRowNum="8" class="gvw" autoFitMinWidth="500" visibleRowNumFix="true" noSelect="true">
+					<w2:header style="" id="header2">
+						<w2:row style="" id="row3">
+							<w2:column width="90" inputType="text" style="" id="column9" value="이름" blockSelect="false"></w2:column>
+							<w2:column width="98" inputType="text" style="" id="column7" value="성별" blockSelect="false"></w2:column>
+							<w2:column width="70" inputType="text" style="" id="column5" value="비고" blockSelect="false"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody2">
+						<w2:row style="" id="row4">
+							<w2:column width="90" inputType="text" style="" id="name" blockSelect="false"></w2:column>
+							<w2:column chooseOption="" width="98" inputType="select" style="" allOption="" id="gender" blockSelect="false">
+								<w2:choices>
+									<w2:itemset nodeset="data:dlt_code_gender">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="value"></w2:value>
+									</w2:itemset>
+								</w2:choices>
+							</w2:column>
+							<w2:column textAlign="left" width="70" inputType="text" readOnly="" style="" id="info" blockSelect="false"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+			</xf:group></xf:group></xf:group>
+	</body>
+</html>

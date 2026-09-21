@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[scwin.count = 0;
+
+scwin.onpageload = function () {
+    scwin.count++;
+    const tmpSrc = scwin.getfolderPath() + "/source.xml";
+    tabControl1.addTab(scwin.count,
+        {
+            label: 'processMsgeFrame="true"',
+            title: 'processMsgeFrame="true"',
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc,
+            "frameMode": "wframe",
+        }
+    );
+    tabControl1.setSelectedTabIndex(scwin.count);
+    tabControl2.addTab(scwin.count,
+        {
+            label: 'processMsgeFrame="false"',
+            title: 'processMsgeFrame="false"',
+            openAction: "exist",
+            closable: "true"
+        },
+        {
+            "src": tmpSrc,
+            "frameMode": "wframe",
+        }
+    );
+    tabControl2.setSelectedTabIndex(scwin.count);
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="margin-bottom: 10px;color: blue;" id="textbox1" label="Show Submission Status Window within theTab (Default)&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3" label='(First TabControl)&lt;br/&gt;1-1. Click the internal Submit button.&lt;br/&gt;1-2. Confirm the status window appears only within the tab. (processMsgFrame=“true”)&lt;br/&gt;&lt;br/&gt;(Second TabControl)&lt;br/&gt;2-1. Click the internal Submit button.&lt;br/&gt;2-2. Confirm the status window displays across the entire screen. (processMsgFrame=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='processMsgFrame="true"' escape="false">
+    	</w2:textbox>
+    	<w2:tabControl confirmTrueAction="exist" useTabKeyOnly="true" confirmFalseAction="new" useMoveNextTabFocus="false"
+    		useConfirmMessage="false" alwaysDraw="false" style="border: gray solid 1px;margin-bottom: 10px;height: 300px;" id="tabControl1" processMsgFrame="true">
+    	</w2:tabControl>
+    	<w2:textbox escape="false" id="textbox5" label='processMsgFrame="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:tabControl alwaysDraw="false" confirmFalseAction="new" confirmTrueAction="exist" id="tabControl2"
+    		style="border: gray solid 1px;height: 300px;" useConfirmMessage="false" useMoveNextTabFocus="false" useTabKeyOnly="true">
+    	</w2:tabControl>
+    </xf:group></body>
+</html>

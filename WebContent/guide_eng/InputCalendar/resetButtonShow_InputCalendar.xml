@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox5" label="Show/Hide Date Reset Button&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox6" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox7"
+    		label='1. Click the calendar icon on the first InputCalendar.&lt;br/&gt;2. Confirm that the reset date button appears above the calendar. (resetButtonShow=“true”)&lt;br/&gt;3. Click the calendar icon on the second InputCalendar.&lt;br/&gt;4. Confirm that the reset date button does not appear above the calendar. (resetButtonShow=“false”)'
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox8" label='resetButtonShow="true" &lt;br/&gt;cancelButtonShow="true"' escape="false">
+    	</w2:textbox>
+    	<w2:inputCalendar resetButtonShow="true" style="margin-bottom: 10px;" id="inputCalendar1" calendarValueType="yearMonthDate" cancelButtonShow="true"></w2:inputCalendar>
+    	<w2:textbox escape="false" id="textbox9" label='resetButtonShow="false" &amp;nbsp;&lt;br/&gt;cancelButtonShow="true"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:inputCalendar calendarValueType="yearMonthDate" cancelButtonShow="true" id="inputCalendar2" style=""></w2:inputCalendar>
+    </xf:group></body>
+</html>

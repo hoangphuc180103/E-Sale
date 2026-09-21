@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="날짜(yyyyMMdd) 형식의 문자열을 양력 날짜로 반환받기" meta_min_engine_ga="5.0_5.4877A.20230405.131227" meta_min_engine_rc="5.0_5.4774B.20221202.165615">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20231026" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // 예제 테스트를 위한 초기화
+    scwin.initializeExample();
+};
+
+// 예제 테스트를 위한 초기화
+scwin.initializeExample = function () {
+    // InputCalendar 'ica_exam_1'에 초기 값 할당
+    ica_exam_1.setValue("20241231");
+
+    // InputCalendar 'ica_exam_1'에 입력된 값을 양력으로 변환하여 출력하기
+    scwin.ica_exam_1_toSolar();
+};
+
+/**
+ * 버튼 [양력으로 반환받기] 클릭 시
+ */
+scwin.btn_ex1_1_onclick = function (e) {
+    // InputCalendar 'ica_exam_1'에 입력된 값을 양력으로 변환하여 출력하기
+    scwin.ica_exam_1_toSolar();
+};
+
+/**
+ * InputCalendar 'ica_exam_1'에 입력된 값을 양력으로 변환하여 출력하기
+ */
+scwin.ica_exam_1_toSolar = function () {
+    // InputCalendar 'ica_exam_1'의 입력 값 반환
+    let strDate = ica_exam_1.getValue().replace(new RegExp("[^0-9]", "g"), "");
+
+    // 길이로 유효성 체크
+    if (strDate.length != 8 || strDate.indexOf("0") == 0) {
+        txt_result1.setValue("오류: InputCalenar의 입력 값은 'yyyyMMdd' 형식의 유효한 날짜이어야 합니다. 입력 예시) 19460101");
+        ica_exam_1.focus();
+        return;
+    }
+
+    let result; // 결과 문자열
+    let isError = false; // 오류 여부 판단
+
+    try {
+        // InputCalendar 'ica_exam_1'의 입력 값을 양력 날짜 문자열로 반환받기
+        result = WebSquare.date.toSolar(strDate);
+
+        // WebSquare.date.toSolar('19460101');
+        // 반환 예시) 19460202
+
+        // 결과 값이 undefined으로 반환되는 경우 오류 처리
+        if (!result) { isError = true; }
+
+    } catch (ex) {
+        isError = true;
+        console.error(ex);
+    }
+
+    if (isError === true) {
+        result = "양력 날짜 변환 중 오류가 발생하였습니다. InputCalenar의 입력 값은 'yyyyMMdd' 형식의 유효한 날짜이어야 합니다. 입력 예시) 19460101";
+        ica_exam_1.focus();
+    }
+
+    // 결과 문자열 출력
+    txt_result1.setValue(result);
+};
+
+/**
+ * InputCalendar 'ica_exam_1'의 값이 변경되었을 때 이벤트
+ */
+scwin.ica_exam_1_onviewchange = function (info) {
+    // 결과 값을 빈 값으로 초기화
+    txt_result1.setValue("");
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="'WebSquare.date.toSolar' 메소드를 사용하여 날짜(yyyyMMdd) 형식의 문자열을 양력 날짜로 변환하는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="no_bottom" id="" style="">
+							<w2:inputCalendar calendarValueType="yearMonthDate" class="mr_def" focusOnDateSelect="false" id="ica_exam_1"
+								renderDiv="true" rightAlign="false" style="width:120px;" ev:onviewchange="scwin.ica_exam_1_onviewchange">
+							</w2:inputCalendar>
+							<xf:trigger class="btn_exam_exec" disabled="" escape="false" ev:onclick="scwin.btn_ex1_1_onclick" id="btn_exam1"
+								style="" type="button">
+								<xf:label><![CDATA[양력으로 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="no_bottom wre_txt_normal" style="">
+							<w2:span class="txt_bold mr_def" label="실행 결과:"
+								style="display: inline-block;min-width:12px;line-height: 1.5em;">
+							</w2:span>
+							<w2:span class="" dataType="text" label="결과 값 출력 영역"
+								style="display: inline-block;min-width:60px;line-height: 1.5em;" id="txt_result1">
+							</w2:span>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

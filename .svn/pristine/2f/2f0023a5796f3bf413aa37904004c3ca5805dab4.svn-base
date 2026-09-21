@@ -1,0 +1,68 @@
+/*amd /guide/GridView/_General/setRowStatusVisible_GridView.xml 5501 1eb31283c98383815a8c8f5a044baa53a8ad6dda6d1bde43efa5371aa9ab5500 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'col1',name:'name1',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col2',name:'name2',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col3',name:'name3',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col4',name:'name4',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col5',name:'name5',dataType:'text'}},{T:1,N:'w2:column',A:{id:'col6',name:'name6',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var jsonData = [{
+    col1: "A",
+    col2: "100",
+    col3: "200",
+    col4: "300",
+    col5: "30",
+    col6: "aaa"
+  }, {
+    col1: "A",
+    col2: "100",
+    col3: "200",
+    col4: "400",
+    col5: "40",
+    col6: "bbb"
+  }, {
+    col1: "B",
+    col2: "100",
+    col3: "200",
+    col4: "200",
+    col5: "20",
+    col6: "aaa"
+  }, {
+    col1: "B",
+    col2: "100",
+    col3: "200",
+    col4: "500",
+    col5: "50",
+    col6: "aaa"
+  }, {
+    col1: "A",
+    col2: "100",
+    col3: "200",
+    col4: "300",
+    col5: "30",
+    col6: "aaa"
+  }, {
+    col1: "A",
+    col2: "100",
+    col3: "200",
+    col4: "400",
+    col5: "40",
+    col6: "aaa"
+  }, {
+    col1: "B",
+    col2: "100",
+    col3: "200",
+    col4: "200",
+    col5: "20",
+    col6: "bbb"
+  }, {
+    col1: "B",
+    col2: "100",
+    col3: "200",
+    col4: "500",
+    col5: "50",
+    col6: "bbb"
+  }];
+  dataList1.setJSON(jsonData);
+};
+scwin.trigger1_onclick = function (e) {
+  gridView1.setRowStatusVisible(false);
+};
+scwin.trigger2_onclick = function (e) {
+  gridView1.setRowStatusVisible(true);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'행 상태 표시 (함수 이용)',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 하단의 첫 번째 버튼을 클릭하면, 행 상태 컬럼이 사라지는 것을 확인.<br/>2. 하단의 두 번째 버튼을 클릭하면, 행 상태 컬럼이 표시되는 것을 확인. ',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.setRowStatusVisible(false);'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.setRowStatusVisible(true);'}]}]},{T:1,N:'w2:gridView',A:{scrollByColumnAdaptive:'false',rowStatusVisible:'true',rowNumVisible:'true',checkAllType:'false',dataList:'data:dataList1',scrollByColumn:'false',style:'border: solid 1px gray;visiblerow',id:'gridView1',defaultCellHeight:'20',visibleRowNum:'5',visibleRowNumFix:'true',rowStatusHeaderValue:'Status',rowStatusWidth:'100'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption4',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header4'},E:[{T:1,N:'w2:row',A:{style:'',id:'row7'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column47',value:'name1',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column46',value:'name2',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column45',value:'name3',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column44',value:'name4',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column43',value:'name5',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column42',value:'name6',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody4'},E:[{T:1,N:'w2:row',A:{style:'',id:'row8'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col1',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col3',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col4',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col5',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col6',value:'',displayMode:'label'}}]}]}]}]}]}]}]})

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="Period" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1000]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[500]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1200]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col1><![CDATA[2000]]></col1>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[90000000000000000000]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[600]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[700]]></col4>
+            				<col1><![CDATA[1990]]></col1>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[200]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2000]]></col1>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2000]]></col1>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[400]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2000]]></col1>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1600]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[1990]]></col1>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[1200]]></col4>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            	<w2:dataList baseNode="list" repeatNode="map" id="dataList2">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            			<w2:column id="col4" name="name4" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1000]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[500]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1200]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Seoul]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[90000000000000000000]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Daegu]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[600]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[700]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Jeju]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[200]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[AAA]]></col3>
+            				<col4><![CDATA[400]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[800]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2000]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[BBB]]></col3>
+            				<col4><![CDATA[1600]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[1990]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[900]]></col4>
+            			</w2:row>
+            			<w2:row>
+            				<col1><![CDATA[2020 and years laster after 2020]]></col1>
+            				<col2><![CDATA[Busan]]></col2>
+            				<col3><![CDATA[CCC]]></col3>
+            				<col4><![CDATA[1200]]></col4>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[
+	scwin.onpageload = function() {		
+		
+	}; 
+	
+	scwin.onpageunload = function() {
+		
+	};
+	]]></script>
+    </head>
+    <body>
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Prohibit Column Moving&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='(First Pivot)&lt;br/&gt;Confirm that the Period header cannot be dragged in the Pivot to move in front of the City column. (noColumnMove=“true”)&lt;br/&gt;&lt;br/&gt;(Second Pivot)&lt;br/&gt;Confirm that the Period header can be dragged in the Pivot to move in front of the City column. (noColumnMove=“false”)' escape="false">
+    	</w2:textbox>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='noColumnMove="true"' escape="false">
+    	</w2:textbox>
+    	<w2:pivot vals="col4" dataList="dataList1" style="height: 400px;margin-bottom: 10px;" id="pivot1" rows="col2,col3" cols="col1" valuesAxis="column"
+    		noColumnMove="true">
+    		<w2:fieldInfo>
+    			<w2:field name="Period" style="" id="col1"></w2:field>
+    			<w2:field name="City" style="" id="col2"></w2:field>
+    			<w2:field name="Grade" style="" id="col3"></w2:field>
+    			<w2:field name="Value" style="" id="col4"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    	<w2:textbox escape="false" id="textbox5" label='noColumnMove="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:pivot cols="col1" dataList="data:dataList2" id="pivot2" noColumnMove="false" rows="col2,col3" style="height: 400px;" vals="col4"
+    		valuesAxis="column">
+    		<w2:fieldInfo>
+    			<w2:field name="Period" id="col1"></w2:field>
+    			<w2:field name="City" id="col2"></w2:field>
+    			<w2:field name="Grade" id="col3"></w2:field>
+    			<w2:field name="Value" id="col4"></w2:field>
+    		</w2:fieldInfo>
+    	</w2:pivot>
+    </xf:group></body>
+</html>

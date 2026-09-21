@@ -1,0 +1,33 @@
+/*amd /edu/adv/tabindex_1.xml 3238 86636acb72f40244efca36d0b65c0910ef2242a32459830ae18f8a69b4fa9f72 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var obj = $p.getParameter("parentParam");
+  ui_ipt1.setValue(obj.data1);
+  //ui_ipt2.setValue(obj.data2);
+};
+
+//parent 에서 호출할 함수 
+scwin.setData = function () {
+  ui_ipt2.setValue("functionValue");
+};
+
+//값 자동 넣기 
+scwin.btn_setData_onclick = function (e) {
+  ui_ipt1.setValue("child2_Value1");
+  ui_ipt2.setValue("child2_Value2");
+};
+
+//자식1값 가져오기
+scwin.btn_getChild_onclick = function (e) {
+  ui_inp1.setValue($p.parent().pageFrame1.getWindow().ui_inp1.getValue());
+};
+
+//자식1로 값 보내기
+scwin.btn_setChild_onclick = function (e) {
+  $p.parent().pageFrame1.getWindow().ui_inp1.setValue(ui_inp1.getValue());
+};
+
+//부모값 가져오기
+scwin.btn_getParent_onclick = function (e) {
+  ui_ipt1.setValue($p.parent().ui_ipt1.getValue());
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'w2:textbox',A:{tagname:'h3',style:'',id:'',label:'해당화면은 tabControl 설명을 위한 tabindex_1.xml',class:'ws_example_txt_desc_info'}},{T:1,N:'xf:group',A:{style:'',id:'',class:'ws_example_grp_desc'},E:[{T:1,N:'xf:group',A:{style:'',id:'',class:'titbox'}},{T:1,N:'xf:group',A:{style:'',id:'',class:'tblbox'},E:[{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'}},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'}},{T:1,N:'xf:group',A:{adaptive:'layout',adaptiveThreshold:'600',tagname:'table',style:'',id:'',class:'w2tb tbl'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:summary'}]},{T:1,N:'xf:group',A:{tagname:'colgroup'},E:[{T:1,N:'xf:group',A:{tagname:'col',style:'width:150px;'}},{T:1,N:'xf:group',A:{tagname:'col',style:''}},{T:1,N:'xf:group',A:{tagname:'col',style:'width:150px;'}},{T:1,N:'xf:group',A:{tagname:'col',style:''}}]},{T:1,N:'xf:group',A:{tagname:'tr',style:''},E:[{T:1,N:'xf:group',A:{tagname:'th',style:'',class:'w2tb_th'},E:[{T:1,N:'w2:textbox',A:{ref:'',style:'',userData2:'',id:'',label:'tab1_헤더1',class:'req'}}]},{T:1,N:'xf:group',A:{tagname:'td',style:'',class:'w2tb_td'},E:[{T:1,N:'xf:input',A:{style:'width: 144px;height: 21px;',id:'ui_ipt1'}}]},{T:1,N:'xf:group',A:{tagname:'th',class:'w2tb_th '},E:[{T:1,N:'w2:attributes'},{T:1,N:'w2:textbox',A:{ref:'',style:'',userData2:'',id:'',label:'tab1_헤더2',class:''}}]},{T:1,N:'xf:group',A:{tagname:'td',class:'w2tb_td'},E:[{T:1,N:'w2:attributes'},{T:1,N:'xf:input',A:{style:'width: 144px;height: 21px;',id:'ui_ipt2'}},{T:1,N:'xf:trigger',A:{type:'button',id:'btn_setData',style:'width: 80px;height: 23px;','ev:onclick':'scwin.btn_setData_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'값 자동 넣기'}]}]}]}]}]}]}]}]}]}]})

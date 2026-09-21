@@ -1,0 +1,44 @@
+/*amd /guide_jpn/GridView/inputType/checkAll_GridView.xml 4979 60a13d037974b7a6036e35a0fa2525fd30e9d29bd0b30c9a78677b687684ee96 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',repeatNode:'map',id:'dataList1',saveRemovedData:'true'},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{id:'chk',name:'Check',dataType:'text'}},{T:1,N:'w2:column',A:{id:'menu',name:'Menu',dataType:'text'}},{T:1,N:'w2:column',A:{id:'depthNo',name:'Depth',dataType:'text'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var jsonData = [{
+    "chk": "2",
+    "menu": "Americas",
+    "depthNo": 1
+  }, {
+    "chk": "2",
+    "menu": "Latin America",
+    "depthNo": 2
+  }, {
+    "chk": "2",
+    "menu": "Mexico",
+    "depthNo": 3
+  }, {
+    "chk": "2",
+    "menu": "Urguay",
+    "depthNo": 3
+  }, {
+    "chk": "2",
+    "menu": "Peru",
+    "depthNo": 3
+  }, {
+    "chk": "2",
+    "menu": "North America",
+    "depthNo": 2
+  }, {
+    "chk": "2",
+    "menu": "Canada",
+    "depthNo": 3
+  }, {
+    "chk": "2",
+    "menu": "USA",
+    "depthNo": 3
+  }];
+  dataList1.setJSON(jsonData);
+};
+scwin.trigger1_onclick = function (e) {
+  gridView1.checkAll("chk", true);
+};
+scwin.trigger2_onclick = function (e) {
+  gridView1.checkAll("chk", false);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{style:'margin: 10px;',id:''},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'フルチェックボックスの選択と解除',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 下の初めて目ボタンクリックして, 全体チェックボックス選択されるもの確認。 <br/>2. 下の二つ繁栄ボタンクリックして, 全体チェックボックス選択解放されるもの確認。 <br/>（詳細スクリプトは Script タブから確認。）',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.checkAll("chk", true);'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'gridView1.checkAll("chk", false);'}]}]},{T:1,N:'w2:gridView',A:{syncScroll:'false',scrollByColumnAdaptive:'false',summaryAuto:'false',useShiftKey:'true',scrollByColumn:'false',summaryOnlyAuto:'false',defaultCellHeight:'20',drilldownRealRowIndexAll:'true',applyAllColumnStyle:'false',tooltipDisplay:'true',visibleRowNumFix:'true',dataList:'data:dataList1',style:'border: solid gray 1px;',ignoreCellClick:'false',id:'gridView1',visibleRowNum:'10',autoFit:'allColumn',ignoreToggleOnDisabled:'false'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption1',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row1'},E:[{T:1,N:'w2:column',A:{footerDiv:'false',removeBorderStyle:'false',width:'70',inputType:'checkbox',style:'',id:'column5',value:'Check',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{footerDiv:'false',removeBorderStyle:'false',width:'70',inputType:'text',style:'',id:'column3',value:'Menu',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{footerDiv:'false',removeBorderStyle:'false',width:'70',inputType:'text',style:'',id:'column1',value:'Depth',blockSelect:'false',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody1'},E:[{T:1,N:'w2:row',A:{style:'',id:'row2'},E:[{T:1,N:'w2:column',A:{footerDiv:'false',removeBorderStyle:'false',width:'70',inputType:'checkbox',style:'',id:'chk',value:'',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{textAlign:'left',footerDiv:'false',removeBorderStyle:'false',width:'70',inputType:'drilldown',style:'',id:'menu',showDepth:'3',value:'',depthColumn:'depthNo',blockSelect:'false',displayMode:'label'}},{T:1,N:'w2:column',A:{footerDiv:'false',removeBorderStyle:'false',width:'70',inputType:'text',style:'',id:'depthNo',value:'',blockSelect:'false',displayMode:'label'}}]}]}]}]}]}]}]})

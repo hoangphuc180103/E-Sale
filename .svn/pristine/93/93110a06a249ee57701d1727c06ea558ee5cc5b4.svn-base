@@ -1,0 +1,147 @@
+/*amd /guide_jpn/GridView/_General/autoFitFilterList_gridView_column.xml 6715 8e9c588ff20133c8717fcbe241ad068c771bc3f0c7c2c516ad985e93c56854ab */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'},E:[{T:1,N:'w2:dataList',A:{baseNode:'list',id:'dataList1',repeatNode:'map',saveRemovedData:'true',style:''},E:[{T:1,N:'w2:columnInfo',E:[{T:1,N:'w2:column',A:{dataType:'text',id:'col1',name:'Continent'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col2',name:'Country'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col3',name:'Item'}},{T:1,N:'w2:column',A:{dataType:'text',id:'col4',name:'Quantity'}}]}]}]},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {
+  var json = [{
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Washer",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Korea",
+    "col3": "Heater",
+    "col4": "250"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "TV",
+    "col4": "400"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "China",
+    "col3": "Washer",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Asia",
+    "col2": "Japan",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "Germany",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "France",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Europe",
+    "col2": "Denmark",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas - North America",
+    "col2": "Canada",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas - North America",
+    "col2": "Canada",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas - North America",
+    "col2": "Canada",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas - North America",
+    "col2": "United States of America",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas - North America",
+    "col2": "United States of America",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas - North America",
+    "col2": "United States of America",
+    "col3": "Washer",
+    "col4": "200"
+  }, {
+    "col1": "Americas - Latin America",
+    "col2": "Mexico",
+    "col3": "TV",
+    "col4": "100"
+  }, {
+    "col1": "Americas - Latin America",
+    "col2": "Mexico",
+    "col3": "Freezer",
+    "col4": "300"
+  }, {
+    "col1": "Americas - Latin America",
+    "col2": "Mexico",
+    "col3": "Washer",
+    "col4": "200"
+  }];
+  dataList1.setJSON(json);
+};
+scwin.onpageunload = function () {};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'フィルターボックス幅の自動フィット',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. GridView の useFilterList="true" プロパティ設定を確認します。 <br/>2. Continent 列のヘッダーに useFilter="true" および autoFitFilterList="true" 設定が適用されていることを確認します。 <br/>3. Continent 列のフィルタアイコンをクリックします。 <br/>4.フィルタテキストの長さによってフィルタボックスの幅が決定されることを確認してください。',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;',id:'textbox4',label:'プロパティの設定<br/>useFilterList="true" (GridView)<br/>useFilter="true" &nbsp;（Continent 列のヘッダー）<br/>autoFitFilterList="true" （Continent 列のヘッダー）<',escape:'false'}},{T:1,N:'w2:gridView',A:{checkAllType:'false',id:'',style:'border: solid 1px gray;',dataList:'data:dataList1',visibleRowNum:'5',autoFit:'allColumn',visibleRowNumFix:'true',useFilterList:'true'},E:[{T:1,N:'w2:caption',A:{style:'',id:'caption2',value:'this is a grid caption.'}},{T:1,N:'w2:header',A:{style:'',id:'header2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row3'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column6',value:'Continent',displayMode:'label',useFilter:'true',autoFitFilterList:'true'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column5',value:'Country',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column4',value:'Item',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'column3',value:'Quantity',displayMode:'label'}}]}]},{T:1,N:'w2:gBody',A:{style:'',id:'gBody2'},E:[{T:1,N:'w2:row',A:{style:'',id:'row4'},E:[{T:1,N:'w2:column',A:{width:'70',inputType:'',style:'',id:'col1',value:'',displayMode:'label',allOption:'',chooseOption:'',ref:''},E:[{T:1,N:'w2:choices',E:[{T:1,N:'w2:itemset',A:{nodeset:'data:dataList2'},E:[{T:1,N:'w2:label',A:{ref:'value'}},{T:1,N:'w2:value',A:{ref:'label'}}]}]}]},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col2',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col3',value:'',displayMode:'label'}},{T:1,N:'w2:column',A:{width:'70',inputType:'text',style:'',id:'col4',value:'',displayMode:'label'}}]}]}]}]}]}]}]})

@@ -1,0 +1,17 @@
+/*amd /guide/_p/_General/dynamicCreate_p.xml 2967 ba6e201a4ab2a80b8d83aa6a5b95c91da6eb80876694fd2917527b86382ccdd3 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  $p.dynamicCreate("group1", "group", {
+    style: "border: solid green 2px; height: 400px; padding: 20px; margin: 10px"
+  });
+  $p.dynamicCreate("textbox10", "textbox", {
+    style: "font-size: 20px; display: block; margin-bottom: 20px;"
+  }, group1);
+  var comObj = $p.getComponentById("textbox10");
+  comObj.setValue("Select the date.");
+  $p.dynamicCreate("calendar1", "calendar", {
+    style: "width: 200px; float: left; "
+  }, group1);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{style:'margin: 10px;',id:''},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'컴포넌트 동적 생성',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 하단의 버튼을 클릭. <br/>2. Group 컴포넌트 내부에 TextBox와 Calendar 컴포넌트가 동적으로 생성되는 것을 확인. <br/>(자세한 스크립트는 Script 탭에서 확인.)',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'dynamicCreate()'}]}]},{T:1,N:'w2:textbox',A:{escape:'false',id:'textbox4',label:'/// 샘플 코드<br/><br/>$p.dynamicCreate("group1", "group", {<br/> &nbsp; &nbsp;style: "border: solid green 2px; height: 400px; padding: 20px; margin: 10px"<br/>});<br/><br/>$p.dynamicCreate("textbox10", "textbox", {<br/> &nbsp; &nbsp;style: "font-size: 20px; display: block; margin-bottom: 20px;"<br/>}, group1);<br/><br/>var comObj = $p.getComponentById("textbox10");<br/>comObj.setValue("Select the date.");<br/><br/>$p.dynamicCreate("calendar1", "calendar", {<br/> &nbsp; &nbsp;style: "width: 200px; float: left; "<br/>}, group1);',style:'padding:10px; padding-bottom:20px; text-align:left; font-size:15px; font-weight:bolder; border:brown 1px solid; background-color:ivory; margin-bottom:10px; margin-top:10px; color:brown;',tagname:''}}]}]}]}]})

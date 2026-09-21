@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+
+scwin.onpageload = function () {
+    const tmpSrc = scwin.getfolderPath() + "/11.xml";
+    iframe1.setSrc(tmpSrc);
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    const tmpSrc = scwin.getfolderPath() + "/22.xml";
+    iframe1.setSrc(tmpSrc);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="Allow History Function inside IFrame&lt;br/&gt;" escape="false"></w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="How to Use"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label="1. Run this example standalone.&lt;br/&gt;2. Navigate to any web page.&lt;br/&gt;3. Copy the address of the browser running this standalone example and paste it into the address bar of the browser running the arbitrary web page.&lt;br/&gt;4. Click the setSrc() button.&lt;br/&gt;5. Check the IFrame's internal screen changes. &lt;br/&gt;6. Click the browser's back button.&lt;br/&gt;7. Check the previous IFrame screen is displayed. (spaReplaceHistory=“false”)&lt;br/&gt;8. Confirm that clicking the browser's back button again returns to the previous arbitrary web page.&lt;br/&gt;(Also verify the spaReplaceHistory=&quot;true&quot; example.)" escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[setSrc("22.xml")]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;"
+    		id="textbox4" label='spaReplaceHistory="false" &lt;br/&gt;spa="false"' escape="false">
+    	</w2:textbox>
+    	<w2:iframe scrolling="" src="" spa="true" style="border: solid 1px gray;margin-bottom: 10px;" id="iframe1" spaReplaceHistory="false"></w2:iframe>
+    </xf:group></body>
+</html>

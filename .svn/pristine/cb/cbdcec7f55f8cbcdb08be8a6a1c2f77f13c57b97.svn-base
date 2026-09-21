@@ -1,0 +1,68 @@
+/*amd /guide/_p/data/data_create_p_setData_DataList_mutipleDataListDownload_WebSquare_util.xml 5736 608393dcb20b2c6fa880975c6ea48048e22dd4f205bb24a6c246a7192e493de9 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.onpageunload = function () {};
+scwin.trigger1_onclick = function (e) {
+  var option = {
+    "id": "dataList1",
+    "type": "dataList",
+    "option": {
+      "baseNode": "list",
+      "repeatNode": "map"
+    },
+    "columnInfo": [{
+      "id": "JSON_Code",
+      "name": "JSON_Code",
+      "dataType": "text"
+    }, {
+      "id": "JSON_CodeName",
+      "name": "JSON_CodeName",
+      "dataType": "text"
+    }]
+  };
+  $p.data.create(option);
+};
+scwin.trigger2_onclick = function (e) {
+  var arr1 = [];
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 4; j++) {
+      arr1[i * 4 + j] = "JSON_" + i + j;
+    }
+  }
+  dataList1.setData(arr1);
+};
+scwin.trigger3_onclick = function (e) {
+  var dcStr = '<w2:dataList id="dataList2" baseNode="list" repeatNode="map" valueNode=""> ' + '<w2:columnInfo>' + '<w2:column id="XML_OrderID" name="XML_Client ID" dataType="text"></w2:column>' + '<w2:column id="XML_CustomerID" name="XML_Client Name" dataType="text"></w2:column>' + '<w2:column id="XML_EmployeeID" name="XML_Employee" dataType="text"></w2:column>' + '<w2:column id="XML_OrderDate" name="XML_Date" dataType="text"></w2:column>' + '</w2:columnInfo>' + '</w2:dataList>';
+  $p.data.create(dcStr);
+};
+scwin.trigger4_onclick = function (e) {
+  var arr3 = [];
+  for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < 4; j++) {
+      arr3[i * 4 + j] = "XML_" + i + j;
+    }
+  }
+  dataList2.setData(arr3);
+};
+scwin.trigger5_onclick = function (e) {
+  var scId = "";
+  var options = {
+    common: {
+      fileName: "dataList.xlsx",
+      multipleSheet: "true",
+      showProcess: false
+    },
+    excelInfo: [{
+      dataListId: "dataList1",
+      sheetName: "JSON",
+      removeColumns: "",
+      wframeId: scId
+    }, {
+      dataListId: "dataList2",
+      sheetName: "XML",
+      removeColumns: "",
+      wframeId: scId
+    }]
+  };
+  WebSquare.util.multipleDataListDownload(options);
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin: 10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',id:'textbox1',label:'DataList 동적 생성 및 Excel 파일로 다운로드',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'샘플 사용 방법'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'(Ctrl + 마우스 우클릭하여 디버깅 메뉴를 표시한 후, dataCollection 보기 메뉴를 선택하여 현재 화면에 정의된 DataList가 없는 것을 확인.)<br/>1. (1)번 버튼을 클릭하여 dataList1을 생성. (생성 후, 디버깅 메뉴로 DataList 생성을 확인.)<br/>2. (2)번 &nbsp;버튼을 클릭하여 dataList1에 데이터를 설정. (설정 후, 디버깅 메뉴로 데이터 설정을 확인.)<br/>3. (3)번 버튼을 클릭하여 dataList2를 생성. &nbsp;(생성 후, 디버깅 메뉴로 dataList2 생성을 확인.)<br/>4. (4)번 &nbsp;버튼을 클릭하여 dataList2에 데이터를 설정. &nbsp;(설정 후, 디버깅 메뉴로 데이터 설정을 확인.) <br/>5. (5)번 &nbsp;버튼을 클릭하여 dataList1과 dataList2를 Excel 파일로 다운로드. <br/>6. 다운로드한 Excel 파일 열기. <br/>7. dataList1과 dataList2의 데이터가 Excel 파일로 다운로드된 것을 확인. <br/>(자세한 스크립트는 Script 탭에서 확인.)<br/>',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger1_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger1',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'(1) $p.data.create(); / "dataList"'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'(2) dataList1.setData();'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger3_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger3',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'(3) $p.data.create(); / "dataList2"'}]}]},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger4_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger4',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'(4) dataList2.setData();'}]}]},{T:1,N:'xf:trigger',A:{'ev:onfocus':'','ev:onclick':'scwin.trigger5_onclick',style:'display: block;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-bottom:10px;text-align: left;',id:'trigger5',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'(5) multipleDataListDownload();'}]}]}]}]}]}]})

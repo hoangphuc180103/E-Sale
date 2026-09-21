@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[DataList] 컬럼에 적용된 필터 해제하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230628" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="category" name="Category"></w2:column>
+						<w2:column dataType="text" id="product" name="Product"></w2:column>
+						<w2:column dataType="text" name="Stock" id="stock"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // DataList에 초기 데이터 할당
+    scwin.initData();
+};
+
+/**
+ * DataList 'dlt_exam'에 데이터 할당하기
+ */
+scwin.initData = function () {
+    // DataList 'dlt_exam'에 데이터 할당하기
+    let data = [
+        { "category": "Networking", "product": "SpeedLink", "stock": "15800" },
+        { "category": "Cloud Services", "product": "CloudFlex", "stock": "17800" },
+        { "category": "Support Services", "product": "TechAssist", "stock": "15800" },
+		{ "category": "Servers", "product": "EcoServe", "stock": "12200" },
+        { "category": "Cloud Services", "product": "CloudPro", "stock": "18000" },
+        { "category": "Networking", "product": "NetMax", "stock": "16000" },
+        { "category": "Support Services", "product": "TechTeam", "stock": "17800" },
+        { "category": "Security", "product": "SecureGate", "stock": "28900" },
+        { "category": "Networking", "product": "LinkSecure", "stock": "12500" },
+		{ "category": "Servers", "product": "ServeTech", "stock": "16300" }
+    ];
+    dlt_exam.setJSON(data);
+
+    // DataList 'dlt_exam'의 모든 필터 해제하기
+    dlt_exam.clearFilter();
+};
+
+/**
+ * 버튼 [DataList의 데이터 초기화] 클릭 시
+ */
+scwin.btn_initData_onclick = function (e) {
+    scwin.initData();
+};
+
+/**
+ * 버튼 [1.1 필터 적용하기 - 'Product' 컬럼의 값에 'Tech'이 포함되고 'Category' 컬럼의 값이 'Servers'와 일치] 클릭 시
+ * 버튼 [2.1 필터 적용하기 - 'Product' 컬럼의 값에 'Tech'이 포함되고 'Category' 컬럼의 값이 'Servers'와 일치] 클릭 시
+ */
+scwin.exam_setColumnFilter = function () {
+    // DataList 'dlt_exam'에 필터를 해제합니다.
+    dlt_exam.clearFilter();
+
+    // DataList 'dlt_exam'의 'Product' 컬럼에 필터를 적용합니다. - 값에 'Tech'이 포함
+    dlt_exam.setColumnFilter({
+        "type": "row",
+        "colIndex": "product",
+        "key": "Tech",
+        "exactMatch": false,
+        "condition": "and"
+    });
+
+    // DataList 'dlt_exam'의 'Category' 컬럼에 필터를 적용합니다. - 값이 'Servers'와 일치
+    dlt_exam.setColumnFilter({
+        "type": "row",
+        "colIndex": "category",
+        "key": "Servers",
+        "exactMatch": true,
+        "condition": "and"
+    });
+};
+
+/**
+ * 버튼 [1.2 'Category' 컬럼의 필터 해제하기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Category' 컬럼에 적용된 필터를 해제합니다.
+    dlt_exam.removeColumnFilter("category");
+};
+
+/**
+ * 버튼 [1.3 'Product' 컬럼의 필터 해제하기] 클릭 시
+ */
+scwin.btn_exam1_3_onclick = function (e) {
+    // DataList 'dlt_exam'의 'Product' 컬럼에 적용된 필터를 해제합니다.
+    dlt_exam.removeColumnFilter("product");
+};
+
+/**
+ * 버튼 [2.2 모든 컬럼의 필터 해제하기] 클릭 시
+ */
+scwin.btn_exam2_2_onclick = function (e) {
+    // DataList 'dlt_exam'에 적용된 모든 필터를 해제합니다.
+    dlt_exam.clearFilter();
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="DataList의 'removeColumnFilter' 메소드와 'clearFilter' 메소드를 사용하여 컬럼에 적용된 필터를 해제하는 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" id="" label="순서에 맞게 버튼을 클릭하여 GridView의 출력 결과를 확인합니다." style="" escape="false">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style no_padding" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_cm" disabled="" escape="false" ev:onclick="scwin.btn_initData_onclick" id="btn_initData" style=""
+								type="button">
+								<xf:label><![CDATA[DataList의 데이터 초기화]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="컬럼에 적용된 필터 해제하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.exam_setColumnFilter" id="" style=""
+								type="button">
+								<xf:label><![CDATA[1.1 필터 적용하기 - 'Product' 컬럼의 값에 'Tech'이 포함되고 'Category' 컬럼의 값이 'Servers'와 일치]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2"
+								style="" type="button">
+								<xf:label><![CDATA[1.2 'Category' 컬럼의 필터 해제하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.btn_exam1_3_onclick" id="btn_exam1_3"
+								style="" type="button">
+								<xf:label><![CDATA[1.3 'Product' 컬럼의 필터 해제하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="모든 컬럼에 적용된 필터 해제하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" ev:onclick="scwin.exam_setColumnFilter" id="" style=""
+								type="button">
+								<xf:label><![CDATA[2.1 필터 적용하기 - 'Product' 컬럼의 값에 'Tech'이 포함되고 'Category' 컬럼의 값이 'Servers'와 일치]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" escape="false" id="btn_exam2_2" style="" type="button"
+								ev:onclick="scwin.btn_exam2_2_onclick">
+								<xf:label><![CDATA[2.2 모든 컬럼의 필터 해제하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="결과 확인용 GridView" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="gvwbox" id="" style="max-width: 400px;">
+							<w2:gridView autoFit="allColumn" autoFitMinWidth="220" class="gvw" dataList="data:dlt_exam"
+								defaultCellHeight="37" id="" initFixedHeightByRowNum="4" noResultMessage="No data to display" readOnly="true" rowNumWidth="34"
+								style="height:80px;" tooltipDisplay="true" visibleRowNum="4">
+								<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+								<w2:header id="header1" style="">
+									<w2:row id="row1" style="">
+										<w2:column displayMode="label" id="column3" inputType="text" style="" value="Category"
+											width="100">
+										</w2:column>
+										<w2:column displayMode="label" id="column2" inputType="text" style="" value="Product" width="80"></w2:column>
+										<w2:column displayMode="label" id="column1" inputType="text" style="" value="Stock" width="60"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody id="gBody1" style="">
+									<w2:row id="row2" style="">
+										<w2:column displayMode="label" id="category" inputType="text" style="" textAlign="left"
+											width="100">
+										</w2:column>
+										<w2:column displayMode="label" id="product" inputType="text" style="" textAlign="left" width="80"></w2:column>
+										<w2:column dataType="number" displayFormatter="#,###" displayMode="label" id="stock"
+											inputType="text" style="" textAlign="right" width="60">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

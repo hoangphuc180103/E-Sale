@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TabControl] 선택된 탭의 ID 또는 Index 반환받기" >
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230713" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    // TabControl 'tac_exam1'의 두번째 탭을 선택합니다.
+    tac_exam1.setSelectedTabIndex(1);
+};
+
+/**
+ * 버튼 [선택된 탭의 ID 반환받기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // TabControl 'tac_exam1'의 선택된 탭의 ID를 반환받습니다.
+    let result = tac_exam1.getSelectedTabID();
+    // 반환 값 예시) 'tabs2'
+
+    alert("getSelectedTabID: " + result);
+    console.log("getSelectedTabID: ", result);
+};
+
+/**
+ * 버튼 [선택된 탭의 Index 반환받기] 클릭 시
+ */
+scwin.btn_exam1_2_onclick = function (e) {
+    // TabControl 'tac_exam1'의 선택된 탭의 Index를 반환받습니다.
+    let result = tac_exam1.getSelectedTabIndex();
+    // 반환 값 예시) 1
+    
+    alert("getSelectedTabIndex: " + result);
+    console.log("getSelectedTabIndex: ", result);
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="TabControl의 'getSelectedTabID' 메소드와 'getSelectedTabIndex' 메소드를 사용하여 선택된 탭의 아이디와 인덱스를 반환받는 예제입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" style="" class=""></xf:group>
+			<xf:group class="example_div_tb_style_wrap mw600" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" style=""
+								type="button">
+								<xf:label><![CDATA[선택된 탭의 ID 반환받기]]></xf:label>
+							</xf:trigger>
+							<xf:trigger class="btn_exam_exec" ev:onclick="scwin.btn_exam1_2_onclick" id="btn_exam1_2" style="" type="button">
+								<xf:label><![CDATA[선택된 탭의 Index 반환받기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="">
+						<xf:group id="" class="tbcbox"><w2:tabControl confirmTrueAction="exist" confirmFalseAction="new" useTabKeyOnly="true" tabScroll="" useMoveNextTabFocus="false" useConfirmMessage="false" alwaysDraw="false" style="position: relative;height: 120px;" id="tac_exam1" class="tbc">
+								<w2:tabs disabled="false" style="width:100px;" id="tabs1" label="TAB1"></w2:tabs>
+								<w2:tabs disabled="false" style="width:100px;" id="tabs2" label="TAB2"></w2:tabs>
+								<w2:tabs disabled="false" style="width:100px;" id="tabs3" label="TAB3"></w2:tabs>
+								<w2:content alwaysDraw="false" style="min-height:30px;" id="content1">
+									<w2:textbox style="font-size: 1.2em;color: steelblue;font-weight: bold;" id="" label="TAB1 CONTENT"></w2:textbox>
+								</w2:content>
+								<w2:content alwaysDraw="false" style="min-height:30px;" id="content2">
+									<w2:textbox style="font-size: 1.2em;color: salmon;font-weight: bold;" id="" label="TAB2 CONTENT"></w2:textbox>
+								</w2:content>
+								<w2:content alwaysDraw="false" style="height:90px" id="content3">
+									<w2:textbox style="font-size: 1.2em;color: forestgreen;font-weight: bold;" id="" label="TAB3 CONTENT"></w2:textbox>
+								</w2:content>
+							</w2:tabControl></xf:group></xf:group>
+					</xf:group>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화 교육 예제] popup 설명 ">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    
+};
+
+ 
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group class="sub_contents" id="" style="">
+    		<xf:group class="ws_example_grp_desc" id="" style="">
+    			<xf:group class="titbox" id="" style="">
+    				<w2:textbox class="ws_example_txt_desc_info" id="" label="학습목표" style="" tagname="h3"></w2:textbox>
+    			</xf:group>
+    			<xf:group id="" class="detailsbox">
+				<xf:group tagname="details" style="" id="" class=""> 
+    				<w2:textbox escape="false" id="" label="popup 종류 알기" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="wframePopup : WFrame 내에 팝업 화면을 호출(권장)&lt;br/&gt;browserPopup : 브라우저가 제공하는 native 윈도우에 팝업 화면을 호출(비권장)&lt;br/&gt;FloatingLayer : FloatingLayer 컴포넌트 활용하여 데이터 표현&lt;br/&gt;&lt;br/&gt;modal과 modaless 차이점 확인하기"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="Main과 팝업간 데이터 참조" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="Main에서 popup 으로 데이터 보내기&lt;br/&gt;Main에서 popup 으로 데이터 가져오기"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+    			<xf:group class="" id="" style="" tagname="details">
+    				<w2:textbox escape="false" id="" label="실전에서 많이 활용하는 API" style="" tagname="summary"></w2:textbox>
+    				<w2:textbox class="" escape="false" id=""
+    					label="자신의 창이 팝업인지 확인하기&lt;br/&gt;메인창에서 자식 팝업 다 닫기"
+    					style="">
+    				</w2:textbox>
+    			</xf:group>
+				</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>

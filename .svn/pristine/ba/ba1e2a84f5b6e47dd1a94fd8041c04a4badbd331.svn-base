@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="createWindow_scopeInherit_WindowContainer">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+scwin.count = 0;
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+
+
+scwin.trigger1_onclick = function (e) {
+    var tmpSrc = scwin.getfolderPath() + "/wframe.xml";
+
+    var scopeInheritValue = radio1.getValue();
+    scwin.count++;
+    var winObj = {
+        title: "window",
+        src: tmpSrc,
+        windowTitle: "Title" + " - " + scopeInheritValue,
+        windowId: "001" + scwin.count,
+        frameMode: "wframe",
+        defaultWidth: "400",
+        defaultHeight: "300"
+        , scopeInherit: scopeInheritValue
+    };
+    windowContainer1.createWindow(winObj);
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    	<xf:group style="margin: 10px;" id="">
+    		<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox6" label="Inherit Parent Scope&lt;br/&gt;" escape="false"></w2:textbox>
+    		<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox7" label="How to Use"></w2:textbox>
+    		<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox8" label='(Run the example standalone.)&lt;br/&gt;1. Select the scopeInherit option value. (none, api, all, or component)&lt;br/&gt;2. Click the createWindow() button below.&lt;br/&gt;3. Confirm that a window is created with the specified scopeInherit option applied, and that the created window displays a screen with nested WFrame components.&lt;br/&gt;4. Click each button inside the WFrame.&lt;br/&gt;5. Confirm each button behaves according to its scopeInherit attribute value.&lt;br/&gt; &amp;nbsp; &amp;nbsp; “none” : (1) X, (2) Top-level access, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; “api” : (1) X, (2) Parent access, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; “api” : (1) X, (2) Parent access, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; “all” : (1) O, (2) Parent access, (3) O&lt;br/&gt; &amp;nbsp; &amp;nbsp; “component” : (1) O, (2) Top-level access, (3) O' escape="false">
+    	</w2:textbox>
+    		<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightpink;border:none;margin-bottom: 10px;" id="textbox9" label='Select the value of the scopeInherit property.' escape="false">
+    	</w2:textbox>
+    		<xf:group id="" style="margin-bottom: 10px;">
+    			<xf:select1 id="radio1" selectedIndex="-1" appearance="full"
+    				style="margin-bottom: 10px;margin-bottom: 20px;border: solid 2px lightpink;padding: 10px;" cols="" rows="1" ref="">
+    				<xf:choices>
+    					<xf:item>
+    						<xf:label><![CDATA[none]]></xf:label>
+    						<xf:value><![CDATA[none]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[api]]></xf:label>
+    						<xf:value><![CDATA[api]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[all]]></xf:label>
+    						<xf:value><![CDATA[all]]></xf:value>
+    					</xf:item>
+    					<xf:item>
+    						<xf:label><![CDATA[component]]></xf:label>
+    						<xf:value><![CDATA[component]]></xf:value>
+    					</xf:item>
+    				</xf:choices>
+    			</xf:select1>
+    			<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox10" label='createWindow(options) - options.scopeInherit="nont" / "api" "all" "component"' escape="false">
+    			</w2:textbox>
+    			<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    				style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block"
+    				id="trigger1" type="button" class="">
+    				<xf:label><![CDATA[createWindow()]]></xf:label>
+    			</xf:trigger>
+    		</xf:group>
+    		<w2:textbox style="text-align: left;height:50px;padding: 5px;font-size:30px;font-style:normal;font-weight:bolder;color: blue;margin-bottom: 10px;" id="textbox1" label='Top (id="textbox1")'>
+    		</w2:textbox>
+    		<w2:windowContainer sequentialArrangeColNum="2" sequentialArrangeRowNum="2" fixArrangeFullScreen="false" useFixButton="false"
+    			windowAutoResize="false" useWindowScrollButton="true" defaultWidth="" verticalArrangeNum="2" windowMaxNum="20" useCloseButton="false"
+    			controlIconPosition="allright" stopMinimizeOnNameLayer="false" toolbarPosition="top" windowMaximizeAll="true" id="windowContainer1"
+    			useStatusMsg="true" hideTitleOnMaximize="false" spaInitCount="0" windowScrollVisibleRowNum="" stopToggleOnLast="false"
+    			defaultHeight="" useNameContainer="true" horizontalArrangeNum="2" useCustomMsg="false" autoArrange="true" useControlIconTitle="true"
+    			tooltipDisplay="true" tooltipGroupClass="false" windowTooltipDisplay="true"
+    			style="position: relative;height: 400px;border: gray solid 1px;">
+    			<w2:windowToolbar>
+    				<w2:controlIconLayer>
+    					<w2:controlIcon></w2:controlIcon>
+    					<w2:controlIcon></w2:controlIcon>
+    					<w2:controlIcon></w2:controlIcon>
+    					<w2:controlIcon></w2:controlIcon>
+    					<w2:controlIcon></w2:controlIcon>
+    				</w2:controlIconLayer>
+    				<w2:nameLayer></w2:nameLayer>
+    				<w2:selectedNameLayer></w2:selectedNameLayer>
+    			</w2:windowToolbar>
+    		</w2:windowContainer>
+    	</xf:group>
+    </body>
+</html>

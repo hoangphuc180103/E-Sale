@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] setValue 메소드로 설정한 값이 항목에 없는 경우, 처리 방식 설정하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230417" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_dataList1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="Code" name="name1" dataType="text"></w2:column>
+						<w2:column id="Label" name="name2" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<Code><![CDATA[01]]></Code>
+							<Label><![CDATA[Apple]]></Label>
+						</w2:row>
+						<w2:row>
+							<Code><![CDATA[02]]></Code>
+							<Label><![CDATA[Banana]]></Label>
+						</w2:row>
+						<w2:row>
+							<Code><![CDATA[03]]></Code>
+							<Label><![CDATA[Cherry]]></Label>
+						</w2:row>
+						<w2:row>
+							<Code><![CDATA[04]]></Code>
+							<Label><![CDATA[Dragon fruit]]></Label>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    sbx_exam1.setValue("02");
+    sbx_exam2.setValue("02");
+    sbx_exam3.setValue("02");
+
+};
+
+/**
+ * 버튼 [ 선택 목록에 "Watermelon" 설정하기 ] 클릭 시
+ */
+scwin.btn_ex1_onclick = function (e) {
+    // SelectBox 'sbx_exam1'에 "Watermelon" 데이터를 세팅합니다.
+    sbx_exam1.setValue("Watermelon");
+};
+
+/**
+ * 버튼 [ 선택 목록에 "Watermelon" 설정하기 ] 클릭 시
+ */
+scwin.btn_ex2_onclick = function (e) {
+    // SelectBox 'sbx_exam2'에 "Watermelon" 데이터를 세팅합니다.
+    sbx_exam2.setValue("Watermelon");
+};
+
+/**
+ * 버튼 [ 선택 목록에 "Watermelon" 설정하기 ] 클릭 시
+ */
+scwin.btn_ex3_onclick = function (e) {
+    // SelectBox 'sbx_exam3'에 "Watermelon" 데이터를 세팅합니다.
+    sbx_exam3.setValue("Watermelon");
+
+    // SelectBox 'sbx_exam3'에 표시되고 있는 항목의 인덱스를 반환합니다.
+    let index = sbx_exam3.getSelectedIndex();
+    alert("인덱스 값은 : " + index + " 입니다.");
+};]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="SelectBox의 'setValue' 메소드로 설정한 값이 항목에 없는 경우, 'valueNotInList' 속성과 'emptyItem' 속성을 사용하여 처리 방식을 설정한 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="exam_txt info" escape="false" id="" label="테스트를 위해 이 예제의 모든 SelectBox는 두 번째 항목 'Banana'가 선택된 상태입니다."
+					style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="선택 항목 목록에 없는 값은 무시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin: 10px 0px 10px 0px;">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex1_onclick" id="btn_ex1" localeRef=""
+								style="min-width: 30px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[선택 목록에 "Watermelon" 설정하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:select1 id="sbx_exam1" chooseOption="" style="width: 148px;" submenuSize="auto" allOption="" disabled="false"
+							direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" valueNotInList="default" emptyItem="true">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="Label"></xf:label>
+									<xf:value ref="Code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group id="" style="" class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="목록의 첫번째 항목을 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin: 10px 0px 10px 0px;">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex2_onclick" id="btn_ex2" localeRef=""
+								style="min-width: 30px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[선택 목록에 "Watermelon" 설정하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:select1 id="sbx_exam2" chooseOption="" style="width: 148px;" submenuSize="auto" allOption="" disabled="false"
+							direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" valueNotInList="default" emptyItem="false">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="Label"></xf:label>
+									<xf:value ref="Code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="선택 항목 목록에 없는 값을 유지하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin: 10px 0px 10px 0px;">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_ex3_onclick" id="btn_ex3" localeRef=""
+								style="min-width: 30px;" type="" useDefaultLabel="true">
+								<xf:label><![CDATA[선택 목록에 "Watermelon" 설정하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:select1 id="sbx_exam3" chooseOption="" style="width: 148px;" submenuSize="auto" allOption="" disabled="false"
+							direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" valueNotInList="keepValue">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="Label"></xf:label>
+									<xf:value ref="Code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

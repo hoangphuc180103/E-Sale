@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" id="dataList1" repeatNode="map" saveRemovedData="true" style="">
+            		<w2:columnInfo>
+            			<w2:column dataType="text" id="col1" name="name1"></w2:column>
+            			<w2:column dataType="text" id="col2" name="name2"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+    
+	scwin.onpageload = function() {
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};	
+	
+	scwin.trigger1_onclick = function(e) {
+		var data = [];
+		var count = input1.getValue();
+		for (var i = 0; i < count ; i ++) {
+			data.push(i + "");
+			data.push(i + "" + "_v");
+		}
+		dataList1.setData(data);
+		checkcombobox1.openTable();
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" style="margin: 10px;">
+    	<w2:textbox escape="false" id="textbox1" label="열 개수 설정" style="color: blue;margin-bottom: 10px;" tabIndex="h1" tagname="h1"></w2:textbox>
+    	<w2:textbox id="textbox2" label="샘플 사용 방법" style="height: 23px;margin-bottom: 10px;color: blue;" tagname="h2"></w2:textbox>
+    	<w2:textbox escape="false" id="textbox3"
+    		label='1. 하단의 InputBox에 5 이상의 수를 입력. &lt;br/&gt;2. 하단의 dataList1.setData() 버튼을 클릭하여 위 1 단계에서 설정한 수만큼의 데이터를 설정. &lt;br/&gt;3. visibleColNum="5" 설정에 따라 5개의 열에 데이터가 표시되는 것을 확인.'
+    		style="color: blue;margin-bottom: 30px;">
+    	</w2:textbox>
+    	<w2:textbox escape="false" id="textbox4"
+    		label='속성 설정&lt;br/&gt;visibleColNum="5"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 20px;">
+    	</w2:textbox>
+    	<xf:input adjustMaxLength="false"
+    		style="width: 50%;text-align: center;height:50px;padding: 5px;font-size:30px;font-style: italic;color: red;" id="input1" placeholder="Enter data count.">
+    	</xf:input>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="width:50%;height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;margin-top:30px;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[dataList1.setData()]]></xf:label>
+    	</xf:trigger>
+    	<xf:checkcombobox visibleColumn="" displayAllOptionLabel="false" submenuSize="auto" chooseOption="" allOption="" separator=","
+    		displayMode="label" visibleColMax="" ref="" appearance="minimal" checkboxClickSync="true" useEdit="true" validateOnInput="true"
+    		disabled="false" style="width: 50%;display: block" allowChar="0-9,-" id="checkcombobox1"
+    		visibleRowNum="" useDrag="" rangeSeparator="" direction="auto" visibleColNum="5">
+    		<xf:choices>
+    			<xf:itemset nodeset="data:dataList1">
+    				<xf:label ref="col1"></xf:label>
+    				<xf:value ref="col2"></xf:value>
+    			</xf:itemset>
+    		</xf:choices>
+    	</xf:checkcombobox>
+    </xf:group></body>
+</html>

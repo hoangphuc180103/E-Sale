@@ -1,0 +1,39 @@
+/*amd /edu/adv/parent.xml 4084 65cfa40437df23d2483c47a841e814e368ccbb686f9adaeecd390dd3bcb6aa0d */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'COMPONENT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'w2:MSA'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'w2:layoutInfo'},{T:1,N:'w2:publicInfo',A:{method:''}},{T:1,N:'script',A:{lazy:'false',type:'text/javascript'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.onpageload = function () {};
+scwin.btnCall_onclick = async function (e) {
+  var rowJSON = {
+    "Personal Info": {
+      "Name": "Lee",
+      "Age": 50,
+      "Married": false
+    },
+    "Region": "Seoul",
+    "Carrier": true
+  };
+  var obj = {
+    "dataObject": {
+      "type": "json",
+      "name": "pageFrameParam",
+      "data": rowJSON
+    }
+  };
+  await pageFrame1.setSrc("/edu/adv/sub.xml", obj); // 1
+
+  pageFrame1.getWindow().scwin.setDate(); //2 
+};
+scwin.btnCallTab_onclick = async function (e) {
+  var newTabId = await tab1.addTab("cmcm011", {
+    "label": "New",
+    "title": "dataObject",
+    "openAction": "exist",
+    "closable": "true"
+  }, {
+    "src": "/edu/adv/sub2.xml",
+    "frameMode": "wframePreload",
+    "scope": true,
+    "alwaysDraw": "true"
+  });
+  await tab1.setSelectedTabIndex("cmcm011");
+  tab1.getWindow(tab1.getSelectedTabIndex()).iptTab2.setValue("mmmmmmmm");
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload'},E:[{T:1,N:'xf:group',A:{class:'sub_contents',id:'',style:''},E:[{T:1,N:'xf:group',A:{class:'titbox',id:'',style:''},E:[{T:1,N:'w2:textbox',A:{class:'',id:'',label:'Main ',style:'',tagname:'h4'}}]},{T:1,N:'xf:group',A:{id:'',style:'margin-bottom: 10px;overflow: hidden;'},E:[{T:1,N:'xf:trigger',A:{style:'float:right;clear:none;',id:'btnCall',type:'button',class:'btn_cm','ev:onclick':'scwin.btnCall_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'call'}]}]},{T:1,N:'xf:trigger',A:{class:'call Tab',id:'btnCallTab',style:'float:right;clear:none;',type:'button','ev:onclick':'scwin.btnCallTab_onclick'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'Tab call'}]}]}]},{T:1,N:'w2:pageFrame',A:{style:'border: 1px solid black;padding: 10px;margin-bottom: 10px;',id:'pageFrame1'}},{T:1,N:'w2:pageFrame',A:{style:'border: 1px solid black;padding: 10px;margin-bottom: 10px;',id:'pageFrame2',src:'/edu/adv/sub2.xml'}},{T:1,N:'xf:group',A:{class:'tblbox',id:'',style:''},E:[{T:1,N:'xf:group',A:{adaptive:'layout',adaptiveThreshold:'600',class:'w2tb tbl',id:'',style:'',tagname:'table'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:summary'}]},{T:1,N:'xf:group',A:{tagname:'colgroup'},E:[{T:1,N:'xf:group',A:{style:'width:150px;',tagname:'col'}},{T:1,N:'xf:group',A:{style:'',tagname:'col'}}]},{T:1,N:'xf:group',A:{style:'',tagname:'tr'},E:[{T:1,N:'xf:group',A:{class:'w2tb_th',style:'',tagname:'th'},E:[{T:1,N:'w2:textbox',A:{class:'',id:'',label:'테이블 헤더',ref:'',style:'',userData2:''}}]},{T:1,N:'xf:group',A:{class:'w2tb_td',style:'',tagname:'td'},E:[{T:1,N:'xf:input',A:{class:'',id:'iptParent',placeholder:'',style:'width:150px;'}}]}]},{T:1,N:'xf:group',A:{tagname:'tr'},E:[{T:1,N:'xf:group',A:{class:'w2tb_th ',tagname:'th'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:scope',E:[{T:3,text:'row'}]}]},{T:1,N:'w2:textbox',A:{class:'',id:'',label:'테이블 헤더',ref:'',style:'',userData2:''}}]},{T:1,N:'xf:group',A:{class:'w2tb_td',tagname:'td'},E:[{T:1,N:'w2:attributes',E:[{T:1,N:'w2:colspan',E:[{T:3,text:'1'}]},{T:1,N:'w2:rowspan',E:[{T:3,text:'1'}]}]}]}]}]}]},{T:1,N:'xf:group',A:{class:'tbcbox',id:'',style:''},E:[{T:1,N:'w2:tabControl',A:{alwaysDraw:'false',class:'tbc',confirmFalseAction:'new',confirmTrueAction:'exist',id:'tab1',style:'',tabScroll:'',useConfirmMessage:'false',useMoveNextTabFocus:'false',useTabKeyOnly:'true'},E:[{T:1,N:'w2:tabs',A:{disabled:'false',id:'tabs1',label:'TAB1',style:''}},{T:1,N:'w2:content',A:{alwaysDraw:'false',id:'content1',style:'',src:'/edu/adv/sub.xml'}}]}]}]}]}]}]})

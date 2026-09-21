@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[TreeView] 노드의 Index 또는 Value로 노드 선택하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230803" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList 'dlt_exam'의 데이터가 변경되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_exam" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="depth" name="depth"></w2:column>
+						<w2:column dataType="text" id="label" name="label"></w2:column>
+						<w2:column dataType="text" id="value" name="value"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[MENU1 (value: menu1)]]></label>
+							<value><![CDATA[menu1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[MENU1-1 (value: menu1-1)]]></label>
+							<value><![CDATA[menu1-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[MENU1-2 (value: menu1-2)]]></label>
+							<value><![CDATA[menu1-2]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[3]]></depth>
+							<label><![CDATA[MENU1-2-1 (value: menu1-2-1)]]></label>
+							<value><![CDATA[menu1-2-1]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[MENU1-3 (value: menu1-3)]]></label>
+							<value><![CDATA[menu1-3]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[1]]></depth>
+							<label><![CDATA[MENU2 (value: menu2)]]></label>
+							<value><![CDATA[menu2]]></value>
+						</w2:row>
+						<w2:row>
+							<depth><![CDATA[2]]></depth>
+							<label><![CDATA[MENU2-1 (value: menu2-1)]]></label>
+							<value><![CDATA[menu2-1]]></value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.onpageload = function () {
+    
+};
+
+/**
+ * 버튼 [노드의 Index가 2인 노드 선택하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function (e) {
+    // TreeView 'trv_exam1'의 노드 Index가 2인 노드를 선택합니다.
+    // 두 번째 인자를 true로 지정해야 노드가 선택됩니다.
+    trv_exam1.findNodeByIndex(2, true);
+};
+
+/**
+ * 버튼 [노드의 Value가 'menu2'인 노드 선택하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function (e) {
+    // TreeView 'trv_exam1'의 노드의 Value가 'menu2'인 노드를 선택합니다.
+    // 두 번째 인자를 true로 지정해야 노드가 선택됩니다.
+    trv_exam1.findNodeByValue("menu2", true);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="false"
+					label="TreeView의 'findNodeByIndex' 메소드와 'findNodeByValue' 메소드를 사용하여, 노드의 인덱스 또는 값으로 노드를 선택하는 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" type="button">
+								<xf:label><![CDATA[노드의 Index가 2인 노드 선택하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam2_1_onclick" id="btn_exam2_1" type="button">
+								<xf:label><![CDATA[노드의 Value가 'menu2'인 노드 선택하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:textbox class="wre_txt_normal" escape="false" id="" label="노드의 Lable에 Value를 표기하였습니다." style="">
+						</w2:textbox>
+						<xf:group class="mb_def_box nobottom">
+							<xf:group class="" id="" style="padding: 6px;border: 1px solid #CED4DA; box-sizing: border-box; max-width:400px;">
+								<w2:treeview class="P00316" dataType="listed" hierarchy="true" id="trv_exam1" lineShow="" showTreeDepth=""
+									style="min-height: 50px;overflow: inherit;" toggleEvent="none">
+									<w2:itemset nodeset="data:dlt_exam">
+										<w2:label ref="label"></w2:label>
+										<w2:value ref="value"></w2:value>
+										<w2:depth ref="depth"></w2:depth>
+										<w2:folder ref=""></w2:folder>
+										<w2:checkbox ref=""></w2:checkbox>
+										<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+										<w2:image ref=""></w2:image>
+										<w2:iconImage ref=""></w2:iconImage>
+										<w2:selectedImage ref=""></w2:selectedImage>
+										<w2:expandedImage ref=""></w2:expandedImage>
+										<w2:leafImage ref=""></w2:leafImage>
+									</w2:itemset>
+								</w2:treeview>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

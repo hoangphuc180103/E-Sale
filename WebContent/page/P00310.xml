@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[FusionChart] 차트 타입을 스크립트로 변경하기 - Scroll Single Series, Scroll Stacked">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date=" 20230731" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_chartData_1" repeatNode="data" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="type" name="type"></w2:column>
+						<w2:column dataType="number" id="zone1" name="zone1"></w2:column>
+						<w2:column dataType="number" id="zone2" name="zone2"></w2:column>
+						<w2:column dataType="number" id="zone3" name="zone3"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true" xmlns="">
+						<w2:row>
+							<type><![CDATA[T1]]></type>
+							<zone1><![CDATA[22350]]></zone1>
+							<zone2><![CDATA[25420]]></zone2>
+							<zone3><![CDATA[24560]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T2]]></type>
+							<zone1><![CDATA[15740]]></zone1>
+							<zone2><![CDATA[26950]]></zone2>
+							<zone3><![CDATA[10140]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T3]]></type>
+							<zone1><![CDATA[22580]]></zone1>
+							<zone2><![CDATA[16550]]></zone2>
+							<zone3><![CDATA[21070]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T4]]></type>
+							<zone1><![CDATA[11150]]></zone1>
+							<zone2><![CDATA[11900]]></zone2>
+							<zone3><![CDATA[20940]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T5]]></type>
+							<zone1><![CDATA[23240]]></zone1>
+							<zone2><![CDATA[19900]]></zone2>
+							<zone3><![CDATA[18120]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T6]]></type>
+							<zone1><![CDATA[17530]]></zone1>
+							<zone2><![CDATA[10210]]></zone2>
+							<zone3><![CDATA[22490]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T7]]></type>
+							<zone1><![CDATA[28260]]></zone1>
+							<zone2><![CDATA[17940]]></zone2>
+							<zone3><![CDATA[22390]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T8]]></type>
+							<zone1><![CDATA[29660]]></zone1>
+							<zone2><![CDATA[10520]]></zone2>
+							<zone3><![CDATA[17320]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T9]]></type>
+							<zone1><![CDATA[15100]]></zone1>
+							<zone2><![CDATA[21560]]></zone2>
+							<zone3><![CDATA[14640]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T10]]></type>
+							<zone1><![CDATA[25790]]></zone1>
+							<zone2><![CDATA[21190]]></zone2>
+							<zone3><![CDATA[13010]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T11]]></type>
+							<zone1><![CDATA[12080]]></zone1>
+							<zone2><![CDATA[29870]]></zone2>
+							<zone3><![CDATA[11570]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T12]]></type>
+							<zone1><![CDATA[12270]]></zone1>
+							<zone2><![CDATA[15100]]></zone2>
+							<zone3><![CDATA[18500]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T13]]></type>
+							<zone1><![CDATA[20420]]></zone1>
+							<zone2><![CDATA[16610]]></zone2>
+							<zone3><![CDATA[25010]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T14]]></type>
+							<zone1><![CDATA[21380]]></zone1>
+							<zone2><![CDATA[16050]]></zone2>
+							<zone3><![CDATA[11220]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T15]]></type>
+							<zone1><![CDATA[22640]]></zone1>
+							<zone2><![CDATA[15880]]></zone2>
+							<zone3><![CDATA[12930]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T16]]></type>
+							<zone1><![CDATA[17510]]></zone1>
+							<zone2><![CDATA[24850]]></zone2>
+							<zone3><![CDATA[27330]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T17]]></type>
+							<zone1><![CDATA[21850]]></zone1>
+							<zone2><![CDATA[14970]]></zone2>
+							<zone3><![CDATA[17300]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T18]]></type>
+							<zone1><![CDATA[12140]]></zone1>
+							<zone2><![CDATA[15260]]></zone2>
+							<zone3><![CDATA[17280]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T19]]></type>
+							<zone1><![CDATA[13440]]></zone1>
+							<zone2><![CDATA[23570]]></zone2>
+							<zone3><![CDATA[29010]]></zone3>
+						</w2:row>
+						<w2:row>
+							<type><![CDATA[T20]]></type>
+							<zone1><![CDATA[11620]]></zone1>
+							<zone2><![CDATA[26970]]></zone2>
+							<zone3><![CDATA[28320]]></zone3>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType_1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="chart_name" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="chart_value" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<chart_name><![CDATA[Scroll Column 2D]]></chart_name>
+							<chart_value><![CDATA[scrollcolumn2d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Scroll Bar 2D]]></chart_name>
+							<chart_value><![CDATA[scrollbar2d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Scroll Line 2D]]></chart_name>
+							<chart_value><![CDATA[scrollline2d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Scroll Area 2D]]></chart_name>
+							<chart_value><![CDATA[scrollarea2d]]></chart_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_chartType_2" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="chart_name" name="chart_name" dataType="text"></w2:column>
+						<w2:column id="chart_value" name="chart_value" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<chart_name><![CDATA[Scroll Stacked Column 2D]]></chart_name>
+							<chart_value><![CDATA[scrollstackedcolumn2d]]></chart_value>
+						</w2:row>
+						<w2:row>
+							<chart_name><![CDATA[Scroll Stacked Bar 2D]]></chart_name>
+							<chart_value><![CDATA[scrollstackedbar2d]]></chart_value>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    // Fusionchart 'cht_exam1'의 초기 속성을 설정합니다.
+    // Scroll Single Series Charts
+    cht_exam1.setChartAttribute({
+        "caption": rad_chartType1.getText(), // radio에 선택된 text를 차트의 caption으로 지정.
+        "yAxisMaxValue": "32000",
+        "canvasTopPadding": 6,
+        "canvasRightMargin": 10,
+        "canvasLeftPadding": 6,
+        "canvasRightPadding": 6,
+        "chartBottomMargin": 16,
+        "scrollheight": "12",
+        "flatScrollBars": "1",
+        "scrollShowButtons": "1",
+        "scrollColor": "#eeeeee"
+    });
+
+    // 지정한 속성을 바탕으로 브라우저에 그립니다.
+    cht_exam1.draw();
+
+    // Fusionchart 'cht_exam2'의 초기 속성을 설정합니다.
+    // Scroll Stacked Charts
+    cht_exam2.setChartAttribute({
+        "caption": rad_chartType2.getText(), // radio에 선택된 text를 차트의 caption으로 지정.
+        "canvasTopPadding": 6,
+        "canvasRightMargin": 10,
+        "canvasLeftPadding": 6,
+        "canvasRightPadding": 6,
+        "chartBottomMargin": 16,
+        "scrollheight": "12",
+        "flatScrollBars": "1",
+        "scrollShowButtons": "1",
+        "scrollColor": "#eeeeee"
+    });
+
+    // 지정한 속성을 바탕으로 브라우저에 그립니다.
+    cht_exam2.draw();
+};
+
+/**
+ * 차트 'Scroll Single Series Charts' 타입이 구성된 Radio 'rad_chartType1'의 이벤트 'onviewchange' 핸들러
+ */
+scwin.rad_chartType1_onviewchange = function (info) {
+    let chartAlias = info.value;
+    // Fusionchart 'cht_exam1'의 속성을 설정합니다.
+    // radio에 선택된 text를 차트의 caption으로 지정.
+    cht_exam1.setChartAttribute({
+        "caption": this.getText()
+    });
+
+    cht_exam1.changeType(chartAlias);
+
+    // 'Scroll Single Series Charts' 타입 변경 예시)
+    // Fucionchart의 'seriesColumns' 속성 예시) [['zone1']]
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Scroll Column 2D'로 변경합니다.
+    // cht_exam1.changeType('scrollcolumn2d');
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Scroll Bar 2D'로 변경합니다.
+    // cht_exam1.changeType('scrollbar2d');
+
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Scroll Line 2D'로 변경합니다.
+    // cht_exam1.changeType('scrollline2d');
+    
+    // Fusionchart 'cht_exam1'의 차트 타입을 'Scroll Area 2D'로 변경합니다.
+    // cht_exam1.changeType('scrollarea2d');
+};
+
+/**
+ * 차트 'Scroll Stacked Charts' 타입이 구성된 Radio 'rad_chartType2'의 이벤트 'onviewchange' 핸들러
+ */
+scwin.rad_chartType2_onviewchange = function (info) {
+    let chartAlias = info.value;
+    // Fusionchart 'cht_exam2'의 속성을 설정합니다.
+    // radio에 선택된 text를 차트의 caption으로 지정.
+    cht_exam2.setChartAttribute({
+        "caption": this.getText()
+    });
+
+    cht_exam2.changeType(chartAlias);
+
+    // 'Scroll Stacked Charts' 타입 변경 예시)
+    // Fucionchart의 'seriesColumns' 속성 예시) [['zone1','zone2','zone3']]
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Scroll Stacked Column 2D'로 변경합니다.
+    // cht_exam2.changeType('scrollstackedcolumn2d');
+
+    // Fusionchart 'cht_exam2'의 차트 타입을 'Scroll Stacked Bar 2D'로 변경합니다.
+    // cht_exam2.changeType('scrollstackedbar2d');
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="Fusionchart의 'changeType' 메소드를 사용하여 'Scroll Single Series' 타입과 'Scroll Stacked' 타입의 차트를 설정하는 예제입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox class="ws_example_txt_desc_info" escape="false" id="" label="이 예제의 Fusion Chart 버전은 3.19입니다." style=""></w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap mb_def" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Scroll Single Series Charts" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:select1 appearance="full" class="w_per_100" cols="" id="rad_chartType1" ref="" renderType="radiogroup" rows=""
+								selectedIndex="0" style="min-height: 26px;" ev:onviewchange="scwin.rad_chartType1_onviewchange">
+								<xf:choices>
+									<xf:itemset nodeset="data:dlt_chartType_1">
+										<xf:label ref="chart_name"></xf:label>
+										<xf:value ref="chart_value"></xf:value>
+									</xf:itemset>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:fusionchart chartType="ScrollColumn2D" drawType="javascript" id="cht_exam1" ref="data:dlt_chartData_1"
+								seriesColumns="[['zone1']]" style="height: 300px;min-width:200px;" version="3.19" labelNode="type">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Scroll Stacked Charts" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<xf:select1 appearance="full" class="w_per_100" cols="" id="rad_chartType2" ref="" renderType="radiogroup" rows=""
+								selectedIndex="0" style="min-height: 26px;" ev:onviewchange="scwin.rad_chartType2_onviewchange">
+								<xf:choices>
+									<xf:itemset nodeset="data:dlt_chartType_2">
+										<xf:label ref="chart_name"></xf:label>
+										<xf:value ref="chart_value"></xf:value>
+									</xf:itemset>
+								</xf:choices>
+							</xf:select1>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" id="" style="">
+							<w2:fusionchart chartType="ScrollStackedColumn2D" drawType="javascript" id="cht_exam2" labelNode="type"
+								ref="data:dlt_chartData_1" seriesColumns="[['zone1','zone2','zone3']]" style="height: 300px;min-width:200px;" version="3.19">
+							</w2:fusionchart>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

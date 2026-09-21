@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+            		<w2:columnInfo>
+            			<w2:column id="col1" name="name1" dataType="text"></w2:column>
+            			<w2:column id="col2" name="name2" dataType="text"></w2:column>
+            			<w2:column id="col3" name="name3" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+        <script type="text/javascript"><![CDATA[
+
+scwin.onpageload = function () {
+
+};
+
+scwin.onpageunload = function () {
+
+};
+var count = 0;
+
+scwin.trigger1_onclick = function (e) {
+    count++;
+var tmpSrc = scwin.getfolderPath() + "/source.xml";
+
+    widgetContainer1.addWidgets({
+        id: tmpSrc + count,
+        title: tmpSrc + count,
+        src: tmpSrc,
+        scope: true,
+        x: 0,
+        y: 0,
+        unitWidth: 2,
+        unitHeight: 2
+    });
+
+    widgetContainer2.addWidgets({
+        id: tmpSrc + count,
+        title: tmpSrc + count,
+        src: tmpSrc,
+        scope: true,
+        x: 0,
+        y: 0,
+        unitWidth: 2,
+        unitHeight: 2
+    });
+};
+
+scwin.getfolderPath = function () {
+
+    var currentPath = window.location.href;
+    var folderPath;
+
+    if (currentPath.includes("mainContainer")) {
+        console.log("true  ===> " + $p.getFrameId());
+        const cmtFrame = $p.getComponentById($p.getFrameId());
+        currentPath = cmtFrame.getSrc();
+        folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+    } else {
+        console.log("false  ===> ");
+        folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+    }
+    return folderPath;
+};
+]]></script>
+    </head>
+    <body style="padding:20px;">
+    <xf:group id="" style="">
+    	<w2:textbox tagname="h1" style="color: blue;margin-bottom: 10px;" tabIndex="h1" id="textbox1" label="ウィジェット作成後のサブミッションステータスウィンドウの表示"
+    		escape="false">
+    	</w2:textbox>
+    	<w2:textbox tagname="h2" style="height: 23px;margin-bottom: 10px;color: blue;" id="textbox2" label="サンプルの使い方"></w2:textbox>
+    	<w2:textbox style="color: blue;margin-bottom: 30px;" id="textbox3"
+    		label='1. 下部の addWidgets() ボタンをクリックします。 &lt;br/&gt;2. ウィジェットが作成されることを確認してください。 &lt;br/&gt;&lt;br/&gt;（最初のウィジェットコンテナ）&lt;br/&gt;3-1. ウィジェットソース(src)画面の[Submit ボタン]をクリックします。 &lt;br/&gt;3-2. サブミッションが実行され、ステータスウィンドウがウィジェット内にのみ表示されることを確認してください。 (processMsgFrame="true")&lt;br/&gt;&lt;br/&gt;（2番目のウィジェットコンテナ）&lt;br/&gt;4-1. ウィジェットソース(src)画面の[Submit ボタン]をクリックします。 &lt;br/&gt;4-2. サブミッションが実行され、ステータスウィンドウが画面全体に表示されることを確認します。 (processMsgFrame="false")'
+    		escape="false">
+    	</w2:textbox>
+    	<xf:trigger ev:onclick="scwin.trigger1_onclick"
+    		style="height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;"
+    		id="trigger1" type="button">
+    		<xf:label><![CDATA[addWidgets()]]></xf:label>
+    	</xf:trigger>
+    	<w2:textbox style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;" id="textbox4" label='プロパティの設定&lt;br/&gt;processMsgFrame="true"' escape="false">
+    	</w2:textbox>
+    	<w2:widgetContainer mode="pushpull" unitHeightPixel="200" preventMaximizeByTitle="false" widgetMove="true"
+    		style="height: 300px;border:1px solid black;margin-bottom: 10px;" id="widgetContainer1" cols="3" processMsgFrame="true"
+    		ev:onwidgetmove="scwin.widgetContainer1_onwidgetmove">
+    	</w2:widgetContainer>
+    	<w2:textbox escape="false" id="textbox5" label='プロパティの設定&lt;br/&gt;processMsgFrame="false"'
+    		style="padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightblue;border:none;margin-bottom: 10px;">
+    	</w2:textbox>
+    	<w2:widgetContainer cols="3" ev:onwidgetmove="scwin.widgetContainer1_onwidgetmove" id="widgetContainer2" mode="pushpull"
+    		preventMaximizeByTitle="false" style="height: 300px;border:1px solid black;" unitHeightPixel="200">
+    	</w2:widgetContainer>
+    </xf:group></body>
+</html>

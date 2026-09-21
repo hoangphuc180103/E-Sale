@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[SelectBox] 계층 구조의 데이터를 선택 항목으로 표시하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230320" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 SelectBox의 설정이 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_dataList1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="name" name="name1" dataType="text"></w2:column>
+						<w2:column id="code" name="name2" dataType="text"></w2:column>
+						<w2:column id="depth" name="name3" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<name><![CDATA[A]]></name>
+							<code><![CDATA[A]]></code>
+							<depth><![CDATA[1]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-1]]></name>
+							<code><![CDATA[A01]]></code>
+							<depth><![CDATA[2]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-1-1]]></name>
+							<code><![CDATA[A0101]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-1-2]]></name>
+							<code><![CDATA[A0102]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-2]]></name>
+							<code><![CDATA[A02]]></code>
+							<depth><![CDATA[2]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-2-1]]></name>
+							<code><![CDATA[A0201]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-2-2]]></name>
+							<code><![CDATA[A0202]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-3]]></name>
+							<code><![CDATA[A03]]></code>
+							<depth><![CDATA[2]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-3-1]]></name>
+							<code><![CDATA[A0301]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[A-3-2]]></name>
+							<code><![CDATA[A0302]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[B]]></name>
+							<code><![CDATA[B]]></code>
+							<depth><![CDATA[1]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[B-1]]></name>
+							<code><![CDATA[B01]]></code>
+							<depth><![CDATA[2]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[B-1-1]]></name>
+							<code><![CDATA[B0101]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[B-1-2]]></name>
+							<code><![CDATA[B0102]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[B-2]]></name>
+							<code><![CDATA[B02]]></code>
+							<depth><![CDATA[2]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[B-2-1]]></name>
+							<code><![CDATA[B0201]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[B-2-2]]></name>
+							<code><![CDATA[B0202]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[C]]></name>
+							<code><![CDATA[C]]></code>
+							<depth><![CDATA[1]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[C-1]]></name>
+							<code><![CDATA[C01]]></code>
+							<depth><![CDATA[2]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[C-1-1]]></name>
+							<code><![CDATA[C0101]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+						<w2:row>
+							<name><![CDATA[C-1-2]]></name>
+							<code><![CDATA[C0102]]></code>
+							<depth><![CDATA[3]]></depth>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label='SelectBox의 항목에 계층 구조의 데이터를 표시한 예제입니다.' style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="계층 구조로 표시하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:select1 id="sbx_exam1" chooseOption="" style="width: 148px;" submenuSize="auto" allOption="" disabled="false"
+							direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" depthColumn="depth">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="name"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="계층 구조 영역의 너비와 높이 지정하기" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group id="" style="margin: 10px 0px 10px 0px;"></xf:group>
+						<xf:select1 allOption="" appearance="minimal" chooseOption="" depthColumn="depth" direction="auto" disabled="false"
+							disabledClass="w2selectbox_disabled" id="sbx_exam2" ref="" style="width: 148px;" submenuSize="auto" depthColumnWidth="200"
+							depthColumnHeight="150">
+							<xf:choices>
+								<xf:itemset nodeset="data:dlt_dataList1">
+									<xf:label ref="name"></xf:label>
+									<xf:value ref="code"></xf:value>
+								</xf:itemset>
+							</xf:choices>
+						</xf:select1>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="팝업" meta_screenName="P00020 팝업 페이지 01">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220428" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[scwin.gVar = {
+    "param": null
+};
+
+scwin.onpageload = function () {
+    var tmpJSON = $p.getParameter("rowObj");
+
+    txtTitle.setValue(tmpJSON.title);
+    spnPrice.setValue(tmpJSON.price);
+
+    scwin.gVar.param = tmpJSON;
+
+    Promise.resolve().then(function () {
+        img_ex1.setSrc(scwin.gVar.param.img);
+    });
+};
+
+scwin.btn_close_onclick = function (e) {
+    var frameID = $p.getFrameId();
+    if (frameID == "mf") {
+        // window Popup으로 띄운 경우 
+        parent.$p.closePopup();
+    } else {
+        // layer Popup으로 띄운 경우
+        $p.parent().scwin.closePopup();
+    }
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="pop_contents" id="">
+			<xf:group class="" id="" style="">
+				<w2:textbox id="txtTitle" label="" ref="" style="margin-bottom: 6px;min-height: 12px;text-align:center;" tagname="h2"></w2:textbox>
+				<xf:group id="" style="margin-bottom: 6px;text-align: center;">
+					<xf:image id="img_ex1" ref="" src="" style="width: 90px;height: 120px;margin-bottom: 6px;"></xf:image>
+					<xf:group id="" style="margin-bottom: 6px;">
+						<w2:span label="PRICE : " style="font: bold 11px tahoma;margin-right: 4px;"></w2:span>
+						<w2:span dataType="number" displayFormat="$#,###.#0" id="spnPrice" label="" ref="" style="font: bold 11px tahoma;">
+						</w2:span>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="" id="" style="text-align: center;left: 0px;right: 0px;bottom: 6px;">
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_close_onclick" id="btn_close" style="width: 60px;height: 25px;"
+					type="button">
+					<xf:label>close</xf:label>
+				</xf:trigger>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

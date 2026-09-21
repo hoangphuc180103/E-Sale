@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[컴포넌트 공통] 클라이언트 다국어 KEY가 등록되지 않는 경우 label, value 출력하기 - useDefaultLabel">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20220729" meta_user="InswaveSystems" ></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems" ></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="클라이언트 설정 파일(config.xml)에 설정하는 'useDefaultLabel' 속성의 설정 예시입니다."
+					style="">
+				</w2:textbox>
+				<w2:textbox escape="false" id=""
+					label="이 예제는 컴포넌트에 'useDefaultLabel' 속성을 강제 지정하였습니다. 'useDefaultLabel' 속성은 클라인언트 설정 파일에 설정해서 사용해야 합니다."
+					style="" class="exam_txt caution">
+				</w2:textbox>
+			</xf:group>
+			<xf:group id="" class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" id="" label='Anchor - useDefaultLabel 미정의' style="" escape="false"></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:anchor outerDiv="false" id="" style="" useLocale="true" class="mr_def" localeRef="c_label_undefined">
+							<xf:label><![CDATA[Anchor - Default Label]]></xf:label>
+						</w2:anchor>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='Anchor - useDefaultLabel="true"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:anchor class="mr_def" id="" outerDiv="false" style="" useLocale="true" useDefaultLabel="true"
+							localeRef="c_label_undefined">
+							<xf:label><![CDATA[Anchor - Default Label]]></xf:label>
+						</w2:anchor>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="Trigger - useDefaultLabel 미정의" style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:trigger class="" id="" localeRef="c_label_undefined" style="min-width: 80px;min-height: 26px;" type="button"
+							useLocale="true">
+							<xf:label><![CDATA[Trigger - Default Label]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" id="" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label='Trigger - useDefaultLabel="true"' style=""></w2:textbox>
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:trigger class="" id="" localeRef="c_label_undefined" style="min-width: 80px;min-height: 26px;" type="button"
+							useDefaultLabel="true" useLocale="true">
+							<xf:label><![CDATA[Trigger - Default Label]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

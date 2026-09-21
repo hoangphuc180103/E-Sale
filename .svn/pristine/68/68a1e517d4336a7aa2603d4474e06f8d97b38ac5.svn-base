@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_author="InswaveSystems" meta_type="메인" meta_screenName="[GridView] 바디 컬럼의 'displayFormatter' 속성을 사용하여 화면에 표시되는 데이터 가공하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230818" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="02" meta_desc="설명부 수정" meta_date="20240621" meta_user="InswaveSystems"></w2:history>
+			<w2:history meta_no="03" meta_desc="예제에서 사용하는 DataList가 변경되고, 이에 따른 GridView의 설정과 스크립트가 수정되었습니다." meta_date="20240712"
+				meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="col_number" name="Number" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col_number><![CDATA[97413]]></col_number>
+						</w2:row>
+						<w2:row>
+							<col_number><![CDATA[598362]]></col_number>
+						</w2:row>
+						<w2:row>
+							<col_number><![CDATA[732]]></col_number>
+						</w2:row>
+						<w2:row>
+							<col_number><![CDATA[2329749]]></col_number>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+
+};
+
+scwin.displayFormatter = function (data) {
+    // 문자형으로 변경.
+    data = (data + "").replace(/\D/g, '');
+
+    // 정규표현식을 사용하여 세 자리마다 ',' 삽입
+    return data.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id="" label="GridView 바디 컬럼의 'displayFormatter' 속성을 사용하여 화면에 표시되는 데이터를 가공한 예제입니다." style="">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<w2:textbox class="wre_txt_normal" id="" label="셀을 클릭하면 원본 데이터를 확인할 수 있습니다." style="" escape="false"></w2:textbox>
+						<xf:group id="" class="gvwbox" style="max-width: 200px;">
+							<w2:gridView rowNumVisible="true" rowNumWidth="40" keepDefaultColumnWidth="true" defaultCellHeight="37"
+								visibleRowNumFix="true" dataList="data:dlt_exam" style="height:100px;" autoFit="allColumn" id="grd_exam1" visibleRowNum="4"
+								class="gvw" autoFitMinWidth="100" editModeEvent="onclick">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="70" inputType="text" id="column2" hideCustomFilter="false" value="Number" displayMode="label"
+											useFilter="false"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column displayFormatter="scwin.displayFormatter" textAlign="right" width="70" inputType="text" id="col_number"
+											hideCustomFilter="false" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

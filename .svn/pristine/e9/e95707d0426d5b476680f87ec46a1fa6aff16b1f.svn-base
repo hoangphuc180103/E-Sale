@@ -1,0 +1,37 @@
+/*amd /guide_jpn/PageFrame/onresize_PageFrame/onresize_PageFrame.xml 3315 cd3aa3bdf1468cc035248a6d091639c62bd4058db120f3ae6180429a90da0654 */
+define({declaration:{A:{version:'1.0',encoding:'UTF-8'}},E:[{T:1,N:'html',A:{xmlns:'http://www.w3.org/1999/xhtml','xmlns:ev':'http://www.w3.org/2001/xml-events','xmlns:w2':'http://www.inswave.com/websquare','xmlns:xf':'http://www.w3.org/2002/xforms'},E:[{T:1,N:'head',A:{},E:[{T:1,N:'w2:type',E:[{T:3,text:'DEFAULT'}]},{T:1,N:'w2:buildDate'},{T:1,N:'xf:model',E:[{T:1,N:'w2:dataCollection',A:{baseNode:'map'}},{T:1,N:'w2:workflowCollection'}]},{T:1,N:'script',A:{type:'text/javascript',lazy:'false'},E:[{T:4,cdata:function(scopeObj){with(scopeObj){scwin.count = 0;
+scwin.onpageload = function () {
+  requires("uiplugin.popup");
+};
+scwin.onpageunload = function () {};
+scwin.trigger2_onclick = function (e) {
+  scwin.count++;
+  const tmpSrc = scwin.getfolderPath() + "/openPopup_p.xml";
+  var options = {
+    id: scwin.count,
+    type: "pageFramePopup",
+    width: "500px",
+    height: "500px",
+    top: "130px",
+    left: "200px",
+    popupName: "Popup (openPopup_p.xml)",
+    modal: true,
+    resizable: true
+  };
+  $p.openPopup(tmpSrc, options);
+};
+scwin.getfolderPath = function () {
+  var currentPath = window.location.href;
+  var folderPath;
+  if (currentPath.includes("mainContainer")) {
+    console.log("true  ===> " + $p.getFrameId());
+    const cmtFrame = $p.getComponentById($p.getFrameId());
+    currentPath = cmtFrame.getSrc();
+    folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+  } else {
+    console.log("false  ===> ");
+    folderPath = currentPath.split('w2xPath=')[1].substring(0, currentPath.split('w2xPath=')[1].lastIndexOf('/'));
+  }
+  return folderPath;
+};
+}}}]}]},{T:1,N:'body',A:{'ev:onpageload':'scwin.onpageload','ev:onpageunload':'scwin.onpageunload'},E:[{T:1,N:'xf:group',A:{id:'',style:'margin:10px;'},E:[{T:1,N:'w2:textbox',A:{tagname:'h1',style:'color: blue;margin-bottom: 10px;',tabIndex:'h1',id:'textbox1',label:'イベント - onresize',escape:'false'}},{T:1,N:'w2:textbox',A:{tagname:'h2',style:'height: 23px;margin-bottom: 10px;color: blue;',id:'textbox2',label:'サンプルの使い方'}},{T:1,N:'w2:textbox',A:{style:'color: blue;margin-bottom: 30px;',id:'textbox3',label:'1. 下のボタンクリックしてポップアップ窓開く。 <br/> &nbsp; &nbsp;1-1. ポップアップ創造ソース画面(openPopup_$p.xml)この PageFrameを含む、<br/> &nbsp; &nbsp;1-2. 該当 PageFrame銀 resizeEvent="true" プロパティピーク適用される状態であること確認。<br/>2. ポップアップ創造サイズマウスドラッグして変更。 <br/>3. onresize イベント発生するもの確認。',escape:'false'}},{T:1,N:'w2:textbox',A:{style:'padding:5px;text-align:left;font-size: 15px;font-weight:bolder;background-color: lightgreen;border:none;margin-bottom: 10px;',id:'textbox4',label:'イベント説明<br/>onresize - PageFrame サイズが変更になると発生します。 （ただし、PageFrame の resizeEvent プロパティの値は "true" でなければなりません。）',escape:'false'}},{T:1,N:'xf:trigger',A:{'ev:onclick':'scwin.trigger2_onclick',style:'height:42px;line-height:32px;padding:5px;background-color:coral;font-size:15px;weight: bolder;font-weight:bolder;text-align: left;display: block;margin-bottom: 10px;',id:'trigger2',type:'button'},E:[{T:1,N:'xf:label',E:[{T:4,cdata:'$p.openPopup() '}]}]}]}]}]}]})

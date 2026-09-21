@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="[심화교육예제]editor 실습방법 설명">
+        <w2:historyInfo>
+        	<w2:history meta_no="01" meta_desc="교육 예제 파일 template design으로 모두 변경, 일부 로직 누락된 건 수정 반영" meta_date="2023.12.05" meta_user="InswaveSystems"></w2:history>
+        </w2:historyInfo>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList baseNode="list" id="dc_code" repeatNode="map" saveRemovedData="true">
+        			<w2:columnInfo>
+        				<w2:column id="code_cd" name="코드값" dataType="text"></w2:column>
+        				<w2:column id="code_nm" name="코드명" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        			<w2:data use="true">
+        				<w2:row>
+        					<code_cd><![CDATA[01]]></code_cd>
+        					<code_nm><![CDATA[개발자]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[02]]></code_cd>
+        					<code_nm><![CDATA[설계자]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[03]]></code_cd>
+        					<code_nm><![CDATA[DBA]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[04]]></code_cd>
+        					<code_nm><![CDATA[PL]]></code_nm>
+        				</w2:row>
+        				<w2:row>
+        					<code_cd><![CDATA[05]]></code_cd>
+        					<code_nm><![CDATA[PM]]></code_nm>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        		<w2:dataMap baseNode="map" id="dc_reqUserInfo">
+        			<w2:keyInfo>
+        				<w2:key id="EMP_CD" name="사용자 코드" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        		<w2:dataMap baseNode="map" id="bbbbb">
+        			<w2:keyInfo>
+        				<w2:key id="EMP_CD" name="사번" dataType="text"></w2:key>
+        				<w2:key id="EMP_NM" name="성명" dataType="text"></w2:key>
+        				<w2:key id="GENDER_CD" name="성별" dataType="text"></w2:key>
+        				<w2:key id="JOIN_DATE" name="입사일" dataType="text"></w2:key>
+        				<w2:key id="POSITION_CD" name="직급" dataType="text"></w2:key>
+        				<w2:key id="DUTY_CD" name="직책" dataType="text"></w2:key>
+        				<w2:key id="ROLE_CD" name="역할" dataType="text"></w2:key>
+        				<w2:key id="ASSIGNED_TASK" name="담당 업무" dataType="text"></w2:key>
+        				<w2:key id="EMAIL" name="이메일" dataType="text"></w2:key>
+        				<w2:key id="ZIP_CD" name="우편번호" dataType="text"></w2:key>
+        				<w2:key id="ADDRESS1" name="주소1" dataType="text"></w2:key>
+        				<w2:key id="ADDRESS2" name="주소2" dataType="text"></w2:key>
+        				<w2:key id="CREATED_DATE" name="입력일" dataType="text"></w2:key>
+        				<w2:key id="UPDATED_DATE" name="수정일" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        		</w2:dataMap>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission id="sub_select" ref="data:json,dc_reqUserInfo" target='data:json,{"id":"bbbbb","key":"dc_userInfo"}' action="/edu/data/userInfo.json" method="post" mediatype="application/json" encoding="UTF-8"
+        		instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="조회중입니다... " ev:submit="scwin.sub_select_submit" ev:submitdone="scwin.sub_select_submitdone"
+        		ev:submiterror="scwin.sub_select_submiterror" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {  
+  
+};
+   ]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group style="" id="" class="ws_example_grp_desc">
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 목표" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label="1. 개요&lt;br/&gt;본 화면은 Editor 컴포넌트를 활용하는 실습 화면입니다. &lt;br/&gt;Editor 컴포넌트 : 웹에디터로 텍스트를 입력하고 편집할 수 있는 기능을 제공합니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 이 컴포넌트는 일반적으로 웹사이트나 앱의 게시물 작성, 댓글 작성 등에 사용됩니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 사용자는 텍스트를 입력하고 서식을 적용하며, 필요한 경우 이미지나 링크를 삽입할 수 있습니다&lt;br/&gt;"
+    				class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    		<xf:group tagname="details" style="" id="" class="">
+    			<w2:textbox tagname="summary" style="" id="" label="실습 방법" escape="false"></w2:textbox>
+    			<w2:textbox style="" id=""
+    				label='1. Design Kit 를 활용하여 Editor를 추가합니다.&lt;br/&gt;2. &lt;b&gt;[속성 활용]&lt;/b&gt;Component View 에서 속성 Tab 에 아래와 같은 속성을 넣습니다.&lt;br/&gt; &amp;nbsp; 1) &lt;b&gt;maxCharCount&lt;/b&gt; : &amp;nbsp;CKEditor에 입력 가능한 최대 글자수를 지정할 수 있습니다.&lt;br/&gt; &amp;nbsp; 2) &lt;b&gt;placeholder&lt;/b&gt; : 사용자가 어떤 정보를 입력해야 하고 어떤 액션을 취해야 하는지 입력필드에 표시되는 힌트 메시지를 입력할 수 있습니다.&lt;br/&gt; &amp;nbsp; 3) &lt;b&gt;menubar&lt;/b&gt; : &amp;nbsp;editor의 toolbar의 종류&lt;br/&gt;&lt;br/&gt;3. &amp;nbsp;&lt;b&gt;[API 활용]&lt;/b&gt;스크립트 작성 부분에 아래 API를 활용할 수 있습니다. &lt;br/&gt; &amp;nbsp; 1) placeHolder 메세지를 동적으로 변경할 때에는 &lt;b&gt;[setPlaceHolder]&lt;/b&gt; API를 활용합니다.&lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; ex) &lt;b&gt;ui_editor1.setPlaceholder("텍스트를 입력하세요 (API로 값넣기)"); &lt;/b&gt;&lt;br/&gt; &amp;nbsp; 2) CKEditor에 동적으로 텍스트를 입력할 경우 &lt;b&gt;[setText]&lt;/b&gt; API를 활용합니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; ex) &lt;b&gt; ui_editor1.setText("editor\n setText(value) API."); &lt;/b&gt;&lt;br/&gt; &amp;nbsp; 3) CKEditor에 입력된 텍스트를 반환할 경우 &lt;b&gt;[getInnerText]&lt;/b&gt; API를 활용합니다. &lt;br/&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; ex) &amp;nbsp;&lt;b&gt;ui_editor1.getInnerText(); &lt;/b&gt; &amp;nbsp; &amp;nbsp;'
+    				class="" escape="false">
+    			</w2:textbox>
+    		</xf:group>
+    	</xf:group>
+
+    </body>
+</html>
