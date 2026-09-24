@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/css/LoginScreen.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_screenName="LoginScreen" meta_author="LyLTN1" meta_subsystem="2" meta_screenId="LoginScreen">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group style="" id="" class="login-main-container" tagname="MainContainer">
+    		<xf:group style="" id="" class="login-background" tagname="BackgroundDiv"></xf:group>
+    		<xf:group style="" id="" class="login-card" tagname="CenterCard">
+    			<xf:group style="" id="" class="login-header" tagname="HeaderSection">
+    				<xf:image src="" style="" id="" class="login-logo" alt="Mini Shop Logo"></xf:image>
+    				<w2:textbox id="" label="🛍️ MINI SHOP" style="" class="login-title" tagname="AppTitle"></w2:textbox>
+    				<w2:textbox id="" label="Đăng nhập vào tài khoản của bạn" style="" class="login-subtitle" tagname="SubtitleText"></w2:textbox>
+    			</xf:group>
+    			<xf:group style="" id="" class="login-form-section" tagname="FormSection">
+    				<xf:group style="" id="" class="login-form-group" tagname="EmailGroup">
+    					<w2:textbox id="" label="Email hoặc Username" style="" class="login-label" tagname="EmailLabel" for="EmailInput"></w2:textbox>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    </body>
+</html>
