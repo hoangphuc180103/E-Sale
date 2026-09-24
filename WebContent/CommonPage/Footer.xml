@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/CommonCss/Footer.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+                <!-- Thông tin cửa hàng hiển thị ở cột Liên hệ -->
+                <w2:dataMap baseNode="map" id="dma_storeInfo">
+                    <w2:keyInfo>
+                        <w2:key id="hotline" name="Hotline" dataType="text"/>
+                        <w2:key id="email" name="Email CSKH" dataType="text"/>
+                        <w2:key id="address" name="Địa chỉ" dataType="text"/>
+                        <w2:key id="workingHours" name="Giờ làm việc" dataType="text"/>
+                    </w2:keyInfo>
+                </w2:dataMap>
+
+                <!-- Dữ liệu gửi đi khi đăng ký nhận tin -->
+                <w2:dataMap baseNode="map" id="dma_newsletter">
+                    <w2:keyInfo>
+                        <w2:key id="email" name="Email đăng ký" dataType="text"/>
+                    </w2:keyInfo>
+                </w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+
+            <!-- ===== SUBMISSION ===== -->
+            <xf:submission id="sbm_getStoreInfo" ref="" target='data:json,{"id":"dma_storeInfo","key":"data"}'
+                action="/api/store/info" method="get" mediatype="application/json" encoding="UTF-8"
+                instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg=""
+                ev:submit="" ev:submitdone="" ev:submiterror="scwin.sbm_common_submiterror"/>
+
+            <xf:submission id="sbm_subscribe" ref="data:json,dma_newsletter" target=""
+                action="/api/newsletter/subscribe" method="post" mediatype="application/json" encoding="UTF-8"
+                instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg=""
+                ev:submit="" ev:submitdone="scwin.sbm_subscribe_submitdone" ev:submiterror="scwin.sbm_subscribe_submiterror"/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <link href="/css/footer.css" type="text/css" rel="stylesheet"/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+/* ================= KHỞI TẠO ================= */
+scwin.onpageload = function() {
+    scwin.setDefaultStoreInfo();
+    scwin.setCopyright();
+    $p.executeSubmission("sbm_getStoreInfo");
+};
+
+// Giá trị mặc định, sẽ bị ghi đè nếu API trả dữ liệu
+scwin.setDefaultStoreInfo = function() {
+    dma_storeInfo.set("hotline", "1900 1234");
+    dma_storeInfo.set("email", "cskh@esale.vn");
+    dma_storeInfo.set("address", "123 Nguyễn Văn Linh, Hải Châu, Đà Nẵng");
+    dma_storeInfo.set("workingHours", "8:00 - 22:00, tất cả các ngày");
+};
+
+scwin.setCopyright = function() {
+    var year = new Date().getFullYear();
+    tbx_copyright.setValue("© " + year + " E-Sale. Bảo lưu mọi quyền.");
+};
+
+/* ================= HÀM DÙNG CHUNG ================= */
+scwin.goPage = function(xmlPath, param) {
+    var url = "/websquare/websquare.html?w2xPath=" + xmlPath;
+    if (param) {
+        url += "&" + param;
+    }
+    location.href = url;
+};
+
+scwin.isValidEmail = function(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+};
+
+scwin.showNewsletterMsg = function(msg, isError) {
+    tbx_newsletterMsg.setValue(msg);
+    tbx_newsletterMsg.removeClass("es-newsletter__msg--error");
+    tbx_newsletterMsg.removeClass("es-newsletter__msg--success");
+    tbx_newsletterMsg.addClass(isError ? "es-newsletter__msg--error" : "es-newsletter__msg--success");
+    tbx_newsletterMsg.show("");
+};
+
+/* ================= SUBMISSION CALLBACK ================= */
+scwin.sbm_subscribe_submitdone = function(e) {
+    btn_subscribe.setDisabled(false);
+    dma_newsletter.set("email", "");
+    scwin.showNewsletterMsg("Đăng ký thành công. Mã giảm 10% đã được gửi vào email của bạn.", false);
+};
+
+scwin.sbm_subscribe_submiterror = function(e) {
+    btn_subscribe.setDisabled(false);
+    scwin.showNewsletterMsg("Chưa đăng ký được. Vui lòng thử lại sau ít phút.", true);
+};
+
+scwin.sbm_common_submiterror = function(e) {
+    console.error("Submission error:", e);
+};
+
+/* ================= UI EVENT ================= */
+// Đăng ký nhận tin
+scwin.btn_subscribe_onclick = function(e) {
+    var email = (ibx_newsletterEmail.getValue() || "").trim();
+    if (email === "") {
+        scwin.showNewsletterMsg("Vui lòng nhập email.", true);
+        ibx_newsletterEmail.focus();
+        return;
+    }
+    if (!scwin.isValidEmail(email)) {
+        scwin.showNewsletterMsg("Email chưa đúng định dạng, ví dụ: ten@gmail.com", true);
+        ibx_newsletterEmail.focus();
+        return;
+    }
+    dma_newsletter.set("email", email);
+    btn_subscribe.setDisabled(true);
+    $p.executeSubmission("sbm_subscribe");
+};
+
+scwin.ibx_newsletterEmail_onkeyup = function(e) {
+    if (e.keyCode === 13) {
+        scwin.btn_subscribe_onclick();
+    }
+};
+
+// Dùng chung cho mọi link nội bộ: đường dẫn lấy từ thuộc tính userData1
+scwin.footerLink_onclick = function(e) {
+    var path = this.getUserData("userData1");
+    var param = this.getUserData("userData2");
+    if (path) {
+        scwin.goPage(path, param);
+    }
+};
+
+// Dùng chung cho link mạng xã hội: mở tab mới
+scwin.socialLink_onclick = function(e) {
+    var url = this.getUserData("userData1");
+    if (url) {
+        window.open(url, "_blank", "noopener");
+    }
+};
+
+scwin.grp_footerLogo_onclick = function(e) {
+    scwin.goPage("/ui/main/index.xml");
+};
+
+scwin.anc_hotline_onclick = function(e) {
+    location.href = "tel:" + (dma_storeInfo.get("hotline") || "").replace(/\s/g, "");
+};
+
+scwin.anc_email_onclick = function(e) {
+    location.href = "mailto:" + dma_storeInfo.get("email");
+};
+
+scwin.btn_backToTop_onclick = function(e) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+        <xf:group id="grp_footer" class="es-footer" tagname="footer">
+
+            <!-- ===== NEWSLETTER ===== -->
+            <xf:group id="grp_newsletter" class="es-newsletter">
+                <xf:group id="grp_newsletterInner" class="es-container es-newsletter__inner">
+                    <xf:group id="grp_newsletterText" class="es-newsletter__text">
+                        <w2:textbox id="tbx_newsletterTitle" class="es-newsletter__title" tagname="h3"
+                            label="Nhận ưu đãi 10% cho đơn đầu tiên"/>
+                        <w2:textbox id="tbx_newsletterDesc" class="es-newsletter__desc" tagname="p"
+                            label="Đăng ký email để biết sớm bộ sưu tập mới và các đợt giảm giá."/>
+                    </xf:group>
+                    <xf:group id="grp_newsletterForm" class="es-newsletter__form">
+                        <xf:group id="grp_newsletterField" class="es-newsletter__field">
+                            <xf:input id="ibx_newsletterEmail" class="es-newsletter__input"
+                                ref="data:dma_newsletter.email" placeholder="Nhập email của bạn"
+                                ev:onkeyup="scwin.ibx_newsletterEmail_onkeyup"/>
+                            <xf:trigger id="btn_subscribe" class="es-newsletter__btn" type="button"
+                                ev:onclick="scwin.btn_subscribe_onclick">
+                                <xf:label><![CDATA[Đăng ký]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+                        <w2:textbox id="tbx_newsletterMsg" class="es-newsletter__msg" tagname="p"
+                            label="" style="display:none;"/>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <!-- ===== MAIN: 4 CỘT ===== -->
+            <xf:group id="grp_footerMain" class="es-footer__main">
+                <xf:group id="grp_footerMainInner" class="es-container es-footer__grid">
+
+                    <!-- Cột 1: Giới thiệu -->
+                    <xf:group id="grp_colAbout" class="es-footer__col es-footer__col--about">
+                        <xf:group id="grp_footerLogo" class="es-footer__logo" ev:onclick="scwin.grp_footerLogo_onclick">
+                            <w2:textbox id="tbx_footerLogoMain" class="es-footer__logo-main" tagname="span" label="E"/>
+                            <w2:textbox id="tbx_footerLogoAccent" class="es-footer__logo-accent" tagname="span" label="-Sale"/>
+                        </xf:group>
+                        <w2:textbox id="tbx_aboutDesc" class="es-footer__desc" tagname="p"
+                            label="Thời trang nam, nữ và trẻ em với giá hợp lý. Đổi trả miễn phí trong 30 ngày, giao hàng toàn quốc."/>
+                        <xf:group id="grp_social" class="es-social">
+                            <w2:anchor id="anc_facebook" class="es-social__link" outerDiv="no"
+                                userData1="https://facebook.com" ev:onclick="scwin.socialLink_onclick">
+                                <xf:label><![CDATA[Facebook]]></xf:label>
+                            </w2:anchor>
+                            <w2:anchor id="anc_instagram" class="es-social__link" outerDiv="no"
+                                userData1="https://instagram.com" ev:onclick="scwin.socialLink_onclick">
+                                <xf:label><![CDATA[Instagram]]></xf:label>
+                            </w2:anchor>
+                            <w2:anchor id="anc_tiktok" class="es-social__link" outerDiv="no"
+                                userData1="https://tiktok.com" ev:onclick="scwin.socialLink_onclick">
+                                <xf:label><![CDATA[TikTok]]></xf:label>
+                            </w2:anchor>
+                        </xf:group>
+                    </xf:group>
+
+                    <!-- Cột 2: Mua sắm -->
+                    <xf:group id="grp_colShop" class="es-footer__col">
+                        <w2:textbox id="tbx_shopTitle" class="es-footer__title" tagname="h4" label="Mua sắm"/>
+                        <xf:group id="grp_shopLinks" class="es-footer__links" tagname="ul">
+                            <xf:group id="grp_shopItem1" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_shopMen" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/product/list.xml" userData2="cateId=MEN"
+                                    ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Thời trang nam]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_shopItem2" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_shopWomen" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/product/list.xml" userData2="cateId=WOMEN"
+                                    ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Thời trang nữ]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_shopItem3" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_shopKids" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/product/list.xml" userData2="cateId=KIDS"
+                                    ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Trẻ em]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_shopItem4" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_shopAccessory" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/product/list.xml" userData2="cateId=ACC"
+                                    ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Phụ kiện]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_shopItem5" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_shopSale" class="es-footer__link es-footer__link--hot" outerDiv="no"
+                                    userData1="/ui/product/sale.xml" userData2=""
+                                    ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Đang giảm giá]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                        </xf:group>
+                    </xf:group>
+
+                    <!-- Cột 3: Hỗ trợ khách hàng -->
+                    <xf:group id="grp_colSupport" class="es-footer__col">
+                        <w2:textbox id="tbx_supportTitle" class="es-footer__title" tagname="h4" label="Hỗ trợ"/>
+                        <xf:group id="grp_supportLinks" class="es-footer__links" tagname="ul">
+                            <xf:group id="grp_supportItem1" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_sizeGuide" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/support/size-guide.xml" ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Hướng dẫn chọn size]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_supportItem2" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_returnPolicy" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/support/return-policy.xml" ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Chính sách đổi trả]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_supportItem3" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_shipping" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/support/shipping.xml" ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Giao hàng và phí vận chuyển]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_supportItem4" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_footerTrackOrder" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/order/tracking.xml" ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Theo dõi đơn hàng]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_supportItem5" class="es-footer__item" tagname="li">
+                                <w2:anchor id="anc_faq" class="es-footer__link" outerDiv="no"
+                                    userData1="/ui/support/faq.xml" ev:onclick="scwin.footerLink_onclick">
+                                    <xf:label><![CDATA[Câu hỏi thường gặp]]></xf:label>
+                                </w2:anchor>
+                            </xf:group>
+                        </xf:group>
+                    </xf:group>
+
+                    <!-- Cột 4: Liên hệ -->
+                    <xf:group id="grp_colContact" class="es-footer__col">
+                        <w2:textbox id="tbx_contactTitle" class="es-footer__title" tagname="h4" label="Liên hệ"/>
+                        <xf:group id="grp_contactList" class="es-contact">
+                            <xf:group id="grp_contactHotline" class="es-contact__row">
+                                <w2:textbox id="tbx_hotlineLabel" class="es-contact__label" tagname="span" label="Hotline"/>
+                                <w2:anchor id="anc_hotline" class="es-contact__value es-contact__value--strong" outerDiv="no"
+                                    ev:onclick="scwin.anc_hotline_onclick">
+                                    <xf:label ref="data:dma_storeInfo.hotline"/>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_contactEmail" class="es-contact__row">
+                                <w2:textbox id="tbx_emailLabel" class="es-contact__label" tagname="span" label="Email"/>
+                                <w2:anchor id="anc_email" class="es-contact__value" outerDiv="no"
+                                    ev:onclick="scwin.anc_email_onclick">
+                                    <xf:label ref="data:dma_storeInfo.email"/>
+                                </w2:anchor>
+                            </xf:group>
+                            <xf:group id="grp_contactAddress" class="es-contact__row">
+                                <w2:textbox id="tbx_addressLabel" class="es-contact__label" tagname="span" label="Cửa hàng"/>
+                                <w2:textbox id="tbx_address" class="es-contact__value" tagname="span"
+                                    ref="data:dma_storeInfo.address"/>
+                            </xf:group>
+                            <xf:group id="grp_contactHours" class="es-contact__row">
+                                <w2:textbox id="tbx_hoursLabel" class="es-contact__label" tagname="span" label="Giờ mở cửa"/>
+                                <w2:textbox id="tbx_hours" class="es-contact__value" tagname="span"
+                                    ref="data:dma_storeInfo.workingHours"/>
+                            </xf:group>
+                        </xf:group>
+                    </xf:group>
+
+                </xf:group>
+            </xf:group>
+
+            <!-- ===== BOTTOM BAR ===== -->
+            <xf:group id="grp_footerBottom" class="es-footer__bottom">
+                <xf:group id="grp_footerBottomInner" class="es-container es-footer__bottom-inner">
+                    <w2:textbox id="tbx_copyright" class="es-footer__copyright" tagname="span" label=""/>
+                    <xf:group id="grp_payment" class="es-payment">
+                        <w2:textbox id="tbx_payVisa" class="es-payment__chip" tagname="span" label="Visa"/>
+                        <w2:textbox id="tbx_payMaster" class="es-payment__chip" tagname="span" label="Mastercard"/>
+                        <w2:textbox id="tbx_payMomo" class="es-payment__chip" tagname="span" label="MoMo"/>
+                        <w2:textbox id="tbx_payZalo" class="es-payment__chip" tagname="span" label="ZaloPay"/>
+                        <w2:textbox id="tbx_payCod" class="es-payment__chip" tagname="span" label="COD"/>
+                    </xf:group>
+                    <xf:trigger id="btn_backToTop" class="es-footer__top-btn" type="button"
+                        ev:onclick="scwin.btn_backToTop_onclick">
+                        <xf:label><![CDATA[Lên đầu trang ↑]]></xf:label>
+                    </xf:trigger>
+                </xf:group>
+            </xf:group>
+
+        </xf:group>
+    </body>
+</html>

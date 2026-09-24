@@ -1,0 +1,327 @@
+/* =========================================================
+   E-SALE COMMON HEADER
+   Đường dẫn gợi ý: /ui/common/css/header.css
+   ========================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap");
+
+:root {
+    --es-ink: #1c2340;          /* xanh mực: màu chủ đạo */
+    --es-accent: #e0245e;       /* hồng đỏ: màu nhấn thương hiệu */
+    --es-accent-soft: #fde4ec;
+    --es-bg: #ffffff;
+    --es-bg-soft: #f6f7fb;
+    --es-border: #e3e6ef;
+    --es-text: #252b42;
+    --es-text-muted: #6b7185;
+    --es-radius: 10px;
+    --es-shadow: 0 6px 24px rgba(28, 35, 64, 0.07);
+    --es-font: "Be Vietnam Pro", "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- Khung chung ---------- */
+.es-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: var(--es-bg);
+    font-family: var(--es-font);
+    color: var(--es-text);
+    box-shadow: var(--es-shadow);
+}
+.es-header * { box-sizing: border-box; }
+
+.es-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Focus rõ ràng khi dùng bàn phím */
+.es-header a:focus-visible,
+.es-header button:focus-visible,
+.es-header input:focus-visible,
+.es-header select:focus-visible,
+.es-action:focus-visible,
+.es-logo:focus-visible {
+    outline: 2px solid var(--es-accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Top bar ---------- */
+.es-topbar {
+    background: var(--es-ink);
+    color: #e8eaf3;
+    font-size: 12.5px;
+}
+.es-topbar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 36px;
+}
+.es-topbar__links,
+.es-topbar__guest,
+.es-topbar__member {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.es-topbar__guest,
+.es-topbar__member { gap: 6px; }
+
+.es-topbar__link {
+    color: #e8eaf3 !important;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s;
+}
+.es-topbar__link:hover { color: #ff9dbb !important; }
+.es-topbar__divider { color: #7d84a3; }
+.es-topbar__username {
+    font-weight: 600;
+    color: #ff9dbb;
+    margin-right: 10px;
+}
+
+/* ---------- Main bar ---------- */
+.es-mainbar { border-bottom: 1px solid var(--es-border); }
+.es-mainbar__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 76px;
+}
+
+.es-mainbar__toggle { display: none !important; }
+.es-btn-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--es-border) !important;
+    border-radius: var(--es-radius);
+    background: var(--es-bg) !important;
+    color: var(--es-ink) !important;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Logo */
+.es-logo {
+    display: flex;
+    align-items: baseline;
+    cursor: pointer;
+    user-select: none;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+.es-logo__main { color: var(--es-accent); }
+.es-logo__accent { color: var(--es-ink); }
+
+/* Ô tìm kiếm */
+.es-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    max-width: 640px;
+    border: 2px solid var(--es-ink);
+    border-radius: var(--es-radius);
+    overflow: hidden;
+    background: var(--es-bg);
+    transition: border-color .2s, box-shadow .2s;
+}
+.es-search:focus-within {
+    border-color: var(--es-accent);
+    box-shadow: 0 0 0 4px rgba(224, 36, 94, .12);
+}
+.es-search__cate {
+    width: 140px !important;
+    height: 100% !important;
+    border: none !important;
+    border-right: 1px solid var(--es-border) !important;
+    background: var(--es-bg-soft) !important;
+}
+.es-search__cate select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding: 0 10px;
+    font-family: var(--es-font);
+    font-size: 13px;
+    color: var(--es-text);
+}
+.es-search__input {
+    flex: 1;
+    height: 100% !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 14px !important;
+    font-family: var(--es-font) !important;
+    font-size: 14px !important;
+    color: var(--es-text) !important;
+    background: transparent !important;
+}
+.es-search__input::placeholder { color: var(--es-text-muted); }
+.es-search__btn {
+    height: 100% !important;
+    padding: 0 22px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: var(--es-ink) !important;
+    color: #fff !important;
+    font-family: var(--es-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+}
+.es-search__btn:hover { background: var(--es-accent) !important; }
+
+/* Nhóm icon hành động */
+.es-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-left: auto;
+}
+.es-action {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s;
+}
+.es-action:hover { background: var(--es-bg-soft); }
+.es-action__icon {
+    font-size: 22px;
+    line-height: 1;
+}
+.es-action__label {
+    font-size: 12px;
+    color: var(--es-text-muted);
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.es-badge {
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background: var(--es-accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+}
+
+/* ---------- Menu điều hướng ---------- */
+.es-nav { background: var(--es-bg); }
+.es-nav__list {
+    display: flex;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.es-nav__item { list-style: none; }
+.es-nav__link {
+    position: relative;
+    display: inline-block;
+    padding: 14px 16px;
+    color: var(--es-text) !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color .2s;
+}
+.es-nav__link::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 8px;
+    height: 2px;
+    background: var(--es-accent);
+    transform: scaleX(0);
+    transition: transform .25s;
+}
+.es-nav__link:hover { color: var(--es-accent) !important; }
+.es-nav__link:hover::after,
+.es-nav__link--active::after { transform: scaleX(1); }
+
+/* Mục nổi bật (VD: Sale) */
+.es-nav__link--hot {
+    color: var(--es-accent) !important;
+    background: var(--es-accent-soft);
+    border-radius: 999px;
+    margin: 6px 0;
+    padding: 8px 16px;
+}
+.es-nav__link--hot::after { display: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+    .es-topbar__promo { display: none; }
+    .es-topbar__inner { justify-content: flex-end; }
+    .es-action__label { display: none; }
+    .es-mainbar__inner { gap: 16px; }
+    .es-search__cate { display: none !important; }
+}
+
+@media (max-width: 768px) {
+    .es-container { padding: 0 16px; }
+    .es-topbar__links { gap: 12px; }
+    .es-mainbar__toggle { display: inline-block !important; }
+    .es-mainbar__inner {
+        flex-wrap: wrap;
+        height: auto;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .es-logo { font-size: 26px; }
+    .es-actions { gap: 12px; }
+    .es-search {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+    }
+    .es-nav { display: none; }
+    .es-nav.es-nav--open {
+        display: block;
+        border-top: 1px solid var(--es-border);
+    }
+    .es-nav__list {
+        flex-direction: column;
+        gap: 0;
+    }
+    .es-nav__link {
+        display: block;
+        padding: 12px 8px;
+    }
+    .es-nav__link::after { display: none; }
+    .es-nav__link--hot {
+        display: inline-block;
+        margin: 8px 0;
+    }
+}
+
+/* Tôn trọng người dùng tắt hiệu ứng chuyển động */
+@media (prefers-reduced-motion: reduce) {
+    .es-header *,
+    .es-header *::after {
+        transition: none !important;
+    }
+}

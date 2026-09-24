@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/E-SaleCss/ProductList.css" type="text/css"?>
+<?xml-stylesheet href="/E-SaleCss/ProductList.css" type="text/css"?>
+<?xml-stylesheet href="/E-SaleCss/ProductList.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+                <!-- Dữ liệu gốc từ API GetProductList (đúng tên field của OutSystems) -->
+                <w2:dataList baseNode="list" repeatNode="map" id="dlt_product" saveRemovedData="true">
+                    <w2:columnInfo>
+                        <w2:column id="Category" name="Danh mục" dataType="text"/>
+                        <w2:column id="ProductName" name="Tên sản phẩm" dataType="text"/>
+                        <w2:column id="Description" name="Mô tả" dataType="text"/>
+                        <w2:column id="Price" name="Giá" dataType="number"/>
+                        <w2:column id="Status" name="Trạng thái" dataType="text"/>
+                    </w2:columnInfo>
+                </w2:dataList>
+
+                <!-- Điều kiện tìm kiếm / lọc hiện tại -->
+                <w2:dataMap baseNode="map" id="dma_filter">
+                    <w2:keyInfo>
+                        <w2:key id="keyword" name="Từ khóa" dataType="text"/>
+                        <w2:key id="category" name="Danh mục" dataType="text"/>
+                        <w2:key id="priceMin" name="Giá từ" dataType="text"/>
+                        <w2:key id="priceMax" name="Giá đến" dataType="text"/>
+                        <w2:key id="sort" name="Sắp xếp" dataType="text"/>
+                    </w2:keyInfo>
+                </w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+
+            <!-- ===== SUBMISSION =====
+                 Đổi <ten-moi-truong> thành domain OutSystems của bạn.
+                 mediatype x-www-form-urlencoded giúp tránh lỗi CORS preflight với request GET. -->
+            <xf:submission id="sbm_getProductList" ref="" target=""
+                action="https://personal-grqb7nac.outsystemscloud.com/ESale/rest/ESaleExpose/GetProductList"
+                method="get" mediatype="application/x-www-form-urlencoded" encoding="UTF-8"
+                instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="Đang tải sản phẩm..."
+                ev:submit="" ev:submitdone="scwin.sbm_getProductList_submitdone" ev:submiterror="scwin.sbm_getProductList_submiterror"/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <link href="/E-SaleCss/ProductList.css" type="text/css" rel="stylesheet"/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+/* =====================================================================
+   TRẠNG THÁI MÀN HÌNH
+   ===================================================================== */
+scwin.CART_KEY = "esale_cart";
+scwin.PAGE_SIZE = 12;
+
+scwin.allProducts = [];   // toàn bộ sản phẩm (đã chuẩn hóa để tìm kiếm)
+scwin.viewList = [];      // danh sách sau khi lọc + sắp xếp
+scwin.suggestList = [];   // gợi ý đang hiển thị
+scwin.shown = 12;         // số sản phẩm đang hiển thị
+scwin.category = "ALL";
+scwin.inStockOnly = false;
+scwin.typingTimer = null;
+scwin.toastTimer = null;
+
+scwin.onpageload = function() {
+    dma_filter.set("sort", "RELEVANCE");
+
+    // Nhận từ khóa / danh mục khi đi từ header hoặc trang chủ
+    try {
+        var params = new URLSearchParams(location.search);
+        var kw = params.get("keyword") || "";
+        var cate = params.get("category") || "";
+        if (kw) {
+            dma_filter.set("keyword", kw);
+        }
+        if (cate) {
+            scwin.category = cate;
+        }
+    } catch (err) {}
+
+    $p.executeSubmission("sbm_getProductList");
+};
+
+/* =====================================================================
+   NẠP DỮ LIỆU
+   ===================================================================== */
+scwin.sbm_getProductList_submitdone = function(e) {
+    var data = e.responseJSON;
+    if (!data && e.responseText) {
+        try { data = JSON.parse(e.responseText); } catch (err) { data = null; }
+    }
+    // OutSystems thường trả mảng gốc; phòng trường hợp bọc trong object
+    if (data && !Array.isArray(data)) {
+        data = data.APIProductList || data.data || data.list || [];
+    }
+    grp_apiNotice.hide();
+    scwin.loadProducts(data || []);
+};
+
+scwin.sbm_getProductList_submiterror = function(e) {
+    console.warn("Không gọi được GetProductList, dùng dữ liệu mẫu.", e);
+    grp_apiNotice.show("");
+    scwin.loadProducts(scwin.getMockProducts());
+};
+
+scwin.loadProducts = function(rows) {
+    dlt_product.setJSON(rows);
+
+    scwin.allProducts = [];
+    var cnt = dlt_product.getRowCount();
+    for (var i = 0; i < cnt; i++) {
+        var name = dlt_product.getCellData(i, "ProductName") || "";
+        var cate = dlt_product.getCellData(i, "Category") || "Khác";
+        var desc = dlt_product.getCellData(i, "Description") || "";
+        var status = dlt_product.getCellData(i, "Status");
+        var nName = scwin.normalize(name);
+        var nCate = scwin.normalize(cate);
+        scwin.allProducts.push({
+            row: i,
+            name: name,
+            category: cate,
+            desc: desc,
+            price: Number(dlt_product.getCellData(i, "Price") || 0),
+            status: status,
+            available: scwin.isAvailable(status),
+            nName: nName,
+            nCate: nCate,
+            nDesc: scwin.normalize(desc),
+            words: (nName + " " + nCate).split(" ")
+        });
+    }
+
+    scwin.renderCategoryChips();
+    scwin.applyFilters(true);
+};
+
+/* =====================================================================
+   TIỆN ÍCH
+   ===================================================================== */
+// Bỏ dấu tiếng Việt, chữ thường, gọn khoảng trắng: "Áo Khoác Dạ" -> "ao khoac da"
+scwin.normalize = function(text) {
+    return String(text == null ? "" : text)
+        .toLowerCase()
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/g, "d")
+        .replace(/[^a-z0-9.,<>=\-\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+};
+
+scwin.isAvailable = function(status) {
+    if (status === false || status === 0) {
+        return false;
+    }
+    var s = scwin.normalize(status);
+    if (s === "" || s === "true" || s === "1") {
+        return true;
+    }
+    var outWords = ["false", "0", "het", "out", "inactive", "unavailable", "ngung", "sold"];
+    for (var i = 0; i < outWords.length; i++) {
+        if (s.indexOf(outWords[i]) > -1) {
+            return false;
+        }
+    }
+    return true;
+};
+
+scwin.formatPrice = function(value) {
+    return Number(value || 0).toLocaleString("vi-VN") + "₫";
+};
+
+// "500k" -> 500000, "1.2tr" -> 1200000, "1.290.000" -> 1290000, "450" -> 450000
+scwin.parseMoney = function(numStr, unit) {
+    if (!numStr) {
+        return null;
+    }
+    var n;
+    if (/^\d{1,3}([.,]\d{3})+$/.test(numStr)) {
+        n = Number(numStr.replace(/[.,]/g, ""));
+    } else {
+        n = parseFloat(numStr.replace(",", "."));
+    }
+    if (isNaN(n)) {
+        return null;
+    }
+    if (unit === "k" || unit === "nghin" || unit === "ngan") {
+        n = n * 1000;
+    } else if (unit === "tr" || unit === "trieu" || unit === "m") {
+        n = n * 1000000;
+    } else if (n < 10000) {
+        n = n * 1000;
+    }
+    return Math.round(n);
+};
+
+scwin.parseMoneyInput = function(text) {
+    var m = scwin.normalize(text).replace(/\s/g, "").match(/^(\d[\d.,]*)(k|nghin|ngan|tr|trieu|m)?$/);
+    return m ? scwin.parseMoney(m[1], m[2]) : null;
+};
+
+// Khoảng cách chỉnh sửa, dừng sớm nếu > 1 (đủ để bắt lỗi gõ 1 ký tự)
+scwin.editDistanceWithin1 = function(a, b) {
+    if (Math.abs(a.length - b.length) > 1) {
+        return false;
+    }
+    // Gõ đảo 2 ký tự liền nhau: "khaoc" -> "khoac"
+    if (a.length === b.length) {
+        var pos = [];
+        for (var x = 0; x < a.length && pos.length < 3; x++) {
+            if (a.charAt(x) !== b.charAt(x)) pos.push(x);
+        }
+        if (pos.length === 2 && pos[1] === pos[0] + 1 &&
+            a.charAt(pos[0]) === b.charAt(pos[1]) && a.charAt(pos[1]) === b.charAt(pos[0])) {
+            return true;
+        }
+    }
+    var i = 0, j = 0, diff = 0;
+    while (i < a.length && j < b.length) {
+        if (a.charAt(i) === b.charAt(j)) {
+            i++; j++;
+            continue;
+        }
+        diff++;
+        if (diff > 1) {
+            return false;
+        }
+        if (a.length > b.length) {
+            i++;
+        } else if (a.length < b.length) {
+            j++;
+        } else {
+            i++; j++;
+        }
+    }
+    return diff + (a.length - i) + (b.length - j) <= 1;
+};
+
+/* =====================================================================
+   TÌM KIẾM THÔNG MINH
+   - Không phân biệt dấu: "vay xep ly" = "váy xếp ly"
+   - Hiểu giá trong câu: "dưới 500k", "trên 1tr", "từ 200k đến 400k", "200k-400k"
+   - Chịu lỗi gõ 1 ký tự: "khaoc" vẫn ra "khoác"
+   - Chấm điểm: trùng nguyên từ > trùng đầu từ > trùng danh mục > trùng mô tả
+   - Không có kết quả khớp đủ từ -> tự hiển thị kết quả gần đúng
+   ===================================================================== */
+scwin.STOP_WORDS = ["gia", "cho", "mau", "san", "pham", "cua", "cai", "chiec", "cac",
+    "va", "voi", "loai", "nhung", "nao", "mua", "can", "tim", "dep", "re", "k", "d", "vnd"];
+
+scwin.parseQuery = function(raw) {
+    var s = " " + scwin.normalize(raw) + " ";
+    var min = null, max = null, m;
+    var NUM = "(\\d[\\d.,]*)\\s*(k|nghin|ngan|trieu|tr|m)?";
+
+    m = s.match(new RegExp("\\b(?:tu\\s+)?" + NUM + "\\s*(?:-|den|~)\\s*" + NUM));
+    if (m) {
+        min = scwin.parseMoney(m[1], m[2]);
+        max = scwin.parseMoney(m[3], m[4] || m[2]);
+        s = s.replace(m[0], " ");
+    }
+    m = s.match(new RegExp("(?:\\bduoi|<=?|\\bnho hon|\\btoi da|\\bkhong qua|\\bmax)\\s*" + NUM));
+    if (m) {
+        max = scwin.parseMoney(m[1], m[2]);
+        s = s.replace(m[0], " ");
+    }
+    m = s.match(new RegExp("(?:\\btren|>=?|\\blon hon|\\btu|\\btoi thieu|\\bmin)\\s*" + NUM));
+    if (m) {
+        min = scwin.parseMoney(m[1], m[2]);
+        s = s.replace(m[0], " ");
+    }
+
+    var cheap = /\bre\b/.test(s);
+    var tokens = s.replace(/[<>=.,\-~]/g, " ").split(/\s+/).filter(function(t) {
+        return t && !/^\d+$/.test(t) && scwin.STOP_WORDS.indexOf(t) < 0;
+    });
+    return { tokens: tokens, min: min, max: max, cheap: cheap };
+};
+
+scwin.scoreProduct = function(p, tokens, requireAll) {
+    var total = 0;
+    for (var i = 0; i < tokens.length; i++) {
+        var t = tokens[i];
+        var best = 0;
+        for (var w = 0; w < p.words.length && best < 12; w++) {
+            if (p.words[w] === t) {
+                best = 12;               // trùng nguyên từ
+            } else if (best < 8 && p.words[w].indexOf(t) === 0) {
+                best = 8;                // đang gõ dở: "khoa" -> "khoac"
+            }
+        }
+        if (best < 7 && p.nName.indexOf(t) > -1) best = 7;
+        if (best < 5 && p.nCate.indexOf(t) > -1) best = 5;
+        if (best < 2 && p.nDesc.indexOf(t) > -1) best = 2;
+        if (best === 0 && t.length >= 4) {
+            for (var k = 0; k < p.words.length; k++) {
+                if (scwin.editDistanceWithin1(p.words[k], t)) {
+                    best = 4;
+                    break;
+                }
+            }
+        }
+        if (best === 0 && requireAll) {
+            return 0;
+        }
+        total += best;
+    }
+    if (tokens.length > 1 && p.nName.indexOf(tokens.join(" ")) > -1) {
+        total += 15;
+    }
+    return total;
+};
+
+scwin.applyFilters = function(resetPaging) {
+    var raw = dma_filter.get("keyword") || "";
+    var q = scwin.parseQuery(raw);
+
+    var min = scwin.parseMoneyInput(dma_filter.get("priceMin"));
+    var max = scwin.parseMoneyInput(dma_filter.get("priceMax"));
+    if (q.min !== null) min = q.min;
+    if (q.max !== null) max = q.max;
+
+    var base = scwin.allProducts.filter(function(p) {
+        if (scwin.category !== "ALL" && p.category !== scwin.category) return false;
+        if (scwin.inStockOnly && !p.available) return false;
+        if (min !== null && p.price < min) return false;
+        if (max !== null && p.price > max) return false;
+        return true;
+    });
+
+    var scored = [];
+    var approximate = false;
+    if (q.tokens.length > 0) {
+        base.forEach(function(p) {
+            var s = scwin.scoreProduct(p, q.tokens, true);
+            if (s > 0) scored.push({ p: p, s: s });
+        });
+        if (scored.length === 0) {
+            approximate = true;
+            base.forEach(function(p) {
+                var s = scwin.scoreProduct(p, q.tokens, false);
+                if (s > 0) scored.push({ p: p, s: s });
+            });
+        }
+    } else {
+        scored = base.map(function(p) { return { p: p, s: 0 }; });
+    }
+
+    var sort = dma_filter.get("sort") || "RELEVANCE";
+    if (sort === "RELEVANCE" && q.cheap) {   // có chữ "rẻ" -> ưu tiên giá thấp
+        sort = "PRICE_ASC";
+    }
+    scored.sort(function(a, b) {
+        if (sort === "PRICE_ASC") return a.p.price - b.p.price;
+        if (sort === "PRICE_DESC") return b.p.price - a.p.price;
+        if (sort === "NAME_ASC") return a.p.name.localeCompare(b.p.name, "vi");
+        if (b.s !== a.s) return b.s - a.s;
+        return (b.p.available ? 1 : 0) - (a.p.available ? 1 : 0);
+    });
+
+    scwin.viewList = scored.map(function(x) { return x.p; });
+    if (resetPaging) {
+        scwin.shown = scwin.PAGE_SIZE;
+    }
+
+    scwin.renderSummary(raw, min, max, approximate);
+    scwin.renderProducts();
+};
+
+/* =====================================================================
+   RENDER
+   ===================================================================== */
+scwin.renderSummary = function(raw, min, max, approximate) {
+    var text = scwin.viewList.length + " sản phẩm";
+    if (raw.trim()) {
+        text += " cho \"" + raw.trim() + "\"";
+    }
+    if (min !== null && max !== null) {
+        text += ", giá " + scwin.formatPrice(min) + " đến " + scwin.formatPrice(max);
+    } else if (max !== null) {
+        text += ", giá dưới " + scwin.formatPrice(max);
+    } else if (min !== null) {
+        text += ", giá từ " + scwin.formatPrice(min);
+    }
+    tbx_resultCount.setValue(text);
+
+    if (approximate && scwin.viewList.length > 0) {
+        tbx_fuzzyNote.setValue("Không có sản phẩm khớp đủ mọi từ khóa. Đây là các kết quả gần đúng nhất.");
+        tbx_fuzzyNote.show("");
+    } else {
+        tbx_fuzzyNote.hide();
+    }
+};
+
+scwin.renderCategoryChips = function() {
+    var counts = {};
+    var order = [];
+    scwin.allProducts.forEach(function(p) {
+        if (!counts[p.category]) {
+            counts[p.category] = 0;
+            order.push(p.category);
+        }
+        counts[p.category]++;
+    });
+    if (scwin.category !== "ALL" && !counts[scwin.category]) {
+        scwin.category = "ALL";
+    }
+
+    scwin.chipValues = ["ALL"].concat(order);
+    gen_cateChip.removeAll();
+    for (var i = 0; i < scwin.chipValues.length; i++) {
+        var value = scwin.chipValues[i];
+        var idx = gen_cateChip.insertChild();
+        gen_cateChip.getChild(idx, "tbx_chipName").setValue(value === "ALL" ? "Tất cả" : value);
+        gen_cateChip.getChild(idx, "tbx_chipCount").setValue(value === "ALL" ? scwin.allProducts.length : counts[value]);
+        if (value === scwin.category) {
+            gen_cateChip.getChild(idx, "grp_cateChip").addClass("es-chip--active");
+        }
+    }
+};
+
+scwin.productTone = function(category) {
+    var sum = 0;
+    for (var i = 0; i < category.length; i++) {
+        sum += category.charCodeAt(i);
+    }
+    return (sum % 4) + 1;
+};
+
+scwin.renderProducts = function() {
+    gen_product.removeAll();
+    var total = scwin.viewList.length;
+    var limit = Math.min(scwin.shown, total);
+
+    if (total === 0) {
+        grp_empty.show("");
+        btn_loadMore.hide();
+        return;
+    }
+    grp_empty.hide();
+
+    for (var i = 0; i < limit; i++) {
+        var p = scwin.viewList[i];
+        var idx = gen_product.insertChild();
+
+        gen_product.getChild(idx, "grp_cardMedia").addClass("es-pcard__media--tone" + scwin.productTone(p.category));
+        gen_product.getChild(idx, "tbx_cardMediaText").setValue(p.category);
+        gen_product.getChild(idx, "tbx_cardCate").setValue(p.category);
+        gen_product.getChild(idx, "tbx_cardName").setValue(p.name);
+        gen_product.getChild(idx, "tbx_cardDesc").setValue(p.desc);
+        gen_product.getChild(idx, "tbx_cardPrice").setValue(scwin.formatPrice(p.price));
+
+        var badge = gen_product.getChild(idx, "tbx_cardStatus");
+        var btn = gen_product.getChild(idx, "btn_cardAdd");
+        if (p.available) {
+            badge.hide();
+        } else {
+            badge.setValue("Hết hàng");
+            gen_product.getChild(idx, "grp_card").addClass("es-pcard--soldout");
+            btn.setValue("Hết hàng");
+            btn.setDisabled(true);
+        }
+    }
+
+    if (limit < total) {
+        btn_loadMore.setValue("Xem thêm " + Math.min(scwin.PAGE_SIZE, total - limit) + " sản phẩm (còn " + (total - limit) + ")");
+        btn_loadMore.show("");
+    } else {
+        btn_loadMore.hide();
+    }
+};
+
+/* ----- Gợi ý khi gõ ----- */
+scwin.renderSuggest = function() {
+    var raw = ibx_keyword.getValue() || "";
+    var q = scwin.parseQuery(raw);
+    if (q.tokens.length === 0) {
+        scwin.hideSuggest();
+        return;
+    }
+    var scored = [];
+    scwin.allProducts.forEach(function(p) {
+        var s = scwin.scoreProduct(p, q.tokens, false);
+        if (s > 0) scored.push({ p: p, s: s });
+    });
+    scored.sort(function(a, b) { return b.s - a.s; });
+    scwin.suggestList = scored.slice(0, 6).map(function(x) { return x.p; });
+
+    gen_suggest.removeAll();
+    if (scwin.suggestList.length === 0) {
+        scwin.hideSuggest();
+        return;
+    }
+    for (var i = 0; i < scwin.suggestList.length; i++) {
+        var p = scwin.suggestList[i];
+        var idx = gen_suggest.insertChild();
+        gen_suggest.getChild(idx, "tbx_suggestName").setValue(p.name);
+        gen_suggest.getChild(idx, "tbx_suggestMeta").setValue(p.category + ", " + scwin.formatPrice(p.price));
+    }
+    grp_suggest.show("");
+};
+
+scwin.hideSuggest = function() {
+    grp_suggest.hide();
+};
+
+/* =====================================================================
+   GIỎ HÀNG (lưu localStorage vì API chưa có mã sản phẩm / API giỏ hàng)
+   ===================================================================== */
+scwin.readCart = function() {
+    try {
+        return JSON.parse(localStorage.getItem(scwin.CART_KEY)) || [];
+    } catch (err) {
+        return [];
+    }
+};
+
+scwin.addToCart = function(p) {
+    var cart = scwin.readCart();
+    var key = p.nCate + "|" + p.nName;
+    var found = null;
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].key === key) {
+            found = cart[i];
+            break;
+        }
+    }
+    if (found) {
+        found.qty += 1;
+    } else {
+        cart.push({ key: key, name: p.name, category: p.category, price: p.price, qty: 1 });
+    }
+    try {
+        localStorage.setItem(scwin.CART_KEY, JSON.stringify(cart));
+    } catch (err) {
+        scwin.showToast("Trình duyệt đang chặn lưu dữ liệu, chưa thêm được vào giỏ.");
+        return;
+    }
+
+    var totalQty = cart.reduce(function(sum, item) { return sum + item.qty; }, 0);
+    scwin.updateHeaderCart(totalQty);
+    scwin.showToast("Đã thêm \"" + p.name + "\" vào giỏ. Giỏ hàng có " + totalQty + " sản phẩm.");
+};
+
+scwin.updateHeaderCart = function(count) {
+    try {
+        wfm_header.getWindow().scwin.setCartCount(count);
+    } catch (err) {
+        console.warn("Header chưa có hàm scwin.setCartCount", err);
+    }
+};
+
+scwin.showToast = function(msg) {
+    tbx_toast.setValue(msg);
+    grp_toast.addClass("es-toast--show");
+    if (scwin.toastTimer) {
+        clearTimeout(scwin.toastTimer);
+    }
+    scwin.toastTimer = setTimeout(function() {
+        grp_toast.removeClass("es-toast--show");
+    }, 2600);
+};
+
+/* =====================================================================
+   EVENT
+   ===================================================================== */
+// Ô tìm kiếm: lọc ngay khi gõ (trễ 200ms), Enter để chốt, Esc để đóng gợi ý
+scwin.ibx_keyword_onkeyup = function(e) {
+    if (e.keyCode === 13) {
+        scwin.hideSuggest();
+        scwin.btn_doSearch_onclick();
+        return;
+    }
+    if (e.keyCode === 27) {
+        scwin.hideSuggest();
+        return;
+    }
+    if (scwin.typingTimer) {
+        clearTimeout(scwin.typingTimer);
+    }
+    scwin.typingTimer = setTimeout(function() {
+        dma_filter.set("keyword", ibx_keyword.getValue());
+        scwin.renderSuggest();
+        scwin.applyFilters(true);
+    }, 200);
+};
+
+scwin.ibx_keyword_onfocus = function(e) {
+    if ((ibx_keyword.getValue() || "").trim()) {
+        scwin.renderSuggest();
+    }
+};
+
+scwin.ibx_keyword_onblur = function(e) {
+    // Trễ một chút để kịp nhận click vào gợi ý
+    setTimeout(scwin.hideSuggest, 200);
+};
+
+scwin.btn_doSearch_onclick = function(e) {
+    dma_filter.set("keyword", ibx_keyword.getValue());
+    scwin.hideSuggest();
+    scwin.applyFilters(true);
+};
+
+scwin.btn_clearSearch_onclick = function(e) {
+    dma_filter.set("keyword", "");
+    scwin.hideSuggest();
+    scwin.applyFilters(true);
+    ibx_keyword.focus();
+};
+
+scwin.grp_suggestItem_onclick = function(e) {
+    var p = scwin.suggestList[this.getGeneratedIndex()];
+    if (!p) return;
+    dma_filter.set("keyword", p.name);
+    scwin.hideSuggest();
+    scwin.applyFilters(true);
+};
+
+scwin.btn_hint_onclick = function(e) {
+    dma_filter.set("keyword", this.getValue());
+    scwin.applyFilters(true);
+};
+
+// Danh mục
+scwin.grp_cateChip_onclick = function(e) {
+    scwin.category = scwin.chipValues[this.getGeneratedIndex()];
+    scwin.renderCategoryChips();
+    scwin.applyFilters(true);
+};
+
+// Lọc giá
+scwin.btn_applyPrice_onclick = function(e) {
+    var minText = ibx_priceMin.getValue();
+    var maxText = ibx_priceMax.getValue();
+    if ((minText && scwin.parseMoneyInput(minText) === null) || (maxText && scwin.parseMoneyInput(maxText) === null)) {
+        scwin.showToast("Giá chưa đúng định dạng. Ví dụ: 200000, 200k hoặc 1.5tr");
+        return;
+    }
+    scwin.applyFilters(true);
+};
+
+scwin.ibx_price_onkeyup = function(e) {
+    if (e.keyCode === 13) {
+        scwin.btn_applyPrice_onclick();
+    }
+};
+
+scwin.btn_inStock_onclick = function(e) {
+    scwin.inStockOnly = !scwin.inStockOnly;
+    if (scwin.inStockOnly) {
+        btn_inStock.addClass("es-toggle--on");
+    } else {
+        btn_inStock.removeClass("es-toggle--on");
+    }
+    scwin.applyFilters(true);
+};
+
+scwin.btn_resetFilter_onclick = function(e) {
+    dma_filter.set("keyword", "");
+    dma_filter.set("priceMin", "");
+    dma_filter.set("priceMax", "");
+    dma_filter.set("sort", "RELEVANCE");
+    scwin.category = "ALL";
+    scwin.inStockOnly = false;
+    btn_inStock.removeClass("es-toggle--on");
+    scwin.renderCategoryChips();
+    scwin.applyFilters(true);
+};
+
+// Sắp xếp
+scwin.sbx_sort_onviewchange = function(info) {
+    scwin.applyFilters(true);
+};
+
+// Xem thêm
+scwin.btn_loadMore_onclick = function(e) {
+    scwin.shown += scwin.PAGE_SIZE;
+    scwin.renderProducts();
+};
+
+// Thêm vào giỏ
+scwin.btn_cardAdd_onclick = function(e) {
+    var p = scwin.viewList[this.getGeneratedIndex()];
+    if (!p || !p.available) return;
+    scwin.addToCart(p);
+
+    var btn = this;
+    btn.setValue("Đã thêm ✓");
+    btn.addClass("es-pcard__add--done");
+    setTimeout(function() {
+        btn.setValue("Thêm vào giỏ");
+        btn.removeClass("es-pcard__add--done");
+    }, 1200);
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+        <!-- ===== HEADER CHUNG ===== -->
+        <w2:wframe id="wfm_header" src="/CommonPage/Header.xml" scope="true" style="width:100%;"/>
+
+        <xf:group id="grp_main" class="es-plp" tagname="main">
+            <xf:group id="grp_mainInner" class="es-plp__wrap">
+
+                <!-- ===== TIÊU ĐỀ ===== -->
+                <xf:group id="grp_pageHead" class="es-plp__head">
+                    <w2:textbox id="tbx_pageTitle" class="es-plp__title" tagname="h1" label="Tất cả sản phẩm"/>
+                    <w2:textbox id="tbx_resultCount" class="es-plp__count" tagname="p" label="Đang tải..."/>
+                </xf:group>
+
+                <!-- ===== TÌM KIẾM THÔNG MINH ===== -->
+                <xf:group id="grp_searchPanel" class="es-smart">
+                    <xf:group id="grp_searchBox" class="es-smart__box">
+                        <w2:textbox id="tbx_searchIcon" class="es-smart__icon" tagname="span" label="⌕"/>
+                        <xf:input id="ibx_keyword" class="es-smart__input" ref="data:dma_filter.keyword"
+                            placeholder="Gõ tên, danh mục hoặc giá, ví dụ: áo khoác dưới 600k"
+                            ev:onkeyup="scwin.ibx_keyword_onkeyup" ev:onfocus="scwin.ibx_keyword_onfocus"
+                            ev:onblur="scwin.ibx_keyword_onblur"/>
+                        <xf:trigger id="btn_clearSearch" class="es-smart__clear" type="button"
+                            ev:onclick="scwin.btn_clearSearch_onclick">
+                            <xf:label><![CDATA[Xóa]]></xf:label>
+                        </xf:trigger>
+                        <xf:trigger id="btn_doSearch" class="es-smart__btn" type="button"
+                            ev:onclick="scwin.btn_doSearch_onclick">
+                            <xf:label><![CDATA[Tìm]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+
+                    <!-- Gợi ý khi gõ -->
+                    <xf:group id="grp_suggest" class="es-suggest" style="display:none;">
+                        <w2:generator id="gen_suggest" class="es-suggest__list">
+                            <xf:group id="grp_suggestItem" class="es-suggest__item" ev:onclick="scwin.grp_suggestItem_onclick">
+                                <w2:textbox id="tbx_suggestName" class="es-suggest__name" tagname="span" label=""/>
+                                <w2:textbox id="tbx_suggestMeta" class="es-suggest__meta" tagname="span" label=""/>
+                            </xf:group>
+                        </w2:generator>
+                    </xf:group>
+
+                    <!-- Gợi ý cách tìm -->
+                    <xf:group id="grp_hints" class="es-smart__hints">
+                        <w2:textbox id="tbx_hintLabel" class="es-smart__hint-label" tagname="span" label="Thử tìm:"/>
+                        <xf:trigger id="btn_hint1" class="es-hint" type="button" ev:onclick="scwin.btn_hint_onclick">
+                            <xf:label><![CDATA[ao khoac]]></xf:label>
+                        </xf:trigger>
+                        <xf:trigger id="btn_hint2" class="es-hint" type="button" ev:onclick="scwin.btn_hint_onclick">
+                            <xf:label><![CDATA[quần dưới 400k]]></xf:label>
+                        </xf:trigger>
+                        <xf:trigger id="btn_hint3" class="es-hint" type="button" ev:onclick="scwin.btn_hint_onclick">
+                            <xf:label><![CDATA[váy từ 300k đến 600k]]></xf:label>
+                        </xf:trigger>
+                        <xf:trigger id="btn_hint4" class="es-hint" type="button" ev:onclick="scwin.btn_hint_onclick">
+                            <xf:label><![CDATA[phụ kiện rẻ]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+
+                <!-- Thông báo khi đang dùng dữ liệu mẫu -->
+                <xf:group id="grp_apiNotice" class="es-notice" style="display:none;">
+                    <w2:textbox id="tbx_apiNotice" class="es-notice__text" tagname="p"
+                        label="Chưa kết nối được API GetProductList nên đang hiển thị dữ liệu mẫu. Kiểm tra URL trong sbm_getProductList và cấu hình CORS phía OutSystems."/>
+                </xf:group>
+
+                <xf:group id="grp_layout" class="es-plp__layout">
+
+                    <!-- ===== BỘ LỌC ===== -->
+                    <xf:group id="grp_filters" class="es-filter" tagname="aside">
+                        <xf:group id="grp_filterCate" class="es-filter__block">
+                            <w2:textbox id="tbx_filterCateTitle" class="es-filter__title" tagname="h2" label="Danh mục"/>
+                            <w2:generator id="gen_cateChip" class="es-chips">
+                                <xf:group id="grp_cateChip" class="es-chip" ev:onclick="scwin.grp_cateChip_onclick">
+                                    <w2:textbox id="tbx_chipName" class="es-chip__name" tagname="span" label=""/>
+                                    <w2:textbox id="tbx_chipCount" class="es-chip__count" tagname="span" label=""/>
+                                </xf:group>
+                            </w2:generator>
+                        </xf:group>
+
+                        <xf:group id="grp_filterPrice" class="es-filter__block">
+                            <w2:textbox id="tbx_filterPriceTitle" class="es-filter__title" tagname="h2" label="Khoảng giá"/>
+                            <xf:group id="grp_priceRow" class="es-price-row">
+                                <xf:input id="ibx_priceMin" class="es-price-input" ref="data:dma_filter.priceMin"
+                                    placeholder="Từ, vd 200k" ev:onkeyup="scwin.ibx_price_onkeyup"/>
+                                <w2:textbox id="tbx_priceDash" class="es-price-dash" tagname="span" label="đến"/>
+                                <xf:input id="ibx_priceMax" class="es-price-input" ref="data:dma_filter.priceMax"
+                                    placeholder="Đến, vd 1tr" ev:onkeyup="scwin.ibx_price_onkeyup"/>
+                            </xf:group>
+                            <xf:trigger id="btn_applyPrice" class="es-filter__apply" type="button"
+                                ev:onclick="scwin.btn_applyPrice_onclick">
+                                <xf:label><![CDATA[Áp dụng]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+
+                        <xf:group id="grp_filterStock" class="es-filter__block">
+                            <xf:trigger id="btn_inStock" class="es-toggle" type="button"
+                                ev:onclick="scwin.btn_inStock_onclick">
+                                <xf:label><![CDATA[Chỉ hiện hàng còn bán]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+
+                        <xf:trigger id="btn_resetFilter" class="es-filter__reset" type="button"
+                            ev:onclick="scwin.btn_resetFilter_onclick">
+                            <xf:label><![CDATA[Xóa toàn bộ bộ lọc]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+
+                    <!-- ===== KẾT QUẢ ===== -->
+                    <xf:group id="grp_results" class="es-results" tagname="section">
+                        <xf:group id="grp_toolbar" class="es-results__toolbar">
+                            <w2:textbox id="tbx_fuzzyNote" class="es-results__note" tagname="p" label="" style="display:none;"/>
+                            <xf:group id="grp_sort" class="es-sort">
+                                <w2:textbox id="tbx_sortLabel" class="es-sort__label" tagname="span" label="Sắp xếp"/>
+                                <xf:select1 id="sbx_sort" class="es-sort__select" appearance="minimal"
+                                    ref="data:dma_filter.sort" displayMode="label" chooseOption="false"
+                                    ev:onviewchange="scwin.sbx_sort_onviewchange">
+                                    <xf:choices>
+                                        <xf:item>
+                                            <xf:label><![CDATA[Phù hợp nhất]]></xf:label>
+                                            <xf:value><![CDATA[RELEVANCE]]></xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label><![CDATA[Giá thấp đến cao]]></xf:label>
+                                            <xf:value><![CDATA[PRICE_ASC]]></xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label><![CDATA[Giá cao đến thấp]]></xf:label>
+                                            <xf:value><![CDATA[PRICE_DESC]]></xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label><![CDATA[Tên A đến Z]]></xf:label>
+                                            <xf:value><![CDATA[NAME_ASC]]></xf:value>
+                                        </xf:item>
+                                    </xf:choices>
+                                </xf:select1>
+                            </xf:group>
+                        </xf:group>
+
+                        <w2:generator id="gen_product" class="es-grid">
+                            <xf:group id="grp_card" class="es-pcard">
+                                <xf:group id="grp_cardMedia" class="es-pcard__media">
+                                    <w2:textbox id="tbx_cardMediaText" class="es-pcard__media-text" tagname="span" label=""/>
+                                    <w2:textbox id="tbx_cardStatus" class="es-pcard__status" tagname="span" label=""/>
+                                </xf:group>
+                                <xf:group id="grp_cardBody" class="es-pcard__body">
+                                    <w2:textbox id="tbx_cardCate" class="es-pcard__cate" tagname="span" label=""/>
+                                    <w2:textbox id="tbx_cardName" class="es-pcard__name" tagname="h3" label=""/>
+                                    <w2:textbox id="tbx_cardDesc" class="es-pcard__desc" tagname="p" label=""/>
+                                    <xf:group id="grp_cardFoot" class="es-pcard__foot">
+                                        <w2:textbox id="tbx_cardPrice" class="es-pcard__price" tagname="span" label=""/>
+                                        <xf:trigger id="btn_cardAdd" class="es-pcard__add" type="button"
+                                            ev:onclick="scwin.btn_cardAdd_onclick">
+                                            <xf:label><![CDATA[Thêm vào giỏ]]></xf:label>
+                                        </xf:trigger>
+                                    </xf:group>
+                                </xf:group>
+                            </xf:group>
+                        </w2:generator>
+
+                        <xf:group id="grp_empty" class="es-empty" style="display:none;">
+                            <w2:textbox id="tbx_emptyTitle" class="es-empty__title" tagname="h3" label="Không tìm thấy sản phẩm phù hợp"/>
+                            <w2:textbox id="tbx_emptyDesc" class="es-empty__desc" tagname="p"
+                                label="Thử bỏ bớt từ khóa, nới khoảng giá hoặc chọn danh mục khác."/>
+                            <xf:trigger id="btn_emptyReset" class="es-filter__apply" type="button"
+                                ev:onclick="scwin.btn_resetFilter_onclick">
+                                <xf:label><![CDATA[Xóa bộ lọc]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+
+                        <xf:trigger id="btn_loadMore" class="es-loadmore" type="button" style="display:none;"
+                            ev:onclick="scwin.btn_loadMore_onclick">
+                            <xf:label><![CDATA[Xem thêm]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+
+        <!-- ===== FOOTER CHUNG ===== -->
+        <w2:wframe id="wfm_footer" src="/CommonPage/Footer.xml" scope="true" style="width:100%;"/>
+
+        <!-- Thông báo nhanh -->
+        <xf:group id="grp_toast" class="es-toast">
+            <w2:textbox id="tbx_toast" class="es-toast__text" tagname="span" label=""/>
+        </xf:group>
+    </body>
+</html>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/CommonCss/Header.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+                <!-- Thông tin người dùng đăng nhập -->
+                <w2:dataMap baseNode="map" id="dma_userInfo">
+                    <w2:keyInfo>
+                        <w2:key id="isLogin" name="Trạng thái đăng nhập" dataType="text"/>
+                        <w2:key id="userId" name="Mã người dùng" dataType="text"/>
+                        <w2:key id="userName" name="Tên người dùng" dataType="text"/>
+                        <w2:key id="email" name="Email" dataType="text"/>
+                    </w2:keyInfo>
+                </w2:dataMap>
+
+                <!-- Số lượng giỏ hàng / yêu thích -->
+                <w2:dataMap baseNode="map" id="dma_cartInfo">
+                    <w2:keyInfo>
+                        <w2:key id="cartCount" name="Số SP trong giỏ" dataType="number"/>
+                        <w2:key id="wishCount" name="Số SP yêu thích" dataType="number"/>
+                    </w2:keyInfo>
+                </w2:dataMap>
+
+                <!-- Điều kiện tìm kiếm -->
+                <w2:dataMap baseNode="map" id="dma_search">
+                    <w2:keyInfo>
+                        <w2:key id="cateId" name="Danh mục tìm kiếm" dataType="text"/>
+                        <w2:key id="keyword" name="Từ khóa" dataType="text"/>
+                    </w2:keyInfo>
+                </w2:dataMap>
+
+                <!-- Danh mục menu chính -->
+                <w2:dataList baseNode="list" repeatNode="map" id="dlt_menu" saveRemovedData="true">
+                    <w2:columnInfo>
+                        <w2:column id="menuId" name="Mã danh mục" dataType="text"/>
+                        <w2:column id="menuName" name="Tên danh mục" dataType="text"/>
+                        <w2:column id="menuUrl" name="Đường dẫn" dataType="text"/>
+                        <w2:column id="sortOrder" name="Thứ tự" dataType="number"/>
+                        <w2:column id="isHighlight" name="Nổi bật (Y/N)" dataType="text"/>
+                    </w2:columnInfo>
+                </w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+
+            <!-- ===== SUBMISSION ===== -->
+            <xf:submission id="sbm_getMenu" ref="" target='data:json,{"id":"dlt_menu","key":"menuList"}'
+                action="/api/menu/list" method="get" mediatype="application/json" encoding="UTF-8"
+                instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg=""
+                ev:submit="" ev:submitdone="scwin.sbm_getMenu_submitdone" ev:submiterror="scwin.sbm_common_submiterror"/>
+
+            <xf:submission id="sbm_getUserInfo" ref="" target='data:json,{"id":"dma_userInfo","key":"user"}'
+                action="/api/user/me" method="get" mediatype="application/json" encoding="UTF-8"
+                instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg=""
+                ev:submit="" ev:submitdone="scwin.sbm_getUserInfo_submitdone" ev:submiterror="scwin.sbm_common_submiterror"/>
+
+            <xf:submission id="sbm_getCartCount" ref="" target='data:json,{"id":"dma_cartInfo","key":"data"}'
+                action="/api/cart/count" method="get" mediatype="application/json" encoding="UTF-8"
+                instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg=""
+                ev:submit="" ev:submitdone="scwin.sbm_getCartCount_submitdone" ev:submiterror="scwin.sbm_common_submiterror"/>
+
+            <xf:submission id="sbm_logout" ref="" target=""
+                action="/api/auth/logout" method="post" mediatype="application/json" encoding="UTF-8"
+                instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="Đang đăng xuất..."
+                ev:submit="" ev:submitdone="scwin.sbm_logout_submitdone" ev:submiterror="scwin.sbm_common_submiterror"/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <link href="/ui/common/css/header.css" type="text/css" rel="stylesheet"/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+/* ================= KHỞI TẠO ================= */
+scwin.isMenuOpen = false;
+
+scwin.onpageload = function() {
+    dma_search.set("cateId", "ALL");
+    $p.executeSubmission("sbm_getMenu");
+    $p.executeSubmission("sbm_getUserInfo");
+};
+
+/* ================= HÀM DÙNG CHUNG ================= */
+// Chuyển trang (đổi theo cách điều hướng của dự án nếu cần)
+scwin.goPage = function(xmlPath, param) {
+    var url = "/websquare/websquare.html?w2xPath=" + xmlPath;
+    if (param) {
+        url += "&" + param;
+    }
+    location.href = url;
+};
+
+// Ẩn badge khi số lượng = 0
+scwin.toggleBadge = function(badge, count) {
+    if (Number(count) > 0) {
+        badge.show("");
+    } else {
+        badge.hide();
+    }
+};
+
+// Hàm PUBLIC: trang khác gọi qua wfm_header.getWindow().scwin.refreshCart()
+scwin.refreshCart = function() {
+    if (dma_userInfo.get("isLogin") === "Y") {
+        $p.executeSubmission("sbm_getCartCount");
+    }
+};
+
+// Vẽ menu từ dlt_menu vào generator
+scwin.renderMenu = function() {
+    gen_menu.removeAll();
+    var rowCnt = dlt_menu.getRowCount();
+    for (var i = 0; i < rowCnt; i++) {
+        var idx = gen_menu.insertChild();
+        var anc = gen_menu.getChild(idx, "anc_menuItem");
+        anc.setValue(dlt_menu.getCellData(i, "menuName"));
+        if (dlt_menu.getCellData(i, "isHighlight") === "Y") {
+            anc.addClass("es-nav__link--hot");
+        }
+    }
+};
+
+/* ================= SUBMISSION CALLBACK ================= */
+scwin.sbm_getMenu_submitdone = function(e) {
+    dlt_menu.sort("sortOrder", 0); // 0: tăng dần
+    scwin.renderMenu();
+};
+
+scwin.sbm_getUserInfo_submitdone = function(e) {
+    if (dma_userInfo.get("isLogin") === "Y") {
+        grp_guest.hide();
+        grp_member.show("flex");
+        tbx_accountLabel.setValue(dma_userInfo.get("userName"));
+        $p.executeSubmission("sbm_getCartCount");
+    } else {
+        grp_member.hide();
+        grp_guest.show("flex");
+        tbx_accountLabel.setValue("Tài khoản");
+        dma_cartInfo.set("cartCount", 0);
+        dma_cartInfo.set("wishCount", 0);
+        scwin.toggleBadge(tbx_cartCount, 0);
+        scwin.toggleBadge(tbx_wishCount, 0);
+    }
+};
+
+scwin.sbm_getCartCount_submitdone = function(e) {
+    scwin.toggleBadge(tbx_cartCount, dma_cartInfo.get("cartCount"));
+    scwin.toggleBadge(tbx_wishCount, dma_cartInfo.get("wishCount"));
+};
+
+scwin.sbm_logout_submitdone = function(e) {
+    dma_userInfo.setEmptyValue();
+    scwin.goPage("/ui/main/index.xml");
+};
+
+scwin.sbm_common_submiterror = function(e) {
+    console.error("Submission error:", e);
+};
+
+/* ================= UI EVENT ================= */
+scwin.btn_menuToggle_onclick = function(e) {
+    scwin.isMenuOpen = !scwin.isMenuOpen;
+    if (scwin.isMenuOpen) {
+        grp_nav.addClass("es-nav--open");
+        btn_menuToggle.setValue("✕");
+    } else {
+        grp_nav.removeClass("es-nav--open");
+        btn_menuToggle.setValue("☰");
+    }
+};
+
+scwin.grp_logo_onclick = function(e) {
+    scwin.goPage("/ui/main/index.xml");
+};
+
+scwin.ibx_keyword_onkeyup = function(e) {
+    if (e.keyCode === 13) {
+        scwin.btn_search_onclick();
+    }
+};
+
+scwin.btn_search_onclick = function(e) {
+    var keyword = (ibx_keyword.getValue() || "").trim();
+    if (keyword === "") {
+        alert("Vui lòng nhập từ khóa tìm kiếm.");
+        ibx_keyword.focus();
+        return;
+    }
+    var cateId = sbx_searchCate.getValue() || "ALL";
+    scwin.goPage("/ui/product/search.xml",
+        "keyword=" + encodeURIComponent(keyword) + "&cateId=" + cateId);
+};
+
+scwin.anc_menuItem_onclick = function(e) {
+    var idx = this.getGeneratedIndex();
+    var menuId = dlt_menu.getCellData(idx, "menuId");
+    var menuUrl = dlt_menu.getCellData(idx, "menuUrl");
+    scwin.goPage(menuUrl, "cateId=" + menuId);
+};
+
+scwin.grp_cart_onclick = function(e) {
+    if (dma_userInfo.get("isLogin") !== "Y") {
+        scwin.anc_login_onclick();
+        return;
+    }
+    scwin.goPage("/ui/cart/cart.xml");
+};
+
+scwin.grp_wishlist_onclick = function(e) {
+    if (dma_userInfo.get("isLogin") !== "Y") {
+        scwin.anc_login_onclick();
+        return;
+    }
+    scwin.goPage("/ui/member/wishlist.xml");
+};
+
+scwin.grp_account_onclick = function(e) {
+    if (dma_userInfo.get("isLogin") === "Y") {
+        scwin.goPage("/ui/member/mypage.xml");
+    } else {
+        scwin.anc_login_onclick();
+    }
+};
+
+scwin.anc_login_onclick = function(e) {
+    scwin.goPage("/ui/member/login.xml", "returnUrl=" + encodeURIComponent(location.href));
+};
+
+scwin.anc_register_onclick = function(e) {
+    scwin.goPage("/ui/member/register.xml");
+};
+
+scwin.anc_logout_onclick = function(e) {
+    if (confirm("Bạn có chắc muốn đăng xuất?")) {
+        $p.executeSubmission("sbm_logout");
+    }
+};
+
+scwin.anc_support_onclick = function(e) {
+    scwin.goPage("/ui/support/faq.xml");
+};
+
+scwin.anc_trackOrder_onclick = function(e) {
+    scwin.goPage("/ui/order/tracking.xml");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+        <xf:group id="grp_header" class="es-header" tagname="header">
+
+            <!-- ===== TOP BAR ===== -->
+            <xf:group id="grp_topBar" class="es-topbar">
+                <xf:group id="grp_topBarInner" class="es-container es-topbar__inner">
+                    <w2:textbox id="tbx_promo" class="es-topbar__promo" tagname="span"
+                        label="Miễn phí vận chuyển cho đơn hàng từ 499.000đ"/>
+                    <xf:group id="grp_topLinks" class="es-topbar__links">
+                        <w2:anchor id="anc_support" class="es-topbar__link" outerDiv="no"
+                            ev:onclick="scwin.anc_support_onclick">
+                            <xf:label><![CDATA[Hỗ trợ]]></xf:label>
+                        </w2:anchor>
+                        <w2:anchor id="anc_trackOrder" class="es-topbar__link" outerDiv="no"
+                            ev:onclick="scwin.anc_trackOrder_onclick">
+                            <xf:label><![CDATA[Theo dõi đơn hàng]]></xf:label>
+                        </w2:anchor>
+
+                        <!-- Khách chưa đăng nhập -->
+                        <xf:group id="grp_guest" class="es-topbar__guest">
+                            <w2:anchor id="anc_login" class="es-topbar__link" outerDiv="no"
+                                ev:onclick="scwin.anc_login_onclick">
+                                <xf:label><![CDATA[Đăng nhập]]></xf:label>
+                            </w2:anchor>
+                            <w2:textbox id="tbx_divider" class="es-topbar__divider" tagname="span" label="/"/>
+                            <w2:anchor id="anc_register" class="es-topbar__link" outerDiv="no"
+                                ev:onclick="scwin.anc_register_onclick">
+                                <xf:label><![CDATA[Đăng ký]]></xf:label>
+                            </w2:anchor>
+                        </xf:group>
+
+                        <!-- Thành viên đã đăng nhập -->
+                        <xf:group id="grp_member" class="es-topbar__member" style="display:none;">
+                            <w2:textbox id="tbx_hello" class="es-topbar__hello" tagname="span" label="Xin chào,"/>
+                            <w2:textbox id="tbx_userName" class="es-topbar__username" tagname="span"
+                                ref="data:dma_userInfo.userName"/>
+                            <w2:anchor id="anc_logout" class="es-topbar__link" outerDiv="no"
+                                ev:onclick="scwin.anc_logout_onclick">
+                                <xf:label><![CDATA[Đăng xuất]]></xf:label>
+                            </w2:anchor>
+                        </xf:group>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <!-- ===== MAIN BAR ===== -->
+            <xf:group id="grp_mainBar" class="es-mainbar">
+                <xf:group id="grp_mainBarInner" class="es-container es-mainbar__inner">
+                    <xf:trigger id="btn_menuToggle" class="es-btn-icon es-mainbar__toggle" type="button"
+                        ev:onclick="scwin.btn_menuToggle_onclick">
+                        <xf:label><![CDATA[☰]]></xf:label>
+                    </xf:trigger>
+
+                    <xf:group id="grp_logo" class="es-logo" ev:onclick="scwin.grp_logo_onclick">
+                        <w2:textbox id="tbx_logoMain" class="es-logo__main" tagname="span" label="E"/>
+                        <w2:textbox id="tbx_logoAccent" class="es-logo__accent" tagname="span" label="-Sale"/>
+                    </xf:group>
+
+                    <xf:group id="grp_search" class="es-search">
+                        <xf:select1 id="sbx_searchCate" class="es-search__cate" appearance="minimal"
+                            ref="data:dma_search.cateId" chooseOption="true"
+                            chooseOptionLabel="Tất cả" chooseOptionValue="ALL"
+                            displayMode="label" disabledClass="w2selectbox_disabled">
+                            <xf:choices>
+                                <xf:itemset nodeset="data:dlt_menu">
+                                    <xf:label ref="menuName"/>
+                                    <xf:value ref="menuId"/>
+                                </xf:itemset>
+                            </xf:choices>
+                        </xf:select1>
+                        <xf:input id="ibx_keyword" class="es-search__input" ref="data:dma_search.keyword"
+                            placeholder="Tìm áo, quần, váy, phụ kiện..."
+                            ev:onkeyup="scwin.ibx_keyword_onkeyup"/>
+                        <xf:trigger id="btn_search" class="es-search__btn" type="button"
+                            ev:onclick="scwin.btn_search_onclick">
+                            <xf:label><![CDATA[Tìm kiếm]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+
+                    <xf:group id="grp_actions" class="es-actions">
+                        <xf:group id="grp_wishlist" class="es-action" ev:onclick="scwin.grp_wishlist_onclick">
+                            <w2:textbox id="tbx_wishIcon" class="es-action__icon" tagname="span" label="♡"/>
+                            <w2:textbox id="tbx_wishCount" class="es-badge" tagname="span"
+                                ref="data:dma_cartInfo.wishCount" style="display:none;"/>
+                            <w2:textbox id="tbx_wishLabel" class="es-action__label" tagname="span" label="Yêu thích"/>
+                        </xf:group>
+                        <xf:group id="grp_cart" class="es-action" ev:onclick="scwin.grp_cart_onclick">
+                            <w2:textbox id="tbx_cartIcon" class="es-action__icon" tagname="span" label="🛒"/>
+                            <w2:textbox id="tbx_cartCount" class="es-badge" tagname="span"
+                                ref="data:dma_cartInfo.cartCount" style="display:none;"/>
+                            <w2:textbox id="tbx_cartLabel" class="es-action__label" tagname="span" label="Giỏ hàng"/>
+                        </xf:group>
+                        <xf:group id="grp_account" class="es-action" ev:onclick="scwin.grp_account_onclick">
+                            <w2:textbox id="tbx_accountIcon" class="es-action__icon" tagname="span" label="👤"/>
+                            <w2:textbox id="tbx_accountLabel" class="es-action__label" tagname="span" label="Tài khoản"/>
+                        </xf:group>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <!-- ===== NAVIGATION ===== -->
+            <xf:group id="grp_nav" class="es-nav" tagname="nav">
+                <xf:group id="grp_navInner" class="es-container">
+                    <w2:generator id="gen_menu" class="es-nav__list" tagname="ul">
+                        <xf:group id="grp_menuItem" class="es-nav__item" tagname="li">
+                            <w2:anchor id="anc_menuItem" class="es-nav__link" outerDiv="no"
+                                ev:onclick="scwin.anc_menuItem_onclick">
+                                <xf:label><![CDATA[]]></xf:label>
+                            </w2:anchor>
+                        </xf:group>
+                    </w2:generator>
+                </xf:group>
+            </xf:group>
+
+        </xf:group>
+    </body>
+</html>
