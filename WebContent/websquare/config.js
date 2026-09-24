@@ -6,7 +6,7 @@ export default {
     "wpack": {
       "@use": "true",
       "contextRoot": {
-        "@value": "/"
+        "@value": "/text"
       },
       "srcExtension": {
         "@value": "xml"
