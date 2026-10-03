@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="/E-SaleCss/Index.css" type="text/css"?>
+
+<?xml-stylesheet href="/text/E-SaleCss/Index.css" type="text/css"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ev="http://www.w3.org/2001/xml-events"
     xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
@@ -110,16 +111,16 @@ scwin.onpageunload = function() {
 /* ================= ĐƯỜNG DẪN TRANG =================
    Sửa tại đây khi tạo các trang con trong thư mục E-SalePage */
 scwin.PAGE = {
-    home: "/E-SalePage/Index.xml",
-    productList: "/E-SalePage/ProductList.xml",
-    productSale: "/E-SalePage/ProductSale.xml",
-    productDetail: "/E-SalePage/ProductDetail.xml",
-    login: "/E-SalePage/Login.xml"
+    home: "/text/E-SalePage/Index.xml",
+    productList: "/text/E-SalePage/ProductList.xml",
+    productSale: "/text/E-SalePage/ProductSale.xml",
+    productDetail: "/text/E-SalePage/ProductDetail.xml",
+    login: "/text/E-SalePage/Login.xml"
 };
 
 /* ================= HÀM DÙNG CHUNG ================= */
 scwin.goPage = function(xmlPath, param) {
-    var url = "/websquare/websquare.html?w2xPath=" + xmlPath;
+    var url = "/text/websquare/websquare.html?w2xPath=" + xmlPath;
     if (param) {
         url += "&" + param;
     }

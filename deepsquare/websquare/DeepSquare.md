@@ -8,7 +8,7 @@
 
 이 프로젝트에는 재사용 가능한 템플릿이 준비되어 있습니다:
 
-**위치**: `C:/WEBSQUARE_DEV_PACK/AI_KO_6.0.0.9/workspace/wre/WebContent/cm/template/**/*.xml`
+**위치**: `C:/WEBSQUARE_DEV_PACK/AI_KO_6.0.0.9/bin/websquare/workspace/E-Sale/WebContent/cm/template/**/*.xml`
 
 **구조**:
 ```

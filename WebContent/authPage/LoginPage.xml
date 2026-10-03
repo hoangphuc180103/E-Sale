@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/CheckinCss/Auth.css" type="text/css"?>
+<?xml-stylesheet href="/text/CommonCss/Auth.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate/>
+		<w2:MSA/>
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<!-- Dữ liệu form đăng nhập -->
+				<w2:dataMap baseNode="map" id="dma_login">
+					<w2:keyInfo>
+						<w2:key id="username" name="Tên đăng nhập" dataType="text"/>
+						<w2:key id="password" name="Mật khẩu" dataType="text"/>
+						<w2:key id="rememberMe" name="Ghi nhớ" dataType="text"/>
+					</w2:keyInfo>
+				</w2:dataMap>
+			</w2:dataCollection>
+			<w2:workflowCollection/>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+	// ====== CẤU HÌNH: sửa cho đúng môi trường của bạn ======
+	scwin.API_BASE      = "http://localhost:8081";          // địa chỉ backend Spring Boot
+	scwin.PAGE_REGISTER = "/CheckinPage/Register.xml";      // trang đăng ký
+	scwin.PAGE_HOME     = "";                               // trang chính sau khi đăng nhập (để trống nếu chưa có)
+
+	scwin.onpageload = function () {
+		ibx_username.focus();
+	};
+
+	// Hiện / ẩn thông báo
+	scwin.showMsg = function (text, isSuccess) {
+		txt_msg.setValue(text);
+		txt_msg.removeClass("is-error");
+		txt_msg.removeClass("is-success");
+		txt_msg.addClass(isSuccess ? "is-success" : "is-error");
+		txt_msg.setStyle("display", "block");
+	};
+	scwin.hideMsg = function () {
+		txt_msg.setStyle("display", "none");
+	};
+
+	// Lấy thông báo lỗi từ JSON backend trả về
+	scwin.getErrorText = function (json) {
+		if (json && json.data && typeof json.data === "object") {
+			for (var field in json.data) {
+				if (json.data.hasOwnProperty(field)) { return json.data[field]; }
+			}
+		}
+		return (json && json.message) ? json.message : "Có lỗi xảy ra, vui lòng thử lại.";
+	};
+
+	scwin.btn_login_onclick = function () {
+		var username = (ibx_username.getValue() || "").trim();
+		var password = sct_password.getValue() || "";
+		var remember = chk_remember.getValue() === "Y";
+
+		if (username === "") { scwin.showMsg("Vui lòng nhập tên đăng nhập hoặc email."); ibx_username.focus(); return; }
+		if (password === "") { scwin.showMsg("Vui lòng nhập mật khẩu."); sct_password.focus(); return; }
+
+		scwin.hideMsg();
+		btn_login.setDisabled(true);
+
+		fetch(scwin.API_BASE + "/api/auth/login", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ username: username, password: password, rememberMe: remember })
+		}).then(function (res) {
+			return res.json();
+		}).then(function (json) {
+			btn_login.setDisabled(false);
+			if (!json || !json.success) {
+				scwin.showMsg(scwin.getErrorText(json));
+				return;
+			}
+			// Lưu token: "ghi nhớ" -> localStorage, ngược lại chỉ giữ trong phiên trình duyệt
+			var store = remember ? window.localStorage : window.sessionStorage;
+			window.localStorage.removeItem("ssc_token");
+			window.sessionStorage.removeItem("ssc_token");
+			store.setItem("ssc_token", json.data.accessToken);
+			store.setItem("ssc_user", JSON.stringify(json.data.user));
+
+			scwin.showMsg("Đăng nhập thành công. Xin chào " + json.data.user.fullName + "!", true);
+			if (scwin.PAGE_HOME !== "") {
+				setTimeout(function () { $p.url(scwin.PAGE_HOME); }, 600);
+			}
+		}).catch(function () {
+			btn_login.setDisabled(false);
+			scwin.showMsg("Không kết nối được máy chủ. Vui lòng kiểm tra backend đang chạy.");
+		});
+	};
+
+	// Nhấn Enter để đăng nhập
+	scwin.form_onkeyup = function (e) {
+		if (e && e.keyCode === 13) { scwin.btn_login_onclick(); }
+	};
+
+	scwin.lnk_register_onclick = function () {
+		$p.url(scwin.PAGE_REGISTER);
+	};
+		]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="auth-page" id="grp_page">
+
+			<!-- Cột trái: giới thiệu -->
+			<xf:group class="auth-side" id="">
+				<w2:textbox class="auth-brand" id="" label="SSC Event Check-in" tagname="span"/>
+				<xf:group class="" id="">
+					<w2:textbox class="auth-side-title" id="" label="Đón khách nhanh, sự kiện trọn vẹn" tagname="h1"/>
+					<w2:textbox class="auth-side-desc" id="" label="Quản lý khách mời, quét mã QR và in thẻ tên ngay tại quầy lễ tân, tất cả trong một nơi." tagname="p"/>
+				</xf:group>
+				<xf:group class="auth-ticket" id="">
+					<xf:group class="auth-ticket-qr" id=""/>
+					<xf:group class="" id="">
+						<w2:textbox class="auth-ticket-label" id="" label="Quy trình tại quầy" tagname="span"/>
+						<w2:textbox class="auth-ticket-text" id="" label="Quét QR · Check-in · In thẻ" tagname="span"/>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+
+			<!-- Cột phải: form đăng nhập -->
+			<xf:group class="auth-main" id="">
+				<xf:group class="auth-card" id="">
+					<w2:textbox class="auth-title" id="" label="Đăng nhập" tagname="h2"/>
+					<w2:textbox class="auth-subtitle" id="" label="Dùng tài khoản được cấp để vào hệ thống check-in." tagname="p"/>
+
+					<w2:textbox class="auth-msg" id="txt_msg" label="" tagname="div"/>
+
+					<xf:group class="auth-field" id="">
+						<w2:textbox class="auth-label" id="" label="Tên đăng nhập hoặc email" tagname="label"/>
+						<xf:input class="auth-input" id="ibx_username" ref="data:dma_login.username"
+							placeholder="vd: ngocly01" maxlength="255" ev:onkeyup="scwin.form_onkeyup"/>
+					</xf:group>
+
+					<xf:group class="auth-field" id="">
+						<w2:textbox class="auth-label" id="" label="Mật khẩu" tagname="label"/>
+						<xf:secret class="auth-input" id="sct_password" ref="data:dma_login.password"
+							placeholder="Nhập mật khẩu" maxlength="72" ev:onkeyup="scwin.form_onkeyup"/>
+					</xf:group>
+
+					<xf:group class="auth-options" id="">
+						<xf:select appearance="full" class="auth-check" id="chk_remember" ref="data:dma_login.rememberMe"
+							selectedindex="-1" cols="1" rows="">
+							<xf:choices>
+								<xf:item>
+									<xf:label><![CDATA[Ghi nhớ đăng nhập]]></xf:label>
+									<xf:value><![CDATA[Y]]></xf:value>
+								</xf:item>
+							</xf:choices>
+						</xf:select>
+					</xf:group>
+
+					<xf:trigger class="auth-btn" id="btn_login" type="button" ev:onclick="scwin.btn_login_onclick">
+						<xf:label><![CDATA[Đăng nhập]]></xf:label>
+					</xf:trigger>
+
+					<xf:group class="auth-switch" id="">
+						<w2:textbox class="" id="" label="Chưa có tài khoản? " tagname="span"/>
+						<w2:anchor class="auth-link" id="lnk_register" outerDiv="false" ev:onclick="scwin.lnk_register_onclick">
+							<xf:label><![CDATA[Đăng ký]]></xf:label>
+						</w2:anchor>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+
+		</xf:group>
+	</body>
+</html>

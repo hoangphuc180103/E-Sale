@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/* =====================================================================
+   SSC EVENT CHECK-IN - Giao diện Đăng nhập / Đăng ký
+   Toàn bộ trang nằm gọn trong một khung hình (không cuộn trang)
+   ===================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap");
+
+html, body { height: 100%; margin: 0; padding: 0; }
+
+.auth-page {
+    --green-900: #0b3d2a;
+    --green-700: #0f7b4f;
+    --green-600: #14935f;
+    --green-100: #dff3e8;
+    --green-50:  #f3f8f5;
+    --ink:       #16241d;
+    --muted:     #63746b;
+    --line:      #d5e2da;
+    --danger:    #c0392b;
+
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--green-50);
+    color: var(--ink);
+    font-family: "Be Vietnam Pro", "Segoe UI", Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+}
+.auth-page * { box-sizing: border-box; font-family: inherit; }
+
+/* Bỏ nền trắng mặc định mà WebSquare gán cho group / textbox */
+.auth-page .w2group,
+.auth-page .w2textbox { background-color: transparent; }
+
+/* ---------------- Cột trái: giới thiệu ---------------- */
+.auth-page .auth-side {
+    flex: 0 0 42%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 40px 48px;
+    overflow: hidden;
+    color: #fff;
+    background:
+        radial-gradient(circle at 85% 12%, rgba(255,255,255,.14) 0, rgba(255,255,255,0) 42%),
+        linear-gradient(160deg, var(--green-600) 0%, var(--green-700) 45%, var(--green-900) 100%);
+}
+.auth-page .auth-side .w2textbox { color: #fff; }
+
+.auth-page .auth-side .auth-brand {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+.auth-page .auth-side .auth-side-title {
+    display: block;
+    margin: 0 0 14px;
+    font-size: clamp(24px, 2.6vw, 36px);
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -.01em;
+    color: #fff;
+}
+.auth-page .auth-side .auth-side-desc {
+    display: block;
+    max-width: 380px;
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255,255,255,.84);
+}
+
+/* Tấm vé */
+.auth-page .auth-ticket {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 360px;
+    padding: 14px 20px;
+    border: 1px dashed rgba(255,255,255,.45);
+    border-radius: 14px;
+    background: rgba(255,255,255,.08);
+}
+.auth-page .auth-ticket::before,
+.auth-page .auth-ticket::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin-top: -9px;
+    border-radius: 50%;
+    background: var(--green-900);
+}
+.auth-page .auth-ticket::before { left: -10px; }
+.auth-page .auth-ticket::after  { right: -10px; }
+.auth-page .auth-ticket-qr {
+    flex: 0 0 52px;
+    height: 52px;
+    border-radius: 8px;
+    background:
+        linear-gradient(#fff 0 0) 6px 6px / 14px 14px no-repeat,
+        linear-gradient(#fff 0 0) 32px 6px / 14px 14px no-repeat,
+        linear-gradient(#fff 0 0) 6px 32px / 14px 14px no-repeat,
+        linear-gradient(#fff 0 0) 26px 26px / 6px 6px no-repeat,
+        linear-gradient(#fff 0 0) 36px 36px / 10px 10px no-repeat,
+        rgba(255,255,255,.16);
+}
+.auth-page .auth-side .auth-ticket-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.72);
+}
+.auth-page .auth-side .auth-ticket-text {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* ---------------- Cột phải: biểu mẫu ---------------- */
+.auth-page .auth-main {
+    flex: 1 1 auto;
+    height: 100%;
+    display: flex;
+    padding: 20px 24px;
+    overflow-y: auto;          /* chỉ cuộn bên trong khi màn hình quá thấp */
+}
+.auth-page .auth-card {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;              /* căn giữa cả hai chiều, không bị cắt khi thiếu chỗ */
+    padding: 26px 30px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 18px 40px -24px rgba(11,61,42,.35);
+}
+.auth-page .auth-card.is-wide { max-width: 500px; }
+
+.auth-page .auth-title {
+    display: block;
+    margin: 0 0 2px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green-900);
+}
+.auth-page .auth-subtitle {
+    display: block;
+    margin: 0 0 16px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.auth-page .auth-field { margin-bottom: 11px; }
+.auth-page .auth-row { display: flex; gap: 12px; }
+.auth-page .auth-row .auth-field { flex: 1 1 0; min-width: 0; }
+
+.auth-page .auth-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+}
+.auth-page .auth-hint {
+    display: block;
+    margin-top: -4px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.auth-page input.auth-input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.auth-page input.auth-input::placeholder { color: #9aa9a1; }
+.auth-page input.auth-input:hover { border-color: #b3c7bb; }
+.auth-page input.auth-input:focus {
+    border-color: var(--green-600);
+    box-shadow: 0 0 0 3px rgba(20,147,95,.18);
+}
+
+/* Ghi nhớ đăng nhập */
+.auth-page .auth-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 0 14px;
+}
+.auth-page .auth-check,
+.auth-page .auth-check * { border: 0; background: transparent; }
+.auth-page .auth-check input {
+    width: 16px; height: 16px; margin: 0 8px 0 0;
+    accent-color: var(--green-700); vertical-align: middle; cursor: pointer;
+}
+.auth-page .auth-check label { color: var(--ink); font-size: 13px; cursor: pointer; vertical-align: middle; }
+
+/* Nút chính */
+.auth-page .auth-btn {
+    display: block;
+    width: 100%;
+    height: 44px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--green-700);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease, transform .05s ease;
+}
+.auth-page .auth-btn:hover  { background: var(--green-600); }
+.auth-page .auth-btn:active { transform: translateY(1px); }
+.auth-page .auth-btn:focus-visible { outline: 3px solid rgba(20,147,95,.35); outline-offset: 2px; }
+.auth-page .auth-btn:disabled { background: #9fbfb0; cursor: not-allowed; }
+
+/* Thông báo */
+.auth-page .auth-msg {
+    display: none;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 9px;
+    font-size: 13px;
+}
+.auth-page .auth-msg.is-error   { background: #fdecea; color: var(--danger); border: 1px solid #f5c6c0; }
+.auth-page .auth-msg.is-success { background: var(--green-100); color: var(--green-900); border: 1px solid #b9e2cb; }
+
+/* Liên kết chuyển trang */
+.auth-page .auth-switch {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+}
+.auth-page a.auth-link,
+.auth-page .auth-link a {
+    color: var(--green-700);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+.auth-page a.auth-link:hover,
+.auth-page .auth-link a:hover { text-decoration: underline; }
+
+/* ---------------- Màn hình thấp (laptop nhỏ) ---------------- */
+@media (max-height: 700px) {
+    .auth-page .auth-side { padding: 28px 40px; }
+    .auth-page .auth-card { padding: 20px 26px; }
+    .auth-page .auth-subtitle { margin-bottom: 12px; }
+    .auth-page .auth-field { margin-bottom: 8px; }
+    .auth-page input.auth-input { height: 36px; }
+    .auth-page .auth-btn { height: 40px; }
+}
+
+/* ---------------- Màn hình hẹp (điện thoại, tablet dọc) ---------------- */
+@media (max-width: 900px) {
+    .auth-page { flex-direction: column; height: auto; min-height: 100vh; overflow: visible; }
+    .auth-page .auth-side { flex: 0 0 auto; height: auto; padding: 24px; gap: 14px; }
+    .auth-page .auth-ticket { display: none; }
+    .auth-page .auth-main { height: auto; overflow: visible; padding: 20px 16px 32px; }
+}
+@media (max-width: 520px) {
+    .auth-page .auth-row { flex-direction: column; gap: 0; }
+}
