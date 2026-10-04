@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate/>
+		<w2:MSA/>
+		<xf:model>
+			<w2:dataCollection baseNode="map"/>
+			<w2:workflowCollection/>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+	scwin.onpageload = function () {
+		try {
+			var saved = window.sessionStorage.getItem("ssc_user") || window.localStorage.getItem("ssc_user");
+			if (saved) {
+				txt_welcome.setValue("Xin chào, " + JSON.parse(saved).fullName);
+			}
+		} catch (ignore) {}
+	};
+		]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<!-- MẪU KHUNG TRANG: copy cấu trúc này cho mọi trang cần header + footer -->
+		<xf:group class="ck-layout" id="grp_layout">
+
+			<w2:wframe id="wfm_header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+			<xf:group class="ck-main" id="grp_main" tagname="main">
+				<w2:textbox class="ck-page-title" id="txt_welcome" label="Xin chào" tagname="h1"/>
+				<w2:textbox class="ck-page-desc" id="txt_desc" label="Chọn một mục trên thanh menu để bắt đầu làm việc." tagname="p"/>
+				<xf:group class="ck-panel" id="grp_panel">
+					<w2:textbox class="" id="txt_content" label="Nội dung trang đặt ở đây." tagname="p"/>
+				</xf:group>
+			</xf:group>
+
+			<w2:wframe id="wfm_footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+
+		</xf:group>
+	</body>
+</html>

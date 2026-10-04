@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate/>
+		<w2:MSA/>
+		<xf:model>
+			<w2:dataCollection baseNode="map"/>
+			<w2:workflowCollection/>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+	scwin.onpageload = function () {
+		txt_copyright.setValue("© " + new Date().getFullYear() + " SSC. Hệ thống check-in sự kiện.");
+	};
+		]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="ck-footer" id="" tagname="footer">
+			<xf:group class="ck-footer-inner" id="">
+				<xf:group class="" id="">
+					<w2:textbox class="ck-footer-brand" id="" label="SSC Event Check-in" tagname="span"/>
+				</xf:group>
+				<xf:group class="ck-footer-right" id="">
+					<w2:textbox class="" id="txt_copyright" label="" tagname="span"/>
+					<w2:textbox class="" id="" label="Phiên bản 1.0" tagname="span"/>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>
