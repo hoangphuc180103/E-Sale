@@ -13,14 +13,55 @@
 			<w2:workflowCollection/>
 		</xf:model>
 		<script type="text/javascript" lazy="false"><![CDATA[
-	// ====== CẤU HÌNH ======
-	scwin.API_BASE   = "http://localhost:8081";              // địa chỉ backend Spring Boot
-	// Tự lấy tiền tố ứng dụng từ địa chỉ đang mở, ví dụ "/text" (hoặc "" nếu chạy ở thư mục gốc)
-	scwin.CTX        = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
-	scwin.WS_ENTRY   = scwin.CTX + "/websquare/websquare.html";   // trang khởi chạy WebSquare
-	scwin.PAGE_LOGIN = scwin.CTX + "/authPage/LoginPage.xml";     // trang đăng nhập
-	scwin.PAGE_HOME  = scwin.CTX + "/mainPage/Home.xml";          // trang chủ
+	/* =====================================================================
+	 * HEADER DÙNG CHUNG — SSC Check-in
+	 * Nhúng vào mỗi trang (bên trong khung ck-layout) bằng:
+	 *   <w2:wframe id="wfm_header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+	 * ===================================================================== */
 
+	/* ---------- 1. Cấu hình ---------- */
+	scwin.API_BASE = "http://localhost:8081";
+
+	// Tiền tố ứng dụng lấy từ địa chỉ đang mở: "" khi chạy local, "/text" khi deploy
+	scwin.CTX      = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+	scwin.WS_ENTRY = scwin.CTX + "/websquare/websquare.html";
+
+	// Đường dẫn các màn hình, tính từ thư mục gốc web, KHÔNG kèm "/text".
+	// Phải khớp từng chữ hoa / chữ thường với tên thư mục và tên file trong project.
+	scwin.PAGES = {
+		LOGIN: "/authPage/LoginPage.xml",
+		HOME:  "/mainPage/Home.xml",
+		USER:  "/AdminPage/UserList.xml",
+		ROLE:  "/AdminPage/RoleList.xml"
+	};
+
+	// Backend có thể trả đường dẫn cũ (viết thường để so khớp) -> đổi sang đường dẫn thật
+	scwin.PATH_MAP = {
+		"/userpage/userlist.xml": scwin.PAGES.USER,
+		"/rolepage/rolelist.xml": scwin.PAGES.ROLE
+	};
+
+	// Menu dự phòng: chỉ thêm khi có quyền và backend chưa trả về
+	scwin.EXTRA_MENUS = [
+		{ label: "Người dùng", path: scwin.PAGES.USER, perm: "USER_MANAGE" },
+		{ label: "Vai trò",    path: scwin.PAGES.ROLE, perm: "ROLE_MANAGE" }
+	];
+
+	// Nhóm menu dạng dropdown. Mục nào có đường dẫn nằm trong "items" sẽ được gom vào nhóm.
+	// Nhóm chỉ hiện khi user có ít nhất một mục con.
+	scwin.NAV_GROUPS = [
+		{
+			id: "admin",
+			label: "Admin",
+			items: [
+				{ path: scwin.PAGES.USER, label: "Người dùng", desc: "Tài khoản, trạng thái và hoạt động" },
+				{ path: scwin.PAGES.ROLE, label: "Vai trò",    desc: "Quyền và phân vai trò cho người dùng" }
+			]
+		}
+	];
+
+	// Tên hiển thị vai trò, xếp theo thứ tự ưu tiên khi user có nhiều vai trò
+	scwin.ROLE_ORDER = ["ADMIN", "EVENT_MANAGER", "EVENT_STAFF", "VIEWER"];
 	scwin.ROLE_NAMES = {
 		ADMIN: "Quản trị viên",
 		EVENT_MANAGER: "Quản lý sự kiện",
@@ -28,125 +69,396 @@
 		VIEWER: "Người xem"
 	};
 
-	// Chuyển cả trang sang một màn hình WebSquare khác
-	scwin.goPage = function (w2xPath) {
-		window.location.href = scwin.WS_ENTRY + "?w2xPath=" + w2xPath;
+	// Key lưu trữ dùng chung với trang đăng nhập và các trang khác
+	scwin.KEY = {
+		TOKEN: "ssc_token",
+		USER:  "ssc_user",
+		PERMS: "ssc_permissions",
+		MENUS: "ssc_menus"
+	};
+
+	/* ---------- 2. Lưu trữ phiên ---------- */
+	scwin.store = {
+		get: function (key) {
+			try { return window.localStorage.getItem(key) || window.sessionStorage.getItem(key) || ""; }
+			catch (e) { return ""; }
+		},
+		getJSON: function (key) {
+			try { var v = scwin.store.get(key); return v ? JSON.parse(v) : null; }
+			catch (e) { return null; }
+		},
+		setSession: function (key, value) {
+			try { window.sessionStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+		},
+		clear: function () {
+			for (var k in scwin.KEY) {
+				if (!scwin.KEY.hasOwnProperty(k)) { continue; }
+				try {
+					window.localStorage.removeItem(scwin.KEY[k]);
+					window.sessionStorage.removeItem(scwin.KEY[k]);
+				} catch (e) {}
+			}
+		}
 	};
 
 	scwin.getToken = function () {
-		return window.localStorage.getItem("ssc_token") || window.sessionStorage.getItem("ssc_token") || "";
+		return String(scwin.store.get(scwin.KEY.TOKEN)).replace(/^Bearer\s+/i, "");
 	};
 
-	scwin.clearSession = function () {
-		window.sessionStorage.removeItem("ssc_token");
-		window.sessionStorage.removeItem("ssc_user");
-		window.sessionStorage.removeItem("ssc_permissions");
-		window.localStorage.removeItem("ssc_token");
-		window.localStorage.removeItem("ssc_user");
+	/* ---------- 3. Điều hướng ---------- */
+	// Bỏ CTX và "/text" ở đầu đường dẫn
+	scwin.stripPrefix = function (path) {
+		var p = String(path || "");
+		if (!p) { return ""; }
+		if (p.charAt(0) !== "/") { p = "/" + p; }
+		if (scwin.CTX && p.indexOf(scwin.CTX + "/") === 0) { p = p.substring(scwin.CTX.length); }
+		return p.replace(/^\/text(?=\/)/, "");
+	};
+
+	// Dạng chuẩn để so sánh hai đường dẫn (không phân biệt hoa thường)
+	scwin.normPath = function (path) {
+		return scwin.stripPrefix(path).toLowerCase();
+	};
+
+	// Đường dẫn từ backend / cấu hình -> w2xPath thật (kèm CTX)
+	scwin.resolvePath = function (path) {
+		if (!path) { return ""; }
+		var real = scwin.PATH_MAP[scwin.normPath(path)] || scwin.stripPrefix(path);
+		return scwin.CTX + real;
+	};
+
+	scwin.pageUrl = function (path) {
+		return scwin.WS_ENTRY + "?w2xPath=" + scwin.resolvePath(path);
+	};
+
+	scwin.goPage = function (path) {
+		window.location.href = scwin.pageUrl(path);
 	};
 
 	scwin.goLogin = function () {
-		scwin.clearSession();
-		scwin.goPage(scwin.PAGE_LOGIN);
+		scwin.store.clear();
+		scwin.goPage(scwin.PAGES.LOGIN);
 	};
 
-	// Đường dẫn trang đang mở (để tô đậm mục menu tương ứng)
 	scwin.getCurrentPath = function () {
-		var match = /[?&]w2xPath=([^&#]*)/.exec(window.location.search);
-		return match ? decodeURIComponent(match[1]) : "";
+		var m = /[?&]w2xPath=([^&#]*)/.exec(window.location.search);
+		return m ? decodeURIComponent(m[1]) : "";
 	};
 
-	// Lấy 2 chữ cái đầu của họ tên làm ảnh đại diện, vd "Ngọc Ly" -> "NL"
+	/* ---------- 4. Hiển thị người dùng ---------- */
+	// Lấy chữ cái đầu của họ và tên, vd "Ngọc Ly" -> "NL"
 	scwin.getInitials = function (fullName) {
-		var parts = (fullName || "").trim().split(/\s+/);
-		if (parts.length === 0 || parts[0] === "") { return "?"; }
+		var parts = String(fullName || "").replace(/^\s+|\s+$/g, "").split(/\s+/);
+		if (!parts[0]) { return "?"; }
 		var first = parts[0].charAt(0);
 		var last = parts.length > 1 ? parts[parts.length - 1].charAt(0) : "";
 		return (first + last).toUpperCase();
 	};
 
+	scwin.mainRole = function (roles) {
+		roles = roles || [];
+		for (var i = 0; i < scwin.ROLE_ORDER.length; i++) {
+			if (roles.indexOf(scwin.ROLE_ORDER[i]) >= 0) { return scwin.ROLE_ORDER[i]; }
+		}
+		return roles[0] || "";
+	};
+
 	scwin.renderUser = function (user) {
-		var role = (user.roles && user.roles.length > 0) ? user.roles[0] : "";
-		txt_avatar.setValue(scwin.getInitials(user.fullName));
+		if (!user) { return; }
+		var role = scwin.mainRole(user.roles);
+		txt_avatar.setValue(scwin.getInitials(user.fullName || user.username));
 		txt_name.setValue(user.fullName || user.username || "");
 		txt_role.setValue(scwin.ROLE_NAMES[role] || role);
 	};
 
+	/* ---------- 5. Dữ liệu menu ---------- */
+	scwin.normalizePerms = function (list) {
+		var out = [];
+		for (var i = 0; i < (list || []).length; i++) {
+			var p = list[i];
+			var code = typeof p === "string" ? p : (p && (p.code || p.permissionCode || p.permCode)) || "";
+			if (code) { out.push(code); }
+		}
+		return out;
+	};
+
+	// Gộp menu backend + menu dự phòng, bỏ trùng, đổi sang đường dẫn thật
+	scwin.mergeMenus = function (menus, perms) {
+		var out = [], seen = {}, i, real, key;
+		for (i = 0; i < (menus || []).length; i++) {
+			if (!menus[i] || !menus[i].path) { continue; }
+			real = scwin.resolvePath(menus[i].path);
+			key = scwin.normPath(real);
+			if (seen[key]) { continue; }
+			seen[key] = true;
+			out.push({ label: menus[i].label, path: real });
+		}
+		for (i = 0; i < scwin.EXTRA_MENUS.length; i++) {
+			var m = scwin.EXTRA_MENUS[i];
+			real = scwin.resolvePath(m.path);
+			key = scwin.normPath(real);
+			if (!seen[key] && perms.indexOf(m.perm) >= 0) {
+				seen[key] = true;
+				out.push({ label: m.label, path: real });
+			}
+		}
+		return out;
+	};
+
+	// Tìm nhóm chứa đường dẫn (nếu có)
+	scwin.findGroup = function (path) {
+		var key = scwin.normPath(path);
+		for (var g = 0; g < scwin.NAV_GROUPS.length; g++) {
+			var items = scwin.NAV_GROUPS[g].items;
+			for (var i = 0; i < items.length; i++) {
+				if (scwin.normPath(items[i].path) === key) {
+					return { group: scwin.NAV_GROUPS[g], item: items[i] };
+				}
+			}
+		}
+		return null;
+	};
+
+	// Danh sách phẳng -> danh sách có nhóm. Nhóm đứng ở vị trí mục con đầu tiên của nó.
+	scwin.buildNav = function (menus) {
+		var out = [], groups = {};
+		for (var i = 0; i < (menus || []).length; i++) {
+			var menu = menus[i], found = scwin.findGroup(menu.path);
+			if (!found) {
+				out.push({ type: "link", label: menu.label, path: menu.path });
+				continue;
+			}
+			var gid = found.group.id;
+			if (!groups[gid]) {
+				groups[gid] = { type: "group", id: gid, label: found.group.label, items: [] };
+				out.push(groups[gid]);
+			}
+			groups[gid].items.push({
+				label: found.item.label || menu.label,
+				desc: found.item.desc || "",
+				path: menu.path
+			});
+		}
+		return out;
+	};
+
+	/* ---------- 6. Vẽ menu ---------- */
+	scwin.navEl = function () {
+		return grp_nav.render || document.getElementById(grp_nav.getID());
+	};
+
+	scwin.makeLink = function (cls, label, path, current) {
+		var a = document.createElement("a");
+		var active = scwin.normPath(path) === current;
+		a.className = cls + (active ? " is-active" : "");
+		a.href = scwin.WS_ENTRY + "?w2xPath=" + path;
+		if (active) { a.setAttribute("aria-current", "page"); }
+		return { el: a, active: active };
+	};
+
+	scwin.makeGroup = function (node, current) {
+		var wrap = document.createElement("div");
+		wrap.className = "ck-nav-group";
+
+		var trigger = document.createElement("button");
+		trigger.type = "button";
+		trigger.className = "ck-nav-item ck-nav-trigger";
+		trigger.textContent = node.label;
+		trigger.setAttribute("aria-haspopup", "true");
+		trigger.setAttribute("aria-expanded", "false");
+
+		var menu = document.createElement("div");
+		menu.className = "ck-nav-menu";
+		menu.setAttribute("role", "menu");
+
+		var anyActive = false;
+		for (var i = 0; i < node.items.length; i++) {
+			var it = node.items[i];
+			var link = scwin.makeLink("ck-nav-menu-item", it.label, it.path, current);
+			link.el.setAttribute("role", "menuitem");
+
+			var title = document.createElement("span");
+			title.className = "ck-nav-menu-title";
+			title.textContent = it.label;
+			link.el.appendChild(title);
+
+			if (it.desc) {
+				var desc = document.createElement("span");
+				desc.className = "ck-nav-menu-desc";
+				desc.textContent = it.desc;
+				link.el.appendChild(desc);
+			}
+			if (link.active) { anyActive = true; }
+			menu.appendChild(link.el);
+		}
+
+		if (anyActive) {
+			wrap.className += " is-active";
+			trigger.className += " is-active";
+		}
+
+		trigger.addEventListener("click", function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			var willOpen = wrap.className.indexOf("is-open") < 0;
+			scwin.closeGroups();
+			if (willOpen) { scwin.openGroup(wrap); }
+		});
+		trigger.addEventListener("keydown", function (e) {
+			if (e.key === "ArrowDown") {
+				e.preventDefault();
+				scwin.openGroup(wrap);
+				var first = menu.querySelector("a");
+				if (first) { first.focus(); }
+			}
+		});
+
+		wrap.appendChild(trigger);
+		wrap.appendChild(menu);
+		return wrap;
+	};
+
+	// Mở dropdown. Bảng dùng position: fixed và được đặt ngay dưới nút,
+	// nên không bị wframe / header (overflow: hidden) cắt mất.
+	scwin.openGroup = function (wrap) {
+		if (wrap.className.indexOf("is-open") < 0) { wrap.className += " is-open"; }
+		var t = wrap.querySelector(".ck-nav-trigger");
+		var m = wrap.querySelector(".ck-nav-menu");
+		if (t) { t.setAttribute("aria-expanded", "true"); }
+		if (t && m) { scwin.placeMenu(t, m); }
+	};
+
+	scwin.placeMenu = function (trigger, menu) {
+		var r = trigger.getBoundingClientRect();
+		var w = menu.offsetWidth || 260;
+		var left = r.left - 8;
+		var maxLeft = (window.innerWidth || document.documentElement.clientWidth) - w - 8;
+		if (left > maxLeft) { left = maxLeft; }
+		if (left < 8) { left = 8; }
+		menu.style.top = Math.round(r.bottom + 6) + "px";
+		menu.style.left = Math.round(left) + "px";
+	};
+
+	scwin.closeGroups = function () {
+		var nav = scwin.navEl();
+		if (!nav) { return; }
+		var open = nav.querySelectorAll(".ck-nav-group.is-open");
+		for (var i = 0; i < open.length; i++) {
+			open[i].className = open[i].className.replace(/\s*is-open/g, "");
+			var t = open[i].querySelector(".ck-nav-trigger");
+			if (t) { t.setAttribute("aria-expanded", "false"); }
+		}
+	};
+
 	scwin.renderMenu = function (menus) {
-		var nav = grp_nav.render || document.getElementById(grp_nav.getID());
+		var nav = scwin.navEl();
 		if (!nav) { return; }
 		while (nav.firstChild) { nav.removeChild(nav.firstChild); }
 
-		var current = scwin.getCurrentPath();
-		for (var i = 0; i < menus.length; i++) {
-			(function (menu) {
-				var a = document.createElement("a");
-				a.className = "ck-nav-item" + (menu.path === current ? " is-active" : "");
-				a.href = scwin.WS_ENTRY + "?w2xPath=" + menu.path;
-				a.textContent = menu.label;
-				nav.appendChild(a);
-			})(menus[i]);
+		var current = scwin.normPath(scwin.getCurrentPath());
+		var nodes = scwin.buildNav(menus);
+		for (var i = 0; i < nodes.length; i++) {
+			var node = nodes[i];
+			if (node.type === "group") {
+				nav.appendChild(scwin.makeGroup(node, current));
+			} else {
+				var link = scwin.makeLink("ck-nav-item", node.label, node.path, current);
+				link.el.textContent = node.label;
+				nav.appendChild(link.el);
+			}
 		}
+	};
+
+	// Đóng dropdown khi bấm ra ngoài hoặc nhấn Esc (gắn một lần)
+	scwin.bindGlobalEvents = function () {
+		if (scwin._bound) { return; }
+		scwin._bound = true;
+		document.addEventListener("click", function (e) {
+			var nav = scwin.navEl();
+			if (nav && !nav.contains(e.target)) { scwin.closeGroups(); }
+		});
+		document.addEventListener("keydown", function (e) {
+			if (e.key !== "Escape" && e.keyCode !== 27) { return; }
+			var nav = scwin.navEl();
+			var open = nav && nav.querySelector(".ck-nav-group.is-open .ck-nav-trigger");
+			if (open) { scwin.closeGroups(); open.focus(); }
+		});
+		// Bảng dropdown dùng vị trí cố định, nên đóng lại khi trang cuộn hoặc đổi kích thước
+		window.addEventListener("resize", function () { scwin.closeGroups(); });
+		window.addEventListener("scroll", function () { scwin.closeGroups(); }, true);
+	};
+
+	/* ---------- 7. Tải dữ liệu ---------- */
+	scwin.loadLayout = function (token) {
+		return fetch(scwin.API_BASE + "/api/common/layout", {
+			headers: { "Authorization": "Bearer " + token, "Accept": "application/json" }
+		}).then(function (res) {
+			return res.text().then(function (txt) {
+				var json = null;
+				try { json = txt ? JSON.parse(txt) : null; } catch (e) {}
+				return { status: res.status, json: json };
+			});
+		});
 	};
 
 	scwin.onpageload = function () {
 		var token = scwin.getToken();
-		if (token === "") {
-			alert("Header: chưa đăng nhập (không tìm thấy token). Sẽ chuyển về trang đăng nhập.");
-			scwin.goLogin();
-			return;
-		}
+		if (!token) { scwin.goLogin(); return; }
 
-		// Hiện tạm thông tin đã lưu lúc đăng nhập trong khi chờ API
-		try {
-			var saved = window.localStorage.getItem("ssc_user") || window.sessionStorage.getItem("ssc_user");
-			if (saved) { scwin.renderUser(JSON.parse(saved)); }
-		} catch (ignore) {}
+		scwin.bindGlobalEvents();
 
-		fetch(scwin.API_BASE + "/api/common/layout", {
-			headers: { "Authorization": "Bearer " + token }
-		}).then(function (res) {
-			return res.json().then(function (json) {
-				return { status: res.status, json: json };
-			});
-		}).then(function (r) {
-			var message = (r.json && r.json.message) ? r.json.message : "";
-			if (r.status === 401) {
-				alert("Header: backend trả 401 - " + message);
-				scwin.goLogin();
-				return;
-			}
+		// Hiện ngay dữ liệu đã lưu để header không bị trống khi chờ API
+		scwin.renderUser(scwin.store.getJSON(scwin.KEY.USER));
+		var cachedMenus = scwin.store.getJSON(scwin.KEY.MENUS);
+		if (cachedMenus) { scwin.renderMenu(cachedMenus); }
+
+		scwin.loadLayout(token).then(function (r) {
+			if (r.status === 401) { scwin.goLogin(); return; }
 			if (!r.json || !r.json.success) {
-				alert("Header: API layout lỗi " + r.status + " - " + message);
+				if (window.console) { console.error("[Header] /api/common/layout lỗi " + r.status, r.json && r.json.message); }
 				return;
 			}
-			scwin.renderUser(r.json.data.user);
-			scwin.renderMenu(r.json.data.menus || []);
-			// Lưu danh sách quyền để các trang khác dùng ẩn / hiện nút
-			window.sessionStorage.setItem("ssc_permissions", JSON.stringify(r.json.data.permissions || []));
+			var data = r.json.data || {};
+			var perms = scwin.normalizePerms(data.permissions);
+			var menus = scwin.mergeMenus(data.menus, perms);
+
+			scwin.renderUser(data.user);
+			scwin.renderMenu(menus);
+
+			// Lưu lại để các trang khác dùng ẩn / hiện nút và để lần sau hiện menu ngay
+			scwin.store.setSession(scwin.KEY.PERMS, perms);
+			scwin.store.setSession(scwin.KEY.MENUS, menus);
+			if (data.user) { scwin.store.setSession(scwin.KEY.USER, data.user); }
 		}).catch(function (err) {
-			alert("Header: không gọi được API layout - " + err);
+			if (window.console) { console.error("[Header] Không gọi được /api/common/layout", err); }
 		});
 	};
 
+	/* ---------- 8. Sự kiện ---------- */
 	scwin.lnk_brand_onclick = function () {
-		scwin.goPage(scwin.PAGE_HOME);
+		scwin.goPage(scwin.PAGES.HOME);
 	};
 
 	scwin.btn_logout_onclick = function () {
+		if (scwin._loggingOut) { return; }
+		scwin._loggingOut = true;
+		btn_logout.setDisabled(true);
+		btn_logout.setValue("Đang thoát…");
+
 		var token = scwin.getToken();
 		var done = function () { scwin.goLogin(); };
-		if (token === "") { done(); return; }
+		if (!token) { done(); return; }
+
 		fetch(scwin.API_BASE + "/api/auth/logout", {
 			method: "POST",
 			headers: { "Authorization": "Bearer " + token }
-		}).then(done).catch(done);
+		}).then(done, done);
 	};
 		]]></script>
 	</head>
 	<body ev:onpageload="scwin.onpageload">
-		<xf:group class="ck-header" id="" tagname="header">
-			<xf:group class="ck-header-inner" id="">
+		<xf:group class="ck-header" id="grp_header" tagname="header">
+			<xf:group class="ck-header-inner" id="grp_headerInner">
 
 				<w2:anchor class="ck-brand" id="lnk_brand" outerDiv="false" ev:onclick="scwin.lnk_brand_onclick">
 					<xf:label><![CDATA[SSC CHECK-IN]]></xf:label>
@@ -155,9 +467,9 @@
 				<!-- Menu được dựng bằng script theo quyền của người dùng -->
 				<xf:group class="ck-nav" id="grp_nav" tagname="nav"/>
 
-				<xf:group class="ck-user" id="">
+				<xf:group class="ck-user" id="grp_user">
 					<w2:textbox class="ck-avatar" id="txt_avatar" label="" tagname="span"/>
-					<xf:group class="ck-user-info" id="">
+					<xf:group class="ck-user-info" id="grp_userInfo">
 						<w2:textbox class="ck-user-name" id="txt_name" label="" tagname="span"/>
 						<w2:textbox class="ck-user-role" id="txt_role" label="" tagname="span"/>
 					</xf:group>

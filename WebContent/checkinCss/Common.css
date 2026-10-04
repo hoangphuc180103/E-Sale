@@ -200,6 +200,131 @@ html, body { margin: 0; padding: 0; }
 .ck-layout .ck-footer .ck-footer-brand { color: var(--green-900); font-weight: 600; }
 .ck-layout .ck-footer-right { display: flex; align-items: center; gap: 18px; }
 
+/* =====================================================================
+ * Header: nhóm menu dạng dropdown (vd "Admin" -> Người dùng, Vai trò)
+ * DÁN ĐOẠN NÀY VÀO CUỐI FILE checkinCss/Common.css
+ * ===================================================================== */
+
+/* Dropdown cần tràn ra ngoài header, nên không được cắt */
+.ck-header,
+.ck-header-inner,
+.ck-nav {
+	overflow: visible;
+}
+
+/* Logo và khối tài khoản giữ nguyên kích thước */
+.ck-brand,
+.ck-user {
+	flex-shrink: 0;
+}
+
+.ck-nav-item {
+	white-space: nowrap;
+}
+
+/* ---------- Nút mở nhóm ---------- */
+.ck-nav-group {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	z-index: 1000;
+}
+
+/* Bỏ style mặc định của <button>, để nút trông giống các mục menu khác */
+.ck-nav-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	color: #63746b;           /* cùng màu chữ các mục menu khác */
+	cursor: pointer;
+}
+.ck-nav-trigger:hover,
+.ck-nav-group.is-open .ck-nav-trigger { color: #0f7b4f; }
+.ck-nav-trigger.is-active { color: #0f7b4f; }
+
+/* Mũi tên nhỏ, xoay lên khi mở */
+.ck-nav-trigger::after {
+	content: "";
+	width: 6px;
+	height: 6px;
+	margin-top: -3px;
+	border-right: 1.5px solid currentColor;
+	border-bottom: 1.5px solid currentColor;
+	transform: rotate(45deg);
+	transition: transform .15s ease;
+}
+.ck-nav-group.is-open .ck-nav-trigger::after {
+	margin-top: 3px;
+	transform: rotate(-135deg);
+}
+.ck-nav-trigger:focus-visible {
+	outline: 2px solid #14935f;
+	outline-offset: 2px;
+	border-radius: 6px;
+}
+
+/* ---------- Bảng dropdown ---------- */
+/* position: fixed + toạ độ do script tính, để không bị khung wframe cắt */
+.ck-nav-menu {
+	position: fixed;
+	top: 64px;
+	left: 0;
+	z-index: 3000;
+	display: none;
+	min-width: 260px;
+	padding: 6px;
+	background: #ffffff;
+	border: 1px solid #d5e2da;
+	border-radius: 12px;
+	box-shadow: 0 14px 36px rgba(11, 61, 42, .16);
+}
+.ck-nav-group.is-open .ck-nav-menu {
+	display: block;
+}
+
+.ck-nav-menu-item {
+	display: block;
+	padding: 10px 12px;
+	border-radius: 8px;
+	color: #16241d;
+	text-decoration: none;
+	transition: background-color .12s ease;
+}
+.ck-nav-menu-item:hover,
+.ck-nav-menu-item:focus-visible {
+	background: #f3f8f5;
+	outline: none;
+}
+.ck-nav-menu-item.is-active {
+	background: #dff3e8;
+}
+
+.ck-nav-menu-title {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	color: #16241d;
+}
+.ck-nav-menu-item.is-active .ck-nav-menu-title {
+	color: #0f7b4f;
+}
+
+.ck-nav-menu-desc {
+	display: block;
+	margin-top: 2px;
+	font-size: 12px;
+	color: #63746b;
+	white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ck-nav-trigger::after { transition: none; }
+}
+
 /* ---------------- Màn hình hẹp ---------------- */
 @media (max-width: 900px) {
     .ck-layout .ck-header-inner { flex-wrap: wrap; height: auto; gap: 0 16px; padding: 10px 16px 0; }

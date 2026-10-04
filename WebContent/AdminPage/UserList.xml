@@ -1,0 +1,2122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/AdminCss/Userlist.css" type="text/css"?>
+<?xml-stylesheet href="/AdminCss/Userlist.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+<head>
+	<w2:type>DEFAULT</w2:type>
+	<w2:buildDate/>
+	<xf:model>
+		<w2:dataCollection baseNode="map">
+			<!-- Danh sách vai trò dùng cho bộ lọc và form (đổ từ GET /api/roles) -->
+			<w2:dataList baseNode="list" repeatNode="map" id="dlt_roleOptions" saveRemovedData="true">
+				<w2:columnInfo>
+					<w2:column id="roleCode" name="Mã vai trò" dataType="text"/>
+					<w2:column id="roleName" name="Tên vai trò" dataType="text"/>
+				</w2:columnInfo>
+			</w2:dataList>
+		</w2:dataCollection>
+		<w2:workflowCollection/>
+	</xf:model>
+	<w2:layoutInfo/>
+	<w2:publicInfo method=""/>
+	<script type="text/javascript" lazy="false"><![CDATA[
+/* =====================================================================
+ * 2.4 QUẢN LÝ NGƯỜI DÙNG — SSC Check-in
+ * ===================================================================== */
+
+/* ---------- Cấu hình: chỉnh cho khớp dự án ---------- */
+scwin.CTX = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+scwin.WS_ENTRY = scwin.CTX + "/websquare/websquare.html";
+// Đường dẫn trang đang mở, vd "/AdminPage/UserList.xml" -> thư mục "/AdminPage/"
+scwin.CUR_PATH = (function () {
+	var m = /[?&]w2xPath=([^&#]*)/.exec(window.location.search);
+	return m ? decodeURIComponent(m[1]) : "";
+})();
+scwin.CUR_DIR = scwin.CUR_PATH.replace(/[^\/]*$/, "");
+scwin.CONFIG = {
+	API_BASE: "http://localhost:8081",
+	TOKEN_KEYS: ["ssc_token"],
+	LOGIN_URL: scwin.WS_ENTRY + "?w2xPath=" + scwin.CTX + "/authPage/LoginPage.xml",
+	// RoleList.xml đặt CÙNG THƯ MỤC với file này nên tự tính được đường dẫn
+	ROLE_PAGE_URL: scwin.WS_ENTRY + "?w2xPath=" + scwin.CUR_DIR + "RoleList.xml"
+};
+// Nhãn tiếng Việt cho quyền, nhóm theo module (dùng ở tab Vai trò trong drawer)
+scwin.MODULES = ["Sự kiện", "Khách mời", "Hội trường", "Check-in", "In ấn", "Báo cáo", "Hệ thống"];
+scwin.PERM = {
+	EVENT_VIEW: ["Sự kiện", "Xem"], EVENT_CREATE: ["Sự kiện", "Tạo"], EVENT_UPDATE: ["Sự kiện", "Sửa"], EVENT_DELETE: ["Sự kiện", "Xóa"],
+	GUEST_VIEW: ["Khách mời", "Xem"], GUEST_CREATE: ["Khách mời", "Thêm"], GUEST_UPDATE: ["Khách mời", "Sửa"],
+	GUEST_DELETE: ["Khách mời", "Xóa"], GUEST_IMPORT: ["Khách mời", "Nhập file"], GUEST_EXPORT: ["Khách mời", "Xuất file"],
+	HALL_VIEW: ["Hội trường", "Xem"], HALL_MANAGE: ["Hội trường", "Quản lý"], HALL_DELETE: ["Hội trường", "Xóa"],
+	CHECKIN_SCAN: ["Check-in", "Quét QR"], PRINT_BADGE: ["In ấn", "In thẻ"], TEMPLATE_MANAGE: ["In ấn", "Quản lý mẫu thẻ"],
+	REPORT_ALL: ["Báo cáo", "Xem toàn bộ"], REPORT_LIMITED: ["Báo cáo", "Xem giới hạn"],
+	USER_MANAGE: ["Hệ thống", "Quản lý người dùng"], ROLE_MANAGE: ["Hệ thống", "Quản lý vai trò"], SYSTEM_CONFIG: ["Hệ thống", "Cấu hình"]
+};
+scwin.FALLBACK_ROLES = [
+	{ roleCode: "ADMIN", roleName: "Admin" },
+	{ roleCode: "EVENT_STAFF", roleName: "Event Staff" }
+];
+scwin.RX = {
+	username: /^[A-Za-z0-9._-]{4,50}$/,
+	password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/,
+	phone: /^$|^\+?[0-9 .()-]{8,20}$/,
+	email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+};
+scwin.ACTIONS = {
+	CREATE:          { label: "Tạo người dùng",   tone: "ok" },
+	UPDATE:          { label: "Sửa hồ sơ",        tone: "info" },
+	ACTIVATE:        { label: "Kích hoạt",        tone: "ok" },
+	DEACTIVATE:      { label: "Vô hiệu hóa",      tone: "warn" },
+	UPDATE_AVATAR:   { label: "Đổi ảnh đại diện", tone: "info" },
+	DELETE:          { label: "Xóa người dùng",   tone: "danger" },
+	CHANGE_PASSWORD: { label: "Đổi mật khẩu",     tone: "info" },
+	ASSIGN_ROLE:     { label: "Gán vai trò",      tone: "ok" },
+	REMOVE_ROLE:     { label: "Gỡ vai trò",       tone: "danger" }
+};
+scwin.FIELD_LABELS = { fullName: "Họ tên", email: "Email", phone: "SĐT", active: "Trạng thái", avatarUrl: "Ảnh đại diện" };
+scwin.FAIL_REASONS = { WRONG_PASSWORD: "Sai mật khẩu", LOCKED: "Tài khoản đang bị khóa", INACTIVE: "Tài khoản bị vô hiệu hóa" };
+scwin.LOGOUT_REASONS = { MANUAL: "chủ động", TIMEOUT: "hết phiên", FORCED: "bị buộc đăng xuất" };
+
+/* ---------- Trạng thái ---------- */
+scwin.state = {
+	page: 0, size: 10, sort: "userId,desc",
+	total: 0, totalPages: 0, rows: [], reqSeq: 0,
+	me: null, perms: [], roleMap: {}, roleList: [], canRole: false, advOpen: false
+};
+scwin.form = { mode: "create", userId: null, original: null, avatarFile: null, previewUrl: null, busy: false };
+scwin.drawer = { open: false, userId: null, detail: null, tab: "info", act: "audit",
+	audit: { page: 0, last: true, loaded: false }, login: { page: 0, last: true, loaded: false } };
+scwin.layers = [];
+scwin.timers = {};
+scwin._confirm = null;
+scwin._skipRow = false;
+
+/* =====================================================================
+ * Vòng đời trang
+ * ===================================================================== */
+scwin.onpageload = function () {
+	scwin.fields = {
+		username:  { input: ibx_fUsername, wrap: grp_fUsername, err: tbx_eUsername },
+		password:  { input: sct_fPassword, wrap: grp_fPassword, err: tbx_ePassword },
+		fullName:  { input: ibx_fFullName, wrap: grp_fFullName, err: tbx_eFullName },
+		email:     { input: ibx_fEmail,    wrap: grp_fEmail,    err: tbx_eEmail },
+		phone:     { input: ibx_fPhone,    wrap: grp_fPhone,    err: tbx_ePhone },
+		roleCode:  { input: sbx_fRole,     wrap: grp_fRoles,    err: tbx_eRoles },
+		active:    { input: rdo_fActive,   wrap: grp_fActive,   err: tbx_eActive },
+		avatar:    { input: null,          wrap: grp_avatarPick, err: tbx_eAvatar }
+	};
+	scwin.pwdFields = {
+		oldPassword:     { input: sct_pOld,     wrap: grp_pOld,     err: tbx_epOld },
+		newPassword:     { input: sct_pNew,     wrap: grp_pNew,     err: tbx_epNew },
+		confirmPassword: { input: sct_pConfirm, wrap: grp_pConfirm, err: tbx_epConfirm }
+	};
+	sbx_sort.setValue(scwin.state.sort);
+	sbx_size.setValue(String(scwin.state.size));
+	scwin.updateSortHeads();
+
+	scwin._onKeydown = function (e) {
+		if (e.key === "Escape" || e.keyCode === 27) scwin.closeTopLayer();
+	};
+	document.addEventListener("keydown", scwin._onKeydown);
+	scwin.bootstrap();
+};
+
+scwin.onpageunload = function () {
+	document.removeEventListener("keydown", scwin._onKeydown);
+	for (var k in scwin.timers) { if (scwin.timers.hasOwnProperty(k)) clearTimeout(scwin.timers[k]); }
+	scwin.revokePreview();
+};
+
+scwin.bootstrap = function () {
+	scwin.setListState("loading");
+	Promise.all([
+		scwin.api("GET", "/api/auth/me").then(function (r) { return r.data; }).catch(function () { return null; }),
+		scwin.api("GET", "/api/common/layout").then(function (r) { return r.data; }).catch(function () { return null; })
+	]).then(function (res) {
+		var me = res[0], layout = res[1] || {};
+		scwin.state.me = me || layout.user || null;
+		var known = !!(layout && layout.permissions);
+		scwin.state.perms = scwin.normalizePerms(layout.permissions);
+		var canUser = !known || scwin.hasPerm("USER_MANAGE");
+		scwin.state.canRole = known ? scwin.hasPerm("ROLE_MANAGE") : scwin.isAdmin();
+
+		if (!canUser) {
+			scwin.hide(grp_main); scwin.hide(btn_add); scwin.show(grp_forbidden);
+			return;
+		}
+		if (scwin.state.me) scwin.show(btn_myPwd);
+		return scwin.loadRoles().then(function () {
+			scwin.loadUsers();
+			scwin.loadStats();
+		});
+	});
+};
+
+/* =====================================================================
+ * Gọi API
+ * ===================================================================== */
+scwin.getToken = function () {
+	var keys = scwin.CONFIG.TOKEN_KEYS, i, v;
+	for (i = 0; i < keys.length; i++) {
+		try { v = window.localStorage.getItem(keys[i]) || window.sessionStorage.getItem(keys[i]); } catch (e) { v = null; }
+		if (v) return String(v).replace(/^Bearer\s+/i, "");
+	}
+	return null;
+};
+
+scwin.qs = function (obj) {
+	var parts = [], k, v;
+	for (k in obj) {
+		if (!obj.hasOwnProperty(k)) continue;
+		v = obj[k];
+		if (v === null || v === undefined || v === "") continue;
+		parts.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+	}
+	return parts.length ? "?" + parts.join("&") : "";
+};
+
+scwin.api = function (method, path, body) {
+	var headers = { "Accept": "application/json" };
+	var token = scwin.getToken();
+	if (token) headers["Authorization"] = "Bearer " + token;
+	var init = { method: method, headers: headers };
+	if (typeof FormData !== "undefined" && body instanceof FormData) {
+		init.body = body;                                   // không tự set Content-Type cho multipart
+	} else if (body !== undefined && body !== null) {
+		headers["Content-Type"] = "application/json;charset=UTF-8";
+		init.body = JSON.stringify(body);
+	}
+	return fetch(scwin.CONFIG.API_BASE + path, init).then(function (res) {
+		return res.text().then(function (txt) {
+			var json = null;
+			try { json = txt ? JSON.parse(txt) : null; } catch (e) { json = null; }
+			if (!json) json = { success: res.ok, code: res.ok ? "OK" : "HTTP_" + res.status,
+				message: res.ok ? "" : "Máy chủ trả về lỗi " + res.status + "." };
+			if (res.status === 401) scwin.handleUnauthorized();
+			if (!res.ok || json.success === false) {
+				var err = new Error(json.message || "Thao tác không thành công.");
+				err.status = res.status; err.code = json.code; err.data = json.data;
+				if (res.status === 403 && json.code === "FORBIDDEN") err.message = "Bạn không có quyền thực hiện thao tác này.";
+				throw err;
+			}
+			return json;
+		});
+	}, function () {
+		var err = new Error("Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại.");
+		err.code = "NETWORK";
+		throw err;
+	});
+};
+
+scwin.handleUnauthorized = function () {
+	if (scwin._redirecting) return;
+	scwin._redirecting = true;
+	["ssc_token", "ssc_user", "ssc_permissions"].forEach(function (k) {
+		try { localStorage.removeItem(k); sessionStorage.removeItem(k); } catch (e) {}
+	});
+	scwin.toast("error", "Phiên đăng nhập đã hết hạn. Đang chuyển tới trang đăng nhập…", 2000);
+	setTimeout(function () { window.location.href = scwin.CONFIG.LOGIN_URL; }, 1200);
+};
+
+/* =====================================================================
+ * Tiện ích
+ * ===================================================================== */
+scwin.show = function (c) { if (c) c.removeClass("is-hidden"); };
+scwin.hide = function (c) { if (c) c.addClass("is-hidden"); };
+scwin.toggle = function (c, on) { if (on) scwin.show(c); else scwin.hide(c); };
+scwin.swapClass = function (c, list, cls) {
+	for (var i = 0; i < list.length; i++) c.removeClass(list[i]);
+	if (cls) c.addClass(cls);
+};
+scwin.trim = function (s) { return (s === null || s === undefined ? "" : String(s)).replace(/^\s+|\s+$/g, ""); };
+scwin.inputEl = function (c) {
+	try {
+		var r = c.render;
+		if (!r) return null;
+		if (r.tagName === "INPUT" || r.tagName === "TEXTAREA") return r;
+		return r.querySelector("input,textarea");
+	} catch (e) { return null; }
+};
+scwin.liveVal = function (c) {
+	var el = scwin.inputEl(c);
+	if (el && typeof el.value === "string") return el.value;
+	var v = c.getValue();
+	return v === null || v === undefined ? "" : String(v);
+};
+scwin.val = function (c) { return scwin.trim(scwin.liveVal(c)); };
+scwin.splitVals = function (v) {
+	v = scwin.trim(v);
+	return v ? v.split(/[\s,]+/) : [];
+};
+scwin.normalizePerms = function (list) {
+	var out = [];
+	if (!list || !list.length) return out;
+	for (var i = 0; i < list.length; i++) {
+		var p = list[i];
+		out.push(typeof p === "string" ? p : (p.code || p.permissionCode || p.permCode || ""));
+	}
+	return out;
+};
+scwin.hasPerm = function (code) { return scwin.state.perms.indexOf(code) >= 0; };
+scwin.meId = function () { return scwin.state.me ? scwin.state.me.userId : null; };
+scwin.isAdmin = function () {
+	var me = scwin.state.me;
+	return !!(me && me.roles && me.roles.indexOf("ADMIN") >= 0);
+};
+scwin.pad = function (n) { return n < 10 ? "0" + n : String(n); };
+scwin.fmtDateTime = function (iso) {
+	if (!iso) return "—";
+	var d = new Date(iso);
+	if (isNaN(d.getTime())) return String(iso);
+	return scwin.pad(d.getDate()) + "/" + scwin.pad(d.getMonth() + 1) + "/" + d.getFullYear() +
+		" " + scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes());
+};
+scwin.fmtDay = function (s) {
+	if (!s) return "—";
+	var p = String(s).split("-");
+	return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : s;
+};
+scwin.todayIso = function () {
+	var d = new Date();
+	return d.getFullYear() + "-" + scwin.pad(d.getMonth() + 1) + "-" + scwin.pad(d.getDate());
+};
+scwin.relTime = function (iso) {
+	var d = new Date(iso);
+	if (isNaN(d.getTime())) return "—";
+	var s = Math.floor((Date.now() - d.getTime()) / 1000);
+	if (s < 60) return "Vừa xong";
+	var m = Math.floor(s / 60);
+	if (m < 60) return m + " phút trước";
+	var h = Math.floor(m / 60);
+	if (h < 24) return h + " giờ trước";
+	var dd = Math.floor(h / 24);
+	if (dd < 7) return dd + " ngày trước";
+	return scwin.pad(d.getDate()) + "/" + scwin.pad(d.getMonth() + 1) + "/" + d.getFullYear();
+};
+scwin.initials = function (name) {
+	name = scwin.trim(name);
+	if (!name) return "?";
+	var parts = name.split(/\s+/);
+	return parts[parts.length - 1].charAt(0).toUpperCase();
+};
+scwin.cdn = function (url, size) {
+	if (!url || url.indexOf("res.cloudinary.com") < 0 || url.indexOf("/image/upload/") < 0) return url;
+	return url.replace("/image/upload/", "/image/upload/c_fill,g_face,w_" + size + ",h_" + size + "/");
+};
+scwin.paintAvatar = function (wrap, img, initial, url, name, size) {
+	initial.setValue(scwin.initials(name));
+	if (url) {
+		try {
+			if (img.render) img.render.onerror = function () { wrap.removeClass("has-img"); };
+		} catch (e) {}
+		img.setSrc(scwin.cdn(url, size));
+		wrap.addClass("has-img");
+	} else {
+		wrap.removeClass("has-img");
+	}
+};
+scwin.roleLabel = function (code, name) {
+	return code ? (name || scwin.state.roleMap[code] || code) : "Chưa có vai trò";
+};
+scwin.roleClass = function (code) {
+	if (!code) return "role-chip--none";
+	return code === "ADMIN" ? "role-chip--admin" : "role-chip--staff";
+};
+// Mã vai trò hiện tại trong UserDetail ("" nếu chưa có)
+scwin.roleOf = function (detail) {
+	return detail && detail.role && detail.role.roleCode ? detail.role.roleCode : "";
+};
+scwin.roleInfo = function (code) {
+	var list = scwin.state.roleList || [];
+	for (var i = 0; i < list.length; i++) if (list[i].roleCode === code) return list[i];
+	return null;
+};
+scwin.permText = function (perms) {
+	var groups = {}, lines = [], i, p;
+	for (i = 0; i < (perms || []).length; i++) {
+		p = scwin.PERM[perms[i]];
+		if (p) (groups[p[0]] = groups[p[0]] || []).push(p[1]);
+	}
+	for (i = 0; i < scwin.MODULES.length; i++) {
+		if (groups[scwin.MODULES[i]]) lines.push(scwin.MODULES[i] + ": " + groups[scwin.MODULES[i]].join(", "));
+	}
+	return lines.join("\n");
+};
+scwin.genIndex = function (comp) {
+	try { if (comp && typeof comp.getGeneratedIndex === "function") return comp.getGeneratedIndex(); } catch (e) {}
+	try { var v = comp.getUserData("idx"); if (v !== null && v !== undefined && v !== "") return parseInt(v, 10); } catch (e2) {}
+	return -1;
+};
+scwin.tagIndex = function (gen, idx, ids) {
+	for (var i = 0; i < ids.length; i++) {
+		try { gen.getChild(idx, ids[i]).setUserData("idx", String(idx)); } catch (e) {}
+	}
+};
+scwin.browserOf = function (ua) {
+	ua = ua || "";
+	var b = /Edg\//.test(ua) ? "Edge" : /OPR\//.test(ua) ? "Opera" : /Chrome\//.test(ua) ? "Chrome" :
+		/Firefox\//.test(ua) ? "Firefox" : /Safari\//.test(ua) ? "Safari" : "Trình duyệt khác";
+	var os = /Windows/.test(ua) ? "Windows" : /Android/.test(ua) ? "Android" : /iPhone|iPad/.test(ua) ? "iOS" :
+		/Mac OS/.test(ua) ? "macOS" : /Linux/.test(ua) ? "Linux" : "";
+	return os ? b + " trên " + os : b;
+};
+
+/* ---------- Lớp phủ (modal / drawer) ---------- */
+scwin.openLayer = function (c) {
+	clearTimeout(c.__hideTimer);
+	c.removeClass("is-hidden");
+	setTimeout(function () { c.addClass("is-open"); }, 10);
+	if (scwin.layers.indexOf(c) < 0) scwin.layers.push(c);
+};
+scwin.closeLayer = function (c) {
+	c.removeClass("is-open");
+	var i = scwin.layers.indexOf(c);
+	if (i >= 0) scwin.layers.splice(i, 1);
+	c.__hideTimer = setTimeout(function () { c.addClass("is-hidden"); }, 220);
+};
+scwin.closeTopLayer = function () {
+	var top = scwin.layers[scwin.layers.length - 1];
+	if (!top) return;
+	if (top === grp_confirm) scwin.closeConfirm(false);
+	else if (top === grp_formModal) scwin.closeForm(false);
+	else if (top === grp_pwdModal) scwin.closePwd(false);
+	else if (top === grp_drawer) scwin.closeDrawer();
+};
+
+/* ---------- Toast ---------- */
+scwin.toast = function (type, msg, ms) {
+	clearTimeout(scwin.timers.toast);
+	scwin.swapClass(grp_toast, ["toast--success", "toast--error", "toast--warn", "toast--info"], "toast--" + type);
+	tbx_toastIcon.setValue(type === "success" ? "✓" : type === "info" ? "i" : "!");
+	tbx_toastMsg.setValue(msg);
+	grp_toast.removeClass("is-hidden");
+	setTimeout(function () { grp_toast.addClass("is-show"); }, 10);
+	scwin.timers.toast = setTimeout(scwin.hideToast, ms || 3200);
+};
+scwin.hideToast = function () {
+	grp_toast.removeClass("is-show");
+	scwin.timers.toastHide = setTimeout(function () { grp_toast.addClass("is-hidden"); }, 220);
+};
+scwin.btn_toastClose_onclick = function () { clearTimeout(scwin.timers.toast); scwin.hideToast(); };
+
+/* =====================================================================
+ * Vai trò & thống kê
+ * ===================================================================== */
+scwin.loadRoles = function () {
+	var p = scwin.state.canRole
+		? scwin.api("GET", "/api/roles").then(function (r) {
+			var list = [];
+			for (var i = 0; i < (r.data || []).length; i++) if (r.data[i].active !== false) list.push(r.data[i]);
+			return list.length ? list : scwin.FALLBACK_ROLES;
+		}).catch(function () { return scwin.FALLBACK_ROLES; })
+		: Promise.resolve(scwin.FALLBACK_ROLES);
+	return p.then(function (list) {
+		var rows = [];
+		scwin.state.roleList = list;
+		scwin.state.roleMap = {};
+		for (var i = 0; i < list.length; i++) {
+			scwin.state.roleMap[list[i].roleCode] = list[i].roleName;
+			rows.push({ roleCode: list[i].roleCode, roleName: list[i].roleName });
+		}
+		dlt_roleOptions.setJSON(rows);
+	});
+};
+
+scwin.loadStats = function () {
+	var defs = [
+		[{}, tbx_statTotal],
+		[{ active: true }, tbx_statActive],
+		[{ active: false }, tbx_statInactive],
+		[{ roleCode: "ADMIN" }, tbx_statAdmin]
+	];
+	defs.forEach(function (d) {
+		var q = d[0]; q.page = 0; q.size = 1;
+		scwin.api("GET", "/api/users" + scwin.qs(q)).then(function (r) {
+			d[1].setValue(String((r.data && r.data.totalElements) || 0));
+		}).catch(function () { d[1].setValue("—"); });
+	});
+};
+
+scwin.syncStatCards = function () {
+	var role = sbx_role.getValue(), st = sbx_status.getValue(), kw = scwin.val(ibx_keyword);
+	var plain = !kw && !scwin.state.advOpen;
+	scwin.swapClass(grp_statTotal, ["stat-card--selected"], plain && !role && !st ? "stat-card--selected" : null);
+	scwin.swapClass(grp_statActive, ["stat-card--selected"], plain && !role && st === "true" ? "stat-card--selected" : null);
+	scwin.swapClass(grp_statInactive, ["stat-card--selected"], plain && !role && st === "false" ? "stat-card--selected" : null);
+	scwin.swapClass(grp_statAdmin, ["stat-card--selected"], plain && role === "ADMIN" && !st ? "stat-card--selected" : null);
+};
+scwin.statTotal_onclick = function () { scwin.resetFilters(false); scwin.applyFilters(); };
+scwin.statActive_onclick = function () { scwin.resetFilters(false); sbx_status.setValue("true"); scwin.applyFilters(); };
+scwin.statInactive_onclick = function () { scwin.resetFilters(false); sbx_status.setValue("false"); scwin.applyFilters(); };
+scwin.statAdmin_onclick = function () { scwin.resetFilters(false); sbx_role.setValue("ADMIN"); scwin.applyFilters(); };
+
+/* =====================================================================
+ * Danh sách người dùng
+ * ===================================================================== */
+scwin.filterQuery = function () {
+	var q = {
+		keyword: scwin.val(ibx_keyword),
+		roleCode: sbx_role.getValue(),
+		active: sbx_status.getValue()
+	};
+	if (scwin.state.advOpen) {
+		q.username = scwin.val(ibx_fltUsername);
+		q.fullName = scwin.val(ibx_fltFullName);
+		q.email = scwin.val(ibx_fltEmail);
+	}
+	return q;
+};
+scwin.hasFilters = function () {
+	var q = scwin.filterQuery();
+	return !!(q.keyword || q.roleCode || q.active || q.username || q.fullName || q.email);
+};
+
+scwin.loadUsers = function () {
+	var s = scwin.state, seq = ++s.reqSeq;
+	var q = scwin.filterQuery();
+	q.page = s.page; q.size = s.size; q.sort = s.sort;
+	scwin.setListState("loading");
+	scwin.api("GET", "/api/users" + scwin.qs(q)).then(function (r) {
+		if (seq !== s.reqSeq) return;
+		var d = r.data || {};
+		s.rows = d.content || [];
+		s.total = d.totalElements || 0;
+		s.totalPages = d.totalPages || 0;
+		if (!s.rows.length && s.page > 0 && s.page >= s.totalPages) {
+			s.page = Math.max(0, s.totalPages - 1);
+			scwin.loadUsers();
+			return;
+		}
+		scwin.renderRows();
+		scwin.renderPager();
+		scwin.setListState(s.rows.length ? "data" : "empty");
+	}).catch(function (err) {
+		if (seq !== s.reqSeq) return;
+		tbx_errDesc.setValue(err.message);
+		scwin.setListState("error");
+	});
+};
+
+scwin.setListState = function (st) {
+	scwin.toggle(grp_skeleton, st === "loading");
+	scwin.toggle(gen_user, st === "data");
+	scwin.toggle(grp_empty, st === "empty");
+	scwin.toggle(grp_error, st === "error");
+	scwin.toggle(grp_pager, st === "data");
+	if (st === "loading") tbx_summary.setValue("Đang tải danh sách…");
+	if (st === "error") tbx_summary.setValue("");
+	if (st === "empty") {
+		var filtered = scwin.hasFilters();
+		tbx_summary.setValue("Không có kết quả");
+		tbx_emptyTitle.setValue(filtered ? "Không có người dùng khớp bộ lọc" : "Chưa có người dùng nào");
+		tbx_emptyDesc.setValue(filtered ? "Thử từ khóa khác hoặc bỏ bớt điều kiện lọc." : "Tạo tài khoản đầu tiên để bắt đầu phân quyền.");
+		scwin.toggle(btn_emptyReset, filtered);
+		scwin.toggle(btn_emptyAdd, !filtered);
+	}
+};
+
+scwin.renderRows = function () {
+	var rows = scwin.state.rows, meId = scwin.meId();
+	gen_user.removeAll();
+	for (var i = 0; i < rows.length; i++) {
+		var u = rows[i];
+		var idx = gen_user.insertChild();
+		var g = function (id) { return gen_user.getChild(idx, id); };
+		var self = u.userId === meId;
+		scwin.tagIndex(gen_user, idx, ["grp_row", "btn_rEdit", "btn_rToggle", "btn_rDelete"]);
+
+		scwin.paintAvatar(g("grp_rAvatar"), g("img_rAvatar"), g("tbx_rInitial"), u.avatarUrl, u.fullName || u.username, 80);
+		g("tbx_rName").setValue(u.fullName || "—");
+		g("tbx_rUsername").setValue("@" + u.username);
+		scwin.toggle(g("tbx_rSelf"), self);
+		g("tbx_rEmail").setValue(u.email || "—");
+		g("tbx_rPhone").setValue(u.phone || "Chưa có số điện thoại");
+		if (!u.phone) g("tbx_rPhone").addClass("urow__sub--empty");
+
+		var rc = g("tbx_rRoles");
+		rc.setValue(scwin.roleLabel(u.roleCode, u.roleName));
+		rc.addClass(scwin.roleClass(u.roleCode));
+
+		var st = g("tbx_rStatus");
+		st.setValue(u.active ? "Hoạt động" : "Vô hiệu hóa");
+		st.addClass(u.active ? "status-badge--on" : "status-badge--off");
+
+		g("tbx_rLogin").setValue(u.lastLoginAt ? scwin.relTime(u.lastLoginAt) : "Chưa đăng nhập");
+		g("tbx_rLoginFull").setValue(u.lastLoginAt ? scwin.fmtDateTime(u.lastLoginAt) : "");
+		if (!u.lastLoginAt) g("tbx_rLogin").addClass("urow__login--never");
+
+		var bt = g("btn_rToggle");
+		bt.setValue(u.active ? "Vô hiệu" : "Kích hoạt");
+		bt.addClass(u.active ? "row-btn--warn" : "row-btn--ok");
+		if (self) {
+			bt.setDisabled(true);
+			g("btn_rDelete").setDisabled(true);
+			g("grp_row").addClass("urow--self");
+		}
+		if (!u.active) g("grp_row").addClass("urow--inactive");
+	}
+};
+
+scwin.renderPager = function () {
+	var s = scwin.state;
+	var from = s.total ? s.page * s.size + 1 : 0;
+	var to = Math.min(s.total, (s.page + 1) * s.size);
+	tbx_summary.setValue(s.total + " người dùng" + (scwin.hasFilters() ? " khớp bộ lọc" : ""));
+	tbx_pageRange.setValue("Hiển thị " + from + "–" + to + " trên " + s.total);
+	tbx_pageNo.setValue((s.page + 1) + " / " + Math.max(1, s.totalPages));
+	btn_prev.setDisabled(s.page <= 0);
+	btn_next.setDisabled(s.page >= s.totalPages - 1);
+};
+
+scwin.rowOf = function (comp) {
+	var i = scwin.genIndex(comp);
+	return i >= 0 ? scwin.state.rows[i] : null;
+};
+scwin.guardRow = function (e) {
+	scwin._skipRow = true;
+	try { if (e && e.stopPropagation) e.stopPropagation(); } catch (x) {}
+	setTimeout(function () { scwin._skipRow = false; }, 0);
+};
+scwin.row_onclick = function () {
+	if (scwin._skipRow) { scwin._skipRow = false; return; }
+	var u = scwin.rowOf(this);
+	if (u) scwin.openDrawer(u.userId);
+};
+scwin.btn_rEdit_onclick = function (e) {
+	scwin.guardRow(e);
+	var u = scwin.rowOf(this);
+	if (u) scwin.openEditForm(u.userId);
+};
+scwin.btn_rToggle_onclick = function (e) {
+	scwin.guardRow(e);
+	var u = scwin.rowOf(this);
+	if (u) scwin.toggleStatus(u);
+};
+scwin.btn_rDelete_onclick = function (e) {
+	scwin.guardRow(e);
+	var u = scwin.rowOf(this);
+	if (u) scwin.confirmDelete(u);
+};
+
+/* ---------- Bộ lọc, sắp xếp, phân trang ---------- */
+scwin.applyFilters = function () {
+	scwin.state.page = 0;
+	scwin.syncStatCards();
+	scwin.loadUsers();
+};
+scwin.filter_onkeyup = function (e) {
+	var key = e && (e.keyCode || e.which);
+	clearTimeout(scwin.timers.search);
+	if (key === 13) { scwin.applyFilters(); return; }
+	scwin.timers.search = setTimeout(scwin.applyFilters, 350);
+};
+scwin.filter_onchange = function () { scwin.applyFilters(); };
+scwin.sort_onchange = function () {
+	scwin.state.sort = sbx_sort.getValue() || "userId,desc";
+	scwin.updateSortHeads();
+	scwin.applyFilters();
+};
+scwin.size_onchange = function () {
+	scwin.state.size = parseInt(sbx_size.getValue(), 10) || 10;
+	scwin.applyFilters();
+};
+scwin.setSort = function (sort) {
+	scwin.state.sort = sort;
+	sbx_sort.setValue(sort);
+	scwin.updateSortHeads();
+	scwin.applyFilters();
+};
+scwin.btn_sortName_onclick = function () {
+	scwin.setSort(scwin.state.sort === "fullName,asc" ? "fullName,desc" : "fullName,asc");
+};
+scwin.btn_sortLogin_onclick = function () {
+	scwin.setSort(scwin.state.sort === "lastLoginAt,desc" ? "lastLoginAt,asc" : "lastLoginAt,desc");
+};
+scwin.updateSortHeads = function () {
+	var s = scwin.state.sort, cls = ["is-asc", "is-desc"];
+	scwin.swapClass(btn_sortName, cls, s.indexOf("fullName,") === 0 ? (s.indexOf(",asc") > 0 ? "is-asc" : "is-desc") : null);
+	scwin.swapClass(btn_sortLogin, cls, s.indexOf("lastLoginAt,") === 0 ? (s.indexOf(",asc") > 0 ? "is-asc" : "is-desc") : null);
+};
+scwin.btn_prev_onclick = function () {
+	if (scwin.state.page > 0) { scwin.state.page--; scwin.loadUsers(); }
+};
+scwin.btn_next_onclick = function () {
+	if (scwin.state.page < scwin.state.totalPages - 1) { scwin.state.page++; scwin.loadUsers(); }
+};
+scwin.btn_advToggle_onclick = function () {
+	var s = scwin.state;
+	s.advOpen = !s.advOpen;
+	scwin.toggle(grp_adv, s.advOpen);
+	scwin.swapClass(btn_advToggle, ["is-active"], s.advOpen ? "is-active" : null);
+	if (!s.advOpen) {
+		var had = scwin.val(ibx_fltUsername) || scwin.val(ibx_fltFullName) || scwin.val(ibx_fltEmail);
+		ibx_fltUsername.setValue(""); ibx_fltFullName.setValue(""); ibx_fltEmail.setValue("");
+		if (had) scwin.applyFilters();
+	} else {
+		setTimeout(function () { try { ibx_fltUsername.focus(); } catch (e) {} }, 30);
+	}
+};
+scwin.resetFilters = function (reload) {
+	ibx_keyword.setValue("");
+	ibx_fltUsername.setValue(""); ibx_fltFullName.setValue(""); ibx_fltEmail.setValue("");
+	sbx_role.setValue(""); sbx_status.setValue("");
+	if (reload !== false) scwin.applyFilters();
+};
+scwin.btn_reset_onclick = function () { scwin.resetFilters(true); };
+scwin.btn_retry_onclick = function () { scwin.loadUsers(); scwin.loadStats(); };
+
+/* =====================================================================
+ * Kích hoạt / vô hiệu hóa / xóa
+ * ===================================================================== */
+scwin.afterMutation = function (uid) {
+	scwin.loadUsers();
+	scwin.loadStats();
+	if (scwin.drawer.open && scwin.drawer.userId === uid) scwin.loadDetail();
+};
+
+scwin.toggleStatus = function (u) {
+	if (u.userId === scwin.meId()) { scwin.toast("warn", "Bạn không thể tự vô hiệu hóa tài khoản của mình."); return; }
+	var to = !u.active;
+	var run = function () {
+		return scwin.api("PATCH", "/api/users/" + u.userId + "/status", { active: to }).then(function (r) {
+			scwin.toast("success", to ? "Đã kích hoạt @" + u.username : "Đã vô hiệu hóa @" + u.username);
+			scwin.afterMutation(u.userId);
+		});
+	};
+	if (to) {
+		run().catch(function (e) { scwin.toast("error", e.message); });
+		return;
+	}
+	scwin.confirm({
+		title: "Vô hiệu hóa @" + u.username + "?",
+		message: "Người này sẽ không đăng nhập được cho tới khi được kích hoạt lại. Hồ sơ và lịch sử vẫn được giữ nguyên.",
+		okLabel: "Vô hiệu hóa", tone: "warn", onOk: run
+	});
+};
+
+scwin.confirmDelete = function (u) {
+	if (u.userId === scwin.meId()) { scwin.toast("warn", "Bạn không thể xóa tài khoản của chính mình."); return; }
+	scwin.confirm({
+		title: "Xóa " + (u.fullName || u.username) + "?",
+		message: "Tài khoản bị ẩn khỏi mọi danh sách và không đăng nhập được nữa. Lịch sử vẫn được lưu để tra cứu. Username và email này sẽ không dùng lại được.",
+		okLabel: "Xóa người dùng", tone: "danger", requireText: u.username,
+		onOk: function () {
+			return scwin.api("DELETE", "/api/users/" + u.userId + "?confirm=true").then(function () {
+				scwin.toast("success", "Đã xóa @" + u.username);
+				if (scwin.drawer.open && scwin.drawer.userId === u.userId) scwin.closeDrawer();
+				scwin.loadUsers();
+				scwin.loadStats();
+			});
+		}
+	});
+};
+
+/* =====================================================================
+ * Hộp thoại xác nhận
+ * ===================================================================== */
+scwin.confirm = function (o) {
+	scwin._confirm = o;
+	tbx_cfTitle.setValue(o.title);
+	tbx_cfMsg.setValue(o.message);
+	btn_cfOk.setValue(o.okLabel || "Xác nhận");
+	scwin.swapClass(grp_cfDialog, ["confirm--danger", "confirm--warn", "confirm--info"], "confirm--" + (o.tone || "info"));
+	tbx_cfIcon.setValue(o.tone === "info" ? "?" : "!");
+	scwin.hide(tbx_cfErr);
+	scwin.toggle(grp_cfReason, !!o.reason);
+	txa_cfReason.setValue("");
+	if (o.requireText) {
+		tbx_cfTypeLbl.setValue("Nhập " + o.requireText + " để xác nhận");
+		ibx_cfType.setValue("");
+		scwin.show(grp_cfType);
+		btn_cfOk.setDisabled(true);
+		setTimeout(function () { try { ibx_cfType.focus(); } catch (e) {} }, 60);
+	} else {
+		scwin.hide(grp_cfType);
+		btn_cfOk.setDisabled(false);
+	}
+	scwin.openLayer(grp_confirm);
+};
+scwin.cfType_onkeyup = function (e) {
+	var o = scwin._confirm;
+	if (!o) return;
+	var ok = scwin.val(ibx_cfType) === o.requireText;
+	btn_cfOk.setDisabled(!ok);
+	if (ok && e && (e.keyCode === 13 || e.which === 13)) scwin.btn_cfOk_onclick();
+};
+scwin.btn_cfOk_onclick = function () {
+	var o = scwin._confirm;
+	if (!o || o.busy) return;
+	if (o.requireText && scwin.val(ibx_cfType) !== o.requireText) return;
+	o.busy = true;
+	btn_cfOk.setDisabled(true); btn_cfCancel.setDisabled(true);
+	btn_cfOk.setValue("Đang xử lý…");
+	var reason = o.reason ? scwin.trim(scwin.liveVal(txa_cfReason)) : "";
+	if (reason.length > 500) { tbx_cfErr.setValue("Lý do tối đa 500 ký tự."); scwin.show(tbx_cfErr); o.busy = false; btn_cfOk.setDisabled(false); btn_cfCancel.setDisabled(false); btn_cfOk.setValue(o.okLabel || "Xác nhận"); return; }
+	Promise.resolve().then(function () { return o.onOk(reason); }).then(function () {
+		o.busy = false;
+		scwin.closeConfirm(true);
+	}).catch(function (e) {
+		o.busy = false;
+		tbx_cfErr.setValue(e.message);
+		scwin.show(tbx_cfErr);
+	}).then(function () {
+		btn_cfOk.setDisabled(false); btn_cfCancel.setDisabled(false);
+		btn_cfOk.setValue(o.okLabel || "Xác nhận");
+	});
+};
+scwin.closeConfirm = function (force) {
+	if (scwin._confirm && scwin._confirm.busy && !force) return;
+	scwin.closeLayer(grp_confirm);
+};
+scwin.cfCancel_onclick = function () { scwin.closeConfirm(false); };
+
+/* =====================================================================
+ * Form tạo / sửa người dùng
+ * ===================================================================== */
+scwin.btn_add_onclick = function () { scwin.openForm("create", null); };
+scwin.btn_emptyAdd_onclick = function () { scwin.openForm("create", null); };
+
+scwin.openEditForm = function (uid) {
+	var d = scwin.drawer;
+	if (d.detail && d.detail.userId === uid) { scwin.openForm("edit", d.detail); return; }
+	scwin.api("GET", "/api/users/" + uid).then(function (r) {
+		scwin.openForm("edit", r.data);
+	}).catch(function (e) { scwin.toast("error", e.message); });
+};
+
+scwin.openForm = function (mode, detail) {
+	var f = scwin.form, isCreate = mode === "create";
+	var self = !isCreate && detail.userId === scwin.meId();
+	f.mode = mode; f.original = detail; f.userId = detail ? detail.userId : null;
+	f.avatarFile = null;
+	scwin.revokePreview();
+	scwin.clearErrors(scwin.fields, grp_formAlert);
+
+	tbx_formTitle.setValue(isCreate ? "Thêm người dùng" : "Cập nhật người dùng");
+	tbx_formSub.setValue(isCreate
+		? "Trường có dấu * là bắt buộc. Ảnh đại diện có thể thêm sau."
+		: "Đang sửa tài khoản @" + detail.username + (self ? " (tài khoản của bạn)" : ""));
+
+	ibx_fUsername.setValue(isCreate ? "" : detail.username);
+	ibx_fUsername.setDisabled(!isCreate);
+	tbx_hUsername.setValue(isCreate ? "4–50 ký tự gồm chữ, số và . _ -" : "Tên đăng nhập không đổi được sau khi tạo.");
+
+	scwin.toggle(grp_fPassword, isCreate);
+	sct_fPassword.setValue("");
+	scwin.setReveal(sct_fPassword, btn_fPwdReveal, false);
+	scwin.paintMeter(grp_fMeter, tbx_hPassword, "");
+
+	ibx_fFullName.setValue(detail ? detail.fullName || "" : "");
+	ibx_fEmail.setValue(detail ? detail.email || "" : "");
+	ibx_fPhone.setValue(detail ? detail.phone || "" : "");
+
+	var curRole = isCreate ? "" : scwin.roleOf(detail);
+	sbx_fRole.setValue(isCreate ? (scwin.state.roleMap.EVENT_STAFF ? "EVENT_STAFF" : "") : curRole);
+	var selfAdmin = self && curRole === "ADMIN";
+	var lockRoles = !isCreate && (!scwin.state.canRole || selfAdmin);
+	sbx_fRole.setDisabled(lockRoles);
+	tbx_hRoles.setValue(selfAdmin
+		? "Bạn không thể đổi vai trò Admin của chính mình."
+		: !isCreate && !scwin.state.canRole ? "Bạn cần quyền quản lý vai trò để thay đổi mục này."
+		: isCreate ? "Mỗi người dùng có đúng một vai trò."
+		: curRole ? "Chọn vai trò khác để thay thế vai trò hiện tại." : "Người này chưa có vai trò. Chọn một vai trò để gán.");
+
+	rdo_fActive.setValue(isCreate ? "true" : String(!!detail.active));
+	rdo_fActive.setDisabled(self);
+	tbx_hActive.setValue(self ? "Bạn không thể tự vô hiệu hóa chính mình." : "Tài khoản vô hiệu hóa sẽ không đăng nhập được.");
+
+	scwin.paintAvatar(grp_fAvatar, img_fAvatar, tbx_fInitial, detail ? detail.avatarUrl : null,
+		detail ? detail.fullName || detail.username : "", 192);
+	tbx_avatarHint.setValue("JPG, PNG, WEBP hoặc GIF, tối đa 2MB");
+	scwin.hide(btn_clearAvatar);
+
+	btn_formSave.setValue(isCreate ? "Tạo người dùng" : "Lưu thay đổi");
+	scwin.setFormBusy(false);
+	scwin.openLayer(grp_formModal);
+	setTimeout(function () {
+		try { (isCreate ? ibx_fUsername : ibx_fFullName).focus(); } catch (e) {}
+	}, 80);
+};
+
+scwin.closeForm = function (force) {
+	if (scwin.form.busy && !force) return;
+	scwin.closeLayer(grp_formModal);
+	scwin.revokePreview();
+	scwin.form.avatarFile = null;
+};
+scwin.formClose_onclick = function () { scwin.closeForm(false); };
+
+scwin.fullName_onkeyup = function () {
+	if (!grp_fAvatar.hasClass || !grp_fAvatar.hasClass("has-img")) {
+		tbx_fInitial.setValue(scwin.initials(scwin.liveVal(ibx_fFullName) || scwin.liveVal(ibx_fUsername)));
+	}
+	scwin.clearFieldErr(scwin.fields.fullName);
+};
+scwin.formField_onkeyup = function () {
+	for (var k in scwin.fields) {
+		if (scwin.fields.hasOwnProperty(k) && scwin.fields[k].input === this) scwin.clearFieldErr(scwin.fields[k]);
+	}
+};
+scwin.formChoice_onchange = function () {
+	if (this === sbx_fRole) scwin.clearFieldErr(scwin.fields.roleCode);
+	if (this === rdo_fActive) scwin.clearFieldErr(scwin.fields.active);
+};
+scwin.fPassword_onkeyup = function () {
+	scwin.clearFieldErr(scwin.fields.password);
+	scwin.paintMeter(grp_fMeter, tbx_hPassword, scwin.liveVal(sct_fPassword));
+};
+scwin.btn_fPwdReveal_onclick = function () { scwin.setReveal(sct_fPassword, btn_fPwdReveal, null); };
+scwin.btn_fPwdGen_onclick = function () {
+	var p = scwin.genPassword();
+	sct_fPassword.setValue(p);
+	scwin.setReveal(sct_fPassword, btn_fPwdReveal, true);
+	scwin.paintMeter(grp_fMeter, tbx_hPassword, p);
+	scwin.clearFieldErr(scwin.fields.password);
+	try {
+		navigator.clipboard.writeText(p).then(function () {
+			scwin.toast("info", "Đã tạo mật khẩu mạnh và sao chép vào bộ nhớ tạm.");
+		}, function () {});
+	} catch (e) {}
+};
+
+/* ---------- Ảnh đại diện ---------- */
+scwin.btn_pickAvatar_onclick = function () {
+	var input = document.createElement("input");
+	input.type = "file";
+	input.accept = "image/jpeg,image/png,image/webp,image/gif";
+	input.onchange = function () {
+		var file = input.files && input.files[0];
+		if (!file) return;
+		var err = scwin.checkImage(file);
+		if (err) { scwin.setFieldErr(scwin.fields.avatar, err); return; }
+		scwin.clearFieldErr(scwin.fields.avatar);
+		scwin.revokePreview();
+		scwin.form.avatarFile = file;
+		scwin.form.previewUrl = URL.createObjectURL(file);
+		img_fAvatar.setSrc(scwin.form.previewUrl);
+		grp_fAvatar.addClass("has-img");
+		tbx_avatarHint.setValue(file.name + " (" + Math.max(1, Math.round(file.size / 1024)) + " KB)");
+		scwin.show(btn_clearAvatar);
+	};
+	input.click();
+};
+scwin.btn_clearAvatar_onclick = function () {
+	var o = scwin.form.original;
+	scwin.revokePreview();
+	scwin.form.avatarFile = null;
+	scwin.paintAvatar(grp_fAvatar, img_fAvatar, tbx_fInitial, o ? o.avatarUrl : null,
+		o ? o.fullName || o.username : scwin.liveVal(ibx_fFullName), 192);
+	tbx_avatarHint.setValue("JPG, PNG, WEBP hoặc GIF, tối đa 2MB");
+	scwin.hide(btn_clearAvatar);
+	scwin.clearFieldErr(scwin.fields.avatar);
+};
+scwin.checkImage = function (file) {
+	var ok = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+	if (!file.size) return "File ảnh rỗng.";
+	if (ok.indexOf(file.type) < 0) return "Chỉ nhận ảnh JPG, PNG, WEBP hoặc GIF.";
+	if (file.size > 2 * 1024 * 1024) return "Ảnh nặng " + (file.size / 1048576).toFixed(1) + "MB, vượt giới hạn 2MB.";
+	return null;
+};
+scwin.revokePreview = function () {
+	if (scwin.form.previewUrl) {
+		try { URL.revokeObjectURL(scwin.form.previewUrl); } catch (e) {}
+		scwin.form.previewUrl = null;
+	}
+};
+scwin.uploadAvatar = function (uid, file) {
+	var fd = new FormData();
+	fd.append("file", file);
+	return scwin.api("POST", "/api/users/" + uid + "/avatar", fd);
+};
+
+/* ---------- Mật khẩu: độ mạnh, hiện/ẩn, tạo ngẫu nhiên ---------- */
+scwin.pwdScore = function (p) {
+	if (!p) return 0;
+	var s = 0;
+	if (p.length >= 8) s++;
+	if (/[A-Za-z]/.test(p) && /\d/.test(p)) s++;
+	if (/[^A-Za-z0-9]/.test(p)) s++;
+	if (p.length >= 12 && /[a-z]/.test(p) && /[A-Z]/.test(p)) s++;
+	return s;
+};
+scwin.paintMeter = function (meter, hint, p) {
+	var score = scwin.pwdScore(p);
+	scwin.swapClass(meter, ["pwd-meter--l0", "pwd-meter--l1", "pwd-meter--l2", "pwd-meter--l3", "pwd-meter--l4"], "pwd-meter--l" + score);
+	if (!p) { hint.setValue("Tối thiểu 8 ký tự, gồm chữ, số và ký tự đặc biệt."); return; }
+	var miss = [];
+	if (p.length < 8) miss.push("đủ 8 ký tự");
+	if (!/[A-Za-z]/.test(p)) miss.push("chữ cái");
+	if (!/\d/.test(p)) miss.push("chữ số");
+	if (!/[^A-Za-z0-9]/.test(p)) miss.push("ký tự đặc biệt");
+	if (p.length > 72) { hint.setValue("Mật khẩu tối đa 72 ký tự."); return; }
+	hint.setValue(miss.length ? "Còn thiếu: " + miss.join(", ") + "." : (score >= 4 ? "Mật khẩu mạnh." : "Đạt yêu cầu. Dài hơn 12 ký tự và có chữ hoa sẽ mạnh hơn."));
+};
+scwin.setReveal = function (secret, btn, on) {
+	var el = scwin.inputEl(secret);
+	if (!el) return;
+	if (on === null) on = el.type === "password";
+	el.type = on ? "text" : "password";
+	btn.setValue(on ? "Ẩn" : "Hiện");
+};
+scwin.genPassword = function () {
+	var sets = ["ABCDEFGHJKLMNPQRSTUVWXYZ", "abcdefghijkmnpqrstuvwxyz", "23456789", "!@#$%^&*?_-"];
+	var all = sets.join(""), out = [], i;
+	var rnd = function (n) {
+		try { var a = new Uint32Array(1); window.crypto.getRandomValues(a); return a[0] % n; }
+		catch (e) { return Math.floor(Math.random() * n); }
+	};
+	for (i = 0; i < sets.length; i++) out.push(sets[i].charAt(rnd(sets[i].length)));
+	while (out.length < 14) out.push(all.charAt(rnd(all.length)));
+	for (i = out.length - 1; i > 0; i--) { var j = rnd(i + 1), t = out[i]; out[i] = out[j]; out[j] = t; }
+	return out.join("");
+};
+
+/* ---------- Lỗi theo field ---------- */
+scwin.setFieldErr = function (f, msg) {
+	if (!f) return;
+	f.wrap.addClass("field--error");
+	f.err.setValue(msg);
+};
+scwin.clearFieldErr = function (f) {
+	if (!f) return;
+	f.wrap.removeClass("field--error");
+	f.err.setValue("");
+};
+scwin.clearErrors = function (fields, alertGrp) {
+	for (var k in fields) if (fields.hasOwnProperty(k)) scwin.clearFieldErr(fields[k]);
+	if (alertGrp) scwin.hide(alertGrp);
+};
+scwin.showErrors = function (fields, errs) {
+	var first = null;
+	for (var k in errs) {
+		if (!errs.hasOwnProperty(k) || !fields[k]) continue;
+		scwin.setFieldErr(fields[k], errs[k]);
+		if (!first) first = fields[k];
+	}
+	if (first && first.input) { try { first.input.focus(); } catch (e) {} }
+	return !!first;
+};
+scwin.showAlert = function (grp, tbx, msg) { tbx.setValue(msg); scwin.show(grp); };
+
+/* ---------- Đọc & kiểm tra form ---------- */
+scwin.readForm = function () {
+	return {
+		username: scwin.val(ibx_fUsername),
+		password: scwin.liveVal(sct_fPassword),
+		fullName: scwin.val(ibx_fFullName),
+		email: scwin.val(ibx_fEmail),
+		phone: scwin.val(ibx_fPhone),
+		roleCode: sbx_fRole.getValue() || "",
+		active: rdo_fActive.getValue() !== "false"
+	};
+};
+scwin.validateForm = function (v) {
+	var e = {}, f = scwin.form, isCreate = f.mode === "create";
+	if (isCreate) {
+		if (!v.username) e.username = "Nhập tên đăng nhập.";
+		else if (!scwin.RX.username.test(v.username)) e.username = "Chỉ dùng 4–50 ký tự gồm chữ, số và . _ -";
+		if (!v.password) e.password = "Nhập mật khẩu.";
+		else if (v.password.length > 72) e.password = "Mật khẩu tối đa 72 ký tự.";
+		else if (!scwin.RX.password.test(v.password)) e.password = "Tối thiểu 8 ký tự, gồm chữ, số và ký tự đặc biệt.";
+	}
+	if (!v.fullName) e.fullName = "Nhập họ tên.";
+	else if (v.fullName.length > 150) e.fullName = "Họ tên tối đa 150 ký tự.";
+	if (!v.email) e.email = "Nhập email.";
+	else if (v.email.length > 255 || !scwin.RX.email.test(v.email)) e.email = "Email không đúng định dạng.";
+	if (!scwin.RX.phone.test(v.phone)) e.phone = "8–20 ký tự gồm số, khoảng trắng và + . ( ) -";
+	if (isCreate && !v.roleCode) e.roleCode = "Chọn vai trò.";
+	if (!isCreate && f.userId === scwin.meId() && scwin.roleOf(f.original) === "ADMIN" && v.roleCode && v.roleCode !== "ADMIN") {
+		e.roleCode = "Bạn không thể đổi vai trò Admin của chính mình.";
+	}
+	return e;
+};
+
+scwin.setFormBusy = function (b) {
+	scwin.form.busy = b;
+	btn_formSave.setDisabled(b);
+	btn_formCancel.setDisabled(b);
+	btn_formSave.setValue(b ? "Đang lưu…" : (scwin.form.mode === "create" ? "Tạo người dùng" : "Lưu thay đổi"));
+	scwin.swapClass(grp_formDialog, ["is-busy"], b ? "is-busy" : null);
+};
+
+scwin.btn_formSave_onclick = function () {
+	if (scwin.form.busy) return;
+	var v = scwin.readForm();
+	scwin.clearErrors(scwin.fields, grp_formAlert);
+	if (scwin.showErrors(scwin.fields, scwin.validateForm(v))) return;
+	scwin.setFormBusy(true);
+	var p = scwin.form.mode === "create" ? scwin.saveCreate(v) : scwin.saveEdit(v);
+	p.catch(function (err) { scwin.handleFormError(err); })
+	 .then(function () { scwin.setFormBusy(false); });
+};
+
+scwin.saveCreate = function (v) {
+	var file = scwin.form.avatarFile;
+	return scwin.api("POST", "/api/users", {
+		username: v.username, password: v.password, fullName: v.fullName,
+		email: v.email, phone: v.phone || null, roleCode: v.roleCode, active: v.active
+	}).then(function (r) {
+		var uid = r.data && r.data.userId;
+		var done = function (warn) {
+			scwin.closeForm(true);
+			scwin.toast(warn ? "warn" : "success", warn || ("Đã tạo người dùng @" + v.username), warn ? 6000 : 3200);
+			scwin.state.page = 0;
+			scwin.loadUsers();
+			scwin.loadStats();
+		};
+		if (file && uid) {
+			return scwin.uploadAvatar(uid, file).then(function () { done(); }, function (e) {
+				done("Đã tạo @" + v.username + " nhưng chưa tải được ảnh: " + e.message);
+			});
+		}
+		done();
+	});
+};
+
+scwin.saveEdit = function (v) {
+	var f = scwin.form, uid = f.userId, o = f.original, file = f.avatarFile;
+	var profileChanged = v.fullName !== (o.fullName || "") || v.email !== (o.email || "") || v.phone !== (o.phone || "");
+	var rolesChanged = !!v.roleCode && v.roleCode !== scwin.roleOf(o);
+	var activeChanged = v.active !== !!o.active;
+	if (!profileChanged && !rolesChanged && !activeChanged && !file) {
+		scwin.closeForm(true);
+		scwin.toast("info", "Không có thay đổi nào cần lưu.");
+		return Promise.resolve();
+	}
+	var keep = function (r) { if (r && r.data) f.original = r.data; o = f.original; };
+	var chain = Promise.resolve();
+	if (profileChanged) chain = chain.then(function () {
+		return scwin.api("PUT", "/api/users/" + uid, { fullName: v.fullName, email: v.email, phone: v.phone }).then(keep);
+	});
+	if (rolesChanged) chain = chain.then(function () {
+		// Đổi vai trò: backend tự gỡ vai trò cũ và gán vai trò mới
+		return scwin.api("POST", "/api/roles/assign", { userId: uid, roleCode: v.roleCode }).then(function (r) {
+			if (r && r.data) { f.original.role = r.data; o = f.original; }
+		});
+	});
+	if (activeChanged) chain = chain.then(function () {
+		return scwin.api("PATCH", "/api/users/" + uid + "/status", { active: v.active }).then(keep);
+	});
+	if (file) chain = chain.then(function () {
+		return scwin.uploadAvatar(uid, file).then(function (r) { keep(r); f.avatarFile = null; });
+	});
+	return chain.then(function () {
+		var self = uid === scwin.meId();
+		scwin.closeForm(true);
+		if (self && rolesChanged) scwin.toast("warn", "Đã lưu. Vai trò của bạn vừa thay đổi, hãy đăng nhập lại để quyền mới có hiệu lực.", 7000);
+		else scwin.toast("success", "Đã lưu thay đổi cho @" + o.username);
+		scwin.afterMutation(uid);
+	}, function (err) {
+		scwin.loadUsers();            // một phần có thể đã lưu
+		throw err;
+	});
+};
+
+scwin.handleFormError = function (err) {
+	var F = scwin.fields, map = {
+		USERNAME_EXISTS: "username", EMAIL_EXISTS: "email", ROLE_NOT_FOUND: "roleCode",
+		ROLE_ALREADY_ASSIGNED: "roleCode", CANNOT_REMOVE_OWN_ADMIN: "roleCode", CANNOT_DEACTIVATE_SELF: "active",
+		FILE_REQUIRED: "avatar", FILE_TOO_LARGE: "avatar", INVALID_FILE_TYPE: "avatar", UPLOAD_FAILED: "avatar"
+	};
+	if (err.code === "VALIDATION_ERROR" && err.data) {
+		var rest = [];
+		for (var k in err.data) {
+			if (!err.data.hasOwnProperty(k)) continue;
+			if (F[k]) scwin.setFieldErr(F[k], err.data[k]); else rest.push(err.data[k]);
+		}
+		if (rest.length) scwin.showAlert(grp_formAlert, tbx_formAlert, rest.join(" "));
+		return;
+	}
+	if (map[err.code]) { scwin.setFieldErr(F[map[err.code]], err.message); return; }
+	if (err.code === "USER_NOT_FOUND") {
+		scwin.closeForm(true);
+		scwin.toast("error", "Người dùng không còn tồn tại.");
+		scwin.loadUsers();
+		return;
+	}
+	scwin.showAlert(grp_formAlert, tbx_formAlert, err.message);
+};
+
+/* =====================================================================
+ * Drawer chi tiết
+ * ===================================================================== */
+scwin.openDrawer = function (uid) {
+	var d = scwin.drawer;
+	d.open = true; d.userId = uid; d.detail = null;
+	d.audit = { page: 0, last: true, loaded: false };
+	d.login = { page: 0, last: true, loaded: false };
+	gen_audit.removeAll(); gen_login.removeAll();
+	tbx_dName.setValue("Đang tải…"); tbx_dUsername.setValue("");
+	scwin.switchTab("info");
+	scwin.switchAct("audit", true);
+	scwin.openLayer(grp_drawer);
+	scwin.loadDetail();
+};
+scwin.closeDrawer = function () {
+	scwin.drawer.open = false;
+	scwin.closeLayer(grp_drawer);
+};
+
+scwin.loadDetail = function () {
+	var d = scwin.drawer, uid = d.userId;
+	grp_drawerPanel.addClass("is-loading");
+	return scwin.api("GET", "/api/users/" + uid).then(function (r) {
+		if (d.userId !== uid) return;
+		d.detail = r.data;
+		scwin.renderDetail();
+	}).catch(function (err) {
+		if (err.code === "USER_NOT_FOUND") {
+			scwin.toast("error", "Người dùng không tồn tại hoặc đã bị xóa.");
+			scwin.closeDrawer();
+			scwin.loadUsers();
+		} else {
+			scwin.toast("error", err.message);
+		}
+	}).then(function () { grp_drawerPanel.removeClass("is-loading"); });
+};
+
+scwin.renderDetail = function () {
+	var u = scwin.drawer.detail, self = u.userId === scwin.meId();
+	var locked = !!(u.lockedUntil && new Date(u.lockedUntil).getTime() > Date.now());
+
+	scwin.paintAvatar(grp_dAvatar, img_dAvatar, tbx_dInitial, u.avatarUrl, u.fullName || u.username, 160);
+	tbx_dName.setValue(u.fullName || u.username);
+	tbx_dUsername.setValue("@" + u.username);
+	scwin.toggle(tbx_dSelf, self);
+
+	tbx_dRole.setValue(scwin.roleLabel(scwin.roleOf(u), u.role && u.role.roleName));
+	scwin.swapClass(tbx_dRole, ["role-chip--admin", "role-chip--staff", "role-chip--none"], scwin.roleClass(scwin.roleOf(u)));
+	tbx_dStatus.setValue(u.active ? "Hoạt động" : "Vô hiệu hóa");
+	scwin.swapClass(tbx_dStatus, ["status-badge--on", "status-badge--off"], u.active ? "status-badge--on" : "status-badge--off");
+	scwin.toggle(tbx_dLocked, locked);
+	tbx_dLocked.setValue(locked ? "Khóa tạm đến " + scwin.fmtDateTime(u.lockedUntil).slice(11) : "");
+	scwin.toggle(grp_lockNotice, locked);
+	tbx_lockNotice.setValue(locked
+		? "Tài khoản đang bị khóa tạm tới " + scwin.fmtDateTime(u.lockedUntil) + " do đăng nhập sai nhiều lần. Khóa sẽ tự mở khi hết thời gian."
+		: "");
+
+	btn_dToggle.setValue(u.active ? "Vô hiệu hóa" : "Kích hoạt");
+	btn_dToggle.setDisabled(self);
+	btn_dDelete.setDisabled(self);
+	scwin.toggle(btn_dPwd, self);
+
+	tbx_iId.setValue("#" + u.userId);
+	tbx_iEmail.setValue(u.email || "—");
+	tbx_iPhone.setValue(u.phone || "Chưa có");
+	tbx_iLastLogin.setValue(u.lastLoginAt ? scwin.fmtDateTime(u.lastLoginAt) + " (" + scwin.relTime(u.lastLoginAt).toLowerCase() + ")" : "Chưa đăng nhập lần nào");
+	tbx_iPwdChanged.setValue(scwin.fmtDateTime(u.passwordChangedAt));
+	tbx_iCreated.setValue(scwin.fmtDateTime(u.createdAt));
+	tbx_iUpdated.setValue(scwin.fmtDateTime(u.updatedAt));
+
+	scwin.renderRole(u);
+	if (scwin.drawer.tab === "activity") scwin.ensureActivity();
+};
+
+scwin.renderRole = function (u) {
+	var r = u.role, code = scwin.roleOf(u), has = !!code;
+	var self = u.userId === scwin.meId(), canRole = scwin.state.canRole;
+	var selfAdmin = self && code === "ADMIN";
+
+	scwin.toggle(grp_dRoleCard, has);
+	scwin.toggle(grp_dRolesEmpty, !has);
+	if (has) {
+		var info = scwin.roleInfo(code);
+		tbx_drName.setValue(scwin.roleLabel(code, r.roleName));
+		tbx_drCode.setValue(code);
+		tbx_drAssigned.setValue("Gán lúc " + scwin.fmtDateTime(r.assignedAt));
+		tbx_drDesc.setValue(info && info.description ? info.description : "");
+		scwin.toggle(tbx_drDesc, !!(info && info.description));
+		var perms = info ? scwin.permText(info.permissions) : "";
+		tbx_drPerms.setValue(perms);
+		scwin.toggle(tbx_drPerms, !!perms);
+		scwin.swapClass(grp_dRoleCard, ["ritem--admin", "ritem--staff"], code === "ADMIN" ? "ritem--admin" : "ritem--staff");
+	}
+
+	btn_dEditRoles.setValue(has ? "Đổi vai trò" : "Gán vai trò");
+	btn_dEditRoles.setDisabled(!canRole || selfAdmin);
+	scwin.toggle(btn_dRemoveRole, has);
+	btn_dRemoveRole.setDisabled(!canRole || selfAdmin);
+	tbx_dRoleHint.setValue(selfAdmin
+		? "Bạn không thể đổi hoặc gỡ vai trò Admin của chính mình."
+		: !canRole ? "Bạn cần quyền quản lý vai trò để thay đổi mục này." : "");
+	scwin.toggle(tbx_dRoleHint, selfAdmin || !canRole);
+};
+
+/* ---------- Tabs ---------- */
+scwin.switchTab = function (t) {
+	scwin.drawer.tab = t;
+	var map = { info: [btn_tabInfo, grp_paneInfo], roles: [btn_tabRoles, grp_paneRoles], activity: [btn_tabActivity, grp_paneActivity] };
+	for (var k in map) {
+		if (!map.hasOwnProperty(k)) continue;
+		scwin.swapClass(map[k][0], ["tabs__item--active"], k === t ? "tabs__item--active" : null);
+		scwin.toggle(map[k][1], k === t);
+	}
+	if (t === "activity") scwin.ensureActivity();
+};
+scwin.btn_tabInfo_onclick = function () { scwin.switchTab("info"); };
+scwin.btn_tabRoles_onclick = function () { scwin.switchTab("roles"); };
+scwin.btn_tabActivity_onclick = function () { scwin.switchTab("activity"); };
+
+scwin.switchAct = function (a, silent) {
+	scwin.drawer.act = a;
+	scwin.swapClass(btn_actAudit, ["seg__item--active"], a === "audit" ? "seg__item--active" : null);
+	scwin.swapClass(btn_actLogin, ["seg__item--active"], a === "login" ? "seg__item--active" : null);
+	scwin.toggle(grp_auditWrap, a === "audit");
+	scwin.toggle(grp_loginWrap, a === "login");
+	if (!silent) scwin.ensureActivity();
+};
+scwin.btn_actAudit_onclick = function () { scwin.switchAct("audit"); };
+scwin.btn_actLogin_onclick = function () { scwin.switchAct("login"); };
+scwin.ensureActivity = function () {
+	var d = scwin.drawer;
+	if (!d.userId) return;
+	if (d.act === "audit" && !d.audit.loaded) scwin.loadAudit(false);
+	if (d.act === "login" && !d.login.loaded) scwin.loadLogin(false);
+};
+
+/* ---------- Nhật ký thao tác ---------- */
+scwin.loadAudit = function (more) {
+	var d = scwin.drawer, uid = d.userId, st = d.audit, page = more ? st.page + 1 : 0;
+	if (!more) { gen_audit.removeAll(); scwin.hide(grp_auditEmpty); scwin.hide(btn_auditMore); tbx_auditCount.setValue("Đang tải…"); }
+	btn_auditMore.setDisabled(true); btn_auditMore.setValue("Đang tải…");
+	scwin.api("GET", "/api/users/" + uid + "/audit-logs" + scwin.qs({ page: page, size: 10 })).then(function (r) {
+		if (d.userId !== uid) return;
+		var pg = r.data || {}, list = pg.content || [];
+		st.page = page; st.loaded = true; st.last = page >= (pg.totalPages || 1) - 1;
+		for (var i = 0; i < list.length; i++) scwin.appendAudit(list[i]);
+		tbx_auditCount.setValue((pg.totalElements || 0) + " thao tác do người này thực hiện");
+		scwin.toggle(grp_auditEmpty, !pg.totalElements);
+		scwin.toggle(btn_auditMore, !st.last);
+	}).catch(function (e) {
+		tbx_auditCount.setValue("");
+		scwin.toast("error", e.message);
+	}).then(function () {
+		btn_auditMore.setDisabled(false); btn_auditMore.setValue("Xem thêm");
+	});
+};
+scwin.btn_auditMore_onclick = function () { scwin.loadAudit(true); };
+
+scwin.appendAudit = function (a) {
+	var idx = gen_audit.insertChild();
+	var g = function (id) { return gen_audit.getChild(idx, id); };
+	var meta = scwin.ACTIONS[a.action] || { label: a.action, tone: "info" };
+	g("grp_auItem").addClass("tl-item--" + meta.tone);
+	g("tbx_auAction").setValue(meta.label);
+	g("tbx_auTime").setValue(scwin.relTime(a.createdAt));
+	g("tbx_auDesc").setValue(a.description || meta.label);
+	var diff = scwin.diffText(a);
+	g("tbx_auDiff").setValue(diff);
+	if (!diff) g("tbx_auDiff").addClass("is-hidden");
+	g("tbx_auMeta").setValue(scwin.fmtDateTime(a.createdAt) + (a.ipAddress ? ", IP " + a.ipAddress : ""));
+};
+
+scwin.diffText = function (a) {
+	var lines = [], o = a.oldData, n = a.newData, k;
+	var show = function (v) { return v === null || v === undefined || v === "" ? "(trống)" : v === true ? "Hoạt động" : v === false ? "Vô hiệu hóa" : String(v); };
+	if (a.entityName === "USER_ROLE") {
+		var x = n || o;
+		if (x) lines.push((x.username ? "@" + x.username + ": " : "") + (scwin.state.roleMap[x.roleCode] || x.roleCode));
+		return lines.join("\n");
+	}
+	if (o && n) {
+		for (k in scwin.FIELD_LABELS) {
+			if (!scwin.FIELD_LABELS.hasOwnProperty(k) || o[k] === n[k]) continue;
+			if (k === "avatarUrl") lines.push("Ảnh đại diện đã được thay");
+			else lines.push(scwin.FIELD_LABELS[k] + ": " + show(o[k]) + " → " + show(n[k]));
+		}
+	} else if (n && a.action === "CREATE") {
+		lines.push("@" + n.username + ", " + (n.email || ""));
+	}
+	return lines.join("\n");
+};
+
+/* ---------- Lịch sử đăng nhập ---------- */
+scwin.loadLogin = function (more) {
+	var d = scwin.drawer, uid = d.userId, st = d.login, page = more ? st.page + 1 : 0;
+	if (!more) { gen_login.removeAll(); scwin.hide(grp_loginEmpty); scwin.hide(btn_loginMore); tbx_loginCount.setValue("Đang tải…"); }
+	btn_loginMore.setDisabled(true); btn_loginMore.setValue("Đang tải…");
+	scwin.api("GET", "/api/users/" + uid + "/login-history" + scwin.qs({ page: page, size: 10 })).then(function (r) {
+		if (d.userId !== uid) return;
+		var pg = r.data || {}, list = pg.content || [];
+		st.page = page; st.loaded = true; st.last = page >= (pg.totalPages || 1) - 1;
+		for (var i = 0; i < list.length; i++) scwin.appendLogin(list[i]);
+		tbx_loginCount.setValue((pg.totalElements || 0) + " lượt đăng nhập");
+		scwin.toggle(grp_loginEmpty, !pg.totalElements);
+		scwin.toggle(btn_loginMore, !st.last);
+	}).catch(function (e) {
+		tbx_loginCount.setValue("");
+		scwin.toast("error", e.message);
+	}).then(function () {
+		btn_loginMore.setDisabled(false); btn_loginMore.setValue("Xem thêm");
+	});
+};
+scwin.btn_loginMore_onclick = function () { scwin.loadLogin(true); };
+
+scwin.appendLogin = function (l) {
+	var idx = gen_login.insertChild();
+	var g = function (id) { return gen_login.getChild(idx, id); };
+	g("grp_lgItem").addClass(l.success ? "tl-item--ok" : "tl-item--danger");
+	g("tbx_lgTitle").setValue(l.success ? "Đăng nhập thành công" : "Đăng nhập thất bại: " + (scwin.FAIL_REASONS[l.failureReason] || l.failureReason || "không rõ lý do"));
+	g("tbx_lgTime").setValue(scwin.relTime(l.loginAt));
+	g("tbx_lgDevice").setValue(scwin.browserOf(l.userAgent) + (l.ipAddress ? ", IP " + l.ipAddress : ""));
+	var out = l.logoutAt
+		? "Đăng xuất " + scwin.fmtDateTime(l.logoutAt) + (l.logoutReason ? " (" + (scwin.LOGOUT_REASONS[l.logoutReason] || l.logoutReason) + ")" : "")
+		: (l.success ? "Chưa ghi nhận đăng xuất" : "");
+	g("tbx_lgMeta").setValue(scwin.fmtDateTime(l.loginAt) + (out ? ". " + out : ""));
+};
+
+/* ---------- Nút trong drawer ---------- */
+scwin.btn_dEdit_onclick = function () { if (scwin.drawer.detail) scwin.openForm("edit", scwin.drawer.detail); };
+scwin.btn_dToggle_onclick = function () { if (scwin.drawer.detail) scwin.toggleStatus(scwin.drawer.detail); };
+scwin.btn_dDelete_onclick = function () { if (scwin.drawer.detail) scwin.confirmDelete(scwin.drawer.detail); };
+scwin.btn_dPwd_onclick = function () { scwin.openPwd(); };
+scwin.btn_dEditRoles_onclick = function () { scwin.btn_dEdit_onclick(); };
+scwin.btn_dRemoveRole_onclick = function () {
+	var u = scwin.drawer.detail;
+	if (!u || !u.role || !u.role.roleCode) return;
+	var name = scwin.roleLabel(u.role.roleCode, u.role.roleName);
+	scwin.confirm({
+		title: "Gỡ vai trò " + name + " khỏi @" + u.username + "?",
+		message: "Người này vẫn đăng nhập được nhưng không có quyền gì cho tới khi được gán vai trò mới. Thao tác được ghi vào nhật ký.",
+		okLabel: "Gỡ vai trò", tone: "danger", reason: true,
+		onOk: function (reason) {
+			return scwin.api("POST", "/api/roles/remove", {
+				userId: u.userId, roleCode: u.role.roleCode, reason: reason || null, confirm: true
+			}).then(function () {
+				scwin.toast("success", "Đã gỡ vai trò " + name + " khỏi @" + u.username);
+				scwin.afterMutation(u.userId);
+			});
+		}
+	});
+};
+
+/* =====================================================================
+ * Đổi mật khẩu của chính mình
+ * ===================================================================== */
+scwin.btn_myPwd_onclick = function () { scwin.openPwd(); };
+scwin.openPwd = function () {
+	var me = scwin.state.me;
+	scwin.clearErrors(scwin.pwdFields, grp_pwdAlert);
+	sct_pOld.setValue(""); sct_pNew.setValue(""); sct_pConfirm.setValue("");
+	scwin.setReveal(sct_pOld, btn_pOldReveal, false);
+	scwin.setReveal(sct_pNew, btn_pNewReveal, false);
+	scwin.paintMeter(grp_pMeter, tbx_hpNew, "");
+	tbx_pwdSub.setValue("Áp dụng cho tài khoản đang đăng nhập" + (me ? " @" + me.username : "") + ".");
+	scwin.setPwdBusy(false);
+	scwin.openLayer(grp_pwdModal);
+	setTimeout(function () { try { sct_pOld.focus(); } catch (e) {} }, 80);
+};
+scwin.closePwd = function (force) {
+	if (scwin._pwdBusy && !force) return;
+	scwin.closeLayer(grp_pwdModal);
+};
+scwin.pwdClose_onclick = function () { scwin.closePwd(false); };
+scwin.setPwdBusy = function (b) {
+	scwin._pwdBusy = b;
+	btn_pwdSave.setDisabled(b); btn_pwdCancel.setDisabled(b);
+	btn_pwdSave.setValue(b ? "Đang lưu…" : "Đổi mật khẩu");
+};
+scwin.pwdField_onkeyup = function (e) {
+	for (var k in scwin.pwdFields) {
+		if (scwin.pwdFields.hasOwnProperty(k) && scwin.pwdFields[k].input === this) scwin.clearFieldErr(scwin.pwdFields[k]);
+	}
+	if (this === sct_pNew) scwin.paintMeter(grp_pMeter, tbx_hpNew, scwin.liveVal(sct_pNew));
+	if (e && (e.keyCode === 13 || e.which === 13)) scwin.btn_pwdSave_onclick();
+};
+scwin.btn_pOldReveal_onclick = function () { scwin.setReveal(sct_pOld, btn_pOldReveal, null); };
+scwin.btn_pNewReveal_onclick = function () { scwin.setReveal(sct_pNew, btn_pNewReveal, null); };
+
+scwin.btn_pwdSave_onclick = function () {
+	if (scwin._pwdBusy) return;
+	var P = scwin.pwdFields;
+	var v = { oldPassword: scwin.liveVal(sct_pOld), newPassword: scwin.liveVal(sct_pNew), confirmPassword: scwin.liveVal(sct_pConfirm) };
+	var e = {};
+	scwin.clearErrors(P, grp_pwdAlert);
+	if (!v.oldPassword) e.oldPassword = "Nhập mật khẩu hiện tại.";
+	if (!v.newPassword) e.newPassword = "Nhập mật khẩu mới.";
+	else if (v.newPassword.length > 72) e.newPassword = "Mật khẩu tối đa 72 ký tự.";
+	else if (!scwin.RX.password.test(v.newPassword)) e.newPassword = "Tối thiểu 8 ký tự, gồm chữ, số và ký tự đặc biệt.";
+	else if (v.newPassword === v.oldPassword) e.newPassword = "Mật khẩu mới phải khác mật khẩu hiện tại.";
+	if (!v.confirmPassword) e.confirmPassword = "Nhập lại mật khẩu mới.";
+	else if (v.newPassword && v.confirmPassword !== v.newPassword) e.confirmPassword = "Mật khẩu nhập lại không khớp.";
+	if (scwin.showErrors(P, e)) return;
+
+	scwin.setPwdBusy(true);
+	scwin.api("POST", "/api/auth/change-password", v).then(function (r) {
+		scwin.setPwdBusy(false);
+		scwin.closePwd(true);
+		scwin.toast("success", r.message || "Đã đổi mật khẩu.");
+		if (scwin.drawer.open && scwin.drawer.userId === scwin.meId()) scwin.loadDetail();
+	}).catch(function (err) {
+		scwin.setPwdBusy(false);
+		// Sai mật khẩu cũ trả về 400: KHÔNG đăng xuất
+		if (err.code === "WRONG_OLD_PASSWORD") scwin.setFieldErr(P.oldPassword, err.message);
+		else if (err.code === "PASSWORD_CONFIRM_MISMATCH") scwin.setFieldErr(P.confirmPassword, err.message);
+		else if (err.code === "PASSWORD_SAME_AS_OLD") scwin.setFieldErr(P.newPassword, err.message);
+		else if (err.code === "VALIDATION_ERROR" && err.data) {
+			var rest = [];
+			for (var k in err.data) if (err.data.hasOwnProperty(k)) { if (P[k]) scwin.setFieldErr(P[k], err.data[k]); else rest.push(err.data[k]); }
+			if (rest.length) scwin.showAlert(grp_pwdAlert, tbx_pwdAlert, rest.join(" "));
+		}
+		else scwin.showAlert(grp_pwdAlert, tbx_pwdAlert, err.message);
+	});
+};
+	]]></script>
+</head>
+<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+	<!-- Khung trang giống Home: ck-layout bọc header + nội dung + footer -->
+	<xf:group id="grp_layout" class="ck-layout">
+	<w2:wframe id="wfm_header" class="layout-header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+	<xf:group id="grp_page" class="up-page">
+
+		<!-- ============ Tiêu đề trang ============ -->
+		<xf:group id="grp_head" class="up-head">
+			<xf:group id="grp_headText" class="up-head__text">
+				<w2:textbox id="tbx_title" class="up-head__title" tagname="h1" label="Người dùng"/>
+				<w2:textbox id="tbx_subtitle" class="up-head__sub" label="Tạo tài khoản, phân vai trò và theo dõi hoạt động của từng người trong hệ thống."/>
+			</xf:group>
+			<xf:group id="grp_headActions" class="up-head__actions">
+				<xf:trigger id="btn_myPwd" class="btn btn--ghost is-hidden" type="button" ev:onclick="scwin.btn_myPwd_onclick">
+					<xf:label><![CDATA[Đổi mật khẩu của tôi]]></xf:label>
+				</xf:trigger>
+				<xf:trigger id="btn_add" class="btn btn--primary" type="button" ev:onclick="scwin.btn_add_onclick">
+					<xf:label><![CDATA[Thêm người dùng]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+		</xf:group>
+
+		<!-- ============ Không có quyền ============ -->
+		<xf:group id="grp_forbidden" class="card state state--forbidden is-hidden">
+			<w2:textbox id="tbx_fbIcon" class="state__icon" label="!"/>
+			<w2:textbox id="tbx_fbTitle" class="state__title" tagname="h2" label="Bạn chưa có quyền quản lý người dùng"/>
+			<w2:textbox id="tbx_fbDesc" class="state__desc" label="Liên hệ quản trị viên để được cấp quyền USER_MANAGE."/>
+		</xf:group>
+
+		<xf:group id="grp_main" class="up-main">
+			<!-- ============ Thống kê nhanh (bấm để lọc) ============ -->
+			<xf:group id="grp_stats" class="up-stats">
+				<xf:group id="grp_statTotal" class="stat-card stat-card--total" ev:onclick="scwin.statTotal_onclick">
+					<w2:textbox id="tbx_statTotalLbl" class="stat-card__label" label="Tất cả"/>
+					<w2:textbox id="tbx_statTotal" class="stat-card__value" label="–"/>
+				</xf:group>
+				<xf:group id="grp_statActive" class="stat-card stat-card--on" ev:onclick="scwin.statActive_onclick">
+					<w2:textbox id="tbx_statActiveLbl" class="stat-card__label" label="Đang hoạt động"/>
+					<w2:textbox id="tbx_statActive" class="stat-card__value" label="–"/>
+				</xf:group>
+				<xf:group id="grp_statInactive" class="stat-card stat-card--off" ev:onclick="scwin.statInactive_onclick">
+					<w2:textbox id="tbx_statInactiveLbl" class="stat-card__label" label="Vô hiệu hóa"/>
+					<w2:textbox id="tbx_statInactive" class="stat-card__value" label="–"/>
+				</xf:group>
+				<xf:group id="grp_statAdmin" class="stat-card stat-card--admin" ev:onclick="scwin.statAdmin_onclick">
+					<w2:textbox id="tbx_statAdminLbl" class="stat-card__label" label="Quản trị viên"/>
+					<w2:textbox id="tbx_statAdmin" class="stat-card__value" label="–"/>
+				</xf:group>
+			</xf:group>
+
+			<!-- ============ Danh sách ============ -->
+			<xf:group id="grp_listCard" class="card up-list">
+				<xf:group id="grp_toolbar" class="up-toolbar">
+					<xf:group id="grp_searchBox" class="search-box">
+						<xf:input id="ibx_keyword" class="search-box__input" placeholder="Tìm theo username, họ tên hoặc email" ev:onkeyup="scwin.filter_onkeyup"/>
+					</xf:group>
+					<xf:select1 id="sbx_role" class="field-select up-toolbar__select" appearance="minimal" chooseOption="true"
+						chooseOptionLabel="Mọi vai trò" direction="auto" displayMode="label" ev:onviewchange="scwin.filter_onchange">
+						<xf:choices>
+							<xf:itemset nodeset="data:dlt_roleOptions">
+								<xf:label ref="roleName"/>
+								<xf:value ref="roleCode"/>
+							</xf:itemset>
+						</xf:choices>
+					</xf:select1>
+					<xf:select1 id="sbx_status" class="field-select up-toolbar__select" appearance="minimal" chooseOption="true"
+						chooseOptionLabel="Mọi trạng thái" direction="auto" displayMode="label" ev:onviewchange="scwin.filter_onchange">
+						<xf:choices>
+							<xf:item><xf:label><![CDATA[Đang hoạt động]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item>
+							<xf:item><xf:label><![CDATA[Vô hiệu hóa]]></xf:label><xf:value><![CDATA[false]]></xf:value></xf:item>
+						</xf:choices>
+					</xf:select1>
+					<xf:select1 id="sbx_sort" class="field-select up-toolbar__select up-toolbar__sort" appearance="minimal" chooseOption="false"
+						direction="auto" displayMode="label" ev:onviewchange="scwin.sort_onchange">
+						<xf:choices>
+							<xf:item><xf:label><![CDATA[Mới tạo gần đây]]></xf:label><xf:value><![CDATA[userId,desc]]></xf:value></xf:item>
+							<xf:item><xf:label><![CDATA[Tạo lâu nhất]]></xf:label><xf:value><![CDATA[userId,asc]]></xf:value></xf:item>
+							<xf:item><xf:label><![CDATA[Họ tên A–Z]]></xf:label><xf:value><![CDATA[fullName,asc]]></xf:value></xf:item>
+							<xf:item><xf:label><![CDATA[Họ tên Z–A]]></xf:label><xf:value><![CDATA[fullName,desc]]></xf:value></xf:item>
+							<xf:item><xf:label><![CDATA[Username A–Z]]></xf:label><xf:value><![CDATA[username,asc]]></xf:value></xf:item>
+							<xf:item><xf:label><![CDATA[Đăng nhập gần nhất]]></xf:label><xf:value><![CDATA[lastLoginAt,desc]]></xf:value></xf:item>
+							<xf:item><xf:label><![CDATA[Đăng nhập lâu nhất]]></xf:label><xf:value><![CDATA[lastLoginAt,asc]]></xf:value></xf:item>
+						</xf:choices>
+					</xf:select1>
+					<xf:trigger id="btn_advToggle" class="btn btn--ghost btn--sm up-toolbar__adv" type="button" ev:onclick="scwin.btn_advToggle_onclick">
+						<xf:label><![CDATA[Lọc chi tiết]]></xf:label>
+					</xf:trigger>
+					<xf:trigger id="btn_reset" class="btn btn--text btn--sm" type="button" ev:onclick="scwin.btn_reset_onclick">
+						<xf:label><![CDATA[Xóa lọc]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+
+				<xf:group id="grp_adv" class="up-adv is-hidden">
+					<xf:group id="grp_fltUsername" class="field field--compact">
+						<w2:textbox id="tbx_lFltUsername" class="field__label" label="Username chứa"/>
+						<xf:input id="ibx_fltUsername" class="field__input" placeholder="vd: nguyen" ev:onkeyup="scwin.filter_onkeyup"/>
+					</xf:group>
+					<xf:group id="grp_fltFullName" class="field field--compact">
+						<w2:textbox id="tbx_lFltFullName" class="field__label" label="Họ tên chứa"/>
+						<xf:input id="ibx_fltFullName" class="field__input" placeholder="vd: Văn A" ev:onkeyup="scwin.filter_onkeyup"/>
+					</xf:group>
+					<xf:group id="grp_fltEmail" class="field field--compact">
+						<w2:textbox id="tbx_lFltEmail" class="field__label" label="Email chứa"/>
+						<xf:input id="ibx_fltEmail" class="field__input" placeholder="vd: @ssc.vn" ev:onkeyup="scwin.filter_onkeyup"/>
+					</xf:group>
+				</xf:group>
+
+				<xf:group id="grp_summary" class="up-summary">
+					<w2:textbox id="tbx_summary" class="up-summary__text" label=""/>
+				</xf:group>
+
+				<xf:group id="grp_table" class="utable">
+					<xf:group id="grp_thead" class="utable__head">
+						<xf:trigger id="btn_sortName" class="utable__th utable__th--sort" type="button" ev:onclick="scwin.btn_sortName_onclick">
+							<xf:label><![CDATA[Người dùng]]></xf:label>
+						</xf:trigger>
+						<w2:textbox id="tbx_thContact" class="utable__th" label="Liên hệ"/>
+						<w2:textbox id="tbx_thRole" class="utable__th" label="Vai trò"/>
+						<w2:textbox id="tbx_thStatus" class="utable__th" label="Trạng thái"/>
+						<xf:trigger id="btn_sortLogin" class="utable__th utable__th--sort" type="button" ev:onclick="scwin.btn_sortLogin_onclick">
+							<xf:label><![CDATA[Đăng nhập cuối]]></xf:label>
+						</xf:trigger>
+						<w2:textbox id="tbx_thAction" class="utable__th utable__th--end" label=""/>
+					</xf:group>
+
+					<!-- Khung chờ tải -->
+					<xf:group id="grp_skeleton" class="utable__skeleton">
+						<xf:group id="grp_sk1" class="sk-row"><xf:group id="grp_sk1a" class="sk sk--avatar"/><xf:group id="grp_sk1b" class="sk sk--line"/><xf:group id="grp_sk1c" class="sk sk--short"/></xf:group>
+						<xf:group id="grp_sk2" class="sk-row"><xf:group id="grp_sk2a" class="sk sk--avatar"/><xf:group id="grp_sk2b" class="sk sk--line"/><xf:group id="grp_sk2c" class="sk sk--short"/></xf:group>
+						<xf:group id="grp_sk3" class="sk-row"><xf:group id="grp_sk3a" class="sk sk--avatar"/><xf:group id="grp_sk3b" class="sk sk--line"/><xf:group id="grp_sk3c" class="sk sk--short"/></xf:group>
+						<xf:group id="grp_sk4" class="sk-row"><xf:group id="grp_sk4a" class="sk sk--avatar"/><xf:group id="grp_sk4b" class="sk sk--line"/><xf:group id="grp_sk4c" class="sk sk--short"/></xf:group>
+					</xf:group>
+
+					<!-- Dòng người dùng -->
+					<w2:generator id="gen_user" class="utable__body is-hidden">
+						<xf:group id="grp_row" class="urow" ev:onclick="scwin.row_onclick">
+							<xf:group id="grp_rUser" class="urow__user">
+								<xf:group id="grp_rAvatar" class="avatar avatar--md">
+									<xf:image id="img_rAvatar" class="avatar__img" src=""/>
+									<w2:textbox id="tbx_rInitial" class="avatar__initial" label=""/>
+								</xf:group>
+								<xf:group id="grp_rIdent" class="urow__ident">
+									<w2:textbox id="tbx_rName" class="urow__name" label=""/>
+									<xf:group id="grp_rUline" class="urow__uline">
+										<w2:textbox id="tbx_rUsername" class="urow__username" label=""/>
+										<w2:textbox id="tbx_rSelf" class="self-tag is-hidden" label="Bạn"/>
+									</xf:group>
+								</xf:group>
+							</xf:group>
+							<xf:group id="grp_rContact" class="urow__contact">
+								<w2:textbox id="tbx_rEmail" class="urow__email" label=""/>
+								<w2:textbox id="tbx_rPhone" class="urow__sub" label=""/>
+							</xf:group>
+							<xf:group id="grp_rRoleCell" class="urow__cell">
+								<w2:textbox id="tbx_rRoles" class="role-chip" label=""/>
+							</xf:group>
+							<xf:group id="grp_rStatusCell" class="urow__cell">
+								<w2:textbox id="tbx_rStatus" class="status-badge" label=""/>
+							</xf:group>
+							<xf:group id="grp_rLoginCell" class="urow__cell urow__login-cell">
+								<w2:textbox id="tbx_rLogin" class="urow__login" label=""/>
+								<w2:textbox id="tbx_rLoginFull" class="urow__sub" label=""/>
+							</xf:group>
+							<xf:group id="grp_rActions" class="urow__actions">
+								<xf:trigger id="btn_rEdit" class="row-btn" type="button" ev:onclick="scwin.btn_rEdit_onclick">
+									<xf:label><![CDATA[Sửa]]></xf:label>
+								</xf:trigger>
+								<xf:trigger id="btn_rToggle" class="row-btn" type="button" ev:onclick="scwin.btn_rToggle_onclick">
+									<xf:label><![CDATA[Vô hiệu]]></xf:label>
+								</xf:trigger>
+								<xf:trigger id="btn_rDelete" class="row-btn row-btn--danger" type="button" ev:onclick="scwin.btn_rDelete_onclick">
+									<xf:label><![CDATA[Xóa]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+						</xf:group>
+					</w2:generator>
+
+					<!-- Trạng thái rỗng -->
+					<xf:group id="grp_empty" class="state is-hidden">
+						<w2:textbox id="tbx_emptyIcon" class="state__icon" label="?"/>
+						<w2:textbox id="tbx_emptyTitle" class="state__title" tagname="h3" label=""/>
+						<w2:textbox id="tbx_emptyDesc" class="state__desc" label=""/>
+						<xf:group id="grp_emptyActions" class="state__actions">
+							<xf:trigger id="btn_emptyReset" class="btn btn--ghost btn--sm" type="button" ev:onclick="scwin.btn_reset_onclick">
+								<xf:label><![CDATA[Xóa bộ lọc]]></xf:label>
+							</xf:trigger>
+							<xf:trigger id="btn_emptyAdd" class="btn btn--primary btn--sm" type="button" ev:onclick="scwin.btn_emptyAdd_onclick">
+								<xf:label><![CDATA[Thêm người dùng]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+
+					<!-- Lỗi tải -->
+					<xf:group id="grp_error" class="state state--error is-hidden">
+						<w2:textbox id="tbx_errIcon" class="state__icon" label="!"/>
+						<w2:textbox id="tbx_errTitle" class="state__title" tagname="h3" label="Không tải được danh sách"/>
+						<w2:textbox id="tbx_errDesc" class="state__desc" label=""/>
+						<xf:group id="grp_errActions" class="state__actions">
+							<xf:trigger id="btn_retry" class="btn btn--primary btn--sm" type="button" ev:onclick="scwin.btn_retry_onclick">
+								<xf:label><![CDATA[Tải lại]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+
+				<!-- Phân trang -->
+				<xf:group id="grp_pager" class="pager is-hidden">
+					<w2:textbox id="tbx_pageRange" class="pager__info" label=""/>
+					<xf:group id="grp_pagerCtrl" class="pager__ctrl">
+						<w2:textbox id="tbx_sizeLbl" class="pager__label" label="Mỗi trang"/>
+						<xf:select1 id="sbx_size" class="field-select field-select--sm pager__size" appearance="minimal" chooseOption="false"
+							direction="auto" displayMode="label" ev:onviewchange="scwin.size_onchange">
+							<xf:choices>
+								<xf:item><xf:label><![CDATA[10]]></xf:label><xf:value><![CDATA[10]]></xf:value></xf:item>
+								<xf:item><xf:label><![CDATA[20]]></xf:label><xf:value><![CDATA[20]]></xf:value></xf:item>
+								<xf:item><xf:label><![CDATA[50]]></xf:label><xf:value><![CDATA[50]]></xf:value></xf:item>
+							</xf:choices>
+						</xf:select1>
+						<xf:trigger id="btn_prev" class="pager__btn" type="button" ev:onclick="scwin.btn_prev_onclick">
+							<xf:label><![CDATA[‹]]></xf:label>
+						</xf:trigger>
+						<w2:textbox id="tbx_pageNo" class="pager__no" label=""/>
+						<xf:trigger id="btn_next" class="pager__btn" type="button" ev:onclick="scwin.btn_next_onclick">
+							<xf:label><![CDATA[›]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		<!-- ================================================================
+		     DRAWER: Chi tiết người dùng
+		     ================================================================ -->
+		<xf:group id="grp_drawer" class="drawer is-hidden">
+			<xf:group id="grp_drawerBackdrop" class="drawer__backdrop" ev:onclick="scwin.closeDrawer"/>
+			<xf:group id="grp_drawerPanel" class="drawer__panel">
+				<xf:group id="grp_dHead" class="drawer__head">
+					<xf:group id="grp_dTopbar" class="drawer__topbar">
+						<w2:textbox id="tbx_dKicker" class="drawer__kicker" label="Hồ sơ người dùng"/>
+						<xf:trigger id="btn_dClose" class="icon-btn" type="button" ev:onclick="scwin.closeDrawer">
+							<xf:label><![CDATA[×]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group id="grp_dProfile" class="dprofile">
+						<xf:group id="grp_dAvatar" class="avatar avatar--lg">
+							<xf:image id="img_dAvatar" class="avatar__img" src=""/>
+							<w2:textbox id="tbx_dInitial" class="avatar__initial" label=""/>
+						</xf:group>
+						<xf:group id="grp_dIdent" class="dprofile__ident">
+							<w2:textbox id="tbx_dName" class="dprofile__name" tagname="h2" label=""/>
+							<xf:group id="grp_dUline" class="dprofile__uline">
+								<w2:textbox id="tbx_dUsername" class="dprofile__username" label=""/>
+								<w2:textbox id="tbx_dSelf" class="self-tag is-hidden" label="Bạn"/>
+							</xf:group>
+							<xf:group id="grp_dBadges" class="dprofile__badges">
+								<w2:textbox id="tbx_dRole" class="role-chip" label=""/>
+								<w2:textbox id="tbx_dStatus" class="status-badge" label=""/>
+								<w2:textbox id="tbx_dLocked" class="status-badge status-badge--locked is-hidden" label=""/>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+					<xf:group id="grp_dActions" class="dactions">
+						<xf:trigger id="btn_dEdit" class="btn btn--primary btn--sm" type="button" ev:onclick="scwin.btn_dEdit_onclick">
+							<xf:label><![CDATA[Sửa thông tin]]></xf:label>
+						</xf:trigger>
+						<xf:trigger id="btn_dToggle" class="btn btn--ghost btn--sm" type="button" ev:onclick="scwin.btn_dToggle_onclick">
+							<xf:label><![CDATA[Vô hiệu hóa]]></xf:label>
+						</xf:trigger>
+						<xf:trigger id="btn_dPwd" class="btn btn--ghost btn--sm is-hidden" type="button" ev:onclick="scwin.btn_dPwd_onclick">
+							<xf:label><![CDATA[Đổi mật khẩu]]></xf:label>
+						</xf:trigger>
+						<xf:trigger id="btn_dDelete" class="btn btn--danger-ghost btn--sm dactions__delete" type="button" ev:onclick="scwin.btn_dDelete_onclick">
+							<xf:label><![CDATA[Xóa]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+					<xf:group id="grp_dTabs" class="tabs">
+						<xf:trigger id="btn_tabInfo" class="tabs__item tabs__item--active" type="button" ev:onclick="scwin.btn_tabInfo_onclick">
+							<xf:label><![CDATA[Thông tin]]></xf:label>
+						</xf:trigger>
+						<xf:trigger id="btn_tabRoles" class="tabs__item" type="button" ev:onclick="scwin.btn_tabRoles_onclick">
+							<xf:label><![CDATA[Vai trò]]></xf:label>
+						</xf:trigger>
+						<xf:trigger id="btn_tabActivity" class="tabs__item" type="button" ev:onclick="scwin.btn_tabActivity_onclick">
+							<xf:label><![CDATA[Hoạt động]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+
+				<xf:group id="grp_dBody" class="drawer__body">
+					<!-- Tab: Thông tin -->
+					<xf:group id="grp_paneInfo" class="pane">
+						<xf:group id="grp_lockNotice" class="alert alert--warn is-hidden">
+							<w2:textbox id="tbx_lockNotice" class="alert__text" label=""/>
+						</xf:group>
+						<xf:group id="grp_infoList" class="info-list">
+							<xf:group id="grp_iEmail" class="info-row">
+								<w2:textbox id="tbx_iEmailL" class="info-row__label" label="Email"/>
+								<w2:textbox id="tbx_iEmail" class="info-row__value" label=""/>
+							</xf:group>
+							<xf:group id="grp_iPhone" class="info-row">
+								<w2:textbox id="tbx_iPhoneL" class="info-row__label" label="Số điện thoại"/>
+								<w2:textbox id="tbx_iPhone" class="info-row__value" label=""/>
+							</xf:group>
+							<xf:group id="grp_iLastLogin" class="info-row">
+								<w2:textbox id="tbx_iLastLoginL" class="info-row__label" label="Đăng nhập cuối"/>
+								<w2:textbox id="tbx_iLastLogin" class="info-row__value" label=""/>
+							</xf:group>
+							<xf:group id="grp_iPwdChanged" class="info-row">
+								<w2:textbox id="tbx_iPwdChangedL" class="info-row__label" label="Đổi mật khẩu gần nhất"/>
+								<w2:textbox id="tbx_iPwdChanged" class="info-row__value" label=""/>
+							</xf:group>
+							<xf:group id="grp_iCreated" class="info-row">
+								<w2:textbox id="tbx_iCreatedL" class="info-row__label" label="Ngày tạo"/>
+								<w2:textbox id="tbx_iCreated" class="info-row__value" label=""/>
+							</xf:group>
+							<xf:group id="grp_iUpdated" class="info-row">
+								<w2:textbox id="tbx_iUpdatedL" class="info-row__label" label="Cập nhật gần nhất"/>
+								<w2:textbox id="tbx_iUpdated" class="info-row__value" label=""/>
+							</xf:group>
+							<xf:group id="grp_iId" class="info-row">
+								<w2:textbox id="tbx_iIdL" class="info-row__label" label="Mã người dùng"/>
+								<w2:textbox id="tbx_iId" class="info-row__value info-row__value--mono" label=""/>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+
+					<!-- Tab: Vai trò -->
+					<xf:group id="grp_paneRoles" class="pane is-hidden">
+						<w2:textbox id="tbx_rolesNote" class="pane__note" label="Mỗi người dùng có đúng một vai trò. Đổi vai trò sẽ thay thế vai trò hiện tại; quyền mới có hiệu lực khi người đó đăng nhập lại."/>
+						<xf:group id="grp_dRoleCard" class="ritem">
+							<xf:group id="grp_drTop" class="ritem__top">
+								<xf:group id="grp_drNames" class="ritem__names">
+									<w2:textbox id="tbx_drName" class="ritem__name" label=""/>
+									<w2:textbox id="tbx_drCode" class="ritem__code" label=""/>
+								</xf:group>
+							</xf:group>
+							<w2:textbox id="tbx_drAssigned" class="ritem__meta" label=""/>
+							<w2:textbox id="tbx_drDesc" class="ritem__period" label=""/>
+							<w2:textbox id="tbx_drPerms" class="ritem__perms" label=""/>
+						</xf:group>
+						<xf:group id="grp_dRolesEmpty" class="mini-empty is-hidden">
+							<w2:textbox id="tbx_dRolesEmpty" class="mini-empty__text" label="Người dùng này chưa có vai trò. Họ vẫn đăng nhập được nhưng không có quyền gì cho tới khi được gán vai trò."/>
+						</xf:group>
+						<w2:textbox id="tbx_dRoleHint" class="pane__hint is-hidden" label=""/>
+						<xf:group id="grp_dRolesActions" class="pane__actions">
+							<xf:trigger id="btn_dEditRoles" class="btn btn--ghost btn--sm" type="button" ev:onclick="scwin.btn_dEditRoles_onclick">
+								<xf:label><![CDATA[Đổi vai trò]]></xf:label>
+							</xf:trigger>
+							<xf:trigger id="btn_dRemoveRole" class="btn btn--danger-ghost btn--sm" type="button" ev:onclick="scwin.btn_dRemoveRole_onclick">
+								<xf:label><![CDATA[Gỡ vai trò]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+
+					<!-- Tab: Hoạt động -->
+					<xf:group id="grp_paneActivity" class="pane is-hidden">
+						<xf:group id="grp_actSeg" class="seg">
+							<xf:trigger id="btn_actAudit" class="seg__item seg__item--active" type="button" ev:onclick="scwin.btn_actAudit_onclick">
+								<xf:label><![CDATA[Thao tác]]></xf:label>
+							</xf:trigger>
+							<xf:trigger id="btn_actLogin" class="seg__item" type="button" ev:onclick="scwin.btn_actLogin_onclick">
+								<xf:label><![CDATA[Lịch sử đăng nhập]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+
+						<xf:group id="grp_auditWrap" class="act-wrap">
+							<w2:textbox id="tbx_auditCount" class="act-wrap__count" label=""/>
+							<w2:generator id="gen_audit" class="timeline">
+								<xf:group id="grp_auItem" class="tl-item">
+									<xf:group id="grp_auDot" class="tl-item__dot"/>
+									<xf:group id="grp_auBody" class="tl-item__body">
+										<xf:group id="grp_auTop" class="tl-item__top">
+											<w2:textbox id="tbx_auAction" class="tl-item__tag" label=""/>
+											<w2:textbox id="tbx_auTime" class="tl-item__time" label=""/>
+										</xf:group>
+										<w2:textbox id="tbx_auDesc" class="tl-item__title" label=""/>
+										<w2:textbox id="tbx_auDiff" class="tl-item__diff" label=""/>
+										<w2:textbox id="tbx_auMeta" class="tl-item__meta" label=""/>
+									</xf:group>
+								</xf:group>
+							</w2:generator>
+							<xf:group id="grp_auditEmpty" class="mini-empty is-hidden">
+								<w2:textbox id="tbx_auditEmpty" class="mini-empty__text" label="Người này chưa thực hiện thao tác nào được ghi nhận."/>
+							</xf:group>
+							<xf:trigger id="btn_auditMore" class="btn btn--ghost btn--sm act-wrap__more is-hidden" type="button" ev:onclick="scwin.btn_auditMore_onclick">
+								<xf:label><![CDATA[Xem thêm]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+
+						<xf:group id="grp_loginWrap" class="act-wrap is-hidden">
+							<w2:textbox id="tbx_loginCount" class="act-wrap__count" label=""/>
+							<w2:generator id="gen_login" class="timeline">
+								<xf:group id="grp_lgItem" class="tl-item">
+									<xf:group id="grp_lgDot" class="tl-item__dot"/>
+									<xf:group id="grp_lgBody" class="tl-item__body">
+										<xf:group id="grp_lgTop" class="tl-item__top">
+											<w2:textbox id="tbx_lgTitle" class="tl-item__title" label=""/>
+											<w2:textbox id="tbx_lgTime" class="tl-item__time" label=""/>
+										</xf:group>
+										<w2:textbox id="tbx_lgDevice" class="tl-item__diff" label=""/>
+										<w2:textbox id="tbx_lgMeta" class="tl-item__meta" label=""/>
+									</xf:group>
+								</xf:group>
+							</w2:generator>
+							<xf:group id="grp_loginEmpty" class="mini-empty is-hidden">
+								<w2:textbox id="tbx_loginEmpty" class="mini-empty__text" label="Chưa có lượt đăng nhập nào."/>
+							</xf:group>
+							<xf:trigger id="btn_loginMore" class="btn btn--ghost btn--sm act-wrap__more is-hidden" type="button" ev:onclick="scwin.btn_loginMore_onclick">
+								<xf:label><![CDATA[Xem thêm]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		<!-- ================================================================
+		     MODAL: Tạo / sửa người dùng
+		     ================================================================ -->
+		<xf:group id="grp_formModal" class="modal is-hidden">
+			<xf:group id="grp_formBackdrop" class="modal__backdrop" ev:onclick="scwin.formClose_onclick"/>
+			<xf:group id="grp_formDialog" class="modal__dialog modal__dialog--lg">
+				<xf:group id="grp_formHead" class="modal__head">
+					<xf:group id="grp_formTitles" class="modal__titles">
+						<w2:textbox id="tbx_formTitle" class="modal__title" tagname="h2" label=""/>
+						<w2:textbox id="tbx_formSub" class="modal__sub" label=""/>
+					</xf:group>
+					<xf:trigger id="btn_formX" class="icon-btn" type="button" ev:onclick="scwin.formClose_onclick">
+						<xf:label><![CDATA[×]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+
+				<xf:group id="grp_formBody" class="modal__body uform">
+					<xf:group id="grp_formAlert" class="alert alert--error is-hidden">
+						<w2:textbox id="tbx_formAlert" class="alert__text" label=""/>
+					</xf:group>
+					<xf:group id="grp_formGrid" class="uform__grid">
+						<!-- Ảnh đại diện -->
+						<xf:group id="grp_avatarPick" class="avatar-pick">
+							<xf:group id="grp_fAvatar" class="avatar avatar--xl">
+								<xf:image id="img_fAvatar" class="avatar__img" src=""/>
+								<w2:textbox id="tbx_fInitial" class="avatar__initial" label="?"/>
+							</xf:group>
+							<xf:trigger id="btn_pickAvatar" class="btn btn--ghost btn--sm avatar-pick__btn" type="button" ev:onclick="scwin.btn_pickAvatar_onclick">
+								<xf:label><![CDATA[Chọn ảnh]]></xf:label>
+							</xf:trigger>
+							<xf:trigger id="btn_clearAvatar" class="btn btn--text btn--sm is-hidden" type="button" ev:onclick="scwin.btn_clearAvatar_onclick">
+								<xf:label><![CDATA[Bỏ ảnh vừa chọn]]></xf:label>
+							</xf:trigger>
+							<w2:textbox id="tbx_avatarHint" class="avatar-pick__hint" label=""/>
+							<w2:textbox id="tbx_eAvatar" class="field__error" label=""/>
+						</xf:group>
+
+						<xf:group id="grp_formFields" class="uform__fields">
+							<xf:group id="grp_fUsername" class="field">
+								<w2:textbox id="tbx_lUsername" class="field__label" label="Tên đăng nhập *"/>
+								<xf:input id="ibx_fUsername" class="field__input" placeholder="vd: nguyenvana" maxlength="50" ev:onkeyup="scwin.formField_onkeyup"/>
+								<w2:textbox id="tbx_hUsername" class="field__hint" label=""/>
+								<w2:textbox id="tbx_eUsername" class="field__error" label=""/>
+							</xf:group>
+
+							<xf:group id="grp_fPassword" class="field">
+								<w2:textbox id="tbx_lPassword" class="field__label" label="Mật khẩu *"/>
+								<xf:group id="grp_fPwdBox" class="pwd-input">
+									<xf:secret id="sct_fPassword" class="field__input pwd-input__field" placeholder="Tối thiểu 8 ký tự" maxlength="72" ev:onkeyup="scwin.fPassword_onkeyup"/>
+									<xf:trigger id="btn_fPwdReveal" class="pwd-input__btn" type="button" ev:onclick="scwin.btn_fPwdReveal_onclick">
+										<xf:label><![CDATA[Hiện]]></xf:label>
+									</xf:trigger>
+								</xf:group>
+								<xf:group id="grp_fMeter" class="pwd-meter pwd-meter--l0">
+									<xf:group id="grp_fMeter1" class="pwd-meter__seg"/>
+									<xf:group id="grp_fMeter2" class="pwd-meter__seg"/>
+									<xf:group id="grp_fMeter3" class="pwd-meter__seg"/>
+									<xf:group id="grp_fMeter4" class="pwd-meter__seg"/>
+								</xf:group>
+								<xf:group id="grp_fPwdFoot" class="field__row">
+									<w2:textbox id="tbx_hPassword" class="field__hint" label=""/>
+									<xf:trigger id="btn_fPwdGen" class="btn btn--text btn--xs" type="button" ev:onclick="scwin.btn_fPwdGen_onclick">
+										<xf:label><![CDATA[Tạo mật khẩu mạnh]]></xf:label>
+									</xf:trigger>
+								</xf:group>
+								<w2:textbox id="tbx_ePassword" class="field__error" label=""/>
+							</xf:group>
+
+							<xf:group id="grp_fFullName" class="field">
+								<w2:textbox id="tbx_lFullName" class="field__label" label="Họ tên *"/>
+								<xf:input id="ibx_fFullName" class="field__input" placeholder="vd: Nguyễn Văn A" maxlength="150" ev:onkeyup="scwin.fullName_onkeyup"/>
+								<w2:textbox id="tbx_eFullName" class="field__error" label=""/>
+							</xf:group>
+
+							<xf:group id="grp_fContactRow" class="field-row">
+								<xf:group id="grp_fEmail" class="field">
+									<w2:textbox id="tbx_lEmail" class="field__label" label="Email *"/>
+									<xf:input id="ibx_fEmail" class="field__input" placeholder="ten@ssc.vn" maxlength="255" ev:onkeyup="scwin.formField_onkeyup"/>
+									<w2:textbox id="tbx_eEmail" class="field__error" label=""/>
+								</xf:group>
+								<xf:group id="grp_fPhone" class="field">
+									<w2:textbox id="tbx_lPhone" class="field__label" label="Số điện thoại"/>
+									<xf:input id="ibx_fPhone" class="field__input" placeholder="0901 234 567" maxlength="20" ev:onkeyup="scwin.formField_onkeyup"/>
+									<w2:textbox id="tbx_ePhone" class="field__error" label=""/>
+								</xf:group>
+							</xf:group>
+
+							<xf:group id="grp_fRoles" class="field">
+								<w2:textbox id="tbx_lRoles" class="field__label" label="Vai trò *"/>
+								<xf:select1 id="sbx_fRole" class="field-select field-select--block" appearance="minimal" chooseOption="true"
+									chooseOptionLabel="Chọn vai trò" direction="auto" displayMode="label" ev:onviewchange="scwin.formChoice_onchange">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_roleOptions">
+											<xf:label ref="roleName"/>
+											<xf:value ref="roleCode"/>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select1>
+								<w2:textbox id="tbx_hRoles" class="field__hint" label=""/>
+								<w2:textbox id="tbx_eRoles" class="field__error" label=""/>
+							</xf:group>
+
+							<xf:group id="grp_fActive" class="field">
+								<w2:textbox id="tbx_lActive" class="field__label" label="Trạng thái"/>
+								<xf:select1 id="rdo_fActive" class="choice-group choice-group--seg" appearance="full" renderType="radiogroup"
+									cols="" rows="" selectedindex="0" ev:onviewchange="scwin.formChoice_onchange">
+									<xf:choices>
+										<xf:item><xf:label><![CDATA[Hoạt động]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item>
+										<xf:item><xf:label><![CDATA[Vô hiệu hóa]]></xf:label><xf:value><![CDATA[false]]></xf:value></xf:item>
+									</xf:choices>
+								</xf:select1>
+								<w2:textbox id="tbx_hActive" class="field__hint" label=""/>
+								<w2:textbox id="tbx_eActive" class="field__error" label=""/>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+
+				<xf:group id="grp_formFoot" class="modal__foot">
+					<xf:trigger id="btn_formCancel" class="btn btn--ghost" type="button" ev:onclick="scwin.formClose_onclick">
+						<xf:label><![CDATA[Hủy]]></xf:label>
+					</xf:trigger>
+					<xf:trigger id="btn_formSave" class="btn btn--primary" type="button" ev:onclick="scwin.btn_formSave_onclick">
+						<xf:label><![CDATA[Lưu]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		<!-- ================================================================
+		     MODAL: Đổi mật khẩu (của chính mình)
+		     ================================================================ -->
+		<xf:group id="grp_pwdModal" class="modal is-hidden">
+			<xf:group id="grp_pwdBackdrop" class="modal__backdrop" ev:onclick="scwin.pwdClose_onclick"/>
+			<xf:group id="grp_pwdDialog" class="modal__dialog modal__dialog--sm">
+				<xf:group id="grp_pwdHead" class="modal__head">
+					<xf:group id="grp_pwdTitles" class="modal__titles">
+						<w2:textbox id="tbx_pwdTitle" class="modal__title" tagname="h2" label="Đổi mật khẩu"/>
+						<w2:textbox id="tbx_pwdSub" class="modal__sub" label=""/>
+					</xf:group>
+					<xf:trigger id="btn_pwdX" class="icon-btn" type="button" ev:onclick="scwin.pwdClose_onclick">
+						<xf:label><![CDATA[×]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				<xf:group id="grp_pwdBody" class="modal__body">
+					<xf:group id="grp_pwdAlert" class="alert alert--error is-hidden">
+						<w2:textbox id="tbx_pwdAlert" class="alert__text" label=""/>
+					</xf:group>
+					<xf:group id="grp_pOld" class="field">
+						<w2:textbox id="tbx_lpOld" class="field__label" label="Mật khẩu hiện tại"/>
+						<xf:group id="grp_pOldBox" class="pwd-input">
+							<xf:secret id="sct_pOld" class="field__input pwd-input__field" ev:onkeyup="scwin.pwdField_onkeyup"/>
+							<xf:trigger id="btn_pOldReveal" class="pwd-input__btn" type="button" ev:onclick="scwin.btn_pOldReveal_onclick">
+								<xf:label><![CDATA[Hiện]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<w2:textbox id="tbx_epOld" class="field__error" label=""/>
+					</xf:group>
+					<xf:group id="grp_pNew" class="field">
+						<w2:textbox id="tbx_lpNew" class="field__label" label="Mật khẩu mới"/>
+						<xf:group id="grp_pNewBox" class="pwd-input">
+							<xf:secret id="sct_pNew" class="field__input pwd-input__field" maxlength="72" ev:onkeyup="scwin.pwdField_onkeyup"/>
+							<xf:trigger id="btn_pNewReveal" class="pwd-input__btn" type="button" ev:onclick="scwin.btn_pNewReveal_onclick">
+								<xf:label><![CDATA[Hiện]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="grp_pMeter" class="pwd-meter pwd-meter--l0">
+							<xf:group id="grp_pMeter1" class="pwd-meter__seg"/>
+							<xf:group id="grp_pMeter2" class="pwd-meter__seg"/>
+							<xf:group id="grp_pMeter3" class="pwd-meter__seg"/>
+							<xf:group id="grp_pMeter4" class="pwd-meter__seg"/>
+						</xf:group>
+						<w2:textbox id="tbx_hpNew" class="field__hint" label=""/>
+						<w2:textbox id="tbx_epNew" class="field__error" label=""/>
+					</xf:group>
+					<xf:group id="grp_pConfirm" class="field">
+						<w2:textbox id="tbx_lpConfirm" class="field__label" label="Nhập lại mật khẩu mới"/>
+						<xf:secret id="sct_pConfirm" class="field__input" maxlength="72" ev:onkeyup="scwin.pwdField_onkeyup"/>
+						<w2:textbox id="tbx_epConfirm" class="field__error" label=""/>
+					</xf:group>
+				</xf:group>
+				<xf:group id="grp_pwdFoot" class="modal__foot">
+					<xf:trigger id="btn_pwdCancel" class="btn btn--ghost" type="button" ev:onclick="scwin.pwdClose_onclick">
+						<xf:label><![CDATA[Hủy]]></xf:label>
+					</xf:trigger>
+					<xf:trigger id="btn_pwdSave" class="btn btn--primary" type="button" ev:onclick="scwin.btn_pwdSave_onclick">
+						<xf:label><![CDATA[Đổi mật khẩu]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		<!-- ================================================================
+		     MODAL: Xác nhận
+		     ================================================================ -->
+		<xf:group id="grp_confirm" class="modal modal--confirm is-hidden">
+			<xf:group id="grp_cfBackdrop" class="modal__backdrop" ev:onclick="scwin.cfCancel_onclick"/>
+			<xf:group id="grp_cfDialog" class="modal__dialog modal__dialog--sm confirm">
+				<xf:group id="grp_cfTop" class="confirm__top">
+					<w2:textbox id="tbx_cfIcon" class="confirm__icon" label="!"/>
+					<xf:group id="grp_cfText" class="confirm__text">
+						<w2:textbox id="tbx_cfTitle" class="confirm__title" tagname="h3" label=""/>
+						<w2:textbox id="tbx_cfMsg" class="confirm__msg" label=""/>
+					</xf:group>
+				</xf:group>
+				<xf:group id="grp_cfType" class="field confirm__type is-hidden">
+					<w2:textbox id="tbx_cfTypeLbl" class="field__label" label=""/>
+					<xf:input id="ibx_cfType" class="field__input" ev:onkeyup="scwin.cfType_onkeyup"/>
+				</xf:group>
+				<xf:group id="grp_cfReason" class="field confirm__type is-hidden">
+					<w2:textbox id="tbx_cfReasonLbl" class="field__label" label="Lý do (không bắt buộc)"/>
+					<xf:textarea id="txa_cfReason" class="field__input field__textarea" placeholder="vd: Chuyển bộ phận" maxlength="500"/>
+				</xf:group>
+				<w2:textbox id="tbx_cfErr" class="confirm__err is-hidden" label=""/>
+				<xf:group id="grp_cfFoot" class="modal__foot confirm__foot">
+					<xf:trigger id="btn_cfCancel" class="btn btn--ghost" type="button" ev:onclick="scwin.cfCancel_onclick">
+						<xf:label><![CDATA[Hủy]]></xf:label>
+					</xf:trigger>
+					<xf:trigger id="btn_cfOk" class="btn btn--primary confirm__ok" type="button" ev:onclick="scwin.btn_cfOk_onclick">
+						<xf:label><![CDATA[Xác nhận]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		<!-- ============ Toast ============ -->
+		<xf:group id="grp_toast" class="toast is-hidden">
+			<w2:textbox id="tbx_toastIcon" class="toast__icon" label=""/>
+			<w2:textbox id="tbx_toastMsg" class="toast__msg" label=""/>
+			<xf:trigger id="btn_toastClose" class="toast__close" type="button" ev:onclick="scwin.btn_toastClose_onclick">
+				<xf:label><![CDATA[×]]></xf:label>
+			</xf:trigger>
+		</xf:group>
+	</xf:group>
+	<w2:wframe id="wfm_footer" class="layout-footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+	</xf:group>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="/text/CommonCss/Auth.css" type="text/css"?>
+<?xml-stylesheet href="/CommonCss/Auth.css" type="text/css"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	xmlns:w2="http://www.inswave.com/websquare"
@@ -22,6 +23,7 @@
 			<w2:workflowCollection/>
 		</xf:model>
 		<script type="text/javascript" lazy="false"><![CDATA[
+
 	// ====== CẤU HÌNH ======
 	scwin.API_BASE      = "http://localhost:8081";              // địa chỉ backend Spring Boot
 	// Tự lấy tiền tố ứng dụng từ địa chỉ đang mở, ví dụ "/text" (hoặc "" nếu chạy ở thư mục gốc)
