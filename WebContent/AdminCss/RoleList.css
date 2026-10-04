@@ -1,0 +1,371 @@
+/* =====================================================================
+ * RoleList.css — 2.5 Quản lý vai trò (SSC Check-in, WebSquare 6)
+ * ===================================================================== */
+
+.rp-page {
+	--green-900: #0b3d2a;
+	--green-700: #0f7b4f;
+	--green-600: #14935f;
+	--green-100: #dff3e8;
+	--green-50:  #f3f8f5;
+	--ink:       #16241d;
+	--muted:     #63746b;
+	--line:      #d5e2da;
+
+	--white:     #ffffff;
+	--line-soft: #e7efe9;
+	--warn:      #9a5b00;
+	--warn-bg:   #fdf3e1;
+	--danger:    #b42318;
+	--danger-bg: #fdecea;
+	--info:      #1f5f8b;
+	--info-bg:   #e6f0f7;
+	--r-sm: 6px;
+	--r-md: 10px;
+	--r-lg: 14px;
+	--shadow-pop: 0 18px 48px rgba(11, 61, 42, .18);
+	--ease: cubic-bezier(.2, .7, .2, 1);
+
+	max-width: 1072px;
+	margin: 0 auto;
+	padding: 28px 0 56px;
+	color: var(--ink);
+	font-size: 14px;
+	line-height: 1.5;
+}
+.rp-page *, .rp-page *::before, .rp-page *::after { box-sizing: border-box; }
+.rp-page .is-hidden { display: none !important; }
+
+/* ---------- Nút ---------- */
+.rp-page .btn {
+	display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+	height: 38px; padding: 0 16px;
+	border: 1px solid transparent; border-radius: var(--r-md);
+	font: inherit; font-size: 14px; font-weight: 600; white-space: nowrap;
+	cursor: pointer; transition: background-color .15s, border-color .15s, color .15s;
+}
+.rp-page .btn--primary { background: var(--green-700); color: var(--white); }
+.rp-page .btn--primary:hover { background: var(--green-600); }
+.rp-page .btn--ghost { background: var(--white); color: var(--green-700); border-color: var(--line); }
+.rp-page .btn--ghost:hover { background: var(--green-50); border-color: var(--green-600); }
+.rp-page .btn--danger { background: var(--danger); color: var(--white); }
+.rp-page .btn--danger:hover { background: #912018; }
+.rp-page .btn--danger-ghost { background: var(--white); color: var(--danger); border-color: #f2c9c4; }
+.rp-page .btn--danger-ghost:hover { background: var(--danger-bg); border-color: var(--danger); }
+.rp-page .btn--sm { height: 32px; padding: 0 12px; font-size: 13px; }
+.rp-page .btn[disabled], .rp-page .btn.w2trigger_disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
+.rp-page .btn:focus-visible, .rp-page .preset:focus-visible, .rp-page .uresult:focus-visible {
+	outline: 2px solid var(--green-600); outline-offset: 2px;
+}
+
+/* ---------- Tiêu đề ---------- */
+.rp-page .rp-head { margin-bottom: 20px; }
+.rp-page .rp-head__title { display: block; margin: 0; font-size: 22px; font-weight: 700; color: var(--green-900); }
+.rp-page .rp-head__sub { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; max-width: 640px; }
+
+.rp-page .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.rp-page .rp-forbidden { padding: 56px 24px; text-align: center; }
+.rp-page .rp-forbidden__title { display: block; margin: 0; font-size: 16px; color: var(--danger); }
+.rp-page .rp-forbidden__desc { display: block; margin-top: 4px; color: var(--muted); }
+
+/* ---------- Thẻ vai trò ---------- */
+.rp-page .rp-roles {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+	margin-bottom: 20px;
+}
+.rp-page .rcard {
+	display: flex; flex-direction: column; gap: 12px;
+	padding: 20px;
+	background: var(--white);
+	border: 1px solid var(--line);
+	border-radius: var(--r-lg);
+}
+.rp-page .rcard--admin { border-top: 4px solid var(--green-900); }
+.rp-page .rcard--staff { border-top: 4px solid var(--green-600); }
+.rp-page .rcard--sk { height: 320px; background: linear-gradient(90deg, #edf3ef, #f6faf7, #edf3ef); background-size: 200% 100%; animation: rp-shimmer 1.3s linear infinite; }
+@keyframes rp-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+.rp-page .rcard__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.rp-page .rcard__name { display: block; margin: 0; font-size: 18px; font-weight: 700; color: var(--green-900); }
+.rp-page .rcard__code { display: block; color: var(--muted); font-size: 12px; }
+.rp-page .rcard__pills { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.rp-page .rcard__desc { display: block; color: var(--muted); font-size: 13px; }
+
+.rp-page .rcard__meter { display: flex; align-items: center; gap: 10px; }
+.rp-page .rcard__count { flex-shrink: 0; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.rp-page .rcard__track { flex: 1; height: 6px; border-radius: 3px; background: var(--line-soft); overflow: hidden; }
+.rp-page .rcard__bar { height: 100%; width: 0; border-radius: 3px; background: var(--green-600); transition: width .4s var(--ease); }
+.rp-page .rcard--admin .rcard__bar { background: var(--green-900); }
+.rp-page .rcard__bar--p1  { width: 10%; }  .rp-page .rcard__bar--p2  { width: 20%; }
+.rp-page .rcard__bar--p3  { width: 30%; }  .rp-page .rcard__bar--p4  { width: 40%; }
+.rp-page .rcard__bar--p5  { width: 50%; }  .rp-page .rcard__bar--p6  { width: 60%; }
+.rp-page .rcard__bar--p7  { width: 70%; }  .rp-page .rcard__bar--p8  { width: 80%; }
+.rp-page .rcard__bar--p9  { width: 90%; }  .rp-page .rcard__bar--p10 { width: 100%; }
+
+.rp-page .rcard__perms {
+	display: block;
+	padding: 12px 14px;
+	border-radius: var(--r-md);
+	background: var(--green-50);
+	font-size: 13px;
+	line-height: 1.9;
+	white-space: pre-line;
+}
+.rp-page .rcard__missing { display: block; font-size: 12px; }
+.rp-page .rcard__missing--limited { color: var(--warn); }
+.rp-page .rcard__missing--full { color: var(--green-700); }
+.rp-page .rcard__foot {
+	display: flex; align-items: center; justify-content: space-between; gap: 8px;
+	margin-top: auto; padding-top: 12px;
+	border-top: 1px solid var(--line-soft);
+}
+.rp-page .rcard__members { color: var(--muted); font-size: 13px; }
+
+/* ---------- Pill ---------- */
+.rp-page .pill {
+	display: inline-flex; align-items: center;
+	height: 22px; padding: 0 9px;
+	border-radius: 999px;
+	font-size: 11px; font-weight: 700; white-space: nowrap;
+	background: #eef1ef; color: var(--muted);
+}
+.rp-page .pill--sys  { background: var(--green-100); color: var(--green-900); }
+.rp-page .pill--on   { background: var(--green-100); color: var(--green-700); }
+.rp-page .pill--off  { background: #eef1ef; color: var(--muted); }
+.rp-page .pill--wait { background: var(--info-bg); color: var(--info); }
+
+/* ---------- Phân vai trò ---------- */
+.rp-page .assign { overflow: hidden; }
+.rp-page .assign__head { padding: 20px 20px 16px; border-bottom: 1px solid var(--line-soft); }
+.rp-page .assign__title { display: block; margin: 0; font-size: 18px; font-weight: 700; color: var(--green-900); }
+.rp-page .assign__sub { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
+.rp-page .assign__grid { display: grid; grid-template-columns: 340px 1fr; min-height: 420px; }
+
+.rp-page .upick { padding: 16px; border-right: 1px solid var(--line-soft); background: #fbfdfc; }
+.rp-page .search-box { position: relative; }
+.rp-page .search-box::before {
+	content: ""; position: absolute; left: 12px; top: 50%; z-index: 1;
+	width: 16px; height: 16px; transform: translateY(-50%); pointer-events: none;
+	background: no-repeat center / 16px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2363746b' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E");
+}
+.rp-page .search-box__input {
+	width: 100%; height: 40px; padding: 0 12px 0 36px;
+	border: 1px solid var(--line); border-radius: var(--r-md);
+	background: var(--white); color: var(--ink); font: inherit; outline: none;
+}
+.rp-page .search-box__input:focus { border-color: var(--green-600); box-shadow: 0 0 0 3px rgba(20, 147, 95, .15); }
+.rp-page .upick__hint { display: block; margin: 10px 2px 8px; color: var(--muted); font-size: 12px; }
+.rp-page .upick__list { display: flex; flex-direction: column; gap: 4px; }
+
+.rp-page .uresult {
+	display: grid;
+	grid-template-columns: 32px 1fr;
+	grid-template-areas: "av text" "av roles";
+	column-gap: 10px;
+	padding: 8px 10px;
+	border: 1px solid transparent;
+	border-radius: var(--r-md);
+	cursor: pointer;
+	transition: background-color .12s, border-color .12s;
+}
+.rp-page .uresult:hover { background: var(--white); border-color: var(--line); }
+.rp-page .uresult--selected,
+.rp-page .uresult--selected:hover { background: var(--green-100); border-color: var(--green-600); }
+.rp-page .uresult--inactive .uresult__name { color: var(--muted); }
+.rp-page .uresult .avatar { grid-area: av; align-self: center; }
+.rp-page .uresult__text { grid-area: text; min-width: 0; }
+.rp-page .uresult__name { display: block; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rp-page .uresult__sub { display: block; color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rp-page .uresult__roles { grid-area: roles; display: block; color: var(--green-700); font-size: 12px; font-weight: 600; }
+
+.rp-page .avatar {
+	position: relative; flex-shrink: 0;
+	display: flex; align-items: center; justify-content: center;
+	border-radius: 50%; overflow: hidden;
+	background: var(--green-100); color: var(--green-900); font-weight: 700;
+}
+.rp-page .avatar--sm { width: 32px; height: 32px; font-size: 13px; }
+.rp-page .avatar--md { width: 48px; height: 48px; font-size: 18px; }
+.rp-page .avatar__img { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.rp-page .avatar.has-img .avatar__img { display: block; }
+.rp-page .avatar.has-img .avatar__initial { visibility: hidden; }
+
+.rp-page .apane { padding: 20px 24px 24px; transition: opacity .15s; }
+.rp-page .apane.is-loading { opacity: .5; pointer-events: none; }
+.rp-page .apane__empty {
+	display: flex; flex-direction: column; align-items: center; justify-content: center;
+	height: 100%; min-height: 320px; text-align: center;
+	border: 1px dashed var(--line); border-radius: var(--r-lg);
+}
+.rp-page .apane__empty-title { display: block; font-weight: 700; }
+.rp-page .apane__empty-desc { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; max-width: 320px; }
+.rp-page .apane__label { display: block; margin: 20px 0 8px; color: var(--muted); font-size: 13px; font-weight: 600; }
+
+.rp-page .selcard {
+	display: flex; align-items: center; gap: 12px;
+	padding: 12px 14px; border-radius: var(--r-md); background: var(--green-50);
+}
+.rp-page .selcard__text { flex: 1; min-width: 0; }
+.rp-page .selcard__name { display: block; font-weight: 700; font-size: 16px; color: var(--green-900); }
+.rp-page .selcard__sub { display: block; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+
+.rp-page .asg-list { display: flex; flex-direction: column; gap: 8px; }
+.rp-page .asg {
+	display: flex; align-items: center; gap: 12px;
+	padding: 12px 14px;
+	border: 1px solid var(--line); border-left-width: 3px; border-radius: var(--r-md);
+}
+.rp-page .asg--admin { border-left-color: var(--green-900); }
+.rp-page .asg--staff { border-left-color: var(--green-600); }
+.rp-page .asg--muted { background: #fafcfb; }
+.rp-page .asg__text { flex: 1; min-width: 0; }
+.rp-page .asg__top { display: flex; align-items: center; gap: 8px; }
+.rp-page .asg__name { font-weight: 700; }
+.rp-page .asg__period { display: block; margin-top: 4px; font-size: 13px; }
+.rp-page .asg__meta { display: block; color: var(--muted); font-size: 12px; }
+.rp-page .asg__remove { flex-shrink: 0; }
+
+.rp-page .mini-empty { padding: 16px; border: 1px dashed var(--line); border-radius: var(--r-md); text-align: center; }
+.rp-page .mini-empty__text { color: var(--muted); font-size: 13px; }
+
+/* Form gán */
+.rp-page .aform { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line-soft); }
+.rp-page .aform__title { display: block; margin: 0 0 12px; font-size: 15px; font-weight: 700; }
+.rp-page .field { display: flex; flex-direction: column; gap: 6px; }
+.rp-page .field + .field { margin-top: 14px; }
+.rp-page .field__label { display: block; font-size: 13px; font-weight: 600; }
+.rp-page .field__error { display: block; font-size: 12px; color: var(--danger); }
+.rp-page .field__error:empty { display: none; }
+.rp-page .field-select {
+	height: 40px; max-width: 320px;
+	border: 1px solid var(--line); border-radius: var(--r-md);
+	background: var(--white); font: inherit;
+}
+.rp-page .field-select * { font: inherit; color: inherit; }
+.rp-page .field-select:hover { border-color: var(--green-600); }
+.rp-page .field--error .field-select,
+.rp-page .field--error .field__cal { border-color: var(--danger); }
+.rp-page .aform__dates { display: grid; grid-template-columns: repeat(2, minmax(0, 200px)); gap: 12px; }
+.rp-page .aform__date { display: flex; flex-direction: column; gap: 6px; }
+.rp-page .field__cal {
+	height: 40px; width: 100%;
+	border: 1px solid var(--line); border-radius: var(--r-md);
+	background: var(--white);
+}
+.rp-page .field__cal input { font: inherit; border: 0; background: transparent; }
+.rp-page .presets { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 4px; }
+.rp-page .presets__label { color: var(--muted); font-size: 12px; margin-right: 2px; }
+.rp-page .preset {
+	height: 26px; padding: 0 10px;
+	border: 1px solid var(--line); border-radius: 999px;
+	background: var(--white); color: var(--ink);
+	font: inherit; font-size: 12px; cursor: pointer;
+}
+.rp-page .preset:hover { border-color: var(--green-600); color: var(--green-700); background: var(--green-50); }
+.rp-page .aform__preview {
+	display: block; margin-top: 16px; padding: 10px 12px;
+	border-radius: var(--r-md); background: var(--green-50);
+	color: var(--green-900); font-size: 13px;
+}
+.rp-page .aform__actions { display: flex; justify-content: flex-end; margin-top: 16px; }
+
+/* ---------- Modal gỡ vai trò ---------- */
+.rp-page .modal {
+	position: fixed; inset: 0; z-index: 1200;
+	display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.rp-page .modal__backdrop { position: absolute; inset: 0; background: rgba(11, 61, 42, .38); opacity: 0; transition: opacity .2s var(--ease); }
+.rp-page .modal__dialog {
+	position: relative; width: 100%; max-width: 460px;
+	background: var(--white); border-radius: 16px; box-shadow: var(--shadow-pop);
+	opacity: 0; transform: translateY(12px) scale(.98);
+	transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.rp-page .modal.is-open .modal__backdrop { opacity: 1; }
+.rp-page .modal.is-open .modal__dialog { opacity: 1; transform: none; }
+.rp-page .modal__foot {
+	display: flex; justify-content: flex-end; gap: 8px;
+	margin-top: 20px; padding: 14px 24px;
+	border-top: 1px solid var(--line-soft); background: #fbfdfc;
+	border-radius: 0 0 16px 16px;
+}
+.rp-page .rm__top { display: flex; gap: 14px; padding: 24px 24px 8px; }
+.rp-page .rm__icon {
+	flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+	width: 40px; height: 40px; border-radius: 50%;
+	background: var(--danger-bg); color: var(--danger); font-weight: 700; font-size: 18px;
+}
+.rp-page .rm__title { display: block; margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+.rp-page .rm__msg { display: block; color: var(--muted); font-size: 13px; }
+.rp-page .rm__reason { padding: 8px 24px 0 78px; }
+.rp-page .rm__reason-head { display: flex; justify-content: space-between; align-items: baseline; }
+.rp-page .rm__count { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.rp-page .rm__count.is-over { color: var(--danger); font-weight: 700; }
+.rp-page .field__textarea {
+	width: 100%; min-height: 88px; padding: 10px 12px;
+	border: 1px solid var(--line); border-radius: var(--r-md);
+	font: inherit; resize: vertical; outline: none;
+}
+.rp-page .field__textarea:focus { border-color: var(--green-600); box-shadow: 0 0 0 3px rgba(20, 147, 95, .15); }
+.rp-page .rm__err { display: block; margin: 8px 24px 0 78px; color: var(--danger); font-size: 13px; }
+
+/* ---------- Toast ---------- */
+.rp-page .toast {
+	position: fixed; left: 50%; bottom: 28px; z-index: 1400;
+	display: flex; align-items: center; gap: 10px;
+	max-width: min(520px, calc(100% - 32px));
+	padding: 10px 10px 10px 14px; border-radius: 12px;
+	background: var(--green-900); color: var(--white); box-shadow: var(--shadow-pop);
+	opacity: 0; transform: translate(-50%, 12px);
+	transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.rp-page .toast.is-show { opacity: 1; transform: translate(-50%, 0); }
+.rp-page .toast__icon {
+	flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+	width: 22px; height: 22px; border-radius: 50%;
+	background: var(--green-600); font-size: 12px; font-weight: 700;
+}
+.rp-page .toast--error .toast__icon { background: #e5483b; }
+.rp-page .toast--warn .toast__icon  { background: #d98a1c; }
+.rp-page .toast--info .toast__icon  { background: #3b82b5; }
+.rp-page .toast__msg { font-size: 13px; }
+.rp-page .toast__close {
+	width: 26px; height: 26px; border: 0; border-radius: var(--r-sm);
+	background: transparent; color: rgba(255, 255, 255, .7); font-size: 18px; cursor: pointer;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) { .rp-page { padding-left: 16px; padding-right: 16px; } }
+@media (max-width: 860px) {
+	.rp-page .rp-roles { grid-template-columns: 1fr; }
+	.rp-page .assign__grid { grid-template-columns: 1fr; }
+	.rp-page .upick { border-right: 0; border-bottom: 1px solid var(--line-soft); }
+	.rp-page .upick__list { max-height: 320px; overflow-y: auto; }
+}
+@media (max-width: 560px) {
+	.rp-page .aform__dates { grid-template-columns: 1fr; }
+	.rp-page .rm__reason { padding-left: 24px; }
+	.rp-page .rm__err { margin-left: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.rp-page *, .rp-page *::before, .rp-page *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ---------- Header / footer dùng chung (wframe) ---------- */
+.layout-header,
+.layout-footer { display: block; width: 100%; }
+
+/* ---------- Sửa kích thước selectbox WebSquare ---------- */
+.rp-page .aform .field-select { width: 320px !important; max-width: 100%; }
+.rp-page .field-select,
+.rp-page .field-select * { text-align: left; }
+
+/* ---------- Nội dung trang trong khung ck-layout (giống ck-main của Home) ---------- */
+.ck-layout > .rp-page { flex: 1 0 auto; width: 100%; }
+
+/* ---------- Mỗi user 1 vai trò ---------- */
+.rp-page .asg__code { color: var(--muted); font-size: 12px; }
+.rp-page .uresult__roles--none { color: #a3b1a9; font-weight: 500; }
+.rp-page .grp_curRole, .rp-page .asg + .mini-empty { margin-top: 0; }

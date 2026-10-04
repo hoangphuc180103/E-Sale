@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/AdminCss/RoleList.css" type="text/css"?>
+<?xml-stylesheet href="/AdminCss/RoleList.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+<head>
+	<w2:type>DEFAULT</w2:type>
+	<w2:buildDate/>
+	<xf:model>
+		<w2:dataCollection baseNode="map">
+			<w2:dataList baseNode="list" repeatNode="map" id="dlt_roleOptions" saveRemovedData="true">
+				<w2:columnInfo>
+					<w2:column id="roleCode" name="Mã vai trò" dataType="text"/>
+					<w2:column id="roleName" name="Tên vai trò" dataType="text"/>
+				</w2:columnInfo>
+			</w2:dataList>
+		</w2:dataCollection>
+		<w2:workflowCollection/>
+	</xf:model>
+	<w2:layoutInfo/>
+	<w2:publicInfo method=""/>
+	<script type="text/javascript" lazy="false"><![CDATA[
+/* =====================================================================
+ * 2.5 QUẢN LÝ VAI TRÒ — SSC Check-in
+ * Quy tắc: mỗi người dùng có đúng 1 vai trò (hoặc chưa có vai trò nào).
+ * ===================================================================== */
+
+/* ---------- Cấu hình ---------- */
+scwin.CTX = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+scwin.WS_ENTRY = scwin.CTX + "/websquare/websquare.html";
+scwin.CONFIG = {
+	API_BASE: "http://localhost:8081",
+	TOKEN_KEYS: ["ssc_token"],
+	LOGIN_URL: scwin.WS_ENTRY + "?w2xPath=" + scwin.CTX + "/authPage/LoginPage.xml"
+};
+scwin.MODULES = ["Sự kiện", "Khách mời", "Hội trường", "Check-in", "In ấn", "Báo cáo", "Hệ thống"];
+scwin.PERM = {
+	EVENT_VIEW: ["Sự kiện", "Xem"], EVENT_CREATE: ["Sự kiện", "Tạo"], EVENT_UPDATE: ["Sự kiện", "Sửa"], EVENT_DELETE: ["Sự kiện", "Xóa"],
+	GUEST_VIEW: ["Khách mời", "Xem"], GUEST_CREATE: ["Khách mời", "Thêm"], GUEST_UPDATE: ["Khách mời", "Sửa"],
+	GUEST_DELETE: ["Khách mời", "Xóa"], GUEST_IMPORT: ["Khách mời", "Nhập file"], GUEST_EXPORT: ["Khách mời", "Xuất file"],
+	HALL_VIEW: ["Hội trường", "Xem"], HALL_MANAGE: ["Hội trường", "Quản lý"], HALL_DELETE: ["Hội trường", "Xóa"],
+	CHECKIN_SCAN: ["Check-in", "Quét QR"], PRINT_BADGE: ["In ấn", "In thẻ"], TEMPLATE_MANAGE: ["In ấn", "Quản lý mẫu thẻ"],
+	REPORT_ALL: ["Báo cáo", "Xem toàn bộ"], REPORT_LIMITED: ["Báo cáo", "Xem giới hạn"],
+	USER_MANAGE: ["Hệ thống", "Quản lý người dùng"], ROLE_MANAGE: ["Hệ thống", "Quản lý vai trò"], SYSTEM_CONFIG: ["Hệ thống", "Cấu hình"]
+};
+
+scwin.state = { me: null, roles: [], roleMap: {}, results: [], sel: null, busy: false, rmBusy: false, seq: 0 };
+scwin.timers = {};
+
+/* =====================================================================
+ * Vòng đời
+ * ===================================================================== */
+scwin.onpageload = function () {
+	scwin._onKeydown = function (e) { if (e.key === "Escape" || e.keyCode === 27) scwin.closeRemove(false); };
+	document.addEventListener("keydown", scwin._onKeydown);
+	scwin.bootstrap();
+};
+scwin.onpageunload = function () {
+	document.removeEventListener("keydown", scwin._onKeydown);
+	for (var k in scwin.timers) if (scwin.timers.hasOwnProperty(k)) clearTimeout(scwin.timers[k]);
+};
+scwin.bootstrap = function () {
+	Promise.all([
+		scwin.api("GET", "/api/auth/me").then(function (r) { return r.data; }).catch(function () { return null; }),
+		scwin.api("GET", "/api/common/layout").then(function (r) { return r.data; }).catch(function () { return null; })
+	]).then(function (res) {
+		var layout = res[1] || {};
+		scwin.state.me = res[0] || layout.user || null;
+		var perms = [], list = layout.permissions || [];
+		for (var i = 0; i < list.length; i++) perms.push(typeof list[i] === "string" ? list[i] : (list[i].code || list[i].permissionCode || ""));
+		if (layout.permissions && perms.indexOf("ROLE_MANAGE") < 0) {
+			scwin.hide(grp_main); scwin.show(grp_forbidden);
+			return;
+		}
+		scwin.loadRoles();
+		scwin.searchUsers();
+	});
+};
+
+/* =====================================================================
+ * API
+ * ===================================================================== */
+scwin.getToken = function () {
+	var keys = scwin.CONFIG.TOKEN_KEYS, v;
+	for (var i = 0; i < keys.length; i++) {
+		try { v = localStorage.getItem(keys[i]) || sessionStorage.getItem(keys[i]); } catch (e) { v = null; }
+		if (v) return String(v).replace(/^Bearer\s+/i, "");
+	}
+	return null;
+};
+scwin.qs = function (o) {
+	var p = [];
+	for (var k in o) if (o.hasOwnProperty(k) && o[k] !== null && o[k] !== undefined && o[k] !== "") p.push(encodeURIComponent(k) + "=" + encodeURIComponent(o[k]));
+	return p.length ? "?" + p.join("&") : "";
+};
+scwin.api = function (method, path, body) {
+	var headers = { "Accept": "application/json" }, token = scwin.getToken();
+	if (token) headers["Authorization"] = "Bearer " + token;
+	var init = { method: method, headers: headers };
+	if (body !== undefined && body !== null) { headers["Content-Type"] = "application/json;charset=UTF-8"; init.body = JSON.stringify(body); }
+	return fetch(scwin.CONFIG.API_BASE + path, init).then(function (res) {
+		return res.text().then(function (txt) {
+			var json = null;
+			try { json = txt ? JSON.parse(txt) : null; } catch (e) {}
+			if (!json) json = { success: res.ok, code: res.ok ? "OK" : "HTTP_" + res.status, message: res.ok ? "" : "Máy chủ trả về lỗi " + res.status + "." };
+			if (res.status === 401) scwin.handleUnauthorized();
+			if (!res.ok || json.success === false) {
+				var err = new Error(res.status === 403 && json.code === "FORBIDDEN" ? "Bạn không có quyền thực hiện thao tác này." : (json.message || "Thao tác không thành công."));
+				err.status = res.status; err.code = json.code; err.data = json.data;
+				throw err;
+			}
+			return json;
+		});
+	}, function () {
+		var err = new Error("Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại.");
+		err.code = "NETWORK"; throw err;
+	});
+};
+scwin.handleUnauthorized = function () {
+	if (scwin._redirecting) return;
+	scwin._redirecting = true;
+	["ssc_token", "ssc_user", "ssc_permissions"].forEach(function (k) {
+		try { localStorage.removeItem(k); sessionStorage.removeItem(k); } catch (e) {}
+	});
+	scwin.toast("error", "Phiên đăng nhập đã hết hạn. Đang chuyển tới trang đăng nhập…", 2000);
+	setTimeout(function () { window.location.href = scwin.CONFIG.LOGIN_URL; }, 1200);
+};
+
+/* =====================================================================
+ * Tiện ích
+ * ===================================================================== */
+scwin.show = function (c) { if (c) c.removeClass("is-hidden"); };
+scwin.hide = function (c) { if (c) c.addClass("is-hidden"); };
+scwin.toggle = function (c, on) { if (on) scwin.show(c); else scwin.hide(c); };
+scwin.swapClass = function (c, list, cls) { for (var i = 0; i < list.length; i++) c.removeClass(list[i]); if (cls) c.addClass(cls); };
+scwin.trim = function (s) { return (s == null ? "" : String(s)).replace(/^\s+|\s+$/g, ""); };
+scwin.liveVal = function (c) {
+	try {
+		var r = c.render, el = r && (r.tagName === "INPUT" || r.tagName === "TEXTAREA" ? r : r.querySelector("input,textarea"));
+		if (el && typeof el.value === "string") return el.value;
+	} catch (e) {}
+	var v = c.getValue(); return v == null ? "" : String(v);
+};
+scwin.pad = function (n) { return n < 10 ? "0" + n : String(n); };
+scwin.fmtDateTime = function (iso) {
+	if (!iso) return "—";
+	var d = new Date(iso);
+	return isNaN(d.getTime()) ? iso : scwin.pad(d.getDate()) + "/" + scwin.pad(d.getMonth() + 1) + "/" + d.getFullYear() + " " + scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes());
+};
+scwin.initials = function (n) { n = scwin.trim(n); if (!n) return "?"; var p = n.split(/\s+/); return p[p.length - 1].charAt(0).toUpperCase(); };
+scwin.cdn = function (url, size) {
+	if (!url || url.indexOf("res.cloudinary.com") < 0) return url;
+	return url.replace("/image/upload/", "/image/upload/c_fill,g_face,w_" + size + ",h_" + size + "/");
+};
+scwin.paintAvatar = function (wrap, img, initial, url, name, size) {
+	initial.setValue(scwin.initials(name));
+	if (url) { img.setSrc(scwin.cdn(url, size)); wrap.addClass("has-img"); } else wrap.removeClass("has-img");
+};
+scwin.genIndex = function (comp) {
+	try { if (typeof comp.getGeneratedIndex === "function") return comp.getGeneratedIndex(); } catch (e) {}
+	try { var v = comp.getUserData("idx"); if (v !== null && v !== undefined && v !== "") return parseInt(v, 10); } catch (e2) {}
+	return -1;
+};
+scwin.tagIndex = function (gen, idx, ids) {
+	for (var i = 0; i < ids.length; i++) { try { gen.getChild(idx, ids[i]).setUserData("idx", String(idx)); } catch (e) {} }
+};
+scwin.meId = function () { return scwin.state.me ? scwin.state.me.userId : null; };
+scwin.roleName = function (code, name) { return code ? (name || scwin.state.roleMap[code] || code) : ""; };
+scwin.curRole = function () {
+	var sel = scwin.state.sel;
+	return sel && sel.role && sel.role.roleCode ? sel.role : null;
+};
+
+/* ---------- Toast ---------- */
+scwin.toast = function (type, msg, ms) {
+	clearTimeout(scwin.timers.toast);
+	scwin.swapClass(grp_toast, ["toast--success", "toast--error", "toast--warn", "toast--info"], "toast--" + type);
+	tbx_toastIcon.setValue(type === "success" ? "✓" : type === "info" ? "i" : "!");
+	tbx_toastMsg.setValue(msg);
+	grp_toast.removeClass("is-hidden");
+	setTimeout(function () { grp_toast.addClass("is-show"); }, 10);
+	scwin.timers.toast = setTimeout(scwin.hideToast, ms || 3200);
+};
+scwin.hideToast = function () {
+	grp_toast.removeClass("is-show");
+	setTimeout(function () { grp_toast.addClass("is-hidden"); }, 220);
+};
+scwin.btn_toastClose_onclick = function () { clearTimeout(scwin.timers.toast); scwin.hideToast(); };
+
+/* =====================================================================
+ * Thẻ vai trò
+ * ===================================================================== */
+scwin.loadRoles = function () {
+	scwin.show(grp_roleSkeleton);
+	return scwin.api("GET", "/api/roles").then(function (r) {
+		var list = r.data || [], opts = [];
+		scwin.state.roles = list;
+		scwin.state.roleMap = {};
+		for (var i = 0; i < list.length; i++) {
+			scwin.state.roleMap[list[i].roleCode] = list[i].roleName;
+			if (list[i].active !== false) opts.push({ roleCode: list[i].roleCode, roleName: list[i].roleName });
+		}
+		dlt_roleOptions.setJSON(opts);
+		scwin.renderRoleCards();
+	}).catch(function (e) {
+		scwin.toast("error", e.message);
+	}).then(function () { scwin.hide(grp_roleSkeleton); });
+};
+
+scwin.groupPerms = function (perms) {
+	var groups = {}, lines = [], i, p, other = [];
+	for (i = 0; i < (perms || []).length; i++) {
+		p = scwin.PERM[perms[i]];
+		if (!p) { other.push(perms[i]); continue; }
+		(groups[p[0]] = groups[p[0]] || []).push(p[1]);
+	}
+	for (i = 0; i < scwin.MODULES.length; i++) {
+		if (groups[scwin.MODULES[i]]) lines.push(scwin.MODULES[i] + ": " + groups[scwin.MODULES[i]].join(", "));
+	}
+	if (other.length) lines.push("Khác: " + other.join(", "));
+	return lines.join("\n");
+};
+
+scwin.renderRoleCards = function () {
+	var roles = scwin.state.roles, all = [], i, j;
+	for (i = 0; i < roles.length; i++)
+		for (j = 0; j < (roles[i].permissions || []).length; j++)
+			if (all.indexOf(roles[i].permissions[j]) < 0) all.push(roles[i].permissions[j]);
+
+	gen_role.removeAll();
+	for (i = 0; i < roles.length; i++) {
+		var r = roles[i], idx = gen_role.insertChild();
+		var g = function (id) { return gen_role.getChild(idx, id); };
+		var perms = r.permissions || [];
+		scwin.tagIndex(gen_role, idx, ["btn_rcAssign"]);
+
+		g("grp_rcCard").addClass(r.roleCode === "ADMIN" ? "rcard--admin" : "rcard--staff");
+		g("tbx_rcName").setValue(r.roleName);
+		g("tbx_rcCode").setValue(r.roleCode);
+		g("tbx_rcSystem").setValue("Vai trò hệ thống");
+		scwin.toggle(g("tbx_rcSystem"), !!r.system);
+		var act = g("tbx_rcActive");
+		act.setValue(r.active !== false ? "Đang dùng" : "Ngừng dùng");
+		act.addClass(r.active !== false ? "pill--on" : "pill--off");
+		g("tbx_rcDesc").setValue(r.description || "");
+		g("tbx_rcCount").setValue(perms.length + "/" + all.length + " quyền");
+		g("grp_rcBar").addClass("rcard__bar--p" + Math.round(perms.length / Math.max(1, all.length) * 10));
+		g("tbx_rcPerms").setValue(scwin.groupPerms(perms));
+
+		var missing = [];
+		for (j = 0; j < all.length; j++) if (perms.indexOf(all[j]) < 0) missing.push(scwin.PERM[all[j]] ? scwin.PERM[all[j]][0] + " / " + scwin.PERM[all[j]][1] : all[j]);
+		var ms = g("tbx_rcMissing");
+		ms.setValue(missing.length ? "Không có: " + missing.join(", ") : "Có toàn bộ quyền trong hệ thống.");
+		ms.addClass(missing.length ? "rcard__missing--limited" : "rcard__missing--full");
+		scwin.toggle(g("btn_rcAssign"), r.active !== false);
+
+		(function (comp, code) {
+			comp.setValue("Đang đếm…");
+			scwin.api("GET", "/api/users" + scwin.qs({ roleCode: code, page: 0, size: 1 })).then(function (res) {
+				comp.setValue(((res.data && res.data.totalElements) || 0) + " người đang có vai trò này");
+			}).catch(function () { comp.setValue(""); });
+		})(g("tbx_rcMembers"), r.roleCode);
+	}
+};
+
+scwin.btn_rcAssign_onclick = function () {
+	var r = scwin.state.roles[scwin.genIndex(this)];
+	if (!r) return;
+	sbx_aRole.setValue(r.roleCode);
+	scwin.assign_onchange();
+	try { grp_assignCard.render.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {}
+	if (!scwin.state.sel) setTimeout(function () { try { ibx_uSearch.focus(); } catch (e) {} }, 300);
+};
+
+/* =====================================================================
+ * Chọn người dùng
+ * ===================================================================== */
+scwin.uSearch_onkeyup = function (e) {
+	clearTimeout(scwin.timers.search);
+	var k = e && (e.keyCode || e.which);
+	scwin.timers.search = setTimeout(scwin.searchUsers, k === 13 ? 0 : 300);
+};
+scwin.searchUsers = function () {
+	var seq = ++scwin.state.seq, kw = scwin.trim(scwin.liveVal(ibx_uSearch));
+	tbx_uHint.setValue("Đang tìm…");
+	scwin.api("GET", "/api/users" + scwin.qs({ keyword: kw, page: 0, size: 8, sort: kw ? "fullName,asc" : "userId,desc" })).then(function (r) {
+		if (seq !== scwin.state.seq) return;
+		var d = r.data || {}, list = d.content || [];
+		scwin.state.results = list;
+		gen_uRes.removeAll();
+		for (var i = 0; i < list.length; i++) {
+			var u = list[i], idx = gen_uRes.insertChild();
+			var g = function (id) { return gen_uRes.getChild(idx, id); };
+			scwin.tagIndex(gen_uRes, idx, ["grp_urItem"]);
+			scwin.paintAvatar(g("grp_urAvatar"), g("img_urAvatar"), g("tbx_urInitial"), u.avatarUrl, u.fullName || u.username, 72);
+			g("tbx_urName").setValue(u.fullName || u.username);
+			g("tbx_urSub").setValue("@" + u.username + (u.active ? "" : " (vô hiệu hóa)"));
+			var rr = g("tbx_urRoles");
+			rr.setValue(u.roleCode ? scwin.roleName(u.roleCode, u.roleName) : "Chưa có vai trò");
+			if (!u.roleCode) rr.addClass("uresult__roles--none");
+			if (!u.active) g("grp_urItem").addClass("uresult--inactive");
+			if (scwin.state.sel && scwin.state.sel.userId === u.userId) g("grp_urItem").addClass("uresult--selected");
+		}
+		tbx_uHint.setValue(list.length
+			? (kw ? (d.totalElements || 0) + " kết quả" + ((d.totalElements || 0) > list.length ? ", hiển thị " + list.length + " đầu tiên" : "") : "Người dùng mới tạo gần đây")
+			: "Không tìm thấy người dùng phù hợp.");
+	}).catch(function (e) {
+		if (seq === scwin.state.seq) tbx_uHint.setValue(e.message);
+	});
+};
+scwin.uResult_onclick = function () {
+	var u = scwin.state.results[scwin.genIndex(this)];
+	if (u) scwin.selectUser(u.userId);
+};
+
+scwin.selectUser = function (uid) {
+	grp_assignPane.addClass("is-loading");
+	return scwin.api("GET", "/api/users/" + uid).then(function (r) {
+		scwin.state.sel = r.data;
+		sbx_aRole.setValue("");
+		scwin.renderSelected();
+		scwin.markSelectedResult();
+	}).catch(function (e) {
+		scwin.toast("error", e.message);
+	}).then(function () { grp_assignPane.removeClass("is-loading"); });
+};
+scwin.markSelectedResult = function () {
+	var list = scwin.state.results, sel = scwin.state.sel;
+	for (var i = 0; i < list.length; i++) {
+		var item = gen_uRes.getChild(i, "grp_urItem");
+		if (item) scwin.swapClass(item, ["uresult--selected"], sel && list[i].userId === sel.userId ? "uresult--selected" : null);
+	}
+};
+
+/* =====================================================================
+ * Vai trò hiện tại của người được chọn
+ * ===================================================================== */
+scwin.renderSelected = function () {
+	var u = scwin.state.sel, r = scwin.curRole();
+	var self = u.userId === scwin.meId();
+	var selfAdmin = self && r && r.roleCode === "ADMIN";
+
+	scwin.hide(grp_selEmpty);
+	scwin.show(grp_selBody);
+	scwin.paintAvatar(grp_selAvatar, img_selAvatar, tbx_selInitial, u.avatarUrl, u.fullName || u.username, 112);
+	tbx_selName.setValue(u.fullName || u.username);
+	tbx_selSub.setValue("@" + u.username + (self ? " (bạn)" : "") + (u.email ? ", " + u.email : ""));
+	tbx_selStatus.setValue(u.active ? "Hoạt động" : "Vô hiệu hóa");
+	scwin.swapClass(tbx_selStatus, ["pill--on", "pill--off"], u.active ? "pill--on" : "pill--off");
+
+	scwin.toggle(grp_curRole, !!r);
+	scwin.toggle(grp_noRole, !r);
+	if (r) {
+		tbx_curName.setValue(scwin.roleName(r.roleCode, r.roleName));
+		tbx_curCode.setValue(r.roleCode);
+		tbx_curMeta.setValue(selfAdmin ? "Bạn không thể đổi hoặc gỡ vai trò Admin của chính mình." : "Gán lúc " + scwin.fmtDateTime(r.assignedAt));
+		scwin.swapClass(grp_curRole, ["asg--admin", "asg--staff"], r.roleCode === "ADMIN" ? "asg--admin" : "asg--staff");
+		btn_curRemove.setDisabled(!!selfAdmin);
+	}
+
+	tbx_aFormTitle.setValue(r ? "Đổi vai trò" : "Gán vai trò");
+	btn_aSubmit.setValue(r ? "Đổi vai trò" : "Gán vai trò");
+	sbx_aRole.setDisabled(!!selfAdmin);
+	btn_aSubmit.setDisabled(!!selfAdmin);
+	scwin.clearAssignError();
+	scwin.updatePreview();
+};
+
+/* =====================================================================
+ * Gán / đổi vai trò
+ * ===================================================================== */
+scwin.clearAssignError = function () {
+	tbx_eARole.setValue("");
+	grp_aRole.removeClass("field--error");
+};
+scwin.setAssignError = function (msg) {
+	tbx_eARole.setValue(msg);
+	grp_aRole.addClass("field--error");
+};
+scwin.updatePreview = function () {
+	var sel = scwin.state.sel, cur = scwin.curRole();
+	var code = sbx_aRole.getValue(), name = scwin.state.roleMap[code];
+	if (!sel) { tbx_aPreview.setValue("Chọn người dùng ở cột bên trái."); return; }
+	if (!name) { tbx_aPreview.setValue("Chọn vai trò để xem trước thay đổi."); return; }
+	if (cur && cur.roleCode === code) { tbx_aPreview.setValue("@" + sel.username + " đang có vai trò " + name + "."); return; }
+	tbx_aPreview.setValue(cur
+		? "@" + sel.username + " sẽ chuyển từ " + scwin.roleName(cur.roleCode, cur.roleName) + " sang " + name + ". Quyền mới có hiệu lực khi người này đăng nhập lại."
+		: "@" + sel.username + " sẽ được gán vai trò " + name + ". Quyền có hiệu lực khi người này đăng nhập lại.");
+};
+scwin.assign_onchange = function () { scwin.clearAssignError(); scwin.updatePreview(); };
+
+scwin.btn_aSubmit_onclick = function () {
+	var s = scwin.state, sel = s.sel, cur = scwin.curRole();
+	if (!sel || s.busy) return;
+	scwin.clearAssignError();
+	var code = sbx_aRole.getValue();
+	if (!code) { scwin.setAssignError("Chọn vai trò."); return; }
+	if (cur && cur.roleCode === code) { scwin.setAssignError("@" + sel.username + " đang có vai trò này rồi."); return; }
+	if (sel.userId === scwin.meId() && cur && cur.roleCode === "ADMIN") {
+		scwin.setAssignError("Bạn không thể đổi vai trò Admin của chính mình.");
+		return;
+	}
+
+	s.busy = true;
+	var label = cur ? "Đổi vai trò" : "Gán vai trò";
+	btn_aSubmit.setDisabled(true); btn_aSubmit.setValue("Đang lưu…");
+	scwin.api("POST", "/api/roles/assign", { userId: sel.userId, roleCode: code }).then(function (r) {
+		var isSelf = sel.userId === scwin.meId();
+		sel.role = r.data || { roleCode: code, roleName: s.roleMap[code] };
+		sbx_aRole.setValue("");
+		scwin.renderSelected();
+		scwin.toast(isSelf ? "warn" : "success",
+			isSelf ? "Đã đổi vai trò của bạn. Đăng nhập lại để quyền mới có hiệu lực."
+			       : (cur ? "Đã đổi @" + sel.username + " sang " : "Đã gán ") + s.roleMap[code] + (cur ? "" : " cho @" + sel.username),
+			isSelf ? 6000 : 3200);
+		scwin.renderRoleCards();
+		scwin.searchUsers();
+	}).catch(function (e) {
+		if (e.code === "ROLE_ALREADY_ASSIGNED" || e.code === "ROLE_NOT_FOUND" || e.code === "CANNOT_REMOVE_OWN_ADMIN") scwin.setAssignError(e.message);
+		else if (e.code === "VALIDATION_ERROR" && e.data) {
+			var msgs = []; for (var k in e.data) if (e.data.hasOwnProperty(k)) msgs.push(e.data[k]);
+			scwin.setAssignError(msgs.join(" "));
+		}
+		else if (e.code === "USER_NOT_FOUND") { scwin.toast("error", "Người dùng không còn tồn tại."); scwin.searchUsers(); }
+		else scwin.toast("error", e.message);
+	}).then(function () {
+		s.busy = false;
+		var selfAdmin = sel.userId === scwin.meId() && scwin.curRole() && scwin.curRole().roleCode === "ADMIN";
+		btn_aSubmit.setDisabled(!!selfAdmin);
+		btn_aSubmit.setValue(scwin.curRole() ? "Đổi vai trò" : label);
+	});
+};
+
+/* =====================================================================
+ * Gỡ vai trò (xác nhận + lý do)
+ * ===================================================================== */
+scwin.btn_curRemove_onclick = function () {
+	var sel = scwin.state.sel, r = scwin.curRole();
+	if (!sel || !r) return;
+	if (sel.userId === scwin.meId() && r.roleCode === "ADMIN") { scwin.toast("warn", "Bạn không thể tự gỡ vai trò Admin của mình."); return; }
+	tbx_rmTitle.setValue("Gỡ vai trò " + scwin.roleName(r.roleCode, r.roleName) + " khỏi @" + sel.username + "?");
+	tbx_rmMsg.setValue("Người này vẫn đăng nhập được nhưng không có quyền gì cho tới khi được gán vai trò mới. Thao tác được ghi vào nhật ký.");
+	txa_rmReason.setValue("");
+	tbx_rmCount.setValue("0/500");
+	tbx_rmCount.removeClass("is-over");
+	tbx_rmErr.setValue("");
+	scwin.hide(tbx_rmErr);
+	grp_rmModal.removeClass("is-hidden");
+	setTimeout(function () { grp_rmModal.addClass("is-open"); try { txa_rmReason.focus(); } catch (e) {} }, 10);
+};
+scwin.rmReason_onkeyup = function () {
+	var n = scwin.liveVal(txa_rmReason).length;
+	tbx_rmCount.setValue(n + "/500");
+	scwin.swapClass(tbx_rmCount, ["is-over"], n > 500 ? "is-over" : null);
+};
+scwin.closeRemove = function (force) {
+	if (scwin.state.rmBusy && !force) return;
+	grp_rmModal.removeClass("is-open");
+	setTimeout(function () { grp_rmModal.addClass("is-hidden"); }, 200);
+};
+scwin.rmCancel_onclick = function () { scwin.closeRemove(false); };
+scwin.btn_rmOk_onclick = function () {
+	var s = scwin.state, sel = s.sel, r = scwin.curRole();
+	if (!sel || !r || s.rmBusy) return;
+	var reason = scwin.trim(scwin.liveVal(txa_rmReason));
+	if (reason.length > 500) { tbx_rmErr.setValue("Lý do tối đa 500 ký tự."); scwin.show(tbx_rmErr); return; }
+	var name = scwin.roleName(r.roleCode, r.roleName);
+	s.rmBusy = true;
+	btn_rmOk.setDisabled(true); btn_rmCancel.setDisabled(true); btn_rmOk.setValue("Đang gỡ…");
+	scwin.api("POST", "/api/roles/remove", { userId: sel.userId, roleCode: r.roleCode, reason: reason || null, confirm: true }).then(function () {
+		var isSelf = sel.userId === scwin.meId();
+		s.rmBusy = false;
+		scwin.closeRemove(true);
+		sel.role = null;
+		scwin.renderSelected();
+		scwin.toast(isSelf ? "warn" : "success",
+			isSelf ? "Đã gỡ vai trò của bạn. Đăng nhập lại để quyền mới có hiệu lực."
+			       : "Đã gỡ " + name + " khỏi @" + sel.username, isSelf ? 6000 : 3200);
+		scwin.renderRoleCards();
+		scwin.searchUsers();
+	}).catch(function (e) {
+		s.rmBusy = false;
+		if (e.code === "ROLE_NOT_ASSIGNED") {
+			// Vai trò đã bị đổi ở nơi khác: tải lại thông tin người dùng
+			scwin.closeRemove(true);
+			scwin.toast("warn", "Vai trò của @" + sel.username + " vừa thay đổi. Đã tải lại thông tin.");
+			scwin.selectUser(sel.userId);
+			return;
+		}
+		tbx_rmErr.setValue(e.message);
+		scwin.show(tbx_rmErr);
+	}).then(function () {
+		btn_rmOk.setDisabled(false); btn_rmCancel.setDisabled(false); btn_rmOk.setValue("Gỡ vai trò");
+	});
+};
+	]]></script>
+</head>
+<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+	<!-- Khung trang giống Home: ck-layout bọc header + nội dung + footer -->
+	<xf:group id="grp_layout" class="ck-layout">
+	<w2:wframe id="wfm_header" class="layout-header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+	<xf:group id="grp_page" class="rp-page">
+
+		<xf:group id="grp_head" class="rp-head">
+			<w2:textbox id="tbx_title" class="rp-head__title" tagname="h1" label="Vai trò"/>
+			<w2:textbox id="tbx_subtitle" class="rp-head__sub" label="Mỗi vai trò là một bộ quyền. Mỗi người dùng có đúng một vai trò; đổi vai trò sẽ thay thế vai trò hiện tại."/>
+		</xf:group>
+
+		<xf:group id="grp_forbidden" class="card rp-forbidden is-hidden">
+			<w2:textbox id="tbx_fbTitle" class="rp-forbidden__title" tagname="h2" label="Bạn chưa có quyền quản lý vai trò"/>
+			<w2:textbox id="tbx_fbDesc" class="rp-forbidden__desc" label="Liên hệ quản trị viên để được cấp quyền ROLE_MANAGE."/>
+		</xf:group>
+
+		<xf:group id="grp_main" class="rp-main">
+			<!-- ============ Thẻ vai trò ============ -->
+			<xf:group id="grp_roleSkeleton" class="rp-roles rp-roles--skeleton is-hidden">
+				<xf:group id="grp_rsk1" class="rcard rcard--sk"/>
+				<xf:group id="grp_rsk2" class="rcard rcard--sk"/>
+			</xf:group>
+			<w2:generator id="gen_role" class="rp-roles">
+				<xf:group id="grp_rcCard" class="rcard">
+					<xf:group id="grp_rcHead" class="rcard__head">
+						<xf:group id="grp_rcTitles" class="rcard__titles">
+							<w2:textbox id="tbx_rcName" class="rcard__name" tagname="h2" label=""/>
+							<w2:textbox id="tbx_rcCode" class="rcard__code" label=""/>
+						</xf:group>
+						<xf:group id="grp_rcPills" class="rcard__pills">
+							<w2:textbox id="tbx_rcSystem" class="pill pill--sys" label=""/>
+							<w2:textbox id="tbx_rcActive" class="pill" label=""/>
+						</xf:group>
+					</xf:group>
+					<w2:textbox id="tbx_rcDesc" class="rcard__desc" label=""/>
+					<xf:group id="grp_rcMeter" class="rcard__meter">
+						<w2:textbox id="tbx_rcCount" class="rcard__count" label=""/>
+						<xf:group id="grp_rcTrack" class="rcard__track">
+							<xf:group id="grp_rcBar" class="rcard__bar"/>
+						</xf:group>
+					</xf:group>
+					<w2:textbox id="tbx_rcPerms" class="rcard__perms" label=""/>
+					<w2:textbox id="tbx_rcMissing" class="rcard__missing" label=""/>
+					<xf:group id="grp_rcFoot" class="rcard__foot">
+						<w2:textbox id="tbx_rcMembers" class="rcard__members" label=""/>
+						<xf:trigger id="btn_rcAssign" class="btn btn--ghost btn--sm" type="button" ev:onclick="scwin.btn_rcAssign_onclick">
+							<xf:label><![CDATA[Gán cho người dùng]]></xf:label>
+						</xf:trigger>
+					</xf:group>
+				</xf:group>
+			</w2:generator>
+
+			<!-- ============ Gán / đổi / gỡ vai trò ============ -->
+			<xf:group id="grp_assignCard" class="card assign">
+				<xf:group id="grp_assignHead" class="assign__head">
+					<w2:textbox id="tbx_assignTitle" class="assign__title" tagname="h2" label="Phân vai trò cho người dùng"/>
+					<w2:textbox id="tbx_assignSub" class="assign__sub" label="Chọn một người ở cột trái để xem vai trò hiện tại, đổi sang vai trò khác hoặc gỡ vai trò."/>
+				</xf:group>
+				<xf:group id="grp_assignGrid" class="assign__grid">
+					<!-- Cột trái: tìm người dùng -->
+					<xf:group id="grp_userPick" class="upick">
+						<xf:group id="grp_uSearchBox" class="search-box">
+							<xf:input id="ibx_uSearch" class="search-box__input" placeholder="Tìm username, họ tên, email" ev:onkeyup="scwin.uSearch_onkeyup"/>
+						</xf:group>
+						<w2:textbox id="tbx_uHint" class="upick__hint" label=""/>
+						<w2:generator id="gen_uRes" class="upick__list">
+							<xf:group id="grp_urItem" class="uresult" ev:onclick="scwin.uResult_onclick">
+								<xf:group id="grp_urAvatar" class="avatar avatar--sm">
+									<xf:image id="img_urAvatar" class="avatar__img" src=""/>
+									<w2:textbox id="tbx_urInitial" class="avatar__initial" label=""/>
+								</xf:group>
+								<xf:group id="grp_urText" class="uresult__text">
+									<w2:textbox id="tbx_urName" class="uresult__name" label=""/>
+									<w2:textbox id="tbx_urSub" class="uresult__sub" label=""/>
+								</xf:group>
+								<w2:textbox id="tbx_urRoles" class="uresult__roles" label=""/>
+							</xf:group>
+						</w2:generator>
+					</xf:group>
+
+					<!-- Cột phải: vai trò của người được chọn -->
+					<xf:group id="grp_assignPane" class="apane">
+						<xf:group id="grp_selEmpty" class="apane__empty">
+							<w2:textbox id="tbx_selEmptyTitle" class="apane__empty-title" label="Chưa chọn người dùng"/>
+							<w2:textbox id="tbx_selEmptyDesc" class="apane__empty-desc" label="Chọn một người trong danh sách bên trái để xem và chỉnh vai trò."/>
+						</xf:group>
+
+						<xf:group id="grp_selBody" class="apane__body is-hidden">
+							<xf:group id="grp_selCard" class="selcard">
+								<xf:group id="grp_selAvatar" class="avatar avatar--md">
+									<xf:image id="img_selAvatar" class="avatar__img" src=""/>
+									<w2:textbox id="tbx_selInitial" class="avatar__initial" label=""/>
+								</xf:group>
+								<xf:group id="grp_selText" class="selcard__text">
+									<w2:textbox id="tbx_selName" class="selcard__name" label=""/>
+									<w2:textbox id="tbx_selSub" class="selcard__sub" label=""/>
+								</xf:group>
+								<w2:textbox id="tbx_selStatus" class="pill" label=""/>
+							</xf:group>
+
+							<w2:textbox id="tbx_curLabel" class="apane__label" label="Vai trò hiện tại"/>
+							<xf:group id="grp_curRole" class="asg">
+								<xf:group id="grp_curText" class="asg__text">
+									<xf:group id="grp_curTop" class="asg__top">
+										<w2:textbox id="tbx_curName" class="asg__name" label=""/>
+										<w2:textbox id="tbx_curCode" class="asg__code" label=""/>
+									</xf:group>
+									<w2:textbox id="tbx_curMeta" class="asg__meta" label=""/>
+								</xf:group>
+								<xf:trigger id="btn_curRemove" class="btn btn--danger-ghost btn--sm asg__remove" type="button" ev:onclick="scwin.btn_curRemove_onclick">
+									<xf:label><![CDATA[Gỡ vai trò]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+							<xf:group id="grp_noRole" class="mini-empty is-hidden">
+								<w2:textbox id="tbx_noRole" class="mini-empty__text" label="Người này chưa có vai trò. Họ vẫn đăng nhập được nhưng không có quyền gì cho tới khi được gán vai trò."/>
+							</xf:group>
+
+							<!-- Form gán / đổi -->
+							<xf:group id="grp_aForm" class="aform">
+								<w2:textbox id="tbx_aFormTitle" class="aform__title" tagname="h3" label="Gán vai trò"/>
+								<xf:group id="grp_aRole" class="field">
+									<w2:textbox id="tbx_laRole" class="field__label" label="Vai trò mới"/>
+									<xf:select1 id="sbx_aRole" class="field-select" appearance="minimal" chooseOption="true" chooseOptionLabel="Chọn vai trò"
+										direction="auto" displayMode="label" ev:onviewchange="scwin.assign_onchange">
+										<xf:choices>
+											<xf:itemset nodeset="data:dlt_roleOptions">
+												<xf:label ref="roleName"/>
+												<xf:value ref="roleCode"/>
+											</xf:itemset>
+										</xf:choices>
+									</xf:select1>
+									<w2:textbox id="tbx_eARole" class="field__error" label=""/>
+								</xf:group>
+								<w2:textbox id="tbx_aPreview" class="aform__preview" label=""/>
+								<xf:group id="grp_aActions" class="aform__actions">
+									<xf:trigger id="btn_aSubmit" class="btn btn--primary" type="button" ev:onclick="scwin.btn_aSubmit_onclick">
+										<xf:label><![CDATA[Gán vai trò]]></xf:label>
+									</xf:trigger>
+								</xf:group>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		<!-- ============ Modal gỡ vai trò ============ -->
+		<xf:group id="grp_rmModal" class="modal is-hidden">
+			<xf:group id="grp_rmBackdrop" class="modal__backdrop" ev:onclick="scwin.rmCancel_onclick"/>
+			<xf:group id="grp_rmDialog" class="modal__dialog">
+				<xf:group id="grp_rmTop" class="rm__top">
+					<w2:textbox id="tbx_rmIcon" class="rm__icon" label="!"/>
+					<xf:group id="grp_rmText" class="rm__text">
+						<w2:textbox id="tbx_rmTitle" class="rm__title" tagname="h3" label=""/>
+						<w2:textbox id="tbx_rmMsg" class="rm__msg" label=""/>
+					</xf:group>
+				</xf:group>
+				<xf:group id="grp_rmReason" class="field rm__reason">
+					<xf:group id="grp_rmReasonHead" class="rm__reason-head">
+						<w2:textbox id="tbx_lrmReason" class="field__label" label="Lý do (không bắt buộc)"/>
+						<w2:textbox id="tbx_rmCount" class="rm__count" label="0/500"/>
+					</xf:group>
+					<xf:textarea id="txa_rmReason" class="field__textarea" placeholder="vd: Chuyển bộ phận" ev:onkeyup="scwin.rmReason_onkeyup"/>
+				</xf:group>
+				<w2:textbox id="tbx_rmErr" class="rm__err is-hidden" label=""/>
+				<xf:group id="grp_rmFoot" class="modal__foot">
+					<xf:trigger id="btn_rmCancel" class="btn btn--ghost" type="button" ev:onclick="scwin.rmCancel_onclick">
+						<xf:label><![CDATA[Hủy]]></xf:label>
+					</xf:trigger>
+					<xf:trigger id="btn_rmOk" class="btn btn--danger" type="button" ev:onclick="scwin.btn_rmOk_onclick">
+						<xf:label><![CDATA[Gỡ vai trò]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		<xf:group id="grp_toast" class="toast is-hidden">
+			<w2:textbox id="tbx_toastIcon" class="toast__icon" label=""/>
+			<w2:textbox id="tbx_toastMsg" class="toast__msg" label=""/>
+			<xf:trigger id="btn_toastClose" class="toast__close" type="button" ev:onclick="scwin.btn_toastClose_onclick">
+				<xf:label><![CDATA[×]]></xf:label>
+			</xf:trigger>
+		</xf:group>
+	</xf:group>
+
+	<w2:wframe id="wfm_footer" class="layout-footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+	</xf:group>
+</body>
+</html>
