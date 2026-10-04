@@ -1,0 +1,211 @@
+@charset "UTF-8";
+/* =====================================================================
+   SSC EVENT CHECK-IN - Header / Footer / khung trang dùng chung
+   Vị trí: WebContent/checkinCss/Common.css
+   ===================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap");
+
+html, body { margin: 0; padding: 0; }
+
+/* ---------------- Khung trang: header - nội dung - footer ---------------- */
+.ck-layout {
+    --green-900: #0b3d2a;
+    --green-700: #0f7b4f;
+    --green-600: #14935f;
+    --green-100: #dff3e8;
+    --green-50:  #f3f8f5;
+    --ink:       #16241d;
+    --muted:     #63746b;
+    --line:      #d5e2da;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--green-50);
+    color: var(--ink);
+    font-family: "Be Vietnam Pro", "Segoe UI", Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.ck-layout * { box-sizing: border-box; font-family: inherit; }
+.ck-layout .w2group,
+.ck-layout .w2textbox,
+.ck-layout .w2wframe { background-color: transparent; }
+.ck-layout .w2wframe { width: 100%; height: auto; }
+
+.ck-layout .ck-main {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px;
+}
+.ck-layout .ck-page-title {
+    display: block;
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green-900);
+}
+.ck-layout .ck-page-desc { display: block; margin: 0 0 20px; color: var(--muted); }
+.ck-layout .ck-panel {
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+}
+
+/* ---------------- HEADER ---------------- */
+.ck-layout .ck-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 6px 18px -16px rgba(11,61,42,.5);
+}
+.ck-layout .ck-header-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    max-width: 1240px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Logo: ô vuông xanh kiểu mã QR + tên hệ thống */
+.ck-layout a.ck-brand {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--green-900);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.ck-layout a.ck-brand::before {
+    content: "";
+    flex: 0 0 30px;
+    height: 30px;
+    border-radius: 8px;
+    background:
+        linear-gradient(#fff 0 0) 5px 5px / 8px 8px no-repeat,
+        linear-gradient(#fff 0 0) 17px 5px / 8px 8px no-repeat,
+        linear-gradient(#fff 0 0) 5px 17px / 8px 8px no-repeat,
+        linear-gradient(#fff 0 0) 19px 19px / 5px 5px no-repeat,
+        var(--green-700);
+}
+
+/* Menu */
+.ck-layout .ck-nav {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    height: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.ck-layout .ck-nav::-webkit-scrollbar { display: none; }
+.ck-layout .ck-nav a.ck-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color .15s ease;
+}
+.ck-layout .ck-nav a.ck-nav-item:hover { color: var(--green-700); }
+.ck-layout .ck-nav a.ck-nav-item:focus-visible { outline: 2px solid var(--green-600); outline-offset: -2px; border-radius: 6px; }
+.ck-layout .ck-nav a.ck-nav-item.is-active { color: var(--green-700); font-weight: 600; }
+.ck-layout .ck-nav a.ck-nav-item.is-active::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: var(--green-700);
+}
+
+/* Người dùng + đăng xuất */
+.ck-layout .ck-user {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ck-layout .ck-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--green-100);
+    color: var(--green-900);
+    font-size: 13px;
+    font-weight: 700;
+}
+.ck-layout .ck-user-info { display: flex; flex-direction: column; line-height: 1.25; }
+.ck-layout .ck-user-name { display: block; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; font-weight: 600; color: var(--ink); }
+.ck-layout .ck-user-role { display: block; font-size: 12px; color: var(--muted); }
+.ck-layout .ck-logout {
+    height: 34px;
+    margin-left: 6px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--green-700);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+}
+.ck-layout .ck-logout:hover { background: var(--green-50); border-color: var(--green-600); }
+.ck-layout .ck-logout:focus-visible { outline: 3px solid rgba(20,147,95,.35); outline-offset: 2px; }
+
+/* ---------------- FOOTER ---------------- */
+.ck-layout .ck-footer {
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid var(--line);
+}
+.ck-layout .ck-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    color: var(--muted);
+    font-size: 13px;
+}
+.ck-layout .ck-footer .w2textbox { color: var(--muted); }
+.ck-layout .ck-footer .ck-footer-brand { color: var(--green-900); font-weight: 600; }
+.ck-layout .ck-footer-right { display: flex; align-items: center; gap: 18px; }
+
+/* ---------------- Màn hình hẹp ---------------- */
+@media (max-width: 900px) {
+    .ck-layout .ck-header-inner { flex-wrap: wrap; height: auto; gap: 0 16px; padding: 10px 16px 0; }
+    .ck-layout .ck-nav { order: 3; flex: 1 0 100%; height: 44px; }
+    .ck-layout .ck-user { margin-left: auto; }
+    .ck-layout .ck-user-info { display: none; }
+    .ck-layout .ck-main { padding: 16px; }
+    .ck-layout .ck-footer-inner { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 16px; }
+}

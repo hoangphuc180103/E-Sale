@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="/CheckinCss/Auth.css" type="text/css"?>
 <?xml-stylesheet href="/text/CommonCss/Auth.css" type="text/css"?>
 <?xml-stylesheet href="/CommonCss/Auth.css" type="text/css"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -24,10 +23,19 @@
 			<w2:workflowCollection/>
 		</xf:model>
 		<script type="text/javascript" lazy="false"><![CDATA[
-	// ====== CẤU HÌNH: sửa cho đúng môi trường của bạn ======
-	scwin.API_BASE      = "http://localhost:8081";          // địa chỉ backend Spring Boot
-	scwin.PAGE_REGISTER = "/authPage/Register.xml";      // trang đăng ký
-	scwin.PAGE_HOME     = "";                               // trang chính sau khi đăng nhập (để trống nếu chưa có)
+
+	// ====== CẤU HÌNH ======
+	scwin.API_BASE      = "http://localhost:8081";              // địa chỉ backend Spring Boot
+	// Tự lấy tiền tố ứng dụng từ địa chỉ đang mở, ví dụ "/text" (hoặc "" nếu chạy ở thư mục gốc)
+	scwin.CTX           = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+	scwin.WS_ENTRY      = scwin.CTX + "/websquare/websquare.html";   // trang khởi chạy WebSquare
+	scwin.PAGE_REGISTER = scwin.CTX + "/authPage/Register.xml";      // trang đăng ký
+	scwin.PAGE_HOME     = scwin.CTX + "/mainPage/Home.xml";          // trang chính sau khi đăng nhập
+
+	// Chuyển cả trang sang một màn hình WebSquare khác
+	scwin.goPage = function (w2xPath) {
+		window.location.href = scwin.WS_ENTRY + "?w2xPath=" + w2xPath;
+	};
 
 	scwin.onpageload = function () {
 		ibx_username.focus();
@@ -78,17 +86,16 @@
 				scwin.showMsg(scwin.getErrorText(json));
 				return;
 			}
-			// Lưu token: "ghi nhớ" -> localStorage, ngược lại chỉ giữ trong phiên trình duyệt
-			var store = remember ? window.localStorage : window.sessionStorage;
-			window.localStorage.removeItem("ssc_token");
+
+			// Xóa dữ liệu đăng nhập cũ rồi lưu token mới vào localStorage (dùng chung cho mọi tab).
+			// "Ghi nhớ đăng nhập" quyết định thời hạn token ở backend: 30 phút hoặc 7 ngày.
 			window.sessionStorage.removeItem("ssc_token");
-			store.setItem("ssc_token", json.data.accessToken);
-			store.setItem("ssc_user", JSON.stringify(json.data.user));
+			window.sessionStorage.removeItem("ssc_user");
+			window.localStorage.setItem("ssc_token", json.data.accessToken);
+			window.localStorage.setItem("ssc_user", JSON.stringify(json.data.user));
 
 			scwin.showMsg("Đăng nhập thành công. Xin chào " + json.data.user.fullName + "!", true);
-			if (scwin.PAGE_HOME !== "") {
-				setTimeout(function () { $p.url(scwin.PAGE_HOME); }, 600);
-			}
+			setTimeout(function () { scwin.goPage(scwin.PAGE_HOME); }, 600);
 		}).catch(function () {
 			btn_login.setDisabled(false);
 			scwin.showMsg("Không kết nối được máy chủ. Vui lòng kiểm tra backend đang chạy.");
@@ -101,7 +108,7 @@
 	};
 
 	scwin.lnk_register_onclick = function () {
-		$p.url(scwin.PAGE_REGISTER);
+		scwin.goPage(scwin.PAGE_REGISTER);
 	};
 		]]></script>
 	</head>

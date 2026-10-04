@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate/>
+		<w2:MSA/>
+		<xf:model>
+			<w2:dataCollection baseNode="map"/>
+			<w2:workflowCollection/>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+	// ====== CẤU HÌNH ======
+	scwin.API_BASE   = "http://localhost:8081";              // địa chỉ backend Spring Boot
+	// Tự lấy tiền tố ứng dụng từ địa chỉ đang mở, ví dụ "/text" (hoặc "" nếu chạy ở thư mục gốc)
+	scwin.CTX        = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+	scwin.WS_ENTRY   = scwin.CTX + "/websquare/websquare.html";   // trang khởi chạy WebSquare
+	scwin.PAGE_LOGIN = scwin.CTX + "/authPage/LoginPage.xml";     // trang đăng nhập
+	scwin.PAGE_HOME  = scwin.CTX + "/mainPage/Home.xml";          // trang chủ
+
+	scwin.ROLE_NAMES = {
+		ADMIN: "Quản trị viên",
+		EVENT_MANAGER: "Quản lý sự kiện",
+		EVENT_STAFF: "Nhân viên sự kiện",
+		VIEWER: "Người xem"
+	};
+
+	// Chuyển cả trang sang một màn hình WebSquare khác
+	scwin.goPage = function (w2xPath) {
+		window.location.href = scwin.WS_ENTRY + "?w2xPath=" + w2xPath;
+	};
+
+	scwin.getToken = function () {
+		return window.localStorage.getItem("ssc_token") || window.sessionStorage.getItem("ssc_token") || "";
+	};
+
+	scwin.clearSession = function () {
+		window.sessionStorage.removeItem("ssc_token");
+		window.sessionStorage.removeItem("ssc_user");
+		window.sessionStorage.removeItem("ssc_permissions");
+		window.localStorage.removeItem("ssc_token");
+		window.localStorage.removeItem("ssc_user");
+	};
+
+	scwin.goLogin = function () {
+		scwin.clearSession();
+		scwin.goPage(scwin.PAGE_LOGIN);
+	};
+
+	// Đường dẫn trang đang mở (để tô đậm mục menu tương ứng)
+	scwin.getCurrentPath = function () {
+		var match = /[?&]w2xPath=([^&#]*)/.exec(window.location.search);
+		return match ? decodeURIComponent(match[1]) : "";
+	};
+
+	// Lấy 2 chữ cái đầu của họ tên làm ảnh đại diện, vd "Ngọc Ly" -> "NL"
+	scwin.getInitials = function (fullName) {
+		var parts = (fullName || "").trim().split(/\s+/);
+		if (parts.length === 0 || parts[0] === "") { return "?"; }
+		var first = parts[0].charAt(0);
+		var last = parts.length > 1 ? parts[parts.length - 1].charAt(0) : "";
+		return (first + last).toUpperCase();
+	};
+
+	scwin.renderUser = function (user) {
+		var role = (user.roles && user.roles.length > 0) ? user.roles[0] : "";
+		txt_avatar.setValue(scwin.getInitials(user.fullName));
+		txt_name.setValue(user.fullName || user.username || "");
+		txt_role.setValue(scwin.ROLE_NAMES[role] || role);
+	};
+
+	scwin.renderMenu = function (menus) {
+		var nav = grp_nav.render || document.getElementById(grp_nav.getID());
+		if (!nav) { return; }
+		while (nav.firstChild) { nav.removeChild(nav.firstChild); }
+
+		var current = scwin.getCurrentPath();
+		for (var i = 0; i < menus.length; i++) {
+			(function (menu) {
+				var a = document.createElement("a");
+				a.className = "ck-nav-item" + (menu.path === current ? " is-active" : "");
+				a.href = scwin.WS_ENTRY + "?w2xPath=" + menu.path;
+				a.textContent = menu.label;
+				nav.appendChild(a);
+			})(menus[i]);
+		}
+	};
+
+	scwin.onpageload = function () {
+		var token = scwin.getToken();
+		if (token === "") {
+			alert("Header: chưa đăng nhập (không tìm thấy token). Sẽ chuyển về trang đăng nhập.");
+			scwin.goLogin();
+			return;
+		}
+
+		// Hiện tạm thông tin đã lưu lúc đăng nhập trong khi chờ API
+		try {
+			var saved = window.localStorage.getItem("ssc_user") || window.sessionStorage.getItem("ssc_user");
+			if (saved) { scwin.renderUser(JSON.parse(saved)); }
+		} catch (ignore) {}
+
+		fetch(scwin.API_BASE + "/api/common/layout", {
+			headers: { "Authorization": "Bearer " + token }
+		}).then(function (res) {
+			return res.json().then(function (json) {
+				return { status: res.status, json: json };
+			});
+		}).then(function (r) {
+			var message = (r.json && r.json.message) ? r.json.message : "";
+			if (r.status === 401) {
+				alert("Header: backend trả 401 - " + message);
+				scwin.goLogin();
+				return;
+			}
+			if (!r.json || !r.json.success) {
+				alert("Header: API layout lỗi " + r.status + " - " + message);
+				return;
+			}
+			scwin.renderUser(r.json.data.user);
+			scwin.renderMenu(r.json.data.menus || []);
+			// Lưu danh sách quyền để các trang khác dùng ẩn / hiện nút
+			window.sessionStorage.setItem("ssc_permissions", JSON.stringify(r.json.data.permissions || []));
+		}).catch(function (err) {
+			alert("Header: không gọi được API layout - " + err);
+		});
+	};
+
+	scwin.lnk_brand_onclick = function () {
+		scwin.goPage(scwin.PAGE_HOME);
+	};
+
+	scwin.btn_logout_onclick = function () {
+		var token = scwin.getToken();
+		var done = function () { scwin.goLogin(); };
+		if (token === "") { done(); return; }
+		fetch(scwin.API_BASE + "/api/auth/logout", {
+			method: "POST",
+			headers: { "Authorization": "Bearer " + token }
+		}).then(done).catch(done);
+	};
+		]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="ck-header" id="" tagname="header">
+			<xf:group class="ck-header-inner" id="">
+
+				<w2:anchor class="ck-brand" id="lnk_brand" outerDiv="false" ev:onclick="scwin.lnk_brand_onclick">
+					<xf:label><![CDATA[SSC CHECK-IN]]></xf:label>
+				</w2:anchor>
+
+				<!-- Menu được dựng bằng script theo quyền của người dùng -->
+				<xf:group class="ck-nav" id="grp_nav" tagname="nav"/>
+
+				<xf:group class="ck-user" id="">
+					<w2:textbox class="ck-avatar" id="txt_avatar" label="" tagname="span"/>
+					<xf:group class="ck-user-info" id="">
+						<w2:textbox class="ck-user-name" id="txt_name" label="" tagname="span"/>
+						<w2:textbox class="ck-user-role" id="txt_role" label="" tagname="span"/>
+					</xf:group>
+					<xf:trigger class="ck-logout" id="btn_logout" type="button" ev:onclick="scwin.btn_logout_onclick">
+						<xf:label><![CDATA[Đăng xuất]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+
+			</xf:group>
+		</xf:group>
+	</body>
+</html>
