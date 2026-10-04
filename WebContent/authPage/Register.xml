@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="/CheckinCss/Auth.css" type="text/css"?>
 <?xml-stylesheet href="/text/CommonCss/Auth.css" type="text/css"?>
+<?xml-stylesheet href="/CommonCss/Auth.css" type="text/css"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ev="http://www.w3.org/2001/xml-events"
 	xmlns:w2="http://www.inswave.com/websquare"
@@ -28,7 +29,7 @@
 		<script type="text/javascript" lazy="false"><![CDATA[
 	// ====== CẤU HÌNH: sửa cho đúng môi trường của bạn ======
 	scwin.API_BASE   = "http://localhost:8081";       // địa chỉ backend Spring Boot
-	scwin.PAGE_LOGIN = "/CheckinPage/Login.xml";      // trang đăng nhập
+	scwin.PAGE_LOGIN = "/authPage/LoginPage.xml";      // trang đăng nhập
 
 	scwin.onpageload = function () {
 		ibx_fullName.focus();
