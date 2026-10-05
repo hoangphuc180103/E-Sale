@@ -1,0 +1,1785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/HallManagement/Hall.css" type="text/css"?>
+<?xml-stylesheet href="/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/HallManagement/Hall.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+<head meta_screenName="Quản lý hội trường">
+    <w2:type>COMPONENT</w2:type>
+    <w2:buildDate/>
+    <w2:MSA/>
+    <xf:model>
+        <w2:dataCollection baseNode="map">
+            <!-- Điều kiện tìm kiếm: bind 2 chiều với ô tìm kiếm, khoảng sức chứa, sắp xếp, số dòng.
+                 Submission sbm_hallList đọc thẳng dataMap này để dựng query string. -->
+            <w2:dataMap baseNode="map" id="dma_search">
+                <w2:keyInfo>
+                    <w2:key id="keyword" name="Từ khóa" dataType="text"/>
+                    <w2:key id="minCapacity" name="Sức chứa từ" dataType="text"/>
+                    <w2:key id="maxCapacity" name="Sức chứa đến" dataType="text"/>
+                    <w2:key id="active" name="Trạng thái" dataType="text"/>
+                    <w2:key id="sort" name="Sắp xếp" dataType="text"/>
+                    <w2:key id="size" name="Số dòng / trang" dataType="text"/>
+                    <w2:key id="page" name="Trang (từ 0)" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+
+            <!-- Form tạo / sửa: bind 2 chiều với các ô nhập. Body của sbm_hallCreate / sbm_hallUpdate lấy từ đây. -->
+            <w2:dataMap baseNode="map" id="dma_hallForm">
+                <w2:keyInfo>
+                    <w2:key id="hallName" name="Tên hội trường" dataType="text"/>
+                    <w2:key id="hallCode" name="Mã hội trường" dataType="text"/>
+                    <w2:key id="capacity" name="Sức chứa" dataType="text"/>
+                    <w2:key id="address" name="Địa chỉ" dataType="text"/>
+                    <w2:key id="floorArea" name="Tầng/Khu vực" dataType="text"/>
+                    <w2:key id="description" name="Mô tả/Tiện nghi" dataType="text"/>
+                    <w2:key id="notes" name="Ghi chú" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+
+            <!-- Danh sách hội trường: giữ nguyên dữ liệu gốc từ API (data.content).
+                 Định dạng hiển thị do customFormatter của từng cột grid đảm nhận. -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_hall" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="hallId" name="ID" dataType="number"/>
+                    <w2:column id="hallCode" name="Mã" dataType="text"/>
+                    <w2:column id="hallName" name="Tên hội trường" dataType="text"/>
+                    <w2:column id="address" name="Địa chỉ" dataType="text"/>
+                    <w2:column id="floorArea" name="Tầng/Khu vực" dataType="text"/>
+                    <w2:column id="capacity" name="Sức chứa" dataType="text"/>
+                    <w2:column id="active" name="Trạng thái" dataType="text"/>
+                    <w2:column id="imageUrl" name="Ảnh" dataType="text"/>
+                    <w2:column id="updatedAt" name="Cập nhật" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+
+            <!-- Lịch sử sự kiện của hội trường đang xem (dữ liệu gốc từ API) -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_event" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="eventId" name="ID" dataType="number"/>
+                    <w2:column id="eventCode" name="Mã" dataType="text"/>
+                    <w2:column id="eventName" name="Sự kiện" dataType="text"/>
+                    <w2:column id="startDate" name="Ngày bắt đầu" dataType="text"/>
+                    <w2:column id="endDate" name="Ngày kết thúc" dataType="text"/>
+                    <w2:column id="startTime" name="Giờ bắt đầu" dataType="text"/>
+                    <w2:column id="endTime" name="Giờ kết thúc" dataType="text"/>
+                    <w2:column id="statusCode" name="Mã trạng thái" dataType="text"/>
+                    <w2:column id="statusName" name="Trạng thái" dataType="text"/>
+                    <w2:column id="expectedGuestCount" name="Khách dự kiến" dataType="text"/>
+                    <w2:column id="totalGuests" name="Khách mời" dataType="text"/>
+                    <w2:column id="checkedInCount" name="Đã check-in" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+        </w2:dataCollection>
+        <w2:workflowCollection/>
+        <!-- Submission gọi API /api/halls. action được gán lúc chạy (kèm id, query string),
+             header Authorization được gắn trong scwin.callApi. -->
+        <!-- Danh sách / tìm kiếm hội trường -->
+        <xf:submission id="sbm_hallList" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallList_submitdone"
+                       ev:submiterror="scwin.sbm_hallList_submiterror" abortTrigger=""/>
+        <!-- Đếm số hội trường theo trạng thái -->
+        <xf:submission id="sbm_hallStats" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallStats_submitdone"
+                       ev:submiterror="scwin.sbm_hallStats_submiterror" abortTrigger=""/>
+        <!-- Kiểm tra trùng tên khi đang gõ -->
+        <xf:submission id="sbm_hallNameCheck" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallNameCheck_submitdone"
+                       ev:submiterror="scwin.sbm_hallNameCheck_submiterror" abortTrigger=""/>
+        <!-- Chi tiết hội trường -->
+        <xf:submission id="sbm_hallDetail" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallDetail_submitdone"
+                       ev:submiterror="scwin.sbm_hallDetail_submiterror" abortTrigger=""/>
+        <!-- Lịch sử sự kiện của hội trường -->
+        <xf:submission id="sbm_hallEvents" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallEvents_submitdone"
+                       ev:submiterror="scwin.sbm_hallEvents_submiterror" abortTrigger=""/>
+        <!-- Tạo hội trường -->
+        <xf:submission id="sbm_hallCreate" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallCreate_submitdone"
+                       ev:submiterror="scwin.sbm_hallCreate_submiterror" abortTrigger=""/>
+        <!-- Sửa hội trường -->
+        <xf:submission id="sbm_hallUpdate" ref="" target="" action="" method="put" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallUpdate_submitdone"
+                       ev:submiterror="scwin.sbm_hallUpdate_submiterror" abortTrigger=""/>
+        <!-- Xóa hội trường (soft delete) -->
+        <xf:submission id="sbm_hallDelete" ref="" target="" action="" method="delete" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallDelete_submitdone"
+                       ev:submiterror="scwin.sbm_hallDelete_submiterror" abortTrigger=""/>
+        <!-- Gỡ ảnh hội trường -->
+        <xf:submission id="sbm_hallImageDelete" ref="" target="" action="" method="delete" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_hallImageDelete_submitdone"
+                       ev:submiterror="scwin.sbm_hallImageDelete_submiterror" abortTrigger=""/>
+    </xf:model>
+    <w2:layoutInfo/>
+    <w2:publicInfo method=""/>
+    <script type="text/javascript" lazy="false"><![CDATA[
+/* =====================================================================
+ * QUẢN LÝ HỘI TRƯỜNG - SSC Check-in
+ * API: /api/halls (xem API_EVENT_HALL.md)
+ * ===================================================================== */
+
+/* ---------- Cấu hình ---------- */
+scwin.API_BASE = "http://localhost:8081";
+scwin.HALL_API = scwin.API_BASE + "/api/halls";
+// Key lưu trữ dùng chung với trang đăng nhập và Header (checkinCommon/Header.xml)
+scwin.KEY = {
+    TOKEN: "ssc_token",
+    USER:  "ssc_user",
+    PERMS: "ssc_permissions",
+    MENUS: "ssc_menus"
+};
+scwin.LOGIN_PAGE = "/authPage/LoginPage.xml";
+// Tiền tố ứng dụng: "" khi chạy local, "/text" khi deploy (giống Header)
+scwin.CTX = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+scwin.MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+scwin.IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+scwin.EVENT_PAGE_SIZE = 5;
+
+/* ---------- Trạng thái màn hình ---------- */
+scwin.SEARCH_DEFAULT = { keyword: "", minCapacity: "", maxCapacity: "", active: "", sort: "hallId,desc", size: "10", page: "0" };
+scwin.state = { totalPages: 0, totalElements: 0 };   // kết quả phân trang lần tìm gần nhất
+scwin.searchSeq = 0;
+scwin.searchTimer = null;
+scwin.dupTimer = null;
+scwin.toastTimer = null;
+scwin.pagingLock = false;
+
+scwin.current = null;          // hội trường đang mở trong panel chi tiết
+scwin.drawerOpen = false;
+scwin.formOpen = false;
+scwin.deleteOpen = false;
+scwin.deleteBusy = false;
+scwin.ev = { page: 0, items: [], totalPages: 0, totalElements: 0, loading: false };
+
+scwin.form = {
+    mode: "create", hallId: null, originalName: "", active: true,
+    file: null, previewUrl: null, removeImage: false, originalImage: null,
+    dirty: false, saving: false
+};
+
+scwin.FIELDS = {
+    hallName:    { input: "ibx_fName",     error: "tbx_fNameErr",     max: 150,  label: "Tên hội trường" },
+    hallCode:    { input: "ibx_fCode",     error: "tbx_fCodeErr",     max: 30,   label: "Mã hội trường" },
+    capacity:    { input: "ibx_fCapacity", error: "tbx_fCapacityErr",            label: "Sức chứa" },
+    address:     { input: "ibx_fAddress",  error: "tbx_fAddressErr",  max: 500,  label: "Địa chỉ" },
+    floorArea:   { input: "ibx_fFloor",    error: "tbx_fFloorErr",    max: 100,  label: "Tầng/Khu vực" },
+    description: { input: "txa_fDesc",     error: "tbx_fDescErr",     max: 4000, label: "Mô tả/Tiện nghi" },
+    notes:       { input: "txa_fNotes",    error: "tbx_fNotesErr",    max: 2000, label: "Ghi chú" }
+};
+
+scwin.EVENT_STATUS_CLASS = {
+    DRAFT: "hm-ev-status--draft", ACTIVE: "hm-ev-status--active",
+    COMPLETED: "hm-ev-status--done", CANCELLED: "hm-ev-status--cancel", CANCELED: "hm-ev-status--cancel"
+};
+
+/* =====================================================================
+ * VÒNG ĐỜI TRANG
+ * ===================================================================== */
+scwin.onpageload = function () {
+    if (!scwin.getToken()) { scwin.goLogin(); return; }
+
+    scwin.initFileInput();
+    scwin.initDropzone();
+
+    scwin.keyHandler = function (e) { scwin.onGlobalKeydown(e); };
+    scwin.pasteHandler = function (e) { scwin.onGlobalPaste(e); };
+    document.addEventListener("keydown", scwin.keyHandler);
+    document.addEventListener("paste", scwin.pasteHandler);
+
+    dma_search.setJSON(scwin.SEARCH_DEFAULT);      // ô tìm kiếm, sắp xếp, số dòng tự cập nhật theo binding
+    scwin.applyStatusSegment();
+    scwin.applyPermissions();
+
+    scwin.loadStats();
+    scwin.search(true);
+};
+
+scwin.onpageunload = function () {
+    document.removeEventListener("keydown", scwin.keyHandler);
+    document.removeEventListener("paste", scwin.pasteHandler);
+    scwin.revokePreview();
+    if (scwin.fileInput && scwin.fileInput.parentNode) scwin.fileInput.parentNode.removeChild(scwin.fileInput);
+};
+
+/* ---------- Ẩn / hiện nút theo quyền ----------
+ * Chỉ để giao diện gọn hơn; backend vẫn kiểm tra quyền và trả 403 nếu thiếu.
+ * Nếu Header chưa kịp lưu quyền (lần đầu vào trang) thì tạm hiện đủ nút.
+ */
+scwin.applyPermissions = function () {
+    var perms = scwin.getPerms();
+    if (!perms.length) return;
+    var canManage = perms.indexOf("HALL_MANAGE") >= 0;
+    var canDelete = perms.indexOf("HALL_DELETE") >= 0;
+    scwin.show(btn_add, canManage);
+    scwin.show(btn_emptyAdd, canManage);
+    scwin.show(btn_dEdit, canManage);
+    scwin.show(btn_dDelete, canDelete);
+    scwin.canManage = canManage;
+};
+
+/* =====================================================================
+ * TIỆN ÍCH CHUNG
+ * ===================================================================== */
+scwin.comp = function (id) { return $p.getComponentById(id); };
+
+scwin.domOf = function (comp) {
+    if (!comp) return null;
+    return comp.render || document.getElementById(comp.id) || null;
+};
+
+scwin.show = function (comp, visible) {
+    if (!comp) return;
+    if (visible === false) comp.addClass("is-hidden"); else comp.removeClass("is-hidden");
+};
+
+scwin.toggleClass = function (comp, cls, on) {
+    if (!comp) return;
+    if (on) comp.addClass(cls); else comp.removeClass(cls);
+};
+
+scwin.trim = function (v) { return v == null ? "" : String(v).replace(/^\s+|\s+$/g, ""); };
+scwin.dash = function (v) { return (v == null || scwin.trim(v) === "") ? "—" : String(v); };
+scwin.pad = function (n) { return n < 10 ? "0" + n : String(n); };
+
+scwin.fmtNumber = function (n) {
+    if (n == null || n === "" || isNaN(Number(n))) return "—";
+    return Number(n).toLocaleString("vi-VN");
+};
+
+scwin.fmtDate = function (s) {               // "2026-09-20" -> "20/09/2026"
+    if (!s) return "";
+    var p = String(s).substring(0, 10).split("-");
+    return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : String(s);
+};
+
+scwin.fmtTime = function (s) { return s ? String(s).substring(0, 5) : ""; };   // "08:00:00" -> "08:00"
+
+scwin.fmtDateTime = function (iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso);
+    return scwin.pad(d.getDate()) + "/" + scwin.pad(d.getMonth() + 1) + "/" + d.getFullYear()
+         + " " + scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes());
+};
+
+scwin.fmtSize = function (bytes) {
+    if (bytes >= 1024 * 1024) return (bytes / 1024 / 1024).toFixed(1) + " MB";
+    return Math.max(1, Math.round(bytes / 1024)) + " KB";
+};
+
+scwin.initials = function (name) {
+    var words = scwin.trim(name).split(/\s+/).filter(function (w) { return w.length > 0; });
+    if (!words.length) return "H";
+    var last = words.slice(-2);
+    return last.map(function (w) { return w.charAt(0); }).join("").toUpperCase();
+};
+
+scwin.buildQuery = function (params) {
+    var parts = [];
+    for (var k in params) {
+        if (!params.hasOwnProperty(k)) continue;
+        var v = params[k];
+        if (v === null || v === undefined || v === "") continue;
+        parts.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+    }
+    return parts.join("&");
+};
+
+/* =====================================================================
+ * FORMATTER CỦA GRID (customFormatter: data, formattedData, rowIndex, colIndex)
+ * dataList giữ dữ liệu gốc từ API; phần hiển thị định dạng tại đây.
+ * ===================================================================== */
+scwin.isTrue = function (v) { return v === true || v === "true" || v === 1 || v === "1"; };
+
+scwin.gfDash = function (v) { return scwin.dash(v); };
+scwin.gfCapacity = function (v) { return (v == null || v === "") ? "—" : scwin.fmtNumber(v) + " chỗ"; };
+scwin.gfActive = function (v) { return scwin.isTrue(v) ? "● Hoạt động" : "● Ngưng"; };
+scwin.gfImage = function (v) { return v ? "Có ảnh" : "—"; };
+scwin.gfDateTime = function (v) { return scwin.fmtDateTime(v); };
+
+scwin.gfEventTime = function (v, f, rowIndex) {
+    var e = dlt_event.getRowJSON(rowIndex) || {};
+    var d1 = scwin.fmtDate(e.startDate), d2 = scwin.fmtDate(e.endDate);
+    var date = (d2 && d2 !== d1) ? d1 + " – " + d2 : d1;
+    var time = e.startTime ? scwin.fmtTime(e.startTime) + (e.endTime ? "–" + scwin.fmtTime(e.endTime) : "") : "";
+    return time ? date + ", " + time : date;
+};
+scwin.gfEventStatus = function (v, f, rowIndex) {
+    return v || (dlt_event.getRowJSON(rowIndex) || {}).statusCode || "—";
+};
+scwin.gfCheckin = function (v, f, rowIndex) {
+    var e = dlt_event.getRowJSON(rowIndex) || {};
+    var total = Number(e.totalGuests) || 0, checked = Number(e.checkedInCount) || 0;
+    return total > 0 ? scwin.fmtNumber(checked) + " (" + Math.round(checked * 100 / total) + "%)" : "—";
+};
+
+/* =====================================================================
+ * GỌI API
+ * ===================================================================== */
+scwin.storeGet = function (key) {
+    try { return window.localStorage.getItem(key) || window.sessionStorage.getItem(key) || ""; }
+    catch (e) { return ""; }
+};
+
+/** JWT lấy từ phiên đăng nhập, bỏ tiền tố "Bearer " nếu có. */
+scwin.getToken = function () {
+    return String(scwin.storeGet(scwin.KEY.TOKEN)).replace(/^Bearer\s+/i, "");
+};
+
+/** Danh sách mã quyền Header đã lưu sau khi gọi /api/common/layout. */
+scwin.getPerms = function () {
+    try { return JSON.parse(scwin.storeGet(scwin.KEY.PERMS) || "[]") || []; }
+    catch (e) { return []; }
+};
+
+scwin.goLogin = function () {
+    if (scwin._redirecting) return;
+    scwin._redirecting = true;
+    for (var k in scwin.KEY) {
+        if (!scwin.KEY.hasOwnProperty(k)) continue;
+        try {
+            window.localStorage.removeItem(scwin.KEY[k]);
+            window.sessionStorage.removeItem(scwin.KEY[k]);
+        } catch (e) { }
+    }
+    window.location.href = scwin.CTX + "/websquare/websquare.html?w2xPath=" + scwin.CTX + scwin.LOGIN_PAGE;
+};
+
+scwin.defaultMessage = function (status) {
+    if (status === 0) return "Không kết nối được máy chủ. Kiểm tra mạng hoặc backend (" + scwin.API_BASE + ").";
+    if (status === 401) return "Phiên đăng nhập đã hết hạn. Hãy đăng nhập lại.";
+    if (status === 403) return "Tài khoản của bạn chưa được cấp quyền cho thao tác này.";
+    if (status === 404) return "Không tìm thấy hội trường. Có thể hội trường đã bị xóa.";
+    if (status >= 500) return "Máy chủ đang gặp sự cố. Thử lại sau ít phút.";
+    return "Yêu cầu không thành công (HTTP " + status + ").";
+};
+
+/** Header gửi kèm mọi request: JWT của phiên đăng nhập. */
+scwin.authHeader = function () {
+    var h = { "Accept": "application/json" };
+    var token = scwin.getToken();
+    if (token) h["Authorization"] = "Bearer " + token;
+    return h;
+};
+
+scwin.hasOwn = function (o, k) { return o != null && Object.prototype.hasOwnProperty.call(o, k); };
+
+scwin.parseJSON = function (text) {
+    if (!text || typeof text !== "string") return null;
+    try { return JSON.parse(text); } catch (e) { return null; }
+};
+
+/** Chuẩn hóa lỗi: { status, code, message, data }. 401 thì đưa về trang đăng nhập. */
+scwin.buildError = function (status, json) {
+    var err = {
+        status: status || 0,
+        code: (json && json.code) || (status ? "HTTP_" + status : "NETWORK_ERROR"),
+        message: (json && json.message) || scwin.defaultMessage(status || 0),
+        data: json ? json.data : null
+    };
+    if (status === 401) {
+        err.message = scwin.defaultMessage(401);
+        scwin.toast(err.message + " Đang chuyển về trang đăng nhập…", "error");
+        setTimeout(scwin.goLogin, 1500);
+    }
+    return err;
+};
+
+/* =====================================================================
+ * SUBMISSION (WebSquare)
+ *   scwin.callApi("sbm_xxx", { path: "/3/events?page=0", body: {...} })
+ *   -> Promise<data>  (data = trường "data" trong response của backend)
+ *
+ *   - Mỗi submission có hàng đợi riêng: gọi chồng nhau thì chạy lần lượt,
+ *     nên phản hồi không bao giờ bị trả nhầm cho lời gọi khác.
+ *   - action = HALL_API + path; GET truyền tham số qua query string;
+ *     POST/PUT truyền body qua requestData của $p.executeSubmission.
+ * ===================================================================== */
+scwin.SBM_TIMEOUT = 30000;
+scwin.sbmQueue = {};
+scwin.sbmJob = {};
+
+scwin.callApi = function (sbmId, opts) {
+    return new Promise(function (resolve, reject) {
+        if (!scwin.sbmQueue[sbmId]) scwin.sbmQueue[sbmId] = [];
+        scwin.sbmQueue[sbmId].push({ opts: opts || {}, resolve: resolve, reject: reject });
+        scwin.sbmNext(sbmId);
+    });
+};
+
+scwin.sbmNext = function (sbmId) {
+    if (scwin.sbmJob[sbmId]) return;
+    var queue = scwin.sbmQueue[sbmId];
+    if (!queue || !queue.length) return;
+
+    var job = queue.shift();
+    scwin.sbmJob[sbmId] = job;
+
+    var sbm = $p.getSubmission(sbmId);
+    if (!sbm) {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_NOT_FOUND", message: "Chưa khai báo submission " + sbmId + "." });
+        return;
+    }
+    sbm.action = scwin.HALL_API + (job.opts.path || "");
+    sbm.requestHeader = scwin.authHeader();
+
+    job.timer = setTimeout(function () {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "TIMEOUT", message: "Máy chủ phản hồi quá lâu. Thử lại sau." });
+    }, scwin.SBM_TIMEOUT);
+
+    try {
+        if (job.opts.body !== undefined) $p.executeSubmission(sbmId, job.opts.body);
+        else $p.executeSubmission(sbmId);
+    } catch (ex) {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_ERROR", message: (ex && ex.message) || String(ex) });
+    }
+};
+
+scwin.sbmSettle = function (sbmId, data, err) {
+    var job = scwin.sbmJob[sbmId];
+    if (!job) return;
+    clearTimeout(job.timer);
+    scwin.sbmJob[sbmId] = null;
+    if (err) job.reject(err); else job.resolve(data);
+    scwin.sbmNext(sbmId);
+};
+
+scwin.readResponse = function (e) {
+    if (!e) return null;
+    if (e.responseJSON && typeof e.responseJSON === "object") return e.responseJSON;
+    return scwin.parseJSON(e.responseText) || scwin.parseJSON(e.responseBody);
+};
+
+scwin.onSbmDone = function (sbmId, e) {
+    var json = scwin.readResponse(e);
+    if (json && json.success === false) {
+        scwin.sbmSettle(sbmId, null, scwin.buildError((e && e.responseStatusCode) || 200, json));
+        return;
+    }
+    scwin.sbmSettle(sbmId, scwin.hasOwn(json, "data") ? json.data : json, null);
+};
+
+scwin.onSbmError = function (sbmId, e) {
+    var status = (e && (e.responseStatusCode || e.status)) || 0;
+    scwin.sbmSettle(sbmId, null, scwin.buildError(status, scwin.readResponse(e)));
+};
+
+/* Handler gắn trong xf:submission (ev:submitdone / ev:submiterror) */
+scwin.sbm_hallList_submitdone  = function (e) { scwin.onSbmDone("sbm_hallList", e); };
+scwin.sbm_hallList_submiterror = function (e) { scwin.onSbmError("sbm_hallList", e); };
+scwin.sbm_hallStats_submitdone  = function (e) { scwin.onSbmDone("sbm_hallStats", e); };
+scwin.sbm_hallStats_submiterror = function (e) { scwin.onSbmError("sbm_hallStats", e); };
+scwin.sbm_hallNameCheck_submitdone  = function (e) { scwin.onSbmDone("sbm_hallNameCheck", e); };
+scwin.sbm_hallNameCheck_submiterror = function (e) { scwin.onSbmError("sbm_hallNameCheck", e); };
+scwin.sbm_hallDetail_submitdone  = function (e) { scwin.onSbmDone("sbm_hallDetail", e); };
+scwin.sbm_hallDetail_submiterror = function (e) { scwin.onSbmError("sbm_hallDetail", e); };
+scwin.sbm_hallEvents_submitdone  = function (e) { scwin.onSbmDone("sbm_hallEvents", e); };
+scwin.sbm_hallEvents_submiterror = function (e) { scwin.onSbmError("sbm_hallEvents", e); };
+scwin.sbm_hallCreate_submitdone  = function (e) { scwin.onSbmDone("sbm_hallCreate", e); };
+scwin.sbm_hallCreate_submiterror = function (e) { scwin.onSbmError("sbm_hallCreate", e); };
+scwin.sbm_hallUpdate_submitdone  = function (e) { scwin.onSbmDone("sbm_hallUpdate", e); };
+scwin.sbm_hallUpdate_submiterror = function (e) { scwin.onSbmError("sbm_hallUpdate", e); };
+scwin.sbm_hallDelete_submitdone  = function (e) { scwin.onSbmDone("sbm_hallDelete", e); };
+scwin.sbm_hallDelete_submiterror = function (e) { scwin.onSbmError("sbm_hallDelete", e); };
+scwin.sbm_hallImageDelete_submitdone  = function (e) { scwin.onSbmDone("sbm_hallImageDelete", e); };
+scwin.sbm_hallImageDelete_submiterror = function (e) { scwin.onSbmError("sbm_hallImageDelete", e); };
+
+/* =====================================================================
+ * UPLOAD ẢNH (multipart/form-data)
+ * Submission chỉ gửi JSON/XML, không gửi được file nhị phân, nên riêng
+ * phần upload dùng XMLHttpRequest. Có báo tiến độ tải lên.
+ * ===================================================================== */
+scwin.uploadImage = function (hallId, file, onProgress) {
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", scwin.HALL_API + "/" + hallId + "/image");
+        var h = scwin.authHeader();
+        for (var k in h) if (h.hasOwnProperty(k)) xhr.setRequestHeader(k, h[k]);
+
+        if (xhr.upload && onProgress) {
+            xhr.upload.onprogress = function (ev) {
+                if (ev.lengthComputable) onProgress(Math.round(ev.loaded * 100 / ev.total));
+            };
+        }
+        xhr.onload = function () {
+            var json = scwin.parseJSON(xhr.responseText);
+            if (xhr.status >= 200 && xhr.status < 300 && !(json && json.success === false)) {
+                resolve(scwin.hasOwn(json, "data") ? json.data : json);
+            } else {
+                reject(scwin.buildError(xhr.status, json));
+            }
+        };
+        xhr.onerror = function () { reject(scwin.buildError(0, null)); };
+
+        var fd = new FormData();
+        fd.append("file", file);
+        xhr.send(fd);
+    });
+};
+
+/* =====================================================================
+ * THỐNG KÊ TRẠNG THÁI (hiển thị ngay trên bộ lọc)
+ * ===================================================================== */
+scwin.loadStats = function () {
+    var count = function (active) {
+        var p = { page: 0, size: 1 };
+        if (active !== null) p.active = active;
+        return scwin.callApi("sbm_hallStats", { path: "?" + scwin.buildQuery(p) }).then(function (pg) {
+            return pg && pg.totalElements != null ? pg.totalElements : 0;
+        });
+    };
+    Promise.all([count(null), count(true), count(false)]).then(function (r) {
+        tbx_segAllCount.setValue(scwin.fmtNumber(r[0]));
+        tbx_segOnCount.setValue(scwin.fmtNumber(r[1]));
+        tbx_segOffCount.setValue(scwin.fmtNumber(r[2]));
+    }).catch(function () {
+        tbx_segAllCount.setValue("—");
+        tbx_segOnCount.setValue("—");
+        tbx_segOffCount.setValue("—");
+    });
+};
+
+/* =====================================================================
+ * TÌM KIẾM & DANH SÁCH
+ * ===================================================================== */
+/** Đồng bộ ô đang gõ vào dataMap (dự phòng khi bản WebSquare không hỗ trợ refSync). */
+scwin.syncSearchInputs = function () {
+    var pairs = [["keyword", ibx_keyword], ["minCapacity", ibx_minCap], ["maxCapacity", ibx_maxCap]];
+    for (var i = 0; i < pairs.length; i++) {
+        var v = pairs[i][1].getValue();
+        if (dma_search.get(pairs[i][0]) !== v) dma_search.set(pairs[i][0], v);
+    }
+};
+
+/** Lấy điều kiện từ dma_search, kiểm tra khoảng sức chứa. Trả null nếu không hợp lệ. */
+scwin.collectFilter = function () {
+    var q = dma_search.getJSON();
+    var min = scwin.trim(q.minCapacity), max = scwin.trim(q.maxCapacity);
+
+    if (min !== "" && max !== "" && parseInt(min, 10) > parseInt(max, 10)) {
+        tbx_capErr.setValue("Sức chứa tối thiểu đang lớn hơn tối đa. Hãy đổi lại khoảng.");
+        scwin.show(tbx_capErr, true);
+        grp_capRange.addClass("is-invalid");
+        return null;
+    }
+    scwin.show(tbx_capErr, false);
+    grp_capRange.removeClass("is-invalid");
+
+    return {
+        keyword: scwin.trim(q.keyword), minCapacity: min, maxCapacity: max,
+        active: q.active, page: q.page || 0, size: q.size || 10, sort: q.sort || "hallId,desc"
+    };
+};
+
+scwin.hasFilter = function () {
+    var q = dma_search.getJSON();
+    return !!(scwin.trim(q.keyword) || scwin.trim(q.minCapacity) || scwin.trim(q.maxCapacity) || q.active);
+};
+
+scwin.search = function (resetPage) {
+    if (resetPage) dma_search.set("page", "0");
+    var params = scwin.collectFilter();
+    if (!params) return;
+
+    scwin.updateFilterSummary(params);
+    var seq = ++scwin.searchSeq;
+    grp_listBody.addClass("is-loading");
+
+    scwin.callApi("sbm_hallList", { path: "?" + scwin.buildQuery(params) }).then(function (page) {
+        if (seq !== scwin.searchSeq) return;
+        scwin.renderList(page || {});
+    }).catch(function (err) {
+        if (seq !== scwin.searchSeq) return;
+        scwin.renderList({ content: [], totalElements: 0, totalPages: 0 });
+        if (err.code === "INVALID_CAPACITY_RANGE") {
+            tbx_capErr.setValue(err.message);
+            scwin.show(tbx_capErr, true);
+        } else {
+            scwin.toast(err.message, "error");
+        }
+    }).then(function () {
+        if (seq === scwin.searchSeq) grp_listBody.removeClass("is-loading");
+    });
+};
+
+scwin.renderList = function (page) {
+    var content = page.content || [];
+    var curPage = parseInt(dma_search.get("page"), 10) || 0;
+    var size = parseInt(dma_search.get("size"), 10) || 10;
+    scwin.state.totalPages = page.totalPages || 0;
+    scwin.state.totalElements = page.totalElements || 0;
+
+    // Trang hiện tại trống (vd: vừa xóa phần tử cuối) -> lùi về trang cuối hợp lệ
+    if (!content.length && curPage > 0 && scwin.state.totalPages > 0) {
+        dma_search.set("page", String(scwin.state.totalPages - 1));
+        scwin.search(false);
+        return;
+    }
+
+    dlt_hall.setJSON(content);                       // grid tự hiển thị qua binding + customFormatter
+
+    for (var i = 0; i < content.length; i++) {
+        try {
+            grd_hall.setCellClass(i, "active", content[i].active ? "hm-cell-on" : "hm-cell-off");
+        } catch (e) { /* phiên bản grid không hỗ trợ setCellClass */ }
+    }
+
+    var empty = content.length === 0;
+    scwin.show(grp_empty, empty);
+    scwin.toggleClass(grp_listBody, "is-empty", empty);
+    if (empty) {
+        var filtered = scwin.hasFilter();
+        tbx_emptyTitle.setValue(filtered ? "Không có hội trường khớp bộ lọc" : "Chưa có hội trường nào");
+        tbx_emptyDesc.setValue(filtered
+            ? "Thử bớt điều kiện lọc hoặc tìm bằng từ khóa khác."
+            : "Thêm hội trường đầu tiên để bắt đầu gán địa điểm cho sự kiện.");
+        scwin.show(btn_emptyReset, filtered);
+        scwin.show(btn_emptyAdd, !filtered && scwin.canManage !== false);
+    }
+
+    var from = empty ? 0 : curPage * size + 1;
+    var to = empty ? 0 : from + content.length - 1;
+    tbx_resultInfo.setValue(empty
+        ? "Không có kết quả"
+        : "Hiển thị " + from + "–" + to + " trong " + scwin.fmtNumber(scwin.state.totalElements) + " hội trường");
+
+    scwin.pagingLock = true;
+    try {
+        pgl_hall.setCount(Math.max(scwin.state.totalPages, 1));
+        pgl_hall.setSelectedIndex(curPage + 1);
+    } catch (e) { }
+    scwin.pagingLock = false;
+    scwin.show(grp_pager, scwin.state.totalPages > 1);
+};
+
+scwin.updateFilterSummary = function (p) {
+    var parts = [];
+    if (p.keyword) parts.push("“" + p.keyword + "”");
+    if (p.minCapacity && p.maxCapacity) parts.push("sức chứa " + p.minCapacity + "–" + p.maxCapacity);
+    else if (p.minCapacity) parts.push("sức chứa từ " + p.minCapacity);
+    else if (p.maxCapacity) parts.push("sức chứa đến " + p.maxCapacity);
+    if (p.active === "true") parts.push("đang hoạt động");
+    if (p.active === "false") parts.push("ngưng hoạt động");
+
+    tbx_filterSummary.setValue(parts.length ? "Đang lọc: " + parts.join(", ") : "");
+    scwin.show(tbx_filterSummary, parts.length > 0);
+    scwin.show(btn_reset, parts.length > 0);
+};
+
+/* ---------- Sự kiện bộ lọc ---------- */
+scwin.ibx_keyword_onkeyup = function (e) {
+    scwin.syncSearchInputs();
+    clearTimeout(scwin.searchTimer);
+    if (e && e.keyCode === 13) { scwin.search(true); return; }
+    scwin.searchTimer = setTimeout(function () { scwin.search(true); }, 400);
+};
+
+scwin.ibx_cap_onkeyup = function (e) {
+    scwin.syncSearchInputs();
+    clearTimeout(scwin.searchTimer);
+    if (e && e.keyCode === 13) { scwin.search(true); return; }
+    scwin.searchTimer = setTimeout(function () { scwin.search(true); }, 550);
+};
+
+scwin.setStatusFilter = function (val) {
+    if (dma_search.get("active") === val) return;
+    dma_search.set("active", val);
+    scwin.applyStatusSegment();
+    scwin.search(true);
+};
+
+scwin.applyStatusSegment = function () {
+    var a = dma_search.get("active") || "";
+    scwin.toggleClass(grp_segAll, "is-selected", a === "");
+    scwin.toggleClass(grp_segOn, "is-selected", a === "true");
+    scwin.toggleClass(grp_segOff, "is-selected", a === "false");
+};
+
+scwin.grp_segAll_onclick = function () { scwin.setStatusFilter(""); };
+scwin.grp_segOn_onclick = function () { scwin.setStatusFilter("true"); };
+scwin.grp_segOff_onclick = function () { scwin.setStatusFilter("false"); };
+
+scwin.sbx_sort_onchange = function () {
+    dma_search.set("sort", sbx_sort.getValue() || "hallId,desc");
+    scwin.search(true);
+};
+
+scwin.sbx_size_onchange = function () {
+    dma_search.set("size", sbx_size.getValue() || "10");
+    scwin.search(true);
+};
+
+scwin.btn_reset_onclick = function () {
+    var q = dma_search.getJSON();
+    dma_search.setJSON({                      // giữ sắp xếp và số dòng, xóa các điều kiện lọc
+        keyword: "", minCapacity: "", maxCapacity: "", active: "",
+        sort: q.sort || "hallId,desc", size: q.size || "10", page: "0"
+    });
+    scwin.applyStatusSegment();
+    scwin.search(true);
+};
+scwin.btn_emptyReset_onclick = scwin.btn_reset_onclick;
+
+scwin.btn_refresh_onclick = function () {
+    scwin.loadStats();
+    scwin.search(false);
+};
+
+scwin.pgl_hall_onviewchange = function (info) {
+    if (scwin.pagingLock) return;
+    var idx = (info && info.newSelectedIndex) ? info.newSelectedIndex : pgl_hall.getSelectedIndex();
+    dma_search.set("page", String(Math.max(0, idx - 1)));
+    scwin.search(false);
+};
+
+scwin.grd_hall_oncellclick = function (rowIndex) {
+    var row = dlt_hall.getRowJSON(rowIndex);
+    if (row && row.hallId) scwin.openDetail(row.hallId);
+};
+
+/* =====================================================================
+ * PANEL CHI TIẾT
+ * ===================================================================== */
+scwin.openDetail = function (hallId) {
+    scwin.drawerOpen = true;
+    grp_drawerMask.addClass("is-open");
+    grp_drawer.addClass("is-open");
+    grp_drawer.addClass("is-loading");
+
+    scwin.callApi("sbm_hallDetail", { path: "/" + hallId }).then(function (hall) {
+        scwin.renderDetail(hall);
+        scwin.loadEvents(true);
+    }).catch(function (err) {
+        scwin.toast(err.message, "error");
+        if (err.status === 404) {
+            scwin.closeDrawer();
+            scwin.search(false);
+            scwin.loadStats();
+        }
+    }).then(function () {
+        grp_drawer.removeClass("is-loading");
+    });
+};
+
+scwin.renderDetail = function (h) {
+    scwin.current = h;
+    tbx_dName.setValue(h.hallName || "");
+    tbx_dCode.setValue(h.hallCode || "");
+    tbx_dStatus.setValue(h.active ? "Đang hoạt động" : "Ngưng hoạt động");
+    scwin.toggleClass(tbx_dStatus, "is-on", !!h.active);
+    scwin.toggleClass(tbx_dStatus, "is-off", !h.active);
+
+    tbx_dCapacity.setValue(h.capacity == null ? "Chưa khai báo" : scwin.fmtNumber(h.capacity) + " chỗ ngồi");
+    tbx_dFloor.setValue(scwin.dash(h.floorArea));
+    tbx_dAddress.setValue(scwin.dash(h.address));
+    tbx_dDesc.setValue(h.description ? h.description : "Chưa có mô tả tiện nghi.");
+    scwin.toggleClass(tbx_dDesc, "is-placeholder", !h.description);
+    tbx_dNotes.setValue(h.notes ? h.notes : "Không có ghi chú.");
+    scwin.toggleClass(tbx_dNotes, "is-placeholder", !h.notes);
+    tbx_dCreated.setValue("Tạo lúc " + scwin.fmtDateTime(h.createdAt));
+    tbx_dUpdated.setValue("Cập nhật lúc " + scwin.fmtDateTime(h.updatedAt));
+
+    tbx_dInitial.setValue(scwin.initials(h.hallName));
+    if (h.imageUrl) {
+        grp_dCover.setStyle("background-image", "url(\"" + h.imageUrl + "\")");
+        grp_dCover.addClass("has-image");
+    } else {
+        grp_dCover.setStyle("background-image", "none");
+        grp_dCover.removeClass("has-image");
+    }
+};
+
+scwin.loadEvents = function (reset) {
+    if (!scwin.current) return;
+    if (reset) {
+        scwin.ev = { page: 0, items: [], totalPages: 0, totalElements: 0, loading: false };
+        dlt_event.setJSON([]);
+        tbx_evCount.setValue("Đang tải…");
+        scwin.show(grp_evEmpty, false);
+        scwin.show(btn_evMore, false);
+    }
+    if (scwin.ev.loading) return;
+
+    var hallId = scwin.current.hallId;
+    var evState = scwin.ev;
+    evState.loading = true;
+    btn_evMore.addClass("is-busy");
+    grp_evWrap.addClass("is-loading");
+
+    var q = scwin.buildQuery({ page: evState.page, size: scwin.EVENT_PAGE_SIZE });
+    scwin.callApi("sbm_hallEvents", { path: "/" + hallId + "/events?" + q }).then(function (page) {
+        if (!scwin.current || scwin.current.hallId !== hallId || scwin.ev !== evState) return;
+        evState.items = evState.items.concat((page && page.content) || []);
+        evState.totalPages = (page && page.totalPages) || 0;
+        evState.totalElements = (page && page.totalElements) || 0;
+        evState.page += 1;
+        scwin.renderEvents();
+    }).catch(function (err) {
+        tbx_evCount.setValue("Không tải được lịch sử sự kiện");
+        scwin.toast(err.message, "error");
+    }).then(function () {
+        evState.loading = false;
+        btn_evMore.removeClass("is-busy");
+        grp_evWrap.removeClass("is-loading");
+    });
+};
+
+scwin.renderEvents = function () {
+    var items = scwin.ev.items;
+    dlt_event.setJSON(items);                        // grid định dạng qua customFormatter
+
+    for (var i = 0; i < items.length; i++) {
+        try {
+            grd_event.setCellClass(i, "statusName", "hm-ev-status " + (scwin.EVENT_STATUS_CLASS[items[i].statusCode] || ""));
+        } catch (e) { }
+    }
+
+    grd_event.setStyle("height", (items.length ? 42 + items.length * 48 : 0) + "px");
+    scwin.show(grd_event, items.length > 0);
+    scwin.show(grp_evEmpty, items.length === 0);
+
+    tbx_evCount.setValue(scwin.ev.totalElements
+        ? scwin.fmtNumber(scwin.ev.totalElements) + " sự kiện, mới nhất trước"
+        : "Chưa tổ chức sự kiện nào");
+    scwin.show(btn_evMore, scwin.ev.page < scwin.ev.totalPages);
+};
+
+scwin.btn_evMore_onclick = function () { scwin.loadEvents(false); };
+
+scwin.closeDrawer = function () {
+    scwin.drawerOpen = false;
+    grp_drawerMask.removeClass("is-open");
+    grp_drawer.removeClass("is-open");
+};
+scwin.grp_drawerMask_onclick = scwin.closeDrawer;
+scwin.btn_dClose_onclick = scwin.closeDrawer;
+
+scwin.btn_dEdit_onclick = function () {
+    if (scwin.current) scwin.openForm("update", scwin.current);
+};
+
+scwin.btn_dDelete_onclick = function () { scwin.openDelete(); };
+
+/* =====================================================================
+ * FORM TẠO / SỬA
+ * ===================================================================== */
+scwin.btn_add_onclick = function () { scwin.openForm("create", null); };
+scwin.btn_emptyAdd_onclick = scwin.btn_add_onclick;
+
+scwin.openForm = function (mode, hall) {
+    var f = scwin.form;
+    f.mode = mode;
+    f.hallId = hall ? hall.hallId : null;
+    f.originalName = hall ? (hall.hallName || "") : "";
+    f.active = hall ? hall.active !== false : true;
+    f.file = null;
+    f.removeImage = false;
+    f.originalImage = hall ? hall.imageUrl : null;
+    f.dirty = false;
+    f.saving = false;
+    scwin.revokePreview();
+
+    tbx_fTitle.setValue(mode === "create" ? "Thêm hội trường" : "Sửa hội trường");
+    tbx_fSubtitle.setValue(mode === "create"
+        ? "Chỉ tên hội trường là bắt buộc. Các thông tin khác có thể bổ sung sau."
+        : "Đang sửa " + (hall.hallCode || "") + ". Lần cập nhật gần nhất: " + scwin.fmtDateTime(hall.updatedAt) + ".");
+
+    // Điền form: chỉ cần setJSON, các ô nhập tự cập nhật theo binding
+    var h = hall || {};
+    dma_hallForm.setJSON({
+        hallName: h.hallName || "", hallCode: h.hallCode || "",
+        capacity: h.capacity != null ? String(h.capacity) : "",
+        address: h.address || "", floorArea: h.floorArea || "",
+        description: h.description || "", notes: h.notes || ""
+    });
+
+    tbx_fCodeHint.setValue(mode === "create"
+        ? "Bỏ trống để hệ thống tự sinh mã (HALL0001, HALL0002…)."
+        : "Bỏ trống để giữ nguyên mã hiện tại.");
+
+    scwin.clearFormErrors();
+    scwin.applyActiveSegment();
+    scwin.renderPreview(f.originalImage, f.originalImage ? "Ảnh hiện tại" : "");
+    scwin.updateCounters();
+    scwin.show(tbx_fNameHint, false);
+
+    scwin.formOpen = true;
+    grp_formMask.addClass("is-open");
+    setTimeout(function () { try { ibx_fName.focus(); } catch (e) { } }, 150);
+};
+
+scwin.closeForm = function (force) {
+    if (!force && scwin.form.dirty && !window.confirm("Thông tin vừa nhập chưa được lưu. Đóng biểu mẫu?")) return;
+    clearTimeout(scwin.dupTimer);
+    scwin.formOpen = false;
+    grp_formMask.removeClass("is-open");
+    scwin.revokePreview();
+};
+scwin.btn_fClose_onclick = function () { scwin.closeForm(false); };
+scwin.btn_fCancel_onclick = function () { scwin.closeForm(false); };
+
+scwin.markDirty = function () { scwin.form.dirty = true; };
+
+/** Dự phòng khi bản WebSquare không hỗ trợ refSync: đẩy giá trị các ô nhập vào dma_hallForm. */
+scwin.syncFormInputs = function () {
+    for (var k in scwin.FIELDS) {
+        if (!scwin.FIELDS.hasOwnProperty(k)) continue;
+        var v = scwin.comp(scwin.FIELDS[k].input).getValue();
+        if (dma_hallForm.get(k) !== v) dma_hallForm.set(k, v);
+    }
+};
+
+/** Đọc form từ dma_hallForm (đã trim). */
+scwin.readForm = function () {
+    var raw = dma_hallForm.getJSON(), v = {};
+    for (var k in scwin.FIELDS) {
+        if (scwin.FIELDS.hasOwnProperty(k)) v[k] = scwin.trim(raw[k]);
+    }
+    return v;
+};
+
+scwin.validateForm = function (v) {
+    var errs = {};
+    if (!v.hallName) errs.hallName = "Nhập tên hội trường.";
+    if (v.hallCode && !/^[A-Za-z0-9._-]+$/.test(v.hallCode)) errs.hallCode = "Mã chỉ gồm chữ, số và các ký tự . _ -";
+    if (v.capacity !== "" && (!/^\d+$/.test(v.capacity) || parseInt(v.capacity, 10) <= 0)) {
+        errs.capacity = "Sức chứa phải là số nguyên lớn hơn 0.";
+    }
+    for (var k in scwin.FIELDS) {
+        var f = scwin.FIELDS[k];
+        if (!errs[k] && f.max && v[k].length > f.max) errs[k] = f.label + " tối đa " + f.max + " ký tự (hiện " + v[k].length + ").";
+    }
+    return errs;
+};
+
+scwin.showFieldError = function (key, msg) {
+    var f = scwin.FIELDS[key];
+    if (!f) return false;
+    var err = scwin.comp(f.error);
+    err.setValue(msg);
+    scwin.show(err, true);
+    scwin.comp(f.input).addClass("is-invalid");
+    return true;
+};
+
+scwin.clearFieldError = function (key) {
+    var f = scwin.FIELDS[key];
+    if (!f) return;
+    scwin.show(scwin.comp(f.error), false);
+    scwin.comp(f.input).removeClass("is-invalid");
+};
+
+scwin.clearFormErrors = function () {
+    for (var k in scwin.FIELDS) if (scwin.FIELDS.hasOwnProperty(k)) scwin.clearFieldError(k);
+    scwin.show(tbx_fAlert, false);
+    scwin.show(tbx_fImgErr, false);
+};
+
+scwin.focusField = function (key) {
+    var f = scwin.FIELDS[key];
+    if (f) { try { scwin.comp(f.input).focus(); } catch (e) { } }
+};
+
+scwin.btn_fSave_onclick = function () {
+    var f = scwin.form;
+    if (f.saving) return;
+    scwin.clearFormErrors();
+    scwin.syncFormInputs();
+
+    var v = scwin.readForm();
+    var errs = scwin.validateForm(v);
+    var keys = Object.keys(errs);
+    if (keys.length) {
+        keys.forEach(function (k) { scwin.showFieldError(k, errs[k]); });
+        scwin.focusField(keys[0]);
+        return;
+    }
+
+    var body = {
+        hallName: v.hallName,
+        hallCode: v.hallCode ? v.hallCode.toUpperCase() : null,
+        address: v.address || null,
+        floorArea: v.floorArea || null,
+        capacity: v.capacity === "" ? null : parseInt(v.capacity, 10),
+        description: v.description || null,
+        active: f.active,
+        notes: v.notes || null
+    };
+
+    var mode = f.mode;
+    scwin.setSaving(true);
+    var req = mode === "create"
+        ? scwin.callApi("sbm_hallCreate", { path: "", body: body })
+        : scwin.callApi("sbm_hallUpdate", { path: "/" + f.hallId, body: body });
+
+    req.then(function (hall) {
+        return scwin.syncImage(hall);
+    }).then(function (hall) {
+        scwin.form.dirty = false;
+        scwin.closeForm(true);
+        scwin.toast(mode === "create"
+            ? "Đã tạo hội trường " + hall.hallName + " (" + hall.hallCode + ")."
+            : "Đã lưu thay đổi cho " + hall.hallName + ".", "success");
+        if (mode === "create") dma_search.set("page", "0");
+        scwin.search(false);
+        scwin.loadStats();
+        if (scwin.drawerOpen && scwin.current && scwin.current.hallId === hall.hallId) scwin.renderDetail(hall);
+    }).catch(function (err) {
+        scwin.handleFormError(err);
+    }).then(function () {
+        scwin.setSaving(false);
+    });
+};
+
+/** Sau khi lưu thông tin: upload ảnh mới hoặc gỡ ảnh cũ. Không bao giờ reject. */
+scwin.syncImage = function (hall) {
+    var f = scwin.form;
+    var warn = function (err) {
+        scwin.toast("Đã lưu thông tin nhưng chưa cập nhật được ảnh: " + err.message, "warning");
+        return hall;
+    };
+    if (f.file) {
+        return scwin.uploadImage(hall.hallId, f.file, function (pct) {
+            tbx_fImgName.setValue("Đang tải ảnh lên… " + pct + "%");
+        }).catch(warn);
+    }
+    if (f.removeImage && hall.imageUrl) {
+        return scwin.callApi("sbm_hallImageDelete", { path: "/" + hall.hallId + "/image" }).catch(warn);
+    }
+    return Promise.resolve(hall);
+};
+
+scwin.handleFormError = function (err) {
+    var shown = false, firstKey = null;
+    if (err.code === "VALIDATION_ERROR" && err.data && typeof err.data === "object") {
+        for (var k in err.data) {
+            if (err.data.hasOwnProperty(k) && scwin.showFieldError(k, err.data[k])) {
+                shown = true;
+                if (!firstKey) firstKey = k;
+            }
+        }
+    } else if (err.code === "HALL_NAME_EXISTS") {
+        shown = scwin.showFieldError("hallName", err.message || "Tên hội trường đã tồn tại.");
+        firstKey = "hallName";
+    } else if (err.code === "HALL_CODE_EXISTS") {
+        shown = scwin.showFieldError("hallCode", err.message || "Mã hội trường đã tồn tại.");
+        firstKey = "hallCode";
+    } else if (err.code === "HALL_NOT_FOUND") {
+        scwin.closeForm(true);
+        scwin.closeDrawer();
+        scwin.toast(err.message, "error");
+        scwin.search(false);
+        scwin.loadStats();
+        return;
+    }
+    if (firstKey) scwin.focusField(firstKey);
+    if (!shown) {
+        tbx_fAlert.setValue(err.message || "Không lưu được hội trường.");
+        scwin.show(tbx_fAlert, true);
+    }
+};
+
+scwin.setSaving = function (on) {
+    scwin.form.saving = on;
+    scwin.toggleClass(btn_fSave, "is-busy", on);
+    try { btn_fSave.setDisabled(on); btn_fCancel.setDisabled(on); } catch (e) { }
+};
+
+/* ---------- Trạng thái Active / Inactive trong form ---------- */
+scwin.applyActiveSegment = function () {
+    scwin.toggleClass(btn_fActive, "is-selected", scwin.form.active);
+    scwin.toggleClass(btn_fInactive, "is-selected", !scwin.form.active);
+    tbx_fActiveHint.setValue(scwin.form.active
+        ? "Hội trường xuất hiện trong danh sách chọn địa điểm khi tạo sự kiện."
+        : "Ẩn khỏi danh sách chọn địa điểm. Sự kiện cũ vẫn giữ nguyên.");
+};
+scwin.btn_fActive_onclick = function () { if (!scwin.form.active) { scwin.form.active = true; scwin.markDirty(); scwin.applyActiveSegment(); } };
+scwin.btn_fInactive_onclick = function () { if (scwin.form.active) { scwin.form.active = false; scwin.markDirty(); scwin.applyActiveSegment(); } };
+
+/* ---------- Kiểm tra trùng tên ngay khi gõ ---------- */
+scwin.ibx_fName_onkeyup = function (e) {
+    scwin.markDirty();
+    scwin.clearFieldError("hallName");
+    clearTimeout(scwin.dupTimer);
+    var name = scwin.trim(ibx_fName.getValue());
+    if (dma_hallForm.get("hallName") !== ibx_fName.getValue()) dma_hallForm.set("hallName", ibx_fName.getValue());
+    if (!name) { scwin.show(tbx_fNameHint, false); return; }
+    scwin.dupTimer = setTimeout(function () { scwin.checkNameDup(name); }, 450);
+};
+
+scwin.checkNameDup = function (name) {
+    var f = scwin.form;
+    if (f.mode === "update" && name.toLowerCase() === f.originalName.toLowerCase()) {
+        scwin.show(tbx_fNameHint, false);
+        return;
+    }
+    scwin.callApi("sbm_hallNameCheck", { path: "?" + scwin.buildQuery({ hallName: name, page: 0, size: 20 }) }).then(function (page) {
+        if (!scwin.formOpen || scwin.trim(ibx_fName.getValue()) !== name) return;
+        var dup = ((page && page.content) || []).some(function (h) {
+            return scwin.trim(h.hallName).toLowerCase() === name.toLowerCase() && h.hallId !== f.hallId;
+        });
+        tbx_fNameHint.setValue(dup ? "Tên này đang được một hội trường khác sử dụng." : "Tên chưa bị trùng.");
+        scwin.toggleClass(tbx_fNameHint, "is-warning", dup);
+        scwin.toggleClass(tbx_fNameHint, "is-ok", !dup);
+        scwin.show(tbx_fNameHint, true);
+    }).catch(function () {
+        scwin.show(tbx_fNameHint, false);
+    });
+};
+
+scwin.ibx_fCode_onblur = function () {
+    dma_hallForm.set("hallCode", scwin.trim(dma_hallForm.get("hallCode")).toUpperCase());
+};
+
+scwin.field_onkeyup = function () { scwin.markDirty(); };
+scwin.ibx_fCode_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("hallCode"); };
+scwin.ibx_fCapacity_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("capacity"); };
+scwin.ibx_fAddress_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("address"); };
+scwin.ibx_fFloor_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("floorArea"); };
+scwin.txa_fDesc_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("description"); scwin.updateCounters(); };
+scwin.txa_fNotes_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("notes"); scwin.updateCounters(); };
+
+scwin.updateCounters = function () {
+    var d = (txa_fDesc.getValue() || "").length, n = (txa_fNotes.getValue() || "").length;
+    tbx_fDescCount.setValue(scwin.fmtNumber(d) + " / 4.000");
+    tbx_fNotesCount.setValue(scwin.fmtNumber(n) + " / 2.000");
+    scwin.toggleClass(tbx_fDescCount, "is-over", d > 4000);
+    scwin.toggleClass(tbx_fNotesCount, "is-over", n > 2000);
+};
+
+/* ---------- Hình ảnh: chọn, kéo thả, dán (Ctrl+V) ---------- */
+scwin.initFileInput = function () {
+    var inp = document.createElement("input");
+    inp.type = "file";
+    inp.accept = scwin.IMAGE_TYPES.join(",");
+    inp.className = "hm-native-file";
+    inp.addEventListener("change", function () {
+        var file = inp.files && inp.files[0];
+        inp.value = "";
+        if (file) scwin.acceptFile(file);
+    });
+    document.body.appendChild(inp);
+    scwin.fileInput = inp;
+};
+
+scwin.initDropzone = function () {
+    var el = scwin.domOf(grp_fDrop);
+    if (!el) return;
+    el.addEventListener("dragover", function (e) { e.preventDefault(); grp_fDrop.addClass("is-dragover"); });
+    el.addEventListener("dragleave", function () { grp_fDrop.removeClass("is-dragover"); });
+    el.addEventListener("drop", function (e) {
+        e.preventDefault();
+        grp_fDrop.removeClass("is-dragover");
+        var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (file) scwin.acceptFile(file);
+    });
+};
+
+scwin.pickImage = function () { if (scwin.fileInput) scwin.fileInput.click(); };
+scwin.grp_fDrop_onclick = scwin.pickImage;
+scwin.btn_fPick_onclick = scwin.pickImage;
+
+scwin.acceptFile = function (file) {
+    if (scwin.IMAGE_TYPES.indexOf(file.type) < 0) {
+        scwin.showImageError("Chỉ nhận ảnh JPG, PNG, WEBP hoặc GIF.");
+        return;
+    }
+    if (file.size > scwin.MAX_IMAGE_SIZE) {
+        scwin.showImageError("Ảnh nặng " + scwin.fmtSize(file.size) + ", vượt giới hạn 5 MB.");
+        return;
+    }
+    var f = scwin.form;
+    scwin.show(tbx_fImgErr, false);
+    f.file = file;
+    f.removeImage = false;
+    scwin.markDirty();
+    scwin.revokePreview();
+    f.previewUrl = URL.createObjectURL(file);
+    scwin.renderPreview(f.previewUrl, file.name + " (" + scwin.fmtSize(file.size) + ")");
+};
+
+scwin.showImageError = function (msg) {
+    tbx_fImgErr.setValue(msg);
+    scwin.show(tbx_fImgErr, true);
+};
+
+scwin.renderPreview = function (url, caption) {
+    if (url) {
+        grp_fDrop.setStyle("background-image", "url(\"" + url + "\")");
+        grp_fDrop.addClass("has-image");
+        tbx_fImgName.setValue(caption || "Ảnh hiện tại");
+        scwin.show(btn_fRemoveImg, true);
+    } else {
+        grp_fDrop.setStyle("background-image", "none");
+        grp_fDrop.removeClass("has-image");
+        tbx_fImgName.setValue("Chưa có ảnh");
+        scwin.show(btn_fRemoveImg, false);
+    }
+};
+
+scwin.btn_fRemoveImg_onclick = function () {
+    var f = scwin.form;
+    f.file = null;
+    scwin.revokePreview();
+    f.removeImage = !!f.originalImage;
+    scwin.markDirty();
+    scwin.renderPreview(null);
+};
+
+scwin.revokePreview = function () {
+    if (scwin.form.previewUrl) {
+        try { URL.revokeObjectURL(scwin.form.previewUrl); } catch (e) { }
+        scwin.form.previewUrl = null;
+    }
+};
+
+scwin.onGlobalPaste = function (e) {
+    if (!scwin.formOpen || !e.clipboardData) return;
+    var items = e.clipboardData.items || [];
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].kind === "file" && /^image\//.test(items[i].type)) {
+            var file = items[i].getAsFile();
+            if (file) { e.preventDefault(); scwin.acceptFile(file); }
+            return;
+        }
+    }
+};
+
+/* =====================================================================
+ * XÓA HỘI TRƯỜNG (soft delete, bắt buộc xác nhận)
+ * ===================================================================== */
+scwin.openDelete = function () {
+    if (!scwin.current) return;
+    tbx_delName.setValue(scwin.current.hallName + " (" + scwin.current.hallCode + ")");
+    scwin.show(tbx_delErr, false);
+    grp_delModal.removeClass("is-blocked");
+    try { btn_delConfirm.setDisabled(false); } catch (e) { }
+    scwin.deleteOpen = true;
+    grp_delMask.addClass("is-open");
+    setTimeout(function () { try { btn_delCancel.focus(); } catch (e) { } }, 150);
+};
+
+scwin.closeDelete = function () {
+    if (scwin.deleteBusy) return;
+    scwin.deleteOpen = false;
+    grp_delMask.removeClass("is-open");
+};
+scwin.btn_delCancel_onclick = scwin.closeDelete;
+
+scwin.btn_delConfirm_onclick = function () {
+    if (scwin.deleteBusy || !scwin.current) return;
+    var h = scwin.current;
+    scwin.deleteBusy = true;
+    btn_delConfirm.addClass("is-busy");
+
+    scwin.callApi("sbm_hallDelete", { path: "/" + h.hallId + "?confirm=true" }).then(function () {
+        scwin.deleteBusy = false;
+        scwin.closeDelete();
+        scwin.closeDrawer();
+        scwin.current = null;
+        scwin.toast("Đã xóa hội trường " + h.hallName + ".", "success");
+        scwin.search(false);
+        scwin.loadStats();
+    }).catch(function (err) {
+        scwin.deleteBusy = false;
+        if (err.code === "HALL_IN_USE") {
+            tbx_delErr.setValue((err.message || "Hội trường đang được sự kiện sử dụng.")
+                + " Hãy chuyển các sự kiện Nháp/Đang diễn ra sang hội trường khác, hoặc chuyển hội trường này sang Ngưng hoạt động.");
+            scwin.show(tbx_delErr, true);
+            grp_delModal.addClass("is-blocked");
+            try { btn_delConfirm.setDisabled(true); } catch (e) { }
+        } else if (err.code === "HALL_NOT_FOUND") {
+            scwin.closeDelete();
+            scwin.closeDrawer();
+            scwin.toast(err.message, "error");
+            scwin.search(false);
+            scwin.loadStats();
+        } else {
+            tbx_delErr.setValue(err.message);
+            scwin.show(tbx_delErr, true);
+        }
+    }).then(function () {
+        btn_delConfirm.removeClass("is-busy");
+    });
+};
+
+/* =====================================================================
+ * PHÍM TẮT & THÔNG BÁO
+ *   Esc: đóng lớp trên cùng | Ctrl/Cmd+Enter: lưu form | "/": tìm kiếm
+ * ===================================================================== */
+scwin.onGlobalKeydown = function (e) {
+    var key = e.key;
+    if (key === "Escape") {
+        if (scwin.deleteOpen) scwin.closeDelete();
+        else if (scwin.formOpen) scwin.closeForm(false);
+        else if (scwin.drawerOpen) scwin.closeDrawer();
+        return;
+    }
+    if (scwin.formOpen && key === "Enter" && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+        scwin.btn_fSave_onclick();
+        return;
+    }
+    var tag = (e.target && e.target.tagName ? e.target.tagName : "").toLowerCase();
+    if (key === "/" && tag !== "input" && tag !== "textarea" && !scwin.formOpen && !scwin.deleteOpen) {
+        e.preventDefault();
+        try { ibx_keyword.focus(); } catch (err) { }
+    }
+};
+
+scwin.toast = function (msg, type) {
+    clearTimeout(scwin.toastTimer);
+    tbx_toast.setValue(msg || "");
+    ["hm-toast--success", "hm-toast--error", "hm-toast--warning", "hm-toast--info"].forEach(function (c) { tbx_toast.removeClass(c); });
+    tbx_toast.addClass("hm-toast--" + (type || "info"));
+    tbx_toast.addClass("is-show");
+    scwin.toastTimer = setTimeout(function () { tbx_toast.removeClass("is-show"); }, type === "error" ? 6000 : 3800);
+};
+scwin.tbx_toast_onclick = function () { tbx_toast.removeClass("is-show"); };
+    ]]></script>
+</head>
+<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+<!-- Khung trang chuẩn (giống Home): ck-layout > header + ck-main + footer -->
+<xf:group id="grp_layout" class="ck-layout">
+
+    <w2:wframe id="wfm_header" class="layout-header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+    <xf:group id="grp_main" class="ck-main hm-scope" tagname="main">
+
+
+        <!-- Tiêu đề -->
+        <xf:group id="grp_header" class="hm-header">
+            <xf:group id="grp_headerText" class="hm-header__text">
+                <w2:textbox id="tbx_crumb" class="hm-header__crumb" tagname="p" label="Danh mục / Hội trường"/>
+                <w2:textbox id="tbx_title" class="ck-page-title hm-header__title" tagname="h1" label="Hội trường"/>
+                <w2:textbox id="tbx_subtitle" class="ck-page-desc hm-header__subtitle" tagname="p"
+                            label="Địa điểm tổ chức sự kiện, sức chứa và các sự kiện đã diễn ra tại từng nơi."/>
+            </xf:group>
+            <xf:group id="grp_headerActions" class="hm-header__actions">
+                <xf:trigger id="btn_refresh" type="button" class="hm-btn hm-btn--ghost hm-btn--icon hm-ico-refresh"
+                            ev:onclick="scwin.btn_refresh_onclick">
+                    <xf:label><![CDATA[Làm mới]]></xf:label>
+                </xf:trigger>
+                <xf:trigger id="btn_add" type="button" class="hm-btn hm-btn--primary hm-btn--icon hm-ico-plus"
+                            ev:onclick="scwin.btn_add_onclick">
+                    <xf:label><![CDATA[Thêm hội trường]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+        </xf:group>
+
+        <!-- Bộ lọc -->
+        <xf:group id="grp_filter" class="hm-filter">
+            <xf:group id="grp_filterTop" class="hm-filter__top">
+                <xf:group id="grp_search" class="hm-search">
+                    <xf:input id="ibx_keyword" class="hm-search__input" maxlength="150" ref="data:dma_search.keyword" refSync="true"
+                              placeholder="Tìm theo tên, mã hoặc địa chỉ"
+                              ev:onkeyup="scwin.ibx_keyword_onkeyup"/>
+                    <w2:textbox id="tbx_searchKey" class="hm-search__kbd" tagname="span" label="/"/>
+                </xf:group>
+
+                <xf:group id="grp_seg" class="hm-seg">
+                    <xf:group id="grp_segAll" class="hm-seg__item" ev:onclick="scwin.grp_segAll_onclick">
+                        <w2:textbox id="tbx_segAllLabel" class="hm-seg__label" tagname="span" label="Tất cả"/>
+                        <w2:textbox id="tbx_segAllCount" class="hm-seg__count" tagname="span" label="…"/>
+                    </xf:group>
+                    <xf:group id="grp_segOn" class="hm-seg__item hm-seg__item--on" ev:onclick="scwin.grp_segOn_onclick">
+                        <w2:textbox id="tbx_segOnLabel" class="hm-seg__label" tagname="span" label="Hoạt động"/>
+                        <w2:textbox id="tbx_segOnCount" class="hm-seg__count" tagname="span" label="…"/>
+                    </xf:group>
+                    <xf:group id="grp_segOff" class="hm-seg__item hm-seg__item--off" ev:onclick="scwin.grp_segOff_onclick">
+                        <w2:textbox id="tbx_segOffLabel" class="hm-seg__label" tagname="span" label="Ngưng"/>
+                        <w2:textbox id="tbx_segOffCount" class="hm-seg__count" tagname="span" label="…"/>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_filterBottom" class="hm-filter__bottom">
+                <xf:group id="grp_capField" class="hm-filter__field">
+                    <w2:textbox id="tbx_capLabel" class="hm-filter__label" tagname="span" label="Sức chứa"/>
+                    <xf:group id="grp_capRange" class="hm-range">
+                        <xf:input id="ibx_minCap" class="hm-range__input" allowChar="0-9" maxlength="7" ref="data:dma_search.minCapacity" refSync="true"
+                                  placeholder="Từ" ev:onkeyup="scwin.ibx_cap_onkeyup"/>
+                        <w2:textbox id="tbx_capSep" class="hm-range__sep" tagname="span" label="–"/>
+                        <xf:input id="ibx_maxCap" class="hm-range__input" allowChar="0-9" maxlength="7" ref="data:dma_search.maxCapacity" refSync="true"
+                                  placeholder="Đến" ev:onkeyup="scwin.ibx_cap_onkeyup"/>
+                        <w2:textbox id="tbx_capUnit" class="hm-range__unit" tagname="span" label="chỗ"/>
+                    </xf:group>
+                </xf:group>
+
+                <xf:group id="grp_sortField" class="hm-filter__field">
+                    <w2:textbox id="tbx_sortLabel" class="hm-filter__label" tagname="span" label="Sắp xếp"/>
+                    <xf:select1 id="sbx_sort" class="hm-select hm-select--sort" appearance="minimal" chooseOption="false" ref="data:dma_search.sort"
+                                direction="auto" ev:onchange="scwin.sbx_sort_onchange">
+                        <xf:choices>
+                            <xf:item><xf:label><![CDATA[Mới thêm gần đây]]></xf:label><xf:value><![CDATA[hallId,desc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Cập nhật gần đây]]></xf:label><xf:value><![CDATA[updatedAt,desc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Tên A đến Z]]></xf:label><xf:value><![CDATA[hallName,asc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Tên Z đến A]]></xf:label><xf:value><![CDATA[hallName,desc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Sức chứa lớn nhất]]></xf:label><xf:value><![CDATA[capacity,desc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Sức chứa nhỏ nhất]]></xf:label><xf:value><![CDATA[capacity,asc]]></xf:value></xf:item>
+                        </xf:choices>
+                    </xf:select1>
+                </xf:group>
+
+                <xf:trigger id="btn_reset" type="button" class="hm-btn hm-btn--text is-hidden"
+                            ev:onclick="scwin.btn_reset_onclick">
+                    <xf:label><![CDATA[Xóa bộ lọc]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+
+            <w2:textbox id="tbx_capErr" class="hm-filter__error is-hidden" tagname="p" label=""/>
+        </xf:group>
+
+        <!-- Danh sách -->
+        <xf:group id="grp_list" class="hm-list">
+            <xf:group id="grp_listToolbar" class="hm-list__toolbar">
+                <xf:group id="grp_listInfo" class="hm-list__info">
+                    <w2:textbox id="tbx_resultInfo" class="hm-list__result" tagname="span" label="Đang tải…"/>
+                    <w2:textbox id="tbx_filterSummary" class="hm-list__summary is-hidden" tagname="span" label=""/>
+                </xf:group>
+                <xf:group id="grp_sizeField" class="hm-list__size">
+                    <w2:textbox id="tbx_sizeLabel" class="hm-list__size-label" tagname="span" label="Mỗi trang"/>
+                    <xf:select1 id="sbx_size" class="hm-select hm-select--size" appearance="minimal" chooseOption="false" ref="data:dma_search.size"
+                                direction="auto" ev:onchange="scwin.sbx_size_onchange">
+                        <xf:choices>
+                            <xf:item><xf:label><![CDATA[10]]></xf:label><xf:value><![CDATA[10]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[20]]></xf:label><xf:value><![CDATA[20]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[50]]></xf:label><xf:value><![CDATA[50]]></xf:value></xf:item>
+                        </xf:choices>
+                    </xf:select1>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_listBody" class="hm-list__body">
+                <w2:gridView id="grd_hall" class="hm-grid" dataList="data:dlt_hall" readOnly="true"
+                             autoFit="allColumn" scrollByColumn="false" rowNumVisible="false" rowStatusVisible="false"
+                             focusMode="row" defaultCellHeight="52" fixedColumnWithHidden="true"
+                             ev:oncellclick="scwin.grd_hall_oncellclick">
+                    <w2:header id="hdr_hall" class="hm-grid__header">
+                        <w2:row id="hdr_hallRow" class="hm-grid__hrow">
+                            <w2:column id="h_hallCode" class="hm-grid__th" width="110" inputType="text" displayMode="label" value="Mã"/>
+                            <w2:column id="h_hallName" class="hm-grid__th" width="230" inputType="text" displayMode="label" value="Tên hội trường"/>
+                            <w2:column id="h_address" class="hm-grid__th" width="280" inputType="text" displayMode="label" value="Địa chỉ"/>
+                            <w2:column id="h_floorArea" class="hm-grid__th" width="150" inputType="text" displayMode="label" value="Tầng/Khu vực"/>
+                            <w2:column id="h_capacity" class="hm-grid__th hm-grid__th--num" width="110" inputType="text" displayMode="label" value="Sức chứa"/>
+                            <w2:column id="h_active" class="hm-grid__th" width="120" inputType="text" displayMode="label" value="Trạng thái"/>
+                            <w2:column id="h_image" class="hm-grid__th" width="80" inputType="text" displayMode="label" value="Ảnh"/>
+                            <w2:column id="h_updated" class="hm-grid__th" width="140" inputType="text" displayMode="label" value="Cập nhật"/>
+                        </w2:row>
+                    </w2:header>
+                    <w2:gBody id="gb_hall" class="hm-grid__body">
+                        <w2:row id="gb_hallRow" class="hm-grid__row">
+                            <w2:column id="hallCode" class="hm-grid__td hm-grid__td--code" width="110" inputType="text" displayMode="label" textAlign="left"/>
+                            <w2:column id="hallName" class="hm-grid__td hm-grid__td--name" width="230" inputType="text" displayMode="label" textAlign="left"/>
+                            <w2:column id="address" class="hm-grid__td hm-grid__td--muted" width="280" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="floorArea" class="hm-grid__td" width="150" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="capacity" class="hm-grid__td hm-grid__td--num" width="110" inputType="text" displayMode="label" textAlign="right" customFormatter="scwin.gfCapacity"/>
+                            <w2:column id="active" class="hm-grid__td hm-grid__td--status" width="120" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfActive"/>
+                            <w2:column id="imageUrl" class="hm-grid__td hm-grid__td--muted" width="80" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfImage"/>
+                            <w2:column id="updatedAt" class="hm-grid__td hm-grid__td--muted" width="140" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDateTime"/>
+                        </w2:row>
+                    </w2:gBody>
+                </w2:gridView>
+
+                <xf:group id="grp_empty" class="hm-empty is-hidden">
+                    <xf:group id="grp_emptyIcon" class="hm-empty__icon"/>
+                    <w2:textbox id="tbx_emptyTitle" class="hm-empty__title" tagname="p" label=""/>
+                    <w2:textbox id="tbx_emptyDesc" class="hm-empty__desc" tagname="p" label=""/>
+                    <xf:group id="grp_emptyActions" class="hm-empty__actions">
+                        <xf:trigger id="btn_emptyReset" type="button" class="hm-btn hm-btn--ghost"
+                                    ev:onclick="scwin.btn_emptyReset_onclick">
+                            <xf:label><![CDATA[Xóa bộ lọc]]></xf:label>
+                        </xf:trigger>
+                        <xf:trigger id="btn_emptyAdd" type="button" class="hm-btn hm-btn--primary hm-btn--icon hm-ico-plus"
+                                    ev:onclick="scwin.btn_emptyAdd_onclick">
+                            <xf:label><![CDATA[Thêm hội trường]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_pager" class="hm-list__pager is-hidden">
+                <w2:pageList id="pgl_hall" class="hm-pager" displayButtonType="display" displaySelectedIndex="true"
+                             pagingType="0" pageSize="7" ev:onviewchange="scwin.pgl_hall_onviewchange"/>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <w2:wframe id="wfm_footer" class="layout-footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+
+</xf:group>
+
+<!-- Lớp phủ (position: fixed) đặt ngoài khung trang để không chiếm chỗ trong layout -->
+<xf:group id="grp_overlays" class="hm-scope hm-overlays">
+    <!-- ================================================================
+         PANEL CHI TIẾT (drawer phải)
+         ================================================================ -->
+    <xf:group id="grp_drawerMask" class="hm-drawer-mask" ev:onclick="scwin.grp_drawerMask_onclick"/>
+    <xf:group id="grp_drawer" class="hm-drawer">
+        <xf:group id="grp_dCover" class="hm-drawer__cover">
+            <w2:textbox id="tbx_dInitial" class="hm-drawer__initial" tagname="span" label=""/>
+            <xf:trigger id="btn_dClose" type="button" class="hm-icon-btn hm-icon-btn--light hm-ico-close hm-drawer__close"
+                        ev:onclick="scwin.btn_dClose_onclick">
+                <xf:label><![CDATA[Đóng]]></xf:label>
+            </xf:trigger>
+        </xf:group>
+
+        <xf:group id="grp_dHead" class="hm-drawer__head">
+            <w2:textbox id="tbx_dName" class="hm-drawer__name" tagname="h2" label=""/>
+            <xf:group id="grp_dChips" class="hm-drawer__chips">
+                <w2:textbox id="tbx_dCode" class="hm-chip hm-chip--code" tagname="span" label=""/>
+                <w2:textbox id="tbx_dStatus" class="hm-chip hm-chip--status" tagname="span" label=""/>
+            </xf:group>
+        </xf:group>
+
+        <xf:group id="grp_dBody" class="hm-drawer__body">
+            <xf:group id="grp_dFacts" class="hm-facts">
+                <xf:group id="grp_factCap" class="hm-fact hm-fact--capacity">
+                    <w2:textbox id="tbx_factCapLabel" class="hm-fact__label" tagname="span" label="Sức chứa"/>
+                    <w2:textbox id="tbx_dCapacity" class="hm-fact__value" tagname="span" label=""/>
+                </xf:group>
+                <xf:group id="grp_factFloor" class="hm-fact hm-fact--floor">
+                    <w2:textbox id="tbx_factFloorLabel" class="hm-fact__label" tagname="span" label="Tầng/Khu vực"/>
+                    <w2:textbox id="tbx_dFloor" class="hm-fact__value" tagname="span" label=""/>
+                </xf:group>
+                <xf:group id="grp_factAddr" class="hm-fact hm-fact--address">
+                    <w2:textbox id="tbx_factAddrLabel" class="hm-fact__label" tagname="span" label="Địa chỉ"/>
+                    <w2:textbox id="tbx_dAddress" class="hm-fact__value" tagname="span" label=""/>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_dDescSec" class="hm-section">
+                <w2:textbox id="tbx_dDescTitle" class="hm-section__title" tagname="h3" label="Mô tả và tiện nghi"/>
+                <w2:textbox id="tbx_dDesc" class="hm-section__text" tagname="p" label=""/>
+            </xf:group>
+
+            <xf:group id="grp_dNotesSec" class="hm-section hm-section--note">
+                <w2:textbox id="tbx_dNotesTitle" class="hm-section__title" tagname="h3" label="Ghi chú vận hành"/>
+                <w2:textbox id="tbx_dNotes" class="hm-section__text" tagname="p" label=""/>
+            </xf:group>
+
+            <xf:group id="grp_dEventsSec" class="hm-section hm-section--events">
+                <xf:group id="grp_evHead" class="hm-section__head">
+                    <w2:textbox id="tbx_evTitle" class="hm-section__title" tagname="h3" label="Lịch sử sự kiện"/>
+                    <w2:textbox id="tbx_evCount" class="hm-section__meta" tagname="span" label=""/>
+                </xf:group>
+                <xf:group id="grp_evWrap" class="hm-events">
+                    <w2:gridView id="grd_event" class="hm-grid hm-grid--events" dataList="data:dlt_event" readOnly="true"
+                                 autoFit="allColumn" scrollByColumn="false" rowNumVisible="false" rowStatusVisible="false"
+                                 focusMode="row" defaultCellHeight="48">
+                        <w2:header id="hdr_event" class="hm-grid__header">
+                            <w2:row id="hdr_eventRow" class="hm-grid__hrow">
+                                <w2:column id="h_evName" class="hm-grid__th" width="200" inputType="text" displayMode="label" value="Sự kiện"/>
+                                <w2:column id="h_evDate" class="hm-grid__th" width="170" inputType="text" displayMode="label" value="Thời gian"/>
+                                <w2:column id="h_evStatus" class="hm-grid__th" width="100" inputType="text" displayMode="label" value="Trạng thái"/>
+                                <w2:column id="h_evCheckin" class="hm-grid__th hm-grid__th--num" width="110" inputType="text" displayMode="label" value="Check-in"/>
+                            </w2:row>
+                        </w2:header>
+                        <w2:gBody id="gb_event" class="hm-grid__body">
+                            <w2:row id="gb_eventRow" class="hm-grid__row">
+                                <w2:column id="eventName" class="hm-grid__td hm-grid__td--name" width="200" inputType="text" displayMode="label" textAlign="left"/>
+                                <w2:column id="startDate" class="hm-grid__td hm-grid__td--muted" width="170" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfEventTime"/>
+                                <w2:column id="statusName" class="hm-grid__td" width="100" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfEventStatus"/>
+                                <w2:column id="checkedInCount" class="hm-grid__td hm-grid__td--num" width="110" inputType="text" displayMode="label" textAlign="right" customFormatter="scwin.gfCheckin"/>
+                            </w2:row>
+                        </w2:gBody>
+                    </w2:gridView>
+                    <xf:group id="grp_evEmpty" class="hm-events__empty is-hidden">
+                        <w2:textbox id="tbx_evEmptyText" class="hm-events__empty-text" tagname="p"
+                                    label="Hội trường này chưa được dùng cho sự kiện nào."/>
+                    </xf:group>
+                    <xf:trigger id="btn_evMore" type="button" class="hm-btn hm-btn--ghost hm-btn--block is-hidden"
+                                ev:onclick="scwin.btn_evMore_onclick">
+                        <xf:label><![CDATA[Xem thêm sự kiện cũ hơn]]></xf:label>
+                    </xf:trigger>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_dMeta" class="hm-drawer__meta">
+                <w2:textbox id="tbx_dCreated" class="hm-drawer__meta-item" tagname="span" label=""/>
+                <w2:textbox id="tbx_dUpdated" class="hm-drawer__meta-item" tagname="span" label=""/>
+            </xf:group>
+        </xf:group>
+
+        <xf:group id="grp_dFooter" class="hm-drawer__footer">
+            <xf:trigger id="btn_dDelete" type="button" class="hm-btn hm-btn--danger-ghost hm-btn--icon hm-ico-trash"
+                        ev:onclick="scwin.btn_dDelete_onclick">
+                <xf:label><![CDATA[Xóa]]></xf:label>
+            </xf:trigger>
+            <xf:trigger id="btn_dEdit" type="button" class="hm-btn hm-btn--primary hm-btn--icon hm-ico-edit"
+                        ev:onclick="scwin.btn_dEdit_onclick">
+                <xf:label><![CDATA[Sửa thông tin]]></xf:label>
+            </xf:trigger>
+        </xf:group>
+    </xf:group>
+
+    <!-- ================================================================
+         MODAL TẠO / SỬA
+         ================================================================ -->
+    <xf:group id="grp_formMask" class="hm-modal-mask">
+        <xf:group id="grp_formModal" class="hm-modal hm-modal--form">
+            <xf:group id="grp_fHead" class="hm-modal__head">
+                <xf:group id="grp_fHeadText" class="hm-modal__head-text">
+                    <w2:textbox id="tbx_fTitle" class="hm-modal__title" tagname="h2" label=""/>
+                    <w2:textbox id="tbx_fSubtitle" class="hm-modal__subtitle" tagname="p" label=""/>
+                </xf:group>
+                <xf:trigger id="btn_fClose" type="button" class="hm-icon-btn hm-ico-close" ev:onclick="scwin.btn_fClose_onclick">
+                    <xf:label><![CDATA[Đóng]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+
+            <xf:group id="grp_fBody" class="hm-modal__body hm-form">
+                <!-- Cột ảnh + trạng thái -->
+                <xf:group id="grp_fMedia" class="hm-form__media">
+                    <w2:textbox id="tbx_fImgLabel" class="hm-label" tagname="span" label="Hình ảnh"/>
+                    <xf:group id="grp_fDrop" class="hm-drop" ev:onclick="scwin.grp_fDrop_onclick">
+                        <xf:group id="grp_fDropIcon" class="hm-drop__icon"/>
+                        <w2:textbox id="tbx_fDropText" class="hm-drop__text" tagname="span" label="Kéo ảnh vào đây hoặc bấm để chọn"/>
+                        <w2:textbox id="tbx_fDropSub" class="hm-drop__sub" tagname="span" label="JPG, PNG, WEBP, GIF, tối đa 5 MB. Có thể dán bằng Ctrl+V."/>
+                    </xf:group>
+                    <xf:group id="grp_fImgBar" class="hm-drop__bar">
+                        <w2:textbox id="tbx_fImgName" class="hm-drop__name" tagname="span" label="Chưa có ảnh"/>
+                        <xf:group id="grp_fImgActions" class="hm-drop__actions">
+                            <xf:trigger id="btn_fPick" type="button" class="hm-btn hm-btn--text" ev:onclick="scwin.btn_fPick_onclick">
+                                <xf:label><![CDATA[Chọn ảnh]]></xf:label>
+                            </xf:trigger>
+                            <xf:trigger id="btn_fRemoveImg" type="button" class="hm-btn hm-btn--text hm-btn--text-danger is-hidden"
+                                        ev:onclick="scwin.btn_fRemoveImg_onclick">
+                                <xf:label><![CDATA[Gỡ ảnh]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+                    </xf:group>
+                    <w2:textbox id="tbx_fImgErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+
+                    <xf:group id="grp_fStatus" class="hm-field hm-field--status">
+                        <w2:textbox id="tbx_fStatusLabel" class="hm-label" tagname="span" label="Trạng thái"/>
+                        <xf:group id="grp_fStatusSeg" class="hm-toggle">
+                            <xf:trigger id="btn_fActive" type="button" class="hm-toggle__item hm-toggle__item--on"
+                                        ev:onclick="scwin.btn_fActive_onclick">
+                                <xf:label><![CDATA[Hoạt động]]></xf:label>
+                            </xf:trigger>
+                            <xf:trigger id="btn_fInactive" type="button" class="hm-toggle__item hm-toggle__item--off"
+                                        ev:onclick="scwin.btn_fInactive_onclick">
+                                <xf:label><![CDATA[Ngưng]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+                        <w2:textbox id="tbx_fActiveHint" class="hm-field__hint" tagname="p" label=""/>
+                    </xf:group>
+                </xf:group>
+
+                <!-- Cột thông tin -->
+                <xf:group id="grp_fFields" class="hm-form__fields">
+                    <xf:group id="grp_fName" class="hm-field hm-field--full">
+                        <w2:textbox id="tbx_fNameLabel" class="hm-label hm-label--required" tagname="span" label="Tên hội trường"/>
+                        <xf:input id="ibx_fName" ref="data:dma_hallForm.hallName" refSync="true" class="hm-input" maxlength="150" placeholder="Ví dụ: Hội trường A"
+                                  ev:onkeyup="scwin.ibx_fName_onkeyup"/>
+                        <w2:textbox id="tbx_fNameHint" class="hm-field__hint is-hidden" tagname="p" label=""/>
+                        <w2:textbox id="tbx_fNameErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_fCode" class="hm-field">
+                        <w2:textbox id="tbx_fCodeLabel" class="hm-label" tagname="span" label="Mã hội trường"/>
+                        <xf:input id="ibx_fCode" ref="data:dma_hallForm.hallCode" refSync="true" class="hm-input hm-input--code" maxlength="30" placeholder="Tự sinh nếu bỏ trống"
+                                  ev:onkeyup="scwin.ibx_fCode_onkeyup" ev:onblur="scwin.ibx_fCode_onblur"/>
+                        <w2:textbox id="tbx_fCodeHint" class="hm-field__hint" tagname="p" label=""/>
+                        <w2:textbox id="tbx_fCodeErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_fCapacity" class="hm-field">
+                        <w2:textbox id="tbx_fCapacityLabel" class="hm-label" tagname="span" label="Sức chứa (chỗ ngồi)"/>
+                        <xf:input id="ibx_fCapacity" ref="data:dma_hallForm.capacity" refSync="true" class="hm-input hm-input--num" allowChar="0-9" maxlength="7"
+                                  placeholder="Ví dụ: 300" ev:onkeyup="scwin.ibx_fCapacity_onkeyup"/>
+                        <w2:textbox id="tbx_fCapacityErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_fAddress" class="hm-field hm-field--wide">
+                        <w2:textbox id="tbx_fAddressLabel" class="hm-label" tagname="span" label="Địa chỉ"/>
+                        <xf:input id="ibx_fAddress" ref="data:dma_hallForm.address" refSync="true" class="hm-input" maxlength="500"
+                                  placeholder="Số nhà, đường, quận/huyện, tỉnh/thành" ev:onkeyup="scwin.ibx_fAddress_onkeyup"/>
+                        <w2:textbox id="tbx_fAddressErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_fFloor" class="hm-field">
+                        <w2:textbox id="tbx_fFloorLabel" class="hm-label" tagname="span" label="Tầng/Khu vực"/>
+                        <xf:input id="ibx_fFloor" ref="data:dma_hallForm.floorArea" refSync="true" class="hm-input" maxlength="100" placeholder="Ví dụ: Tầng 2, khu A"
+                                  ev:onkeyup="scwin.ibx_fFloor_onkeyup"/>
+                        <w2:textbox id="tbx_fFloorErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_fDesc" class="hm-field hm-field--full">
+                        <xf:group id="grp_fDescHead" class="hm-field__head">
+                            <w2:textbox id="tbx_fDescLabel" class="hm-label" tagname="span" label="Mô tả/Tiện nghi"/>
+                            <w2:textbox id="tbx_fDescCount" class="hm-field__count" tagname="span" label=""/>
+                        </xf:group>
+                        <xf:textarea id="txa_fDesc" ref="data:dma_hallForm.description" refSync="true" class="hm-textarea" placeholder="Máy chiếu, âm thanh, điều hòa, bãi đỗ xe…"
+                                     ev:onkeyup="scwin.txa_fDesc_onkeyup"/>
+                        <w2:textbox id="tbx_fDescErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_fNotes" class="hm-field hm-field--full">
+                        <xf:group id="grp_fNotesHead" class="hm-field__head">
+                            <w2:textbox id="tbx_fNotesLabel" class="hm-label" tagname="span" label="Ghi chú"/>
+                            <w2:textbox id="tbx_fNotesCount" class="hm-field__count" tagname="span" label=""/>
+                        </xf:group>
+                        <xf:textarea id="txa_fNotes" ref="data:dma_hallForm.notes" refSync="true" class="hm-textarea hm-textarea--short"
+                                     placeholder="Ví dụ: liên hệ bảo vệ mở cửa trước 7h" ev:onkeyup="scwin.txa_fNotes_onkeyup"/>
+                        <w2:textbox id="tbx_fNotesErr" class="hm-field__error is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <w2:textbox id="tbx_fAlert" class="hm-alert hm-field--full is-hidden" tagname="p" label=""/>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_fFooter" class="hm-modal__footer">
+                <w2:textbox id="tbx_fShortcut" class="hm-modal__shortcut" tagname="span" label="Ctrl + Enter để lưu, Esc để đóng"/>
+                <xf:group id="grp_fFooterActions" class="hm-modal__actions">
+                    <xf:trigger id="btn_fCancel" type="button" class="hm-btn hm-btn--ghost" ev:onclick="scwin.btn_fCancel_onclick">
+                        <xf:label><![CDATA[Hủy]]></xf:label>
+                    </xf:trigger>
+                    <xf:trigger id="btn_fSave" type="button" class="hm-btn hm-btn--primary" ev:onclick="scwin.btn_fSave_onclick">
+                        <xf:label><![CDATA[Lưu hội trường]]></xf:label>
+                    </xf:trigger>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- ================================================================
+         MODAL XÁC NHẬN XÓA
+         ================================================================ -->
+    <xf:group id="grp_delMask" class="hm-modal-mask hm-modal-mask--top">
+        <xf:group id="grp_delModal" class="hm-modal hm-modal--confirm">
+            <xf:group id="grp_delIcon" class="hm-confirm__icon"/>
+            <w2:textbox id="tbx_delTitle" class="hm-confirm__title" tagname="h2" label="Xóa hội trường này?"/>
+            <w2:textbox id="tbx_delName" class="hm-confirm__name" tagname="p" label=""/>
+            <w2:textbox id="tbx_delDesc" class="hm-confirm__desc" tagname="p"
+                        label="Hội trường sẽ biến mất khỏi danh sách và không thể chọn cho sự kiện mới. Các sự kiện đã diễn ra vẫn giữ thông tin địa điểm."/>
+            <w2:textbox id="tbx_delErr" class="hm-alert hm-alert--danger is-hidden" tagname="p" label=""/>
+            <xf:group id="grp_delActions" class="hm-confirm__actions">
+                <xf:trigger id="btn_delCancel" type="button" class="hm-btn hm-btn--ghost" ev:onclick="scwin.btn_delCancel_onclick">
+                    <xf:label><![CDATA[Giữ lại]]></xf:label>
+                </xf:trigger>
+                <xf:trigger id="btn_delConfirm" type="button" class="hm-btn hm-btn--danger" ev:onclick="scwin.btn_delConfirm_onclick">
+                    <xf:label><![CDATA[Xóa hội trường]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- Thông báo -->
+    <w2:textbox id="tbx_toast" class="hm-toast" tagname="div" label="" ev:onclick="scwin.tbx_toast_onclick"/>
+</xf:group>
+</body>
+</html>

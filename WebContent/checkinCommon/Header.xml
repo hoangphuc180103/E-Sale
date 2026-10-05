@@ -31,6 +31,7 @@
 	scwin.PAGES = {
 		LOGIN: "/authPage/LoginPage.xml",
 		HOME:  "/mainPage/Home.xml",
+        HALL:  "/HallManagement/Hall.xml",
 		USER:  "/AdminPage/UserList.xml",
 		ROLE:  "/AdminPage/RoleList.xml"
 	};
@@ -38,7 +39,8 @@
 	// Backend có thể trả đường dẫn cũ (viết thường để so khớp) -> đổi sang đường dẫn thật
 	scwin.PATH_MAP = {
 		"/userpage/userlist.xml": scwin.PAGES.USER,
-		"/rolepage/rolelist.xml": scwin.PAGES.ROLE
+		"/rolepage/rolelist.xml": scwin.PAGES.ROLE,
+        "/hallpage/halllist.xml": scwin.PAGES.HALL
 	};
 
 	// Menu dự phòng: chỉ thêm khi có quyền và backend chưa trả về
