@@ -1,0 +1,2189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/guestPage/Guest.css" type="text/css"?>
+<?xml-stylesheet href="/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/guestPage/Guest.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+<head meta_screenName="Khách mời">
+    <w2:type>COMPONENT</w2:type>
+    <w2:buildDate/>
+    <w2:MSA/>
+    <xf:model>
+        <w2:dataCollection baseNode="map">
+            <!-- Điều kiện tìm kiếm (bind với thanh lọc và ô tìm nâng cao) -->
+            <w2:dataMap baseNode="map" id="dma_search">
+                <w2:keyInfo>
+                    <w2:key id="eventId" name="Sự kiện" dataType="text"/>
+                    <w2:key id="keyword" name="Tìm nhanh" dataType="text"/>
+                    <w2:key id="fullName" name="Họ tên" dataType="text"/>
+                    <w2:key id="email" name="Email" dataType="text"/>
+                    <w2:key id="phone" name="Điện thoại" dataType="text"/>
+                    <w2:key id="company" name="Công ty" dataType="text"/>
+                    <w2:key id="tableNumber" name="Bàn số" dataType="text"/>
+                    <w2:key id="checkedIn" name="Đã check-in" dataType="text"/>
+                    <w2:key id="badgePrinted" name="Đã in thẻ" dataType="text"/>
+                    <w2:key id="nameplacePrinted" name="Đã in danh bạ" dataType="text"/>
+                    <w2:key id="sort" name="Sắp xếp" dataType="text"/>
+                    <w2:key id="size" name="Số dòng" dataType="text"/>
+                    <w2:key id="page" name="Trang" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+            <!-- Form thêm / sửa khách (bind 2 chiều với các ô nhập) -->
+            <w2:dataMap baseNode="map" id="dma_guestForm">
+                <w2:keyInfo>
+                    <w2:key id="eventId" name="Sự kiện" dataType="text"/>
+                    <w2:key id="fullName" name="Họ và tên" dataType="text"/>
+                    <w2:key id="email" name="Email" dataType="text"/>
+                    <w2:key id="phone" name="Điện thoại" dataType="text"/>
+                    <w2:key id="company" name="Công ty" dataType="text"/>
+                    <w2:key id="position" name="Chức vụ" dataType="text"/>
+                    <w2:key id="guestTypeCode" name="Loại khách" dataType="text"/>
+                    <w2:key id="tableNumber" name="Bàn số" dataType="text"/>
+                    <w2:key id="statusCode" name="Trạng thái" dataType="text"/>
+                    <w2:key id="notes" name="Ghi chú" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+            <!-- Danh mục từ /api/guests/lookups -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_events" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="eventId" name="ID" dataType="text"/>
+                    <w2:column id="label" name="Sự kiện" dataType="text"/>
+                    <w2:column id="statusCode" name="Trạng thái" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_types" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="code" name="Mã" dataType="text"/>
+                    <w2:column id="name" name="Tên" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_statuses" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="code" name="Mã" dataType="text"/>
+                    <w2:column id="name" name="Tên" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <!-- Danh sách khách: dữ liệu gốc từ API + cột chọn (chk) + 3 cột thao tác nhanh -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_guest" saveRemovedData="false"
+                         ev:oncelldatachange="scwin.dlt_guest_oncelldatachange">
+                <w2:columnInfo>
+                    <w2:column id="chk" name="Chọn" dataType="text"/>
+                    <w2:column id="guestId" name="ID" dataType="number"/>
+                    <w2:column id="eventId" name="ID sự kiện" dataType="text"/>
+                    <w2:column id="eventCode" name="Mã sự kiện" dataType="text"/>
+                    <w2:column id="eventName" name="Sự kiện" dataType="text"/>
+                    <w2:column id="fullName" name="Họ tên" dataType="text"/>
+                    <w2:column id="email" name="Email" dataType="text"/>
+                    <w2:column id="phone" name="Điện thoại" dataType="text"/>
+                    <w2:column id="company" name="Công ty" dataType="text"/>
+                    <w2:column id="position" name="Chức vụ" dataType="text"/>
+                    <w2:column id="guestTypeCode" name="Loại khách" dataType="text"/>
+                    <w2:column id="guestTypeName" name="Tên loại" dataType="text"/>
+                    <w2:column id="guestTypeColor" name="Màu loại" dataType="text"/>
+                    <w2:column id="tableNumber" name="Bàn" dataType="text"/>
+                    <w2:column id="statusCode" name="Trạng thái" dataType="text"/>
+                    <w2:column id="statusName" name="Tên trạng thái" dataType="text"/>
+                    <w2:column id="statusColor" name="Màu trạng thái" dataType="text"/>
+                    <w2:column id="checkedIn" name="Đã check-in" dataType="text"/>
+                    <w2:column id="checkInTime" name="Giờ check-in" dataType="text"/>
+                    <w2:column id="badgePrinted" name="Đã in thẻ" dataType="text"/>
+                    <w2:column id="nameplacePrinted" name="Đã in danh bạ" dataType="text"/>
+                    <w2:column id="photoUrl" name="Ảnh" dataType="text"/>
+                    <w2:column id="createdAt" name="Ngày tạo" dataType="text"/>
+                    <w2:column id="actEdit" name="Sửa" dataType="text"/>
+                    <w2:column id="actDelete" name="Xóa" dataType="text"/>
+                    <w2:column id="actPrint" name="In thẻ" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <!-- Lịch sử check-in / in của khách đang xem -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_ckLog" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="logId" name="ID" dataType="number"/>
+                    <w2:column id="checkInTime" name="Thời điểm" dataType="text"/>
+                    <w2:column id="method" name="Cách" dataType="text"/>
+                    <w2:column id="result" name="Kết quả" dataType="text"/>
+                    <w2:column id="checkInByName" name="Người thực hiện" dataType="text"/>
+                    <w2:column id="deviceInfo" name="Thiết bị" dataType="text"/>
+                    <w2:column id="note" name="Ghi chú" dataType="text"/>
+                    <w2:column id="cancelled" name="Đã hủy" dataType="text"/>
+                    <w2:column id="cancelledByName" name="Người hủy" dataType="text"/>
+                    <w2:column id="cancelReason" name="Lý do hủy" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_prLog" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="printLogId" name="ID" dataType="number"/>
+                    <w2:column id="printTime" name="Thời điểm" dataType="text"/>
+                    <w2:column id="printType" name="Loại" dataType="text"/>
+                    <w2:column id="templateName" name="Mẫu" dataType="text"/>
+                    <w2:column id="copies" name="Số bản" dataType="text"/>
+                    <w2:column id="reprint" name="In lại" dataType="text"/>
+                    <w2:column id="printedByName" name="Người in" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <!-- Cột có thể export -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_expCols" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="key" name="Mã cột" dataType="text"/>
+                    <w2:column id="label" name="Tên cột" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+        </w2:dataCollection>
+        <w2:workflowCollection/>
+        <!-- Submission gọi API: action và header Authorization được gán lúc chạy trong scwin.callApi -->
+        <xf:submission id="sbm_lookups" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_lookups_submitdone"
+                       ev:submiterror="scwin.sbm_lookups_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_guestList" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_guestList_submitdone"
+                       ev:submiterror="scwin.sbm_guestList_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_guestDetail" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_guestDetail_submitdone"
+                       ev:submiterror="scwin.sbm_guestDetail_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_guestCreate" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_guestCreate_submitdone"
+                       ev:submiterror="scwin.sbm_guestCreate_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_guestUpdate" ref="" target="" action="" method="put" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_guestUpdate_submitdone"
+                       ev:submiterror="scwin.sbm_guestUpdate_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_guestDelete" ref="" target="" action="" method="delete" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_guestDelete_submitdone"
+                       ev:submiterror="scwin.sbm_guestDelete_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_bulkUpdate" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_bulkUpdate_submitdone"
+                       ev:submiterror="scwin.sbm_bulkUpdate_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_bulkDelete" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_bulkDelete_submitdone"
+                       ev:submiterror="scwin.sbm_bulkDelete_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_checkIn" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_checkIn_submitdone"
+                       ev:submiterror="scwin.sbm_checkIn_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_cancelCheckIn" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_cancelCheckIn_submitdone"
+                       ev:submiterror="scwin.sbm_cancelCheckIn_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_qrRegen" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_qrRegen_submitdone"
+                       ev:submiterror="scwin.sbm_qrRegen_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_photoDelete" ref="" target="" action="" method="delete" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_photoDelete_submitdone"
+                       ev:submiterror="scwin.sbm_photoDelete_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_exportCols" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_exportCols_submitdone"
+                       ev:submiterror="scwin.sbm_exportCols_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_emailCheck" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_emailCheck_submitdone"
+                       ev:submiterror="scwin.sbm_emailCheck_submiterror" abortTrigger=""/>
+    </xf:model>
+    <w2:layoutInfo/>
+    <w2:publicInfo method=""/>
+    <script type="text/javascript" lazy="false"><![CDATA[
+/* =====================================================================
+ * KHÁCH MỜI - DANH SÁCH, TÌM KIẾM, THÊM / SỬA / XÓA, CHI TIẾT, EXPORT
+ * API: /api/guests (xem API_GUEST.md)
+ * ===================================================================== */
+scwin.P = "gs";
+/* =====================================================================
+ * LỚP DÙNG CHUNG (giống các màn Hội trường / Sự kiện)
+ *   - Phiên đăng nhập, quyền
+ *   - Gọi API JSON bằng submission WebSquare (scwin.callApi)
+ *   - Upload / tải file bằng XMLHttpRequest (submission không xử lý file nhị phân)
+ * ===================================================================== */
+scwin.API_BASE = "http://localhost:8081";
+scwin.KEY = { TOKEN: "ssc_token", USER: "ssc_user", PERMS: "ssc_permissions", MENUS: "ssc_menus" };
+scwin.LOGIN_PAGE = "/authPage/LoginPage.xml";
+scwin.CTX = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+scwin.SBM_TIMEOUT = 60000;
+scwin.sbmQueue = {};
+scwin.sbmJob = {};
+scwin.toastTimer = null;
+
+/* ---------- Tiện ích ---------- */
+scwin.comp = function (id) { return $p.getComponentById(id); };
+scwin.domOf = function (c) { return c ? (c.render || document.getElementById(c.id) || null) : null; };
+scwin.show = function (c, v) { if (!c) return; if (v === false) c.addClass("is-hidden"); else c.removeClass("is-hidden"); };
+scwin.toggleClass = function (c, cls, on) { if (!c) return; if (on) c.addClass(cls); else c.removeClass(cls); };
+scwin.safeColor = function (c) { return /^#[0-9a-f]{3,8}$/i.test(String(c || "")) ? c : "#63746b"; };
+scwin.trim = function (v) { return v == null ? "" : String(v).replace(/^\s+|\s+$/g, ""); };
+scwin.dash = function (v) { return (v == null || scwin.trim(v) === "") ? "—" : String(v); };
+scwin.pad = function (n) { return n < 10 ? "0" + n : String(n); };
+scwin.clamp = function (v, a, b) { v = Number(v) || 0; a = a == null ? 0 : a; b = b == null ? 100 : b; return Math.max(a, Math.min(b, v)); };
+scwin.hasOwn = function (o, k) { return o != null && Object.prototype.hasOwnProperty.call(o, k); };
+scwin.fmtNumber = function (n) { return (n == null || n === "" || isNaN(Number(n))) ? "—" : Number(n).toLocaleString("vi-VN"); };
+scwin.fmtRate = function (r) { return (Math.round((Number(r) || 0) * 10) / 10).toLocaleString("vi-VN") + "%"; };
+scwin.fmtDate = function (s) { if (!s) return ""; var p = String(s).substring(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : String(s); };
+scwin.fmtTime = function (s) { return s ? String(s).substring(0, 5) : ""; };
+scwin.fmtDateTime = function (iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso);
+    return scwin.pad(d.getDate()) + "/" + scwin.pad(d.getMonth() + 1) + "/" + d.getFullYear() + " " + scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes());
+};
+scwin.fmtClock = function (iso) {
+    var d = iso ? new Date(iso) : new Date();
+    if (isNaN(d.getTime())) d = new Date();
+    return scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes()) + ":" + scwin.pad(d.getSeconds());
+};
+scwin.fmtSize = function (b) { return b >= 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB"; };
+/** Tham số mảng được nối bằng dấu phẩy (backend nhận cả "A,B" lẫn lặp tham số). */
+scwin.buildQuery = function (p) {
+    var out = [];
+    for (var k in p) {
+        if (!p.hasOwnProperty(k)) continue;
+        var v = p[k];
+        if (Array.isArray(v)) { if (!v.length) continue; v = v.join(","); }
+        if (v === null || v === undefined || v === "") continue;
+        out.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+    }
+    return out.join("&");
+};
+scwin.getQueryParam = function (name) {
+    var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+};
+scwin.pageUrl = function (path, params) {
+    var q = params ? scwin.buildQuery(params) : "";
+    return scwin.CTX + "/websquare/websquare.html?w2xPath=" + scwin.CTX + path + (q ? "&" + q : "");
+};
+scwin.escHtml = function (s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); };
+scwin.el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+scwin.clearEl = function (el) { if (el) while (el.firstChild) el.removeChild(el.firstChild); };
+scwin.fitGrid = function (grid, rows, rowH, maxRows) {
+    var n = maxRows ? Math.min(rows, maxRows) : rows;
+    grid.setStyle("height", (rows ? 42 + n * (rowH || 46) + 2 : 0) + "px");
+    scwin.show(grid, rows > 0);
+};
+scwin.isTrue = function (v) { return v === true || v === "true" || v === 1 || v === "1"; };
+
+/* ---------- Phiên đăng nhập & quyền ---------- */
+scwin.storeGet = function (k) { try { return window.localStorage.getItem(k) || window.sessionStorage.getItem(k) || ""; } catch (e) { return ""; } };
+scwin.parseJSON = function (t) { if (!t || typeof t !== "string") return null; try { return JSON.parse(t); } catch (e) { return null; } };
+scwin.getToken = function () { return String(scwin.storeGet(scwin.KEY.TOKEN)).replace(/^Bearer\s+/i, ""); };
+scwin.getPerms = function () { return scwin.parseJSON(scwin.storeGet(scwin.KEY.PERMS)) || []; };
+scwin.getUser = function () { return scwin.parseJSON(scwin.storeGet(scwin.KEY.USER)) || {}; };
+/** Header chưa kịp lưu quyền (lần đầu vào trang) thì tạm cho phép; backend vẫn chặn bằng 403. */
+scwin.can = function (code) { var p = scwin.getPerms(); return !p.length || p.indexOf(code) >= 0; };
+scwin.canAny = function (codes) { for (var i = 0; i < codes.length; i++) if (scwin.can(codes[i])) return true; return false; };
+scwin.goLogin = function () {
+    if (scwin._redirecting) return;
+    scwin._redirecting = true;
+    for (var k in scwin.KEY) {
+        if (!scwin.KEY.hasOwnProperty(k)) continue;
+        try { window.localStorage.removeItem(scwin.KEY[k]); window.sessionStorage.removeItem(scwin.KEY[k]); } catch (e) { }
+    }
+    window.location.href = scwin.pageUrl(scwin.LOGIN_PAGE);
+};
+
+/* ---------- Lỗi ---------- */
+scwin.defaultMessage = function (status) {
+    if (status === 0) return "Không kết nối được máy chủ. Kiểm tra mạng hoặc backend (" + scwin.API_BASE + ").";
+    if (status === 401) return "Phiên đăng nhập đã hết hạn. Hãy đăng nhập lại.";
+    if (status === 403) return "Tài khoản của bạn chưa được cấp quyền cho thao tác này.";
+    if (status === 404) return "Không tìm thấy dữ liệu, hoặc dữ liệu nằm ngoài phạm vi bạn được xem.";
+    if (status >= 500) return "Máy chủ đang gặp sự cố. Thử lại sau ít phút.";
+    return "Yêu cầu không thành công (HTTP " + status + ").";
+};
+scwin.authHeader = function (accept) {
+    var h = { "Accept": accept || "application/json" };
+    var t = scwin.getToken();
+    if (t) h["Authorization"] = "Bearer " + t;
+    return h;
+};
+/** Chuẩn hóa lỗi: { status, code, message, data }. 401 thì đưa về trang đăng nhập. */
+scwin.buildError = function (status, json) {
+    var err = {
+        status: status || 0,
+        code: (json && json.code) || (status ? "HTTP_" + status : "NETWORK_ERROR"),
+        message: (json && json.message) || scwin.defaultMessage(status || 0),
+        data: json ? json.data : null
+    };
+    if (status === 401) {
+        err.message = scwin.defaultMessage(401);
+        scwin.toast(err.message + " Đang chuyển về trang đăng nhập…", "error");
+        setTimeout(scwin.goLogin, 1500);
+    }
+    return err;
+};
+
+/* ---------- Submission ----------
+ *   scwin.callApi("sbm_xxx", { url: "...", body: {...} }) -> Promise<data>
+ *   Mỗi submission có hàng đợi riêng nên gọi chồng nhau không bị trả nhầm kết quả.
+ */
+scwin.callApi = function (sbmId, opts) {
+    return new Promise(function (resolve, reject) {
+        if (!scwin.sbmQueue[sbmId]) scwin.sbmQueue[sbmId] = [];
+        scwin.sbmQueue[sbmId].push({ opts: opts || {}, resolve: resolve, reject: reject });
+        scwin.sbmNext(sbmId);
+    });
+};
+scwin.sbmNext = function (sbmId) {
+    if (scwin.sbmJob[sbmId]) return;
+    var q = scwin.sbmQueue[sbmId];
+    if (!q || !q.length) return;
+    var job = q.shift();
+    scwin.sbmJob[sbmId] = job;
+    var sbm = $p.getSubmission(sbmId);
+    if (!sbm) { scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_NOT_FOUND", message: "Chưa khai báo submission " + sbmId + "." }); return; }
+    sbm.action = job.opts.url;
+    sbm.requestHeader = scwin.authHeader();
+    job.timer = setTimeout(function () {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "TIMEOUT", message: "Máy chủ phản hồi quá lâu. Thử lại sau." });
+    }, scwin.SBM_TIMEOUT);
+    try {
+        if (job.opts.body !== undefined) $p.executeSubmission(sbmId, job.opts.body);
+        else $p.executeSubmission(sbmId);
+    } catch (ex) {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_ERROR", message: (ex && ex.message) || String(ex) });
+    }
+};
+scwin.sbmSettle = function (sbmId, data, err) {
+    var job = scwin.sbmJob[sbmId];
+    if (!job) return;
+    clearTimeout(job.timer);
+    scwin.sbmJob[sbmId] = null;
+    if (err) job.reject(err); else job.resolve(data);
+    scwin.sbmNext(sbmId);
+};
+scwin.readResponse = function (e) {
+    if (!e) return null;
+    if (e.responseJSON && typeof e.responseJSON === "object") return e.responseJSON;
+    return scwin.parseJSON(e.responseText) || scwin.parseJSON(e.responseBody);
+};
+scwin.onSbmDone = function (sbmId, e) {
+    var json = scwin.readResponse(e);
+    if (json && json.success === false) { scwin.sbmSettle(sbmId, null, scwin.buildError((e && e.responseStatusCode) || 200, json)); return; }
+    scwin.sbmSettle(sbmId, scwin.hasOwn(json, "data") ? json.data : json, null);
+};
+scwin.onSbmError = function (sbmId, e) {
+    var status = (e && (e.responseStatusCode || e.status)) || 0;
+    scwin.sbmSettle(sbmId, null, scwin.buildError(status, scwin.readResponse(e)));
+};
+
+/* ---------- XMLHttpRequest: upload multipart, nhận file ----------
+ *   opts.body: object (gửi JSON) | FormData (multipart)
+ *   opts.responseType: "json" (mặc định) | "blob" -> resolve { blob, name, type, headers }
+ */
+scwin.xhr = function (method, url, opts) {
+    opts = opts || {};
+    return new Promise(function (resolve, reject) {
+        var x = new XMLHttpRequest();
+        x.open(method, url);
+        var h = scwin.authHeader(opts.responseType === "blob" ? "*/*" : "application/json");
+        for (var k in h) if (h.hasOwnProperty(k)) x.setRequestHeader(k, h[k]);
+        var body = null;
+        if (typeof FormData !== "undefined" && opts.body instanceof FormData) body = opts.body;
+        else if (opts.body !== undefined && opts.body !== null) { x.setRequestHeader("Content-Type", "application/json"); body = JSON.stringify(opts.body); }
+        if (opts.responseType === "blob") x.responseType = "blob";
+        if (opts.onProgress && x.upload) x.upload.onprogress = function (ev) { if (ev.lengthComputable) opts.onProgress(Math.round(ev.loaded * 100 / ev.total)); };
+        x.onload = function () {
+            var ok = x.status >= 200 && x.status < 300;
+            if (opts.responseType === "blob") {
+                var type = x.getResponseHeader("Content-Type") || "";
+                if (ok && type.indexOf("application/json") < 0) {
+                    resolve({ blob: x.response, type: type, name: scwin.fileNameFrom(x.getResponseHeader("Content-Disposition")), xhr: x });
+                    return;
+                }
+                scwin.readBlobJSON(x.response).then(function (json) { reject(scwin.buildError(ok ? 200 : x.status, json)); });
+                return;
+            }
+            var json = scwin.parseJSON(x.responseText);
+            if (ok && !(json && json.success === false)) resolve(scwin.hasOwn(json, "data") ? json.data : json);
+            else reject(scwin.buildError(x.status, json));
+        };
+        x.onerror = function () { reject(scwin.buildError(0, null)); };
+        x.send(body);
+    });
+};
+scwin.readBlobJSON = function (blob) {
+    return new Promise(function (resolve) {
+        if (!blob || typeof FileReader === "undefined") { resolve(null); return; }
+        var r = new FileReader();
+        r.onload = function () { resolve(scwin.parseJSON(r.result)); };
+        r.onerror = function () { resolve(null); };
+        r.readAsText(blob);
+    });
+};
+scwin.fileNameFrom = function (cd) {
+    if (!cd) return "";
+    var m = /filename\*=UTF-8''([^;]+)/i.exec(cd) || /filename="?([^";]+)"?/i.exec(cd);
+    if (!m) return "";
+    try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+};
+scwin.saveBlob = function (blob, name) {
+    var url = URL.createObjectURL(blob);
+    var a = scwin.el("a", scwin.P + "-native-link");
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(url); if (a.parentNode) a.parentNode.removeChild(a); }, 1500);
+};
+/** Tải file (GET hoặc POST kèm body JSON) rồi lưu về máy. */
+scwin.downloadFile = function (url, fallbackName, btn, method, body) {
+    if (btn) btn.addClass("is-busy");
+    return scwin.xhr(method || "GET", url, { responseType: "blob", body: body }).then(function (r) {
+        scwin.saveBlob(r.blob, r.name || fallbackName);
+        return r;
+    }).catch(function (err) {
+        scwin.toast(err.message, "error");
+        throw err;
+    }).then(function (r) { if (btn) btn.removeClass("is-busy"); return r; }, function () { if (btn) btn.removeClass("is-busy"); });
+};
+/** In file PDF: nạp vào iframe ẩn rồi mở hộp thoại in của trình duyệt. */
+scwin.printBlob = function (blob) {
+    return new Promise(function (resolve) {
+        var old = document.getElementById("ssc-print-frame");
+        if (old) old.parentNode.removeChild(old);
+        var url = URL.createObjectURL(blob);
+        var f = document.createElement("iframe");
+        f.id = "ssc-print-frame";
+        f.className = scwin.P + "-print-frame";
+        f.src = url;
+        f.onload = function () {
+            setTimeout(function () {
+                try { f.contentWindow.focus(); f.contentWindow.print(); }
+                catch (e) { window.open(url, "_blank"); }
+                resolve();
+            }, 300);
+        };
+        document.body.appendChild(f);
+    });
+};
+
+/* ---------- Thông báo ---------- */
+scwin.toast = function (msg, type) {
+    if (typeof tbx_toast === "undefined") return;
+    clearTimeout(scwin.toastTimer);
+    tbx_toast.setValue(msg || "");
+    ["success", "error", "warning", "info"].forEach(function (c) { tbx_toast.removeClass(scwin.P + "-toast--" + c); });
+    tbx_toast.addClass(scwin.P + "-toast--" + (type || "info"));
+    tbx_toast.addClass("is-show");
+    scwin.toastTimer = setTimeout(function () { tbx_toast.removeClass("is-show"); }, (type === "error" || type === "warning") ? 6500 : 3800);
+};
+scwin.tbx_toast_onclick = function () { tbx_toast.removeClass("is-show"); };
+scwin.showWarnings = function (list) {
+    if (!list || !list.length) return;
+    setTimeout(function () { scwin.toast("Lưu ý: " + list.join(" "), "warning"); }, 1800);
+};
+
+/* ---------- Danh mục dùng chung: GET /api/guests/lookups ---------- */
+scwin.lookups = { events: [], guestTypes: [], guestStatuses: [] };
+scwin.typeMeta = function (code) {
+    for (var i = 0; i < scwin.lookups.guestTypes.length; i++) if (scwin.lookups.guestTypes[i].code === code) return scwin.lookups.guestTypes[i];
+    return { code: code, name: code || "—", color: "#9E9E9E" };
+};
+scwin.statusMeta = function (code) {
+    for (var i = 0; i < scwin.lookups.guestStatuses.length; i++) if (scwin.lookups.guestStatuses[i].code === code) return scwin.lookups.guestStatuses[i];
+    return { code: code, name: code || "—", color: "#9E9E9E" };
+};
+scwin.GUEST_TYPE_VN = { VIP: "VIP", SPEAKER: "Diễn giả", GUEST: "Khách mời", STAFF: "Nhân viên", PRESS: "Báo chí", OTHER: "Khác" };
+scwin.GUEST_STATUS_VN = { INVITED: "Đã mời", CONFIRMED: "Đã xác nhận", CHECKED_IN: "Đã check-in", ABSENT: "Vắng mặt" };
+scwin.typeName = function (code) { return scwin.GUEST_TYPE_VN[code] || scwin.typeMeta(code).name; };
+scwin.statusName = function (code) { return scwin.GUEST_STATUS_VN[code] || scwin.statusMeta(code).name; };
+scwin.eventLabel = function (e) { return e.eventCode + " - " + e.eventName + (e.startDate ? " (" + scwin.fmtDate(e.startDate) + ")" : ""); };
+
+
+/* ---------- Cấu hình màn hình ---------- */
+scwin.GUEST_API = scwin.API_BASE + "/api/guests";
+scwin.PRINT_API = scwin.API_BASE + "/api/print";
+scwin.IMPORT_PAGE = "/guestPage/GuestImport.xml";
+scwin.PRINT_PAGE = "/printPage/PrintCenter.xml";
+scwin.HANDOFF_KEY = "ssc_print_handoff";        // chuyển danh sách khách đã chọn sang Trung tâm in
+scwin.PHOTO_TYPES = ["image/jpeg", "image/png"];
+scwin.PHOTO_MAX = 2 * 1024 * 1024;
+
+scwin.SEARCH_DEFAULT = {
+    eventId: "", keyword: "", fullName: "", email: "", phone: "", company: "", tableNumber: "",
+    checkedIn: "", badgePrinted: "", nameplacePrinted: "", sort: "fullName,asc", size: "20", page: "0"
+};
+scwin.state = { typeCodes: [], statusCodes: [], importBatchId: "", totalPages: 0, totalElements: 0, advOpen: false };
+scwin.selected = {};                  // guestId -> dòng đã chọn (giữ qua các trang)
+scwin.current = null;                 // chi tiết khách đang mở
+scwin.tab = "info";
+scwin.open = { drawer: false, form: false, bulk: false, del: false, exp: false, note: false, confirm: false };
+scwin.form = { mode: "create", guestId: null, origStatus: "", dirty: false, saving: false, keepOpen: false };
+scwin.searchSeq = 0;
+scwin.timers = {};
+scwin.cfm = null;
+scwin.note = null;
+scwin.delList = [];
+
+scwin.FIELDS = {
+    eventId:       { input: "sbx_fEvent",    error: "tbx_fEventErr",   label: "Sự kiện" },
+    fullName:      { input: "ibx_fName",     error: "tbx_fNameErr",    label: "Họ và tên", max: 150 },
+    email:         { input: "ibx_fEmail",    error: "tbx_fEmailErr",   label: "Email", max: 255 },
+    phone:         { input: "ibx_fPhone",    error: "tbx_fPhoneErr",   label: "Số điện thoại" },
+    company:       { input: "ibx_fCompany",  error: "tbx_fCompanyErr", label: "Công ty / Tổ chức", max: 255 },
+    position:      { input: "ibx_fPosition", error: "tbx_fPositionErr",label: "Chức vụ", max: 150 },
+    guestTypeCode: { input: "sbx_fType",     error: "tbx_fTypeErr",    label: "Loại khách" },
+    tableNumber:   { input: "ibx_fTable",    error: "tbx_fTableErr",   label: "Bàn số", max: 20 },
+    statusCode:    { input: "sbx_fStatus",   error: "tbx_fStatusErr",  label: "Trạng thái" },
+    notes:         { input: "txa_fNotes",    error: "tbx_fNotesErr",   label: "Ghi chú", max: 2000 }
+};
+scwin.TABS = { info: ["btn_tabInfo", "grp_pInfo"], qr: ["btn_tabQr", "grp_pQr"], checkins: ["btn_tabCheckins", "grp_pCheckins"], prints: ["btn_tabPrints", "grp_pPrints"] };
+scwin.METHOD_VN = { QR_CAMERA: "Quét camera", QR_UPLOAD: "Ảnh QR", MANUAL: "Thủ công" };
+scwin.RESULT_VN = { SUCCESS: "Thành công", ALREADY_CHECKED_IN: "Đã check-in trước", INVALID_QR: "QR không hợp lệ", WRONG_EVENT: "Sai sự kiện", GUEST_NOT_FOUND: "Không có khách", EVENT_NOT_ACTIVE: "Sự kiện chưa mở" };
+scwin.PRINT_TYPE_VN = { NAMECARD: "Thẻ tên", NAMEPLACE: "Danh bạ để bàn" };
+scwin.EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+scwin.PHONE_RE = /^\+?[0-9 .()\-]{8,20}$/;
+
+/* =====================================================================
+ * VÒNG ĐỜI
+ * ===================================================================== */
+scwin.onpageload = function () {
+    if (!scwin.getToken()) { scwin.goLogin(); return; }
+    scwin.keyHandler = function (e) { scwin.onGlobalKeydown(e); };
+    document.addEventListener("keydown", scwin.keyHandler);
+    scwin.initFileInput();
+
+    var q = {};
+    for (var k in scwin.SEARCH_DEFAULT) if (scwin.SEARCH_DEFAULT.hasOwnProperty(k)) q[k] = scwin.SEARCH_DEFAULT[k];
+    q.eventId = scwin.getQueryParam("eventId");
+    dma_search.setJSON(q);
+    scwin.state.importBatchId = scwin.getQueryParam("importBatchId");
+
+    scwin.applyPermissions();
+    scwin.renderChips();
+    scwin.loadLookups();
+    scwin.search(true);
+    var gid = scwin.getQueryParam("guestId");
+    if (gid) scwin.openDetail(gid);
+};
+scwin.onpageunload = function () { document.removeEventListener("keydown", scwin.keyHandler); };
+
+scwin.applyPermissions = function () {
+    scwin.show(btn_add, scwin.can("GUEST_CREATE"));
+    scwin.show(btn_import, scwin.can("GUEST_IMPORT"));
+    scwin.show(btn_export, scwin.can("GUEST_EXPORT"));
+    scwin.show(btn_bulkEdit, scwin.can("GUEST_UPDATE"));
+    scwin.show(btn_bulkDelete, scwin.can("GUEST_DELETE"));
+    scwin.show(btn_bulkPrint, scwin.can("PRINT_BADGE"));
+    scwin.show(btn_dEdit, scwin.can("GUEST_UPDATE"));
+    scwin.show(btn_dDelete, scwin.can("GUEST_DELETE"));
+    scwin.show(btn_dPrint, scwin.can("PRINT_BADGE"));
+    scwin.show(grp_photoActions, scwin.can("GUEST_UPDATE"));
+    scwin.show(btn_qrRegen, scwin.can("GUEST_UPDATE"));
+};
+
+/* =====================================================================
+ * DANH MỤC
+ * ===================================================================== */
+scwin.loadLookups = function () {
+    return scwin.callApi("sbm_lookups", { url: scwin.GUEST_API + "/lookups" }).then(function (d) {
+        d = d || {};
+        scwin.lookups.events = d.events || [];
+        scwin.lookups.guestTypes = d.guestTypes || [];
+        scwin.lookups.guestStatuses = d.guestStatuses || [];
+        dlt_events.setJSON(scwin.lookups.events.map(function (e) { return { eventId: String(e.eventId), label: scwin.eventLabel(e), statusCode: e.statusCode }; }));
+        dlt_types.setJSON(scwin.lookups.guestTypes.map(function (t) { return { code: t.code, name: scwin.typeName(t.code) }; }));
+        dlt_statuses.setJSON(scwin.lookups.guestStatuses.map(function (s) { return { code: s.code, name: scwin.statusName(s.code) }; }));
+        sbx_event.setValue(dma_search.get("eventId") || "");
+        scwin.renderChips();
+    }).catch(function (err) { scwin.toast("Không tải được danh mục: " + err.message, "warning"); });
+};
+
+/** Chip chọn nhiều cho Trạng thái và Loại khách (màu lấy từ backend). */
+scwin.renderChips = function () {
+    scwin.renderChipGroup(grp_statusChips, scwin.lookups.guestStatuses.length ? scwin.lookups.guestStatuses : ["INVITED", "CONFIRMED", "CHECKED_IN", "ABSENT"].map(scwin.statusMeta), "statusCodes", scwin.statusName);
+    scwin.renderChipGroup(grp_typeChips, scwin.lookups.guestTypes, "typeCodes", scwin.typeName);
+};
+scwin.renderChipGroup = function (comp, list, key, nameFn) {
+    var box = scwin.domOf(comp);
+    if (!box) return;
+    scwin.clearEl(box);
+    var sel = scwin.state[key];
+    list.forEach(function (it) {
+        var on = sel.indexOf(it.code) >= 0;
+        var chip = scwin.el("button", "gs-chip" + (on ? " is-selected" : ""), nameFn(it.code));
+        chip.type = "button";
+        chip.setAttribute("aria-pressed", on ? "true" : "false");
+        chip.style.setProperty("--gs-status", scwin.safeColor(it.color));
+        chip.addEventListener("click", function () {
+            var i = scwin.state[key].indexOf(it.code);
+            if (i >= 0) scwin.state[key].splice(i, 1); else scwin.state[key].push(it.code);
+            scwin.renderChips();
+            scwin.search(true);
+        });
+        box.appendChild(chip);
+    });
+};
+
+/* =====================================================================
+ * TÌM KIẾM & DANH SÁCH
+ * ===================================================================== */
+scwin.collectFilter = function (forExport) {
+    var q = dma_search.getJSON(), t = scwin.trim;
+    var p = {
+        eventId: q.eventId, keyword: t(q.keyword),
+        fullName: t(q.fullName), email: t(q.email), phone: t(q.phone), company: t(q.company), tableNumber: t(q.tableNumber),
+        guestTypeCodes: scwin.state.typeCodes, statusCodes: scwin.state.statusCodes,
+        checkedIn: q.checkedIn, badgePrinted: q.badgePrinted, nameplacePrinted: q.nameplacePrinted,
+        importBatchId: scwin.state.importBatchId, sort: q.sort || "fullName,asc"
+    };
+    if (!forExport) { p.page = q.page || "0"; p.size = q.size || "20"; }
+    return p;
+};
+
+scwin.hasFilter = function () {
+    var p = scwin.collectFilter(true);
+    return !!(p.keyword || p.fullName || p.email || p.phone || p.company || p.tableNumber || p.guestTypeCodes.length
+        || p.statusCodes.length || p.checkedIn || p.badgePrinted || p.nameplacePrinted || p.importBatchId);
+};
+
+scwin.search = function (resetPage) {
+    if (resetPage) dma_search.set("page", "0");
+    var params = scwin.collectFilter(false);
+    scwin.updateFilterSummary(params);
+    var seq = ++scwin.searchSeq;
+    grp_listBody.addClass("is-loading");
+    scwin.callApi("sbm_guestList", { url: scwin.GUEST_API + "?" + scwin.buildQuery(params) }).then(function (page) {
+        if (seq === scwin.searchSeq) scwin.renderList(page || {});
+    }).catch(function (err) {
+        if (seq !== scwin.searchSeq) return;
+        scwin.renderList({ content: [] });
+        scwin.toast(err.message, "error");
+    }).then(function () { if (seq === scwin.searchSeq) grp_listBody.removeClass("is-loading"); });
+};
+
+scwin.renderList = function (page) {
+    var content = page.content || [];
+    var cur = parseInt(dma_search.get("page"), 10) || 0, size = parseInt(dma_search.get("size"), 10) || 20;
+    scwin.state.totalPages = page.totalPages || 0;
+    scwin.state.totalElements = page.totalElements || 0;
+    if (!content.length && cur > 0 && scwin.state.totalPages > 0) {
+        dma_search.set("page", String(scwin.state.totalPages - 1));
+        scwin.search(false);
+        return;
+    }
+    dlt_guest.setJSON(content.map(function (g) {
+        var r = {};
+        for (var k in g) if (g.hasOwnProperty(k)) r[k] = g[k];
+        r.chk = scwin.selected[g.guestId] ? "1" : "0";
+        r.actEdit = ""; r.actDelete = ""; r.actPrint = "";
+        return r;
+    }));
+    for (var i = 0; i < content.length; i++) {
+        try {
+            grd_guest.setCellClass(i, "guestTypeCode", "gs-gtype gs-gtype--" + content[i].guestTypeCode);
+            grd_guest.setCellClass(i, "statusCode", "gs-gst gs-gst--" + content[i].statusCode);
+        } catch (e) { }
+    }
+    var empty = !content.length;
+    scwin.show(grp_empty, empty);
+    scwin.toggleClass(grp_listBody, "is-empty", empty);
+    if (empty) {
+        var f = scwin.hasFilter();
+        tbx_emptyTitle.setValue(f ? "Không có khách khớp bộ lọc" : "Chưa có khách mời");
+        tbx_emptyDesc.setValue(f ? "Thử bỏ bớt điều kiện tìm kiếm." : "Thêm khách thủ công hoặc import từ file Excel.");
+        scwin.show(btn_emptyReset, f);
+        scwin.show(grp_emptyAdd, !f && scwin.canAny(["GUEST_CREATE", "GUEST_IMPORT"]));
+    }
+    var from = empty ? 0 : cur * size + 1;
+    tbx_resultInfo.setValue(empty ? "Không có kết quả" : "Hiển thị " + from + "–" + (from + content.length - 1) + " trong " + scwin.fmtNumber(scwin.state.totalElements) + " khách");
+    scwin.pagingLock = true;
+    try { pgl_guest.setCount(Math.max(scwin.state.totalPages, 1)); pgl_guest.setSelectedIndex(cur + 1); } catch (e) { }
+    scwin.pagingLock = false;
+    scwin.show(grp_pager, scwin.state.totalPages > 1);
+    scwin.renderBulkBar();
+};
+
+scwin.updateFilterSummary = function (p) {
+    var parts = [];
+    if (p.keyword) parts.push("“" + p.keyword + "”");
+    if (p.fullName) parts.push("tên: " + p.fullName);
+    if (p.email) parts.push("email: " + p.email);
+    if (p.phone) parts.push("SĐT: " + p.phone);
+    if (p.company) parts.push("công ty: " + p.company);
+    if (p.tableNumber) parts.push("bàn " + p.tableNumber);
+    if (p.statusCodes.length) parts.push(p.statusCodes.map(scwin.statusName).join(", ").toLowerCase());
+    if (p.guestTypeCodes.length) parts.push(p.guestTypeCodes.map(scwin.typeName).join(", "));
+    if (p.checkedIn) parts.push(p.checkedIn === "true" ? "đã check-in" : "chưa check-in");
+    if (p.badgePrinted) parts.push(p.badgePrinted === "true" ? "đã in thẻ" : "chưa in thẻ");
+    if (p.nameplacePrinted) parts.push(p.nameplacePrinted === "true" ? "đã in danh bạ" : "chưa in danh bạ");
+    if (p.importBatchId) parts.push("lần import #" + p.importBatchId);
+    tbx_filterSummary.setValue(parts.length ? "Đang lọc: " + parts.join("; ") : "");
+    scwin.show(tbx_filterSummary, parts.length > 0);
+    scwin.show(btn_reset, parts.length > 0);
+    var advCount = ["fullName", "email", "phone", "company", "tableNumber", "badgePrinted", "nameplacePrinted"].filter(function (k) { return !!p[k]; }).length;
+    btn_advToggle.setValue(advCount ? "Tìm nâng cao (" + advCount + ")" : "Tìm nâng cao");
+};
+
+/* ---------- Formatter cột ---------- */
+scwin.row = function (i) { return dlt_guest.getRowJSON(i) || {}; };
+scwin.gfName = function (v, f, i) {
+    var r = scwin.row(i);
+    return dma_search.get("eventId") ? v : v + "   " + (r.eventCode || "");
+};
+scwin.gfDash = function (v) { return scwin.dash(v); };
+scwin.gfType = function (v) { return scwin.typeName(v); };
+scwin.gfStatus = function (v, f, i) {
+    var r = scwin.row(i);
+    return "● " + scwin.statusName(v) + (r.checkInTime && v === "CHECKED_IN" ? " " + scwin.fmtClock(r.checkInTime).substr(0, 5) : "");
+};
+scwin.gfActEdit = function () { return scwin.can("GUEST_UPDATE") ? "Sửa" : ""; };
+scwin.gfActDelete = function () { return scwin.can("GUEST_DELETE") ? "Xóa" : ""; };
+scwin.gfActPrint = function () { return scwin.can("PRINT_BADGE") ? "In thẻ" : ""; };
+scwin.gfDateTime = function (v) { return v ? scwin.fmtDateTime(v) : "—"; };
+
+/* ---------- Sự kiện bộ lọc ---------- */
+scwin.debounce = function (key, fn, ms) { clearTimeout(scwin.timers[key]); scwin.timers[key] = setTimeout(fn, ms); };
+scwin.syncInput = function (comp, key) { var v = comp.getValue(); if (dma_search.get(key) !== v) dma_search.set(key, v); };
+scwin.ibx_keyword_onkeyup = function (e) {
+    scwin.syncInput(ibx_keyword, "keyword");
+    if (e && e.keyCode === 13) { clearTimeout(scwin.timers.s); scwin.search(true); return; }
+    scwin.debounce("s", function () { scwin.search(true); }, 400);
+};
+scwin.adv_onkeyup = function (e) {
+    [["fullName", ibx_aName], ["email", ibx_aEmail], ["phone", ibx_aPhone], ["company", ibx_aCompany], ["tableNumber", ibx_aTable]]
+        .forEach(function (p) { scwin.syncInput(p[1], p[0]); });
+    if (e && e.keyCode === 13) { clearTimeout(scwin.timers.s); scwin.search(true); return; }
+    scwin.debounce("s", function () { scwin.search(true); }, 500);
+};
+scwin.sbx_event_onchange = function () { dma_search.set("eventId", sbx_event.getValue() || ""); scwin.search(true); };
+scwin.sbx_checked_onchange = function () { dma_search.set("checkedIn", sbx_checked.getValue() || ""); scwin.search(true); };
+scwin.sbx_aBadge_onchange = function () { dma_search.set("badgePrinted", sbx_aBadge.getValue() || ""); scwin.search(true); };
+scwin.sbx_aPlace_onchange = function () { dma_search.set("nameplacePrinted", sbx_aPlace.getValue() || ""); scwin.search(true); };
+scwin.sbx_sort_onchange = function () { dma_search.set("sort", sbx_sort.getValue() || "fullName,asc"); scwin.search(true); };
+scwin.sbx_size_onchange = function () { dma_search.set("size", sbx_size.getValue() || "20"); scwin.search(true); };
+scwin.btn_advToggle_onclick = function () {
+    scwin.state.advOpen = !scwin.state.advOpen;
+    scwin.toggleClass(grp_adv, "is-open", scwin.state.advOpen);
+    scwin.toggleClass(btn_advToggle, "is-active", scwin.state.advOpen);
+    if (scwin.state.advOpen) setTimeout(function () { try { ibx_aName.focus(); } catch (e) { } }, 80);
+};
+scwin.btn_advApply_onclick = function () { scwin.adv_onkeyup({ keyCode: 13 }); };
+scwin.btn_reset_onclick = function () {
+    var q = dma_search.getJSON();
+    var d = {};
+    for (var k in scwin.SEARCH_DEFAULT) if (scwin.SEARCH_DEFAULT.hasOwnProperty(k)) d[k] = scwin.SEARCH_DEFAULT[k];
+    d.eventId = q.eventId; d.sort = q.sort; d.size = q.size;
+    dma_search.setJSON(d);
+    scwin.state.typeCodes = []; scwin.state.statusCodes = []; scwin.state.importBatchId = "";
+    scwin.renderChips();
+    scwin.search(true);
+};
+scwin.btn_emptyReset_onclick = scwin.btn_reset_onclick;
+scwin.btn_refresh_onclick = function () { scwin.search(false); if (scwin.open.drawer && scwin.current) scwin.openDetail(scwin.current.guestId); };
+scwin.pgl_guest_onviewchange = function (info) {
+    if (scwin.pagingLock) return;
+    var idx = (info && info.newSelectedIndex) ? info.newSelectedIndex : pgl_guest.getSelectedIndex();
+    dma_search.set("page", String(Math.max(0, idx - 1)));
+    scwin.search(false);
+};
+
+/* =====================================================================
+ * CHỌN NHIỀU (cột checkbox của grid) & THAO TÁC HÀNG LOẠT
+ * ===================================================================== */
+scwin.syncSelection = function () {
+    var n = dlt_guest.getRowCount();
+    for (var i = 0; i < n; i++) {
+        var r = dlt_guest.getRowJSON(i);
+        if (!r || !r.guestId) continue;
+        if (r.chk === "1" || r.chk === 1 || r.chk === true) {
+            scwin.selected[r.guestId] = { guestId: r.guestId, fullName: r.fullName, eventId: r.eventId, checkedIn: scwin.isTrue(r.checkedIn) };
+        } else {
+            delete scwin.selected[r.guestId];
+        }
+    }
+    scwin.renderBulkBar();
+};
+scwin.dlt_guest_oncelldatachange = function (info) {
+    if (info && info.colID && info.colID !== "chk") return;
+    scwin.debounce("sel", scwin.syncSelection, 60);
+};
+scwin.grd_guest_onheaderclick = function () { scwin.debounce("sel", scwin.syncSelection, 80); };
+
+scwin.selectedList = function () {
+    var out = [];
+    for (var k in scwin.selected) if (scwin.selected.hasOwnProperty(k)) out.push(scwin.selected[k]);
+    return out;
+};
+scwin.renderBulkBar = function () {
+    var n = scwin.selectedList().length;
+    scwin.toggleClass(grp_bulk, "is-open", n > 0);
+    tbx_bulkCount.setValue("Đã chọn " + scwin.fmtNumber(n) + " khách");
+};
+scwin.btn_bulkClear_onclick = function () {
+    scwin.selected = {};
+    for (var i = 0; i < dlt_guest.getRowCount(); i++) dlt_guest.setCellData(i, "chk", "0");
+    scwin.renderBulkBar();
+};
+scwin.btn_bulkPage_onclick = function () {
+    for (var i = 0; i < dlt_guest.getRowCount(); i++) dlt_guest.setCellData(i, "chk", "1");
+    scwin.syncSelection();
+};
+
+/* ---------- Thao tác trên dòng ---------- */
+scwin.grd_guest_oncellclick = function (rowIndex, colIndex, colId) {
+    var r = scwin.row(rowIndex);
+    if (!r.guestId) return;
+    if (colId === "chk") { scwin.debounce("sel", scwin.syncSelection, 50); return; }
+    if (colId === "actEdit" && scwin.can("GUEST_UPDATE")) { scwin.editGuest(r.guestId); return; }
+    if (colId === "actDelete" && scwin.can("GUEST_DELETE")) { scwin.openDelete([{ guestId: r.guestId, fullName: r.fullName, checkedIn: scwin.isTrue(r.checkedIn) }]); return; }
+    if (colId === "actPrint" && scwin.can("PRINT_BADGE")) { scwin.quickPrint(r.guestId, r.fullName); return; }
+    scwin.openDetail(r.guestId);
+};
+
+/** In nhanh thẻ tên 1 khách: server trả PDF và tự đánh dấu đã in. */
+scwin.quickPrint = function (guestId, name, printType) {
+    scwin.toast("Đang tạo bản in cho " + (name || "khách") + "…", "info");
+    return scwin.xhr("POST", scwin.PRINT_API + "/quick", { body: { guestId: Number(guestId), printType: printType || "NAMECARD" }, responseType: "blob" })
+        .then(function (r) {
+            scwin.printBlob(r.blob);
+            scwin.toast("Đã gửi thẻ tên của " + (name || "khách") + " tới hộp thoại in.", "success");
+            scwin.search(false);
+            if (scwin.current && String(scwin.current.guestId) === String(guestId)) scwin.openDetail(guestId, true);
+        }).catch(function (err) { scwin.toast(err.message, "error"); });
+};
+
+scwin.btn_bulkPrint_onclick = function () {
+    var list = scwin.selectedList();
+    var events = {};
+    list.forEach(function (g) { events[g.eventId] = true; });
+    var ids = Object.keys(events);
+    if (ids.length > 1) { scwin.toast("Các khách đã chọn thuộc nhiều sự kiện. Hãy lọc theo một sự kiện rồi chọn lại để in.", "warning"); return; }
+    try {
+        window.sessionStorage.setItem(scwin.HANDOFF_KEY, JSON.stringify({
+            eventId: ids[0], printType: "NAMECARD",
+            guests: list.map(function (g) { return { guestId: g.guestId, fullName: g.fullName }; })
+        }));
+    } catch (e) { }
+    window.location.href = scwin.pageUrl(scwin.PRINT_PAGE, { eventId: ids[0] });
+};
+
+scwin.btn_import_onclick = function () { window.location.href = scwin.pageUrl(scwin.IMPORT_PAGE, { eventId: dma_search.get("eventId") }); };
+scwin.btn_emptyImport_onclick = scwin.btn_import_onclick;
+
+/* =====================================================================
+ * CHI TIẾT KHÁCH
+ * ===================================================================== */
+scwin.openDetail = function (guestId, keepTab) {
+    scwin.open.drawer = true;
+    grp_drawerMask.addClass("is-open");
+    grp_drawer.addClass("is-open");
+    grp_drawer.addClass("is-loading");
+    return scwin.callApi("sbm_guestDetail", { url: scwin.GUEST_API + "/" + guestId }).then(function (g) {
+        scwin.renderDetail(g);
+        scwin.setTab(keepTab ? scwin.tab : "info");
+    }).catch(function (err) {
+        scwin.toast(err.message, "error");
+        if (err.status === 404) { scwin.closeDrawer(); scwin.search(false); }
+    }).then(function () { grp_drawer.removeClass("is-loading"); });
+};
+
+scwin.renderDetail = function (g) {
+    scwin.current = g;
+    var ev = g.event || {}, type = g.guestType || {}, st = g.status || {}, ci = g.checkIn || {};
+    var drawer = scwin.domOf(grp_drawer);
+    if (drawer) {
+        drawer.style.setProperty("--gs-status", scwin.safeColor(st.color));
+        drawer.style.setProperty("--gs-type", scwin.safeColor(type.color));
+    }
+    tbx_dName.setValue(g.fullName || "");
+    tbx_dType.setValue(scwin.typeName(type.code));
+    tbx_dStatus.setValue(scwin.statusName(st.code));
+    tbx_dEvent.setValue((ev.eventCode ? ev.eventCode + " - " : "") + (ev.eventName || ""));
+    tbx_dInitial.setValue(scwin.initials(g.fullName));
+
+    tbx_oEmail.setValue(scwin.dash(g.email));
+    tbx_oPhone.setValue(scwin.dash(g.phone));
+    tbx_oCompany.setValue(scwin.dash(g.company));
+    tbx_oPosition.setValue(scwin.dash(g.position));
+    tbx_oTable.setValue(g.tableNumber ? "Bàn " + g.tableNumber : "Chưa xếp bàn");
+    tbx_oPrinted.setValue((g.badgePrinted ? "Đã in thẻ tên" : "Chưa in thẻ tên") + ", " + (g.nameplacePrinted ? "đã in danh bạ" : "chưa in danh bạ"));
+    tbx_oNotes.setValue(g.notes || "Không có ghi chú.");
+    scwin.toggleClass(tbx_oNotes, "is-placeholder", !g.notes);
+    var cb = g.createdBy || {}, ub = g.updatedBy || {};
+    tbx_oCreated.setValue("Thêm bởi " + (cb.fullName || cb.username || "—") + " lúc " + scwin.fmtDateTime(g.createdAt)
+        + (g.importBatchId ? " (import #" + g.importBatchId + ")" : ""));
+    tbx_oUpdated.setValue("Cập nhật bởi " + (ub.fullName || ub.username || "—") + " lúc " + scwin.fmtDateTime(g.updatedAt));
+
+    // Ảnh khách
+    if (g.photoUrl) { grp_photo.setStyle("background-image", "url(\"" + g.photoUrl + "\")"); grp_photo.addClass("has-image"); }
+    else { grp_photo.setStyle("background-image", "none"); grp_photo.removeClass("has-image"); }
+    scwin.show(btn_photoRemove, !!g.photoUrl);
+
+    // Check-in
+    var by = ci.checkedInBy || {};
+    tbx_ciState.setValue(ci.checkedIn
+        ? "Đã check-in lúc " + scwin.fmtDateTime(ci.checkInTime) + (by.fullName || by.username ? " (" + (by.fullName || by.username) + ")" : "")
+        : "Khách chưa check-in.");
+    scwin.toggleClass(grp_ciBox, "is-done", !!ci.checkedIn);
+    scwin.show(btn_ciDo, !ci.checkedIn && scwin.canAny(["CHECKIN_SCAN", "GUEST_UPDATE"]));
+    scwin.show(btn_ciCancel, !!ci.checkedIn && scwin.can("GUEST_UPDATE"));
+
+    // QR
+    var qr = g.qr || {};
+    if (qr.imageDataUri) { grp_qrImg.setStyle("background-image", "url(\"" + qr.imageDataUri + "\")"); grp_qrImg.addClass("has-image"); }
+    else { grp_qrImg.setStyle("background-image", "none"); grp_qrImg.removeClass("has-image"); }
+    tbx_qrToken.setValue(qr.checkInToken || "—");
+    tbx_qrGenerated.setValue(qr.generatedAt ? "Tạo lúc " + scwin.fmtDateTime(qr.generatedAt) : "");
+
+    // Lịch sử
+    var ck = g.checkInHistory || [], pr = g.printHistory || [];
+    dlt_ckLog.setJSON(ck);
+    for (var i = 0; i < ck.length; i++) {
+        try { grd_ckLog.setCellClass(i, "result", "gs-res gs-res--" + (ck[i].cancelled ? "CANCELLED" : ck[i].result)); } catch (e) { }
+    }
+    scwin.fitGrid(grd_ckLog, ck.length, 48);
+    scwin.show(grp_ckEmpty, !ck.length);
+    tbx_ckCount.setValue(ck.length ? ck.length + " lần quét, mới nhất trước" : "");
+    dlt_prLog.setJSON(pr);
+    scwin.fitGrid(grd_prLog, pr.length, 48);
+    scwin.show(grp_prEmpty, !pr.length);
+    tbx_prCount.setValue(pr.length ? pr.length + " lần in" : "");
+    btn_tabCheckins.setValue("Lịch sử check-in" + (ck.length ? " (" + ck.length + ")" : ""));
+    btn_tabPrints.setValue("Lịch sử in" + (pr.length ? " (" + pr.length + ")" : ""));
+    scwin.applyPermissions();
+};
+
+scwin.initials = function (name) {
+    var w = scwin.trim(name).split(/\s+/).filter(function (x) { return !!x; });
+    if (!w.length) return "?";
+    return (w[0].charAt(0) + (w.length > 1 ? w[w.length - 1].charAt(0) : "")).toUpperCase();
+};
+
+scwin.setTab = function (tab) {
+    if (!scwin.TABS[tab]) tab = "info";
+    scwin.tab = tab;
+    for (var k in scwin.TABS) {
+        if (!scwin.TABS.hasOwnProperty(k)) continue;
+        scwin.toggleClass(scwin.comp(scwin.TABS[k][0]), "is-selected", k === tab);
+        scwin.show(scwin.comp(scwin.TABS[k][1]), k === tab);
+    }
+};
+scwin.btn_tabInfo_onclick = function () { scwin.setTab("info"); };
+scwin.btn_tabQr_onclick = function () { scwin.setTab("qr"); };
+scwin.btn_tabCheckins_onclick = function () { scwin.setTab("checkins"); };
+scwin.btn_tabPrints_onclick = function () { scwin.setTab("prints"); };
+
+scwin.closeDrawer = function () {
+    scwin.open.drawer = false;
+    grp_drawerMask.removeClass("is-open");
+    grp_drawer.removeClass("is-open");
+};
+scwin.grp_drawerMask_onclick = scwin.closeDrawer;
+scwin.btn_dClose_onclick = scwin.closeDrawer;
+scwin.btn_dEdit_onclick = function () { if (scwin.current) scwin.openForm("update", scwin.current); };
+scwin.btn_dDelete_onclick = function () {
+    var g = scwin.current;
+    if (g) scwin.openDelete([{ guestId: g.guestId, fullName: g.fullName, checkedIn: !!(g.checkIn && g.checkIn.checkedIn) }]);
+};
+scwin.btn_dPrint_onclick = function () { if (scwin.current) scwin.quickPrint(scwin.current.guestId, scwin.current.fullName); };
+
+scwin.gfMethod = function (v) { return scwin.METHOD_VN[v] || v || "—"; };
+scwin.gfResult = function (v, f, i) {
+    var r = dlt_ckLog.getRowJSON(i) || {};
+    return (scwin.RESULT_VN[v] || v) + (scwin.isTrue(r.cancelled) ? " (đã hủy)" : "");
+};
+scwin.gfCkNote = function (v, f, i) {
+    var r = dlt_ckLog.getRowJSON(i) || {};
+    if (scwin.isTrue(r.cancelled)) return "Hủy bởi " + (r.cancelledByName || "—") + (r.cancelReason ? ": " + r.cancelReason : "");
+    return [r.deviceInfo, r.note].filter(function (x) { return !!x; }).join(", ") || "—";
+};
+scwin.gfPrintType = function (v, f, i) {
+    var r = dlt_prLog.getRowJSON(i) || {};
+    return (scwin.PRINT_TYPE_VN[v] || v) + (scwin.isTrue(r.reprint) ? " (in lại)" : "");
+};
+
+/* ---------- Check-in thủ công / hủy check-in ---------- */
+scwin.btn_ciDo_onclick = function () {
+    scwin.openNote({
+        title: "Check-in thủ công", label: "Ghi chú (không bắt buộc)", placeholder: "Ví dụ: khách quên thẻ",
+        okText: "Check-in", onOk: function (note) {
+            var g = scwin.current;
+            return scwin.callApi("sbm_checkIn", { url: scwin.GUEST_API + "/" + g.guestId + "/check-in", body: note ? { note: note } : {} })
+                .then(function (d) { scwin.renderDetail(d); scwin.toast("Đã check-in cho " + d.fullName + ".", "success"); scwin.search(false); });
+        }
+    });
+};
+scwin.btn_ciCancel_onclick = function () {
+    scwin.openNote({
+        title: "Hủy check-in", label: "Lý do hủy", placeholder: "Ví dụ: check-in nhầm người", danger: true,
+        okText: "Hủy check-in", onOk: function (note) {
+            var g = scwin.current;
+            return scwin.callApi("sbm_cancelCheckIn", { url: scwin.GUEST_API + "/" + g.guestId + "/cancel-check-in", body: note ? { note: note } : {} })
+                .then(function (d) { scwin.renderDetail(d); scwin.toast("Đã hủy check-in, khách về trạng thái Đã xác nhận.", "success"); scwin.search(false); });
+        }
+    });
+};
+
+/* ---------- Ảnh khách ---------- */
+scwin.initFileInput = function () {
+    var inp = document.createElement("input");
+    inp.type = "file";
+    inp.accept = scwin.PHOTO_TYPES.join(",");
+    inp.className = "gs-native-file";
+    inp.addEventListener("change", function () { var f = inp.files && inp.files[0]; inp.value = ""; if (f) scwin.uploadPhoto(f); });
+    document.body.appendChild(inp);
+    scwin.fileInput = inp;
+};
+scwin.btn_photoPick_onclick = function () { if (scwin.fileInput) scwin.fileInput.click(); };
+scwin.uploadPhoto = function (file) {
+    if (scwin.PHOTO_TYPES.indexOf(file.type) < 0) { scwin.toast("Ảnh khách chỉ nhận JPG hoặc PNG.", "warning"); return; }
+    if (file.size > scwin.PHOTO_MAX) { scwin.toast("Ảnh nặng " + scwin.fmtSize(file.size) + ", tối đa 2 MB.", "warning"); return; }
+    var g = scwin.current, fd = new FormData();
+    fd.append("file", file);
+    grp_photo.addClass("is-loading");
+    scwin.xhr("POST", scwin.GUEST_API + "/" + g.guestId + "/photo", { body: fd }).then(function (d) {
+        scwin.renderDetail(d); scwin.toast("Đã cập nhật ảnh khách.", "success");
+    }).catch(function (err) { scwin.toast(err.message, "error"); })
+      .then(function () { grp_photo.removeClass("is-loading"); });
+};
+scwin.btn_photoRemove_onclick = function () {
+    var g = scwin.current;
+    scwin.openConfirm({ title: "Gỡ ảnh khách?", message: "Thẻ tên in sau này sẽ không còn ảnh.", okText: "Gỡ ảnh", danger: true, onOk: function () {
+        scwin.callApi("sbm_photoDelete", { url: scwin.GUEST_API + "/" + g.guestId + "/photo" }).then(function (d) {
+            scwin.renderDetail(d); scwin.toast("Đã gỡ ảnh.", "success");
+        }).catch(function (err) { scwin.toast(err.message, "error"); });
+    } });
+};
+
+/* ---------- Mã QR ---------- */
+scwin.qrUrl = function (format, download) {
+    return scwin.GUEST_API + "/" + scwin.current.guestId + "/qr?" + scwin.buildQuery({ format: format, size: sbx_qrSize.getValue() || "512", download: download ? "true" : "false" });
+};
+scwin.btn_qrPng_onclick = function () { scwin.downloadFile(scwin.qrUrl("png", true), "QR-" + scwin.current.guestId + ".png", btn_qrPng); };
+scwin.btn_qrSvg_onclick = function () { scwin.downloadFile(scwin.qrUrl("svg", true), "QR-" + scwin.current.guestId + ".svg", btn_qrSvg); };
+scwin.btn_qrPrint_onclick = function () {
+    var g = scwin.current, qr = (g && g.qr) || {};
+    if (!qr.imageDataUri) return;
+    var w = window.open("", "_blank", "width=640,height=760");
+    if (!w) { scwin.toast("Trình duyệt đã chặn cửa sổ in. Hãy cho phép cửa sổ bật lên.", "warning"); return; }
+    var e = scwin.escHtml;
+    w.document.write("<!doctype html><html><head><meta charset='utf-8'><title>QR " + e(g.fullName) + "</title>"
+        + "<style>body{font-family:Arial,sans-serif;text-align:center;padding:36px;color:#16241d}img{width:300px;height:300px}h1{font-size:22px;margin:14px 0 4px}p{margin:4px 0;color:#63746b}</style></head><body>"
+        + "<img src='" + qr.imageDataUri + "' alt='QR'><h1>" + e(g.fullName) + "</h1><p>" + e(g.company || "") + "</p><p>" + e((g.event || {}).eventName || "") + "</p>"
+        + "<script>setTimeout(function(){window.print();},300);<\/script></body></html>");
+    w.document.close();
+};
+scwin.btn_qrRegen_onclick = function () {
+    var g = scwin.current;
+    scwin.openConfirm({
+        title: "Tạo lại mã QR?",
+        message: "Mã QR mới sẽ thay thế mã cũ. Thẻ tên đã in trước đó sẽ không quét được nữa, cần in lại thẻ cho khách.",
+        okText: "Tạo mã mới", danger: true, onOk: function () {
+            btn_qrRegen.addClass("is-busy");
+            scwin.callApi("sbm_qrRegen", { url: scwin.GUEST_API + "/" + g.guestId + "/qr" }).then(function (d) {
+                scwin.renderDetail(d); scwin.setTab("qr");
+                scwin.toast("Đã tạo mã QR mới.", "success"); scwin.showWarnings(d.warnings);
+            }).catch(function (err) { scwin.toast(err.message, "error"); })
+              .then(function () { btn_qrRegen.removeClass("is-busy"); });
+        }
+    });
+};
+
+/* =====================================================================
+ * FORM THÊM / SỬA
+ * ===================================================================== */
+scwin.btn_add_onclick = function () { scwin.openForm("create", null); };
+scwin.btn_emptyAdd_onclick = scwin.btn_add_onclick;
+scwin.editGuest = function (guestId) {
+    scwin.callApi("sbm_guestDetail", { url: scwin.GUEST_API + "/" + guestId }).then(function (g) { scwin.openForm("update", g); })
+        .catch(function (err) { scwin.toast(err.message, "error"); });
+};
+
+scwin.openForm = function (mode, g) {
+    var f = scwin.form;
+    f.mode = mode; f.guestId = g ? g.guestId : null; f.dirty = false; f.saving = false;
+    f.origStatus = g && g.status ? g.status.code : "";
+    var ev = (g && g.event) || {};
+    dma_guestForm.setJSON({
+        eventId: g ? String(ev.eventId) : (dma_search.get("eventId") || ""),
+        fullName: g ? g.fullName || "" : "", email: g ? g.email || "" : "", phone: g ? g.phone || "" : "",
+        company: g ? g.company || "" : "", position: g ? g.position || "" : "",
+        guestTypeCode: g && g.guestType ? g.guestType.code : "GUEST", tableNumber: g ? g.tableNumber || "" : "",
+        statusCode: g ? f.origStatus : "INVITED", notes: g ? g.notes || "" : ""
+    });
+    tbx_fTitle.setValue(mode === "create" ? "Thêm khách mời" : "Sửa thông tin khách");
+    tbx_fSubtitle.setValue(mode === "create"
+        ? "Họ tên và sự kiện là bắt buộc. Mã QR cá nhân được tạo ngay khi lưu."
+        : "Đổi tên hoặc email không làm thay đổi mã QR, thẻ đã in vẫn quét được.");
+    scwin.show(btn_fSaveNext, mode === "create");
+    scwin.clearFormErrors();
+    scwin.updateStatusHint();
+    scwin.updateNotesCount();
+    scwin.show(tbx_fEmailHint, false);
+    scwin.open.form = true;
+    grp_formMask.addClass("is-open");
+    setTimeout(function () { try { (mode === "create" && !dma_guestForm.get("eventId") ? sbx_fEvent : ibx_fName).focus(); } catch (e) { } }, 150);
+};
+scwin.closeForm = function (force) {
+    if (!force && scwin.form.dirty && !window.confirm("Thông tin vừa nhập chưa được lưu. Đóng biểu mẫu?")) return;
+    scwin.open.form = false;
+    grp_formMask.removeClass("is-open");
+};
+scwin.btn_fClose_onclick = function () { scwin.closeForm(false); };
+scwin.btn_fCancel_onclick = function () { scwin.closeForm(false); };
+scwin.markDirty = function () { scwin.form.dirty = true; };
+
+scwin.syncFormInputs = function () {
+    for (var k in scwin.FIELDS) {
+        if (!scwin.FIELDS.hasOwnProperty(k)) continue;
+        var c = scwin.comp(scwin.FIELDS[k].input);
+        if (!c || !c.getValue) continue;
+        var v = c.getValue();
+        if (v != null && dma_guestForm.get(k) !== v) dma_guestForm.set(k, v);
+    }
+};
+scwin.readForm = function () {
+    var raw = dma_guestForm.getJSON(), v = {};
+    for (var k in scwin.FIELDS) if (scwin.FIELDS.hasOwnProperty(k)) v[k] = scwin.trim(raw[k]);
+    v.email = v.email.toLowerCase();
+    return v;
+};
+scwin.validateForm = function (v) {
+    var e = {};
+    if (!v.eventId) e.eventId = "Chọn sự kiện cho khách.";
+    if (!v.fullName) e.fullName = "Nhập họ và tên.";
+    if (v.email && !scwin.EMAIL_RE.test(v.email)) e.email = "Email không đúng định dạng.";
+    if (v.phone && !scwin.PHONE_RE.test(v.phone)) e.phone = "Số điện thoại 8–20 ký tự, chỉ gồm số, khoảng trắng, . ( ) - và dấu + ở đầu.";
+    for (var k in scwin.FIELDS) {
+        var fd = scwin.FIELDS[k];
+        if (!e[k] && fd.max && v[k].length > fd.max) e[k] = fd.label + " tối đa " + scwin.fmtNumber(fd.max) + " ký tự.";
+    }
+    return e;
+};
+scwin.showFieldError = function (key, msg) {
+    var fd = scwin.FIELDS[key];
+    if (!fd) return false;
+    var err = scwin.comp(fd.error);
+    err.setValue(msg); scwin.show(err, true);
+    scwin.comp(fd.input).addClass("is-invalid");
+    return true;
+};
+scwin.clearFieldError = function (key) {
+    var fd = scwin.FIELDS[key];
+    if (!fd) return;
+    scwin.show(scwin.comp(fd.error), false);
+    scwin.comp(fd.input).removeClass("is-invalid");
+};
+scwin.clearFormErrors = function () {
+    for (var k in scwin.FIELDS) if (scwin.FIELDS.hasOwnProperty(k)) scwin.clearFieldError(k);
+    scwin.show(tbx_fAlert, false);
+};
+
+scwin.btn_fSave_onclick = function () { scwin.submitForm(false); };
+scwin.btn_fSaveNext_onclick = function () { scwin.submitForm(true); };
+
+scwin.submitForm = function (keepOpen) {
+    var f = scwin.form;
+    if (f.saving) return;
+    scwin.syncFormInputs();
+    scwin.clearFormErrors();
+    var v = scwin.readForm(), errs = scwin.validateForm(v), keys = Object.keys(errs);
+    if (keys.length) {
+        keys.forEach(function (k) { scwin.showFieldError(k, errs[k]); });
+        try { scwin.comp(scwin.FIELDS[keys[0]].input).focus(); } catch (e) { }
+        return;
+    }
+    var body = {
+        eventId: Number(v.eventId), fullName: v.fullName, email: v.email || null, phone: v.phone || null,
+        company: v.company || null, position: v.position || null, guestTypeCode: v.guestTypeCode || null,
+        tableNumber: v.tableNumber || null, notes: v.notes || null,
+        statusCode: v.statusCode || (f.mode === "create" ? "INVITED" : null)
+    };
+    var mode = f.mode;
+    scwin.setSaving(true);
+    (mode === "create"
+        ? scwin.callApi("sbm_guestCreate", { url: scwin.GUEST_API, body: body })
+        : scwin.callApi("sbm_guestUpdate", { url: scwin.GUEST_API + "/" + f.guestId, body: body })
+    ).then(function (g) {
+        scwin.form.dirty = false;
+        scwin.showWarnings(g.warnings);
+        scwin.search(false);
+        if (mode === "create" && keepOpen) {
+            scwin.toast("Đã thêm " + g.fullName + ". Nhập tiếp khách khác.", "success");
+            var keep = dma_guestForm.getJSON();
+            dma_guestForm.setJSON({ eventId: keep.eventId, fullName: "", email: "", phone: "", company: keep.company, position: "",
+                guestTypeCode: keep.guestTypeCode, tableNumber: "", statusCode: keep.statusCode, notes: "" });
+            scwin.show(tbx_fEmailHint, false);
+            setTimeout(function () { try { ibx_fName.focus(); } catch (e) { } }, 50);
+            return;
+        }
+        scwin.closeForm(true);
+        scwin.toast(mode === "create" ? "Đã thêm " + g.fullName + " và tạo mã QR cá nhân." : "Đã lưu thay đổi cho " + g.fullName + ".", "success");
+        if (mode === "create" || (scwin.open.drawer && scwin.current && scwin.current.guestId === g.guestId)) {
+            scwin.open.drawer = true;
+            grp_drawerMask.addClass("is-open"); grp_drawer.addClass("is-open");
+            scwin.renderDetail(g);
+            if (mode === "create") scwin.setTab("info");
+        }
+    }).catch(function (err) { scwin.handleFormError(err); })
+      .then(function () { scwin.setSaving(false); });
+};
+
+scwin.handleFormError = function (err) {
+    var map = { GUEST_EMAIL_EXISTS: "email", INVALID_GUEST_TYPE: "guestTypeCode", INVALID_GUEST_STATUS: "statusCode", GUEST_CHECKED_IN: "eventId", EVENT_NOT_FOUND: "eventId" };
+    var shown = false, first = null;
+    if (err.code === "VALIDATION_ERROR" && err.data && typeof err.data === "object") {
+        for (var k in err.data) if (err.data.hasOwnProperty(k) && scwin.showFieldError(k, err.data[k])) { shown = true; if (!first) first = k; }
+    } else if (map[err.code]) {
+        shown = scwin.showFieldError(map[err.code], err.message); first = map[err.code];
+    }
+    if (first) { try { scwin.comp(scwin.FIELDS[first].input).focus(); } catch (e) { } }
+    if (!shown) { tbx_fAlert.setValue(err.message || "Không lưu được khách."); scwin.show(tbx_fAlert, true); }
+};
+scwin.setSaving = function (on) {
+    scwin.form.saving = on;
+    scwin.toggleClass(btn_fSave, "is-busy", on);
+    try { btn_fSave.setDisabled(on); btn_fSaveNext.setDisabled(on); } catch (e) { }
+};
+
+/* ---------- Gợi ý trong form ---------- */
+scwin.updateStatusHint = function () {
+    var s = sbx_fStatus.getValue() || dma_guestForm.get("statusCode"), o = scwin.form.origStatus, msg = "";
+    if (scwin.form.mode === "create" && s === "CHECKED_IN") msg = "Khách sẽ được check-in thủ công ngay khi lưu.";
+    else if (scwin.form.mode === "update" && s === "CHECKED_IN" && o !== "CHECKED_IN") msg = "Lưu sẽ ghi nhận check-in thủ công cho khách.";
+    else if (scwin.form.mode === "update" && o === "CHECKED_IN" && s !== "CHECKED_IN") msg = "Lưu sẽ hủy lượt check-in hiện tại của khách.";
+    tbx_fStatusHint.setValue(msg);
+    scwin.show(tbx_fStatusHint, !!msg);
+};
+scwin.updateNotesCount = function () {
+    var n = (txa_fNotes.getValue() || "").length;
+    tbx_fNotesCount.setValue(scwin.fmtNumber(n) + " / 2.000");
+    scwin.toggleClass(tbx_fNotesCount, "is-over", n > 2000);
+};
+scwin.field_onkeyup = function (e) {
+    scwin.markDirty();
+    var t = e && e.target, id = t && (t.id || "");
+    for (var k in scwin.FIELDS) if (scwin.FIELDS.hasOwnProperty(k) && id.indexOf(scwin.FIELDS[k].input) >= 0) scwin.clearFieldError(k);
+};
+scwin.ibx_fName_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("fullName"); };
+scwin.ibx_fPhone_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("phone"); };
+scwin.ibx_fEmail_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("email"); scwin.show(tbx_fEmailHint, false); };
+scwin.txa_fNotes_onkeyup = function () { scwin.markDirty(); scwin.clearFieldError("notes"); scwin.updateNotesCount(); };
+scwin.sbx_fStatus_onchange = function () { scwin.markDirty(); scwin.clearFieldError("statusCode"); scwin.updateStatusHint(); };
+scwin.sbx_fEvent_onchange = function () { scwin.markDirty(); scwin.clearFieldError("eventId"); scwin.ibx_fEmail_onblur(); };
+scwin.sbx_fType_onchange = function () { scwin.markDirty(); scwin.clearFieldError("guestTypeCode"); };
+
+/** Kiểm tra trùng email trong sự kiện ngay khi rời ô (server vẫn kiểm tra lại khi lưu). */
+scwin.ibx_fEmail_onblur = function () {
+    scwin.syncFormInputs();
+    var email = scwin.trim(dma_guestForm.get("email")).toLowerCase(), eventId = dma_guestForm.get("eventId");
+    if (!email || !eventId || !scwin.EMAIL_RE.test(email)) { scwin.show(tbx_fEmailHint, false); return; }
+    scwin.callApi("sbm_emailCheck", { url: scwin.GUEST_API + "?" + scwin.buildQuery({ eventId: eventId, email: email, size: 10 }) }).then(function (page) {
+        if (scwin.trim(dma_guestForm.get("email")).toLowerCase() !== email) return;
+        var dup = ((page && page.content) || []).filter(function (g) { return String(g.email).toLowerCase() === email && g.guestId !== scwin.form.guestId; })[0];
+        tbx_fEmailHint.setValue(dup ? "Email này đã thuộc khách " + dup.fullName + " trong sự kiện." : "Email chưa có trong sự kiện.");
+        scwin.toggleClass(tbx_fEmailHint, "is-warning", !!dup);
+        scwin.toggleClass(tbx_fEmailHint, "is-ok", !dup);
+        scwin.show(tbx_fEmailHint, true);
+    }).catch(function () { scwin.show(tbx_fEmailHint, false); });
+};
+
+/* =====================================================================
+ * CẬP NHẬT HÀNG LOẠT
+ * ===================================================================== */
+scwin.btn_bulkEdit_onclick = function () {
+    var n = scwin.selectedList().length;
+    if (!n) return;
+    tbx_bTitle.setValue("Sửa " + scwin.fmtNumber(n) + " khách cùng lúc");
+    sbx_bType.setValue(""); sbx_bStatus.setValue("");
+    ibx_bTable.setValue(""); ibx_bCompany.setValue(""); ibx_bPosition.setValue(""); txa_bNotes.setValue("");
+    chk_bClear.setValue("");
+    scwin.show(tbx_bAlert, false); scwin.show(tbx_bResult, false);
+    scwin.open.bulk = true;
+    grp_bulkMask.addClass("is-open");
+};
+scwin.closeBulk = function () { scwin.open.bulk = false; grp_bulkMask.removeClass("is-open"); };
+scwin.btn_bCancel_onclick = scwin.closeBulk;
+scwin.btn_bClose_onclick = scwin.closeBulk;
+scwin.btn_bSave_onclick = function () {
+    var clear = String(chk_bClear.getValue() || "").split(/[\s,]+/).filter(function (x) { return !!x; });
+    var body = { guestIds: scwin.selectedList().map(function (g) { return Number(g.guestId); }) };
+    var any = false;
+    if (sbx_bType.getValue()) { body.guestTypeCode = sbx_bType.getValue(); any = true; }
+    if (sbx_bStatus.getValue()) { body.statusCode = sbx_bStatus.getValue(); any = true; }
+    [["tableNumber", ibx_bTable], ["company", ibx_bCompany], ["position", ibx_bPosition], ["notes", txa_bNotes]].forEach(function (p) {
+        var v = scwin.trim(p[1].getValue());
+        if (clear.indexOf(p[0]) >= 0) { body[p[0]] = ""; any = true; }
+        else if (v) { body[p[0]] = v; any = true; }
+        else body[p[0]] = null;
+    });
+    if (!any) { tbx_bAlert.setValue("Chọn ít nhất một thông tin cần đổi."); scwin.show(tbx_bAlert, true); return; }
+    scwin.show(tbx_bAlert, false);
+    btn_bSave.addClass("is-busy");
+    scwin.callApi("sbm_bulkUpdate", { url: scwin.GUEST_API + "/bulk-update", body: body }).then(function (r) {
+        scwin.search(false);
+        if (!r.failed) { scwin.closeBulk(); scwin.toast("Đã cập nhật " + scwin.fmtNumber(r.succeeded) + " khách.", "success"); return; }
+        tbx_bResult.setValue("Đã cập nhật " + r.succeeded + "/" + r.total + " khách. Không cập nhật được:\n" + scwin.failureText(r.failures));
+        scwin.show(tbx_bResult, true);
+    }).catch(function (err) { tbx_bAlert.setValue(err.message); scwin.show(tbx_bAlert, true); })
+      .then(function () { btn_bSave.removeClass("is-busy"); });
+};
+scwin.failureText = function (failures) {
+    return (failures || []).map(function (f) {
+        var g = scwin.selected[f.guestId];
+        return "• " + (g ? g.fullName : "Khách #" + f.guestId) + ": " + f.message;
+    }).join("\n");
+};
+
+/* =====================================================================
+ * XÓA (1 khách hoặc hàng loạt)
+ * ===================================================================== */
+scwin.btn_bulkDelete_onclick = function () { scwin.openDelete(scwin.selectedList()); };
+scwin.openDelete = function (list) {
+    if (!list.length) return;
+    scwin.delList = list;
+    var checked = list.filter(function (g) { return g.checkedIn; });
+    tbx_delTitle.setValue(list.length === 1 ? "Xóa khách " + list[0].fullName + "?" : "Xóa " + scwin.fmtNumber(list.length) + " khách đã chọn?");
+    tbx_delDesc.setValue("Khách sẽ bị ẩn khỏi danh sách (xóa mềm). Mã QR của khách không còn dùng được.");
+    var warn = "";
+    if (checked.length === list.length) warn = (list.length === 1 ? "Khách này đã check-in" : "Tất cả khách đã chọn đều đã check-in") + " nên không xóa được. Hãy hủy check-in trước nếu thật sự cần xóa.";
+    else if (checked.length) warn = scwin.fmtNumber(checked.length) + " khách đã check-in sẽ được giữ lại, chỉ xóa " + scwin.fmtNumber(list.length - checked.length) + " khách còn lại.";
+    tbx_delErr.setValue(warn);
+    scwin.show(tbx_delErr, !!warn);
+    scwin.toggleClass(grp_delModal, "is-blocked", checked.length === list.length);
+    try { btn_delConfirm.setDisabled(checked.length === list.length); } catch (e) { }
+    scwin.open.del = true;
+    grp_delMask.addClass("is-open");
+};
+scwin.closeDelete = function () { scwin.open.del = false; grp_delMask.removeClass("is-open"); };
+scwin.btn_delCancel_onclick = scwin.closeDelete;
+scwin.btn_delConfirm_onclick = function () {
+    var list = scwin.delList;
+    btn_delConfirm.addClass("is-busy");
+    var req = list.length === 1
+        ? scwin.callApi("sbm_guestDelete", { url: scwin.GUEST_API + "/" + list[0].guestId + "?confirm=true" }).then(function () { return { total: 1, succeeded: 1, failed: 0 }; })
+        : scwin.callApi("sbm_bulkDelete", { url: scwin.GUEST_API + "/bulk-delete", body: { guestIds: list.map(function (g) { return Number(g.guestId); }), confirm: true } });
+    req.then(function (r) {
+        var failedIds = {};
+        (r.failures || []).forEach(function (f) { failedIds[f.guestId] = true; });
+        list.forEach(function (g) { if (!failedIds[g.guestId]) delete scwin.selected[g.guestId]; });
+        if (scwin.current && !failedIds[scwin.current.guestId] && list.some(function (g) { return String(g.guestId) === String(scwin.current.guestId); })) scwin.closeDrawer();
+        scwin.search(false);
+        if (!r.failed) { scwin.closeDelete(); scwin.toast("Đã xóa " + scwin.fmtNumber(r.succeeded) + " khách.", "success"); return; }
+        tbx_delErr.setValue("Đã xóa " + r.succeeded + "/" + r.total + " khách. Không xóa được:\n" + scwin.failureText(r.failures));
+        scwin.show(tbx_delErr, true);
+        try { btn_delConfirm.setDisabled(true); } catch (e) { }
+    }).catch(function (err) {
+        tbx_delErr.setValue(err.code === "GUEST_CHECKED_IN" ? err.message : err.message);
+        scwin.show(tbx_delErr, true);
+    }).then(function () { btn_delConfirm.removeClass("is-busy"); });
+};
+
+/* =====================================================================
+ * EXPORT
+ * ===================================================================== */
+scwin.exp = { format: "xlsx", cols: null };
+scwin.btn_export_onclick = function () {
+    scwin.open.exp = true;
+    grp_expMask.addClass("is-open");
+    var p = scwin.collectFilter(true);
+    var n = scwin.fmtNumber(scwin.state.totalElements);
+    tbx_xScope.setValue(scwin.hasFilter()
+        ? "Xuất " + n + " khách theo bộ lọc đang áp dụng ở danh sách."
+        : "Xuất toàn bộ " + n + " khách " + (p.eventId ? "của sự kiện đang chọn." : "của mọi sự kiện bạn được xem."));
+    scwin.setExpFormat(scwin.exp.format);
+    if (scwin.exp.cols) return;
+    scwin.callApi("sbm_exportCols", { url: scwin.GUEST_API + "/export/columns" }).then(function (cols) {
+        scwin.exp.cols = cols || [];
+        dlt_expCols.setJSON(scwin.exp.cols.map(function (c) { return { key: c.key, label: c.label }; }));
+        scwin.btn_xDefault_onclick();
+    }).catch(function (err) { scwin.toast(err.message, "error"); });
+};
+scwin.closeExport = function () { scwin.open.exp = false; grp_expMask.removeClass("is-open"); };
+scwin.btn_xCancel_onclick = scwin.closeExport;
+scwin.btn_xClose_onclick = scwin.closeExport;
+scwin.setExpFormat = function (f) {
+    scwin.exp.format = f;
+    scwin.toggleClass(btn_xXlsx, "is-selected", f === "xlsx");
+    scwin.toggleClass(btn_xCsv, "is-selected", f === "csv");
+    scwin.toggleClass(btn_xPdf, "is-selected", f === "pdf");
+    tbx_xQrHint.setValue(f === "csv" ? "CSV: thêm cột “Nội dung QR” dạng chữ." : "Thêm ảnh mã QR vào từng dòng (tối đa 2.000 khách).");
+};
+scwin.btn_xXlsx_onclick = function () { scwin.setExpFormat("xlsx"); };
+scwin.btn_xCsv_onclick = function () { scwin.setExpFormat("csv"); };
+scwin.btn_xPdf_onclick = function () { scwin.setExpFormat("pdf"); };
+scwin.btn_xAll_onclick = function () { chk_xCols.setValue((scwin.exp.cols || []).map(function (c) { return c.key; }).join(",")); };
+scwin.btn_xNone_onclick = function () { chk_xCols.setValue(""); };
+scwin.btn_xDefault_onclick = function () {
+    chk_xCols.setValue((scwin.exp.cols || []).filter(function (c) { return c.defaultSelected; }).map(function (c) { return c.key; }).join(","));
+};
+scwin.btn_xRun_onclick = function () {
+    var cols = String(chk_xCols.getValue() || "").split(/[\s,]+/).filter(function (x) { return !!x; });
+    if (!cols.length) { scwin.toast("Chọn ít nhất một cột để xuất.", "warning"); return; }
+    var p = scwin.collectFilter(true);
+    p.format = scwin.exp.format;
+    p.columns = cols;
+    p.includeQr = String(chk_xQr.getValue() || "") ? "true" : "false";
+    scwin.downloadFile(scwin.GUEST_API + "/export?" + scwin.buildQuery(p), "DanhSachKhach." + scwin.exp.format, btn_xRun)
+        .then(function (r) { if (r) { scwin.closeExport(); scwin.toast("Đã xuất file " + (r.name || "") + ".", "success"); } });
+};
+
+/* =====================================================================
+ * HỘP NHẬP GHI CHÚ & HỘP XÁC NHẬN DÙNG CHUNG
+ * ===================================================================== */
+scwin.openNote = function (o) {
+    scwin.note = o;
+    tbx_nTitle.setValue(o.title); tbx_nLabel.setValue(o.label);
+    txa_note.setValue("");
+    tbx_nHint.setValue(o.placeholder || "");
+    btn_nOk.setValue(o.okText || "Xác nhận");
+    scwin.toggleClass(btn_nOk, "gs-btn--danger", !!o.danger);
+    scwin.toggleClass(btn_nOk, "gs-btn--primary", !o.danger);
+    scwin.show(tbx_nErr, false);
+    scwin.open.note = true;
+    grp_noteMask.addClass("is-open");
+    setTimeout(function () { try { txa_note.focus(); } catch (e) { } }, 120);
+};
+scwin.closeNote = function () { scwin.open.note = false; grp_noteMask.removeClass("is-open"); };
+scwin.btn_nCancel_onclick = scwin.closeNote;
+scwin.btn_nOk_onclick = function () {
+    var o = scwin.note;
+    if (!o) return;
+    btn_nOk.addClass("is-busy");
+    Promise.resolve(o.onOk(scwin.trim(txa_note.getValue()))).then(function () { scwin.closeNote(); })
+        .catch(function (err) { tbx_nErr.setValue(err.message); scwin.show(tbx_nErr, true); })
+        .then(function () { btn_nOk.removeClass("is-busy"); });
+};
+
+scwin.openConfirm = function (o) {
+    scwin.cfm = o;
+    tbx_cfmTitle.setValue(o.title || "Xác nhận");
+    tbx_cfmMsg.setValue(o.message || "");
+    btn_cfmOk.setValue(o.okText || "Đồng ý");
+    scwin.toggleClass(btn_cfmOk, "gs-btn--danger", !!o.danger);
+    scwin.toggleClass(btn_cfmOk, "gs-btn--primary", !o.danger);
+    scwin.toggleClass(grp_cfmModal, "is-danger", !!o.danger);
+    scwin.open.confirm = true;
+    grp_cfmMask.addClass("is-open");
+};
+scwin.closeConfirm = function () { scwin.open.confirm = false; grp_cfmMask.removeClass("is-open"); };
+scwin.btn_cfmCancel_onclick = function () { scwin.closeConfirm(); scwin.cfm = null; };
+scwin.btn_cfmOk_onclick = function () { var o = scwin.cfm; scwin.closeConfirm(); scwin.cfm = null; if (o && o.onOk) o.onOk(); };
+
+/* ---------- Phím tắt ---------- */
+scwin.onGlobalKeydown = function (e) {
+    if (e.key === "Escape") {
+        if (scwin.open.confirm) scwin.btn_cfmCancel_onclick();
+        else if (scwin.open.note) scwin.closeNote();
+        else if (scwin.open.del) scwin.closeDelete();
+        else if (scwin.open.exp) scwin.closeExport();
+        else if (scwin.open.bulk) scwin.closeBulk();
+        else if (scwin.open.form) scwin.closeForm(false);
+        else if (scwin.open.drawer) scwin.closeDrawer();
+        return;
+    }
+    if (scwin.open.form && e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+        scwin.submitForm(false);
+        return;
+    }
+    var tag = (e.target && e.target.tagName || "").toLowerCase();
+    if (e.key === "/" && tag !== "input" && tag !== "textarea" && !scwin.open.form) { e.preventDefault(); try { ibx_keyword.focus(); } catch (x) { } }
+};
+
+/* Handler gắn trong xf:submission (ev:submitdone / ev:submiterror) */
+scwin.sbm_lookups_submitdone = function (e) { scwin.onSbmDone("sbm_lookups", e); };
+scwin.sbm_lookups_submiterror = function (e) { scwin.onSbmError("sbm_lookups", e); };
+scwin.sbm_guestList_submitdone = function (e) { scwin.onSbmDone("sbm_guestList", e); };
+scwin.sbm_guestList_submiterror = function (e) { scwin.onSbmError("sbm_guestList", e); };
+scwin.sbm_guestDetail_submitdone = function (e) { scwin.onSbmDone("sbm_guestDetail", e); };
+scwin.sbm_guestDetail_submiterror = function (e) { scwin.onSbmError("sbm_guestDetail", e); };
+scwin.sbm_guestCreate_submitdone = function (e) { scwin.onSbmDone("sbm_guestCreate", e); };
+scwin.sbm_guestCreate_submiterror = function (e) { scwin.onSbmError("sbm_guestCreate", e); };
+scwin.sbm_guestUpdate_submitdone = function (e) { scwin.onSbmDone("sbm_guestUpdate", e); };
+scwin.sbm_guestUpdate_submiterror = function (e) { scwin.onSbmError("sbm_guestUpdate", e); };
+scwin.sbm_guestDelete_submitdone = function (e) { scwin.onSbmDone("sbm_guestDelete", e); };
+scwin.sbm_guestDelete_submiterror = function (e) { scwin.onSbmError("sbm_guestDelete", e); };
+scwin.sbm_bulkUpdate_submitdone = function (e) { scwin.onSbmDone("sbm_bulkUpdate", e); };
+scwin.sbm_bulkUpdate_submiterror = function (e) { scwin.onSbmError("sbm_bulkUpdate", e); };
+scwin.sbm_bulkDelete_submitdone = function (e) { scwin.onSbmDone("sbm_bulkDelete", e); };
+scwin.sbm_bulkDelete_submiterror = function (e) { scwin.onSbmError("sbm_bulkDelete", e); };
+scwin.sbm_checkIn_submitdone = function (e) { scwin.onSbmDone("sbm_checkIn", e); };
+scwin.sbm_checkIn_submiterror = function (e) { scwin.onSbmError("sbm_checkIn", e); };
+scwin.sbm_cancelCheckIn_submitdone = function (e) { scwin.onSbmDone("sbm_cancelCheckIn", e); };
+scwin.sbm_cancelCheckIn_submiterror = function (e) { scwin.onSbmError("sbm_cancelCheckIn", e); };
+scwin.sbm_qrRegen_submitdone = function (e) { scwin.onSbmDone("sbm_qrRegen", e); };
+scwin.sbm_qrRegen_submiterror = function (e) { scwin.onSbmError("sbm_qrRegen", e); };
+scwin.sbm_photoDelete_submitdone = function (e) { scwin.onSbmDone("sbm_photoDelete", e); };
+scwin.sbm_photoDelete_submiterror = function (e) { scwin.onSbmError("sbm_photoDelete", e); };
+scwin.sbm_exportCols_submitdone = function (e) { scwin.onSbmDone("sbm_exportCols", e); };
+scwin.sbm_exportCols_submiterror = function (e) { scwin.onSbmError("sbm_exportCols", e); };
+scwin.sbm_emailCheck_submitdone = function (e) { scwin.onSbmDone("sbm_emailCheck", e); };
+scwin.sbm_emailCheck_submiterror = function (e) { scwin.onSbmError("sbm_emailCheck", e); };
+
+    ]]></script>
+</head>
+<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+<xf:group id="grp_layout" class="ck-layout">
+    <w2:wframe id="wfm_header" class="layout-header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+    <xf:group id="grp_main" class="ck-main gs-scope" tagname="main">
+        <!-- Tiêu đề -->
+        <xf:group id="grp_header" class="gs-header">
+            <xf:group id="grp_headerText" class="gs-header__text">
+                <w2:textbox id="tbx_crumb" class="gs-header__crumb" tagname="p" label="Khách mời / Danh sách"/>
+                <w2:textbox id="tbx_title" class="ck-page-title gs-header__title" tagname="h1" label="Khách mời"/>
+                <w2:textbox id="tbx_subtitle" class="ck-page-desc gs-header__subtitle" tagname="p"
+                            label="Quản lý danh sách khách theo sự kiện, mã QR cá nhân, check-in và in thẻ tên."/>
+            </xf:group>
+            <xf:group id="grp_headerActions" class="gs-header__actions">
+                <xf:trigger id="btn_refresh" type="button" class="gs-btn gs-btn--ghost gs-btn--icon gs-ico-refresh" ev:onclick="scwin.btn_refresh_onclick">
+                    <xf:label><![CDATA[Làm mới]]></xf:label>
+                </xf:trigger>
+                <xf:trigger id="btn_import" type="button" class="gs-btn gs-btn--ghost gs-btn--icon gs-ico-upload" ev:onclick="scwin.btn_import_onclick">
+                    <xf:label><![CDATA[Import]]></xf:label>
+                </xf:trigger>
+                <xf:trigger id="btn_export" type="button" class="gs-btn gs-btn--ghost gs-btn--icon gs-ico-download" ev:onclick="scwin.btn_export_onclick">
+                    <xf:label><![CDATA[Export]]></xf:label>
+                </xf:trigger>
+                <xf:trigger id="btn_add" type="button" class="gs-btn gs-btn--primary gs-btn--icon gs-ico-plus" ev:onclick="scwin.btn_add_onclick">
+                    <xf:label><![CDATA[Thêm khách]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+        </xf:group>
+
+        <!-- Bộ lọc -->
+        <xf:group id="grp_filter" class="gs-filter">
+            <xf:group id="grp_filterTop" class="gs-filter__top">
+                <xf:select1 id="sbx_event" class="gs-select gs-select--event" appearance="minimal" chooseOption="true"
+                            chooseOptionLabel="Tất cả sự kiện" direction="auto" ref="data:dma_search.eventId" ev:onchange="scwin.sbx_event_onchange">
+                    <xf:choices>
+                        <xf:itemset nodeset="data:dlt_events"><xf:label ref="label"/><xf:value ref="eventId"/></xf:itemset>
+                    </xf:choices>
+                </xf:select1>
+                <xf:group id="grp_search" class="gs-search gs-search--plain">
+                    <xf:input id="ibx_keyword" class="gs-search__input" maxlength="150" ref="data:dma_search.keyword" refSync="true"
+                              placeholder="Tìm tên (không cần dấu), email, SĐT, công ty" ev:onkeyup="scwin.ibx_keyword_onkeyup"/>
+                    <w2:textbox id="tbx_searchKey" class="gs-search__kbd" tagname="span" label="/"/>
+                </xf:group>
+                <xf:select1 id="sbx_checked" class="gs-select gs-select--checked" appearance="minimal" chooseOption="true"
+                            chooseOptionLabel="Check-in: tất cả" direction="auto" ref="data:dma_search.checkedIn" ev:onchange="scwin.sbx_checked_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Đã check-in]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Chưa check-in]]></xf:label><xf:value><![CDATA[false]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1>
+                <xf:trigger id="btn_advToggle" type="button" class="gs-btn gs-btn--ghost gs-btn--adv" ev:onclick="scwin.btn_advToggle_onclick">
+                    <xf:label><![CDATA[Tìm nâng cao]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+
+            <!-- Tìm nâng cao: kết hợp nhiều tiêu chí (AND) -->
+            <xf:group id="grp_adv" class="gs-adv">
+                <xf:group id="grp_advGrid" class="gs-adv__grid">
+                    <xf:group id="grp_aName" class="gs-field">
+                        <w2:textbox id="tbx_aNameLabel" class="gs-label" tagname="span" label="Họ tên"/>
+                        <xf:input id="ibx_aName" class="gs-input" ref="data:dma_search.fullName" refSync="true" placeholder="Một phần họ tên" ev:onkeyup="scwin.adv_onkeyup"/>
+                    </xf:group>
+                    <xf:group id="grp_aEmail" class="gs-field">
+                        <w2:textbox id="tbx_aEmailLabel" class="gs-label" tagname="span" label="Email"/>
+                        <xf:input id="ibx_aEmail" class="gs-input" ref="data:dma_search.email" refSync="true" placeholder="Một phần email" ev:onkeyup="scwin.adv_onkeyup"/>
+                    </xf:group>
+                    <xf:group id="grp_aPhone" class="gs-field">
+                        <w2:textbox id="tbx_aPhoneLabel" class="gs-label" tagname="span" label="Điện thoại"/>
+                        <xf:input id="ibx_aPhone" class="gs-input" ref="data:dma_search.phone" refSync="true" placeholder="Một phần số" ev:onkeyup="scwin.adv_onkeyup"/>
+                    </xf:group>
+                    <xf:group id="grp_aCompany" class="gs-field">
+                        <w2:textbox id="tbx_aCompanyLabel" class="gs-label" tagname="span" label="Công ty"/>
+                        <xf:input id="ibx_aCompany" class="gs-input" ref="data:dma_search.company" refSync="true" placeholder="Một phần tên công ty" ev:onkeyup="scwin.adv_onkeyup"/>
+                    </xf:group>
+                    <xf:group id="grp_aTable" class="gs-field">
+                        <w2:textbox id="tbx_aTableLabel" class="gs-label" tagname="span" label="Bàn số"/>
+                        <xf:input id="ibx_aTable" class="gs-input" ref="data:dma_search.tableNumber" refSync="true" placeholder="Chính xác, ví dụ A1" ev:onkeyup="scwin.adv_onkeyup"/>
+                    </xf:group>
+                    <xf:group id="grp_aBadge" class="gs-field">
+                        <w2:textbox id="tbx_aBadgeLabel" class="gs-label" tagname="span" label="Thẻ tên"/>
+                        <xf:select1 id="sbx_aBadge" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Tất cả"
+                                    direction="auto" ref="data:dma_search.badgePrinted" ev:onchange="scwin.sbx_aBadge_onchange">
+                            <xf:choices>
+                                <xf:item><xf:label><![CDATA[Đã in]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item>
+                                <xf:item><xf:label><![CDATA[Chưa in]]></xf:label><xf:value><![CDATA[false]]></xf:value></xf:item>
+                            </xf:choices>
+                        </xf:select1>
+                    </xf:group>
+                    <xf:group id="grp_aPlace" class="gs-field">
+                        <w2:textbox id="tbx_aPlaceLabel" class="gs-label" tagname="span" label="Danh bạ để bàn"/>
+                        <xf:select1 id="sbx_aPlace" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Tất cả"
+                                    direction="auto" ref="data:dma_search.nameplacePrinted" ev:onchange="scwin.sbx_aPlace_onchange">
+                            <xf:choices>
+                                <xf:item><xf:label><![CDATA[Đã in]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item>
+                                <xf:item><xf:label><![CDATA[Chưa in]]></xf:label><xf:value><![CDATA[false]]></xf:value></xf:item>
+                            </xf:choices>
+                        </xf:select1>
+                    </xf:group>
+                    <xf:group id="grp_aApply" class="gs-field gs-field--action">
+                        <xf:trigger id="btn_advApply" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_advApply_onclick">
+                            <xf:label><![CDATA[Áp dụng]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_filterBottom" class="gs-filter__bottom">
+                <xf:group id="grp_statusField" class="gs-filter__field gs-filter__field--grow">
+                    <w2:textbox id="tbx_statusLabel" class="gs-filter__label" tagname="span" label="Trạng thái"/>
+                    <xf:group id="grp_statusChips" class="gs-chips"/>
+                </xf:group>
+                <xf:group id="grp_typeField" class="gs-filter__field gs-filter__field--grow">
+                    <w2:textbox id="tbx_typeLabel" class="gs-filter__label" tagname="span" label="Loại khách"/>
+                    <xf:group id="grp_typeChips" class="gs-chips"/>
+                </xf:group>
+                <xf:group id="grp_sortField" class="gs-filter__field">
+                    <w2:textbox id="tbx_sortLabel" class="gs-filter__label" tagname="span" label="Sắp xếp"/>
+                    <xf:select1 id="sbx_sort" class="gs-select gs-select--sort" appearance="minimal" chooseOption="false" direction="auto"
+                                ref="data:dma_search.sort" ev:onchange="scwin.sbx_sort_onchange">
+                        <xf:choices>
+                            <xf:item><xf:label><![CDATA[Tên A đến Z]]></xf:label><xf:value><![CDATA[fullName,asc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Mới thêm gần đây]]></xf:label><xf:value><![CDATA[createdAt,desc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Check-in gần nhất]]></xf:label><xf:value><![CDATA[checkInTime,desc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Bàn số]]></xf:label><xf:value><![CDATA[tableNumber,asc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Công ty]]></xf:label><xf:value><![CDATA[company,asc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Loại khách]]></xf:label><xf:value><![CDATA[guestType,asc]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Trạng thái]]></xf:label><xf:value><![CDATA[status,asc]]></xf:value></xf:item>
+                        </xf:choices>
+                    </xf:select1>
+                </xf:group>
+                <xf:trigger id="btn_reset" type="button" class="gs-btn gs-btn--text is-hidden" ev:onclick="scwin.btn_reset_onclick">
+                    <xf:label><![CDATA[Xóa bộ lọc]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+        </xf:group>
+
+        <!-- Danh sách -->
+        <xf:group id="grp_list" class="gs-list">
+            <xf:group id="grp_listToolbar" class="gs-list__toolbar">
+                <xf:group id="grp_listInfo" class="gs-list__info">
+                    <w2:textbox id="tbx_resultInfo" class="gs-list__result" tagname="span" label="Đang tải…"/>
+                    <w2:textbox id="tbx_filterSummary" class="gs-list__summary is-hidden" tagname="span" label=""/>
+                </xf:group>
+                <xf:group id="grp_sizeField" class="gs-list__size">
+                    <w2:textbox id="tbx_sizeLabel" class="gs-list__size-label" tagname="span" label="Mỗi trang"/>
+                    <xf:select1 id="sbx_size" class="gs-select gs-select--size" appearance="minimal" chooseOption="false" direction="auto"
+                                ref="data:dma_search.size" ev:onchange="scwin.sbx_size_onchange">
+                        <xf:choices>
+                            <xf:item><xf:label><![CDATA[20]]></xf:label><xf:value><![CDATA[20]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[50]]></xf:label><xf:value><![CDATA[50]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[100]]></xf:label><xf:value><![CDATA[100]]></xf:value></xf:item>
+                        </xf:choices>
+                    </xf:select1>
+                </xf:group>
+            </xf:group>
+
+            <!-- Thanh thao tác hàng loạt: hiện khi có khách được chọn -->
+            <xf:group id="grp_bulk" class="gs-bulk">
+                <w2:textbox id="tbx_bulkCount" class="gs-bulk__count" tagname="span" label=""/>
+                <xf:trigger id="btn_bulkPage" type="button" class="gs-btn gs-btn--text gs-btn--light" ev:onclick="scwin.btn_bulkPage_onclick">
+                    <xf:label><![CDATA[Chọn cả trang]]></xf:label>
+                </xf:trigger>
+                <xf:group id="grp_bulkActions" class="gs-bulk__actions">
+                    <xf:trigger id="btn_bulkEdit" type="button" class="gs-btn gs-btn--sm gs-btn--onDark" ev:onclick="scwin.btn_bulkEdit_onclick">
+                        <xf:label><![CDATA[Sửa hàng loạt]]></xf:label>
+                    </xf:trigger>
+                    <xf:trigger id="btn_bulkPrint" type="button" class="gs-btn gs-btn--sm gs-btn--onDark" ev:onclick="scwin.btn_bulkPrint_onclick">
+                        <xf:label><![CDATA[In thẻ tên]]></xf:label>
+                    </xf:trigger>
+                    <xf:trigger id="btn_bulkDelete" type="button" class="gs-btn gs-btn--sm gs-btn--onDark gs-btn--onDark-danger" ev:onclick="scwin.btn_bulkDelete_onclick">
+                        <xf:label><![CDATA[Xóa]]></xf:label>
+                    </xf:trigger>
+                    <xf:trigger id="btn_bulkClear" type="button" class="gs-btn gs-btn--text gs-btn--light" ev:onclick="scwin.btn_bulkClear_onclick">
+                        <xf:label><![CDATA[Bỏ chọn]]></xf:label>
+                    </xf:trigger>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_listBody" class="gs-list__body">
+                <w2:gridView id="grd_guest" class="gs-grid gs-grid--main" dataList="data:dlt_guest" readOnly="false"
+                             autoFit="allColumn" scrollByColumn="false" rowNumVisible="false" rowStatusVisible="false"
+                             focusMode="row" defaultCellHeight="52" ev:oncellclick="scwin.grd_guest_oncellclick"
+                             ev:onheaderclick="scwin.grd_guest_onheaderclick">
+                    <w2:header id="hdr_guest" class="gs-grid__header">
+                        <w2:row id="hdr_guestRow" class="gs-grid__hrow">
+                            <w2:column id="h_chk" class="gs-grid__th gs-grid__th--chk" width="44" inputType="checkbox" displayMode="label" value=""/>
+                            <w2:column id="h_name" class="gs-grid__th" width="210" inputType="text" displayMode="label" value="Tên"/>
+                            <w2:column id="h_email" class="gs-grid__th" width="200" inputType="text" displayMode="label" value="Email"/>
+                            <w2:column id="h_phone" class="gs-grid__th" width="120" inputType="text" displayMode="label" value="Điện thoại"/>
+                            <w2:column id="h_company" class="gs-grid__th" width="160" inputType="text" displayMode="label" value="Công ty"/>
+                            <w2:column id="h_type" class="gs-grid__th" width="100" inputType="text" displayMode="label" value="Loại khách"/>
+                            <w2:column id="h_table" class="gs-grid__th" width="60" inputType="text" displayMode="label" value="Bàn"/>
+                            <w2:column id="h_status" class="gs-grid__th" width="140" inputType="text" displayMode="label" value="Trạng thái"/>
+                            <w2:column id="h_actEdit" class="gs-grid__th" width="50" inputType="text" displayMode="label" value=""/>
+                            <w2:column id="h_actDelete" class="gs-grid__th" width="50" inputType="text" displayMode="label" value=""/>
+                            <w2:column id="h_actPrint" class="gs-grid__th" width="64" inputType="text" displayMode="label" value=""/>
+                        </w2:row>
+                    </w2:header>
+                    <w2:gBody id="gb_guest" class="gs-grid__body">
+                        <w2:row id="gb_guestRow" class="gs-grid__row">
+                            <w2:column id="chk" class="gs-grid__td gs-grid__td--chk" width="44" inputType="checkbox" trueValue="1" falseValue="0" readOnly="false"/>
+                            <w2:column id="fullName" class="gs-grid__td gs-grid__td--name" width="210" inputType="text" displayMode="label" readOnly="true" textAlign="left" customFormatter="scwin.gfName"/>
+                            <w2:column id="email" class="gs-grid__td gs-grid__td--muted" width="200" inputType="text" displayMode="label" readOnly="true" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="phone" class="gs-grid__td" width="120" inputType="text" displayMode="label" readOnly="true" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="company" class="gs-grid__td gs-grid__td--muted" width="160" inputType="text" displayMode="label" readOnly="true" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="guestTypeCode" class="gs-grid__td" width="100" inputType="text" displayMode="label" readOnly="true" textAlign="left" customFormatter="scwin.gfType"/>
+                            <w2:column id="tableNumber" class="gs-grid__td" width="60" inputType="text" displayMode="label" readOnly="true" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="statusCode" class="gs-grid__td" width="140" inputType="text" displayMode="label" readOnly="true" textAlign="left" customFormatter="scwin.gfStatus"/>
+                            <w2:column id="actEdit" class="gs-grid__td gs-grid__td--act" width="50" inputType="text" displayMode="label" readOnly="true" textAlign="center" customFormatter="scwin.gfActEdit"/>
+                            <w2:column id="actDelete" class="gs-grid__td gs-grid__td--act gs-grid__td--act-danger" width="50" inputType="text" displayMode="label" readOnly="true" textAlign="center" customFormatter="scwin.gfActDelete"/>
+                            <w2:column id="actPrint" class="gs-grid__td gs-grid__td--act" width="64" inputType="text" displayMode="label" readOnly="true" textAlign="center" customFormatter="scwin.gfActPrint"/>
+                        </w2:row>
+                    </w2:gBody>
+                </w2:gridView>
+
+                <xf:group id="grp_empty" class="gs-empty is-hidden">
+                    <xf:group id="grp_emptyIcon" class="gs-empty__icon gs-empty__icon--guest"/>
+                    <w2:textbox id="tbx_emptyTitle" class="gs-empty__title" tagname="p" label=""/>
+                    <w2:textbox id="tbx_emptyDesc" class="gs-empty__desc" tagname="p" label=""/>
+                    <xf:group id="grp_emptyActions" class="gs-empty__actions">
+                        <xf:trigger id="btn_emptyReset" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_emptyReset_onclick">
+                            <xf:label><![CDATA[Xóa bộ lọc]]></xf:label>
+                        </xf:trigger>
+                        <xf:group id="grp_emptyAdd" class="gs-empty__actions">
+                            <xf:trigger id="btn_emptyImport" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_emptyImport_onclick">
+                                <xf:label><![CDATA[Import từ Excel]]></xf:label>
+                            </xf:trigger>
+                            <xf:trigger id="btn_emptyAdd" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_emptyAdd_onclick">
+                                <xf:label><![CDATA[Thêm khách]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_pager" class="gs-list__pager is-hidden">
+                <w2:pageList id="pgl_guest" class="gs-pager" displayButtonType="display" displaySelectedIndex="true"
+                             pagingType="0" pageSize="7" ev:onviewchange="scwin.pgl_guest_onviewchange"/>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <w2:wframe id="wfm_footer" class="layout-footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+</xf:group>
+
+<!-- ===================== LỚP PHỦ ===================== -->
+<xf:group id="grp_overlays" class="gs-scope gs-overlays">
+
+    <!-- Chi tiết khách -->
+    <xf:group id="grp_drawerMask" class="gs-drawer-mask" ev:onclick="scwin.grp_drawerMask_onclick"/>
+    <xf:group id="grp_drawer" class="gs-drawer gs-drawer--guest">
+        <xf:group id="grp_dHead" class="gs-ghead">
+            <xf:group id="grp_dAvatar" class="gs-ghead__avatar">
+                <w2:textbox id="tbx_dInitial" class="gs-ghead__initial" tagname="span" label=""/>
+            </xf:group>
+            <xf:group id="grp_dTitle" class="gs-ghead__text">
+                <w2:textbox id="tbx_dName" class="gs-ghead__name" tagname="h2" label=""/>
+                <xf:group id="grp_dChips" class="gs-ghead__chips">
+                    <w2:textbox id="tbx_dType" class="gs-tag gs-tag--type" tagname="span" label=""/>
+                    <w2:textbox id="tbx_dStatus" class="gs-tag gs-tag--status" tagname="span" label=""/>
+                </xf:group>
+                <w2:textbox id="tbx_dEvent" class="gs-ghead__event" tagname="p" label=""/>
+            </xf:group>
+            <xf:trigger id="btn_dClose" type="button" class="gs-icon-btn gs-ico-close" ev:onclick="scwin.btn_dClose_onclick">
+                <xf:label><![CDATA[Đóng]]></xf:label>
+            </xf:trigger>
+        </xf:group>
+        <xf:group id="grp_dTabs" class="gs-tabs gs-tabs--drawer">
+            <xf:trigger id="btn_tabInfo" type="button" class="gs-tab is-selected" ev:onclick="scwin.btn_tabInfo_onclick"><xf:label><![CDATA[Thông tin]]></xf:label></xf:trigger>
+            <xf:trigger id="btn_tabQr" type="button" class="gs-tab" ev:onclick="scwin.btn_tabQr_onclick"><xf:label><![CDATA[Mã QR]]></xf:label></xf:trigger>
+            <xf:trigger id="btn_tabCheckins" type="button" class="gs-tab" ev:onclick="scwin.btn_tabCheckins_onclick"><xf:label><![CDATA[Lịch sử check-in]]></xf:label></xf:trigger>
+            <xf:trigger id="btn_tabPrints" type="button" class="gs-tab" ev:onclick="scwin.btn_tabPrints_onclick"><xf:label><![CDATA[Lịch sử in]]></xf:label></xf:trigger>
+        </xf:group>
+
+        <xf:group id="grp_dBody" class="gs-drawer__body">
+            <!-- Tab thông tin -->
+            <xf:group id="grp_pInfo" class="gs-panel">
+                <xf:group id="grp_ciBox" class="gs-cibox">
+                    <w2:textbox id="tbx_ciState" class="gs-cibox__text" tagname="p" label=""/>
+                    <xf:group id="grp_ciActions" class="gs-cibox__actions">
+                        <xf:trigger id="btn_ciDo" type="button" class="gs-btn gs-btn--primary gs-btn--sm" ev:onclick="scwin.btn_ciDo_onclick">
+                            <xf:label><![CDATA[Check-in thủ công]]></xf:label>
+                        </xf:trigger>
+                        <xf:trigger id="btn_ciCancel" type="button" class="gs-btn gs-btn--danger-ghost gs-btn--sm" ev:onclick="scwin.btn_ciCancel_onclick">
+                            <xf:label><![CDATA[Hủy check-in]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+
+                <xf:group id="grp_infoRow" class="gs-inforow">
+                    <xf:group id="grp_photoBox" class="gs-photo">
+                        <xf:group id="grp_photo" class="gs-photo__img"/>
+                        <xf:group id="grp_photoActions" class="gs-photo__actions">
+                            <xf:trigger id="btn_photoPick" type="button" class="gs-btn gs-btn--text" ev:onclick="scwin.btn_photoPick_onclick">
+                                <xf:label><![CDATA[Đổi ảnh]]></xf:label>
+                            </xf:trigger>
+                            <xf:trigger id="btn_photoRemove" type="button" class="gs-btn gs-btn--text gs-btn--text-danger" ev:onclick="scwin.btn_photoRemove_onclick">
+                                <xf:label><![CDATA[Gỡ]]></xf:label>
+                            </xf:trigger>
+                        </xf:group>
+                    </xf:group>
+                    <xf:group id="grp_facts" class="gs-facts">
+                        <xf:group id="grp_fEmailFact" class="gs-fact"><w2:textbox id="tbx_oEmailLabel" class="gs-fact__label" tagname="span" label="Email"/><w2:textbox id="tbx_oEmail" class="gs-fact__value" tagname="span" label=""/></xf:group>
+                        <xf:group id="grp_fPhoneFact" class="gs-fact"><w2:textbox id="tbx_oPhoneLabel" class="gs-fact__label" tagname="span" label="Điện thoại"/><w2:textbox id="tbx_oPhone" class="gs-fact__value" tagname="span" label=""/></xf:group>
+                        <xf:group id="grp_fCompanyFact" class="gs-fact"><w2:textbox id="tbx_oCompanyLabel" class="gs-fact__label" tagname="span" label="Công ty"/><w2:textbox id="tbx_oCompany" class="gs-fact__value" tagname="span" label=""/></xf:group>
+                        <xf:group id="grp_fPositionFact" class="gs-fact"><w2:textbox id="tbx_oPositionLabel" class="gs-fact__label" tagname="span" label="Chức vụ"/><w2:textbox id="tbx_oPosition" class="gs-fact__value" tagname="span" label=""/></xf:group>
+                        <xf:group id="grp_fTableFact" class="gs-fact"><w2:textbox id="tbx_oTableLabel" class="gs-fact__label" tagname="span" label="Bàn số"/><w2:textbox id="tbx_oTable" class="gs-fact__value" tagname="span" label=""/></xf:group>
+                        <xf:group id="grp_fPrintedFact" class="gs-fact"><w2:textbox id="tbx_oPrintedLabel" class="gs-fact__label" tagname="span" label="In ấn"/><w2:textbox id="tbx_oPrinted" class="gs-fact__value gs-fact__value--small" tagname="span" label=""/></xf:group>
+                    </xf:group>
+                </xf:group>
+
+                <xf:group id="grp_notesSec" class="gs-section">
+                    <w2:textbox id="tbx_notesTitle" class="gs-section__title" tagname="h3" label="Ghi chú"/>
+                    <w2:textbox id="tbx_oNotes" class="gs-section__text" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_metaSec" class="gs-meta">
+                    <w2:textbox id="tbx_oCreated" class="gs-meta__item" tagname="span" label=""/>
+                    <w2:textbox id="tbx_oUpdated" class="gs-meta__item" tagname="span" label=""/>
+                </xf:group>
+            </xf:group>
+
+            <!-- Tab QR -->
+            <xf:group id="grp_pQr" class="gs-panel gs-qrpanel is-hidden">
+                <xf:group id="grp_qrImg" class="gs-qrpanel__img"/>
+                <xf:group id="grp_qrInfo" class="gs-qrpanel__info">
+                    <w2:textbox id="tbx_qrTokenLabel" class="gs-fact__label" tagname="span" label="Mã check-in (dùng khi nhập tay)"/>
+                    <w2:textbox id="tbx_qrToken" class="gs-qrpanel__token" tagname="p" label=""/>
+                    <w2:textbox id="tbx_qrGenerated" class="gs-qrpanel__meta" tagname="p" label=""/>
+                    <xf:group id="grp_qrDl" class="gs-qrpanel__row">
+                        <xf:select1 id="sbx_qrSize" class="gs-select gs-select--qr" appearance="minimal" chooseOption="false" direction="auto">
+                            <xf:choices>
+                                <xf:item><xf:label><![CDATA[512 px]]></xf:label><xf:value><![CDATA[512]]></xf:value></xf:item>
+                                <xf:item><xf:label><![CDATA[1024 px]]></xf:label><xf:value><![CDATA[1024]]></xf:value></xf:item>
+                                <xf:item><xf:label><![CDATA[2000 px]]></xf:label><xf:value><![CDATA[2000]]></xf:value></xf:item>
+                            </xf:choices>
+                        </xf:select1>
+                        <xf:trigger id="btn_qrPng" type="button" class="gs-btn gs-btn--primary gs-btn--sm" ev:onclick="scwin.btn_qrPng_onclick"><xf:label><![CDATA[Tải PNG]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_qrSvg" type="button" class="gs-btn gs-btn--ghost gs-btn--sm" ev:onclick="scwin.btn_qrSvg_onclick"><xf:label><![CDATA[Tải SVG]]></xf:label></xf:trigger>
+                    </xf:group>
+                    <xf:group id="grp_qrMore" class="gs-qrpanel__row">
+                        <xf:trigger id="btn_qrPrint" type="button" class="gs-btn gs-btn--text" ev:onclick="scwin.btn_qrPrint_onclick"><xf:label><![CDATA[In mã QR]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_qrRegen" type="button" class="gs-btn gs-btn--text gs-btn--text-danger" ev:onclick="scwin.btn_qrRegen_onclick"><xf:label><![CDATA[Tạo lại mã QR]]></xf:label></xf:trigger>
+                    </xf:group>
+                    <w2:textbox id="tbx_qrNote" class="gs-notice" tagname="p"
+                                label="Đổi tên hoặc email không làm đổi mã QR. Chỉ tạo lại mã khi thẻ bị lộ hoặc thất lạc."/>
+                </xf:group>
+            </xf:group>
+
+            <!-- Tab lịch sử check-in -->
+            <xf:group id="grp_pCheckins" class="gs-panel is-hidden">
+                <w2:textbox id="tbx_ckCount" class="gs-panel__meta" tagname="p" label=""/>
+                <w2:gridView id="grd_ckLog" class="gs-grid gs-grid--sub" dataList="data:dlt_ckLog" readOnly="true" autoFit="allColumn"
+                             scrollByColumn="false" rowNumVisible="false" rowStatusVisible="false" focusMode="row" defaultCellHeight="48">
+                    <w2:header id="hdr_ck" class="gs-grid__header">
+                        <w2:row id="hdr_ckRow" class="gs-grid__hrow">
+                            <w2:column id="h_ckTime" class="gs-grid__th" width="130" inputType="text" displayMode="label" value="Thời điểm"/>
+                            <w2:column id="h_ckMethod" class="gs-grid__th" width="100" inputType="text" displayMode="label" value="Cách"/>
+                            <w2:column id="h_ckResult" class="gs-grid__th" width="150" inputType="text" displayMode="label" value="Kết quả"/>
+                            <w2:column id="h_ckBy" class="gs-grid__th" width="120" inputType="text" displayMode="label" value="Người thực hiện"/>
+                            <w2:column id="h_ckNote" class="gs-grid__th" width="170" inputType="text" displayMode="label" value="Ghi chú"/>
+                        </w2:row>
+                    </w2:header>
+                    <w2:gBody id="gb_ck" class="gs-grid__body">
+                        <w2:row id="gb_ckRow" class="gs-grid__row">
+                            <w2:column id="checkInTime" class="gs-grid__td gs-grid__td--muted" width="130" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDateTime"/>
+                            <w2:column id="method" class="gs-grid__td" width="100" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfMethod"/>
+                            <w2:column id="result" class="gs-grid__td" width="150" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfResult"/>
+                            <w2:column id="checkInByName" class="gs-grid__td" width="120" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="note" class="gs-grid__td gs-grid__td--muted" width="170" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfCkNote"/>
+                        </w2:row>
+                    </w2:gBody>
+                </w2:gridView>
+                <xf:group id="grp_ckEmpty" class="gs-panel__empty is-hidden">
+                    <w2:textbox id="tbx_ckEmptyText" class="gs-panel__empty-text" tagname="p" label="Khách chưa được quét lần nào."/>
+                </xf:group>
+            </xf:group>
+
+            <!-- Tab lịch sử in -->
+            <xf:group id="grp_pPrints" class="gs-panel is-hidden">
+                <w2:textbox id="tbx_prCount" class="gs-panel__meta" tagname="p" label=""/>
+                <w2:gridView id="grd_prLog" class="gs-grid gs-grid--sub" dataList="data:dlt_prLog" readOnly="true" autoFit="allColumn"
+                             scrollByColumn="false" rowNumVisible="false" rowStatusVisible="false" focusMode="row" defaultCellHeight="48">
+                    <w2:header id="hdr_pr" class="gs-grid__header">
+                        <w2:row id="hdr_prRow" class="gs-grid__hrow">
+                            <w2:column id="h_prTime" class="gs-grid__th" width="130" inputType="text" displayMode="label" value="Thời điểm"/>
+                            <w2:column id="h_prType" class="gs-grid__th" width="140" inputType="text" displayMode="label" value="Loại"/>
+                            <w2:column id="h_prTpl" class="gs-grid__th" width="170" inputType="text" displayMode="label" value="Mẫu in"/>
+                            <w2:column id="h_prCopies" class="gs-grid__th gs-grid__th--num" width="60" inputType="text" displayMode="label" value="Số bản"/>
+                            <w2:column id="h_prBy" class="gs-grid__th" width="120" inputType="text" displayMode="label" value="Người in"/>
+                        </w2:row>
+                    </w2:header>
+                    <w2:gBody id="gb_pr" class="gs-grid__body">
+                        <w2:row id="gb_prRow" class="gs-grid__row">
+                            <w2:column id="printTime" class="gs-grid__td gs-grid__td--muted" width="130" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDateTime"/>
+                            <w2:column id="printType" class="gs-grid__td" width="140" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfPrintType"/>
+                            <w2:column id="templateName" class="gs-grid__td" width="170" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                            <w2:column id="copies" class="gs-grid__td gs-grid__td--num" width="60" inputType="text" displayMode="label" textAlign="right"/>
+                            <w2:column id="printedByName" class="gs-grid__td" width="120" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                        </w2:row>
+                    </w2:gBody>
+                </w2:gridView>
+                <xf:group id="grp_prEmpty" class="gs-panel__empty is-hidden">
+                    <w2:textbox id="tbx_prEmptyText" class="gs-panel__empty-text" tagname="p" label="Chưa in thẻ tên hoặc danh bạ cho khách này."/>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+
+        <xf:group id="grp_dFooter" class="gs-drawer__footer">
+            <xf:trigger id="btn_dDelete" type="button" class="gs-btn gs-btn--danger-ghost gs-btn--icon gs-ico-trash" ev:onclick="scwin.btn_dDelete_onclick">
+                <xf:label><![CDATA[Xóa]]></xf:label>
+            </xf:trigger>
+            <xf:group id="grp_dFooterRight" class="gs-drawer__footer-right">
+                <xf:trigger id="btn_dPrint" type="button" class="gs-btn gs-btn--ghost gs-btn--icon gs-ico-print" ev:onclick="scwin.btn_dPrint_onclick">
+                    <xf:label><![CDATA[In thẻ tên]]></xf:label>
+                </xf:trigger>
+                <xf:trigger id="btn_dEdit" type="button" class="gs-btn gs-btn--primary gs-btn--icon gs-ico-edit" ev:onclick="scwin.btn_dEdit_onclick">
+                    <xf:label><![CDATA[Sửa thông tin]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- Form thêm / sửa -->
+    <xf:group id="grp_formMask" class="gs-modal-mask">
+        <xf:group id="grp_formModal" class="gs-modal gs-modal--form">
+            <xf:group id="grp_fHead" class="gs-modal__head">
+                <xf:group id="grp_fHeadText" class="gs-modal__head-text">
+                    <w2:textbox id="tbx_fTitle" class="gs-modal__title" tagname="h2" label=""/>
+                    <w2:textbox id="tbx_fSubtitle" class="gs-modal__subtitle" tagname="p" label=""/>
+                </xf:group>
+                <xf:trigger id="btn_fClose" type="button" class="gs-icon-btn gs-ico-close" ev:onclick="scwin.btn_fClose_onclick"><xf:label><![CDATA[Đóng]]></xf:label></xf:trigger>
+            </xf:group>
+            <xf:group id="grp_fBody" class="gs-modal__body gs-eform">
+                <xf:group id="grp_fdEvent" class="gs-field gs-field--full">
+                    <w2:textbox id="tbx_fEventLabel" class="gs-label gs-label--required" tagname="span" label="Sự kiện"/>
+                    <xf:select1 id="sbx_fEvent" ref="data:dma_guestForm.eventId" class="gs-select gs-select--full" appearance="minimal" chooseOption="true"
+                                chooseOptionLabel="Chọn sự kiện" direction="auto" ev:onchange="scwin.sbx_fEvent_onchange">
+                        <xf:choices><xf:itemset nodeset="data:dlt_events"><xf:label ref="label"/><xf:value ref="eventId"/></xf:itemset></xf:choices>
+                    </xf:select1>
+                    <w2:textbox id="tbx_fEventErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdName" class="gs-field gs-field--full">
+                    <w2:textbox id="tbx_fNameLabel" class="gs-label gs-label--required" tagname="span" label="Họ và tên"/>
+                    <xf:input id="ibx_fName" ref="data:dma_guestForm.fullName" refSync="true" class="gs-input" maxlength="150" placeholder="Ví dụ: Nguyễn Văn An" ev:onkeyup="scwin.ibx_fName_onkeyup"/>
+                    <w2:textbox id="tbx_fNameErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdEmail" class="gs-field">
+                    <w2:textbox id="tbx_fEmailLabel" class="gs-label" tagname="span" label="Email"/>
+                    <xf:input id="ibx_fEmail" ref="data:dma_guestForm.email" refSync="true" class="gs-input" maxlength="255" placeholder="ten@congty.com"
+                              ev:onkeyup="scwin.ibx_fEmail_onkeyup" ev:onblur="scwin.ibx_fEmail_onblur"/>
+                    <w2:textbox id="tbx_fEmailHint" class="gs-field__hint is-hidden" tagname="p" label=""/>
+                    <w2:textbox id="tbx_fEmailErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdPhone" class="gs-field">
+                    <w2:textbox id="tbx_fPhoneLabel" class="gs-label" tagname="span" label="Số điện thoại"/>
+                    <xf:input id="ibx_fPhone" ref="data:dma_guestForm.phone" refSync="true" class="gs-input" maxlength="20" allowChar="0-9 .()+\-" placeholder="0901 234 567" ev:onkeyup="scwin.ibx_fPhone_onkeyup"/>
+                    <w2:textbox id="tbx_fPhoneErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdCompany" class="gs-field">
+                    <w2:textbox id="tbx_fCompanyLabel" class="gs-label" tagname="span" label="Công ty / Tổ chức"/>
+                    <xf:input id="ibx_fCompany" ref="data:dma_guestForm.company" refSync="true" class="gs-input" maxlength="255" ev:onkeyup="scwin.field_onkeyup"/>
+                    <w2:textbox id="tbx_fCompanyErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdPosition" class="gs-field">
+                    <w2:textbox id="tbx_fPositionLabel" class="gs-label" tagname="span" label="Chức vụ"/>
+                    <xf:input id="ibx_fPosition" ref="data:dma_guestForm.position" refSync="true" class="gs-input" maxlength="150" ev:onkeyup="scwin.field_onkeyup"/>
+                    <w2:textbox id="tbx_fPositionErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdType" class="gs-field">
+                    <w2:textbox id="tbx_fTypeLabel" class="gs-label" tagname="span" label="Loại khách mời"/>
+                    <xf:select1 id="sbx_fType" ref="data:dma_guestForm.guestTypeCode" class="gs-select gs-select--full" appearance="minimal" chooseOption="false"
+                                direction="auto" ev:onchange="scwin.sbx_fType_onchange">
+                        <xf:choices><xf:itemset nodeset="data:dlt_types"><xf:label ref="name"/><xf:value ref="code"/></xf:itemset></xf:choices>
+                    </xf:select1>
+                    <w2:textbox id="tbx_fTypeErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdTable" class="gs-field">
+                    <w2:textbox id="tbx_fTableLabel" class="gs-label" tagname="span" label="Bàn số"/>
+                    <xf:input id="ibx_fTable" ref="data:dma_guestForm.tableNumber" refSync="true" class="gs-input" maxlength="20" placeholder="Ví dụ: A1, VIP-2" ev:onkeyup="scwin.field_onkeyup"/>
+                    <w2:textbox id="tbx_fTableErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdStatus" class="gs-field gs-field--full">
+                    <w2:textbox id="tbx_fStatusLabel" class="gs-label" tagname="span" label="Trạng thái"/>
+                    <xf:select1 id="sbx_fStatus" ref="data:dma_guestForm.statusCode" class="gs-select gs-select--full" appearance="minimal" chooseOption="false"
+                                direction="auto" ev:onchange="scwin.sbx_fStatus_onchange">
+                        <xf:choices><xf:itemset nodeset="data:dlt_statuses"><xf:label ref="name"/><xf:value ref="code"/></xf:itemset></xf:choices>
+                    </xf:select1>
+                    <w2:textbox id="tbx_fStatusHint" class="gs-field__hint is-warning is-hidden" tagname="p" label=""/>
+                    <w2:textbox id="tbx_fStatusErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <xf:group id="grp_fdNotes" class="gs-field gs-field--full">
+                    <xf:group id="grp_fNotesHead" class="gs-field__head">
+                        <w2:textbox id="tbx_fNotesLabel" class="gs-label" tagname="span" label="Ghi chú"/>
+                        <w2:textbox id="tbx_fNotesCount" class="gs-field__count" tagname="span" label=""/>
+                    </xf:group>
+                    <xf:textarea id="txa_fNotes" ref="data:dma_guestForm.notes" refSync="true" class="gs-textarea gs-textarea--short"
+                                 placeholder="Ví dụ: khách đi cùng 1 người, ăn chay" ev:onkeyup="scwin.txa_fNotes_onkeyup"/>
+                    <w2:textbox id="tbx_fNotesErr" class="gs-field__error is-hidden" tagname="p" label=""/>
+                </xf:group>
+                <w2:textbox id="tbx_fAlert" class="gs-alert gs-field--full is-hidden" tagname="p" label=""/>
+            </xf:group>
+            <xf:group id="grp_fFooter" class="gs-modal__footer">
+                <w2:textbox id="tbx_fShortcut" class="gs-modal__shortcut" tagname="span" label="Ctrl + Enter để lưu, Esc để đóng"/>
+                <xf:group id="grp_fFooterActions" class="gs-modal__actions">
+                    <xf:trigger id="btn_fCancel" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_fCancel_onclick"><xf:label><![CDATA[Hủy]]></xf:label></xf:trigger>
+                    <xf:trigger id="btn_fSaveNext" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_fSaveNext_onclick"><xf:label><![CDATA[Lưu và thêm tiếp]]></xf:label></xf:trigger>
+                    <xf:trigger id="btn_fSave" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_fSave_onclick"><xf:label><![CDATA[Lưu khách]]></xf:label></xf:trigger>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- Sửa hàng loạt -->
+    <xf:group id="grp_bulkMask" class="gs-modal-mask">
+        <xf:group id="grp_bulkModal" class="gs-modal gs-modal--bulk">
+            <xf:group id="grp_bHead" class="gs-modal__head">
+                <xf:group id="grp_bHeadText" class="gs-modal__head-text">
+                    <w2:textbox id="tbx_bTitle" class="gs-modal__title" tagname="h2" label=""/>
+                    <w2:textbox id="tbx_bSubtitle" class="gs-modal__subtitle" tagname="p" label="Chỉ những ô bạn nhập hoặc chọn mới được áp dụng, ô để trống giữ nguyên."/>
+                </xf:group>
+                <xf:trigger id="btn_bClose" type="button" class="gs-icon-btn gs-ico-close" ev:onclick="scwin.btn_bClose_onclick"><xf:label><![CDATA[Đóng]]></xf:label></xf:trigger>
+            </xf:group>
+            <xf:group id="grp_bBody" class="gs-modal__body gs-eform">
+                <xf:group id="grp_bdType" class="gs-field">
+                    <w2:textbox id="tbx_bTypeLabel" class="gs-label" tagname="span" label="Loại khách"/>
+                    <xf:select1 id="sbx_bType" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Giữ nguyên" direction="auto">
+                        <xf:choices><xf:itemset nodeset="data:dlt_types"><xf:label ref="name"/><xf:value ref="code"/></xf:itemset></xf:choices>
+                    </xf:select1>
+                </xf:group>
+                <xf:group id="grp_bdStatus" class="gs-field">
+                    <w2:textbox id="tbx_bStatusLabel" class="gs-label" tagname="span" label="Trạng thái"/>
+                    <xf:select1 id="sbx_bStatus" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Giữ nguyên" direction="auto">
+                        <xf:choices><xf:itemset nodeset="data:dlt_statuses"><xf:label ref="name"/><xf:value ref="code"/></xf:itemset></xf:choices>
+                    </xf:select1>
+                </xf:group>
+                <xf:group id="grp_bdTable" class="gs-field">
+                    <w2:textbox id="tbx_bTableLabel" class="gs-label" tagname="span" label="Bàn số"/>
+                    <xf:input id="ibx_bTable" class="gs-input" maxlength="20" placeholder="Giữ nguyên"/>
+                </xf:group>
+                <xf:group id="grp_bdCompany" class="gs-field">
+                    <w2:textbox id="tbx_bCompanyLabel" class="gs-label" tagname="span" label="Công ty"/>
+                    <xf:input id="ibx_bCompany" class="gs-input" maxlength="255" placeholder="Giữ nguyên"/>
+                </xf:group>
+                <xf:group id="grp_bdPosition" class="gs-field">
+                    <w2:textbox id="tbx_bPositionLabel" class="gs-label" tagname="span" label="Chức vụ"/>
+                    <xf:input id="ibx_bPosition" class="gs-input" maxlength="150" placeholder="Giữ nguyên"/>
+                </xf:group>
+                <xf:group id="grp_bdNotes" class="gs-field">
+                    <w2:textbox id="tbx_bNotesLabel" class="gs-label" tagname="span" label="Ghi chú"/>
+                    <xf:textarea id="txa_bNotes" class="gs-textarea gs-textarea--short" placeholder="Giữ nguyên"/>
+                </xf:group>
+                <xf:group id="grp_bdClear" class="gs-field gs-field--full">
+                    <w2:textbox id="tbx_bClearLabel" class="gs-label" tagname="span" label="Xóa trắng thông tin"/>
+                    <xf:select id="chk_bClear" class="gs-checks gs-checks--inline" appearance="full" cols="4" rows="" delimiter="," renderType="checkboxgroup">
+                        <xf:choices>
+                            <xf:item><xf:label><![CDATA[Bàn số]]></xf:label><xf:value><![CDATA[tableNumber]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Công ty]]></xf:label><xf:value><![CDATA[company]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Chức vụ]]></xf:label><xf:value><![CDATA[position]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Ghi chú]]></xf:label><xf:value><![CDATA[notes]]></xf:value></xf:item>
+                        </xf:choices>
+                    </xf:select>
+                    <w2:textbox id="tbx_bClearHint" class="gs-field__hint" tagname="p" label="Đánh dấu để xóa giá trị hiện có của tất cả khách đã chọn."/>
+                </xf:group>
+                <w2:textbox id="tbx_bAlert" class="gs-alert gs-field--full is-hidden" tagname="p" label=""/>
+                <w2:textbox id="tbx_bResult" class="gs-notice gs-notice--warn gs-field--full gs-pre is-hidden" tagname="p" label=""/>
+            </xf:group>
+            <xf:group id="grp_bFooter" class="gs-modal__footer">
+                <w2:textbox id="tbx_bFootNote" class="gs-modal__shortcut" tagname="span" label="Đổi sang Đã check-in sẽ check-in thủ công cho từng khách."/>
+                <xf:group id="grp_bActions" class="gs-modal__actions">
+                    <xf:trigger id="btn_bCancel" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_bCancel_onclick"><xf:label><![CDATA[Hủy]]></xf:label></xf:trigger>
+                    <xf:trigger id="btn_bSave" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_bSave_onclick"><xf:label><![CDATA[Áp dụng]]></xf:label></xf:trigger>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- Export -->
+    <xf:group id="grp_expMask" class="gs-modal-mask">
+        <xf:group id="grp_expModal" class="gs-modal gs-modal--export">
+            <xf:group id="grp_xHead" class="gs-modal__head">
+                <xf:group id="grp_xHeadText" class="gs-modal__head-text">
+                    <w2:textbox id="tbx_xTitle" class="gs-modal__title" tagname="h2" label="Xuất danh sách khách"/>
+                    <w2:textbox id="tbx_xScope" class="gs-modal__subtitle" tagname="p" label=""/>
+                </xf:group>
+                <xf:trigger id="btn_xClose" type="button" class="gs-icon-btn gs-ico-close" ev:onclick="scwin.btn_xClose_onclick"><xf:label><![CDATA[Đóng]]></xf:label></xf:trigger>
+            </xf:group>
+            <xf:group id="grp_xBody" class="gs-modal__body gs-xform">
+                <w2:textbox id="tbx_xFormatLabel" class="gs-label" tagname="span" label="Định dạng"/>
+                <xf:group id="grp_xFormats" class="gs-formats">
+                    <xf:trigger id="btn_xXlsx" type="button" class="gs-format gs-format--xlsx is-selected" ev:onclick="scwin.btn_xXlsx_onclick"><xf:label><![CDATA[Excel (.xlsx)]]></xf:label></xf:trigger>
+                    <xf:trigger id="btn_xCsv" type="button" class="gs-format gs-format--csv" ev:onclick="scwin.btn_xCsv_onclick"><xf:label><![CDATA[CSV]]></xf:label></xf:trigger>
+                    <xf:trigger id="btn_xPdf" type="button" class="gs-format gs-format--pdf" ev:onclick="scwin.btn_xPdf_onclick"><xf:label><![CDATA[PDF]]></xf:label></xf:trigger>
+                </xf:group>
+                <xf:group id="grp_xColsHead" class="gs-field__head gs-xform__colshead">
+                    <w2:textbox id="tbx_xColsLabel" class="gs-label" tagname="span" label="Cột xuất ra"/>
+                    <xf:group id="grp_xColsTools" class="gs-xform__tools">
+                        <xf:trigger id="btn_xDefault" type="button" class="gs-btn gs-btn--text" ev:onclick="scwin.btn_xDefault_onclick"><xf:label><![CDATA[Mặc định]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_xAll" type="button" class="gs-btn gs-btn--text" ev:onclick="scwin.btn_xAll_onclick"><xf:label><![CDATA[Chọn tất cả]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_xNone" type="button" class="gs-btn gs-btn--text" ev:onclick="scwin.btn_xNone_onclick"><xf:label><![CDATA[Bỏ chọn]]></xf:label></xf:trigger>
+                    </xf:group>
+                </xf:group>
+                <xf:select id="chk_xCols" class="gs-checks gs-checks--grid" appearance="full" cols="3" rows="" delimiter="," renderType="checkboxgroup">
+                    <xf:choices><xf:itemset nodeset="data:dlt_expCols"><xf:label ref="label"/><xf:value ref="key"/></xf:itemset></xf:choices>
+                </xf:select>
+                <xf:select id="chk_xQr" class="gs-checks gs-checks--single" appearance="full" cols="1" rows="" delimiter="," renderType="checkboxgroup">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Kèm mã QR]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select>
+                <w2:textbox id="tbx_xQrHint" class="gs-field__hint" tagname="p" label=""/>
+            </xf:group>
+            <xf:group id="grp_xFooter" class="gs-modal__footer">
+                <w2:textbox id="tbx_xFoot" class="gs-modal__shortcut" tagname="span" label="Tối đa 10.000 khách mỗi lần xuất."/>
+                <xf:group id="grp_xActions" class="gs-modal__actions">
+                    <xf:trigger id="btn_xCancel" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_xCancel_onclick"><xf:label><![CDATA[Hủy]]></xf:label></xf:trigger>
+                    <xf:trigger id="btn_xRun" type="button" class="gs-btn gs-btn--primary gs-btn--icon gs-ico-download" ev:onclick="scwin.btn_xRun_onclick"><xf:label><![CDATA[Xuất file]]></xf:label></xf:trigger>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- Xóa -->
+    <xf:group id="grp_delMask" class="gs-modal-mask gs-modal-mask--top">
+        <xf:group id="grp_delModal" class="gs-modal gs-modal--confirm">
+            <xf:group id="grp_delIcon" class="gs-confirm__icon"/>
+            <w2:textbox id="tbx_delTitle" class="gs-confirm__title" tagname="h2" label=""/>
+            <w2:textbox id="tbx_delDesc" class="gs-confirm__desc" tagname="p" label=""/>
+            <w2:textbox id="tbx_delErr" class="gs-alert gs-alert--danger gs-pre is-hidden" tagname="p" label=""/>
+            <xf:group id="grp_delActions" class="gs-confirm__actions">
+                <xf:trigger id="btn_delCancel" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_delCancel_onclick"><xf:label><![CDATA[Đóng]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_delConfirm" type="button" class="gs-btn gs-btn--danger" ev:onclick="scwin.btn_delConfirm_onclick"><xf:label><![CDATA[Xóa khách]]></xf:label></xf:trigger>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- Nhập ghi chú (check-in thủ công / hủy check-in) -->
+    <xf:group id="grp_noteMask" class="gs-modal-mask gs-modal-mask--top">
+        <xf:group id="grp_noteModal" class="gs-modal gs-modal--note">
+            <w2:textbox id="tbx_nTitle" class="gs-confirm__title gs-note__title" tagname="h2" label=""/>
+            <w2:textbox id="tbx_nLabel" class="gs-label" tagname="span" label=""/>
+            <xf:textarea id="txa_note" class="gs-textarea gs-textarea--short" maxlength="500"/>
+            <w2:textbox id="tbx_nHint" class="gs-field__hint" tagname="p" label=""/>
+            <w2:textbox id="tbx_nErr" class="gs-alert is-hidden" tagname="p" label=""/>
+            <xf:group id="grp_nActions" class="gs-confirm__actions">
+                <xf:trigger id="btn_nCancel" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_nCancel_onclick"><xf:label><![CDATA[Hủy]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_nOk" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_nOk_onclick"><xf:label><![CDATA[Xác nhận]]></xf:label></xf:trigger>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <!-- Xác nhận dùng chung -->
+    <xf:group id="grp_cfmMask" class="gs-modal-mask gs-modal-mask--topmost">
+        <xf:group id="grp_cfmModal" class="gs-modal gs-modal--confirm">
+            <xf:group id="grp_cfmIcon" class="gs-confirm__icon gs-confirm__icon--info"/>
+            <w2:textbox id="tbx_cfmTitle" class="gs-confirm__title" tagname="h2" label=""/>
+            <w2:textbox id="tbx_cfmMsg" class="gs-confirm__desc" tagname="p" label=""/>
+            <xf:group id="grp_cfmActions" class="gs-confirm__actions">
+                <xf:trigger id="btn_cfmCancel" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_cfmCancel_onclick"><xf:label><![CDATA[Hủy]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_cfmOk" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_cfmOk_onclick"><xf:label><![CDATA[Đồng ý]]></xf:label></xf:trigger>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <w2:textbox id="tbx_toast" class="gs-toast" tagname="div" label="" ev:onclick="scwin.tbx_toast_onclick"/>
+</xf:group>
+</body>
+</html>
