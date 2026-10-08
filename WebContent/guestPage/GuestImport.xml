@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/guestPage/Guest.css" type="text/css"?>
+<?xml-stylesheet href="/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/guestPage/Guest.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+<head meta_screenName="Import khách mời">
+    <w2:type>COMPONENT</w2:type>
+    <w2:buildDate/>
+    <w2:MSA/>
+    <xf:model>
+        <w2:dataCollection baseNode="map">
+            <!-- Sự kiện nhận khách, mapping cột (field -> tên cột trong file), tùy chọn bỏ qua dòng lỗi -->
+            <w2:dataMap baseNode="map" id="dma_import">
+                <w2:keyInfo>
+                    <w2:key id="eventId" name="Sự kiện" dataType="text"/>
+                    <w2:key id="m_fullName" name="Cột cho Họ tên" dataType="text"/>
+                    <w2:key id="m_email" name="Cột cho Email" dataType="text"/>
+                    <w2:key id="m_phone" name="Cột cho Điện thoại" dataType="text"/>
+                    <w2:key id="m_company" name="Cột cho Công ty" dataType="text"/>
+                    <w2:key id="m_position" name="Cột cho Chức vụ" dataType="text"/>
+                    <w2:key id="m_guestType" name="Cột cho Loại khách" dataType="text"/>
+                    <w2:key id="m_tableNumber" name="Cột cho Bàn số" dataType="text"/>
+                    <w2:key id="m_notes" name="Cột cho Ghi chú" dataType="text"/>
+                    <w2:key id="skipErrors" name="Bỏ qua dòng lỗi" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_events" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="eventId" name="ID" dataType="text"/>
+                    <w2:column id="label" name="Sự kiện" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <!-- Các cột đọc được trong file (dùng cho dropdown mapping) -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_headers" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="value" name="Tên cột" dataType="text"/>
+                    <w2:column id="label" name="Nhãn" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <!-- Kết quả kiểm tra từng dòng -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_rows" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="rowNumber" name="Dòng" dataType="text"/>
+                    <w2:column id="valid" name="Hợp lệ" dataType="text"/>
+                    <w2:column id="fullName" name="Họ tên" dataType="text"/>
+                    <w2:column id="email" name="Email" dataType="text"/>
+                    <w2:column id="phone" name="Điện thoại" dataType="text"/>
+                    <w2:column id="company" name="Công ty" dataType="text"/>
+                    <w2:column id="position" name="Chức vụ" dataType="text"/>
+                    <w2:column id="guestType" name="Loại khách" dataType="text"/>
+                    <w2:column id="tableNumber" name="Bàn" dataType="text"/>
+                    <w2:column id="notes" name="Ghi chú" dataType="text"/>
+                    <w2:column id="errorText" name="Lỗi" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+            <!-- Lịch sử import của sự kiện -->
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_batches" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="batchId" name="ID" dataType="text"/>
+                    <w2:column id="eventId" name="Sự kiện" dataType="text"/>
+                    <w2:column id="fileName" name="File" dataType="text"/>
+                    <w2:column id="status" name="Trạng thái" dataType="text"/>
+                    <w2:column id="totalRows" name="Tổng dòng" dataType="text"/>
+                    <w2:column id="successRows" name="Thành công" dataType="text"/>
+                    <w2:column id="failedRows" name="Lỗi" dataType="text"/>
+                    <w2:column id="errorCount" name="Số dòng lỗi" dataType="text"/>
+                    <w2:column id="importedAt" name="Thời điểm" dataType="text"/>
+                    <w2:column id="importedByName" name="Người import" dataType="text"/>
+                    <w2:column id="actErrors" name="Log lỗi" dataType="text"/>
+                    <w2:column id="actGuests" name="Xem khách" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+        </w2:dataCollection>
+        <w2:workflowCollection/>
+        <!-- Submission gọi API: action và header Authorization được gán lúc chạy trong scwin.callApi -->
+        <xf:submission id="sbm_lookups" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_lookups_submitdone"
+                       ev:submiterror="scwin.sbm_lookups_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_confirm" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_confirm_submitdone"
+                       ev:submiterror="scwin.sbm_confirm_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_cancelBatch" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_cancelBatch_submitdone"
+                       ev:submiterror="scwin.sbm_cancelBatch_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_batches" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_batches_submitdone"
+                       ev:submiterror="scwin.sbm_batches_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_batchErrors" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_batchErrors_submitdone"
+                       ev:submiterror="scwin.sbm_batchErrors_submiterror" abortTrigger=""/>
+    </xf:model>
+    <w2:layoutInfo/>
+    <w2:publicInfo method=""/>
+    <script type="text/javascript" lazy="false"><![CDATA[
+/* =====================================================================
+ * KHÁCH MỜI - IMPORT DANH SÁCH (wizard: chọn file -> kiểm tra & mapping -> kết quả)
+ * API: /api/guests/import (xem API_GUEST.md mục 6)
+ * ===================================================================== */
+scwin.P = "gs";
+/* =====================================================================
+ * LỚP DÙNG CHUNG (giống các màn Hội trường / Sự kiện)
+ *   - Phiên đăng nhập, quyền
+ *   - Gọi API JSON bằng submission WebSquare (scwin.callApi)
+ *   - Upload / tải file bằng XMLHttpRequest (submission không xử lý file nhị phân)
+ * ===================================================================== */
+scwin.API_BASE = "http://localhost:8081";
+scwin.KEY = { TOKEN: "ssc_token", USER: "ssc_user", PERMS: "ssc_permissions", MENUS: "ssc_menus" };
+scwin.LOGIN_PAGE = "/authPage/LoginPage.xml";
+scwin.CTX = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+scwin.SBM_TIMEOUT = 60000;
+scwin.sbmQueue = {};
+scwin.sbmJob = {};
+scwin.toastTimer = null;
+
+/* ---------- Tiện ích ---------- */
+scwin.comp = function (id) { return $p.getComponentById(id); };
+scwin.domOf = function (c) { return c ? (c.render || document.getElementById(c.id) || null) : null; };
+scwin.show = function (c, v) { if (!c) return; if (v === false) c.addClass("is-hidden"); else c.removeClass("is-hidden"); };
+scwin.toggleClass = function (c, cls, on) { if (!c) return; if (on) c.addClass(cls); else c.removeClass(cls); };
+scwin.safeColor = function (c) { return /^#[0-9a-f]{3,8}$/i.test(String(c || "")) ? c : "#63746b"; };
+scwin.trim = function (v) { return v == null ? "" : String(v).replace(/^\s+|\s+$/g, ""); };
+scwin.dash = function (v) { return (v == null || scwin.trim(v) === "") ? "—" : String(v); };
+scwin.pad = function (n) { return n < 10 ? "0" + n : String(n); };
+scwin.clamp = function (v, a, b) { v = Number(v) || 0; a = a == null ? 0 : a; b = b == null ? 100 : b; return Math.max(a, Math.min(b, v)); };
+scwin.hasOwn = function (o, k) { return o != null && Object.prototype.hasOwnProperty.call(o, k); };
+scwin.fmtNumber = function (n) { return (n == null || n === "" || isNaN(Number(n))) ? "—" : Number(n).toLocaleString("vi-VN"); };
+scwin.fmtRate = function (r) { return (Math.round((Number(r) || 0) * 10) / 10).toLocaleString("vi-VN") + "%"; };
+scwin.fmtDate = function (s) { if (!s) return ""; var p = String(s).substring(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : String(s); };
+scwin.fmtTime = function (s) { return s ? String(s).substring(0, 5) : ""; };
+scwin.fmtDateTime = function (iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso);
+    return scwin.pad(d.getDate()) + "/" + scwin.pad(d.getMonth() + 1) + "/" + d.getFullYear() + " " + scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes());
+};
+scwin.fmtClock = function (iso) {
+    var d = iso ? new Date(iso) : new Date();
+    if (isNaN(d.getTime())) d = new Date();
+    return scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes()) + ":" + scwin.pad(d.getSeconds());
+};
+scwin.fmtSize = function (b) { return b >= 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB"; };
+/** Tham số mảng được nối bằng dấu phẩy (backend nhận cả "A,B" lẫn lặp tham số). */
+scwin.buildQuery = function (p) {
+    var out = [];
+    for (var k in p) {
+        if (!p.hasOwnProperty(k)) continue;
+        var v = p[k];
+        if (Array.isArray(v)) { if (!v.length) continue; v = v.join(","); }
+        if (v === null || v === undefined || v === "") continue;
+        out.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+    }
+    return out.join("&");
+};
+scwin.getQueryParam = function (name) {
+    var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+};
+scwin.pageUrl = function (path, params) {
+    var q = params ? scwin.buildQuery(params) : "";
+    return scwin.CTX + "/websquare/websquare.html?w2xPath=" + scwin.CTX + path + (q ? "&" + q : "");
+};
+scwin.escHtml = function (s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); };
+scwin.el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+scwin.clearEl = function (el) { if (el) while (el.firstChild) el.removeChild(el.firstChild); };
+scwin.fitGrid = function (grid, rows, rowH, maxRows) {
+    var n = maxRows ? Math.min(rows, maxRows) : rows;
+    grid.setStyle("height", (rows ? 42 + n * (rowH || 46) + 2 : 0) + "px");
+    scwin.show(grid, rows > 0);
+};
+scwin.isTrue = function (v) { return v === true || v === "true" || v === 1 || v === "1"; };
+
+/* ---------- Phiên đăng nhập & quyền ---------- */
+scwin.storeGet = function (k) { try { return window.localStorage.getItem(k) || window.sessionStorage.getItem(k) || ""; } catch (e) { return ""; } };
+scwin.parseJSON = function (t) { if (!t || typeof t !== "string") return null; try { return JSON.parse(t); } catch (e) { return null; } };
+scwin.getToken = function () { return String(scwin.storeGet(scwin.KEY.TOKEN)).replace(/^Bearer\s+/i, ""); };
+scwin.getPerms = function () { return scwin.parseJSON(scwin.storeGet(scwin.KEY.PERMS)) || []; };
+scwin.getUser = function () { return scwin.parseJSON(scwin.storeGet(scwin.KEY.USER)) || {}; };
+/** Header chưa kịp lưu quyền (lần đầu vào trang) thì tạm cho phép; backend vẫn chặn bằng 403. */
+scwin.can = function (code) { var p = scwin.getPerms(); return !p.length || p.indexOf(code) >= 0; };
+scwin.canAny = function (codes) { for (var i = 0; i < codes.length; i++) if (scwin.can(codes[i])) return true; return false; };
+scwin.goLogin = function () {
+    if (scwin._redirecting) return;
+    scwin._redirecting = true;
+    for (var k in scwin.KEY) {
+        if (!scwin.KEY.hasOwnProperty(k)) continue;
+        try { window.localStorage.removeItem(scwin.KEY[k]); window.sessionStorage.removeItem(scwin.KEY[k]); } catch (e) { }
+    }
+    window.location.href = scwin.pageUrl(scwin.LOGIN_PAGE);
+};
+
+/* ---------- Lỗi ---------- */
+scwin.defaultMessage = function (status) {
+    if (status === 0) return "Không kết nối được máy chủ. Kiểm tra mạng hoặc backend (" + scwin.API_BASE + ").";
+    if (status === 401) return "Phiên đăng nhập đã hết hạn. Hãy đăng nhập lại.";
+    if (status === 403) return "Tài khoản của bạn chưa được cấp quyền cho thao tác này.";
+    if (status === 404) return "Không tìm thấy dữ liệu, hoặc dữ liệu nằm ngoài phạm vi bạn được xem.";
+    if (status >= 500) return "Máy chủ đang gặp sự cố. Thử lại sau ít phút.";
+    return "Yêu cầu không thành công (HTTP " + status + ").";
+};
+scwin.authHeader = function (accept) {
+    var h = { "Accept": accept || "application/json" };
+    var t = scwin.getToken();
+    if (t) h["Authorization"] = "Bearer " + t;
+    return h;
+};
+/** Chuẩn hóa lỗi: { status, code, message, data }. 401 thì đưa về trang đăng nhập. */
+scwin.buildError = function (status, json) {
+    var err = {
+        status: status || 0,
+        code: (json && json.code) || (status ? "HTTP_" + status : "NETWORK_ERROR"),
+        message: (json && json.message) || scwin.defaultMessage(status || 0),
+        data: json ? json.data : null
+    };
+    if (status === 401) {
+        err.message = scwin.defaultMessage(401);
+        scwin.toast(err.message + " Đang chuyển về trang đăng nhập…", "error");
+        setTimeout(scwin.goLogin, 1500);
+    }
+    return err;
+};
+
+/* ---------- Submission ----------
+ *   scwin.callApi("sbm_xxx", { url: "...", body: {...} }) -> Promise<data>
+ *   Mỗi submission có hàng đợi riêng nên gọi chồng nhau không bị trả nhầm kết quả.
+ */
+scwin.callApi = function (sbmId, opts) {
+    return new Promise(function (resolve, reject) {
+        if (!scwin.sbmQueue[sbmId]) scwin.sbmQueue[sbmId] = [];
+        scwin.sbmQueue[sbmId].push({ opts: opts || {}, resolve: resolve, reject: reject });
+        scwin.sbmNext(sbmId);
+    });
+};
+scwin.sbmNext = function (sbmId) {
+    if (scwin.sbmJob[sbmId]) return;
+    var q = scwin.sbmQueue[sbmId];
+    if (!q || !q.length) return;
+    var job = q.shift();
+    scwin.sbmJob[sbmId] = job;
+    var sbm = $p.getSubmission(sbmId);
+    if (!sbm) { scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_NOT_FOUND", message: "Chưa khai báo submission " + sbmId + "." }); return; }
+    sbm.action = job.opts.url;
+    sbm.requestHeader = scwin.authHeader();
+    job.timer = setTimeout(function () {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "TIMEOUT", message: "Máy chủ phản hồi quá lâu. Thử lại sau." });
+    }, scwin.SBM_TIMEOUT);
+    try {
+        if (job.opts.body !== undefined) $p.executeSubmission(sbmId, job.opts.body);
+        else $p.executeSubmission(sbmId);
+    } catch (ex) {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_ERROR", message: (ex && ex.message) || String(ex) });
+    }
+};
+scwin.sbmSettle = function (sbmId, data, err) {
+    var job = scwin.sbmJob[sbmId];
+    if (!job) return;
+    clearTimeout(job.timer);
+    scwin.sbmJob[sbmId] = null;
+    if (err) job.reject(err); else job.resolve(data);
+    scwin.sbmNext(sbmId);
+};
+scwin.readResponse = function (e) {
+    if (!e) return null;
+    if (e.responseJSON && typeof e.responseJSON === "object") return e.responseJSON;
+    return scwin.parseJSON(e.responseText) || scwin.parseJSON(e.responseBody);
+};
+scwin.onSbmDone = function (sbmId, e) {
+    var json = scwin.readResponse(e);
+    if (json && json.success === false) { scwin.sbmSettle(sbmId, null, scwin.buildError((e && e.responseStatusCode) || 200, json)); return; }
+    scwin.sbmSettle(sbmId, scwin.hasOwn(json, "data") ? json.data : json, null);
+};
+scwin.onSbmError = function (sbmId, e) {
+    var status = (e && (e.responseStatusCode || e.status)) || 0;
+    scwin.sbmSettle(sbmId, null, scwin.buildError(status, scwin.readResponse(e)));
+};
+
+/* ---------- XMLHttpRequest: upload multipart, nhận file ----------
+ *   opts.body: object (gửi JSON) | FormData (multipart)
+ *   opts.responseType: "json" (mặc định) | "blob" -> resolve { blob, name, type, headers }
+ */
+scwin.xhr = function (method, url, opts) {
+    opts = opts || {};
+    return new Promise(function (resolve, reject) {
+        var x = new XMLHttpRequest();
+        x.open(method, url);
+        var h = scwin.authHeader(opts.responseType === "blob" ? "*/*" : "application/json");
+        for (var k in h) if (h.hasOwnProperty(k)) x.setRequestHeader(k, h[k]);
+        var body = null;
+        if (typeof FormData !== "undefined" && opts.body instanceof FormData) body = opts.body;
+        else if (opts.body !== undefined && opts.body !== null) { x.setRequestHeader("Content-Type", "application/json"); body = JSON.stringify(opts.body); }
+        if (opts.responseType === "blob") x.responseType = "blob";
+        if (opts.onProgress && x.upload) x.upload.onprogress = function (ev) { if (ev.lengthComputable) opts.onProgress(Math.round(ev.loaded * 100 / ev.total)); };
+        x.onload = function () {
+            var ok = x.status >= 200 && x.status < 300;
+            if (opts.responseType === "blob") {
+                var type = x.getResponseHeader("Content-Type") || "";
+                if (ok && type.indexOf("application/json") < 0) {
+                    resolve({ blob: x.response, type: type, name: scwin.fileNameFrom(x.getResponseHeader("Content-Disposition")), xhr: x });
+                    return;
+                }
+                scwin.readBlobJSON(x.response).then(function (json) { reject(scwin.buildError(ok ? 200 : x.status, json)); });
+                return;
+            }
+            var json = scwin.parseJSON(x.responseText);
+            if (ok && !(json && json.success === false)) resolve(scwin.hasOwn(json, "data") ? json.data : json);
+            else reject(scwin.buildError(x.status, json));
+        };
+        x.onerror = function () { reject(scwin.buildError(0, null)); };
+        x.send(body);
+    });
+};
+scwin.readBlobJSON = function (blob) {
+    return new Promise(function (resolve) {
+        if (!blob || typeof FileReader === "undefined") { resolve(null); return; }
+        var r = new FileReader();
+        r.onload = function () { resolve(scwin.parseJSON(r.result)); };
+        r.onerror = function () { resolve(null); };
+        r.readAsText(blob);
+    });
+};
+scwin.fileNameFrom = function (cd) {
+    if (!cd) return "";
+    var m = /filename\*=UTF-8''([^;]+)/i.exec(cd) || /filename="?([^";]+)"?/i.exec(cd);
+    if (!m) return "";
+    try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+};
+scwin.saveBlob = function (blob, name) {
+    var url = URL.createObjectURL(blob);
+    var a = scwin.el("a", scwin.P + "-native-link");
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(url); if (a.parentNode) a.parentNode.removeChild(a); }, 1500);
+};
+/** Tải file (GET hoặc POST kèm body JSON) rồi lưu về máy. */
+scwin.downloadFile = function (url, fallbackName, btn, method, body) {
+    if (btn) btn.addClass("is-busy");
+    return scwin.xhr(method || "GET", url, { responseType: "blob", body: body }).then(function (r) {
+        scwin.saveBlob(r.blob, r.name || fallbackName);
+        return r;
+    }).catch(function (err) {
+        scwin.toast(err.message, "error");
+        throw err;
+    }).then(function (r) { if (btn) btn.removeClass("is-busy"); return r; }, function () { if (btn) btn.removeClass("is-busy"); });
+};
+/** In file PDF: nạp vào iframe ẩn rồi mở hộp thoại in của trình duyệt. */
+scwin.printBlob = function (blob) {
+    return new Promise(function (resolve) {
+        var old = document.getElementById("ssc-print-frame");
+        if (old) old.parentNode.removeChild(old);
+        var url = URL.createObjectURL(blob);
+        var f = document.createElement("iframe");
+        f.id = "ssc-print-frame";
+        f.className = scwin.P + "-print-frame";
+        f.src = url;
+        f.onload = function () {
+            setTimeout(function () {
+                try { f.contentWindow.focus(); f.contentWindow.print(); }
+                catch (e) { window.open(url, "_blank"); }
+                resolve();
+            }, 300);
+        };
+        document.body.appendChild(f);
+    });
+};
+
+/* ---------- Thông báo ---------- */
+scwin.toast = function (msg, type) {
+    if (typeof tbx_toast === "undefined") return;
+    clearTimeout(scwin.toastTimer);
+    tbx_toast.setValue(msg || "");
+    ["success", "error", "warning", "info"].forEach(function (c) { tbx_toast.removeClass(scwin.P + "-toast--" + c); });
+    tbx_toast.addClass(scwin.P + "-toast--" + (type || "info"));
+    tbx_toast.addClass("is-show");
+    scwin.toastTimer = setTimeout(function () { tbx_toast.removeClass("is-show"); }, (type === "error" || type === "warning") ? 6500 : 3800);
+};
+scwin.tbx_toast_onclick = function () { tbx_toast.removeClass("is-show"); };
+scwin.showWarnings = function (list) {
+    if (!list || !list.length) return;
+    setTimeout(function () { scwin.toast("Lưu ý: " + list.join(" "), "warning"); }, 1800);
+};
+
+/* ---------- Danh mục dùng chung: GET /api/guests/lookups ---------- */
+scwin.lookups = { events: [], guestTypes: [], guestStatuses: [] };
+scwin.typeMeta = function (code) {
+    for (var i = 0; i < scwin.lookups.guestTypes.length; i++) if (scwin.lookups.guestTypes[i].code === code) return scwin.lookups.guestTypes[i];
+    return { code: code, name: code || "—", color: "#9E9E9E" };
+};
+scwin.statusMeta = function (code) {
+    for (var i = 0; i < scwin.lookups.guestStatuses.length; i++) if (scwin.lookups.guestStatuses[i].code === code) return scwin.lookups.guestStatuses[i];
+    return { code: code, name: code || "—", color: "#9E9E9E" };
+};
+scwin.GUEST_TYPE_VN = { VIP: "VIP", SPEAKER: "Diễn giả", GUEST: "Khách mời", STAFF: "Nhân viên", PRESS: "Báo chí", OTHER: "Khác" };
+scwin.GUEST_STATUS_VN = { INVITED: "Đã mời", CONFIRMED: "Đã xác nhận", CHECKED_IN: "Đã check-in", ABSENT: "Vắng mặt" };
+scwin.typeName = function (code) { return scwin.GUEST_TYPE_VN[code] || scwin.typeMeta(code).name; };
+scwin.statusName = function (code) { return scwin.GUEST_STATUS_VN[code] || scwin.statusMeta(code).name; };
+scwin.eventLabel = function (e) { return e.eventCode + " - " + e.eventName + (e.startDate ? " (" + scwin.fmtDate(e.startDate) + ")" : ""); };
+
+
+scwin.GUEST_API = scwin.API_BASE + "/api/guests";
+scwin.IMPORT_API = scwin.GUEST_API + "/import";
+scwin.LIST_PAGE = "/guestPage/GuestList.xml";
+scwin.MAX_FILE = 10 * 1024 * 1024;
+scwin.EXTS = ["xlsx", "xls", "csv"];
+scwin.MAP_FIELDS = [
+    { key: "fullName", label: "Họ tên", required: true },
+    { key: "email", label: "Email", required: true },
+    { key: "phone", label: "Điện thoại" },
+    { key: "company", label: "Công ty" },
+    { key: "position", label: "Chức vụ" },
+    { key: "guestType", label: "Loại khách" },
+    { key: "tableNumber", label: "Bàn số" },
+    { key: "notes", label: "Ghi chú" }
+];
+scwin.BATCH_STATUS_VN = { PENDING: "Chờ xác nhận", COMPLETED: "Hoàn tất", CANCELLED: "Đã hủy", FAILED: "Lỗi" };
+
+scwin.file = null;
+scwin.batch = null;           // kết quả preview đang xem
+scwin.result = null;          // kết quả sau khi xác nhận
+scwin.rowFilter = "all";
+scwin.step = 1;
+scwin.busy = false;
+
+/* ---------- Vòng đời ---------- */
+scwin.onpageload = function () {
+    if (!scwin.getToken()) { scwin.goLogin(); return; }
+    dma_import.setJSON({ eventId: scwin.getQueryParam("eventId"), skipErrors: "" });
+    scwin.initFileInput();
+    scwin.initDropzone();
+    scwin.setStep(1);
+    scwin.loadLookups();
+};
+scwin.onpageunload = function () {
+    // Rời trang khi batch còn chờ xác nhận -> hủy để không treo batch
+    if (scwin.batch && !scwin.result) scwin.cancelBatch(scwin.batch.batchId, true);
+};
+
+scwin.loadLookups = function () {
+    scwin.callApi("sbm_lookups", { url: scwin.GUEST_API + "/lookups" }).then(function (d) {
+        scwin.lookups.events = (d && d.events) || [];
+        dlt_events.setJSON(scwin.lookups.events.filter(function (e) { return e.statusCode !== "ARCHIVED"; })
+            .map(function (e) { return { eventId: String(e.eventId), label: scwin.eventLabel(e) }; }));
+        sbx_event.setValue(dma_import.get("eventId") || "");
+        scwin.updateCheckButton();
+        scwin.loadHistory();
+    }).catch(function (err) { scwin.toast("Không tải được danh sách sự kiện: " + err.message, "error"); });
+};
+
+/* ---------- Bước ---------- */
+scwin.setStep = function (n) {
+    scwin.step = n;
+    [grp_step1, grp_step2, grp_step3].forEach(function (g, i) { scwin.show(g, i + 1 === n); });
+    [grp_st1, grp_st2, grp_st3].forEach(function (g, i) {
+        scwin.toggleClass(g, "is-current", i + 1 === n);
+        scwin.toggleClass(g, "is-done", i + 1 < n);
+    });
+    window.scrollTo && window.scrollTo(0, 0);
+};
+
+/* =====================================================================
+ * BƯỚC 1: CHỌN SỰ KIỆN, TẢI MẪU, CHỌN FILE
+ * ===================================================================== */
+scwin.sbx_event_onchange = function () {
+    dma_import.set("eventId", sbx_event.getValue() || "");
+    scwin.updateCheckButton();
+    scwin.loadHistory();
+};
+scwin.btn_tplXlsx_onclick = function () { scwin.downloadFile(scwin.IMPORT_API + "/template?format=xlsx", "MauImportKhachMoi.xlsx", btn_tplXlsx); };
+scwin.btn_tplCsv_onclick = function () { scwin.downloadFile(scwin.IMPORT_API + "/template?format=csv", "MauImportKhachMoi.csv", btn_tplCsv); };
+
+scwin.initFileInput = function () {
+    var inp = document.createElement("input");
+    inp.type = "file";
+    inp.accept = ".xlsx,.xls,.csv";
+    inp.className = "gs-native-file";
+    inp.addEventListener("change", function () { var f = inp.files && inp.files[0]; inp.value = ""; if (f) scwin.acceptFile(f); });
+    document.body.appendChild(inp);
+    scwin.fileInput = inp;
+};
+scwin.initDropzone = function () {
+    var el = scwin.domOf(grp_drop);
+    if (!el) return;
+    el.addEventListener("dragover", function (e) { e.preventDefault(); grp_drop.addClass("is-dragover"); });
+    el.addEventListener("dragleave", function () { grp_drop.removeClass("is-dragover"); });
+    el.addEventListener("drop", function (e) {
+        e.preventDefault(); grp_drop.removeClass("is-dragover");
+        var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (f) scwin.acceptFile(f);
+    });
+};
+scwin.grp_drop_onclick = function () { if (scwin.fileInput) scwin.fileInput.click(); };
+
+scwin.acceptFile = function (f) {
+    var ext = String(f.name.split(".").pop() || "").toLowerCase();
+    scwin.show(tbx_s1Err, false);
+    if (scwin.EXTS.indexOf(ext) < 0) { scwin.s1Error("Chỉ nhận file .xlsx, .xls hoặc .csv."); return; }
+    if (f.size > scwin.MAX_FILE) { scwin.s1Error("File nặng " + scwin.fmtSize(f.size) + ", vượt giới hạn 10 MB."); return; }
+    scwin.file = f;
+    tbx_fileName.setValue(f.name);
+    tbx_fileMeta.setValue(scwin.fmtSize(f.size) + ", " + ext.toUpperCase());
+    scwin.show(grp_fileBar, true);
+    grp_drop.addClass("has-file");
+    scwin.updateCheckButton();
+};
+scwin.btn_fileClear_onclick = function () {
+    scwin.file = null;
+    scwin.show(grp_fileBar, false);
+    grp_drop.removeClass("has-file");
+    scwin.updateCheckButton();
+};
+scwin.s1Error = function (msg) { tbx_s1Err.setValue(msg); scwin.show(tbx_s1Err, true); };
+scwin.updateCheckButton = function () {
+    var ready = !!(scwin.file && dma_import.get("eventId"));
+    try { btn_check.setDisabled(!ready); } catch (e) { }
+    tbx_checkHint.setValue(!dma_import.get("eventId") ? "Chọn sự kiện nhận khách." : (!scwin.file ? "Chọn file danh sách khách." : "Sẵn sàng kiểm tra " + scwin.file.name + "."));
+};
+
+/** Gửi file lên để kiểm tra (preview). mapping = null -> server tự nhận cột theo tên. */
+scwin.runPreview = function (mapping) {
+    if (scwin.busy) return;
+    if (!dma_import.get("eventId")) { scwin.s1Error("Chọn sự kiện trước."); return; }
+    if (!scwin.file) { scwin.s1Error("Chọn file trước."); return; }
+    var fd = new FormData();
+    fd.append("eventId", dma_import.get("eventId"));
+    fd.append("file", scwin.file);
+    if (mapping) fd.append("columnMapping", JSON.stringify(mapping));
+    var oldBatch = scwin.batch && !scwin.result ? scwin.batch.batchId : null;
+    scwin.busy = true;
+    var btn = mapping ? btn_remap : btn_check;
+    btn.addClass("is-busy");
+    tbx_progress.setValue("Đang tải file lên… 0%");
+    scwin.show(tbx_progress, true);
+    scwin.xhr("POST", scwin.IMPORT_API + "/preview", {
+        body: fd,
+        onProgress: function (p) { tbx_progress.setValue(p < 100 ? "Đang tải file lên… " + p + "%" : "Đang kiểm tra dữ liệu…"); }
+    }).then(function (d) {
+        if (oldBatch && oldBatch !== d.batchId) scwin.cancelBatch(oldBatch, true);
+        scwin.batch = d;
+        scwin.result = null;
+        scwin.renderPreview();
+        scwin.setStep(2);
+    }).catch(function (err) {
+        if (scwin.step === 1) scwin.s1Error(err.message);
+        else { tbx_mapErr.setValue(err.message); scwin.show(tbx_mapErr, true); }
+    }).then(function () {
+        scwin.busy = false;
+        btn.removeClass("is-busy");
+        scwin.show(tbx_progress, false);
+    });
+};
+scwin.btn_check_onclick = function () { scwin.runPreview(null); };
+
+/* =====================================================================
+ * BƯỚC 2: MAPPING CỘT & XEM TRƯỚC
+ * ===================================================================== */
+scwin.renderPreview = function () {
+    var b = scwin.batch;
+    tbx_sumTotal.setValue(scwin.fmtNumber(b.totalRows));
+    tbx_sumValid.setValue(scwin.fmtNumber(b.validRows));
+    tbx_sumInvalid.setValue(scwin.fmtNumber(b.invalidRows));
+    tbx_previewFile.setValue(b.fileName + " vào " + scwin.eventName(b.eventId));
+
+    // Mapping: danh sách cột đọc được trong file
+    dlt_headers.setJSON((b.headers || []).map(function (h, i) { return { value: h, label: "Cột " + (i + 1) + ": " + h }; }));
+    var m = b.columnMapping || {}, map = {};
+    scwin.MAP_FIELDS.forEach(function (f) { map["m_" + f.key] = m[f.key] || ""; });
+    map.eventId = dma_import.get("eventId");
+    map.skipErrors = dma_import.get("skipErrors");
+    dma_import.setJSON(map);
+    var un = (b.unmappedFields || []).map(function (k) { return scwin.fieldLabel(k); });
+    tbx_unmapped.setValue(un.length ? "Chưa tìm thấy cột cho: " + un.join(", ") + ". Chọn cột tương ứng bên dưới nếu file có các thông tin này." : "");
+    scwin.show(tbx_unmapped, un.length > 0);
+    scwin.show(tbx_mapErr, false);
+
+    scwin.setRowFilter(b.invalidRows ? "invalid" : "all");
+    scwin.updateConfirm();
+};
+
+scwin.fieldLabel = function (k) { for (var i = 0; i < scwin.MAP_FIELDS.length; i++) if (scwin.MAP_FIELDS[i].key === k) return scwin.MAP_FIELDS[i].label; return k; };
+scwin.eventName = function (id) {
+    for (var i = 0; i < scwin.lookups.events.length; i++) if (String(scwin.lookups.events[i].eventId) === String(id)) return scwin.lookups.events[i].eventName;
+    return "sự kiện #" + id;
+};
+
+scwin.setRowFilter = function (f) {
+    scwin.rowFilter = f;
+    scwin.toggleClass(btn_rfAll, "is-selected", f === "all");
+    scwin.toggleClass(btn_rfValid, "is-selected", f === "valid");
+    scwin.toggleClass(btn_rfInvalid, "is-selected", f === "invalid");
+    var b = scwin.batch;
+    btn_rfAll.setValue("Tất cả (" + scwin.fmtNumber(b.totalRows) + ")");
+    btn_rfValid.setValue("Hợp lệ (" + scwin.fmtNumber(b.validRows) + ")");
+    btn_rfInvalid.setValue("Có lỗi (" + scwin.fmtNumber(b.invalidRows) + ")");
+    var rows = (b.rows || []).filter(function (r) { return f === "all" || (f === "valid" ? r.valid : !r.valid); });
+    dlt_rows.setJSON(rows.map(function (r) {
+        var d = r.data || {};
+        return {
+            rowNumber: String(r.rowNumber), valid: r.valid ? "1" : "0",
+            fullName: d.fullName || "", email: d.email || "", phone: d.phone || "", company: d.company || "",
+            position: d.position || "", guestType: d.guestType || "", tableNumber: d.tableNumber || "", notes: d.notes || "",
+            errorText: (r.errors || []).map(function (e) { return e.message; }).join("; ")
+        };
+    }));
+    for (var i = 0; i < rows.length; i++) {
+        try { grd_rows.setCellClass(i, "valid", rows[i].valid ? "gs-rowok" : "gs-rowbad"); } catch (e) { }
+    }
+    scwin.show(grp_rowsEmpty, !rows.length);
+    tbx_rowsEmpty.setValue(f === "invalid" ? "Không có dòng lỗi nào." : "Không có dòng nào.");
+};
+scwin.btn_rfAll_onclick = function () { scwin.setRowFilter("all"); };
+scwin.btn_rfValid_onclick = function () { scwin.setRowFilter("valid"); };
+scwin.btn_rfInvalid_onclick = function () { scwin.setRowFilter("invalid"); };
+
+scwin.gfValid = function (v) { return v === "1" ? "● Hợp lệ" : "● Lỗi"; };
+scwin.gfRow = function (v) { return "Dòng " + v; };
+scwin.gfDash = function (v) { return scwin.dash(v); };
+
+/** Mapping đang chọn: field -> tên cột (rỗng = không nhập). */
+scwin.currentMapping = function () {
+    var m = {};
+    scwin.MAP_FIELDS.forEach(function (f) {
+        var c = scwin.comp("sbx_m_" + f.key);
+        var v = c ? c.getValue() : dma_import.get("m_" + f.key);
+        m[f.key] = v || "";
+    });
+    return m;
+};
+scwin.btn_remap_onclick = function () {
+    var m = scwin.currentMapping();
+    var missing = scwin.MAP_FIELDS.filter(function (f) { return f.required && !m[f.key]; }).map(function (f) { return f.label; });
+    if (missing.length) { tbx_mapErr.setValue("Cần chọn cột cho: " + missing.join(", ") + "."); scwin.show(tbx_mapErr, true); return; }
+    var used = {}, dup = [];
+    for (var k in m) if (m[k]) { if (used[m[k]]) dup.push(m[k]); used[m[k]] = true; }
+    if (dup.length) { tbx_mapErr.setValue("Cột “" + dup[0] + "” đang được chọn cho nhiều thông tin."); scwin.show(tbx_mapErr, true); return; }
+    scwin.runPreview(m);
+};
+scwin.mapping_onchange = function () { scwin.show(tbx_mapErr, false); grp_mapping.addClass("is-dirty"); };
+
+scwin.updateConfirm = function () {
+    var b = scwin.batch;
+    if (!b) return;
+    var skip = !!String(chk_skip.getValue() || "");
+    var n = skip || !b.invalidRows ? b.validRows : 0;
+    btn_confirm.setValue(n ? "Import " + scwin.fmtNumber(n) + " khách" : "Import khách");
+    var blocked = !b.validRows || (b.invalidRows && !skip);
+    try { btn_confirm.setDisabled(!!blocked); } catch (e) { }
+    tbx_confirmHint.setValue(!b.validRows ? "File không có dòng hợp lệ nào để import."
+        : b.invalidRows && !skip ? "Còn " + scwin.fmtNumber(b.invalidRows) + " dòng lỗi. Sửa file rồi kiểm tra lại, hoặc tích “Bỏ qua dòng lỗi”."
+        : "Mỗi khách được tạo ở trạng thái Đã mời và có sẵn mã QR cá nhân.");
+    scwin.toggleClass(tbx_confirmHint, "is-warning", !!blocked);
+    scwin.show(btn_errCsv, b.invalidRows > 0);
+};
+scwin.chk_skip_onchange = function () { dma_import.set("skipErrors", chk_skip.getValue() || ""); scwin.updateConfirm(); };
+
+/** Tải danh sách dòng lỗi (tạo CSV ngay trên trình duyệt từ kết quả kiểm tra). */
+scwin.btn_errCsv_onclick = function () {
+    var b = scwin.batch;
+    var q = function (s) { s = String(s == null ? "" : s); return /[",\n;]/.test(s) ? "\"" + s.replace(/"/g, "\"\"") + "\"" : s; };
+    var lines = ["Dòng,Cột,Mã lỗi,Mô tả lỗi,Họ tên,Email,Điện thoại"];
+    (b.rows || []).forEach(function (r) {
+        if (r.valid) return;
+        var d = r.data || {};
+        (r.errors || []).forEach(function (e) { lines.push([r.rowNumber, e.column, e.code, e.message, d.fullName, d.email, d.phone].map(q).join(",")); });
+    });
+    scwin.saveBlob(new Blob(["\ufeff" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" }), "LoiImport-" + (b.fileName || "file").replace(/\.[^.]+$/, "") + ".csv");
+};
+
+scwin.btn_back_onclick = function () {
+    if (scwin.batch && !scwin.result) scwin.cancelBatch(scwin.batch.batchId, true);
+    scwin.batch = null;
+    scwin.setStep(1);
+};
+scwin.cancelBatch = function (batchId, silent) {
+    return scwin.callApi("sbm_cancelBatch", { url: scwin.IMPORT_API + "/" + batchId + "/cancel" })
+        .catch(function (err) { if (!silent) scwin.toast(err.message, "error"); });
+};
+
+scwin.btn_confirm_onclick = function () {
+    var b = scwin.batch;
+    if (!b || scwin.busy) return;
+    var skip = !!String(chk_skip.getValue() || "");
+    scwin.busy = true;
+    btn_confirm.addClass("is-busy");
+    scwin.callApi("sbm_confirm", { url: scwin.IMPORT_API + "/" + b.batchId + "/confirm", body: { skipErrors: skip } }).then(function (r) {
+        scwin.result = r;
+        scwin.renderResult();
+        scwin.setStep(3);
+        scwin.loadHistory();
+    }).catch(function (err) {
+        if (err.code === "IMPORT_ALREADY_PROCESSED") { scwin.toast(err.message + " Hãy kiểm tra lại file.", "warning"); scwin.btn_back_onclick(); return; }
+        scwin.toast(err.message, "error");
+    }).then(function () { scwin.busy = false; btn_confirm.removeClass("is-busy"); });
+};
+
+/* =====================================================================
+ * BƯỚC 3: KẾT QUẢ
+ * ===================================================================== */
+scwin.renderResult = function () {
+    var r = scwin.result;
+    tbx_resSuccess.setValue(scwin.fmtNumber(r.successRows));
+    tbx_resFailed.setValue(scwin.fmtNumber(r.failedRows));
+    tbx_resTotal.setValue(scwin.fmtNumber(r.totalRows));
+    var all = r.successRows === r.totalRows;
+    tbx_resTitle.setValue(r.successRows ? (all ? "Import thành công toàn bộ danh sách" : "Đã import " + scwin.fmtNumber(r.successRows) + "/" + scwin.fmtNumber(r.totalRows) + " khách") : "Không có khách nào được import");
+    tbx_resDesc.setValue("File " + r.fileName + " vào " + (r.eventCode ? r.eventCode + " " : "") + scwin.eventName(r.eventId)
+        + ", lúc " + scwin.fmtDateTime(r.importedAt) + (r.importedByName ? " bởi " + r.importedByName : "") + ".");
+    scwin.toggleClass(grp_result, "is-partial", !all);
+    scwin.show(grp_resErrors, r.errorCount > 0 || r.failedRows > 0);
+};
+scwin.errorFileUrl = function (batchId, format) { return scwin.IMPORT_API + "/batches/" + batchId + "/errors/file?format=" + format; };
+scwin.btn_resErrXlsx_onclick = function () { scwin.downloadFile(scwin.errorFileUrl(scwin.result.batchId, "xlsx"), "LoiImport-" + scwin.result.batchId + ".xlsx", btn_resErrXlsx); };
+scwin.btn_resErrCsv_onclick = function () { scwin.downloadFile(scwin.errorFileUrl(scwin.result.batchId, "csv"), "LoiImport-" + scwin.result.batchId + ".csv", btn_resErrCsv); };
+scwin.btn_viewGuests_onclick = function () {
+    window.location.href = scwin.pageUrl(scwin.LIST_PAGE, { eventId: scwin.result.eventId, importBatchId: scwin.result.batchId });
+};
+scwin.btn_again_onclick = function () {
+    scwin.batch = null; scwin.result = null;
+    scwin.btn_fileClear_onclick();
+    scwin.setStep(1);
+};
+scwin.btn_toList_onclick = function () { window.location.href = scwin.pageUrl(scwin.LIST_PAGE, { eventId: dma_import.get("eventId") }); };
+
+/* =====================================================================
+ * LỊCH SỬ IMPORT CỦA SỰ KIỆN
+ * ===================================================================== */
+scwin.loadHistory = function () {
+    var eventId = dma_import.get("eventId");
+    if (!eventId) { dlt_batches.setJSON([]); scwin.fitGrid(grd_batches, 0); tbx_histEmpty.setValue("Chọn sự kiện để xem các lần import trước."); scwin.show(grp_histEmpty, true); return; }
+    scwin.callApi("sbm_batches", { url: scwin.IMPORT_API + "/batches?" + scwin.buildQuery({ eventId: eventId, page: 0, size: 10 }) }).then(function (page) {
+        if (dma_import.get("eventId") !== eventId) return;
+        var list = (page && page.content) || [];
+        dlt_batches.setJSON(list.map(function (b) {
+            var c = {}; for (var k in b) if (b.hasOwnProperty(k)) c[k] = b[k];
+            c.actErrors = ""; c.actGuests = ""; return c;
+        }));
+        for (var i = 0; i < list.length; i++) { try { grd_batches.setCellClass(i, "status", "gs-bst gs-bst--" + list[i].status); } catch (e) { } }
+        scwin.fitGrid(grd_batches, list.length, 48);
+        tbx_histEmpty.setValue("Sự kiện chưa có lần import nào.");
+        scwin.show(grp_histEmpty, !list.length);
+    }).catch(function () { });
+};
+scwin.gfBatchStatus = function (v) { return "● " + (scwin.BATCH_STATUS_VN[v] || v); };
+scwin.gfBatchCount = function (v, f, i) {
+    var b = dlt_batches.getRowJSON(i) || {};
+    return scwin.fmtNumber(b.successRows) + " / " + scwin.fmtNumber(b.totalRows);
+};
+scwin.gfBatchErr = function (v, f, i) { var b = dlt_batches.getRowJSON(i) || {}; return Number(b.errorCount || b.failedRows) > 0 ? "Tải log lỗi" : ""; };
+scwin.gfBatchGuests = function (v, f, i) { var b = dlt_batches.getRowJSON(i) || {}; return Number(b.successRows) > 0 ? "Xem khách" : ""; };
+scwin.gfDateTime = function (v) { return v ? scwin.fmtDateTime(v) : "—"; };
+scwin.grd_batches_oncellclick = function (rowIndex, colIndex, colId) {
+    var b = dlt_batches.getRowJSON(rowIndex) || {};
+    if (colId === "actErrors" && Number(b.errorCount || b.failedRows) > 0) scwin.downloadFile(scwin.errorFileUrl(b.batchId, "xlsx"), "LoiImport-" + b.batchId + ".xlsx");
+    if (colId === "actGuests" && Number(b.successRows) > 0) window.location.href = scwin.pageUrl(scwin.LIST_PAGE, { eventId: b.eventId, importBatchId: b.batchId });
+};
+
+/* Handler gắn trong xf:submission (ev:submitdone / ev:submiterror) */
+scwin.sbm_lookups_submitdone = function (e) { scwin.onSbmDone("sbm_lookups", e); };
+scwin.sbm_lookups_submiterror = function (e) { scwin.onSbmError("sbm_lookups", e); };
+scwin.sbm_confirm_submitdone = function (e) { scwin.onSbmDone("sbm_confirm", e); };
+scwin.sbm_confirm_submiterror = function (e) { scwin.onSbmError("sbm_confirm", e); };
+scwin.sbm_cancelBatch_submitdone = function (e) { scwin.onSbmDone("sbm_cancelBatch", e); };
+scwin.sbm_cancelBatch_submiterror = function (e) { scwin.onSbmError("sbm_cancelBatch", e); };
+scwin.sbm_batches_submitdone = function (e) { scwin.onSbmDone("sbm_batches", e); };
+scwin.sbm_batches_submiterror = function (e) { scwin.onSbmError("sbm_batches", e); };
+scwin.sbm_batchErrors_submitdone = function (e) { scwin.onSbmDone("sbm_batchErrors", e); };
+scwin.sbm_batchErrors_submiterror = function (e) { scwin.onSbmError("sbm_batchErrors", e); };
+
+    ]]></script>
+</head>
+<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+<xf:group id="grp_layout" class="ck-layout">
+    <w2:wframe id="wfm_header" class="layout-header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+    <xf:group id="grp_main" class="ck-main gs-scope" tagname="main">
+        <xf:group id="grp_header" class="gs-header">
+            <xf:group id="grp_headerText" class="gs-header__text">
+                <w2:textbox id="tbx_crumb" class="gs-header__crumb" tagname="p" label="Khách mời / Import"/>
+                <w2:textbox id="tbx_title" class="ck-page-title gs-header__title" tagname="h1" label="Import danh sách khách"/>
+                <w2:textbox id="tbx_subtitle" class="ck-page-desc gs-header__subtitle" tagname="p"
+                            label="Nhập tối đa 1.000 khách mỗi lần từ Excel hoặc CSV. Hệ thống kiểm tra từng dòng trước khi ghi vào sự kiện."/>
+            </xf:group>
+            <xf:group id="grp_headerActions" class="gs-header__actions">
+                <xf:trigger id="btn_toList" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_toList_onclick">
+                    <xf:label><![CDATA[Về danh sách khách]]></xf:label>
+                </xf:trigger>
+            </xf:group>
+        </xf:group>
+
+        <!-- Các bước -->
+        <xf:group id="grp_steps" class="gs-steps">
+            <xf:group id="grp_st1" class="gs-step"><w2:textbox id="tbx_st1Num" class="gs-step__num" tagname="span" label="1"/><w2:textbox id="tbx_st1Label" class="gs-step__label" tagname="span" label="Chọn file"/></xf:group>
+            <xf:group id="grp_st2" class="gs-step"><w2:textbox id="tbx_st2Num" class="gs-step__num" tagname="span" label="2"/><w2:textbox id="tbx_st2Label" class="gs-step__label" tagname="span" label="Kiểm tra và mapping cột"/></xf:group>
+            <xf:group id="grp_st3" class="gs-step"><w2:textbox id="tbx_st3Num" class="gs-step__num" tagname="span" label="3"/><w2:textbox id="tbx_st3Label" class="gs-step__label" tagname="span" label="Kết quả"/></xf:group>
+        </xf:group>
+
+        <xf:group id="grp_cols" class="gs-impcols">
+            <xf:group id="grp_colMain" class="gs-impcols__main">
+
+                <!-- BƯỚC 1 -->
+                <xf:group id="grp_step1" class="gs-card gs-step1">
+                    <xf:group id="grp_s1Event" class="gs-field">
+                        <w2:textbox id="tbx_s1EventLabel" class="gs-label gs-label--required" tagname="span" label="Sự kiện nhận khách"/>
+                        <xf:select1 id="sbx_event" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Chọn sự kiện"
+                                    direction="auto" ref="data:dma_import.eventId" ev:onchange="scwin.sbx_event_onchange">
+                            <xf:choices><xf:itemset nodeset="data:dlt_events"><xf:label ref="label"/><xf:value ref="eventId"/></xf:itemset></xf:choices>
+                        </xf:select1>
+                    </xf:group>
+
+                    <xf:group id="grp_tpl" class="gs-tplbox">
+                        <xf:group id="grp_tplText" class="gs-tplbox__text">
+                            <w2:textbox id="tbx_tplTitle" class="gs-tplbox__title" tagname="p" label="Chưa có file? Tải file mẫu"/>
+                            <w2:textbox id="tbx_tplDesc" class="gs-tplbox__desc" tagname="p"
+                                        label="File mẫu có sẵn các cột STT, Họ tên, Email, Điện thoại, Công ty, Chức vụ, Loại khách, Bàn số, Ghi chú và sheet hướng dẫn."/>
+                        </xf:group>
+                        <xf:group id="grp_tplBtns" class="gs-tplbox__btns">
+                            <xf:trigger id="btn_tplXlsx" type="button" class="gs-btn gs-btn--ghost gs-btn--sm gs-btn--icon gs-ico-download" ev:onclick="scwin.btn_tplXlsx_onclick"><xf:label><![CDATA[Mẫu Excel]]></xf:label></xf:trigger>
+                            <xf:trigger id="btn_tplCsv" type="button" class="gs-btn gs-btn--text" ev:onclick="scwin.btn_tplCsv_onclick"><xf:label><![CDATA[Mẫu CSV]]></xf:label></xf:trigger>
+                        </xf:group>
+                    </xf:group>
+
+                    <xf:group id="grp_drop" class="gs-filedrop" ev:onclick="scwin.grp_drop_onclick">
+                        <xf:group id="grp_dropIcon" class="gs-filedrop__icon"/>
+                        <w2:textbox id="tbx_dropText" class="gs-filedrop__text" tagname="span" label="Kéo file vào đây hoặc bấm để chọn"/>
+                        <w2:textbox id="tbx_dropSub" class="gs-filedrop__sub" tagname="span" label=".xlsx, .xls, .csv (UTF-8 hoặc Windows-1258), tối đa 10 MB"/>
+                    </xf:group>
+                    <xf:group id="grp_fileBar" class="gs-filebar is-hidden">
+                        <xf:group id="grp_fileText" class="gs-filebar__text">
+                            <w2:textbox id="tbx_fileName" class="gs-filebar__name" tagname="span" label=""/>
+                            <w2:textbox id="tbx_fileMeta" class="gs-filebar__meta" tagname="span" label=""/>
+                        </xf:group>
+                        <xf:trigger id="btn_fileClear" type="button" class="gs-btn gs-btn--text gs-btn--text-danger" ev:onclick="scwin.btn_fileClear_onclick"><xf:label><![CDATA[Bỏ file]]></xf:label></xf:trigger>
+                    </xf:group>
+                    <w2:textbox id="tbx_s1Err" class="gs-alert is-hidden" tagname="p" label=""/>
+                    <w2:textbox id="tbx_progress" class="gs-progress-text is-hidden" tagname="p" label=""/>
+
+                    <xf:group id="grp_s1Foot" class="gs-cardfoot">
+                        <w2:textbox id="tbx_checkHint" class="gs-cardfoot__hint" tagname="span" label=""/>
+                        <xf:trigger id="btn_check" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_check_onclick"><xf:label><![CDATA[Kiểm tra file]]></xf:label></xf:trigger>
+                    </xf:group>
+                    <w2:textbox id="tbx_rules" class="gs-notice gs-pre" tagname="p"
+                                label="Quy tắc: Họ tên và Email là bắt buộc. Email không được trùng trong file và trong sự kiện. Điện thoại 8–20 ký tự. Loại khách nhập mã hoặc tên (VIP, Speaker, Guest, Staff, Press, Other). Dòng trống được bỏ qua."/>
+                </xf:group>
+
+                <!-- BƯỚC 2 -->
+                <xf:group id="grp_step2" class="gs-step2 is-hidden">
+                    <xf:group id="grp_s2Head" class="gs-card gs-sumcard">
+                        <w2:textbox id="tbx_previewFile" class="gs-sumcard__file" tagname="p" label=""/>
+                        <xf:group id="grp_sum" class="gs-sum">
+                            <xf:group id="grp_sumTotal" class="gs-sum__item"><w2:textbox id="tbx_sumTotalLabel" class="gs-sum__label" tagname="span" label="Tổng số dòng"/><w2:textbox id="tbx_sumTotal" class="gs-sum__value" tagname="span" label="0"/></xf:group>
+                            <xf:group id="grp_sumValid" class="gs-sum__item gs-sum__item--ok"><w2:textbox id="tbx_sumValidLabel" class="gs-sum__label" tagname="span" label="Hợp lệ"/><w2:textbox id="tbx_sumValid" class="gs-sum__value" tagname="span" label="0"/></xf:group>
+                            <xf:group id="grp_sumInvalid" class="gs-sum__item gs-sum__item--bad"><w2:textbox id="tbx_sumInvalidLabel" class="gs-sum__label" tagname="span" label="Có lỗi"/><w2:textbox id="tbx_sumInvalid" class="gs-sum__value" tagname="span" label="0"/></xf:group>
+                        </xf:group>
+                        <w2:textbox id="tbx_unmapped" class="gs-notice gs-notice--warn is-hidden" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_mapping" class="gs-card gs-mapping">
+                        <xf:group id="grp_mapHead" class="gs-card__head">
+                            <w2:textbox id="tbx_mapTitle" class="gs-card__title" tagname="h2" label="Mapping cột"/>
+                            <w2:textbox id="tbx_mapDesc" class="gs-card__desc" tagname="p" label="Hệ thống đã tự nhận cột theo tên. Chỉnh lại nếu chưa đúng rồi bấm Kiểm tra lại."/>
+                        </xf:group>
+                        <xf:group id="grp_mapGrid" class="gs-mapgrid">
+                        <xf:group id="grp_m_fullName" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_fullName" class="gs-label gs-label--required" tagname="span" label="Họ tên"/>
+                            <xf:select1 id="sbx_m_fullName" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_fullName" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        <xf:group id="grp_m_email" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_email" class="gs-label gs-label--required" tagname="span" label="Email"/>
+                            <xf:select1 id="sbx_m_email" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_email" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        <xf:group id="grp_m_phone" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_phone" class="gs-label" tagname="span" label="Điện thoại"/>
+                            <xf:select1 id="sbx_m_phone" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_phone" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        <xf:group id="grp_m_company" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_company" class="gs-label" tagname="span" label="Công ty"/>
+                            <xf:select1 id="sbx_m_company" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_company" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        <xf:group id="grp_m_position" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_position" class="gs-label" tagname="span" label="Chức vụ"/>
+                            <xf:select1 id="sbx_m_position" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_position" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        <xf:group id="grp_m_guestType" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_guestType" class="gs-label" tagname="span" label="Loại khách"/>
+                            <xf:select1 id="sbx_m_guestType" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_guestType" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        <xf:group id="grp_m_tableNumber" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_tableNumber" class="gs-label" tagname="span" label="Bàn số"/>
+                            <xf:select1 id="sbx_m_tableNumber" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_tableNumber" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        <xf:group id="grp_m_notes" class="gs-mapfield">
+                            <w2:textbox id="tbx_m_notes" class="gs-label" tagname="span" label="Ghi chú"/>
+                            <xf:select1 id="sbx_m_notes" class="gs-select gs-select--full" appearance="minimal" chooseOption="true" chooseOptionLabel="Không nhập"
+                                        direction="auto" ref="data:dma_import.m_notes" ev:onchange="scwin.mapping_onchange">
+                                <xf:choices><xf:itemset nodeset="data:dlt_headers"><xf:label ref="label"/><xf:value ref="value"/></xf:itemset></xf:choices>
+                            </xf:select1>
+                        </xf:group>
+                        </xf:group>
+                        <w2:textbox id="tbx_mapErr" class="gs-alert is-hidden" tagname="p" label=""/>
+                        <xf:group id="grp_mapFoot" class="gs-cardfoot gs-cardfoot--end">
+                            <xf:trigger id="btn_remap" type="button" class="gs-btn gs-btn--ghost gs-btn--icon gs-ico-refresh" ev:onclick="scwin.btn_remap_onclick"><xf:label><![CDATA[Kiểm tra lại với mapping này]]></xf:label></xf:trigger>
+                        </xf:group>
+                    </xf:group>
+
+                    <xf:group id="grp_preview" class="gs-card gs-preview">
+                        <xf:group id="grp_prevHead" class="gs-card__head gs-card__head--row">
+                            <w2:textbox id="tbx_prevTitle" class="gs-card__title" tagname="h2" label="Xem trước dữ liệu"/>
+                            <xf:group id="grp_rowFilter" class="gs-viewtoggle">
+                                <xf:trigger id="btn_rfAll" type="button" class="gs-viewtoggle__item" ev:onclick="scwin.btn_rfAll_onclick"><xf:label><![CDATA[Tất cả]]></xf:label></xf:trigger>
+                                <xf:trigger id="btn_rfValid" type="button" class="gs-viewtoggle__item" ev:onclick="scwin.btn_rfValid_onclick"><xf:label><![CDATA[Hợp lệ]]></xf:label></xf:trigger>
+                                <xf:trigger id="btn_rfInvalid" type="button" class="gs-viewtoggle__item" ev:onclick="scwin.btn_rfInvalid_onclick"><xf:label><![CDATA[Có lỗi]]></xf:label></xf:trigger>
+                            </xf:group>
+                        </xf:group>
+                        <w2:gridView id="grd_rows" class="gs-grid gs-grid--preview" dataList="data:dlt_rows" readOnly="true" autoFit="allColumn"
+                                     scrollByColumn="false" rowNumVisible="false" rowStatusVisible="false" focusMode="row" defaultCellHeight="46">
+                            <w2:header id="hdr_rows" class="gs-grid__header">
+                                <w2:row id="hdr_rowsRow" class="gs-grid__hrow">
+                                    <w2:column id="h_rNum" class="gs-grid__th" width="70" inputType="text" displayMode="label" value="Dòng"/>
+                                    <w2:column id="h_rValid" class="gs-grid__th" width="80" inputType="text" displayMode="label" value="Kết quả"/>
+                                    <w2:column id="h_rName" class="gs-grid__th" width="150" inputType="text" displayMode="label" value="Họ tên"/>
+                                    <w2:column id="h_rEmail" class="gs-grid__th" width="170" inputType="text" displayMode="label" value="Email"/>
+                                    <w2:column id="h_rPhone" class="gs-grid__th" width="110" inputType="text" displayMode="label" value="Điện thoại"/>
+                                    <w2:column id="h_rCompany" class="gs-grid__th" width="120" inputType="text" displayMode="label" value="Công ty"/>
+                                    <w2:column id="h_rType" class="gs-grid__th" width="80" inputType="text" displayMode="label" value="Loại"/>
+                                    <w2:column id="h_rTable" class="gs-grid__th" width="60" inputType="text" displayMode="label" value="Bàn"/>
+                                    <w2:column id="h_rErr" class="gs-grid__th" width="260" inputType="text" displayMode="label" value="Lỗi"/>
+                                </w2:row>
+                            </w2:header>
+                            <w2:gBody id="gb_rows" class="gs-grid__body">
+                                <w2:row id="gb_rowsRow" class="gs-grid__row">
+                                    <w2:column id="rowNumber" class="gs-grid__td gs-grid__td--muted" width="70" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfRow"/>
+                                    <w2:column id="valid" class="gs-grid__td" width="80" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfValid"/>
+                                    <w2:column id="fullName" class="gs-grid__td gs-grid__td--name" width="150" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                                    <w2:column id="email" class="gs-grid__td" width="170" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                                    <w2:column id="phone" class="gs-grid__td" width="110" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                                    <w2:column id="company" class="gs-grid__td gs-grid__td--muted" width="120" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                                    <w2:column id="guestType" class="gs-grid__td" width="80" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                                    <w2:column id="tableNumber" class="gs-grid__td" width="60" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDash"/>
+                                    <w2:column id="errorText" class="gs-grid__td gs-grid__td--error" width="260" inputType="text" displayMode="label" textAlign="left"/>
+                                </w2:row>
+                            </w2:gBody>
+                        </w2:gridView>
+                        <xf:group id="grp_rowsEmpty" class="gs-panel__empty is-hidden">
+                            <w2:textbox id="tbx_rowsEmpty" class="gs-panel__empty-text" tagname="p" label=""/>
+                        </xf:group>
+                    </xf:group>
+
+                    <xf:group id="grp_confirmBar" class="gs-card gs-confirmbar">
+                        <xf:group id="grp_confirmLeft" class="gs-confirmbar__left">
+                            <xf:select id="chk_skip" class="gs-checks gs-checks--single" appearance="full" cols="1" rows="" delimiter="," renderType="checkboxgroup"
+                                       ref="data:dma_import.skipErrors" ev:onchange="scwin.chk_skip_onchange">
+                                <xf:choices>
+                                    <xf:item><xf:label><![CDATA[Bỏ qua dòng lỗi, chỉ import dòng hợp lệ]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item>
+                                </xf:choices>
+                            </xf:select>
+                            <w2:textbox id="tbx_confirmHint" class="gs-field__hint" tagname="p" label=""/>
+                        </xf:group>
+                        <xf:group id="grp_confirmBtns" class="gs-confirmbar__btns">
+                            <xf:trigger id="btn_back" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_back_onclick"><xf:label><![CDATA[Chọn file khác]]></xf:label></xf:trigger>
+                            <xf:trigger id="btn_errCsv" type="button" class="gs-btn gs-btn--ghost gs-btn--icon gs-ico-download" ev:onclick="scwin.btn_errCsv_onclick"><xf:label><![CDATA[Tải danh sách lỗi]]></xf:label></xf:trigger>
+                            <xf:trigger id="btn_confirm" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_confirm_onclick"><xf:label><![CDATA[Import khách]]></xf:label></xf:trigger>
+                        </xf:group>
+                    </xf:group>
+                </xf:group>
+
+                <!-- BƯỚC 3 -->
+                <xf:group id="grp_step3" class="gs-card gs-result is-hidden">
+                    <xf:group id="grp_result" class="gs-result__inner">
+                        <xf:group id="grp_resIcon" class="gs-result__icon"/>
+                        <w2:textbox id="tbx_resTitle" class="gs-result__title" tagname="h2" label=""/>
+                        <w2:textbox id="tbx_resDesc" class="gs-result__desc" tagname="p" label=""/>
+                        <xf:group id="grp_resNums" class="gs-sum">
+                            <xf:group id="grp_resSuccess" class="gs-sum__item gs-sum__item--ok"><w2:textbox id="tbx_resSuccessLabel" class="gs-sum__label" tagname="span" label="Thành công"/><w2:textbox id="tbx_resSuccess" class="gs-sum__value" tagname="span" label="0"/></xf:group>
+                            <xf:group id="grp_resFailed" class="gs-sum__item gs-sum__item--bad"><w2:textbox id="tbx_resFailedLabel" class="gs-sum__label" tagname="span" label="Không import"/><w2:textbox id="tbx_resFailed" class="gs-sum__value" tagname="span" label="0"/></xf:group>
+                            <xf:group id="grp_resTotal" class="gs-sum__item"><w2:textbox id="tbx_resTotalLabel" class="gs-sum__label" tagname="span" label="Tổng số dòng"/><w2:textbox id="tbx_resTotal" class="gs-sum__value" tagname="span" label="0"/></xf:group>
+                        </xf:group>
+                        <xf:group id="grp_resErrors" class="gs-result__errors">
+                            <w2:textbox id="tbx_resErrText" class="gs-result__errtext" tagname="span" label="Tải log lỗi để biết dòng nào chưa được import và vì sao:"/>
+                            <xf:trigger id="btn_resErrXlsx" type="button" class="gs-btn gs-btn--ghost gs-btn--sm gs-btn--icon gs-ico-download" ev:onclick="scwin.btn_resErrXlsx_onclick"><xf:label><![CDATA[Log lỗi Excel]]></xf:label></xf:trigger>
+                            <xf:trigger id="btn_resErrCsv" type="button" class="gs-btn gs-btn--text" ev:onclick="scwin.btn_resErrCsv_onclick"><xf:label><![CDATA[CSV]]></xf:label></xf:trigger>
+                        </xf:group>
+                        <xf:group id="grp_resActions" class="gs-result__actions">
+                            <xf:trigger id="btn_again" type="button" class="gs-btn gs-btn--ghost" ev:onclick="scwin.btn_again_onclick"><xf:label><![CDATA[Import file khác]]></xf:label></xf:trigger>
+                            <xf:trigger id="btn_viewGuests" type="button" class="gs-btn gs-btn--primary" ev:onclick="scwin.btn_viewGuests_onclick"><xf:label><![CDATA[Xem khách vừa import]]></xf:label></xf:trigger>
+                        </xf:group>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <!-- Lịch sử import -->
+            <xf:group id="grp_colSide" class="gs-impcols__side">
+                <xf:group id="grp_history" class="gs-card gs-history">
+                    <w2:textbox id="tbx_histTitle" class="gs-card__title" tagname="h2" label="Các lần import gần đây"/>
+                    <w2:gridView id="grd_batches" class="gs-grid gs-grid--sub gs-grid--pick" dataList="data:dlt_batches" readOnly="true" autoFit="allColumn"
+                                 scrollByColumn="false" rowNumVisible="false" rowStatusVisible="false" focusMode="row" defaultCellHeight="48"
+                                 ev:oncellclick="scwin.grd_batches_oncellclick">
+                        <w2:header id="hdr_batches" class="gs-grid__header">
+                            <w2:row id="hdr_batchesRow" class="gs-grid__hrow">
+                                <w2:column id="h_bAt" class="gs-grid__th" width="110" inputType="text" displayMode="label" value="Thời điểm"/>
+                                <w2:column id="h_bStatus" class="gs-grid__th" width="100" inputType="text" displayMode="label" value="Trạng thái"/>
+                                <w2:column id="h_bCount" class="gs-grid__th" width="80" inputType="text" displayMode="label" value="Thành công"/>
+                                <w2:column id="h_bErr" class="gs-grid__th" width="80" inputType="text" displayMode="label" value=""/>
+                                <w2:column id="h_bGuests" class="gs-grid__th" width="72" inputType="text" displayMode="label" value=""/>
+                            </w2:row>
+                        </w2:header>
+                        <w2:gBody id="gb_batches" class="gs-grid__body">
+                            <w2:row id="gb_batchesRow" class="gs-grid__row">
+                                <w2:column id="importedAt" class="gs-grid__td gs-grid__td--muted" width="110" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfDateTime"/>
+                                <w2:column id="status" class="gs-grid__td" width="100" inputType="text" displayMode="label" textAlign="left" customFormatter="scwin.gfBatchStatus"/>
+                                <w2:column id="successRows" class="gs-grid__td gs-grid__td--num" width="80" inputType="text" displayMode="label" textAlign="right" customFormatter="scwin.gfBatchCount"/>
+                                <w2:column id="actErrors" class="gs-grid__td gs-grid__td--act gs-grid__td--act-danger" width="80" inputType="text" displayMode="label" textAlign="center" customFormatter="scwin.gfBatchErr"/>
+                                <w2:column id="actGuests" class="gs-grid__td gs-grid__td--act" width="72" inputType="text" displayMode="label" textAlign="center" customFormatter="scwin.gfBatchGuests"/>
+                            </w2:row>
+                        </w2:gBody>
+                    </w2:gridView>
+                    <xf:group id="grp_histEmpty" class="gs-panel__empty">
+                        <w2:textbox id="tbx_histEmpty" class="gs-panel__empty-text" tagname="p" label="Chọn sự kiện để xem các lần import trước."/>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <w2:wframe id="wfm_footer" class="layout-footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+</xf:group>
+
+<xf:group id="grp_overlays" class="gs-scope gs-overlays">
+    <w2:textbox id="tbx_toast" class="gs-toast" tagname="div" label="" ev:onclick="scwin.tbx_toast_onclick"/>
+</xf:group>
+</body>
+</html>

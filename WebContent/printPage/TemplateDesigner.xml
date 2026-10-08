@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/printPage/Print.css" type="text/css"?>
+<?xml-stylesheet href="/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/printPage/Print.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+<head meta_screenName="Thiết kế mẫu in">
+    <w2:type>COMPONENT</w2:type>
+    <w2:buildDate/>
+    <w2:MSA/>
+    <xf:model>
+        <w2:dataCollection baseNode="map">
+            <!-- Thuộc tính mẫu (bind với bảng bên trái) -->
+            <w2:dataMap baseNode="map" id="dma_tpl">
+                <w2:keyInfo>
+                    <w2:key id="templateName" name="templateName" dataType="text"/>
+                    <w2:key id="templateType" name="templateType" dataType="text"/>
+                    <w2:key id="paperSize" name="paperSize" dataType="text"/>
+                    <w2:key id="widthMm" name="widthMm" dataType="text"/>
+                    <w2:key id="heightMm" name="heightMm" dataType="text"/>
+                    <w2:key id="orientation" name="orientation" dataType="text"/>
+                    <w2:key id="marginTopMm" name="marginTopMm" dataType="text"/>
+                    <w2:key id="marginRightMm" name="marginRightMm" dataType="text"/>
+                    <w2:key id="marginBottomMm" name="marginBottomMm" dataType="text"/>
+                    <w2:key id="marginLeftMm" name="marginLeftMm" dataType="text"/>
+                    <w2:key id="fontFamily" name="fontFamily" dataType="text"/>
+                    <w2:key id="primaryColor" name="primaryColor" dataType="text"/>
+                    <w2:key id="backgroundColor" name="backgroundColor" dataType="text"/>
+                    <w2:key id="backgroundImageUrl" name="backgroundImageUrl" dataType="text"/>
+                    <w2:key id="borderStyle" name="borderStyle" dataType="text"/>
+                    <w2:key id="dpi" name="dpi" dataType="text"/>
+                    <w2:key id="systemDefault" name="systemDefault" dataType="text"/>
+                    <w2:key id="htmlTemplate" name="htmlTemplate" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+            <!-- Phần tử đang chọn (bind với bảng bên phải) -->
+            <w2:dataMap baseNode="map" id="dma_el">
+                <w2:keyInfo>
+                    <w2:key id="field" name="field" dataType="text"/>
+                    <w2:key id="text" name="text" dataType="text"/>
+                    <w2:key id="prefix" name="prefix" dataType="text"/>
+                    <w2:key id="x" name="x" dataType="text"/>
+                    <w2:key id="y" name="y" dataType="text"/>
+                    <w2:key id="width" name="width" dataType="text"/>
+                    <w2:key id="height" name="height" dataType="text"/>
+                    <w2:key id="fontSize" name="fontSize" dataType="text"/>
+                    <w2:key id="fontWeight" name="fontWeight" dataType="text"/>
+                    <w2:key id="fontStyle" name="fontStyle" dataType="text"/>
+                    <w2:key id="align" name="align" dataType="text"/>
+                    <w2:key id="color" name="color" dataType="text"/>
+                    <w2:key id="backgroundColor" name="backgroundColor" dataType="text"/>
+                    <w2:key id="flags" name="flags" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+            <w2:dataList baseNode="list" repeatNode="map" id="dlt_events" saveRemovedData="false">
+                <w2:columnInfo>
+                    <w2:column id="eventId" name="ID" dataType="text"/>
+                    <w2:column id="label" name="Sự kiện" dataType="text"/>
+                </w2:columnInfo>
+            </w2:dataList>
+        </w2:dataCollection>
+        <w2:workflowCollection/>
+        <!-- Submission gọi API: action và header Authorization được gán lúc chạy trong scwin.callApi -->
+        <xf:submission id="sbm_lookups" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_lookups_submitdone"
+                       ev:submiterror="scwin.sbm_lookups_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_tplGet" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_tplGet_submitdone"
+                       ev:submiterror="scwin.sbm_tplGet_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_tplCreate" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_tplCreate_submitdone"
+                       ev:submiterror="scwin.sbm_tplCreate_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_tplUpdate" ref="" target="" action="" method="put" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_tplUpdate_submitdone"
+                       ev:submiterror="scwin.sbm_tplUpdate_submiterror" abortTrigger=""/>
+        <xf:submission id="sbm_tplClone" ref="" target="" action="" method="post" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_tplClone_submitdone"
+                       ev:submiterror="scwin.sbm_tplClone_submiterror" abortTrigger=""/>
+    </xf:model>
+    <w2:layoutInfo/>
+    <w2:publicInfo method=""/>
+    <script type="text/javascript" lazy="false"><![CDATA[
+/* =====================================================================
+ * THIẾT KẾ MẪU IN (NameCard / NamePlace)
+ *   - Kéo thả phần tử trên trang (tọa độ mm), chỉnh thuộc tính, mẫu dựng sẵn
+ *   - Chế độ HTML tùy biến ({{biến}})
+ *   - Xem trước PDF thật trước khi lưu, lưu / nhân bản / xuất mẫu
+ * API: /api/print-templates (API_GUEST.md mục 8)
+ * ===================================================================== */
+scwin.P = "pr";
+/* =====================================================================
+ * LỚP DÙNG CHUNG (giống các màn Hội trường / Sự kiện)
+ *   - Phiên đăng nhập, quyền
+ *   - Gọi API JSON bằng submission WebSquare (scwin.callApi)
+ *   - Upload / tải file bằng XMLHttpRequest (submission không xử lý file nhị phân)
+ * ===================================================================== */
+scwin.API_BASE = "http://localhost:8081";
+scwin.KEY = { TOKEN: "ssc_token", USER: "ssc_user", PERMS: "ssc_permissions", MENUS: "ssc_menus" };
+scwin.LOGIN_PAGE = "/authPage/LoginPage.xml";
+scwin.CTX = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+scwin.SBM_TIMEOUT = 60000;
+scwin.sbmQueue = {};
+scwin.sbmJob = {};
+scwin.toastTimer = null;
+
+/* ---------- Tiện ích ---------- */
+scwin.comp = function (id) { return $p.getComponentById(id); };
+scwin.domOf = function (c) { return c ? (c.render || document.getElementById(c.id) || null) : null; };
+scwin.show = function (c, v) { if (!c) return; if (v === false) c.addClass("is-hidden"); else c.removeClass("is-hidden"); };
+scwin.toggleClass = function (c, cls, on) { if (!c) return; if (on) c.addClass(cls); else c.removeClass(cls); };
+scwin.safeColor = function (c) { return /^#[0-9a-f]{3,8}$/i.test(String(c || "")) ? c : "#63746b"; };
+scwin.trim = function (v) { return v == null ? "" : String(v).replace(/^\s+|\s+$/g, ""); };
+scwin.dash = function (v) { return (v == null || scwin.trim(v) === "") ? "—" : String(v); };
+scwin.pad = function (n) { return n < 10 ? "0" + n : String(n); };
+scwin.clamp = function (v, a, b) { v = Number(v) || 0; a = a == null ? 0 : a; b = b == null ? 100 : b; return Math.max(a, Math.min(b, v)); };
+scwin.hasOwn = function (o, k) { return o != null && Object.prototype.hasOwnProperty.call(o, k); };
+scwin.fmtNumber = function (n) { return (n == null || n === "" || isNaN(Number(n))) ? "—" : Number(n).toLocaleString("vi-VN"); };
+scwin.fmtRate = function (r) { return (Math.round((Number(r) || 0) * 10) / 10).toLocaleString("vi-VN") + "%"; };
+scwin.fmtDate = function (s) { if (!s) return ""; var p = String(s).substring(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : String(s); };
+scwin.fmtTime = function (s) { return s ? String(s).substring(0, 5) : ""; };
+scwin.fmtDateTime = function (iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso);
+    return scwin.pad(d.getDate()) + "/" + scwin.pad(d.getMonth() + 1) + "/" + d.getFullYear() + " " + scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes());
+};
+scwin.fmtClock = function (iso) {
+    var d = iso ? new Date(iso) : new Date();
+    if (isNaN(d.getTime())) d = new Date();
+    return scwin.pad(d.getHours()) + ":" + scwin.pad(d.getMinutes()) + ":" + scwin.pad(d.getSeconds());
+};
+scwin.fmtSize = function (b) { return b >= 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB"; };
+/** Tham số mảng được nối bằng dấu phẩy (backend nhận cả "A,B" lẫn lặp tham số). */
+scwin.buildQuery = function (p) {
+    var out = [];
+    for (var k in p) {
+        if (!p.hasOwnProperty(k)) continue;
+        var v = p[k];
+        if (Array.isArray(v)) { if (!v.length) continue; v = v.join(","); }
+        if (v === null || v === undefined || v === "") continue;
+        out.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+    }
+    return out.join("&");
+};
+scwin.getQueryParam = function (name) {
+    var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+};
+scwin.pageUrl = function (path, params) {
+    var q = params ? scwin.buildQuery(params) : "";
+    return scwin.CTX + "/websquare/websquare.html?w2xPath=" + scwin.CTX + path + (q ? "&" + q : "");
+};
+scwin.escHtml = function (s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); };
+scwin.el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+scwin.clearEl = function (el) { if (el) while (el.firstChild) el.removeChild(el.firstChild); };
+scwin.fitGrid = function (grid, rows, rowH, maxRows) {
+    var n = maxRows ? Math.min(rows, maxRows) : rows;
+    grid.setStyle("height", (rows ? 42 + n * (rowH || 46) + 2 : 0) + "px");
+    scwin.show(grid, rows > 0);
+};
+scwin.isTrue = function (v) { return v === true || v === "true" || v === 1 || v === "1"; };
+
+/* ---------- Phiên đăng nhập & quyền ---------- */
+scwin.storeGet = function (k) { try { return window.localStorage.getItem(k) || window.sessionStorage.getItem(k) || ""; } catch (e) { return ""; } };
+scwin.parseJSON = function (t) { if (!t || typeof t !== "string") return null; try { return JSON.parse(t); } catch (e) { return null; } };
+scwin.getToken = function () { return String(scwin.storeGet(scwin.KEY.TOKEN)).replace(/^Bearer\s+/i, ""); };
+scwin.getPerms = function () { return scwin.parseJSON(scwin.storeGet(scwin.KEY.PERMS)) || []; };
+scwin.getUser = function () { return scwin.parseJSON(scwin.storeGet(scwin.KEY.USER)) || {}; };
+/** Header chưa kịp lưu quyền (lần đầu vào trang) thì tạm cho phép; backend vẫn chặn bằng 403. */
+scwin.can = function (code) { var p = scwin.getPerms(); return !p.length || p.indexOf(code) >= 0; };
+scwin.canAny = function (codes) { for (var i = 0; i < codes.length; i++) if (scwin.can(codes[i])) return true; return false; };
+scwin.goLogin = function () {
+    if (scwin._redirecting) return;
+    scwin._redirecting = true;
+    for (var k in scwin.KEY) {
+        if (!scwin.KEY.hasOwnProperty(k)) continue;
+        try { window.localStorage.removeItem(scwin.KEY[k]); window.sessionStorage.removeItem(scwin.KEY[k]); } catch (e) { }
+    }
+    window.location.href = scwin.pageUrl(scwin.LOGIN_PAGE);
+};
+
+/* ---------- Lỗi ---------- */
+scwin.defaultMessage = function (status) {
+    if (status === 0) return "Không kết nối được máy chủ. Kiểm tra mạng hoặc backend (" + scwin.API_BASE + ").";
+    if (status === 401) return "Phiên đăng nhập đã hết hạn. Hãy đăng nhập lại.";
+    if (status === 403) return "Tài khoản của bạn chưa được cấp quyền cho thao tác này.";
+    if (status === 404) return "Không tìm thấy dữ liệu, hoặc dữ liệu nằm ngoài phạm vi bạn được xem.";
+    if (status >= 500) return "Máy chủ đang gặp sự cố. Thử lại sau ít phút.";
+    return "Yêu cầu không thành công (HTTP " + status + ").";
+};
+scwin.authHeader = function (accept) {
+    var h = { "Accept": accept || "application/json" };
+    var t = scwin.getToken();
+    if (t) h["Authorization"] = "Bearer " + t;
+    return h;
+};
+/** Chuẩn hóa lỗi: { status, code, message, data }. 401 thì đưa về trang đăng nhập. */
+scwin.buildError = function (status, json) {
+    var err = {
+        status: status || 0,
+        code: (json && json.code) || (status ? "HTTP_" + status : "NETWORK_ERROR"),
+        message: (json && json.message) || scwin.defaultMessage(status || 0),
+        data: json ? json.data : null
+    };
+    if (status === 401) {
+        err.message = scwin.defaultMessage(401);
+        scwin.toast(err.message + " Đang chuyển về trang đăng nhập…", "error");
+        setTimeout(scwin.goLogin, 1500);
+    }
+    return err;
+};
+
+/* ---------- Submission ----------
+ *   scwin.callApi("sbm_xxx", { url: "...", body: {...} }) -> Promise<data>
+ *   Mỗi submission có hàng đợi riêng nên gọi chồng nhau không bị trả nhầm kết quả.
+ */
+scwin.callApi = function (sbmId, opts) {
+    return new Promise(function (resolve, reject) {
+        if (!scwin.sbmQueue[sbmId]) scwin.sbmQueue[sbmId] = [];
+        scwin.sbmQueue[sbmId].push({ opts: opts || {}, resolve: resolve, reject: reject });
+        scwin.sbmNext(sbmId);
+    });
+};
+scwin.sbmNext = function (sbmId) {
+    if (scwin.sbmJob[sbmId]) return;
+    var q = scwin.sbmQueue[sbmId];
+    if (!q || !q.length) return;
+    var job = q.shift();
+    scwin.sbmJob[sbmId] = job;
+    var sbm = $p.getSubmission(sbmId);
+    if (!sbm) { scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_NOT_FOUND", message: "Chưa khai báo submission " + sbmId + "." }); return; }
+    sbm.action = job.opts.url;
+    sbm.requestHeader = scwin.authHeader();
+    job.timer = setTimeout(function () {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "TIMEOUT", message: "Máy chủ phản hồi quá lâu. Thử lại sau." });
+    }, scwin.SBM_TIMEOUT);
+    try {
+        if (job.opts.body !== undefined) $p.executeSubmission(sbmId, job.opts.body);
+        else $p.executeSubmission(sbmId);
+    } catch (ex) {
+        scwin.sbmSettle(sbmId, null, { status: 0, code: "SUBMISSION_ERROR", message: (ex && ex.message) || String(ex) });
+    }
+};
+scwin.sbmSettle = function (sbmId, data, err) {
+    var job = scwin.sbmJob[sbmId];
+    if (!job) return;
+    clearTimeout(job.timer);
+    scwin.sbmJob[sbmId] = null;
+    if (err) job.reject(err); else job.resolve(data);
+    scwin.sbmNext(sbmId);
+};
+scwin.readResponse = function (e) {
+    if (!e) return null;
+    if (e.responseJSON && typeof e.responseJSON === "object") return e.responseJSON;
+    return scwin.parseJSON(e.responseText) || scwin.parseJSON(e.responseBody);
+};
+scwin.onSbmDone = function (sbmId, e) {
+    var json = scwin.readResponse(e);
+    if (json && json.success === false) { scwin.sbmSettle(sbmId, null, scwin.buildError((e && e.responseStatusCode) || 200, json)); return; }
+    scwin.sbmSettle(sbmId, scwin.hasOwn(json, "data") ? json.data : json, null);
+};
+scwin.onSbmError = function (sbmId, e) {
+    var status = (e && (e.responseStatusCode || e.status)) || 0;
+    scwin.sbmSettle(sbmId, null, scwin.buildError(status, scwin.readResponse(e)));
+};
+
+/* ---------- XMLHttpRequest: upload multipart, nhận file ----------
+ *   opts.body: object (gửi JSON) | FormData (multipart)
+ *   opts.responseType: "json" (mặc định) | "blob" -> resolve { blob, name, type, headers }
+ */
+scwin.xhr = function (method, url, opts) {
+    opts = opts || {};
+    return new Promise(function (resolve, reject) {
+        var x = new XMLHttpRequest();
+        x.open(method, url);
+        var h = scwin.authHeader(opts.responseType === "blob" ? "*/*" : "application/json");
+        for (var k in h) if (h.hasOwnProperty(k)) x.setRequestHeader(k, h[k]);
+        var body = null;
+        if (typeof FormData !== "undefined" && opts.body instanceof FormData) body = opts.body;
+        else if (opts.body !== undefined && opts.body !== null) { x.setRequestHeader("Content-Type", "application/json"); body = JSON.stringify(opts.body); }
+        if (opts.responseType === "blob") x.responseType = "blob";
+        if (opts.onProgress && x.upload) x.upload.onprogress = function (ev) { if (ev.lengthComputable) opts.onProgress(Math.round(ev.loaded * 100 / ev.total)); };
+        x.onload = function () {
+            var ok = x.status >= 200 && x.status < 300;
+            if (opts.responseType === "blob") {
+                var type = x.getResponseHeader("Content-Type") || "";
+                if (ok && type.indexOf("application/json") < 0) {
+                    resolve({ blob: x.response, type: type, name: scwin.fileNameFrom(x.getResponseHeader("Content-Disposition")), xhr: x });
+                    return;
+                }
+                scwin.readBlobJSON(x.response).then(function (json) { reject(scwin.buildError(ok ? 200 : x.status, json)); });
+                return;
+            }
+            var json = scwin.parseJSON(x.responseText);
+            if (ok && !(json && json.success === false)) resolve(scwin.hasOwn(json, "data") ? json.data : json);
+            else reject(scwin.buildError(x.status, json));
+        };
+        x.onerror = function () { reject(scwin.buildError(0, null)); };
+        x.send(body);
+    });
+};
+scwin.readBlobJSON = function (blob) {
+    return new Promise(function (resolve) {
+        if (!blob || typeof FileReader === "undefined") { resolve(null); return; }
+        var r = new FileReader();
+        r.onload = function () { resolve(scwin.parseJSON(r.result)); };
+        r.onerror = function () { resolve(null); };
+        r.readAsText(blob);
+    });
+};
+scwin.fileNameFrom = function (cd) {
+    if (!cd) return "";
+    var m = /filename\*=UTF-8''([^;]+)/i.exec(cd) || /filename="?([^";]+)"?/i.exec(cd);
+    if (!m) return "";
+    try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+};
+scwin.saveBlob = function (blob, name) {
+    var url = URL.createObjectURL(blob);
+    var a = scwin.el("a", scwin.P + "-native-link");
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(url); if (a.parentNode) a.parentNode.removeChild(a); }, 1500);
+};
+/** Tải file (GET hoặc POST kèm body JSON) rồi lưu về máy. */
+scwin.downloadFile = function (url, fallbackName, btn, method, body) {
+    if (btn) btn.addClass("is-busy");
+    return scwin.xhr(method || "GET", url, { responseType: "blob", body: body }).then(function (r) {
+        scwin.saveBlob(r.blob, r.name || fallbackName);
+        return r;
+    }).catch(function (err) {
+        scwin.toast(err.message, "error");
+        throw err;
+    }).then(function (r) { if (btn) btn.removeClass("is-busy"); return r; }, function () { if (btn) btn.removeClass("is-busy"); });
+};
+/** In file PDF: nạp vào iframe ẩn rồi mở hộp thoại in của trình duyệt. */
+scwin.printBlob = function (blob) {
+    return new Promise(function (resolve) {
+        var old = document.getElementById("ssc-print-frame");
+        if (old) old.parentNode.removeChild(old);
+        var url = URL.createObjectURL(blob);
+        var f = document.createElement("iframe");
+        f.id = "ssc-print-frame";
+        f.className = scwin.P + "-print-frame";
+        f.src = url;
+        f.onload = function () {
+            setTimeout(function () {
+                try { f.contentWindow.focus(); f.contentWindow.print(); }
+                catch (e) { window.open(url, "_blank"); }
+                resolve();
+            }, 300);
+        };
+        document.body.appendChild(f);
+    });
+};
+
+/* ---------- Thông báo ---------- */
+scwin.toast = function (msg, type) {
+    if (typeof tbx_toast === "undefined") return;
+    clearTimeout(scwin.toastTimer);
+    tbx_toast.setValue(msg || "");
+    ["success", "error", "warning", "info"].forEach(function (c) { tbx_toast.removeClass(scwin.P + "-toast--" + c); });
+    tbx_toast.addClass(scwin.P + "-toast--" + (type || "info"));
+    tbx_toast.addClass("is-show");
+    scwin.toastTimer = setTimeout(function () { tbx_toast.removeClass("is-show"); }, (type === "error" || type === "warning") ? 6500 : 3800);
+};
+scwin.tbx_toast_onclick = function () { tbx_toast.removeClass("is-show"); };
+scwin.showWarnings = function (list) {
+    if (!list || !list.length) return;
+    setTimeout(function () { scwin.toast("Lưu ý: " + list.join(" "), "warning"); }, 1800);
+};
+
+/* ---------- Danh mục dùng chung: GET /api/guests/lookups ---------- */
+scwin.lookups = { events: [], guestTypes: [], guestStatuses: [] };
+scwin.typeMeta = function (code) {
+    for (var i = 0; i < scwin.lookups.guestTypes.length; i++) if (scwin.lookups.guestTypes[i].code === code) return scwin.lookups.guestTypes[i];
+    return { code: code, name: code || "—", color: "#9E9E9E" };
+};
+scwin.statusMeta = function (code) {
+    for (var i = 0; i < scwin.lookups.guestStatuses.length; i++) if (scwin.lookups.guestStatuses[i].code === code) return scwin.lookups.guestStatuses[i];
+    return { code: code, name: code || "—", color: "#9E9E9E" };
+};
+scwin.GUEST_TYPE_VN = { VIP: "VIP", SPEAKER: "Diễn giả", GUEST: "Khách mời", STAFF: "Nhân viên", PRESS: "Báo chí", OTHER: "Khác" };
+scwin.GUEST_STATUS_VN = { INVITED: "Đã mời", CONFIRMED: "Đã xác nhận", CHECKED_IN: "Đã check-in", ABSENT: "Vắng mặt" };
+scwin.typeName = function (code) { return scwin.GUEST_TYPE_VN[code] || scwin.typeMeta(code).name; };
+scwin.statusName = function (code) { return scwin.GUEST_STATUS_VN[code] || scwin.statusMeta(code).name; };
+scwin.eventLabel = function (e) { return e.eventCode + " - " + e.eventName + (e.startDate ? " (" + scwin.fmtDate(e.startDate) + ")" : ""); };
+
+
+scwin.TPL_API = scwin.API_BASE + "/api/print-templates";
+scwin.GUEST_API = scwin.API_BASE + "/api/guests";
+scwin.CENTER_PAGE = "/printPage/PrintCenter.xml";
+scwin.MM_PX = 3.7795;           // 1 mm ở 100% (96 dpi)
+scwin.PT_MM = 0.352778;         // 1 pt = 0.3528 mm
+scwin.SNAP = 0.5;               // bước kéo thả (mm)
+scwin.PAPER = { A4: [210, 297], A5: [148, 210], BADGE_3X4: [76.2, 101.6], BADGE_4X6: [101.6, 152.4] };
+scwin.FIELDS = [
+    { key: "fullName", label: "Họ tên", sample: "Nguyễn Thị Minh Khuê" },
+    { key: "company", label: "Công ty", sample: "Công ty Cổ phần ABC" },
+    { key: "position", label: "Chức vụ", sample: "Giám đốc kinh doanh" },
+    { key: "guestType", label: "Loại khách", sample: "VIP" },
+    { key: "tableNumber", label: "Bàn số", sample: "A1" },
+    { key: "email", label: "Email", sample: "khue.nguyen@abc.vn" },
+    { key: "phone", label: "Điện thoại", sample: "0901 234 567" },
+    { key: "notes", label: "Ghi chú", sample: "Khách đi cùng 1 người" },
+    { key: "eventName", label: "Tên sự kiện", sample: "Hội nghị khách hàng 2026" },
+    { key: "eventCode", label: "Mã sự kiện", sample: "EVT00001" },
+    { key: "text", label: "Chữ cố định", sample: "WELCOME" },
+    { key: "qrCode", label: "Mã QR", image: true },
+    { key: "photo", label: "Ảnh khách", image: true },
+    { key: "eventLogo", label: "Logo sự kiện", image: true }
+];
+scwin.HTML_VARS = ["fullName", "company", "position", "guestType", "guestTypeCode", "guestTypeColor", "tableNumber", "email", "phone", "notes", "eventName", "eventCode", "qrCode", "eventLogo", "photo"];
+scwin.TPL_DEFAULT = {
+    templateName: "", templateType: "NAMECARD", paperSize: "BADGE_3X4", widthMm: "", heightMm: "", orientation: "PORTRAIT",
+    marginTopMm: "3", marginRightMm: "3", marginBottomMm: "3", marginLeftMm: "3", fontFamily: "DejaVu Sans",
+    primaryColor: "#0b3d2a", backgroundColor: "#FFFFFF", backgroundImageUrl: "", borderStyle: "none", dpi: "300", systemDefault: "", htmlTemplate: ""
+};
+
+scwin.tplId = null;
+scwin.tpl = null;               // dữ liệu mẫu từ server (khi sửa)
+scwin.mode = "layout";          // layout | html
+scwin.els = [];
+scwin.sel = -1;
+scwin.scale = 3;
+scwin.dirty = false;
+scwin.drag = null;
+scwin.pdfUrl = null;
+scwin.open = { pv: false, preset: false };
+
+/* =====================================================================
+ * VÒNG ĐỜI
+ * ===================================================================== */
+scwin.onpageload = function () {
+    if (!scwin.getToken()) { scwin.goLogin(); return; }
+    if (!scwin.can("TEMPLATE_MANAGE")) scwin.toast("Bạn chỉ có quyền xem mẫu in. Thay đổi sẽ không lưu được.", "warning");
+    scwin.handlers();
+    scwin.renderPalette();
+    scwin.renderVarChips();
+    dma_tpl.setJSON(scwin.copy(scwin.TPL_DEFAULT));
+    sbx_zoom.setValue("fit");
+    scwin.tplId = scwin.getQueryParam("templateId") || null;
+    scwin.loadLookups();
+    if (scwin.tplId) scwin.loadTemplate(scwin.tplId);
+    else { scwin.applyPreset("badgeBasic", true); scwin.openPreset(); }
+    scwin.selectEl(-1);
+    scwin.setMode("layout");
+};
+scwin.onpageunload = function () {
+    document.removeEventListener("keydown", scwin.keyHandler);
+    window.removeEventListener("resize", scwin.resizeHandler);
+    window.removeEventListener("beforeunload", scwin.unloadHandler);
+    document.removeEventListener("pointermove", scwin.moveHandler);
+    document.removeEventListener("pointerup", scwin.upHandler);
+};
+scwin.handlers = function () {
+    scwin.keyHandler = function (e) { scwin.onGlobalKeydown(e); };
+    scwin.resizeHandler = function () { if (sbx_zoom.getValue() === "fit") scwin.renderCanvas(); };
+    scwin.unloadHandler = function (e) { if (scwin.dirty) { e.preventDefault(); e.returnValue = ""; } };
+    scwin.moveHandler = function (e) { scwin.onPointerMove(e); };
+    scwin.upHandler = function (e) { scwin.onPointerUp(e); };
+    document.addEventListener("keydown", scwin.keyHandler);
+    window.addEventListener("resize", scwin.resizeHandler);
+    window.addEventListener("beforeunload", scwin.unloadHandler);
+    document.addEventListener("pointermove", scwin.moveHandler);
+    document.addEventListener("pointerup", scwin.upHandler);
+};
+scwin.copy = function (o) { return JSON.parse(JSON.stringify(o)); };
+scwin.num = function (v, d) { var n = parseFloat(String(v == null ? "" : v).replace(",", ".")); return isNaN(n) ? d : n; };
+scwin.round = function (v) { return Math.round(v * 10) / 10; };
+
+scwin.loadLookups = function () {
+    scwin.callApi("sbm_lookups", { url: scwin.GUEST_API + "/lookups" }).then(function (d) {
+        var ev = (d && d.events) || [];
+        dlt_events.setJSON(ev.map(function (e) { return { eventId: String(e.eventId), label: scwin.eventLabel(e) }; }));
+        var q = scwin.getQueryParam("eventId");
+        if (q) sbx_pvEvent.setValue(q);
+    }).catch(function () { });
+};
+
+scwin.loadTemplate = function (id) {
+    grp_stage.addClass("is-loading");
+    scwin.callApi("sbm_tplGet", { url: scwin.TPL_API + "/" + id }).then(function (t) { scwin.fillTemplate(t); })
+        .catch(function (err) { scwin.toast(err.message, "error"); })
+        .then(function () { grp_stage.removeClass("is-loading"); });
+};
+scwin.fillTemplate = function (t) {
+    scwin.tpl = t;
+    scwin.tplId = t.templateId;
+    var s = function (v) { return v == null ? "" : String(v); };
+    dma_tpl.setJSON({
+        templateName: s(t.templateName), templateType: s(t.templateType), paperSize: s(t.paperSize), widthMm: s(t.widthMm), heightMm: s(t.heightMm),
+        orientation: s(t.orientation || "PORTRAIT"), marginTopMm: s(t.marginTopMm), marginRightMm: s(t.marginRightMm), marginBottomMm: s(t.marginBottomMm),
+        marginLeftMm: s(t.marginLeftMm), fontFamily: s(t.fontFamily || "DejaVu Sans"), primaryColor: s(t.primaryColor || "#000000"),
+        backgroundColor: s(t.backgroundColor || "#FFFFFF"), backgroundImageUrl: s(t.backgroundImageUrl), borderStyle: s(t.borderStyle || "none"),
+        dpi: s(t.dpi || 300), systemDefault: t.systemDefault ? "true" : "", htmlTemplate: s(t.htmlTemplate)
+    });
+    scwin.els = (t.layoutConfig && t.layoutConfig.elements) ? scwin.copy(t.layoutConfig.elements) : [];
+    scwin.setMode(t.htmlTemplate ? "html" : "layout");
+    scwin.selectEl(-1);
+    scwin.updateTplUi();
+    scwin.setDirty(false);
+    tbx_dCrumb.setValue("In ấn / Mẫu in / " + (t.systemDefault ? "Mẫu mặc định hệ thống" : "Sửa mẫu #" + t.templateId));
+    tbx_dMeta.setValue("Đang dùng bởi " + (t.usedByEventCount || 0) + " sự kiện. Cập nhật lúc " + scwin.fmtDateTime(t.updatedAt) + ".");
+};
+
+/* =====================================================================
+ * THUỘC TÍNH MẪU
+ * ===================================================================== */
+scwin.syncTpl = function () {
+    var map = { templateName: ibx_name, widthMm: ibx_w, heightMm: ibx_h, marginTopMm: ibx_mTop, marginRightMm: ibx_mRight,
+        marginBottomMm: ibx_mBottom, marginLeftMm: ibx_mLeft, primaryColor: ibx_primary, backgroundColor: ibx_bg,
+        backgroundImageUrl: ibx_bgImage, dpi: ibx_dpi, htmlTemplate: txa_html };
+    for (var k in map) if (map.hasOwnProperty(k)) { var v = map[k].getValue(); if (v != null && dma_tpl.get(k) !== v) dma_tpl.set(k, v); }
+};
+scwin.pageSize = function () {
+    var t = dma_tpl.getJSON();
+    if (t.paperSize === "CUSTOM") return { w: scwin.clamp(scwin.num(t.widthMm, 80), 10, 1000), h: scwin.clamp(scwin.num(t.heightMm, 50), 10, 1000) };
+    var p = scwin.PAPER[t.paperSize] || scwin.PAPER.BADGE_3X4;
+    return t.orientation === "LANDSCAPE" ? { w: p[1], h: p[0] } : { w: p[0], h: p[1] };
+};
+scwin.updateTplUi = function () {
+    var t = dma_tpl.getJSON(), custom = t.paperSize === "CUSTOM";
+    scwin.show(grp_customSize, custom);
+    scwin.show(grp_orient, !custom);
+    grp_swPrimary.setStyle("background-color", scwin.safeColor(t.primaryColor));
+    grp_swBg.setStyle("background-color", scwin.safeColor(t.backgroundColor));
+    var s = scwin.pageSize();
+    tbx_pageSize.setValue(scwin.round(s.w) + " × " + scwin.round(s.h) + " mm");
+    tbx_dTitle.setValue(t.templateName || "Mẫu chưa đặt tên");
+    scwin.renderCanvas();
+};
+scwin.tpl_onchange = function () { scwin.syncTpl(); scwin.setDirty(true); scwin.updateTplUi(); };
+scwin.sbx_paper_onchange = function () {
+    dma_tpl.set("paperSize", sbx_paper.getValue());
+    if (sbx_paper.getValue() === "CUSTOM" && !dma_tpl.get("widthMm")) { var s = scwin.pageSize(); dma_tpl.set("widthMm", String(s.w)); dma_tpl.set("heightMm", String(s.h)); }
+    scwin.tpl_onchange();
+};
+scwin.sbx_type_onchange = function () {
+    var type = sbx_type.getValue();
+    dma_tpl.set("templateType", type);
+    // Gợi ý khổ giấy hợp loại
+    var p = dma_tpl.get("paperSize");
+    if (type === "NAMEPLACE" && (p === "BADGE_3X4" || p === "BADGE_4X6")) { dma_tpl.set("paperSize", "A4"); dma_tpl.set("orientation", "LANDSCAPE"); }
+    if (type === "NAMECARD" && (p === "A4" || p === "A5")) { dma_tpl.set("paperSize", "BADGE_3X4"); dma_tpl.set("orientation", "PORTRAIT"); }
+    scwin.tpl_onchange();
+};
+
+/* =====================================================================
+ * CHẾ ĐỘ: KÉO THẢ / HTML
+ * ===================================================================== */
+scwin.setMode = function (m) {
+    scwin.mode = m;
+    scwin.toggleClass(btn_modeLayout, "is-selected", m === "layout");
+    scwin.toggleClass(btn_modeHtml, "is-selected", m === "html");
+    scwin.show(grp_layoutMode, m === "layout");
+    scwin.show(grp_htmlMode, m === "html");
+    scwin.show(grp_elPanel, m === "layout");
+    if (m === "layout") setTimeout(scwin.renderCanvas, 30);
+};
+scwin.btn_modeLayout_onclick = function () {
+    if (scwin.mode === "layout") return;
+    scwin.setMode("layout"); scwin.setDirty(true);
+};
+scwin.btn_modeHtml_onclick = function () {
+    if (scwin.mode === "html") return;
+    if (!scwin.trim(txa_html.getValue())) {
+        // Gợi ý sẵn một HTML tối thiểu
+        dma_tpl.set("htmlTemplate", "<div style=\"text-align:center;padding-top:20mm;color:{{guestTypeColor}}\">\n  <div style=\"font-size:22pt;font-weight:bold\">{{fullName}}</div>\n  <div style=\"font-size:12pt\">{{company}}</div>\n  <img src=\"{{qrCode}}\" style=\"width:30mm;height:30mm;margin-top:8mm\"/>\n</div>");
+    }
+    scwin.setMode("html"); scwin.setDirty(true);
+};
+scwin.renderVarChips = function () {
+    var box = scwin.domOf(grp_vars);
+    scwin.clearEl(box);
+    scwin.HTML_VARS.forEach(function (v) {
+        var b = scwin.el("button", "pr-varchip", "{{" + v + "}}");
+        b.type = "button";
+        b.title = "Chèn vào vị trí con trỏ";
+        b.addEventListener("click", function () { scwin.insertVar("{{" + v + "}}"); });
+        box.appendChild(b);
+    });
+};
+scwin.insertVar = function (txt) {
+    var host = scwin.domOf(txa_html), ta = host && (host.tagName === "TEXTAREA" ? host : host.querySelector("textarea"));
+    if (!ta) { txa_html.setValue((txa_html.getValue() || "") + txt); return; }
+    var s = ta.selectionStart || 0, e = ta.selectionEnd || 0, v = ta.value;
+    ta.value = v.substring(0, s) + txt + v.substring(e);
+    ta.selectionStart = ta.selectionEnd = s + txt.length;
+    ta.focus();
+    dma_tpl.set("htmlTemplate", ta.value);
+    scwin.setDirty(true);
+};
+scwin.txa_html_onkeyup = function () { scwin.setDirty(true); };
+
+/* =====================================================================
+ * PHẦN TỬ: THÊM, CHỌN, SỬA
+ * ===================================================================== */
+scwin.fieldDef = function (k) { for (var i = 0; i < scwin.FIELDS.length; i++) if (scwin.FIELDS[i].key === k) return scwin.FIELDS[i]; return { key: k, label: k, sample: k }; };
+scwin.renderPalette = function () {
+    var box = scwin.domOf(grp_palette);
+    scwin.clearEl(box);
+    scwin.FIELDS.forEach(function (f) {
+        var b = scwin.el("button", "pr-palette__item" + (f.image ? " pr-palette__item--image" : ""), f.label);
+        b.type = "button";
+        b.title = "Thêm " + f.label.toLowerCase() + " vào giữa trang";
+        b.addEventListener("click", function () { scwin.addElement(f.key); });
+        box.appendChild(b);
+    });
+};
+scwin.addElement = function (key) {
+    var f = scwin.fieldDef(key), s = scwin.pageSize();
+    var w = f.image ? Math.min(30, s.w - 6) : Math.min(scwin.round(s.w * 0.8), s.w - 6);
+    var h = f.image ? w : 10;
+    var el = { field: key, x: scwin.round((s.w - w) / 2), y: scwin.round((s.h - h) / 2), width: scwin.round(w), height: scwin.round(h) };
+    if (!f.image) { el.fontSize = key === "fullName" ? 20 : 12; el.align = "center"; el.fontWeight = key === "fullName" ? "bold" : "normal"; }
+    if (key === "text") el.text = "Nội dung";
+    if (key === "tableNumber") el.prefix = "Bàn ";
+    if (key === "guestType") { el.useTypeColor = true; el.color = "#FFFFFF"; el.uppercase = true; }
+    scwin.els.push(el);
+    scwin.selectEl(scwin.els.length - 1);
+    scwin.setDirty(true);
+};
+
+scwin.selectEl = function (i) {
+    scwin.sel = i;
+    var el = scwin.els[i];
+    scwin.show(grp_elForm, !!el);
+    scwin.show(grp_elNone, !el);
+    if (el) {
+        var f = scwin.fieldDef(el.field), s = function (v) { return v == null ? "" : String(v); };
+        dma_el.setJSON({
+            field: el.field, text: s(el.text), prefix: s(el.prefix), x: s(el.x), y: s(el.y), width: s(el.width), height: s(el.height),
+            fontSize: s(el.fontSize || 12), fontWeight: el.fontWeight || "normal", fontStyle: el.fontStyle || "normal", align: el.align || "left",
+            color: s(el.color), backgroundColor: s(el.backgroundColor),
+            flags: [el.uppercase ? "uppercase" : "", el.useTypeColor ? "useTypeColor" : "", el.visible === false ? "hidden" : ""].filter(function (x) { return !!x; }).join(",")
+        });
+        tbx_elTitle.setValue(f.label);
+        scwin.show(grp_elText, el.field === "text");
+        scwin.show(grp_elTextStyle, !f.image);
+        scwin.show(grp_elPrefix, !f.image && el.field !== "text");
+        tbx_elTypeHint.setValue(el.field === "guestType" ? "Tích “Tô nền theo màu loại khách” để có thẻ VIP vàng, Staff xanh…" : f.image ? "Ảnh co vừa khung, giữ tỉ lệ, căn giữa." : "Chữ dài tự thu nhỏ và xuống dòng cho vừa khung khi in.");
+    }
+    scwin.renderCanvas();
+    scwin.renderLayers();
+};
+/** Đọc bảng thuộc tính -> phần tử đang chọn. */
+scwin.el_onchange = function () {
+    var el = scwin.els[scwin.sel];
+    if (!el) return;
+    var map = { text: ibx_elText, prefix: ibx_elPrefix, x: ibx_elX, y: ibx_elY, width: ibx_elW, height: ibx_elH, fontSize: ibx_elFont, color: ibx_elColor, backgroundColor: ibx_elBg };
+    for (var k in map) if (map.hasOwnProperty(k)) { var v = map[k].getValue(); if (v != null && dma_el.get(k) !== v) dma_el.set(k, v); }
+    var d = dma_el.getJSON(), flags = String(chk_elFlags.getValue() || "").split(/[\s,]+/);
+    el.x = scwin.num(d.x, el.x); el.y = scwin.num(d.y, el.y);
+    el.width = Math.max(1, scwin.num(d.width, el.width)); el.height = Math.max(1, scwin.num(d.height, el.height));
+    var f = scwin.fieldDef(el.field);
+    if (!f.image) {
+        el.fontSize = scwin.clamp(scwin.num(d.fontSize, 12), 4, 200);
+        el.fontWeight = sbx_elWeight.getValue() || "normal";
+        el.fontStyle = sbx_elStyle.getValue() || "normal";
+        el.align = sbx_elAlign.getValue() || "left";
+        el.uppercase = flags.indexOf("uppercase") >= 0 || undefined;
+        el.color = /^#[0-9a-f]{6}$/i.test(d.color) ? d.color : undefined;
+        el.backgroundColor = /^#[0-9a-f]{6}$/i.test(d.backgroundColor) ? d.backgroundColor : undefined;
+        el.prefix = d.prefix || undefined;
+        if (el.field === "text") el.text = d.text;
+        if (el.field === "guestType") el.useTypeColor = flags.indexOf("useTypeColor") >= 0 || undefined;
+    }
+    el.visible = flags.indexOf("hidden") >= 0 ? false : undefined;
+    scwin.setDirty(true);
+    scwin.renderCanvas();
+    scwin.renderLayers();
+};
+scwin.btn_elDelete_onclick = function () {
+    if (scwin.sel < 0) return;
+    scwin.els.splice(scwin.sel, 1);
+    scwin.selectEl(-1); scwin.setDirty(true);
+};
+scwin.btn_elDup_onclick = function () {
+    var el = scwin.els[scwin.sel];
+    if (!el) return;
+    var c = scwin.copy(el), s = scwin.pageSize();
+    c.x = Math.min(scwin.round(c.x + 3), s.w - c.width); c.y = Math.min(scwin.round(c.y + 3), s.h - c.height);
+    scwin.els.push(c);
+    scwin.selectEl(scwin.els.length - 1); scwin.setDirty(true);
+};
+scwin.btn_elCenter_onclick = function () {
+    var el = scwin.els[scwin.sel];
+    if (!el) return;
+    el.x = scwin.round((scwin.pageSize().w - el.width) / 2);
+    scwin.selectEl(scwin.sel); scwin.setDirty(true);
+};
+scwin.btn_elFull_onclick = function () {
+    var el = scwin.els[scwin.sel];
+    if (!el) return;
+    var t = dma_tpl.getJSON(), s = scwin.pageSize(), l = scwin.num(t.marginLeftMm, 0), r = scwin.num(t.marginRightMm, 0);
+    el.x = l; el.width = scwin.round(s.w - l - r);
+    scwin.selectEl(scwin.sel); scwin.setDirty(true);
+};
+scwin.moveLayer = function (dir) {
+    var i = scwin.sel, j = i + dir;
+    if (i < 0 || j < 0 || j >= scwin.els.length) return;
+    var t = scwin.els[i]; scwin.els[i] = scwin.els[j]; scwin.els[j] = t;
+    scwin.selectEl(j); scwin.setDirty(true);
+};
+scwin.btn_elUp_onclick = function () { scwin.moveLayer(1); };
+scwin.btn_elDown_onclick = function () { scwin.moveLayer(-1); };
+
+/* ---------- Danh sách lớp ---------- */
+scwin.renderLayers = function () {
+    var box = scwin.domOf(grp_layers);
+    if (!box) return;
+    scwin.clearEl(box);
+    if (!scwin.els.length) { box.appendChild(scwin.el("p", "pr-layers__empty", "Chưa có phần tử. Chọn trường ở trên để thêm.")); return; }
+    var s = scwin.pageSize();
+    for (var i = scwin.els.length - 1; i >= 0; i--) {
+        (function (i) {
+            var el = scwin.els[i], f = scwin.fieldDef(el.field);
+            var out = scwin.isOut(el, s);
+            var b = scwin.el("button", "pr-layer" + (i === scwin.sel ? " is-selected" : "") + (out ? " is-out" : "") + (el.visible === false ? " is-hidden-el" : ""));
+            b.type = "button";
+            b.appendChild(scwin.el("span", "pr-layer__name", f.label + (el.field === "text" && el.text ? ": " + el.text : "")));
+            b.appendChild(scwin.el("span", "pr-layer__meta", out ? "Ra ngoài trang" : scwin.round(el.x) + ", " + scwin.round(el.y)));
+            b.addEventListener("click", function () { scwin.selectEl(i); });
+            box.appendChild(b);
+        })(i);
+    }
+};
+scwin.isOut = function (el, s) { return el.x < -0.01 || el.y < -0.01 || el.x + el.width > s.w + 0.01 || el.y + el.height > s.h + 0.01; };
+
+/* =====================================================================
+ * CANVAS
+ * ===================================================================== */
+scwin.sbx_zoom_onchange = function () { scwin.renderCanvas(); };
+scwin.renderCanvas = function () {
+    if (scwin.mode !== "layout") return;
+    var stage = scwin.domOf(grp_stage);
+    if (!stage) return;
+    var t = dma_tpl.getJSON(), s = scwin.pageSize(), z = sbx_zoom.getValue() || "fit";
+    var avW = Math.max(200, stage.clientWidth - 56), avH = Math.max(240, stage.clientHeight - 56);
+    scwin.scale = z === "fit" ? Math.min(avW / s.w, avH / s.h, 8) : scwin.MM_PX * Number(z) / 100;
+    var k = scwin.scale;
+    var page = scwin.pageEl;
+    if (!page) {
+        page = scwin.el("div", "pr-page");
+        page.addEventListener("pointerdown", function (e) { if (e.target === page || e.target.className === "pr-page__margin") scwin.selectEl(-1); });
+        stage.appendChild(page);
+        scwin.pageEl = page;
+    }
+    page.style.width = (s.w * k) + "px";
+    page.style.height = (s.h * k) + "px";
+    page.style.backgroundColor = scwin.safeColor(t.backgroundColor);
+    page.style.backgroundImage = t.backgroundImageUrl ? "url(\"" + String(t.backgroundImageUrl).replace(/"/g, "") + "\")" : "none";
+    page.style.borderStyle = t.borderStyle && t.borderStyle !== "none" ? t.borderStyle : "solid";
+    page.style.borderColor = t.borderStyle && t.borderStyle !== "none" ? scwin.safeColor(t.primaryColor) : "transparent";
+    page.style.color = scwin.safeColor(t.primaryColor);
+    scwin.clearEl(page);
+
+    var m = scwin.el("div", "pr-page__margin");
+    m.style.left = scwin.num(t.marginLeftMm, 0) * k + "px"; m.style.top = scwin.num(t.marginTopMm, 0) * k + "px";
+    m.style.right = scwin.num(t.marginRightMm, 0) * k + "px"; m.style.bottom = scwin.num(t.marginBottomMm, 0) * k + "px";
+    page.appendChild(m);
+
+    scwin.els.forEach(function (el, i) {
+        var f = scwin.fieldDef(el.field);
+        var d = scwin.el("div", "pr-el" + (f.image ? " pr-el--image pr-el--" + el.field : "") + (i === scwin.sel ? " is-selected" : "")
+            + (scwin.isOut(el, s) ? " is-out" : "") + (el.visible === false ? " is-hidden-el" : ""));
+        d.style.left = el.x * k + "px"; d.style.top = el.y * k + "px";
+        d.style.width = el.width * k + "px"; d.style.height = el.height * k + "px";
+        if (f.image) {
+            d.appendChild(scwin.el("span", "pr-el__label", f.label));
+        } else {
+            var txt = (el.prefix || "") + (el.field === "text" ? (el.text || "") : f.sample);
+            var span = scwin.el("span", "pr-el__text", el.uppercase ? txt.toUpperCase() : txt);
+            d.style.fontSize = (scwin.num(el.fontSize, 12) * scwin.PT_MM * k) + "px";
+            d.style.fontWeight = el.fontWeight === "bold" ? "700" : "400";
+            d.style.fontStyle = el.fontStyle === "italic" ? "italic" : "normal";
+            d.style.justifyContent = el.align === "center" ? "center" : el.align === "right" ? "flex-end" : "flex-start";
+            d.style.textAlign = el.align || "left";
+            if (el.color) d.style.color = el.color;
+            if (el.useTypeColor) d.style.backgroundColor = "#D4AF37";
+            else if (el.backgroundColor) d.style.backgroundColor = el.backgroundColor;
+            d.appendChild(span);
+        }
+        var hdl = scwin.el("span", "pr-el__handle");
+        d.appendChild(hdl);
+        d.addEventListener("pointerdown", function (e) { scwin.onPointerDown(e, i, e.target === hdl ? "resize" : "move"); });
+        page.appendChild(d);
+    });
+    var outN = scwin.els.filter(function (el) { return scwin.isOut(el, s); }).length;
+    tbx_canvasWarn.setValue(outN ? outN + " phần tử nằm ngoài trang. Kéo vào trong hoặc chỉnh lại tọa độ trước khi lưu." : "");
+    scwin.show(tbx_canvasWarn, outN > 0);
+};
+
+/* ---------- Kéo thả & co giãn (đơn vị mm, bước 0.5 mm) ---------- */
+scwin.snap = function (v) { return Math.round(v / scwin.SNAP) * scwin.SNAP; };
+scwin.onPointerDown = function (e, i, kind) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (scwin.sel !== i) scwin.selectEl(i);
+    var el = scwin.els[i];
+    scwin.drag = { i: i, kind: kind, mx: e.clientX, my: e.clientY, x: el.x, y: el.y, w: el.width, h: el.height, moved: false };
+    scwin.canvasActive = true;
+};
+scwin.onPointerMove = function (e) {
+    var d = scwin.drag;
+    if (!d) return;
+    var el = scwin.els[d.i], s = scwin.pageSize(), k = scwin.scale;
+    var dx = (e.clientX - d.mx) / k, dy = (e.clientY - d.my) / k;
+    if (Math.abs(dx) + Math.abs(dy) > 0.3) d.moved = true;
+    if (d.kind === "move") {
+        el.x = scwin.clamp(scwin.snap(d.x + dx), 0, Math.max(0, s.w - el.width));
+        el.y = scwin.clamp(scwin.snap(d.y + dy), 0, Math.max(0, s.h - el.height));
+    } else {
+        el.width = scwin.clamp(scwin.snap(d.w + dx), 2, s.w - el.x);
+        el.height = scwin.clamp(scwin.snap(d.h + dy), 2, s.h - el.y);
+    }
+    var node = scwin.pageEl && scwin.pageEl.querySelectorAll(".pr-el")[d.i];
+    if (node) {
+        node.style.left = el.x * k + "px"; node.style.top = el.y * k + "px";
+        node.style.width = el.width * k + "px"; node.style.height = el.height * k + "px";
+    }
+    tbx_dragInfo.setValue("x " + el.x + ", y " + el.y + ", " + el.width + " × " + el.height + " mm");
+};
+scwin.onPointerUp = function () {
+    var d = scwin.drag;
+    if (!d) return;
+    scwin.drag = null;
+    tbx_dragInfo.setValue("");
+    if (d.moved) { scwin.setDirty(true); scwin.selectEl(d.i); }
+};
+
+/* =====================================================================
+ * MẪU DỰNG SẴN
+ * ===================================================================== */
+scwin.PRESETS = {
+    badgeBasic: { name: "Thẻ tên cơ bản", type: "NAMECARD", paper: "BADGE_3X4", orient: "PORTRAIT", els: [
+        { field: "eventName", x: 4, y: 5, width: 68.2, height: 8, fontSize: 9, align: "center", uppercase: true },
+        { field: "guestType", x: 0, y: 15, width: 76.2, height: 9, fontSize: 12, fontWeight: "bold", align: "center", color: "#FFFFFF", useTypeColor: true, uppercase: true },
+        { field: "fullName", x: 4, y: 30, width: 68.2, height: 16, fontSize: 18, fontWeight: "bold", align: "center" },
+        { field: "position", x: 4, y: 47, width: 68.2, height: 6, fontSize: 10, align: "center", fontStyle: "italic" },
+        { field: "company", x: 4, y: 54, width: 68.2, height: 7, fontSize: 11, align: "center" },
+        { field: "qrCode", x: 23.1, y: 66, width: 30, height: 30 }
+    ] },
+    badgeVip: { name: "Thẻ VIP có ảnh", type: "NAMECARD", paper: "BADGE_4X6", orient: "PORTRAIT", els: [
+        { field: "text", text: "WELCOME", x: 0, y: 8, width: 101.6, height: 10, fontSize: 18, fontWeight: "bold", align: "center" },
+        { field: "guestType", x: 0, y: 22, width: 101.6, height: 10, fontSize: 14, color: "#FFFFFF", align: "center", useTypeColor: true, uppercase: true },
+        { field: "photo", x: 35.8, y: 37, width: 30, height: 36 },
+        { field: "fullName", x: 5, y: 76, width: 91.6, height: 18, fontSize: 22, fontWeight: "bold", align: "center" },
+        { field: "company", x: 5, y: 95, width: 91.6, height: 8, fontSize: 12, align: "center", fontStyle: "italic" },
+        { field: "tableNumber", prefix: "Bàn ", x: 5, y: 104, width: 91.6, height: 8, fontSize: 12, align: "center" },
+        { field: "qrCode", x: 33.8, y: 114, width: 34, height: 34 }
+    ] },
+    nameplace: { name: "Danh bạ để bàn A4 ngang", type: "NAMEPLACE", paper: "A4", orient: "LANDSCAPE", els: [
+        { field: "eventName", x: 15, y: 20, width: 267, height: 12, fontSize: 16, align: "center", uppercase: true },
+        { field: "fullName", x: 15, y: 70, width: 267, height: 40, fontSize: 54, fontWeight: "bold", align: "center" },
+        { field: "position", x: 15, y: 115, width: 267, height: 14, fontSize: 22, align: "center" },
+        { field: "company", x: 15, y: 132, width: 267, height: 16, fontSize: 26, align: "center", fontStyle: "italic" },
+        { field: "eventLogo", x: 128.5, y: 165, width: 40, height: 25 }
+    ] },
+    blank: { name: "Trang trắng", type: null, els: [] }
+};
+scwin.applyPreset = function (key, silent) {
+    var p = scwin.PRESETS[key];
+    if (!p) return;
+    if (p.type) {
+        dma_tpl.set("templateType", p.type); dma_tpl.set("paperSize", p.paper); dma_tpl.set("orientation", p.orient);
+        if (!dma_tpl.get("templateName")) dma_tpl.set("templateName", p.name);
+    }
+    scwin.els = scwin.copy(p.els);
+    scwin.selectEl(-1);
+    scwin.updateTplUi();
+    if (!silent) scwin.setDirty(true);
+};
+scwin.openPreset = function () { scwin.open.preset = true; grp_presetMask.addClass("is-open"); };
+scwin.closePreset = function () { scwin.open.preset = false; grp_presetMask.removeClass("is-open"); };
+scwin.btn_presets_onclick = function () {
+    if (scwin.els.length && !window.confirm("Áp dụng mẫu dựng sẵn sẽ thay toàn bộ phần tử hiện có. Tiếp tục?")) return;
+    scwin.openPreset();
+};
+scwin.btn_pBadge_onclick = function () { dma_tpl.set("templateName", ""); scwin.applyPreset("badgeBasic"); scwin.closePreset(); };
+scwin.btn_pVip_onclick = function () { dma_tpl.set("templateName", ""); scwin.applyPreset("badgeVip"); scwin.closePreset(); };
+scwin.btn_pPlace_onclick = function () { dma_tpl.set("templateName", ""); scwin.applyPreset("nameplace"); scwin.closePreset(); };
+scwin.btn_pBlank_onclick = function () { scwin.applyPreset("blank"); scwin.closePreset(); };
+
+/* =====================================================================
+ * LƯU, XEM TRƯỚC, NHÂN BẢN, XUẤT
+ * ===================================================================== */
+scwin.setDirty = function (on) {
+    scwin.dirty = on;
+    tbx_dStatus.setValue(on ? "Chưa lưu" : (scwin.tplId ? "Đã lưu" : "Mẫu mới"));
+    scwin.toggleClass(tbx_dStatus, "is-dirty", on);
+};
+scwin.cleanEl = function (el) {
+    var o = {};
+    ["field", "text", "prefix", "x", "y", "width", "height", "fontSize", "fontWeight", "fontStyle", "fontFamily", "color", "backgroundColor", "align", "uppercase", "useTypeColor", "visible"]
+        .forEach(function (k) { if (el[k] !== undefined && el[k] !== null && el[k] !== "") o[k] = el[k]; });
+    ["x", "y", "width", "height"].forEach(function (k) { o[k] = scwin.round(Number(o[k]) || 0); });
+    return o;
+};
+scwin.buildBody = function () {
+    scwin.syncTpl();
+    var t = dma_tpl.getJSON(), custom = t.paperSize === "CUSTOM";
+    return {
+        templateName: scwin.trim(t.templateName), templateType: t.templateType, paperSize: t.paperSize,
+        widthMm: custom ? scwin.num(t.widthMm, null) : null, heightMm: custom ? scwin.num(t.heightMm, null) : null,
+        orientation: t.orientation || "PORTRAIT",
+        marginTopMm: scwin.num(t.marginTopMm, 0), marginRightMm: scwin.num(t.marginRightMm, 0),
+        marginBottomMm: scwin.num(t.marginBottomMm, 0), marginLeftMm: scwin.num(t.marginLeftMm, 0),
+        fontFamily: t.fontFamily || "DejaVu Sans",
+        primaryColor: /^#[0-9a-f]{6}$/i.test(t.primaryColor) ? t.primaryColor : null,
+        backgroundColor: /^#[0-9a-f]{6}$/i.test(t.backgroundColor) ? t.backgroundColor : null,
+        backgroundImageUrl: scwin.trim(t.backgroundImageUrl) || null,
+        borderStyle: t.borderStyle || "none", dpi: scwin.num(t.dpi, 300),
+        systemDefault: !!String(t.systemDefault || ""),
+        htmlTemplate: scwin.mode === "html" ? t.htmlTemplate : null,
+        layoutConfig: scwin.mode === "layout" ? { elements: scwin.els.map(scwin.cleanEl) } : null
+    };
+};
+scwin.validate = function (b) {
+    var e = [];
+    if (!b.templateName) e.push("Nhập tên mẫu.");
+    if (b.paperSize === "CUSTOM" && (!(b.widthMm >= 10 && b.widthMm <= 1000) || !(b.heightMm >= 10 && b.heightMm <= 1000))) e.push("Khổ tùy chỉnh phải từ 10 đến 1000 mm.");
+    if (!(b.dpi >= 72 && b.dpi <= 1200)) e.push("DPI từ 72 đến 1200.");
+    if (b.layoutConfig) {
+        if (!b.layoutConfig.elements.length) e.push("Mẫu chưa có phần tử nào.");
+        if (b.layoutConfig.elements.length > 50) e.push("Tối đa 50 phần tử.");
+        var s = scwin.pageSize();
+        if (scwin.els.some(function (el) { return scwin.isOut(el, s); })) e.push("Có phần tử nằm ngoài trang.");
+        if (scwin.els.some(function (el) { return el.field === "text" && !scwin.trim(el.text); })) e.push("Phần tử Chữ cố định chưa có nội dung.");
+    } else if (!scwin.trim(b.htmlTemplate)) e.push("Nhập nội dung HTML.");
+    return e;
+};
+scwin.showErrors = function (list) {
+    tbx_saveErr.setValue(list.join("\n"));
+    scwin.show(tbx_saveErr, list.length > 0);
+};
+
+scwin.btn_save_onclick = function () {
+    var b = scwin.buildBody(), errs = scwin.validate(b);
+    scwin.showErrors(errs);
+    if (errs.length) { scwin.toast(errs[0], "warning"); return; }
+    btn_save.addClass("is-busy");
+    (scwin.tplId
+        ? scwin.callApi("sbm_tplUpdate", { url: scwin.TPL_API + "/" + scwin.tplId, body: b })
+        : scwin.callApi("sbm_tplCreate", { url: scwin.TPL_API, body: b })
+    ).then(function (t) {
+        var created = !scwin.tplId;
+        scwin.fillTemplate(t);
+        scwin.toast(created ? "Đã tạo mẫu " + t.templateName + "." : "Đã lưu mẫu.", "success");
+        if (created && window.history && window.history.replaceState) {
+            window.history.replaceState(null, "", scwin.pageUrl(scwin.DESIGNER_PAGE_PATH(), { templateId: t.templateId, eventId: scwin.getQueryParam("eventId") }));
+        }
+    }).catch(function (err) {
+        var list = [err.message];
+        if (err.code === "VALIDATION_ERROR" && err.data && typeof err.data === "object") list = Object.keys(err.data).map(function (k) { return k + ": " + err.data[k]; });
+        scwin.showErrors(list);
+        scwin.toast(err.message, "error");
+    }).then(function () { btn_save.removeClass("is-busy"); });
+};
+scwin.DESIGNER_PAGE_PATH = function () { return "/printPage/TemplateDesigner.xml"; };
+
+scwin.btn_preview_onclick = function () {
+    var b = scwin.buildBody(), errs = scwin.validate(b).filter(function (x) { return x.indexOf("tên mẫu") < 0; });
+    if (!b.templateName) b.templateName = "Xem trước";
+    if (errs.length) { scwin.showErrors(errs); scwin.toast(errs[0], "warning"); return; }
+    scwin.showErrors([]);
+    tbx_pvTitle.setValue("Xem trước: " + b.templateName);
+    tbx_pvHint.setValue(sbx_pvEvent.getValue() ? "Dữ liệu khách đầu tiên của sự kiện đã chọn." : "Dữ liệu mẫu (Nguyễn Thị Minh Khuê, VIP, bàn A1).");
+    scwin.open.pv = true; grp_pvMask.addClass("is-open");
+    grp_pvFrame.addClass("is-loading");
+    btn_preview.addClass("is-busy");
+    scwin.xhr("POST", scwin.TPL_API + "/preview?" + scwin.buildQuery({ eventId: sbx_pvEvent.getValue(), format: "pdf" }), { body: b, responseType: "blob" })
+        .then(function (r) {
+            if (scwin.pdfUrl) URL.revokeObjectURL(scwin.pdfUrl);
+            scwin.pdfUrl = URL.createObjectURL(r.blob);
+            var host = scwin.domOf(grp_pvFrame), f = host.querySelector("iframe");
+            if (!f) { f = document.createElement("iframe"); f.className = "pr-pdf"; f.title = "Bản xem trước"; host.appendChild(f); }
+            f.src = scwin.pdfUrl + "#toolbar=1&navpanes=0";
+            grp_pvFrame.addClass("has-pdf");
+        }).catch(function (err) { tbx_pvHint.setValue("Không dựng được bản xem trước: " + err.message); })
+        .then(function () { grp_pvFrame.removeClass("is-loading"); btn_preview.removeClass("is-busy"); });
+};
+scwin.closePv = function () { scwin.open.pv = false; grp_pvMask.removeClass("is-open"); };
+scwin.btn_pvClose_onclick = scwin.closePv;
+
+scwin.btn_clone_onclick = function () {
+    if (!scwin.tplId) { scwin.toast("Lưu mẫu trước khi nhân bản.", "info"); return; }
+    if (scwin.dirty && !window.confirm("Thay đổi chưa lưu sẽ không có trong bản sao. Tiếp tục nhân bản?")) return;
+    scwin.callApi("sbm_tplClone", { url: scwin.TPL_API + "/" + scwin.tplId + "/clone", body: {} }).then(function (t) {
+        scwin.setDirty(false);
+        window.location.href = scwin.pageUrl(scwin.DESIGNER_PAGE_PATH(), { templateId: t.templateId, eventId: scwin.getQueryParam("eventId") });
+    }).catch(function (err) { scwin.toast(err.message, "error"); });
+};
+scwin.btn_export_onclick = function () {
+    if (!scwin.tplId) { scwin.toast("Lưu mẫu trước khi xuất file.", "info"); return; }
+    scwin.downloadFile(scwin.TPL_API + "/" + scwin.tplId + "/export", "MauIn-" + scwin.tplId + ".json", btn_export);
+};
+scwin.btn_back_onclick = function () {
+    if (scwin.dirty && !window.confirm("Mẫu có thay đổi chưa lưu. Rời trang?")) return;
+    scwin.dirty = false;
+    window.location.href = scwin.pageUrl(scwin.CENTER_PAGE, { tab: "templates", eventId: scwin.getQueryParam("eventId") });
+};
+
+/* ---------- Phím tắt ---------- */
+scwin.onGlobalKeydown = function (e) {
+    if (e.key === "Escape") {
+        if (scwin.open.pv) { scwin.closePv(); return; }
+        if (scwin.open.preset) { scwin.closePreset(); return; }
+        if (scwin.sel >= 0) scwin.selectEl(-1);
+        return;
+    }
+    if ((e.ctrlKey || e.metaKey) && (e.key === "s" || e.key === "S")) { e.preventDefault(); scwin.btn_save_onclick(); return; }
+    var tag = (e.target && e.target.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || tag === "select" || scwin.mode !== "layout") return;
+    var el = scwin.els[scwin.sel];
+    if (!el) return;
+    if (e.key === "Delete" || e.key === "Backspace") { e.preventDefault(); scwin.btn_elDelete_onclick(); return; }
+    if ((e.ctrlKey || e.metaKey) && (e.key === "d" || e.key === "D")) { e.preventDefault(); scwin.btn_elDup_onclick(); return; }
+    var step = e.shiftKey ? 5 : scwin.SNAP, moved = true;
+    if (e.key === "ArrowLeft") el.x = scwin.round(el.x - step);
+    else if (e.key === "ArrowRight") el.x = scwin.round(el.x + step);
+    else if (e.key === "ArrowUp") el.y = scwin.round(el.y - step);
+    else if (e.key === "ArrowDown") el.y = scwin.round(el.y + step);
+    else moved = false;
+    if (moved) { e.preventDefault(); scwin.setDirty(true); scwin.selectEl(scwin.sel); }
+};
+
+/* Handler gắn trong xf:submission (ev:submitdone / ev:submiterror) */
+scwin.sbm_lookups_submitdone = function (e) { scwin.onSbmDone("sbm_lookups", e); };
+scwin.sbm_lookups_submiterror = function (e) { scwin.onSbmError("sbm_lookups", e); };
+scwin.sbm_tplGet_submitdone = function (e) { scwin.onSbmDone("sbm_tplGet", e); };
+scwin.sbm_tplGet_submiterror = function (e) { scwin.onSbmError("sbm_tplGet", e); };
+scwin.sbm_tplCreate_submitdone = function (e) { scwin.onSbmDone("sbm_tplCreate", e); };
+scwin.sbm_tplCreate_submiterror = function (e) { scwin.onSbmError("sbm_tplCreate", e); };
+scwin.sbm_tplUpdate_submitdone = function (e) { scwin.onSbmDone("sbm_tplUpdate", e); };
+scwin.sbm_tplUpdate_submiterror = function (e) { scwin.onSbmError("sbm_tplUpdate", e); };
+scwin.sbm_tplClone_submitdone = function (e) { scwin.onSbmDone("sbm_tplClone", e); };
+scwin.sbm_tplClone_submiterror = function (e) { scwin.onSbmError("sbm_tplClone", e); };
+
+    ]]></script>
+</head>
+<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+<xf:group id="grp_layout" class="ck-layout">
+    <w2:wframe id="wfm_header" class="layout-header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+    <xf:group id="grp_main" class="ck-main pr-scope pr-designer" tagname="main">
+        <!-- Thanh trên -->
+        <xf:group id="grp_dTop" class="pr-dtop">
+            <xf:group id="grp_dTopLeft" class="pr-dtop__left">
+                <xf:trigger id="btn_back" type="button" class="pr-icon-btn pr-ico-back" ev:onclick="scwin.btn_back_onclick"><xf:label><![CDATA[Quay lại]]></xf:label></xf:trigger>
+                <xf:group id="grp_dTitles" class="pr-dtop__titles">
+                    <w2:textbox id="tbx_dCrumb" class="pr-header__crumb" tagname="p" label="In ấn / Mẫu in / Mẫu mới"/>
+                    <xf:group id="grp_dTitleRow" class="pr-dtop__titlerow">
+                        <w2:textbox id="tbx_dTitle" class="pr-dtop__title" tagname="h1" label=""/>
+                        <w2:textbox id="tbx_dStatus" class="pr-savetag" tagname="span" label="Mẫu mới"/>
+                    </xf:group>
+                    <w2:textbox id="tbx_dMeta" class="pr-dtop__meta" tagname="p" label=""/>
+                </xf:group>
+            </xf:group>
+            <xf:group id="grp_dTopRight" class="pr-dtop__right">
+                <xf:select1 id="sbx_pvEvent" class="pr-select pr-select--pv" appearance="minimal" chooseOption="true" chooseOptionLabel="Xem trước với dữ liệu mẫu" direction="auto">
+                    <xf:choices><xf:itemset nodeset="data:dlt_events"><xf:label ref="label"/><xf:value ref="eventId"/></xf:itemset></xf:choices>
+                </xf:select1>
+                <xf:trigger id="btn_preview" type="button" class="pr-btn pr-btn--ghost pr-btn--icon pr-ico-eye" ev:onclick="scwin.btn_preview_onclick"><xf:label><![CDATA[Xem trước PDF]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_presets" type="button" class="pr-btn pr-btn--ghost" ev:onclick="scwin.btn_presets_onclick"><xf:label><![CDATA[Mẫu dựng sẵn]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_clone" type="button" class="pr-btn pr-btn--text" ev:onclick="scwin.btn_clone_onclick"><xf:label><![CDATA[Nhân bản]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_export" type="button" class="pr-btn pr-btn--text" ev:onclick="scwin.btn_export_onclick"><xf:label><![CDATA[Xuất file]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_save" type="button" class="pr-btn pr-btn--primary" ev:onclick="scwin.btn_save_onclick"><xf:label><![CDATA[Lưu mẫu]]></xf:label></xf:trigger>
+            </xf:group>
+        </xf:group>
+        <w2:textbox id="tbx_saveErr" class="pr-alert pr-pre is-hidden" tagname="p" label=""/>
+
+        <xf:group id="grp_dGrid" class="pr-dgrid">
+            <!-- Trái: thuộc tính mẫu -->
+            <xf:group id="grp_tplPanel" class="pr-card pr-dpanel">
+                <w2:textbox id="tbx_tplPanelTitle" class="pr-card__title" tagname="h2" label="Trang in"/>
+
+            <xf:group id="grp_tName" class="pr-field">
+                <w2:textbox id="tbx_tNameLabel" class="pr-label" tagname="span" label="Tên mẫu"/>
+                <xf:input id="ibx_name" class="pr-input" ref="data:dma_tpl.templateName" refSync="true" placeholder="Ví dụ: Thẻ VIP hội nghị 2026" ev:onkeyup="scwin.tpl_onchange" maxlength="150"/>
+            </xf:group>
+            <xf:group id="grp_tType" class="pr-field">
+                <w2:textbox id="tbx_tTypeLabel" class="pr-label" tagname="span" label="Loại mẫu"/>
+                <xf:select1 id="sbx_type" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_tpl.templateType" ev:onchange="scwin.sbx_type_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Thẻ tên (NameCard)]]></xf:label><xf:value><![CDATA[NAMECARD]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Danh bạ để bàn (NamePlace)]]></xf:label><xf:value><![CDATA[NAMEPLACE]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1>
+            </xf:group>
+            <xf:group id="grp_tPaper" class="pr-field">
+                <w2:textbox id="tbx_tPaperLabel" class="pr-label" tagname="span" label="Khổ giấy"/>
+                <xf:select1 id="sbx_paper" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_tpl.paperSize" ev:onchange="scwin.sbx_paper_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Thẻ 3×4 inch (76,2×101,6 mm)]]></xf:label><xf:value><![CDATA[BADGE_3X4]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Thẻ 4×6 inch (101,6×152,4 mm)]]></xf:label><xf:value><![CDATA[BADGE_4X6]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[A4 (210×297 mm)]]></xf:label><xf:value><![CDATA[A4]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[A5 (148×210 mm)]]></xf:label><xf:value><![CDATA[A5]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Tùy chỉnh]]></xf:label><xf:value><![CDATA[CUSTOM]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1>
+            </xf:group>
+            <xf:group id="grp_customSize" class="pr-field pr-twocol is-hidden">
+                <xf:group id="grp_cw" class="pr-field"><w2:textbox id="tbx_cwLabel" class="pr-label" tagname="span" label="Rộng (mm)"/><xf:input id="ibx_w" class="pr-input pr-input--num" ref="data:dma_tpl.widthMm" refSync="true" placeholder="10–1000" ev:onkeyup="scwin.tpl_onchange" allowChar="0-9.,-" maxlength="7"/></xf:group>
+                <xf:group id="grp_ch" class="pr-field"><w2:textbox id="tbx_chLabel" class="pr-label" tagname="span" label="Cao (mm)"/><xf:input id="ibx_h" class="pr-input pr-input--num" ref="data:dma_tpl.heightMm" refSync="true" placeholder="10–1000" ev:onkeyup="scwin.tpl_onchange" allowChar="0-9.,-" maxlength="7"/></xf:group>
+            </xf:group>
+            <xf:group id="grp_orient" class="pr-field">
+                <w2:textbox id="tbx_orientLabel" class="pr-label" tagname="span" label="Hướng giấy"/>
+                <xf:select1 id="sbx_orient" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_tpl.orientation" ev:onchange="scwin.tpl_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Dọc]]></xf:label><xf:value><![CDATA[PORTRAIT]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Ngang]]></xf:label><xf:value><![CDATA[LANDSCAPE]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1>
+            </xf:group>
+            <w2:textbox id="tbx_pageSize" class="pr-field__hint pr-pagesize" tagname="p" label=""/>
+            <xf:group id="grp_margins" class="pr-field">
+                <w2:textbox id="tbx_marginsLabel" class="pr-label" tagname="span" label="Lề trên / phải / dưới / trái (mm)"/>
+                <xf:group id="grp_marginRow" class="pr-fourcol">
+                    <xf:input id="ibx_mTop" class="pr-input pr-input--num" ref="data:dma_tpl.marginTopMm" refSync="true" placeholder="Trên" ev:onkeyup="scwin.tpl_onchange" allowChar="0-9.,-" maxlength="7"/>
+                    <xf:input id="ibx_mRight" class="pr-input pr-input--num" ref="data:dma_tpl.marginRightMm" refSync="true" placeholder="Phải" ev:onkeyup="scwin.tpl_onchange" allowChar="0-9.,-" maxlength="7"/>
+                    <xf:input id="ibx_mBottom" class="pr-input pr-input--num" ref="data:dma_tpl.marginBottomMm" refSync="true" placeholder="Dưới" ev:onkeyup="scwin.tpl_onchange" allowChar="0-9.,-" maxlength="7"/>
+                    <xf:input id="ibx_mLeft" class="pr-input pr-input--num" ref="data:dma_tpl.marginLeftMm" refSync="true" placeholder="Trái" ev:onkeyup="scwin.tpl_onchange" allowChar="0-9.,-" maxlength="7"/>
+                </xf:group>
+            </xf:group>
+            <xf:group id="grp_tFont" class="pr-field">
+                <w2:textbox id="tbx_tFontLabel" class="pr-label" tagname="span" label="Font chữ"/>
+                <xf:select1 id="sbx_font" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_tpl.fontFamily" ev:onchange="scwin.tpl_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[DejaVu Sans (đủ dấu tiếng Việt)]]></xf:label><xf:value><![CDATA[DejaVu Sans]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1>
+            </xf:group>
+            <xf:group id="grp_colors" class="pr-field pr-twocol">
+                <xf:group id="grp_cPrimary" class="pr-field">
+                    <w2:textbox id="tbx_cPrimaryLabel" class="pr-label" tagname="span" label="Màu chữ và viền"/>
+                    <xf:group id="grp_cPrimaryRow" class="pr-colorrow"><xf:group id="grp_swPrimary" class="pr-swatch"/><xf:input id="ibx_primary" class="pr-input pr-input--mono" ref="data:dma_tpl.primaryColor" refSync="true" placeholder="#0b3d2a" ev:onkeyup="scwin.tpl_onchange" maxlength="7"/></xf:group>
+                </xf:group>
+                <xf:group id="grp_cBg" class="pr-field">
+                    <w2:textbox id="tbx_cBgLabel" class="pr-label" tagname="span" label="Màu nền"/>
+                    <xf:group id="grp_cBgRow" class="pr-colorrow"><xf:group id="grp_swBg" class="pr-swatch"/><xf:input id="ibx_bg" class="pr-input pr-input--mono" ref="data:dma_tpl.backgroundColor" refSync="true" placeholder="#FFFFFF" ev:onkeyup="scwin.tpl_onchange" maxlength="7"/></xf:group>
+                </xf:group>
+            </xf:group>
+            <xf:group id="grp_tBgImg" class="pr-field">
+                <w2:textbox id="tbx_tBgImgLabel" class="pr-label" tagname="span" label="Ảnh nền (link https Cloudinary)"/>
+                <xf:input id="ibx_bgImage" class="pr-input" ref="data:dma_tpl.backgroundImageUrl" refSync="true" placeholder="https://res.cloudinary.com/…" ev:onblur="scwin.tpl_onchange"/>
+            </xf:group>
+            <xf:group id="grp_borderDpi" class="pr-field pr-twocol">
+                <xf:group id="grp_tBorder" class="pr-field">
+                <w2:textbox id="tbx_tBorderLabel" class="pr-label" tagname="span" label="Viền trang"/>
+                <xf:select1 id="sbx_border" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_tpl.borderStyle" ev:onchange="scwin.tpl_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Không viền]]></xf:label><xf:value><![CDATA[none]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Nét liền]]></xf:label><xf:value><![CDATA[solid]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Nét đứt]]></xf:label><xf:value><![CDATA[dashed]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Chấm]]></xf:label><xf:value><![CDATA[dotted]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Viền đôi]]></xf:label><xf:value><![CDATA[double]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1>
+            </xf:group>
+                <xf:group id="grp_tDpi" class="pr-field">
+                <w2:textbox id="tbx_tDpiLabel" class="pr-label" tagname="span" label="Độ nét QR (DPI)"/>
+                <xf:input id="ibx_dpi" class="pr-input pr-input--num" ref="data:dma_tpl.dpi" refSync="true" placeholder="300" ev:onkeyup="scwin.tpl_onchange" allowChar="0-9" maxlength="4"/>
+            </xf:group>
+            </xf:group>
+            <xf:select id="chk_default" class="pr-checks pr-checks--single" appearance="full" cols="1" rows="" delimiter="," renderType="checkboxgroup"
+                       ref="data:dma_tpl.systemDefault" ev:onchange="scwin.tpl_onchange">
+                <xf:choices><xf:item><xf:label><![CDATA[Đặt làm mẫu mặc định hệ thống cho loại này]]></xf:label><xf:value><![CDATA[true]]></xf:value></xf:item></xf:choices>
+            </xf:select>
+            </xf:group>
+
+            <!-- Giữa: canvas / HTML -->
+            <xf:group id="grp_center" class="pr-card pr-dcenter">
+                <xf:group id="grp_modeBar" class="pr-dcenter__bar">
+                    <xf:group id="grp_modeSeg" class="pr-viewtoggle">
+                        <xf:trigger id="btn_modeLayout" type="button" class="pr-viewtoggle__item" ev:onclick="scwin.btn_modeLayout_onclick"><xf:label><![CDATA[Kéo thả]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_modeHtml" type="button" class="pr-viewtoggle__item" ev:onclick="scwin.btn_modeHtml_onclick"><xf:label><![CDATA[HTML tùy biến]]></xf:label></xf:trigger>
+                    </xf:group>
+                    <w2:textbox id="tbx_dragInfo" class="pr-draginfo" tagname="span" label=""/>
+                    <xf:select1 id="sbx_zoom" class="pr-select pr-select--zoom" appearance="minimal" chooseOption="false" direction="auto" ev:onchange="scwin.sbx_zoom_onchange">
+                        <xf:choices>
+                        <xf:item><xf:label><![CDATA[Vừa khung]]></xf:label><xf:value><![CDATA[fit]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[50%]]></xf:label><xf:value><![CDATA[50]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[100%]]></xf:label><xf:value><![CDATA[100]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[150%]]></xf:label><xf:value><![CDATA[150]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[200%]]></xf:label><xf:value><![CDATA[200]]></xf:value></xf:item>
+                        </xf:choices>
+                    </xf:select1>
+                </xf:group>
+
+                <xf:group id="grp_layoutMode" class="pr-layoutmode">
+                    <xf:group id="grp_paletteWrap" class="pr-palette">
+                        <w2:textbox id="tbx_paletteLabel" class="pr-palette__label" tagname="span" label="Thêm:"/>
+                        <!-- Nút thêm trường được dựng bằng script -->
+                        <xf:group id="grp_palette" class="pr-palette__items"/>
+                    </xf:group>
+                    <!-- Trang in được vẽ bằng script theo tỉ lệ mm -->
+                    <xf:group id="grp_stage" class="pr-stage"/>
+                    <w2:textbox id="tbx_canvasWarn" class="pr-alert is-hidden" tagname="p" label=""/>
+                    <w2:textbox id="tbx_canvasTip" class="pr-field__hint" tagname="p"
+                                label="Kéo để di chuyển, kéo góc dưới phải để đổi kích thước. Phím mũi tên dịch 0,5 mm (giữ Shift: 5 mm), Delete để xóa, Ctrl+D nhân đôi, Ctrl+S lưu."/>
+                </xf:group>
+
+                <xf:group id="grp_htmlMode" class="pr-htmlmode is-hidden">
+                    <w2:textbox id="tbx_htmlHint" class="pr-notice" tagname="p"
+                                label="Nội dung 1 trang, phải là XHTML hợp lệ (đóng đủ thẻ, dùng &lt;br/&gt;, &amp;amp;). Ảnh chỉ dùng qua biến {{qrCode}}, {{photo}}, {{eventLogo}}. Bấm biến để chèn."/>
+                    <!-- Chip biến được dựng bằng script -->
+                    <xf:group id="grp_vars" class="pr-vars"/>
+                    <xf:textarea id="txa_html" class="pr-textarea pr-textarea--code" ref="data:dma_tpl.htmlTemplate" refSync="true" ev:onkeyup="scwin.txa_html_onkeyup"/>
+                </xf:group>
+            </xf:group>
+
+            <!-- Phải: phần tử -->
+            <xf:group id="grp_elPanel" class="pr-card pr-dpanel">
+                <w2:textbox id="tbx_elPanelTitle" class="pr-card__title" tagname="h2" label="Phần tử"/>
+                <xf:group id="grp_elNone" class="pr-elnone">
+                    <w2:textbox id="tbx_elNoneText" class="pr-field__hint" tagname="p" label="Chọn một phần tử trên trang để chỉnh, hoặc bấm một trường ở thanh “Thêm” để thêm mới."/>
+                </xf:group>
+
+                <xf:group id="grp_elForm" class="pr-elform is-hidden">
+                    <xf:group id="grp_elHead" class="pr-elform__head">
+                        <w2:textbox id="tbx_elTitle" class="pr-elform__title" tagname="p" label=""/>
+                        <w2:textbox id="tbx_elTypeHint" class="pr-field__hint" tagname="p" label=""/>
+                    </xf:group>
+                    <xf:group id="grp_elText" class="pr-field"><w2:textbox id="tbx_elTextLabel" class="pr-label" tagname="span" label="Nội dung"/><xf:input id="ibx_elText" class="pr-input" ref="data:dma_el.text" refSync="true" placeholder="Ví dụ: WELCOME" ev:onkeyup="scwin.el_onchange" maxlength="200"/></xf:group>
+                    <xf:group id="grp_elPrefix" class="pr-field"><w2:textbox id="tbx_elPrefixLabel" class="pr-label" tagname="span" label="Chữ phía trước"/><xf:input id="ibx_elPrefix" class="pr-input" ref="data:dma_el.prefix" refSync="true" placeholder="Ví dụ: Bàn " ev:onkeyup="scwin.el_onchange" maxlength="50"/></xf:group>
+                    <xf:group id="grp_elGeo" class="pr-field">
+                        <w2:textbox id="tbx_elGeoLabel" class="pr-label" tagname="span" label="Vị trí và kích thước (mm)"/>
+                        <xf:group id="grp_elGeoGrid" class="pr-geo">
+                            <w2:textbox id="tbx_gX" class="pr-geo__k" tagname="span" label="X"/><xf:input id="ibx_elX" class="pr-input pr-input--num" ref="data:dma_el.x" refSync="true" placeholder="Ngang" ev:onkeyup="scwin.el_onchange" allowChar="0-9.,-" maxlength="7"/>
+                            <w2:textbox id="tbx_gY" class="pr-geo__k" tagname="span" label="Y"/><xf:input id="ibx_elY" class="pr-input pr-input--num" ref="data:dma_el.y" refSync="true" placeholder="Dọc" ev:onkeyup="scwin.el_onchange" allowChar="0-9.,-" maxlength="7"/>
+                            <w2:textbox id="tbx_gW" class="pr-geo__k" tagname="span" label="R"/><xf:input id="ibx_elW" class="pr-input pr-input--num" ref="data:dma_el.width" refSync="true" placeholder="Rộng" ev:onkeyup="scwin.el_onchange" allowChar="0-9.,-" maxlength="7"/>
+                            <w2:textbox id="tbx_gH" class="pr-geo__k" tagname="span" label="C"/><xf:input id="ibx_elH" class="pr-input pr-input--num" ref="data:dma_el.height" refSync="true" placeholder="Cao" ev:onkeyup="scwin.el_onchange" allowChar="0-9.,-" maxlength="7"/>
+                        </xf:group>
+                        <xf:group id="grp_elAlignBtns" class="pr-elbtns">
+                            <xf:trigger id="btn_elCenter" type="button" class="pr-btn pr-btn--text pr-btn--xs" ev:onclick="scwin.btn_elCenter_onclick"><xf:label><![CDATA[Căn giữa ngang]]></xf:label></xf:trigger>
+                            <xf:trigger id="btn_elFull" type="button" class="pr-btn pr-btn--text pr-btn--xs" ev:onclick="scwin.btn_elFull_onclick"><xf:label><![CDATA[Rộng hết lề]]></xf:label></xf:trigger>
+                        </xf:group>
+                    </xf:group>
+                    <xf:group id="grp_elTextStyle" class="pr-field">
+                        <w2:textbox id="tbx_elStyleLabel" class="pr-label" tagname="span" label="Chữ"/>
+                        <xf:group id="grp_elStyleGrid" class="pr-twocol">
+                            <xf:group id="grp_elFont" class="pr-field"><w2:textbox id="tbx_elFontLabel" class="pr-field__mini" tagname="span" label="Cỡ chữ (pt)"/><xf:input id="ibx_elFont" class="pr-input pr-input--num" ref="data:dma_el.fontSize" refSync="true" placeholder="12" ev:onkeyup="scwin.el_onchange" allowChar="0-9." maxlength="5"/></xf:group>
+                            <xf:group id="grp_elAlign" class="pr-field"><w2:textbox id="tbx_elAlignLabel" class="pr-field__mini" tagname="span" label="Căn lề"/><xf:select1 id="sbx_elAlign" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_el.align" ev:onchange="scwin.el_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Trái]]></xf:label><xf:value><![CDATA[left]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Giữa]]></xf:label><xf:value><![CDATA[center]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Phải]]></xf:label><xf:value><![CDATA[right]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1></xf:group>
+                            <xf:group id="grp_elWeight" class="pr-field"><w2:textbox id="tbx_elWeightLabel" class="pr-field__mini" tagname="span" label="Độ đậm"/><xf:select1 id="sbx_elWeight" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_el.fontWeight" ev:onchange="scwin.el_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Thường]]></xf:label><xf:value><![CDATA[normal]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Đậm]]></xf:label><xf:value><![CDATA[bold]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1></xf:group>
+                            <xf:group id="grp_elStyle" class="pr-field"><w2:textbox id="tbx_elStyleSubLabel" class="pr-field__mini" tagname="span" label="Kiểu"/><xf:select1 id="sbx_elStyle" class="pr-select pr-select--full" appearance="minimal" chooseOption="false" direction="auto" ref="data:dma_el.fontStyle" ev:onchange="scwin.el_onchange">
+                    <xf:choices>
+                        <xf:item><xf:label><![CDATA[Thẳng]]></xf:label><xf:value><![CDATA[normal]]></xf:value></xf:item>
+                        <xf:item><xf:label><![CDATA[Nghiêng]]></xf:label><xf:value><![CDATA[italic]]></xf:value></xf:item>
+                    </xf:choices>
+                </xf:select1></xf:group>
+                            <xf:group id="grp_elColor" class="pr-field"><w2:textbox id="tbx_elColorLabel" class="pr-field__mini" tagname="span" label="Màu chữ"/><xf:input id="ibx_elColor" class="pr-input pr-input--mono" ref="data:dma_el.color" refSync="true" placeholder="Theo mẫu" ev:onkeyup="scwin.el_onchange" maxlength="7"/></xf:group>
+                            <xf:group id="grp_elBg" class="pr-field"><w2:textbox id="tbx_elBgLabel" class="pr-field__mini" tagname="span" label="Màu nền"/><xf:input id="ibx_elBg" class="pr-input pr-input--mono" ref="data:dma_el.backgroundColor" refSync="true" placeholder="Trong suốt" ev:onkeyup="scwin.el_onchange" maxlength="7"/></xf:group>
+                        </xf:group>
+                    </xf:group>
+                    <xf:select id="chk_elFlags" class="pr-checks" appearance="full" cols="1" rows="" delimiter="," renderType="checkboxgroup"
+                               ref="data:dma_el.flags" ev:onchange="scwin.el_onchange">
+                        <xf:choices>
+                            <xf:item><xf:label><![CDATA[Viết hoa]]></xf:label><xf:value><![CDATA[uppercase]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Tô nền theo màu loại khách]]></xf:label><xf:value><![CDATA[useTypeColor]]></xf:value></xf:item>
+                            <xf:item><xf:label><![CDATA[Tạm ẩn khi in]]></xf:label><xf:value><![CDATA[hidden]]></xf:value></xf:item>
+                        </xf:choices>
+                    </xf:select>
+                    <xf:group id="grp_elActions" class="pr-elbtns pr-elbtns--grid">
+                        <xf:trigger id="btn_elUp" type="button" class="pr-btn pr-btn--ghost pr-btn--xs" ev:onclick="scwin.btn_elUp_onclick"><xf:label><![CDATA[Lên trên]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_elDown" type="button" class="pr-btn pr-btn--ghost pr-btn--xs" ev:onclick="scwin.btn_elDown_onclick"><xf:label><![CDATA[Xuống dưới]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_elDup" type="button" class="pr-btn pr-btn--ghost pr-btn--xs" ev:onclick="scwin.btn_elDup_onclick"><xf:label><![CDATA[Nhân đôi]]></xf:label></xf:trigger>
+                        <xf:trigger id="btn_elDelete" type="button" class="pr-btn pr-btn--danger-ghost pr-btn--xs" ev:onclick="scwin.btn_elDelete_onclick"><xf:label><![CDATA[Xóa]]></xf:label></xf:trigger>
+                    </xf:group>
+                </xf:group>
+                <w2:textbox id="tbx_layersTitle" class="pr-label pr-layers__title" tagname="span" label="Các lớp (trên cùng đứng đầu)"/>
+                <!-- Danh sách lớp được dựng bằng script -->
+                <xf:group id="grp_layers" class="pr-layers"/>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <w2:wframe id="wfm_footer" class="layout-footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+</xf:group>
+
+<xf:group id="grp_overlays" class="pr-scope pr-overlays">
+    <!-- Xem trước PDF -->
+    <xf:group id="grp_pvMask" class="pr-modal-mask">
+        <xf:group id="grp_pvModal" class="pr-modal pr-modal--pv">
+            <xf:group id="grp_pvHead" class="pr-modal__head">
+                <xf:group id="grp_pvHeadText" class="pr-modal__head-text">
+                    <w2:textbox id="tbx_pvTitle" class="pr-modal__title" tagname="h2" label=""/>
+                    <w2:textbox id="tbx_pvHint" class="pr-modal__subtitle" tagname="p" label=""/>
+                </xf:group>
+                <xf:trigger id="btn_pvClose" type="button" class="pr-icon-btn pr-ico-close" ev:onclick="scwin.btn_pvClose_onclick"><xf:label><![CDATA[Đóng]]></xf:label></xf:trigger>
+            </xf:group>
+            <xf:group id="grp_pvFrame" class="pr-pdfbox pr-pdfbox--pv"/>
+        </xf:group>
+    </xf:group>
+
+    <!-- Chọn mẫu dựng sẵn -->
+    <xf:group id="grp_presetMask" class="pr-modal-mask">
+        <xf:group id="grp_presetModal" class="pr-modal pr-modal--preset">
+            <w2:textbox id="tbx_presetTitle" class="pr-confirm__title" tagname="h2" label="Bắt đầu từ mẫu dựng sẵn"/>
+            <w2:textbox id="tbx_presetDesc" class="pr-confirm__desc" tagname="p" label="Chọn một bố cục rồi chỉnh tiếp. Có thể đổi mọi thứ sau đó."/>
+            <xf:group id="grp_presetGrid" class="pr-presets">
+                <xf:trigger id="btn_pBadge" type="button" class="pr-preset pr-preset--badge" ev:onclick="scwin.btn_pBadge_onclick"><xf:label><![CDATA[Thẻ tên cơ bản (3×4 inch)]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_pVip" type="button" class="pr-preset pr-preset--vip" ev:onclick="scwin.btn_pVip_onclick"><xf:label><![CDATA[Thẻ VIP có ảnh (4×6 inch)]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_pPlace" type="button" class="pr-preset pr-preset--place" ev:onclick="scwin.btn_pPlace_onclick"><xf:label><![CDATA[Danh bạ để bàn (A4 ngang)]]></xf:label></xf:trigger>
+                <xf:trigger id="btn_pBlank" type="button" class="pr-preset pr-preset--blank" ev:onclick="scwin.btn_pBlank_onclick"><xf:label><![CDATA[Trang trắng]]></xf:label></xf:trigger>
+            </xf:group>
+        </xf:group>
+    </xf:group>
+
+    <w2:textbox id="tbx_toast" class="pr-toast" tagname="div" label="" ev:onclick="scwin.tbx_toast_onclick"/>
+</xf:group>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/text/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/text/eventPage/EventPublic.css" type="text/css"?>
+<?xml-stylesheet href="/checkinCss/Common.css" type="text/css"?>
+<?xml-stylesheet href="/eventPage/EventPublic.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+<head meta_screenName="Chi tiết sự kiện">
+    <w2:type>COMPONENT</w2:type>
+    <w2:buildDate/>
+    <w2:MSA/>
+    <xf:model>
+        <w2:dataCollection baseNode="map">
+            <!-- Sự kiện đang xem (dữ liệu từ API public) -->
+            <w2:dataMap baseNode="map" id="dma_event">
+                <w2:keyInfo>
+                    <w2:key id="eventCode" name="Mã" dataType="text"/>
+                    <w2:key id="eventName" name="Tên" dataType="text"/>
+                    <w2:key id="description" name="Mô tả" dataType="text"/>
+                </w2:keyInfo>
+            </w2:dataMap>
+        </w2:dataCollection>
+        <w2:workflowCollection/>
+        <!-- API public, không gửi token -->
+        <xf:submission id="sbm_publicEvent" ref="" target="" action="" method="get" mediatype="application/json"
+                       encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+                       processMsg="" ev:submit="" ev:submitdone="scwin.sbm_publicEvent_submitdone"
+                       ev:submiterror="scwin.sbm_publicEvent_submiterror" abortTrigger=""/>
+    </xf:model>
+    <w2:layoutInfo/>
+    <w2:publicInfo method=""/>
+    <script type="text/javascript" lazy="false"><![CDATA[
+/* =====================================================================
+ * CHI TIẾT SỰ KIỆN (PUBLIC) — SSC Check-in
+ * Mở từ trang chủ, link chia sẻ hoặc mã QR của sự kiện. Khách xem được, không cần đăng nhập.
+ * URL: websquare.html?w2xPath=/eventPage/EventPublic.xml&eventCode=EVT00001
+ * API: GET /api/public/events/{eventCode}
+ * ===================================================================== */
+scwin.API_BASE = "http://localhost:8081";
+scwin.PUBLIC_API = scwin.API_BASE + "/api/public/events/";
+scwin.CTX = window.location.pathname.replace(/\/websquare\/websquare\.html.*$/, "");
+scwin.HOME_PAGE = "/mainPage/Home.xml";
+scwin.WEEKDAYS = ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"];
+scwin.MONTHS = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+                "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
+scwin.ev = null;
+scwin.toastTimer = null;
+
+/* ---------- Vòng đời ---------- */
+scwin.onpageload = function () {
+    var code = scwin.getQueryParam("eventCode");
+    if (!code) {
+        scwin.showError("Thiếu mã sự kiện", "Đường dẫn không có mã sự kiện. Hãy chọn sự kiện từ trang chủ.");
+        return;
+    }
+    grp_detail.addClass("is-loading");
+    var sbm = $p.getSubmission("sbm_publicEvent");
+    sbm.action = scwin.PUBLIC_API + encodeURIComponent(code);
+    sbm.requestHeader = { "Accept": "application/json" };
+    $p.executeSubmission("sbm_publicEvent");
+};
+
+/* ---------- Tiện ích ---------- */
+scwin.getQueryParam = function (name) {
+    var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.search);
+    return m ? decodeURIComponent(m[1]) : "";
+};
+scwin.show = function (c, v) { if (!c) return; if (v === false) c.addClass("is-hidden"); else c.removeClass("is-hidden"); };
+scwin.toggleClass = function (c, cls, on) { if (!c) return; if (on) c.addClass(cls); else c.removeClass(cls); };
+scwin.pad = function (n) { return n < 10 ? "0" + n : String(n); };
+scwin.fmtDate = function (s) { if (!s) return ""; var p = String(s).substr(0, 10).split("-"); return p.length === 3 ? p[2] + "/" + p[1] + "/" + p[0] : String(s); };
+scwin.fmtTime = function (s) { return s ? String(s).substr(0, 5) : ""; };
+scwin.fmtNumber = function (n) { return n == null || isNaN(Number(n)) ? "—" : Number(n).toLocaleString("vi-VN"); };
+scwin.parseJSON = function (t) { if (!t || typeof t !== "string") return null; try { return JSON.parse(t); } catch (e) { return null; } };
+scwin.toDate = function (dateStr, timeStr) {
+    if (!dateStr) return null;
+    var d = String(dateStr).substr(0, 10).split("-"), t = String(timeStr || "00:00").split(":");
+    return new Date(+d[0], +d[1] - 1, +d[2], +t[0] || 0, +t[1] || 0, 0);
+};
+scwin.homeUrl = function () { return scwin.CTX + "/websquare/websquare.html?w2xPath=" + scwin.CTX + scwin.HOME_PAGE; };
+
+/** Nhãn theo thời gian: sắp diễn ra / đang diễn ra / đã kết thúc / đã hủy. */
+scwin.timeState = function (e) {
+    if (e.statusCode === "CANCELLED") return { key: "cancel", text: "Sự kiện đã bị hủy" };
+    var now = new Date();
+    var start = scwin.toDate(e.startDate, e.startTime || "00:00");
+    var end = scwin.toDate(e.endDate || e.startDate, e.endTime || "23:59");
+    if (!start) return { key: "upcoming", text: "" };
+    if (now < start) {
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        var startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+        var days = Math.round((startDay - today) / 86400000);
+        if (days === 0) return { key: "soon", text: "Bắt đầu sau " + Math.max(1, Math.round((start - now) / 3600000)) + " giờ" };
+        if (days === 1) return { key: "soon", text: "Diễn ra vào ngày mai" };
+        return { key: "upcoming", text: "Còn " + days + " ngày nữa" };
+    }
+    if (now <= end) return { key: "live", text: "Đang diễn ra" };
+    return { key: "past", text: "Sự kiện đã kết thúc" };
+};
+
+/* ---------- Nhận dữ liệu ---------- */
+scwin.readResponse = function (e) {
+    if (!e) return null;
+    if (e.responseJSON && typeof e.responseJSON === "object") return e.responseJSON;
+    return scwin.parseJSON(e.responseText) || scwin.parseJSON(e.responseBody);
+};
+
+scwin.sbm_publicEvent_submitdone = function (e) {
+    grp_detail.removeClass("is-loading");
+    var json = scwin.readResponse(e);
+    if (json && json.success === false) { scwin.sbm_publicEvent_submiterror(e); return; }
+    scwin.render(json && json.hasOwnProperty("data") ? json.data : json);
+};
+
+scwin.sbm_publicEvent_submiterror = function (e) {
+    grp_detail.removeClass("is-loading");
+    var status = (e && (e.responseStatusCode || e.status)) || 0;
+    if (status === 404) scwin.showError("Không tìm thấy sự kiện", "Sự kiện không tồn tại hoặc đã bị gỡ khỏi lịch.");
+    else if (status === 0) scwin.showError("Không kết nối được máy chủ", "Kiểm tra kết nối mạng rồi tải lại trang.");
+    else scwin.showError("Không tải được thông tin", "Máy chủ đang gặp sự cố. Thử lại sau ít phút.");
+};
+
+scwin.showError = function (title, desc) {
+    tbx_errTitle.setValue(title);
+    tbx_errDesc.setValue(desc);
+    scwin.show(grp_error, true);
+    scwin.show(grp_detail, false);
+};
+
+/* ---------- Hiển thị ---------- */
+scwin.render = function (d) {
+    d = d || {};
+    var st = d.status || {}, h = d.hall || null;
+    var e = {
+        eventCode: d.eventCode, eventName: d.eventName, description: d.description || "",
+        startDate: d.startDate, endDate: d.endDate, startTime: d.startTime, endTime: d.endTime,
+        statusCode: st.code || d.statusCode || "", hall: h,
+        expectedGuestCount: d.expectedGuestCount, checkInSummary: d.checkInSummary || null
+    };
+    scwin.ev = e;
+    dma_event.setJSON({ eventCode: e.eventCode || "", eventName: e.eventName || "", description: e.description });
+    document.title = (e.eventName || "Sự kiện") + " | SSC Check-in";
+
+    // Khối ngày lớn
+    var start = scwin.toDate(e.startDate);
+    tbx_hDay.setValue(start ? scwin.pad(start.getDate()) : "--");
+    tbx_hMonth.setValue(start ? scwin.MONTHS[start.getMonth()] + ", " + start.getFullYear() : "");
+    tbx_hWeekday.setValue(start ? scwin.WEEKDAYS[start.getDay()] : "");
+
+    // Tiêu đề
+    var state = scwin.timeState(e);
+    tbx_state.setValue(state.text);
+    scwin.show(tbx_state, !!state.text);
+    ["soon", "upcoming", "live", "past", "cancel"].forEach(function (k) { scwin.toggleClass(grp_hero, "is-" + k, k === state.key); });
+    tbx_code.setValue(e.eventCode || "");
+    tbx_name.setValue(e.eventName || "");
+
+    var d1 = scwin.fmtDate(e.startDate), d2 = scwin.fmtDate(e.endDate);
+    var dateText = (d2 && d2 !== d1) ? d1 + " – " + d2 : d1;
+    var t1 = scwin.fmtTime(e.startTime), t2 = scwin.fmtTime(e.endTime);
+    var timeText = t1 ? (t2 ? t1 + " – " + t2 : "Từ " + t1) : "Chưa công bố giờ";
+    tbx_heroWhen.setValue(dateText + (t1 ? ", " + timeText : ""));
+    tbx_heroPlace.setValue(h ? h.hallName + (h.floorArea ? ", " + h.floorArea : "") : "Địa điểm sẽ được thông báo");
+
+    // Giới thiệu
+    tbx_desc.setValue(e.description || "Ban tổ chức chưa đăng nội dung giới thiệu cho sự kiện này.");
+    scwin.toggleClass(tbx_desc, "is-placeholder", !e.description);
+
+    // Lịch trình
+    tbx_fDate.setValue(dateText || "—");
+    tbx_fTime.setValue(timeText);
+    var startDt = scwin.toDate(e.startDate, e.startTime), endDt = scwin.toDate(e.endDate || e.startDate, e.endTime);
+    var dur = (e.startTime && e.endTime && endDt > startDt) ? Math.round((endDt - startDt) / 60000) : 0;
+    tbx_fDuration.setValue(dur ? (dur >= 60 ? Math.floor(dur / 60) + " giờ" + (dur % 60 ? " " + (dur % 60) + " phút" : "") : dur + " phút") : "—");
+    tbx_fExpected.setValue(e.expectedGuestCount != null ? scwin.fmtNumber(e.expectedGuestCount) + " khách" : "—");
+
+    // Địa điểm
+    if (h) {
+        tbx_venueName.setValue(h.hallName || "");
+        tbx_venueFloor.setValue(h.floorArea || "");
+        tbx_venueAddr.setValue(h.address || "Chưa có địa chỉ chi tiết");
+        tbx_venueCap.setValue(h.capacity ? "Sức chứa " + scwin.fmtNumber(h.capacity) + " chỗ" : "");
+        scwin.show(tbx_venueFloor, !!h.floorArea);
+        scwin.show(tbx_venueCap, !!h.capacity);
+        scwin.show(btn_map, !!h.address);
+    } else {
+        tbx_venueName.setValue("Địa điểm sẽ được thông báo");
+        tbx_venueAddr.setValue("Ban tổ chức sẽ cập nhật sau.");
+        scwin.show(tbx_venueFloor, false);
+        scwin.show(tbx_venueCap, false);
+        scwin.show(btn_map, false);
+    }
+
+    // Tình hình tham dự: chỉ hiện khi sự kiện đang diễn ra và đã có khách
+    var s = e.checkInSummary || {};
+    var total = Number(s.totalGuests) || 0, checked = Number(s.checkedInCount) || 0;
+    var showAtt = state.key === "live" && total > 0;
+    scwin.show(grp_attend, showAtt);
+    if (showAtt) {
+        tbx_attCount.setValue(scwin.fmtNumber(checked) + " / " + scwin.fmtNumber(total) + " khách đã có mặt");
+        grp_attBar.setStyle("width", Math.min(100, checked * 100 / total) + "%");
+    }
+
+    scwin.show(btn_calendar, state.key !== "cancel" && state.key !== "past");
+};
+
+/* ---------- Thao tác ---------- */
+scwin.btn_back_onclick = function () { window.location.href = scwin.homeUrl(); };
+scwin.btn_errHome_onclick = scwin.btn_back_onclick;
+
+scwin.btn_map_onclick = function () {
+    var h = scwin.ev && scwin.ev.hall;
+    if (!h || !h.address) return;
+    window.open("https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(h.hallName + ", " + h.address), "_blank");
+};
+
+scwin.btn_share_onclick = function () {
+    var url = window.location.href, title = scwin.ev ? scwin.ev.eventName : document.title;
+    if (navigator.share) {
+        navigator.share({ title: title, url: url }).catch(function () { });
+        return;
+    }
+    scwin.copyText(url).then(function () { scwin.toast("Đã sao chép đường dẫn sự kiện."); },
+        function () { scwin.toast("Không sao chép được, hãy copy đường dẫn trên thanh địa chỉ."); });
+};
+
+scwin.copyText = function (text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise(function (resolve, reject) {
+        var ta = document.createElement("textarea");
+        ta.className = "ep-native-copy";
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { if (document.execCommand("copy")) resolve(); else reject(); } catch (e) { reject(e); }
+        document.body.removeChild(ta);
+    });
+};
+
+/** Tải file .ics để thêm vào Google Calendar, Outlook, lịch điện thoại. */
+scwin.btn_calendar_onclick = function () {
+    var e = scwin.ev;
+    if (!e || !e.startDate) return;
+    var esc = function (s) { return String(s || "").replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n"); };
+    var ymd = function (d) { return d.getFullYear() + scwin.pad(d.getMonth() + 1) + scwin.pad(d.getDate()); };
+    var stamp = function (d) { return ymd(d) + "T" + scwin.pad(d.getHours()) + scwin.pad(d.getMinutes()) + "00"; };
+    var now = new Date();
+    var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//SSC Check-in//VI", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+        "UID:" + e.eventCode + "@ssc-checkin",
+        "DTSTAMP:" + now.getUTCFullYear() + scwin.pad(now.getUTCMonth() + 1) + scwin.pad(now.getUTCDate()) + "T"
+            + scwin.pad(now.getUTCHours()) + scwin.pad(now.getUTCMinutes()) + "00Z"];
+    if (e.startTime) {
+        var s = scwin.toDate(e.startDate, e.startTime);
+        var en = e.endTime ? scwin.toDate(e.endDate || e.startDate, e.endTime) : new Date(s.getTime() + 3600000);
+        lines.push("DTSTART:" + stamp(s), "DTEND:" + stamp(en));
+    } else {
+        var last = scwin.toDate(e.endDate || e.startDate);
+        lines.push("DTSTART;VALUE=DATE:" + ymd(scwin.toDate(e.startDate)),
+                   "DTEND;VALUE=DATE:" + ymd(new Date(last.getFullYear(), last.getMonth(), last.getDate() + 1)));
+    }
+    var h = e.hall;
+    lines.push("SUMMARY:" + esc(e.eventName));
+    if (h) lines.push("LOCATION:" + esc([h.hallName, h.floorArea, h.address].filter(function (x) { return !!x; }).join(", ")));
+    if (e.description) lines.push("DESCRIPTION:" + esc(e.description));
+    lines.push("URL:" + window.location.href, "END:VEVENT", "END:VCALENDAR");
+
+    var blob = new Blob([lines.join("\r\n")], { type: "text/calendar;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.className = "ep-native-link";
+    a.href = url;
+    a.download = e.eventCode + ".ics";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(url); document.body.removeChild(a); }, 1500);
+    scwin.toast("Đã tải file lịch. Mở file để thêm vào ứng dụng lịch của bạn.");
+};
+
+scwin.toast = function (msg) {
+    clearTimeout(scwin.toastTimer);
+    tbx_toast.setValue(msg);
+    tbx_toast.addClass("is-show");
+    scwin.toastTimer = setTimeout(function () { tbx_toast.removeClass("is-show"); }, 3500);
+};
+    ]]></script>
+</head>
+<body ev:onpageload="scwin.onpageload">
+<xf:group id="grp_layout" class="ck-layout">
+
+    <w2:wframe id="wfm_header" class="layout-header" src="../checkinCommon/Header.xml" style="width:100%;"/>
+
+    <xf:group id="grp_main" class="ck-main ep-scope" tagname="main">
+
+        <xf:trigger id="btn_back" type="button" class="ep-back" ev:onclick="scwin.btn_back_onclick">
+            <xf:label><![CDATA[Tất cả sự kiện]]></xf:label>
+        </xf:trigger>
+
+        <xf:group id="grp_detail" class="ep-detail is-loading">
+            <!-- Phần đầu: khối ngày + tên + thời gian, địa điểm -->
+            <xf:group id="grp_hero" class="ep-hero" tagname="section">
+                <xf:group id="grp_heroDate" class="ep-hero__date">
+                    <w2:textbox id="tbx_hWeekday" class="ep-hero__weekday" tagname="span" label=""/>
+                    <w2:textbox id="tbx_hDay" class="ep-hero__day" tagname="span" label="--"/>
+                    <w2:textbox id="tbx_hMonth" class="ep-hero__month" tagname="span" label=""/>
+                </xf:group>
+                <xf:group id="grp_heroText" class="ep-hero__text">
+                    <xf:group id="grp_heroTags" class="ep-hero__tags">
+                        <w2:textbox id="tbx_state" class="ep-state" tagname="span" label=""/>
+                        <w2:textbox id="tbx_code" class="ep-code" tagname="span" label=""/>
+                    </xf:group>
+                    <w2:textbox id="tbx_name" class="ck-page-title ep-hero__name" tagname="h1" label="Đang tải thông tin sự kiện…"/>
+                    <w2:textbox id="tbx_heroWhen" class="ep-hero__line ep-hero__line--time" tagname="p" label=""/>
+                    <w2:textbox id="tbx_heroPlace" class="ep-hero__line ep-hero__line--place" tagname="p" label=""/>
+                    <xf:group id="grp_heroActions" class="ep-hero__actions">
+                        <xf:trigger id="btn_calendar" type="button" class="ep-btn ep-btn--primary ep-ico-calendar" ev:onclick="scwin.btn_calendar_onclick">
+                            <xf:label><![CDATA[Thêm vào lịch]]></xf:label>
+                        </xf:trigger>
+                        <xf:trigger id="btn_share" type="button" class="ep-btn ep-btn--ghost ep-ico-share" ev:onclick="scwin.btn_share_onclick">
+                            <xf:label><![CDATA[Chia sẻ]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+
+            <xf:group id="grp_body" class="ep-body">
+                <xf:group id="grp_colMain" class="ep-body__main">
+                    <xf:group id="grp_about" class="ep-card" tagname="section">
+                        <w2:textbox id="tbx_aboutTitle" class="ep-card__title" tagname="h2" label="Giới thiệu sự kiện"/>
+                        <w2:textbox id="tbx_desc" class="ep-desc" tagname="p" label=""/>
+                    </xf:group>
+
+                    <xf:group id="grp_schedule" class="ep-card" tagname="section">
+                        <w2:textbox id="tbx_schedTitle" class="ep-card__title" tagname="h2" label="Thời gian"/>
+                        <xf:group id="grp_facts" class="ep-facts">
+                            <xf:group id="grp_factDate" class="ep-fact">
+                                <w2:textbox id="tbx_fDateLabel" class="ep-fact__label" tagname="span" label="Ngày"/>
+                                <w2:textbox id="tbx_fDate" class="ep-fact__value" tagname="span" label=""/>
+                            </xf:group>
+                            <xf:group id="grp_factTime" class="ep-fact">
+                                <w2:textbox id="tbx_fTimeLabel" class="ep-fact__label" tagname="span" label="Giờ"/>
+                                <w2:textbox id="tbx_fTime" class="ep-fact__value" tagname="span" label=""/>
+                            </xf:group>
+                            <xf:group id="grp_factDuration" class="ep-fact">
+                                <w2:textbox id="tbx_fDurationLabel" class="ep-fact__label" tagname="span" label="Thời lượng"/>
+                                <w2:textbox id="tbx_fDuration" class="ep-fact__value" tagname="span" label=""/>
+                            </xf:group>
+                            <xf:group id="grp_factExpected" class="ep-fact">
+                                <w2:textbox id="tbx_fExpectedLabel" class="ep-fact__label" tagname="span" label="Quy mô dự kiến"/>
+                                <w2:textbox id="tbx_fExpected" class="ep-fact__value" tagname="span" label=""/>
+                            </xf:group>
+                        </xf:group>
+                    </xf:group>
+                </xf:group>
+
+                <xf:group id="grp_colSide" class="ep-body__side">
+                    <xf:group id="grp_venue" class="ep-card ep-venue" tagname="section">
+                        <w2:textbox id="tbx_venueTitle" class="ep-card__title" tagname="h2" label="Địa điểm"/>
+                        <w2:textbox id="tbx_venueName" class="ep-venue__name" tagname="p" label=""/>
+                        <w2:textbox id="tbx_venueFloor" class="ep-venue__line" tagname="p" label=""/>
+                        <w2:textbox id="tbx_venueAddr" class="ep-venue__line ep-venue__line--addr" tagname="p" label=""/>
+                        <w2:textbox id="tbx_venueCap" class="ep-venue__line ep-venue__line--muted" tagname="p" label=""/>
+                        <xf:trigger id="btn_map" type="button" class="ep-btn ep-btn--ghost ep-btn--block ep-ico-map" ev:onclick="scwin.btn_map_onclick">
+                            <xf:label><![CDATA[Xem bản đồ]]></xf:label>
+                        </xf:trigger>
+                    </xf:group>
+
+                    <xf:group id="grp_attend" class="ep-card ep-attend is-hidden" tagname="section">
+                        <w2:textbox id="tbx_attTitle" class="ep-card__title" tagname="h2" label="Đang diễn ra"/>
+                        <w2:textbox id="tbx_attCount" class="ep-attend__count" tagname="p" label=""/>
+                        <xf:group id="grp_attTrack" class="ep-progress">
+                            <xf:group id="grp_attBar" class="ep-progress__bar"/>
+                        </xf:group>
+                    </xf:group>
+                </xf:group>
+            </xf:group>
+        </xf:group>
+
+        <xf:group id="grp_error" class="ep-error is-hidden">
+            <xf:group id="grp_errIcon" class="ep-error__icon"/>
+            <w2:textbox id="tbx_errTitle" class="ep-error__title" tagname="p" label=""/>
+            <w2:textbox id="tbx_errDesc" class="ep-error__desc" tagname="p" label=""/>
+            <xf:trigger id="btn_errHome" type="button" class="ep-btn ep-btn--primary" ev:onclick="scwin.btn_errHome_onclick">
+                <xf:label><![CDATA[Về trang chủ]]></xf:label>
+            </xf:trigger>
+        </xf:group>
+
+        <w2:textbox id="tbx_toast" class="ep-toast" tagname="div" label=""/>
+    </xf:group>
+
+    <w2:wframe id="wfm_footer" class="layout-footer" src="../checkinCommon/Footer.xml" style="width:100%;"/>
+
+</xf:group>
+</body>
+</html>
